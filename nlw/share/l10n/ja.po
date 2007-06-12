@@ -864,6 +864,11 @@ msgstr "日付"
 msgid "Date Uploaded"
 msgstr "アップロードした日"
 
+#: lib/Socialtext/EmailReceiver/Base.pm:688
+#.  
+msgid "Date:"
+msgstr ""
+
 #: share/template/element/page/actions:38
 #.  
 msgid "Delete Page"
@@ -1158,6 +1163,11 @@ msgstr "フランス語"
 #.  
 msgid "From"
 msgstr "発信者"
+
+#: lib/Socialtext/EmailReceiver/Base.pm:678
+#.  
+msgid "From:"
+msgstr ""
 
 #: share/template/element/settings/workspaces_permissions_section:64
 #.  
