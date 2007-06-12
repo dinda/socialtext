@@ -15,10 +15,10 @@ use DateTime;
 use Email::Address;
 use Email::MIME;
 use Email::MIME::ContentType ();
-use Email::MIME::Modifier; # provides walk_parts()
+use Email::MIME::Modifier;    # provides walk_parts()
 use Fcntl qw( SEEK_SET );
 use Filesys::DfPortable ();
-use HTML::TreeBuilder ();
+use HTML::TreeBuilder   ();
 use HTML::WikiConverter ();
 use Socialtext::Authz;
 use Socialtext::CategoryPlugin;
@@ -26,9 +26,33 @@ use Socialtext::Exceptions qw( auth_error system_error );
 use Socialtext::Log qw( st_log );
 use Socialtext::Permission qw( ST_EMAIL_IN_PERM );
 use Socialtext::User ();
-use Text::Flowed ();
+use Text::Flowed     ();
+use Socialtext::File;
+use Socialtext::l10n qw(loc system_locale);
+use DateTime::Format::Mail;
+use Data::Dumper;
 
-sub _receive {
+sub _log {
+    open( FILE, ">>/home/yoshino/email_receive.log" ) or die;
+    print FILE "$_[0]\n";
+}
+
+sub _new {
+    my $class     = shift;
+    my $email     = shift;
+    my $workspace = shift;
+
+    return bless {
+        email          => $email,
+        workspace      => $workspace,
+        body           => '',
+        attachments    => [],
+        categories     => ['Email'],
+        body_placement => $workspace->incoming_email_placement(),
+    }, $class;
+}
+
+sub receive {
     my $self = shift;
 
     $self->_clean_email();
@@ -37,7 +61,8 @@ sub _receive {
         = ( Email::Address->parse( $self->{email}->header('From') ) )[0];
 
     unless ( $self->{from} ) {
-        auth_error 'Socialtext does not accept email from unidentified senders.';
+        auth_error
+            'Socialtext does not accept email from unidentified senders.';
     }
 
     $self->_require_email_in_permission( $self->{from}->address() );
@@ -63,14 +88,17 @@ sub _clean_email {
     my $self = shift;
 
     my $encoding = $self->{email}->header('Content-Transfer-Encoding');
+
     # We have an email in our test corpus with an encoding of "8-bit",
     # which is not RFC-compliant, but it'd be nice to not blow up on
     # simple mistakes like that.
     if ( $encoding and $encoding =~ s/([78])-bit/${1}bit/ ) {
+
         # Cannot call ->encoding_set() since that calls ->body()
         # internally _before_ changing the encoding, which blows up
         # because of the bogus encoding.
-        $self->{email}->header_set( 'Content-Transfer-Encoding' => $encoding );
+        $self->{email}
+            ->header_set( 'Content-Transfer-Encoding' => $encoding );
     }
 }
 
@@ -83,14 +111,17 @@ sub _require_email_in_permission {
     my $authz = Socialtext::Authz->new();
 
     my $has_perm = 0;
-    if ( $user
-         and $authz->user_has_permission_for_workspace(
-                 user       => $user,
-                 permission => ST_EMAIL_IN_PERM,
-                 workspace  => $self->{workspace},
-             ) ) {
+    if (
+        $user
+        and $authz->user_has_permission_for_workspace(
+            user       => $user,
+            permission => ST_EMAIL_IN_PERM,
+            workspace  => $self->{workspace},
+        )
+        ) {
         $has_perm = 1;
     }
+
     # We do things this way because we don't want to insert a user
     # into the DBMS just to find out that the newly created user does
     # not have permission to email_in to the workspace.
@@ -98,10 +129,12 @@ sub _require_email_in_permission {
     # We were doing this briefly on prod and added approximately 6,500
     # users in one week, which is obviously a problem over the long
     # term.
-    elsif ( $self->{workspace}->role_has_permission(
-                permission  => ST_EMAIL_IN_PERM,
-                role        => Socialtext::Role->Guest(),
-            ) ) {
+    elsif (
+        $self->{workspace}->role_has_permission(
+            permission => ST_EMAIL_IN_PERM,
+            role       => Socialtext::Role->Guest(),
+        )
+        ) {
         $has_perm = 1;
     }
 
@@ -161,7 +194,8 @@ sub _clean_subject {
     }
 
     unless ( defined $subject and length $subject ) {
-        my $sender = $self->{from}->name
+        my $sender =
+              $self->{from}->name
             ? $self->{from}->name
             : $self->{from}->address;
 
@@ -231,13 +265,13 @@ sub _save_attachment_from_part {
     );
 
     my $tmpfh = File::Temp->new();
-    my $dir = File::Basename::dirname( $tmpfh->filename() );
+    my $dir   = File::Basename::dirname( $tmpfh->filename() );
 
     return
         unless $self->_has_free_temp_space_for_attachment(
-            $dir,
-            bytes::length( $part->body() ),
-            $filename,
+        $dir,
+        bytes::length( $part->body() ),
+        $filename,
         );
 
     print $tmpfh $part->body();
@@ -276,6 +310,7 @@ sub _part_is_inline {
     # disposition is inline.
     return 1
         unless ( $disp and $disp =~ /attachment|inline/i )
+
         # When testing with Thunderbird, I noticed that when you embed
         # an image in an HTML email, it does not give it a
         # Content-Disposition at all. But clearly if a part if an
@@ -286,7 +321,7 @@ sub _part_is_inline {
 }
 
 {
-    Readonly my $OneMB => 1024 ** 2;
+    Readonly my $OneMB => 1024**2;
 
     sub _has_free_temp_space_for_attachment {
         my $self     = shift;
@@ -294,7 +329,7 @@ sub _part_is_inline {
         my $size     = shift;
         my $filename = shift;
 
-        my $free = Filesys::DfPortable::dfportable($dir)->{bavail};
+        my $free            = Filesys::DfPortable::dfportable($dir)->{bavail};
         my $free_after_save = $free - $size;
 
         if ( $free_after_save < $OneMB * 50 ) {
@@ -302,7 +337,8 @@ sub _part_is_inline {
                     . $self->{page}->title()
                     . " from "
                     . $self->{from}->address
-                    . " would leave less than 50MB free in $dir. Not saving." );
+                    . " would leave less than 50MB free in $dir. Not saving."
+            );
             return;
         }
         elsif ( $free_after_save < $OneMB * 500 ) {
@@ -375,18 +411,31 @@ sub _plain_lines_from_part {
     if (    $ct->{composite} eq 'plain'
         and $ct->{attributes}{format}
         and $ct->{attributes}{format} eq 'flowed' ) {
-        push @$lines,
-            split /\n/,
+        push @$lines, split /\n/,
             Text::Flowed::reformat(
-                $body, {
-                    opt_length => 1000000,
-                    max_length => 1000000,
-                },
+            $body,
+            {
+                opt_length => 1000000,
+                max_length => 1000000,
+            },
             );
     }
     else {
         push @$lines, split /\n/, $body;
     }
+}
+
+sub _guess_charset {
+    my $self    = shift;
+    my $body    = shift;
+    my $charset = shift;
+    my $locale  = system_locale();
+
+    unless ($charset) {
+        my $locale = system_locale();
+        $charset = Socialtext::File->_guess_string_encoding( $locale, $body );
+    }
+    return $charset;
 }
 
 sub _body_from_part_by_type {
@@ -404,8 +453,12 @@ sub _body_from_part_by_type {
     my $body = $part->body();
     return $body if Encode::is_utf8($body);
 
-    my $charset = $ct->{attributes}{charset} || 'ascii';
-    return Encode::decode( $charset, $body );
+    my $charset = $self->_guess_charset( $body, $ct->{attributes}{charset} );
+
+    Encode::from_to( $body, $charset, 'utf8' );
+    Encode::_utf8_on($body) unless Encode::is_utf8($body);
+
+    return $body;
 }
 
 sub _scan_lines_for_commands {
@@ -414,6 +467,7 @@ sub _scan_lines_for_commands {
 
     my @not_commands;
     while ( my $line = shift @$lines ) {
+
         # skip initial blank lines
         next unless $line =~ /\S/;
 
@@ -433,7 +487,7 @@ sub _scan_lines_for_commands {
             push @{ $self->{categories} }, split /\s*,\s*/, $value;
         }
         elsif ( $command eq 'replace' ) {
-            $self->{body_placement} = 'replace'
+            $self->{body_placement} = 'replace';
         }
         elsif ( $command eq 'append' ) {
             my $where = lc $value;
@@ -491,6 +545,7 @@ sub _html_lines_from_part {
     return unless defined $body and length $body;
 
     my $tree = HTML::TreeBuilder->new_from_content($body);
+
     # The goal here is to only include elements inside the <body>
     # tag. If the HTML in the email had no <body> tag, we just use the
     # entire tree of elements.
@@ -507,8 +562,7 @@ sub _html_lines_from_part {
 sub _save_html_bodies_as_attachments {
     my $self = shift;
 
-    $self->_save_html_body_as_attachment($_)
-        for @{ $self->{body_parts} };
+    $self->_save_html_body_as_attachment($_) for @{ $self->{body_parts} };
 }
 
 sub _save_html_body_as_attachment {
@@ -520,7 +574,8 @@ sub _save_html_body_as_attachment {
 
     return unless $ct->{discrete} eq 'text' and $ct->{composite} eq 'html';
 
-    $self->_save_attachment_from_part( $part, 'ignore disposition', 'no wafl' );
+    $self->_save_attachment_from_part( $part, 'ignore disposition',
+        'no wafl' );
 }
 
 sub _set_page_categories {
@@ -528,16 +583,13 @@ sub _set_page_categories {
 
     my $local = $self->_get_to_address_local_part();
 
-    my $cat = (split /[\+\.]/, $local, 2)[1];
+    my $cat = ( split /[\+\.]/, $local, 2 )[1];
     $cat = Socialtext::CategoryPlugin->Decode_category_email($cat)
         if defined $cat;
 
-    my %categories
-        = map { $_ => 1 }
-          grep { defined }
-          @{ $self->{page}->metadata()->Category() },
-          @{ $self->{categories} },
-          $cat;
+    my %categories = map { $_ => 1 }
+        grep {defined} @{ $self->{page}->metadata()->Category() },
+        @{ $self->{categories} }, $cat;
 
     $self->{page}->metadata()->Category( [ keys %categories ] );
 }
@@ -551,15 +603,16 @@ sub _get_to_address_local_part {
     # NLW::EmailReceive checked Bcc, but that makes no sense on an
     # incoming message
     for my $address (
+
         # We start with the shortest address to prevent possible bugs
         # with the use of "." as a category separator. If we have a
         # workspace named john and send mail to john@socialtext.net
         # and john.smith@example.com, we don't want the email to end
         # up in the "smith" category.
         sort { length $a <=> length $b }
-        map { $_->user }
-        map { Email::Address->parse($_) }
-        map { $self->{email}->header($_) }
+        map  { $_->user }
+        map  { Email::Address->parse($_) }
+        map  { $self->{email}->header($_) }
         qw( To Cc )
         ) {
 
@@ -591,7 +644,7 @@ sub _update_page_body {
 }
 
 sub _replace_body {
-    my $self   = shift;
+    my $self = shift;
 
     $self->{page}->content( ${ $self->_page_body_from_email() } );
 }
@@ -617,14 +670,14 @@ sub _append_to_bottom {
     ${$new_body} = $old_body . "\n---\n" . ${$new_body}
         if defined $old_body;
 
-    $self->{page}->content(${$new_body});
+    $self->{page}->content( ${$new_body} );
 }
 
 sub _page_body_from_email {
     my $self = shift;
 
     my $header = $self->_make_page_header();
-    my $body = join '', @$header, $self->{body};
+    my $body   = join '', @$header, $self->{body};
 
     return \$body;
 }
@@ -632,17 +685,26 @@ sub _page_body_from_email {
 sub _make_page_header {
     my $self = shift;
 
-    my @header = (''); # will become a newline
-    my $from = 'From: ';
+    my @header = ('');                 # will become a newline
+    my $from   = loc('From:') . ' ';
     if ( my $name = $self->{from}->name() ) {
         $from .= qq|"$name" |;
     }
     $from .= '<mailto:' . $self->{from}->address() . '>';
 
     push @header, "$from\n";
-    push @header, 'Date: ' . $self->{email}->header('Date') . "\n"
-        if $self->{email}->header('Date');
-
+    my $formated_date;
+    if ( $self->{email}->header('Date') ) {
+        eval {
+            my $datetime = DateTime::Format::Mail->parse_datetime(
+                $self->{email}->header('Date') );
+            $formated_date = $self->format_date($datetime);
+        };
+        if ($@) {
+            $formated_date = $self->{email}->header('Date');
+        }
+        push @header, loc('Date:') . " $formated_date\n";
+    }
     for my $att ( @{ $self->{attachments} } ) {
         my $wafl = $att->image_or_file_wafl();
         ( my $re = $wafl ) =~ s/\n//g;
@@ -656,6 +718,9 @@ sub _make_page_header {
     return \@header;
 }
 
+sub format_date {
+    die "SubClass must be implemented(format_date).\n";
+}
 
 1;
 

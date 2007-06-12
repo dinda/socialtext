@@ -1172,12 +1172,13 @@ sub deliver_email {
 
     eval {
         my $locale = system_locale();
-        my $email_receiver = Socialtext::EmailReceiver::Factory->create($locale);
+        my $email_receiver = Socialtext::EmailReceiver::Factory->create({
+            locale => $locale,
+            handle => \*STDIN,
+            workspace => $ws
+        });
 
-        $email_receiver->receive_handle(
-            handle    => \*STDIN,
-            workspace => $ws,
-        );
+        $email_receiver->receive();
     };
 
     if ( my $e = Exception::Class->caught('Socialtext::Exception::Auth') ) {
@@ -1187,7 +1188,6 @@ sub deliver_email {
         die $e;
     }
 }
-
 
 sub customjs {
     my $self = shift;

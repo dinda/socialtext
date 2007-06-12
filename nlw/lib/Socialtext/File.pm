@@ -144,6 +144,30 @@ sub get_guess_encoding {
     }
 }
 
+sub _guess_string_encoding {
+    my $class = shift;
+    my $locale = shift;
+    my $data = shift;
+    my $encoding_names = $locale_encoding_names->{$locale};
+    if ( ! defined $encoding_names) {
+        return 'utf8';
+    }
+    my @match_list = split(/\s/, $encoding_names);
+    my $enc = Encode::Guess::guess_encoding($data, @match_list);
+    if ( ref($enc) ) {
+        return $enc->name;
+    } else {
+        foreach (@match_list) {
+            if ( $enc =~ /$_/ ) {
+                return $_;
+            }
+        }
+        return 'utf8';
+    }
+
+
+}
+
 sub ensure_directory {
     my $directory = shift;
     return if -e $directory;
