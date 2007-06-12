@@ -55,6 +55,7 @@ sub create {
     my $param = shift;
     my $email = $class->_create_email($param);
     my $workspace = $param->{workspace};
+    my $locale = $param->{locale};
 
     my $receiver_class = _get_class($locale);
     eval "use $receiver_class";
