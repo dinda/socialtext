@@ -29,7 +29,7 @@ use_ok('Socialtext::EmailSender::Factory');
 #$Socialtext::EmailSender::Base::SendClass = 'Test';
 
 # Please put your test email-address in below.
-my $to_email_address = 'yoshino-sxa@necst.nec.co.jp';
+my $to_email_address = 'devnull1@socialtext.com';
 
 TO_IS_ASCII: {
     Email::Send::Test->clear();
