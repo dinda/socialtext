@@ -120,7 +120,7 @@
     <select class="email-page-select" multiple name="email_page_user_source" style="visibility: hidden"></select>
      <div id="[% ns %]-userselect-addlabel" class="email-page-user-select-label">Recipients</div>
   [% END %]
-    <input class="email-page-input-new" type="text" name="email_page_add_one" value="[% loc('type email address here') %]" onclick="email_page_clear_element(this, 'type email address here');" onblur="email_page_validate_add();" />
+    <input class="email-page-input-new" type="text" name="email_page_add_one" value="[% loc('type email address here') %]" onclick="email_page_clear_element(this, '[% loc('type email address here')%]');" onblur="email_page_validate_add();" />
   </div>
 [% END %]
 
