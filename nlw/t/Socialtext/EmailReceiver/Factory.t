@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 4;
+use Test::Socialtext tests => 6;
 
 use_ok('Socialtext::EmailReceiver::Factory');
 
@@ -15,27 +15,32 @@ CREATE_EN: {
 
     my $locale = 'en';
     my $string = 'hogehoge';
+    my $receiver;
     ok ( eval{
-            my $receiver = Socialtext::EmailReceiver::Factory->create(
+            $receiver = Socialtext::EmailReceiver::Factory->create(
                 {
                     locale => $locale,
                     string => $string,
                     workspace => $ws,
                 });
         });
+
+    isa_ok($receiver, "Socialtext::EmailReceiver::" . $locale);
 }
 
 CREATE_JA: {
 
     my $locale = 'ja';
     my $string = 'hogehoge';
+    my $receiver;
     ok ( eval{
-            my $receiver = Socialtext::EmailReceiver::Factory->create(
+            $receiver = Socialtext::EmailReceiver::Factory->create(
                 {
                     locale => $locale,
                     string => $string,
                     workspace => $ws,
                 });
         });
+    isa_ok($receiver, "Socialtext::EmailReceiver::" . $locale);
 }
 
