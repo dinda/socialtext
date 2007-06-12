@@ -15,6 +15,10 @@ Released from osr-fix-install, synced with trunk at r2510
 
     https://www.socialtext.net/help/index.cgi?release_notes_for_socialtext_2_11_export_to_word_and_pdf
 
+    Instructions for using OpenID are here:
+ 
+    http://www.socialtext.net/open/index.cgi?howto_use_the_openid_authentication_plugin
+
 Synced with ST-based trunk -r14912
 
 2.5.0.2     Fri Dec 15 10:58:39 CST 2006
@@ -68,7 +72,8 @@ Synced with ST-based trunk -r14912
     Fixed incorrect instructions on My Workspaces interface page.
 
     Images with a query string would not get displayed.
-
+    
+    Included Socialtext::InitFunctions
 
     [INTERNALS]
     Socialtext::WeblogUpdates was getting loaded into Apache
