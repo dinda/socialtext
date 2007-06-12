@@ -25,7 +25,7 @@
         </li>
         [% IF checker.check_permission('email_out') %]
         <li>
-            <a title="[% loc('Email this page') %]" id="st-pagetools-email" href="?action=email_page_popup;page_name=[% page.id %]" onclick="query_popup('index.cgi?action=email_page_popup;page_name=[% page.id %]',690,580); return false;">[% loc('Email') %]</a>
+            <a title="[% loc('Email this page') %]" id="st-pagetools-email" href="?action=email_page_popup;page_name=[% page.id %]" onclick="query_popup('index.cgi?action=email_page_popup;page_name=[% page.id %]',750,580); return false;">[% loc('Email') %]</a>
         </li>
         [% END %]
         <li class="submenu"><span id="st-pagetools-tools">[% loc('Tools') %]</span>
