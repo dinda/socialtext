@@ -12,7 +12,7 @@
     </a>
     [% ELSE %]
     <a href="/lite/category/[% workspace_name %]/[% category | uri |html %]">
-        All Pages in [% category | html %]
+        [% loc('All Pages in [_1]', category | html) %]
     </a>
     [% END %]
 </div>

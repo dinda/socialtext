@@ -7,7 +7,7 @@
       <input type="hidden" name="page_name" value="[% page_name %]" />
       <input type="hidden" name="mode" value="source" />
 
-      <table id="st-revision-list-table" summary="Revisions to the current document">
+      <table id="st-revision-list-table" summary=[% loc("Revisions to the current document") %]>
         [% PROCESS compare_revisions_button %]
         [% PROCESS revision_headers %]
         [%

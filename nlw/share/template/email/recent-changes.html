@@ -1,7 +1,7 @@
 [%# @COPYRIGHT@ -%]
 <html>
 <head>
- <title>Recent changes in [% workspace.title | html %]</title>
+ <title>[% loc('Recent changes in [_1]', workspace.title | html) %]</title>
 </head>
 
 <body>
@@ -11,15 +11,15 @@
 </p>
 
 <p>
-To stop receiving or change how often you receive emails about changes
-to [% workspace.title | html %], you can
-<a href="[% preference_uri | html %]">change your preferences</a>.
+[% loc('To stop receiving or change how often you receive emails about changes
+to [_1], you can
+<a href="[_2]">change your preferences</a>.', workspace.title | html, preference_uri | html) %]
 </p>
 
 <hr />
 
 <p>
-The following pages in [% workspace.title | html %] have recently changed:
+[% loc('The following pages in [_1] have recently changed:', workspace.title | html) %]
 </p>
 
 <ul>
@@ -27,7 +27,7 @@ The following pages in [% workspace.title | html %] have recently changed:
  <li><a href="[% workspace.uri %]?[% page.uri %]">[% page.metadata.Subject %]</a>
   [%- IF include_editor %]
      <br />
-     (by [% page.last_edited_by.best_full_name( workspace => workspace ) | html %] on [% page.metadata.Date | html %])
+     [% loc('(by [_1] on [_2])', page.last_edited_by.best_full_name( workspace => workspace ) | html, page.metadata.Date | html) %]
   [%- END %]
  </li>
 [%- END %]
