@@ -363,7 +363,7 @@ sub _validate_and_clean_data {
 
     if ( $p->{incoming_email_placement}
          and $p->{incoming_email_placement} !~ /^(?:top|bottom|replace)$/ ) {
-        push @errors, 'Incoming email placement must be one of top, bottom, or replace.';
+        push @errors, loc('Incoming email placement must be one of top, bottom, or replace.');
     }
 
     if ( $p->{skin_name}
@@ -407,14 +407,12 @@ sub NameIsValid {
 
     if ( $name !~ /^[A-Za-z0-9_\-]{3,30}$/ ) {
         push @{$errors},
-            'Workspace name must be between 3 and 30 characters long, and'
-            . ' must contain only upper- or lower-case letters, numbers,'
-            . ' underscores, and dashes.';
+            loc('Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes.');
     }
 
     if ( $ReservedNames{$name} || ($name =~ /^st_/i) ) {
         push @{$errors},
-            "'$name' is a reserved workspace name and cannot be used.";
+            loc("'[_1]' is a reserved workspace name and cannot be used.", $name);
     }
 
     return @{$errors} > 0 ? 0 : 1;
@@ -528,7 +526,7 @@ sub logo_filename {
 
         my $mime_type = MIME::Types->new()->mimeTypeOf( $p{filename} );
         unless ( $mime_type and $ValidTypes{$mime_type} ) {
-            data_validation_error errors => [ "Logo file must be a gif, jpeg, or png file." ];
+            data_validation_error errors => [ loc("Logo file must be a gif, jpeg, or png file.") ];
         }
 
         my $new_file = $self->_new_logo_filename( $ValidTypes{$mime_type} );
@@ -548,7 +546,7 @@ sub logo_filename {
         };
         if ($@) {
             data_validation_error errors =>
-                ['Unable to process logo file. Is it an image?'];
+                [loc('Unable to process logo file. Is it an image?')];
         }
 
         my $old_logo_file = $self->logo_filename();
