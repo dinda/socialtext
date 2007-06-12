@@ -1,0 +1,146 @@
+#!/usr/bin/env perl
+# @COPYRIGHT@
+use strict;
+use warnings;
+use File::Basename;
+use File::chdir;
+use IPC::Run;
+use File::Temp ();
+use Getopt::Long;
+
+# Install options for modules
+our %InstallOpts = (
+    Alzabo => [qw( --automated --root /var/lib/alzabo --pg --no-mysql )],
+);
+
+# Command line options to this program
+our ($verbose, $quiet, $PERL) = (0, 0) ;
+GetOptions(
+    "verbose|v" => \$verbose,
+    "quiet|q" => \$quiet,
+    "perl|p=s" => \$PERL
+) or exit 1;
+die "Usage: $0 [-q] [-v] [-p perl] module | missing | all\n" unless @ARGV;
+
+my $module = shift;
+if ( $module eq 'all' ) {
+    install_all_tarballs();
+}
+elsif ( $module eq 'missing' ) {
+    install_missing_tarballs();
+}
+else {
+    install_module($module);
+}
+
+sub install_all_tarballs {
+    my @tarballs = ( glob "build/tarballs/*/*.t*" );
+    my @zips     = ( glob "build/tarballs/*/*.zip" );
+    my @archives = sort ( @tarballs, @zips );
+    for my $file (@archives) {
+        _install_from_archive( $file, File::Basename::basename($file) );
+    }
+}
+
+sub install_missing_tarballs {
+    chomp( my @lines = qx(dev-bin/list-module-deps 2>/dev/null) );
+    my @modules = map { /^(\S+)/; $1; } @lines;
+    for my $module (@modules) {
+        install_module($module);
+    }
+}
+
+sub install_module {
+    my $realname = shift;
+    my $name = $realname;
+    $name =~ s/::/-/g;
+    if (-d "build/tarballs/$name") {
+        my $archive = ( glob "build/tarballs/$name/*.[tz]*" )[0];
+        unless ($archive) {
+            warn "Could not find archive for $realname\n";
+            return;
+        }
+        _install_from_archive( $archive, $name );
+    } else {
+        print "$realname not found in build/tarballs/\n";
+    }
+}
+
+sub _install_from_archive {
+    my ( $file, $dist ) = @_;
+    my $tempdir = File::Temp::tempdir( CLEANUP => 0 );
+    my @command =
+        $file =~ /\.zip$/
+        ? ( 'unzip', $file, '-d', $tempdir )
+        : ( 'tar', '-xzf', $file, '-C', $tempdir );
+
+    print "Unpacking $file\n";
+    system(@command) and die join( " ", @command ) . " failed: $!";
+
+    opendir my ($dh), $tempdir;
+    my $topdir =
+      ( grep { -d } map { ("$tempdir/$_") } grep { !/^\./ } readdir $dh )[0];
+
+    _install_from_source( $topdir, $dist );
+}
+
+sub _install_from_source {
+    my ($dir, $dist) = @_;
+
+    print "Installing $dist from source in $dir\n";
+
+    local $CWD = $dir;
+
+    $dist =~ s/-/_/g;
+
+    my ( $script, $make, $init_opts, $install_opts ) = (
+        -e "Build.PL"
+        ? (
+            'Build.PL',
+            './Build',
+            ,
+            [ 'verbose=' . $verbose, 'quiet=' . $quiet ],
+            [
+                'uninst=1', 'verbose=' . $verbose, 'quiet=' . $quiet
+            ],
+          )
+        : (
+            'Makefile.PL', 'make',
+            [], [ 'UNINST=1', 'VERBINST=' . $verbose ],
+        )
+    );
+
+    push @$init_opts, @{ $InstallOpts{$dist} }
+      if $InstallOpts{$dist};
+
+    my $perl = $PERL || $ENV{PERL} || $^X; 
+    _run_quietly( $perl, $script, @$init_opts );
+    _run_quietly( $make, 'install', @$install_opts );
+
+    unless ( $dir =~ m{^/tmp} ) {
+        _run_quietly( $make, 'realclean' );
+    }
+}
+
+sub _run_quietly {
+    my @command = @_;
+
+    my $buffer = '';
+
+    my ( $handle_stdout, $handle_stderr );
+    if ( $verbose ) {
+        $handle_stdout = sub { print @_ };
+        $handle_stderr = sub { print STDERR @_ };
+    }
+    else {
+        $handle_stdout = sub { $buffer .= $_ for @_ };
+        $handle_stderr = sub { $buffer .= $_ for @_ };
+    }
+
+    IPC::Run::run( \@command, \undef, $handle_stderr, $handle_stdout );
+    if ($?) {
+        print STDERR $buffer if $buffer;
+
+        warn "@command in $CWD failed.\n";
+    }
+}

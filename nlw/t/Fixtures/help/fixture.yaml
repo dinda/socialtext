@@ -1,0 +1,9 @@
+fixtures:
+  - alzabo
+
+workspaces:
+    "help-en": { }
+
+cache:
+  - WORKSPACES
+  - USERS

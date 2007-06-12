@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+SHAREDIR=`dirname $0`/../l10n/help/
+st-run-as-web-user st-create-help-workspaces $SHAREDIR

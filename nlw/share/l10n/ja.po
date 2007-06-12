@@ -1,0 +1,3191 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Socialtext i18n\n"
+"PO-Revision-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: Socialtext i18n team\n"
+"Last-Translator: Socialtext i18n team\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/Socialtext/SearchPlugin.pm:94
+#. (
+msgid "%1 - Atom Search for %2"
+msgstr "%1 - Atom で %2 を検索する"
+
+#: lib/Socialtext/SearchPlugin.pm:87
+#. (
+msgid "%1 - RSS Search for %2"
+msgstr "%1 - RSS で %2 を検索する"
+
+#: lib/Socialtext/WeblogPlugin.pm:81
+#. (
+msgid "%1 Weblog"
+msgstr "%1 ウェブログ"
+
+#: lib/Socialtext/User/Default.pm:171
+#. (
+msgid "%1 is a required field."
+msgstr "%1 は必須です。"
+
+#: lib/Socialtext/User/Default.pm:178
+#. (
+msgid "%1 is not a valid email address."
+msgstr "%1 は有効な email アドレスではありません。"
+
+#: lib/Socialtext/FavoritesPlugin.pm:31
+#. (
+msgid "%1's Notepad"
+msgstr "%1のノートパッド"
+
+#: lib/Socialtext/SyndicatePlugin.pm:305
+#. (
+msgid "%1: search for %2"
+msgstr "%1: %2 を検索"
+
+#: lib/Socialtext/SyndicatePlugin.pm:312
+#. (
+msgid "%1: watchlist for %2"
+msgstr "%1: %2 のウォッチリスト"
+
+#: share/template/element/page/details:38 share/template/view/page/display:86
+#. (
+msgid "%quant(%1,revision)"
+msgstr "%quant(%1,リビジョン,リビジョンズ)"
+
+#: share/template/element/page/details:33 share/template/element/page/details:35
+#. (
+msgid "%quant(%1,view)"
+msgstr "%quant(%1,ビュー,ビュー)"
+
+#: lib/Socialtext/CLI.pm:438
+#. (
+msgid "'%1' is not a valid locale"
+msgstr "'%1'は有効なロケールではありません。"
+
+#: lib/Socialtext/TimeZonePlugin.pm:33
+#.  
+msgid "+0000 UTC/GMT, Western European"
+msgstr "+0000 協定世界時/ グリニッジ標準時、西ヨーロッパ時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:34
+#.  
+msgid "+0100 Central European"
+msgstr "+0100 中央ヨーロッパ時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:35
+#.  
+msgid "+0200 Eastern European"
+msgstr "+0200 東ヨーロッパ時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:36
+#.  
+msgid "+0300 Baghdad"
+msgstr "+0300 バグダッド時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:37
+#.  
+msgid "+0330 Iran"
+msgstr "+0330 イラン時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:38
+#.  
+msgid "+0400 Delta/USSR Zone 3"
+msgstr "+0400 デルタ/USSR タイムゾーン 3"
+
+#: lib/Socialtext/TimeZonePlugin.pm:39
+#.  
+msgid "+0500 Echo/USSR Zone 4"
+msgstr "+0500 エコー/USSR タイムゾーン 4"
+
+#: lib/Socialtext/TimeZonePlugin.pm:40
+#.  
+msgid "+0530 Indian"
+msgstr "+0530 インド標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:41
+#.  
+msgid "+0600 Foxtrot/USSR Zone 5"
+msgstr "+0600 フォックストロット/USSR タイムゾーン 5"
+
+#: lib/Socialtext/TimeZonePlugin.pm:42
+#.  
+msgid "+0700 Golf/USSR Zone 6"
+msgstr "+0700 ゴルフ/USSR タイムゾーン 6"
+
+#: lib/Socialtext/TimeZonePlugin.pm:43
+#.  
+msgid "+0800 Western Australian, China Coast"
+msgstr "+0800 西オーストラリア標準時、中国沿岸時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:44
+#.  
+msgid "+0900 Japan, Korean"
+msgstr "+0900 日本標準時、韓国標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:45
+#.  
+msgid "+0930 Central Australian"
+msgstr "+00930 中央オーストラリア標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:46
+#.  
+msgid "+1000 Eastern Australian, Guam"
+msgstr "+1000 東オーストラリア標準時、グアム標準時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:47
+#.  
+msgid "+1100 Lima"
+msgstr "+1100 リマ時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:48
+#.  
+msgid "+1200 International Date Line East"
+msgstr "+1200 国際日付変更線、東側"
+
+#: lib/Socialtext/TimeZonePlugin.pm:49
+#.  
+msgid "+1200 New Zealand"
+msgstr "+1200 ニュージーランド標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:32
+#.  
+msgid "-0100 West Africa"
+msgstr "-0100 西アフリカ標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:31
+#.  
+msgid "-0200 Oscar"
+msgstr "-0200 オスカー時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:30
+#.  
+msgid "-0300 Greenland"
+msgstr "-0300 グリーンランド標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:29
+#.  
+msgid "-0330 Newfoundland"
+msgstr "-0330 ニューファンドランド標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:28
+#.  
+msgid "-0400 Atlantic"
+msgstr "-0400 大西洋標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:27
+#.  
+msgid "-0500 Eastern (Americas)"
+msgstr "-0500 東部標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:26
+#.  
+msgid "-0600 Central (Americas)"
+msgstr "-0600 中央標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:25
+#.  
+msgid "-0700 Mountain"
+msgstr "-0700 山岳部標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:24
+#.  
+msgid "-0800 Pacific"
+msgstr "-0800 太平洋標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:23
+#.  
+msgid "-0900 Yukon"
+msgstr "-0900 ユーコン標準時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:22
+#.  
+msgid "-1000 Hawaii, Central Alaska"
+msgstr "-1000 アラスカ/ハワイ標準時"
+
+#: lib/Socialtext/TimeZonePlugin.pm:21
+#.  
+msgid "-1100 Nome"
+msgstr "-1100 ノーム時間"
+
+#: lib/Socialtext/TimeZonePlugin.pm:20
+#.  
+msgid "-1200 International Date Line West"
+msgstr "-1200 国際日付変更線、西側"
+
+#: share/template/view/refcard:207
+#.  
+msgid "<a href=\"./proposal.pdf\">proposal.pdf</a> on <u>page name</u>"
+msgstr "<u>ページ名</u>の<a href=\"./proposal.pdf\">proposal.pdf</a>"
+
+#: share/template/view/refcard:202
+#.  
+msgid "<a href=\"./proposal.pdf\">proposal.pdf</a> on this page"
+msgstr "このページの<a href=\"./proposal.pdf\">proposal.pdf</a>"
+
+#: share/template/workspaces_created_section.html:14
+#. (
+msgid "<a href=\"/%1/?action=users_invitation\">Invite</a> other people to %2."
+msgstr "他の人を%2へ<a href=\"/%1/?action=users_invitation\">招待する</a>。"
+
+#: share/template/workspaces_created_section.html:13
+#. (
+msgid "<a href=\"/%1/\">Go to</a> the %2 home page."
+msgstr "%2ホームページ<a href=\"/%1/\">に行く</a>。"
+
+#: share/template/view/homepage:12
+#.  
+msgid "<a href=\"?action=users_invitation\">Invite your colleagues<b></b></a> to this workspace."
+msgstr "あなたの同僚をこのワークスペースに招待してください。"
+
+#: lib/Socialtext/FavoritesPlugin.pm:25
+#.  
+msgid "<p>This is where you set the title of the page you would like to see in the \"Your Notepad\" panel.</p><p>Some choose to use an existing page, and others make a new page, such as \"Rupert Jee's Notepad\".</p>"
+msgstr "<p>ここに\" あなたのノートパッド \"パネルに表示させたいタイトルを設定してください。 </p><p>既存のページ名を使用する人もいますし、\" Rupert Jee's Notepad \"のように新規作成する人もいます。</p>"
+
+#: share/template/view/refcard:107
+#.  
+msgid "<u>Link to section</u> in the same page"
+msgstr "同じページの<u>セクションにリンクする</u>"
+
+#: share/template/view/refcard:112
+#.  
+msgid "<u>Link to section</u> of a different page"
+msgstr "違うページの<u>セクションにリンクする</u>"
+
+#: share/template/view/refcard:117
+#.  
+msgid "<u>Link to section</u> of a page in another workspace"
+msgstr "別のワークスペースのページの<u>セクションにリンクする</u>"
+
+#: share/template/view/refcard:97
+#.  
+msgid "<u>Page Link</u> to different-workspace"
+msgstr "異なるワークスペースへの<u>ページリンク</u>"
+
+#: share/template/element/settings/users_settings_section:25
+#.  
+msgid "A dialog box will pop up after your password is changed."
+msgstr "パスワード変更後ダイアログボックスが現れます。"
+
+#: share/template/element/settings/users_invite_section:14
+#. (
+msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
+msgstr "フィルターがこのワークスペースに設定されています。All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
+
+#: lib/Socialtext/EditPlugin.pm:148
+#.  
+msgid "A page must have a body to be saved."
+msgstr "保存するには本文が必要です。"
+
+#: lib/Socialtext/EditPlugin.pm:142
+#.  
+msgid "A page must have a title to be saved."
+msgstr "保存するにはタイトルが必要です。"
+
+#: lib/Socialtext/User/Default.pm:187
+#.  
+msgid "A password is required to create a new user."
+msgstr "新規にユーザを作成するには、パスワードが必要です。"
+
+#: share/template/view/refcard:228
+#.  
+msgid "AOL user aim:aimuser presence"
+msgstr "AOL user aim:aimuser presence"
+
+#: share/template/view/refcard:227
+#.  
+msgid "AOL user aimuser presence"
+msgstr "AOL user aimuser presence"
+
+#: share/template/view/homepage:85
+#.  
+msgid "Access a Community of Peers"
+msgstr "仲間のコミュニティにアクセスしよう"
+
+#: lib/Socialtext/Account.pm:58
+#.  
+msgid "Account name is a required field."
+msgstr "アカウント名は必須です。"
+
+#: share/template/popup/email_page:130 share/template/popup/email_page:138
+#.  
+msgid "Add"
+msgstr "追加"
+
+#: share/template/popup/email_page:134
+#.  
+msgid "Add All"
+msgstr "すべて追加"
+
+#: share/template/comment_popup.html:51
+#. (
+msgid "Add Comment to %1"
+msgstr "%1にコメントを追加"
+
+#: share/template/element/page/tag_queue_interface:6
+#.  
+msgid "Add Tags"
+msgstr "タグを追加"
+
+#: share/template/element/page/attachment_queue_interface:19
+#.  
+msgid "Add a link to the attachment at the top of the page? Images will appear in the page when the page is saved."
+msgstr "このページのトップにある添付にリンクを追加しますか？ ページを保存するとページに画像が表示されます。"
+
+#: share/template/element/page/attachment_attach_interface:19
+#.  
+msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
+msgstr "このページのトップにある添付にリンクを追加しますか？ ページに画像が表示されます。"
+
+#: share/javascript/attachqueue.js:207 share/template/element/page/attachment_queue_interface:31
+#.  
+msgid "Add file"
+msgstr "ファイルを追加"
+
+#: share/javascript/tagqueue.js:191 share/template/element/page/tags:14
+#.  
+msgid "Add tag"
+msgstr "タグを追加"
+
+#: share/template/popup/email_page:73
+#.  
+msgid "Add this note at the front of the email? (You can customize the note below.)"
+msgstr "このメッセージを email の一番上に付けますか？ (次のメッセージをカスタマイズすることができます。）"
+
+#: share/template/element/page/tag_queue_interface:14
+#.  
+msgid "Add&nbsp;tag"
+msgstr "タグを追加"
+
+#: share/template/layout/html:106
+#.  
+msgid "Add&nbsp;tags"
+msgstr "タグを追加"
+
+#: share/template/popup/email_page:117
+#.  
+msgid "Additional Recipient"
+msgstr "宛先を追加"
+
+#: share/template/element/settings/users_listall_section:8
+#.  
+msgid "Admin"
+msgstr "管理者"
+
+#: share/template/element/settings/users_invite_section:71
+#.  
+msgid "Administrator Notification"
+msgstr "管理者への通知"
+
+#: share/template/element/page/edit:10
+#.  
+msgid "Advanced"
+msgstr "Advanced"
+
+#: share/template/element/listview/actionbar:12
+#.  
+msgid "All Files"
+msgstr "すべてのファイル"
+
+#: share/template/view/attachmentslist:7
+#. (
+msgid "All Files in %1"
+msgstr "%1 にあるすべてのファイル"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:171 share/template/element/listview/actionbar:10
+#.  
+msgid "All Pages"
+msgstr "すべてのページ"
+
+#: share/template/element/page/revision_compare_actions:15 share/template/view/page_revision_list:3
+#.  
+msgid "All Revisions"
+msgstr "すべてのバージョン"
+
+#: share/template/element/listview/actionbar:11
+#.  
+msgid "All Tags"
+msgstr "すべてのタグ"
+
+#: share/template/view/taglistview:6
+#. (
+msgid "All Tags in %1"
+msgstr "%1にあるすべてのタグ"
+
+#: lib/Socialtext/CategoryPlugin.pm:81
+#.  
+msgid "All Tags in Workspace"
+msgstr "ワークスペースにあるすべてのタグ"
+
+#: share/template/element/wiki/subnav-dashboard:14
+#.  
+msgid "All files"
+msgstr "すべてのファイル"
+
+#: share/template/element/wiki/subnav-dashboard:10
+#.  
+msgid "All pages"
+msgstr "すべてのページ"
+
+#: share/template/element/wiki/subnav-dashboard:12
+#.  
+msgid "All tags"
+msgstr "すべてのタグ"
+
+#: lib/Socialtext/Workspace.pm:376
+#.  
+msgid "An account must be specified for all new workspaces."
+msgstr "すべての新しいワークスペースにアカウントを指定する必要があります。"
+
+#: share/template/bugs_content.html:17
+#.  
+msgid "An application error has occurred in the Socialtext Workspace system."
+msgstr ""
+
+#: lib/Socialtext/WikiwygPlugin.pm:210 lib/Socialtext/WikiwygPlugin.pm:69
+#. (
+msgid "An invalid page ID was given: %1"
+msgstr "ページIDが無効です: %1"
+
+#: share/template/element/settings/users_invite_section:40
+#.  
+msgid "And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
+msgstr "何も壊れることはないので、心配しないでください。このページの前バージョンが保存されているので、常に作業中のページはバックアップがあります。"
+
+#: share/template/view/homepage:54
+#.  
+msgid "Announcements and Links"
+msgstr "お知らせとリンク"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:337
+#. (
+msgid "Anyone can send email to %1."
+msgstr "誰でも%1にEmailを送れます。"
+
+#: share/template/element/settings/workspaces_permissions_section:108
+#.  
+msgid "Anyone can send email to this workspace."
+msgstr "誰でもこのワークスペースにemailを送ることができます。"
+
+#: share/template/element/settings/users_invite_section:74
+#.  
+msgid "Append the extra text below?"
+msgstr "以下に別のテキストを追加しますか？"
+
+#: share/template/element/settings/users_invite_section:35
+#.  
+msgid "Append the personal message below?"
+msgstr "以下のメッセージを添えますか？"
+
+#: share/template/bugs_content.html:5
+#.  
+msgid "Application Error"
+msgstr ""
+
+#: share/template/bugs_dump.html:5
+#.  
+msgid "Application Error Bug Dump"
+msgstr ""
+
+#: lib/Socialtext/BugsPlugin.pm:121
+#. (
+msgid "Application error for %1 on %2: %3"
+msgstr "%2 に %1 のアプリケーションエラー発生: %3"
+
+#: lib/Socialtext/BugsPlugin.pm:115
+#. (
+msgid "Application error in %1 for %2 on %3: %4"
+msgstr "%3 に %1 で %2 のアプリケーションエラー発生: %4"
+
+#: lib/Socialtext/BugsPlugin.pm:118
+#. (
+msgid "Application error in %1 on %2: %3"
+msgstr "%2 に %1 でアプリケーションエラー発生: %3"
+
+#: lib/Socialtext/BugsPlugin.pm:123
+#. (
+msgid "Application error on %1: %2"
+msgstr "%1 にアプリケーションエラー発生: %2"
+
+#: share/template/view/homepage:89
+#. (
+msgid "As a Socialtext customer, you have access to the %1."
+msgstr "Socialtext のカスタマは%1にアクセスすることができます。"
+
+#: lib/Socialtext/AttachmentsUIPlugin.pm:60
+#.  
+msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
+msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
+
+#: share/javascript/Wikiwyg/Socialtext.js:1110 share/template/element/page/attachments:3
+#.  
+msgid "Attachments"
+msgstr "添付"
+
+#: share/template/element/page/attachment_manage_interface:12
+#.  
+msgid "Author"
+msgstr "作成者"
+
+#: share/template/element/page/revision_compare_actions:8 share/template/element/page/revision_list_actions:7
+#.  
+msgid "Back To Current Revision"
+msgstr "現バージョンに戻る"
+
+#: share/template/view/refcard:232
+#.  
+msgid "Block of HTML"
+msgstr "HTML のブロック"
+
+#: share/template/view/refcard:237
+#.  
+msgid "Block of text with no *special* punctuation"
+msgstr "*特別な* 表記を用いないテキスト"
+
+#: share/template/element/settings/workspaces_settings_features_section:22
+#.  
+msgid "Bottom of page"
+msgstr "ページの一番下"
+
+#: share/template/email/standard-footer.html:12
+#.  
+msgid "Brought to you by Socialtext."
+msgstr "Socialtext でお楽しみください。"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:230
+#.  
+msgid "Can't remove privileges of the last admin"
+msgstr "前回の管理者の権限を削除できません。"
+
+#: share/javascript/Wikiwyg/Socialtext.js:1037 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_save:17 share/template/popup/email_page:90 share/template/standard_buttons:3
+#.  
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: lib/Socialtext/DeletePagePlugin.pm:45
+#.  
+msgid "Cannot undelete a page with only one revision. Returning to front page."
+msgstr "1つのバージョンだけでページを復活させることはできません。最初のページに戻ります。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:66 share/template/view/homepage:30
+#.  
+msgid "Central page"
+msgstr "中央のページ"
+
+#: share/template/element/settings/users_settings_section:19
+#.  
+msgid "Change Password"
+msgstr "パスワードの変更"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:104 lib/Socialtext/UserSettingsPlugin.pm:233 lib/Socialtext/WorkspacesUIPlugin.pm:67
+#.  
+msgid "Changes Saved"
+msgstr "変更が保存されました。"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:177
+#. (
+msgid "Changes in %1"
+msgstr "%1 の変更"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:142
+#.  
+msgid "Changes saved"
+msgstr "変更を保存しました。"
+
+#: share/template/element/settings/users_settings_section:37
+#. (
+msgid "Check with your %1 administrator."
+msgstr "%1 の管理者に確認してください。"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:58
+#.  
+msgid "Chronologically (Oldest First)"
+msgstr "古い順"
+
+#: share/template/lite/page/contention.html:6
+#. (
+msgid "Click <a href=\"%1\">here</a> to go to the latest version of the page."
+msgstr "このページの最新版を見るには、<a href=\"%1\">here</a>をクリックしてください。"
+
+#: share/template/element/page/attachment_queue_interface:8
+#.  
+msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
+msgstr "\"閲覧する\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルを追加\" をクリックすると、このファイルがこのページの添付リストに追加され、ページを保存した時にアップロードされます。"
+
+#: share/javascript/pageview.js:513 share/template/element/page/attachment_attach_interface:9
+#.  
+msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
+msgstr "\"閲覧する\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルをアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
+
+#: share/template/view/edit_contention:4
+#.  
+msgid "Click here to go to the latest version of the page."
+msgstr "このページの最新版を見るには、ここをクリックしてください。"
+
+#: share/template/element/page/actions:16
+#.  
+msgid "Click this button to add a comment to the page"
+msgstr "このページにコメントを追加するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/attachments:15
+#.  
+msgid "Click this button to add a file to the page"
+msgstr "このページにファイルを追加するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/tags:14 share/template/layout/html:106
+#.  
+msgid "Click this button to add a tag to the page"
+msgstr "このページにタグを追加するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/tag_queue_interface:14
+#.  
+msgid "Click this button to add your tag"
+msgstr "あなたのタグを追加するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/edit:8
+#.  
+msgid "Click this button to cancel editing and discard your changes"
+msgstr "編集をキャンセルし、変更を破棄したい場合は、このボタンをクリックしてください。"
+
+#: share/template/view/weblog:142
+#.  
+msgid "Click this button to create a new blog post"
+msgstr "ブログへの投稿を作成するには、このボタンをクリックしてください。"
+
+#: share/template/view/homepage:107
+#.  
+msgid "Click this button to create a new page"
+msgstr "新しいページを作成するには、このボタンをクリックしてください。"
+
+#: share/template/view/homepage:130
+#.  
+msgid "Click this button to create a new workspace"
+msgstr "新しいワークスペースを作成するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/actions:5 share/template/element/page/actions:7
+#.  
+msgid "Click this button to edit the page"
+msgstr "このページを編集するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/attachments:18
+#.  
+msgid "Click this button to manage files attached to the page"
+msgstr "このページの添付ファイルを管理するには、このボタンをクリックしてください。"
+
+#: share/template/element/wiki/nav:18
+#.  
+msgid "Click this button to perform your search"
+msgstr "検索するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/edit:7
+#.  
+msgid "Click this button to preview your page before saving it"
+msgstr "保存する前にページを確認するには、このボタンをクリックしてください。"
+
+#: lib/Socialtext/BreadCrumbsPlugin.pm:79
+#.  
+msgid "Click this button to save recently viewed pages to your computer for offline use."
+msgstr "オフラインで使用のコンピューターに、最近見たページを保存するには、このボタンをクリックしてください。"
+
+#: lib/Socialtext/HomepagePlugin.pm:56 lib/Socialtext/RecentChangesPlugin.pm:111
+#. (
+msgid "Click this button to save the %1 most recent pages to your computer for offline use."
+msgstr "オフラインで使用のコンピューターに、%1 最も最近のページを保存するには、このボタンをクリックしてください。"
+
+#: lib/Socialtext/SearchPlugin.pm:69
+#.  
+msgid "Click this button to save the pages from this search to your computer for offline use"
+msgstr "オフラインで使用のコンピューターに、今回検索したページを保存するには、このボタンをクリックしてください。"
+
+#: lib/Socialtext/CategoryPlugin.pm:148
+#. (
+msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
+msgstr "オフラインで使用のコンピューターに、タグ %1 が付いたページを保存するには、このボタンをクリックしてください。"
+
+#: lib/Socialtext/WatchlistPlugin.pm:207
+#.  
+msgid "Click this button to save the pages you're watching for offline use."
+msgstr "オフラインで使用のコンピューターに、ウォッチしているページを保存するには、このボタンをクリックしてください。"
+
+#: share/template/view/weblog:18
+#.  
+msgid "Click this button to save the posts in this weblog to your computer for offline use."
+msgstr "オフラインで使用のコンピューターに、このウェブログへの投稿を保存するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/details:49
+#.  
+msgid "Click this button to save this page to your computer for offline use."
+msgstr "オフラインで使用のコンピューターに、このページを保存するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/edit:6
+#.  
+msgid "Click this button to save your page"
+msgstr "ページを保存するには、このボタンをクリックしてください。"
+
+#: share/template/element/page/tags:18
+#.  
+msgid "Click this button to save your tag"
+msgstr "タグを保存するには、このボタンをクリックしてください。"
+
+#: share/template/layout/html:103
+#.  
+msgid "Click this button to upload a file to the page"
+msgstr "このページにファイルをアップロードするには、このボタンをクリックしてください。"
+
+#: share/template/view/page/display:80 share/template/view/page/display:86
+#.  
+msgid "Click to view previous versions of this page."
+msgstr "クリックすると、このページの前バージョンを見ることができます。"
+
+#: share/template/element/page/attachment_manage_interface:22
+#.  
+msgid "Close"
+msgstr "閉じる"
+
+#: share/template/element/page/revision_compare_actions:29
+#.  
+msgid "Color View (Unformatted)"
+msgstr "色表示 （書式表示なし）"
+
+#: share/template/element/page/actions:16
+#.  
+msgid "Comment"
+msgstr "コメント"
+
+#: share/template/view/page_revision_list:34
+#.  
+msgid "Compare Revisions"
+msgstr "バージョンを比較"
+
+#: lib/Socialtext/RevisionPlugin.pm:110
+#. (
+msgid "Compare Revisions %1 and %2"
+msgstr "バージョン%1と%2を比較"
+
+#: share/template/workspaces_created_section.html:7
+#. (
+msgid "Congratulations! You have just created \"%1\", a brand new Socialtext Workspace. You are the administrator. The web address of the new workspace is %2."
+msgstr "おめでとう！ 新しい Socialtext のワークスペース \"%1\" が作成されました。あなたが管理者です。この新しいワークスペースの web アドレスは %2 です。"
+
+#: share/template/popup/copy_to_workspace:36
+#.  
+msgid "Copy"
+msgstr "コピー"
+
+#: share/template/popup/copy_to_workspace:8
+#. (
+msgid "Copy '%1' to another workspace"
+msgstr "'%1'を他のワークスペースにコピーする"
+
+#: share/template/element/page/actions:41
+#.  
+msgid "Copy Page to Workspace"
+msgstr "ページをワークスペースにコピー"
+
+#: share/template/popup/copy_to_workspace:15
+#. (
+msgid "Copy the page %1 to another workspace?"
+msgstr "ページ %1 を他のワークスペースにコピーしますか?"
+
+#: share/template/element/settings/weblog_create:2 share/template/element/settings/workspaces_create_section:2
+#.  
+msgid "Create"
+msgstr "作成"
+
+#: share/template/element/settings/weblog_create:6
+#.  
+msgid "Create A Weblog"
+msgstr "ウェブログを作成する"
+
+#: share/template/element/settings/select:43
+#.  
+msgid "Create New Weblog"
+msgstr "ウェブログを新規作成"
+
+#: share/template/element/settings/select:25
+#.  
+msgid "Create New Workspace"
+msgstr "ワークスペースを新規作成"
+
+#: share/template/element/listview/actions:5
+#.  
+msgid "Create PDF document from checked pages"
+msgstr "チェックしたページからPDF文書を作成"
+
+#: share/template/element/listview/actions:6
+#.  
+msgid "Create Word document from checked pages"
+msgstr "チェックしたページからWORDによる文書を作成"
+
+#: lib/Socialtext/NewFormPagePlugin.pm:33
+#.  
+msgid "Create Your Profile"
+msgstr "あなたの自己紹介を作成"
+
+#: share/template/element/page/details:6
+#. (
+msgid "Created by %1 on %2."
+msgstr "%2 で %1 が作成"
+
+#: share/template/element/settings/users_settings_section:29
+#.  
+msgid "Current password"
+msgstr "現在のパスワード"
+
+#: share/template/element/settings/workspaces_permissions_section:88
+#.  
+msgid "Custom privacy setting"
+msgstr "プライバシーのカスタム設定"
+
+#: lib/Socialtext/HomepagePlugin.pm:47 share/template/element/settings/workspaces_settings_appearance_section:59 share/template/element/wiki/subnav-default:5 share/template/element/wiki/subnav-listview:5 share/template/element/wiki/subnav-weblog:5
+#.  
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:52
+#.  
+msgid "Dashboard is best if most users have a number of other workspaces. Central page is best for a close-knit community in which most users only have one workspace."
+msgstr "ほとんどのユーザが多くのワークスペースを持っている場合は、ダッシュボードを選択するといいでしょう。ほとんどのユーザが1つのワークスペースしか持っていない、コミュニティ意識の強いグループの場合は、中央のページを選択することをお勧めします。"
+
+#: share/template/view/homepage:19
+#. (
+msgid "Dashboard: %1"
+msgstr "ダッシュボード: %1"
+
+#: share/template/element/listview/pages:77 share/template/view/page_revision_list:47
+#.  
+msgid "Date"
+msgstr "日付"
+
+#: share/template/element/page/attachment_manage_interface:13 share/template/view/attachmentslist:20
+#.  
+msgid "Date Uploaded"
+msgstr "アップロードした日"
+
+#: share/template/element/page/actions:38
+#.  
+msgid "Delete Page"
+msgstr "ページを削除"
+
+#: share/template/view/attachmentslist:43
+#.  
+msgid "Delete Selected Attachments"
+msgstr "選択した添付ファイルを削除する"
+
+#: share/template/element/page/attachment_manage_interface:25
+#.  
+msgid "Delete Selected Files"
+msgstr "選択したファイルを削除する。"
+
+#: lib/Socialtext/DeletePagePlugin.pm:68
+#. (
+msgid "Deleted \"%1\""
+msgstr "\"%1\"を削除しました"
+
+#: share/template/view/page/delete_epilogue:6
+#.  
+msgid "Did you delete this page in error? If so, you can restore the page."
+msgstr "間違えて削除してしまいましたか？"
+
+#: share/template/view/homepage:81
+#.  
+msgid "Did you know?"
+msgstr "ご存知ですか？"
+
+#: lib/Socialtext/BreadCrumbsPlugin.pm:33
+#. (
+msgid "Display \\\"%1\\\" side pane box?"
+msgstr "横のボックス \\\"%1\\\" を表示しますか？"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:72
+#.  
+msgid "Display as a side box in page view?"
+msgstr "ページを閲覧している時に、新着情報をサイドボックスに表示させますか？"
+
+#: share/template/element/settings/workspaces_permissions_section:17
+#.  
+msgid "Do you want to set up this workspace as:"
+msgstr "プライバシーをどのように設定しますか？"
+
+#: share/template/element/page/attachment_attach_interface:31 share/template/element/page/attachment_queue_interface:30 share/template/element/page/tag_queue_interface:13
+#.  
+msgid "Done"
+msgstr "終了"
+
+#: lib/Socialtext/WikiwygPlugin.pm:127
+#.  
+msgid "Double-click to edit a page?"
+msgstr "ダブルクリックしてページを編集しますか?"
+
+#: share/template/popup/duplicate:28
+#.  
+msgid "Duplicate"
+msgstr "複製"
+
+#: share/template/popup/duplicate:7
+#. (
+msgid "Duplicate '%1'"
+msgstr "'%1'の複製"
+
+#: share/template/popup/duplicate:19
+#. (
+msgid "Duplicate <span id=\"duplicate-page-page-title\">\"%1\"</span>"
+msgstr "<span id=\"duplicate-page-page-title\">\"%1\"</span>の複製"
+
+#: share/template/element/page/actions:34
+#.  
+msgid "Duplicate Page"
+msgstr "ページの複製"
+
+#: share/template/popup/duplicate:57
+#. (
+msgid "Duplicate of %1"
+msgstr "%1の複製"
+
+#: share/template/view/weblog:79
+#.  
+msgid "Earlier entries"
+msgstr "以前のエントリー"
+
+#: share/template/element/page/actions:5
+#.  
+msgid "Edit"
+msgstr "編集"
+
+#: share/template/element/page/edit:11
+#.  
+msgid "Edit Tips"
+msgstr "編集のコツ"
+
+#: share/template/view/page_revision_list:46
+#.  
+msgid "Edited By"
+msgstr "編集者"
+
+#: share/template/layout/html:93
+#.  
+msgid "Editing"
+msgstr "編集"
+
+#: share/template/element/page/actions:28 share/template/element/settings/users_settings_section:9
+#.  
+msgid "Email"
+msgstr "Email"
+
+#: lib/Socialtext/WebApp.pm:239 share/template/element/settings/users_listall_section:7
+#.  
+msgid "Email Address"
+msgstr "Email アドレス"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:18
+#.  
+msgid "Email Notification"
+msgstr "Email による通知"
+
+#: share/template/element/page/actions:45
+#.  
+msgid "Email To This Page"
+msgstr "このページに email を送る"
+
+#: share/template/element/page/actions:44
+#.  
+msgid "Email To This Workspace"
+msgstr "このワークスペースに email を送る"
+
+#: share/template/element/page/actions:28
+#.  
+msgid "Email this page"
+msgstr "このページを Email で送る"
+
+#: share/template/element/settings/workspaces_settings_features_section:41
+#.  
+msgid "Enable email notifications for this workspace?"
+msgstr "このワークスペースについて、Email による変更通知を受信するように設定しますか？"
+
+#: lib/Socialtext/DisplayPlugin.pm:23
+#.  
+msgid "English"
+msgstr "英語"
+
+#: share/template/element/settings/users_invite_section:9
+#.  
+msgid "Enter a list of email addresses (one address per line) of people you would like to invite to this Workspace."
+msgstr "このワークスペースに招待したい人のemail アドレス（１行につき１アドレス）を入力してください。"
+
+#: share/template/element/page/newpage_save:9
+#.  
+msgid "Enter a meaningful and distinctive title for your page."
+msgstr "あなたのページにわかりやすい目立つタイトルをつけてください。"
+
+#: share/javascript/tagqueue.js:192 share/template/element/page/tag_queue_interface:7
+#.  
+msgid "Enter a tag and click \"Add tag\". The tag will be saved when you save the page."
+msgstr "タグを入力し ”別のタグを追加” をクリックしてください。"
+
+#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:56
+#.  
+msgid "Error:<pre>No pages selected for export</pre>\n"
+msgstr "エラー: <pre> エクスポートするページが選択されていません </pre>\n"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:40
+#.  
+msgid "Every 15 Minutes"
+msgstr "15分毎"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:44
+#.  
+msgid "Every 3 Days"
+msgstr "3日毎"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:39
+#.  
+msgid "Every 5 Minutes"
+msgstr "5分毎"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:42
+#.  
+msgid "Every 6 Hours"
+msgstr "6時間毎"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:43
+#.  
+msgid "Every Day"
+msgstr "毎日"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:41
+#.  
+msgid "Every Hour"
+msgstr "毎時"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:38
+#.  
+msgid "Every Minute"
+msgstr "毎分"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:45
+#.  
+msgid "Every Week"
+msgstr "毎週"
+
+#: share/template/element/settings/users_invite_section:19
+#.  
+msgid "Example:"
+msgstr "例："
+
+#: share/template/element/settings/workspaces_create_section:13 share/template/element/settings/workspaces_settings_appearance_section:12
+#.  
+msgid "Example: Acme Widgets Product Development"
+msgstr "例: Acme Widgets 製品開発"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:40
+#.  
+msgid "Example: C:\\My Pictures\\socialtext-logo-30.gif"
+msgstr "例: C:\\My Pictures\\socialtext-logo-30.gif"
+
+#: share/template/element/settings/weblog_create:13
+#.  
+msgid "Example: Sales Team Weblog"
+msgstr "例： 販売チーム Weblog"
+
+#: share/template/element/settings/workspaces_create_section:30
+#.  
+msgid "Example: acme-product-dev creates this workspace address:"
+msgstr "例: ワークスペース名が acme-product-dev の場合、このワークスペースのアドレス:"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:31
+#.  
+msgid "Example: http://www.socialtext.com/images/socialtext-logo-30.gif"
+msgstr "例："
+
+#: share/template/element/page/attachment_attach_interface:26 share/template/element/page/attachment_queue_interface:26
+#.  
+msgid "Expand zip archive and attach individual files to the page"
+msgstr "zip アーカイブを解凍し、ページに個々のファイルを添付してください。"
+
+#: share/template/element/listview/actions:3
+#.  
+msgid "Export"
+msgstr "エクスポート"
+
+#: share/template/element/page/actions:47
+#.  
+msgid "Export as HTML"
+msgstr "HTMLとしてエクスポート"
+
+#: share/template/element/listview/actions:5 share/template/element/page/actions:48
+#.  
+msgid "Export to PDF"
+msgstr "PDF にエクスポート"
+
+#: share/template/element/listview/actions:6 share/template/element/page/actions:49
+#.  
+msgid "Export to Word"
+msgstr "Word にエクスポート"
+
+#: share/template/element/page/attachment_manage_interface:11
+#.  
+msgid "File Name"
+msgstr "ファイル名"
+
+#: share/template/view/attachmentslist:17
+#.  
+msgid "Filename"
+msgstr "ファイル名"
+
+#: share/template/element/jst/attachment/queue:1
+#.  
+msgid "Files To upload:"
+msgstr "アップロードするファイル:"
+
+#: share/template/element/settings/users_settings_section:10
+#.  
+msgid "First Name"
+msgstr "名"
+
+#: lib/Socialtext/WeblogPlugin.pm:95
+#. (
+msgid "First Post in %1"
+msgstr "%1の最初の投稿"
+
+#: lib/Socialtext/DisplayPlugin.pm:26
+#.  
+msgid "French"
+msgstr "フランス語"
+
+#: share/template/popup/email_page:23
+#.  
+msgid "From"
+msgstr "発信者"
+
+#: share/template/element/settings/workspaces_permissions_section:64
+#.  
+msgid "Fully public"
+msgstr "完全に公開"
+
+#: lib/Socialtext/DisplayPlugin.pm:27
+#.  
+msgid "German"
+msgstr "ドイツ語"
+
+#: share/template/element/weblog/actions:11
+#.  
+msgid "Go to:"
+msgstr "Go to:"
+
+#: lib/Socialtext/DisplayPlugin.pm:25
+#.  
+msgid "Haxor"
+msgstr "Haxor"
+
+#: share/template/popup/email_page:75
+#. (
+msgid "Hello, this is a page from the workspace that I wanted you to see. This page is also available for viewing or editing on the web at:\n\n%1"
+msgstr "こんにちは。あなたに見て欲しかったワークスペースのページです。　このページは次の web からも閲覧および編集できます。: \n\n%1"
+
+#: share/template/element/wiki/nav:10
+#.  
+msgid "Help"
+msgstr "ヘルプ"
+
+#: share/template/email/st/workspace-invitation-body.html:8
+#.  
+msgid "Hi,"
+msgstr "こんにちは。"
+
+#: share/template/element/wiki/nav:13
+#.  
+msgid "Home"
+msgstr "ホーム"
+
+#: lib/Socialtext/WatchlistPlugin.pm:47
+#.  
+msgid "How frequently would you like to receive watchlist emails?"
+msgstr "ウォッチリストの email を受信する頻度を設定してください。"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:59
+#.  
+msgid "How many items from that time period should be displayed as a side box on pages?"
+msgstr "指定した期間内で、ページのサイドボックスに表示する項目数を選んでください。"
+
+#: lib/Socialtext/WatchlistPlugin.pm:83
+#.  
+msgid "How many items from your watchlist should be shown on the dashboard?"
+msgstr "あなたのウォッチリストからダッシュボードに表示させる項目の数を設定してください。"
+
+#: lib/Socialtext/BreadCrumbsPlugin.pm:41
+#.  
+msgid "How many pages to show in side pane box?"
+msgstr "横のボックスに表示させるページ数を設定してください。"
+
+#: lib/Socialtext/SyndicatePlugin.pm:142
+#.  
+msgid "How many posts should be displayed in outgoing feeds?"
+msgstr "送信フィードに表示する投稿数"
+
+#: lib/Socialtext/WeblogPlugin.pm:37
+#.  
+msgid "How many posts should be displayed in weblog view?"
+msgstr "ウェブログビューに表示する投稿数を設定してください。"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:34
+#.  
+msgid "How often would you like to receive email updates?"
+msgstr "Email による更新を受け取る頻度を設定してください。"
+
+#: lib/Socialtext/TimeZonePlugin.pm:90
+#.  
+msgid "How should Daylight Savings/Summer Time be handled?"
+msgstr "夏時間の設定を選択してください。"
+
+#: lib/Socialtext/TimeZonePlugin.pm:125
+#.  
+msgid "How should displayed dates be formatted?"
+msgstr "日付の書式を選択してください。"
+
+#: share/template/email/st/workspace-invitation-body.html:13
+#. (
+msgid "I'm inviting you to join %1, one of our shared workspaces."
+msgstr "私たちの共有ワークスペースである%1にあなたをご招待します。"
+
+#: share/template/element/settings/workspaces_settings_features_section:9
+#.  
+msgid "If there is already an existing page with that title, where should the body of the email be added?"
+msgstr "同じタイトルのページがすでに存在する場合は、email の本文はどこに追加しますか？"
+
+#: share/template/popup/copy_to_workspace:53
+#. (
+msgid "If you are sure you wish to overwrite the \"%1\" page on \"%2\", please press \"Copy\" again."
+msgstr "\"%2\" にある\"%1\" ページを本当に上書きしたいのであれば、 再度\"Copy\" を押してください。"
+
+#: share/template/popup/rename:54
+#. (
+msgid "If you are sure you wish to overwrite the existing \"%1\" page, please press \"Rename\" again."
+msgstr "既に存在する \"%1\" ページを本当に上書きしたいのであれば、 再度\"Rename\" を押してください。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:24
+#.  
+msgid "If you don't select an image, a Socialtext logo will be used instead."
+msgstr "画像を選択しない場合は、Socialtext のロゴが使用されます。"
+
+#: share/template/email/standard-footer.html:7
+#. (
+msgid "If you have questions about this email, contact your wiki support at %1"
+msgstr "このemail に質問がある場合は、wiki サポート %1までご連絡ください。"
+
+#: share/template/element/settings/users_invite_section:38
+#.  
+msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page."
+msgstr "何か追加したり、内容を変更したい場合は、各ページの一番上にある\"編集\"をクリックしてください。"
+
+#: share/template/element/settings/users_invite_section:32
+#.  
+msgid "If you wish, you can include a personal message in the invitation email. You can edit the message to say anything you want."
+msgstr "Email 招待状にあなたのメッセージを添えることができます。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:26
+#.  
+msgid "Image Already On The Web"
+msgstr "既に web 上にある画像"
+
+#: lib/Socialtext/DisplayPlugin.pm:106
+#.  
+msgid "Include Recently Viewed items as a side box when viewing pages?"
+msgstr "ページの閲覧時、最近閲覧した項目をサイドボックスに表示させますか？"
+
+#: share/template/view/page/display:39
+#.  
+msgid "Incoming Links"
+msgstr "このページへのリンク"
+
+#: share/template/element/settings/workspaces_permissions_section:77
+#.  
+msgid "Intranet"
+msgstr "イントラネット"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:83
+#.  
+msgid "Invalid character '/' in changes parameter"
+msgstr "changes parameter に無効な文字 '/' が含まれます。"
+
+#: lib/Socialtext/OpenIdPlugin.pm:122
+#. (
+msgid "Invitation to join %1"
+msgstr "%1 に招待する"
+
+#: share/template/element/settings/users_invite_section:2
+#.  
+msgid "Invite"
+msgstr "招待"
+
+#: share/template/element/settings/select:14
+#.  
+msgid "Invite New Users"
+msgstr "新しいユーザを招待"
+
+#: share/template/element/settings/users_invite_section:6
+#.  
+msgid "Invite Other Users"
+msgstr "他のユーザを招待する"
+
+#: share/template/element/settings/workspaces_create_section:24
+#.  
+msgid "It must consist of 3-30 lowercase letters or dashes."
+msgstr "英字小文字とダッシュのみを使用し、3-30文字にしてください。"
+
+#: share/template/view/homepage:89
+#.  
+msgid "It's where you can share tips and best practices with other Socialtext customers."
+msgstr "ここでは他のユーザと効果的な使い方やコツを共有できます。"
+
+#: lib/Socialtext/DisplayPlugin.pm:24
+#.  
+msgid "Japanese"
+msgstr "日本語"
+
+#: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
+#.  
+msgid "Keep attachments"
+msgstr "添付ファイルを付ける"
+
+#: share/template/popup/email_page:83
+#.  
+msgid "Keep attachments?"
+msgstr "添付ファイルを付けますか?"
+
+#: share/template/popup/copy_to_workspace:34 share/template/popup/duplicate:66 share/template/popup/rename:74
+#.  
+msgid "Keep categories"
+msgstr "同じカテゴリにする"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:45
+#.  
+msgid "Last 2 Days"
+msgstr "2日前"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:48
+#.  
+msgid "Last 2 Weeks"
+msgstr "2週間前"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:44
+#.  
+msgid "Last 24 hours"
+msgstr "24時間以内"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:46
+#.  
+msgid "Last 3 Days"
+msgstr "3日前"
+
+#: share/template/element/listview/pages:74
+#.  
+msgid "Last Edited By"
+msgstr "最後に編集したユーザ"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:49
+#.  
+msgid "Last Month"
+msgstr "先月"
+
+#: share/template/element/settings/users_settings_section:11
+#.  
+msgid "Last Name"
+msgstr "姓"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:47
+#.  
+msgid "Last Week"
+msgstr "先週"
+
+#: share/template/view/homepage:104
+#. (
+msgid "Last edited by %1"
+msgstr "最後に編集した人: %1"
+
+#: share/template/view/homepage:101 share/template/view/homepage:119
+#. (
+msgid "Last edited by <span class=\"st-homepage-whatsnew-author\">%1</span> on <span class=\"st-homepage-whatsnew-date\">%2</span>"
+msgstr "最後に編集した人: %1"
+
+#: share/template/view/refcard:24
+#.  
+msgid "Link text"
+msgstr "文章をリンク"
+
+#: share/template/element/settings/select:10
+#.  
+msgid "List All Users"
+msgstr "ユーザ一覧"
+
+#: share/javascript/Wikiwyg/Socialtext.js:149 share/template/view/weblog:137
+#.  
+msgid "Loading..."
+msgstr "読み込み中..."
+
+#: lib/Socialtext/CLI.pm:445
+#. (
+msgid "Locale for %1 is now %2"
+msgstr "%1のロケールは%2になっています。"
+
+#: share/template/element/wiki/nav:8
+#.  
+msgid "Log out"
+msgstr "ログアウト"
+
+#: share/template/element/wiki/nav:5
+#.  
+msgid "Login"
+msgstr "ログイン"
+
+#: share/template/element/weblog/edit_link:7
+#.  
+msgid "Login +"
+msgstr "ログイン +"
+
+#: share/template/element/page/actions:7
+#.  
+msgid "Login + Edit"
+msgstr "ログイン + 編集"
+
+#: share/template/view/empty_watchlist:14
+#. (
+msgid "Look for <img border=\"0\" src=\"%1/images/st/pagetools/watch-hover.gif\"/> on a page you want to watch and then click on it to add the page to your Watchlist.."
+msgstr "ウォッチしたいページ上で<img border=\"0\" src=\"%1/images/st/pagetools/watch-hover.gif\"/> を探し、その上でクリックすると、そのページがウォッチリストに追加されます。"
+
+#: share/template/element/settings/users_invite_section:38
+#.  
+msgid "Make your contributions in the text box, then click \"Save\"."
+msgstr "追加、変更したい内容をテキストボックスに記述し、\"保存\"をクリックしてください。"
+
+#: share/template/element/settings/select:8
+#.  
+msgid "Manage All Users"
+msgstr "ユーザの管理"
+
+#: share/template/element/page/attachments:18
+#.  
+msgid "Manage files"
+msgstr "ファイルの管理"
+
+#: share/template/view/refcard:52
+#.  
+msgid "Meeting Notes"
+msgstr "会議メモ"
+
+#: share/template/view/refcard:217
+#.  
+msgid "Meeting notes category"
+msgstr "会議メモ カテゴリ"
+
+#: share/template/element/settings/select:6
+#.  
+msgid "My Settings"
+msgstr "私の設定"
+
+#: share/template/view/refcard:51
+#.  
+msgid "My Weblog"
+msgstr "私のウェブログ"
+
+#: share/template/view/refcard:212
+#.  
+msgid "My Weblog weblog"
+msgstr "私のウェブログ"
+
+#: share/template/element/settings/select:23
+#.  
+msgid "My Workspaces"
+msgstr "私のワークスペース"
+
+#: share/template/element/settings/users_settings_section:6 share/template/view/refcard:27
+#.  
+msgid "Name"
+msgstr "名前"
+
+#: lib/Socialtext/WeblogPlugin.pm:382
+#. (
+msgid "Navigation for: %1"
+msgstr "ナビゲート先: %1"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:37
+#.  
+msgid "Never"
+msgstr "受け取らない"
+
+#: share/template/view/homepage:107
+#.  
+msgid "New Page"
+msgstr "新しいページ"
+
+#: share/template/view/homepage:130
+#.  
+msgid "New Workspace"
+msgstr "新しいワークスペース"
+
+#: share/template/popup/copy_to_workspace:33 share/template/popup/duplicate:61 share/template/popup/rename:69
+#.  
+msgid "New page name"
+msgstr "新しいページ名"
+
+#: share/template/element/settings/users_settings_section:30
+#.  
+msgid "New password"
+msgstr "新しいパスワード"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:80
+#.  
+msgid "New passwords do not match"
+msgstr "新しいパスワードが一致しません。"
+
+#: share/template/element/settings/users_settings_section:24
+#.  
+msgid "New passwords must be at least 6 characters long."
+msgstr "新しいパスワードは6文字以上にしてください。"
+
+#: share/javascript/pageview.js:1152 share/template/element/wiki/nav:16
+#.  
+msgid "New search"
+msgstr "ワードを入力"
+
+#: share/template/element/settings/users_invite_section:52
+#.  
+msgid "New users will be sent the following invitation email:"
+msgstr "次の招待状を email で新しいユーザに送ります。"
+
+#: share/template/popup/copy_to_workspace:20
+#.  
+msgid "New workspace"
+msgstr "新しいワークスペース"
+
+#: share/template/view/weblog:142
+#.  
+msgid "New&nbsp;Post"
+msgstr "新しい&nbsp;投稿"
+
+#: share/template/view/weblog:76
+#.  
+msgid "Newer entries"
+msgstr "もっと新しいエントリ"
+
+#: share/template/element/settings/workspaces_settings_features_section:56
+#.  
+msgid "No"
+msgstr "いいえ"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:299
+#.  
+msgid "No email addresses specified"
+msgstr "Email アドレスが指定されていません。"
+
+#: lib/Socialtext/WikiwygPlugin.pm:201 lib/Socialtext/WikiwygPlugin.pm:60
+#.  
+msgid "No page ID given"
+msgstr "ページID を入力してください。"
+
+#: share/template/view/page/display:88
+#.  
+msgid "No revisions"
+msgstr "改訂版はありません。"
+
+#: lib/Socialtext/HitCounterPlugin.pm:192
+#. (
+msgid "No statistics yet available for %1"
+msgstr "%1 に関する統計はまだ利用できません。"
+
+#: lib/Socialtext/HitCounterPlugin.pm:109
+#.  
+msgid "No stats dir for this page"
+msgstr "このページに stats dir はありません。"
+
+#: lib/Socialtext/HitCounterPlugin.pm:125
+#.  
+msgid "No stats for this page"
+msgstr "このページに stats はありません。"
+
+#: lib/Socialtext/HitCounterPlugin.pm:74
+#.  
+msgid "No stats for this page yet"
+msgstr "このページに stats はまだありません。"
+
+#: lib/Socialtext/OpenIdPlugin.pm:36
+#.  
+msgid "No users entered"
+msgstr "ユーザが入力されていません。"
+
+#: lib/Socialtext/WatchlistPlugin.pm:193
+#. (
+msgid "No watchlist for %1 in %2"
+msgstr "%2 の %1 のウォッチリストはありません。"
+
+#: lib/Socialtext/DisplayPlugin.pm:158
+#.  
+msgid "Not a valid page name"
+msgstr "ページ名が無効です。"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:78
+#.  
+msgid "Old password is incorrect"
+msgstr "古いパスワードが間違っています。"
+
+#: share/template/email/st/workspace-invitation-body.html:26
+#.  
+msgid "Once you have confirmed your account, you will receive a second email with login details."
+msgstr "あなたのアカウントが確認されると、ログインの詳細を記載した2通目の email が送られてきます。"
+
+#: share/template/element/settings/workspaces_permissions_section:117
+#. (
+msgid "Only %1 can send email to this workspace."
+msgstr "%1 だけが、このワークスペースにemail を送ることができます。"
+
+#: share/template/element/settings/workspaces_unsubscribe_section:8
+#.  
+msgid "Only Click the button below if you wish to be unsubscribed from this workspace. After clicking you will no longer have access to this workspace unless you are resubscribed by a Workspace administrator at a later time."
+msgstr "このワークスペースから退会したい場合は、下のボタンをクリックしてください。"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:344
+#. (
+msgid "Only registered users can send email to %1."
+msgstr "登録したユーザだけが%1に Email を送ることができます。"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:341
+#. (
+msgid "Only workspace members can send email to %1."
+msgstr "ワークスペースのメンバーだけが%1に Email を送ることができます。"
+
+#: share/template/workspaces_created_section.html:23
+#. (
+msgid "Or you may continue to work in this workspace, and visit \"%1\" later."
+msgstr "あるいは、このワークスペースで作業を続け、あとで \"%1\" を訪問することもできます。"
+
+#: lib/Socialtext/BacklinksPlugin.pm:113 lib/Socialtext/BacklinksPlugin.pm:94 share/template/element/listview/actionbar:9
+#.  
+msgid "Orphaned Pages"
+msgstr "孤立しているページ"
+
+#: share/template/view/homepage:73
+#.  
+msgid "Other participants can see it, too, and can edit it to leave notes for you."
+msgstr "他の参加者も閲覧することができるので、あなたへメモを残しているかも。"
+
+#: lib/Socialtext/WikiwygPlugin.pm:20
+#.  
+msgid "Page Editing"
+msgstr "ページの編集"
+
+#: share/template/view/refcard:23
+#.  
+msgid "Page Link"
+msgstr "ページのリンク"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:60
+#.  
+msgid "Page Name"
+msgstr "ページの名前"
+
+#: share/template/view/attachmentslist:18 share/template/view/refcard:26
+#.  
+msgid "Page Title"
+msgstr "ページのタイトル"
+
+#: share/template/element/page/newpage_save:11
+#.  
+msgid "Page Title:"
+msgstr "ページのタイトル:"
+
+#: share/template/view/refcard:22
+#.  
+msgid "Page link"
+msgstr "ページのリンク"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:73 lib/Socialtext/WatchlistPlugin.pm:72
+#.  
+msgid "Page name and link only"
+msgstr "ページの名前とリンクのみ"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:74 lib/Socialtext/WatchlistPlugin.pm:73
+#.  
+msgid "Page name and link, plus author and date"
+msgstr "ページの名前とリンク、作成者と日付"
+
+#: lib/Socialtext/DisplayPlugin.pm:54
+#.  
+msgid "Page name is too long"
+msgstr "ページ名が長すぎます"
+
+#: share/template/view/refcard:102
+#.  
+msgid "Page section name"
+msgstr "ページのセクション名"
+
+#: lib/Socialtext/EditPlugin.pm:38
+#.  
+msgid "Page title is too long after URL encoding"
+msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。"
+
+#: lib/Socialtext/EditPlugin.pm:42
+#.  
+msgid "Page title missing"
+msgstr "ページタイトルがありません。"
+
+#: share/template/view/taglistview:21
+#.  
+msgid "Pages"
+msgstr "ページ数"
+
+#: lib/Socialtext/WatchlistPlugin.pm:261 share/template/view/empty_watchlist:7
+#.  
+msgid "Pages You're Watching"
+msgstr "ウォッチしているページ"
+
+#: lib/Socialtext/SearchPlugin.pm:121
+#. (
+msgid "Pages containing '%1' (%2)"
+msgstr "'%1' (%2) を含むページ"
+
+#: lib/Socialtext/User/Default.pm:227
+#.  
+msgid "Passwords must be at least 6 characters long."
+msgstr "パスワードは6文字以上にしてください。"
+
+#: share/template/element/settings/users_invite_section:30
+#.  
+msgid "Personal Message"
+msgstr "個人的な招待メッセージ"
+
+#: share/template/email/st/workspace-invitation-body.html:22
+#. (
+msgid "Please <a href=\"%1\">click on this link</a> to confirm your email address."
+msgstr "あなたの email アドレスを確認するには、<a href=\"%1\">このリンクをクリック</a>してください。"
+
+#: share/template/popup/copy_to_workspace:52
+#.  
+msgid "Please choose a different name."
+msgstr "違う名前を選択してください。"
+
+#: share/template/popup/duplicate:51
+#. (
+msgid "Please choose a different name. If you are sure you wish to overwrite the existing \"%1\" page, please press \"Duplicate\" again."
+msgstr "違う名前を選択してください。すでに存在する\"%1\" ページを上書きしたいのであれば、再度\"Duplicate\" を押してください。"
+
+#: share/template/element/settings/weblog_create:9
+#.  
+msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
+msgstr "あなたのウェブログに名前を付けてください。名前が \"Blog\" か \"Weblog\"で終わらない場合は、あなたの付けた名前に \"Blog\"が自動的に追加されます。\"保存\"をクリックすると、新しいウェブログが表示されます。"
+
+#: share/template/element/settings/users_invite_section:75
+#. (
+msgid "Please invite these people into the %1 workspace."
+msgstr "この方たちを%1ワークスペースに招待してください。"
+
+#: share/template/view/weblog:92 share/template/view/weblog:96
+#. (
+msgid "Posted by %1 on %2"
+msgstr "%2の投稿者: %1"
+
+#: share/template/element/settings/select:47
+#.  
+msgid "Preferences"
+msgstr "設定"
+
+#: lib/Socialtext/UserPreferencesPlugin.pm:34
+#.  
+msgid "Preferences Class ID is missing"
+msgstr "設定のクラス ID がありません。"
+
+#: lib/Socialtext/UserPreferencesPlugin.pm:46
+#.  
+msgid "Preferences saved"
+msgstr "設定を保存しました"
+
+#: lib/Socialtext/UserPreferencesPlugin.pm:64
+#. (
+msgid "Preferences: %1"
+msgstr "設定: %1"
+
+#: share/javascript/Wikiwyg/Socialtext.js:401 share/template/element/page/edit:7
+#.  
+msgid "Preview"
+msgstr "プレビュー"
+
+#: share/template/element/page/actions:24
+#.  
+msgid "Print"
+msgstr "印刷"
+
+#: share/template/view/refcard:10
+#.  
+msgid "Print This"
+msgstr "印刷する"
+
+#: share/template/element/page/actions:24
+#.  
+msgid "Print this page"
+msgstr "このページを印刷する"
+
+#: share/template/element/settings/workspaces_permissions_section:28
+#.  
+msgid "Private"
+msgstr "非公開"
+
+#: share/template/element/settings/workspaces_permissions_section:37
+#.  
+msgid "Public login-to-edit"
+msgstr "編集可能"
+
+#: share/template/element/settings/workspaces_permissions_section:55
+#.  
+msgid "Public read-and-comment-only"
+msgstr "閲覧とコメントのみ可能"
+
+#: share/template/element/settings/workspaces_permissions_section:46
+#.  
+msgid "Public read-only"
+msgstr "閲覧のみ可能"
+
+#: share/template/element/wiki/subnav-dashboard:3 share/template/element/wiki/subnav-default:3 share/template/element/wiki/subnav-listview:3 share/template/element/wiki/subnav-weblog:3
+#.  
+msgid "Quick jump"
+msgstr "クイックジャンプ"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:146
+#. (
+msgid "Recent Changes In %1 Workspace"
+msgstr "%1 ワークスペースの最近の変更"
+
+#: lib/Socialtext/CategoryPlugin.pm:617
+#. (
+msgid "Recent Changes in Tag %1"
+msgstr "タグ %1 の最近の変更"
+
+#: lib/Socialtext/CategoryPlugin.pm:615
+#. (
+msgid "Recent Changes in Tag %1 in workspace %2"
+msgstr "ワークスペース %2 のタグ %1 の最近の変更"
+
+#: lib/Socialtext/CategoryPlugin.pm:610
+#. (
+msgid "Recent Posts from %1"
+msgstr "%1 からの最近の投稿"
+
+#: lib/Socialtext/CategoryPlugin.pm:608
+#. (
+msgid "Recent Posts from %1 in workspace %2"
+msgstr "ワークスペース %2 の %1 からの最近の投稿"
+
+#: share/template/element/listview/actionbar:8 share/template/element/page/breadcrumbs:2
+#.  
+msgid "Recently Viewed"
+msgstr "最近見たページ"
+
+#: lib/Socialtext/BreadCrumbsPlugin.pm:77
+#.  
+msgid "Recently Viewed Pages"
+msgstr "最近見たページ"
+
+#: share/template/popup/email_page:145
+#.  
+msgid "Recipient(s)"
+msgstr "宛先"
+
+#: share/template/element/wiki/nav:6
+#.  
+msgid "Register"
+msgstr "登録"
+
+#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:131
+#.  
+msgid "Remove"
+msgstr "削除"
+
+#: share/template/element/jst/attachment/queue:5
+#. (
+msgid "Remove %1 from the queue"
+msgstr "キューから%1を削除"
+
+#: share/template/popup/email_page:135
+#.  
+msgid "Remove All"
+msgstr "すべて削除"
+
+#: share/template/popup/rename:31
+#.  
+msgid "Rename"
+msgstr "名前変更"
+
+#: share/template/popup/rename:7
+#. (
+msgid "Rename '%1'"
+msgstr "'%1'の名前を変更する"
+
+#: share/template/popup/rename:21
+#. (
+msgid "Rename <span id=\"%1-pagetitle\">\"%2\"</span>"
+msgstr "<span id=\"%1-pagetitle\">\"%2\"</span>の名前を変更する"
+
+#: share/template/element/page/actions:35
+#.  
+msgid "Rename Page"
+msgstr "ページ名を変更"
+
+#: share/template/element/settings/workspaces_settings_features_section:28
+#.  
+msgid "Replace existing page"
+msgstr "既存のページを置き換える"
+
+#: lib/Socialtext/Page.pm:584 share/javascript/Wikiwyg/Socialtext.js:86
+#.  
+msgid "Replace this text with your own."
+msgstr "このテキストを書き換えてください。"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:477
+#. (
+msgid "Request to invite new users to the %1 workspace"
+msgstr "%1 ワークスペースに新しいユーザを招待するリクエスト"
+
+#: share/template/element/settings/users_listall_section:11
+#.  
+msgid "Reset Password"
+msgstr "パスワードのリセット"
+
+#: share/template/view/page/delete_epilogue:11
+#.  
+msgid "Restore Page"
+msgstr "ページを回復"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:59
+#.  
+msgid "Reverse Chronologically"
+msgstr "新しい順"
+
+#: share/template/workspaces_created_section.html:15
+#. (
+msgid "Review or change the settings for %1:"
+msgstr "%1の設定を確認する、または、変更する:"
+
+#: lib/Socialtext/RevisionPlugin.pm:152 lib/Socialtext/RevisionPlugin.pm:76
+#. (
+msgid "Revision %1"
+msgstr "バージョン%1"
+
+#: share/template/element/listview/pages:80
+#.  
+msgid "Revisions"
+msgstr "バージョン"
+
+#: share/template/element/settings/workspaces_permissions_section:12
+#.  
+msgid "Roles and Permission Sets (standard workspace types)"
+msgstr "ロールとパーミッションセット（標準ワークスペース）"
+
+#: share/template/element/settings/weblog_create:12
+#.  
+msgid "Sample Weblog"
+msgstr "サンプル Weblog"
+
+#: share/javascript/Wikiwyg/Socialtext.js:1055 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:18 share/template/element/settings/save:3
+#.  
+msgid "Save"
+msgstr "保存"
+
+#: share/template/element/page/newpage_save:7
+#.  
+msgid "Save Page As"
+msgstr "としてページを保存"
+
+#: share/template/element/page/tags:18
+#.  
+msgid "Save tag"
+msgstr "タグを保存する"
+
+#: lib/Socialtext/DisplayPlugin.pm:19
+#.  
+msgid "Screen Layout"
+msgstr "画面のレイアウト"
+
+#: share/template/element/wiki/nav:18
+#.  
+msgid "Search"
+msgstr "検索"
+
+#: lib/Socialtext/SearchPlugin.pm:65
+#.  
+msgid "Search Results"
+msgstr "結果を検索"
+
+#: lib/Socialtext/SearchPlugin.pm:264
+#. (
+msgid "Search for %1"
+msgstr "%1 を検索"
+
+#: lib/Socialtext/SearchPlugin.pm:262
+#. (
+msgid "Search for %1 in workspace %2"
+msgstr "ワークスペース %2 で　%1 を検索"
+
+#: share/template/view/refcard:28
+#.  
+msgid "Section"
+msgstr "セクション"
+
+#: share/template/element/wiki/subnav-dashboard:9
+#.  
+msgid "See more"
+msgstr "もっと見る"
+
+#: share/template/view/page_revision_list:43
+#.  
+msgid "Select"
+msgstr "選択"
+
+#: share/template/popup/email_page:37
+#.  
+msgid "Select Recipients"
+msgstr "宛先を選択"
+
+#: share/template/popup/email_page:88
+#.  
+msgid "Send"
+msgstr "送付"
+
+#: share/template/popup/email_page:7
+#. (
+msgid "Sending '%1' page by email"
+msgstr "'%1' ページを email で送付"
+
+#: share/template/element/settings/select:2 share/template/element/wiki/nav:3
+#.  
+msgid "Settings"
+msgstr "設定"
+
+#: lib/Socialtext/DisplayPlugin.pm:98
+#.  
+msgid "Should hovering your mouse over a link display the first part of the page?"
+msgstr "マウスをリンクの上に置くと、そのページの最初の部分を表示するように設定しますか？"
+
+#: lib/Socialtext/TimeZonePlugin.pm:177
+#.  
+msgid "Should seconds be included on displayed times?"
+msgstr "秒を表示しますか？"
+
+#: lib/Socialtext/TimeZonePlugin.pm:152
+#.  
+msgid "Should times be displayed in 12-hour or 24-hour format?"
+msgstr "時間の表示の仕方を選択してください。"
+
+#: share/template/element/settings/workspaces_settings_features_section:38
+#.  
+msgid "Should users of this workspace receive email notifications of changes to this workspace?"
+msgstr "このワークスペースに変更があった場合、変更通知を email で受け取ることができます。"
+
+#: share/template/email/st/workspace-invitation-body.html:15
+#.  
+msgid "Sign in using the information below:"
+msgstr "以下の情報を使用するにはサインインしてください。"
+
+#: share/template/element/page/edit:9
+#.  
+msgid "Simple"
+msgstr "Simple"
+
+#: share/template/element/page/attachment_manage_interface:14 share/template/view/attachmentslist:21
+#.  
+msgid "Size"
+msgstr "容量"
+
+#: share/template/view/refcard:34
+#.  
+msgid "Socialtext Email"
+msgstr "Socialtext Email"
+
+#: share/template/view/refcard:33
+#.  
+msgid "Socialtext Home Page"
+msgstr "Socialtext ホームページ"
+
+#: share/template/view/refcard:5
+#.  
+msgid "Socialtext Workspace Punctuation Help"
+msgstr "Socialtext ワークスペース表記法　ヘルプ"
+
+#: share/template/lite/page/contention.html:5 share/template/view/edit_contention:3
+#.  
+msgid "Somebody else made changes to the page while you were editing it."
+msgstr "編集中に別のユーザが修正を加えました。"
+
+#: share/template/element/settings/workspaces_settings_features_section:80
+#.  
+msgid "Sort entries by first posted time"
+msgstr "最初に投稿された時間で並べ替える"
+
+#: share/template/element/settings/workspaces_settings_features_section:74
+#.  
+msgid "Sort entries by last updated time"
+msgstr "最後に更新された時間で並べ替える"
+
+#: share/template/element/settings/users_invite_section:50
+#.  
+msgid "Standard Welcome Message"
+msgstr "標準的な招待メッセージ"
+
+#: share/template/popup/email_page:30
+#.  
+msgid "Subject"
+msgstr "主題"
+
+#: share/template/element/page/tag_queue_interface:11 share/template/element/page/tags:22
+#.  
+msgid "Suggestions:"
+msgstr "提案："
+
+#: lib/Socialtext/SyndicatePlugin.pm:42
+#.  
+msgid "Syndicate"
+msgstr "シンジケート"
+
+#: share/template/view/taglistview:20
+#.  
+msgid "Tag"
+msgstr "タグ"
+
+#: share/template/element/page/tag_queue_interface:9
+#.  
+msgid "Tag:"
+msgstr "タグ:"
+
+#: lib/Socialtext/CategoryPlugin.pm:140
+#. (
+msgid "Tag: %1"
+msgstr "タグ: %1"
+
+#: share/template/element/page/tags:2
+#.  
+msgid "Tags"
+msgstr "タグ"
+
+#: lib/Socialtext/RevisionPlugin.pm:160
+#.  
+msgid "Tags:"
+msgstr "タグ:"
+
+#: share/template/email/st/workspace-invitation-body.html:49
+#.  
+msgid "Thanks,"
+msgstr "あなたの参加をお待ちしております。"
+
+#: lib/Socialtext/User/Default.pm:164
+#. (
+msgid "The %1 you provided (%2) is already in use."
+msgstr "%1 はすでに使用されています。"
+
+#: share/template/element/settings/users_invite_section:36
+#.  
+msgid "The Workspace is easy to use. Click links to browse through the pages."
+msgstr "ワークスペースを使うのは簡単。リンクをクリックして、ページを閲覧してください。"
+
+#: lib/Socialtext/Account.pm:62
+#. (
+msgid "The account name you chose, %1, is already in use."
+msgstr "アカウント名 %1 はすでに使用されています。"
+
+#: share/template/element/settings/users_invited_section:10
+#.  
+msgid "The following email addresses were invalid"
+msgstr "次の email アドレスは無効です。"
+
+#: share/template/element/settings/users_invited_section:6
+#.  
+msgid "The following users were already members of this Workspace"
+msgstr "次のユーザはすでにこのワークスペースのメンバーです。"
+
+#: share/template/element/settings/users_invited_section:14
+#.  
+msgid "The following users were invited into this Workspace"
+msgstr "次のユーザをこのワークスペースに招待しました。"
+
+#: share/template/popup/rename:35
+#.  
+msgid "The main window will navigate to the new page after you click \"Rename\"."
+msgstr "”名前変更” をクリックすると、メインウィンドウからその新しいページに行くことができます。"
+
+#: share/template/popup/duplicate:32
+#.  
+msgid "The main window will navigate to the new page name after you click \"Duplicate\"."
+msgstr "”複製” をクリックすると、メインウィンドウから複製ページに行くことができます。"
+
+#: share/template/popup/copy_to_workspace:51
+#. (
+msgid "The new page name you selected, \"%1\", is already in use in workspace \"%2\""
+msgstr "新しいページ名 \"%1\" は、ワークスペース \"%2\" ですでに使用されています。"
+
+#: share/template/popup/duplicate:50
+#. (
+msgid "The new page name you selected, \"%1\", is already in use."
+msgstr "新しいページ名\"%1\" はすでに使用されています。"
+
+#: share/template/popup/rename:53
+#. (
+msgid "The new page name you selected, \"%1\", is already in use. Please choose a different name."
+msgstr "新しいページ名\"%1\" はすでに使用されています。違う名前を選んでください。"
+
+#: lib/Socialtext/BacklinksPlugin.pm:241
+#.  
+msgid "The page had no Backlinks."
+msgstr "このページのバックリンクはありません。"
+
+#: lib/Socialtext/BacklinksPlugin.pm:226
+#.  
+msgid "The page had these Backlinks:"
+msgstr "このページのバックリンク："
+
+#: lib/Socialtext/HitCounterPlugin.pm:56
+#. (
+msgid "The page id you specified (%1) was invalid."
+msgstr "指定したページ ID (%1) は無効です。"
+
+#: share/template/popup/rename:61
+#. (
+msgid "The page name you selected, %1, is the same as the page's current title. Please enter a new page name."
+msgstr "選択したページ名\"%1\"は現在のページのタイトルと同じです。新しいページ名を入力してください。"
+
+#: share/template/popup/copy_to_workspace:47 share/template/popup/duplicate:44 share/template/popup/rename:47
+#. (
+msgid "The page name you selected, \"%1\", is not allowed. Please enter or change the page name."
+msgstr "選択したページ名\"%1\"は無効です。ページ名を入力するか、変更してください。"
+
+#: share/template/popup/duplicate:38 share/template/popup/rename:41
+#. (
+msgid "The page name you selected, \"%1\", is too long after URL encoding."
+msgstr "選択したページ名\"%1\" は、URL のエンコード処理を行うと、長くなりすぎます。"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:335
+#. (
+msgid "The permissions for %1 have been set to %2."
+msgstr "%1のパーミッションは%2に設定されています。"
+
+#: lib/Socialtext/Workspace.pm:372
+#. (
+msgid "The skin you specified,%1, does not exist."
+msgstr "スキン %1 は存在しません。"
+
+#: share/template/element/settings/workspaces_listall_section:5
+#.  
+msgid "The ten most recently visited of these workspaces are displayed in the Dashboard."
+msgstr "最近最もよく訪問されたワークスペースをダッシュボードに10件表示します。"
+
+#: share/template/lite/page/contention.html:7 share/template/view/edit_contention:5
+#.  
+msgid "The text you just edited is shown below. You can copy and paste your changes from there:"
+msgstr "今編集したテキストが以下に表示されますので、そこから変更をコピーして貼り付けることができます。"
+
+#: share/template/element/settings/users_invite_section:73
+#.  
+msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
+msgstr "あなたのリクエストをこのワークスペースの管理者に送り、その後ユーザが招待されます。"
+
+#: lib/Socialtext/Workspace.pm:350
+#. (
+msgid "The workspace name you chose, %1, is already in use as an email alias."
+msgstr "ワークスペース名 %1 は、email エイリアスとしてすでに使用されています。"
+
+#: lib/Socialtext/Workspace.pm:354
+#. (
+msgid "The workspace name you chose, %1, is already in use by another workspace."
+msgstr "ワークスペース名 %1 は、別のワークスペースですでに使用されています。"
+
+#: share/template/view/page/display:47
+#.  
+msgid "There are no pages that link to this page yet."
+msgstr "このページにリンクしているページはまだありません。"
+
+#: share/template/element/page/tags:9
+#.  
+msgid "There are no tags for this page."
+msgstr "このページにはタグはありません。"
+
+#: lib/Socialtext/WeblogPlugin.pm:89
+#. (
+msgid "There is already a '%1' weblog. Please choose a different name."
+msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
+
+#: share/template/element/settings/select:32
+#.  
+msgid "This Workspace"
+msgstr "このワークスペース"
+
+#: lib/Socialtext/HitCounterPlugin.pm:59
+#.  
+msgid "This action requires a page to be specified."
+msgstr "ページを指定する必要があります。"
+
+#: share/template/element/settings/workspaces_create_section:23
+#.  
+msgid "This is a short unique identifier used as part of your workspace's web address and email address."
+msgstr "あなたのワークスペースを見つけるのに便利な名前をつけてください。ワークスペース名は web アドレスと email アドレスの一部になります。"
+
+#: lib/Socialtext/WeblogPlugin.pm:107
+#. (
+msgid "This is the first post in %1. Click *New Post* to add another post."
+msgstr "これは %1 の最初の投稿です。新しく投稿するには、New Post をクリックしてください。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:8
+#.  
+msgid "This is the title of your workspace. It may be changed at any time."
+msgstr "あなたのワークスペースのタイトルです。いつでも変えてもよいです。"
+
+#: share/template/element/settings/workspaces_create_section:9
+#.  
+msgid "This is the title of your workspace. It may be changed later if you want."
+msgstr "あなたのワークスペースのタイトルです。いつでも変更できます。"
+
+#: share/template/view/homepage:72
+#.  
+msgid "This is your personal notepad page. Edit it to your liking."
+msgstr "あなた自身のノートパッドのページです。お好きなように編集してください。"
+
+#: lib/Socialtext/BacklinksPlugin.pm:232
+#.  
+msgid "This page is linked to from:"
+msgstr "このページへのリンク:"
+
+#: lib/Socialtext/TimeZonePlugin.pm:17
+#.  
+msgid "Time"
+msgstr "時間"
+
+#: share/template/element/page/newpage_save:13
+#.  
+msgid "Tip: You'll be able to find this page later by using the title you choose."
+msgstr "コツ: 選択したタイトルを使えば、あとでこのページを見つけることができます。"
+
+#: share/template/element/listview/pages:71
+#.  
+msgid "Title"
+msgstr "タイトル"
+
+#: lib/Socialtext/SearchPlugin.pm:119
+#. (
+msgid "Titles containing '%1' (%2)"
+msgstr "'%1' (%2) を含むタイトル"
+
+#: share/template/view/refcard:253
+#.  
+msgid "To Get This..."
+msgstr "このように表記させるには..."
+
+#: share/template/element/settings/users_invite_section:42
+#.  
+msgid "To make a link to another page (even if it doesn't exist yet), put square brackets around a word or phrase."
+msgstr "別のページ（存在していなくても可）にリンクを作成するには、単語、語句を四角かっこで囲んでください。"
+
+#: share/template/popup/email_page:119
+#. (
+msgid "Too many users (%1) to display for selection. Please add recipients manually."
+msgstr "選択できるユーザ(%1)の数が多すぎます。宛先を手動で選択してください。"
+
+#: share/template/element/page/actions:31
+#.  
+msgid "Tools"
+msgstr "ツール"
+
+#: lib/Socialtext/Workspace.pm:149
+#.  
+msgid "Top Page"
+msgstr "トップページ"
+
+#: share/template/element/settings/workspaces_settings_features_section:16
+#.  
+msgid "Top of page"
+msgstr "ページの一番上"
+
+#: share/template/view/refcard:253
+#.  
+msgid "Type This"
+msgstr "タイプする"
+
+#: share/template/element/settings/users_settings_section:31
+#.  
+msgid "Type new password again"
+msgstr "新しいパスワード（再入力）"
+
+#: share/template/element/settings/select:27
+#.  
+msgid "Unsubscribe"
+msgstr "退会"
+
+#: share/template/element/settings/workspaces_unsubscribe_section:9
+#. (
+msgid "Unsubscribe from the %1 workspace"
+msgstr "%1ワークスペースから退会する"
+
+#: lib/Socialtext/DisplayPlugin.pm:67 share/javascript/main.js:165 share/javascript/stlibrary.js:27
+#.  
+msgid "Untitled Page"
+msgstr "タイトルなし"
+
+#: share/template/view/weblog:90
+#. (
+msgid "Updated by %1 on %2"
+msgstr "%2に%1が更新"
+
+#: share/template/element/page/details:10
+#. (
+msgid "Updated by %1 on %2."
+msgstr "%2に%1が更新"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:35
+#.  
+msgid "Upload An Image"
+msgstr "画像をアップロードする"
+
+#: share/template/element/page/attachment_attach_interface:7 share/template/element/page/attachment_queue_interface:6
+#.  
+msgid "Upload Files"
+msgstr "ファイルをアップロードする"
+
+#: share/javascript/pageview.js:512 share/javascript/pageview.js:590 share/template/element/page/attachment_attach_interface:32
+#.  
+msgid "Upload file"
+msgstr "ファイルをアップロードする"
+
+#: share/template/element/page/attachments:15
+#.  
+msgid "Upload files"
+msgstr "ファイルをアップロードする"
+
+#: share/template/layout/html:103
+#.  
+msgid "Upload&nbsp;files"
+msgstr "ファイルをアップロードする"
+
+#: share/template/view/attachmentslist:19
+#.  
+msgid "Uploaded By"
+msgstr "アップロードしたユーザ"
+
+#: share/template/element/settings/users_settings_section:26
+#.  
+msgid "Use your email address and new password to log in again."
+msgstr "再ログイン時には、あなたの email アドレスと新しいパスワードを使用してください。"
+
+#: lib/Socialtext/WebApp.pm:240
+#.  
+msgid "Username"
+msgstr "ユーザ名"
+
+#: share/template/element/settings/select:3
+#.  
+msgid "Users"
+msgstr "ユーザ"
+
+#: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:284 lib/Socialtext/UserSettingsPlugin.pm:365 lib/Socialtext/UserSettingsPlugin.pm:426
+#.  
+msgid "Users: Invite New Users"
+msgstr "ユーザ: 新しいユーザを招待する"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:142
+#.  
+msgid "Users: List All Users"
+msgstr "ユーザ: ユーザを一覧表示する"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:141
+#.  
+msgid "Users: Manage All Users"
+msgstr "ユーザ: ユーザを管理する"
+
+#: lib/Socialtext/UserSettingsPlugin.pm:65
+#.  
+msgid "Users: My Settings"
+msgstr "ユーザ: 私の設定"
+
+#: lib/Socialtext/WikiwygPlugin.pm:74
+#.  
+msgid "Validation subroutine called outside of validator"
+msgstr "バリデーターのサブルーチンがバリデーターの外部を参照しました。"
+
+#: share/template/element/page/revision_compare_actions:23
+#.  
+msgid "View Formatted"
+msgstr "書式表示"
+
+#: share/template/view/page_revision_list:45
+#.  
+msgid "View Revision"
+msgstr "バーションを見る"
+
+#: share/template/element/settings/workspaces_permissions_section:66
+#.  
+msgid "Warning"
+msgstr "警告"
+
+#: share/javascript/Watchlist.js:31 share/template/view/page/display:113
+#.  
+msgid "Watch this page"
+msgstr "このページをウォッチする"
+
+#: share/javascript/Watchlist.js:24 share/template/view/page/display:111
+#.  
+msgid "Watching this page"
+msgstr "このページをウォッチ中"
+
+#: lib/Socialtext/WatchlistPlugin.pm:19 lib/Socialtext/WatchlistPlugin.pm:200
+#.  
+msgid "Watchlist"
+msgstr "ウォッチリスト"
+
+#: share/template/view/weblog:15
+#.  
+msgid "Weblog"
+msgstr "ウェブログ"
+
+#: share/template/view/weblog:127
+#.  
+msgid "Weblog Archives"
+msgstr "ウェブログアーカイブ"
+
+#: lib/Socialtext/WeblogPlugin.pm:365 share/template/view/weblog:136
+#.  
+msgid "Weblog Navigation"
+msgstr "ウェブログナビゲーション"
+
+#: lib/Socialtext/WeblogPlugin.pm:127
+#. (
+msgid "Weblog: %1 Atom"
+msgstr "ウェブログ: %1 Atom"
+
+#: lib/Socialtext/WeblogPlugin.pm:122
+#. (
+msgid "Weblog: %1 RSS"
+msgstr "ウェブログ: %1 RSS"
+
+#: share/template/element/settings/select:41 share/template/element/wiki/subnav-dashboard:6 share/template/element/wiki/subnav-default:13 share/template/element/wiki/subnav-default:9 share/template/element/wiki/subnav-listview:10 share/template/element/wiki/subnav-listview:7
+#.  
+msgid "Weblogs"
+msgstr "ウェブログ"
+
+#: lib/Socialtext/Workspace.pm:148
+#.  
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: share/template/view/homepage:9
+#. (
+msgid "Welcome, %1."
+msgstr "ようこそ %1 さん"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:70 lib/Socialtext/WatchlistPlugin.pm:69
+#.  
+msgid "What information about changed pages do you want in email digests?"
+msgstr "変更のあったページの email ダイジェストに載せる情報を設定してください"
+
+#: lib/Socialtext/EmailNotifyPlugin.pm:55
+#.  
+msgid "What order would you like the updates to be sorted?"
+msgstr "どの順番で更新を並び替えますか？"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:41
+#.  
+msgid "What time interval should \"What's New\" display?"
+msgstr "”新着情報”を表示する間隔を選択してください。"
+
+#: lib/Socialtext/TimeZonePlugin.pm:66
+#.  
+msgid "What time zone should times be displayed in?"
+msgstr "表示するタイムゾーン"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:234 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#.  
+msgid "What's New"
+msgstr "新着情報"
+
+#: lib/Socialtext/RecentChangesPlugin.pm:232
+#. (
+msgid "What's in workspace %1"
+msgstr "ワークスペース %1 の内容"
+
+#: share/template/element/wiki/subnav-dashboard:4 share/template/element/wiki/subnav-default:11 share/template/element/wiki/subnav-default:7 share/template/element/wiki/subnav-weblog:10 share/template/element/wiki/subnav-weblog:7
+#.  
+msgid "What's new"
+msgstr "新着情報"
+
+#: share/template/view/homepage:109
+#. (
+msgid "What's new in %1"
+msgstr "%1の新着情報"
+
+#: share/template/element/settings/workspaces_settings_features_section:8
+#.  
+msgid "When the workspace receives an email, the subject of the email becomes the title of a page, and the body of the email becomes the body of the page."
+msgstr "ワークスペースがemail を受信したら、その email の主題がページのタイトルになり、本文がそのページの本文になります。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:51
+#. (
+msgid "When users click \"Home\" in this workspace, should they see a personal dashboard, or the central page of the workspace? The central page of the workspace has the same title as the workspace (\"%1\")."
+msgstr "このワークスペースで\"Home\" をクリックした時に、あなたのダッシュボードを表示させるか、それとも、ワークスペースの中央のページを表示させるか、選択してください。ワークスペースの中央のページはワークスペース (\"%1\") と同じ名前です。"
+
+#: share/template/element/settings/users_invite_section:40
+#.  
+msgid "When you're entering text, just type in paragraphs."
+msgstr "テキストを入力する時は、段落に区切って入力してください。"
+
+#: lib/Socialtext/DisplayPlugin.pm:115
+#.  
+msgid "Which language do you use?"
+msgstr "使用する言語"
+
+#: share/template/element/settings/workspaces_permissions_section:97
+#.  
+msgid "Who can send email to this workspace?"
+msgstr "このワークスペースに email を送ることができる人を設定してください。"
+
+#: lib/Socialtext/Workspace.pm:339
+#. (
+msgid "Workspace %1 is a required field."
+msgstr "ワークスペース %1 は必須のフィールドです。"
+
+#: share/template/popup/email_page:111
+#.  
+msgid "Workspace Address Book"
+msgstr "ワークスペース　アドレス帳"
+
+#: share/template/element/settings/select:34 share/template/workspaces_created_section.html:17
+#.  
+msgid "Workspace Appearance"
+msgstr "ワークスペースの見た目"
+
+#: share/template/element/settings/workspaces_settings_features_section:35
+#.  
+msgid "Workspace Email Notify Setting"
+msgstr "ワークスペースの Email 通知設定"
+
+#: share/template/element/settings/workspaces_settings_features_section:5
+#.  
+msgid "Workspace Email Receive Setting"
+msgstr "ワークスペースの Email 受信設定"
+
+#: share/template/element/settings/select:35 share/template/workspaces_created_section.html:18
+#.  
+msgid "Workspace Features"
+msgstr "ワークスペースの特徴"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:48
+#.  
+msgid "Workspace Home Link"
+msgstr "ワークスペース　ホームリンク"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:19
+#.  
+msgid "Workspace Logo Image"
+msgstr "ワークスペース　ロゴ画像"
+
+#: share/template/element/settings/workspaces_create_section:20 share/template/element/settings/workspaces_listall_section:10
+#.  
+msgid "Workspace Name"
+msgstr "ワークスペース名"
+
+#: share/template/element/settings/select:36 share/template/workspaces_created_section.html:19
+#.  
+msgid "Workspace Privacy"
+msgstr "ワークスペースのプライバシー"
+
+#: share/template/element/settings/workspaces_create_section:6 share/template/element/settings/workspaces_listall_section:9 share/template/element/settings/workspaces_settings_appearance_section:5
+#.  
+msgid "Workspace Title"
+msgstr "ワークスペースタイトル"
+
+#: share/template/element/settings/workspaces_settings_features_section:64
+#.  
+msgid "Workspace Weblog Sort Order"
+msgstr "ワークスペースのウェブログの並べ替え"
+
+#: lib/Socialtext/Workspace.pm:361
+#.  
+msgid "Workspace title must be between 2 and 64 characters long."
+msgstr "ワークスペースのタイトルは 2-64 文字でなければなりません。"
+
+#: share/template/element/settings/select:18
+#.  
+msgid "Workspaces"
+msgstr "ワークスペース"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:176
+#.  
+msgid "Workspaces: Create New Workspace"
+msgstr "ワークスペース: 新しいワークスペースを作成する"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:238
+#.  
+msgid "Workspaces: Created New Workspace"
+msgstr "ワークスペース: 新しいワークスペースが作成されました"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:55
+#.  
+msgid "Workspaces: My Workspaces"
+msgstr "ワークスペース: 私のワークスペース"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:304
+#.  
+msgid "Workspaces: Permissions"
+msgstr "ワークスペース: パーミッション"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:103
+#.  
+msgid "Workspaces: This Workspace"
+msgstr "ワークスペース: このワークスペース"
+
+#: lib/Socialtext/WorkspacesUIPlugin.pm:267
+#.  
+msgid "Workspaces: Unsubscribe"
+msgstr "ワークスペース: 退会する"
+
+#: share/template/view/refcard:222
+#.  
+msgid "Yahoo user yahoouser presence"
+msgstr "Yahooユーザ yahoouser presence"
+
+#: share/template/view/refcard:223
+#.  
+msgid "Yahoo user ymsgr:yahoouser presence"
+msgstr "Yahooユーザ yahoouser presence"
+
+#: share/template/element/settings/workspaces_settings_features_section:49
+#.  
+msgid "Yes"
+msgstr "はい"
+
+#: share/template/view/homepage:74
+#.  
+msgid "You can also put links here to pages you want to remember."
+msgstr "また、ここに覚えておきたいページへのリンクを作成することができます。"
+
+#: share/template/bugs_content.html:20
+#. (
+msgid "You can assist the Socialtext team to fix this bug by entering a\n      comment about what actions you were performing when this bug\n      occurred<a\n      href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n      color: black; text-decoration: none;\">.</a> Please enter your\n      comments in the box below."
+msgstr ""
+
+#: share/template/element/settings/workspaces_settings_appearance_section:22
+#.  
+msgid "You can choose an image to use as the workspace logo. You may enter the web address of an image already on the web, or you may upload an image from your computer."
+msgstr "ワークスペースのロゴとして使う画像を選択できます。"
+
+#: share/template/element/settings/workspaces_permissions_section:11
+#.  
+msgid "You can choose the level of privacy for your workspace. For more information on choosing the level of privacy for your workspace, see"
+msgstr "あなたのワークスペースのプライバシーのレベルを選択できます。"
+
+#: share/template/element/settings/workspaces_settings_features_section:67
+#.  
+msgid "You can choose to sort weblog entries by the date an entry is updated, or by the date an entry was first posted."
+msgstr "ウェブログのエントリを、更新日、または、エントリが最初に投稿された日のどちらかで並べ替えることができます。"
+
+#: lib/Socialtext/Account.pm:70
+#.  
+msgid "You cannot change is_system_created for an account after it has been created."
+msgstr "アカウントの is_system_created は、作成後変更できません。"
+
+#: lib/Socialtext/User/Default.pm:197
+#.  
+msgid "You cannot change the email address of a system-created user."
+msgstr "システムが作成したユーザの email アドレスは変更できません。"
+
+#: lib/Socialtext/Account.pm:66
+#.  
+msgid "You cannot change the name of a system-created account."
+msgstr "システムが作成したユーザのアカウントは変更できません。"
+
+#: lib/Socialtext/User/Default.pm:193
+#.  
+msgid "You cannot change the name of a system-created user."
+msgstr "システムが作成したユーザ名は変更できません。"
+
+#: lib/Socialtext/OpenIdPlugin.pm:42
+#.  
+msgid "You must input both an OpenID and an email."
+msgstr "OpenID と email の両方を入力してください。"
+
+#: share/template/workspaces_created_section.html:10
+#.  
+msgid "You're ready to jump to your new workspace, if you want to. Choose your next step:"
+msgstr "新しいワークスペースにジャンプしますか？次のステップを選択してください:"
+
+#: lib/Socialtext/FavoritesPlugin.pm:12 share/template/view/homepage:66
+#.  
+msgid "Your Notepad"
+msgstr "あなたのノートパッド"
+
+#: share/template/element/listview/actionbar:6
+#.  
+msgid "Your Watchlist"
+msgstr "あなたのワークスペース"
+
+#: share/template/element/settings/users_invited_section:18
+#.  
+msgid "Your request to invite the following users has been sent"
+msgstr "次のユーザに招待状を送りました。"
+
+#: share/template/element/settings/users_settings_section:36
+#.  
+msgid "Your settings cannot be changed via the Socialtext settings UI."
+msgstr "Socialtext からは設定を変更することができません。"
+
+#: share/template/view/homepage:122
+#.  
+msgid "Your watchlist"
+msgstr "あなたのウォッチリスト"
+
+#: share/template/view/homepage:131
+#.  
+msgid "Your workspaces"
+msgstr "あなたのワークスペース"
+
+#: share/template/element/settings/workspaces_create_section:34
+#.  
+msgid "and this email address:"
+msgstr "email アドレス:"
+
+#: share/template/view/refcard:30
+#.  
+msgid "another workspace"
+msgstr "別のワークスペース"
+
+#: share/template/element/settings/users_invite_section:21
+#.  
+msgid "another.friend@example.com"
+msgstr "another.friend@example.com"
+
+#: share/template/element/settings/workspaces_permissions_section:64
+#.  
+msgid "anybody can see and edit pages"
+msgstr "誰でもページを閲覧、編集できます。"
+
+#: share/template/element/settings/workspaces_permissions_section:77
+#.  
+msgid "anybody can see and edit pages, upload files and send email"
+msgstr "誰でもページを閲覧、編集、ファイルをアップロード、email を送付することができます。"
+
+#: share/template/element/settings/workspaces_permissions_section:55
+#.  
+msgid "anybody can see the workspace and make comments, only privately invited members can edit"
+msgstr "誰でもワークスペースを閲覧し、コメントできますが、個人的に招待したメンバーだけが編集できます。"
+
+#: share/template/element/settings/workspaces_permissions_section:46
+#.  
+msgid "anybody can see the workspace, only privately invited members can edit"
+msgstr "誰でもワークスペースを閲覧できますが、個人的に招待されたメンバーだけが編集できます。"
+
+#: share/template/element/settings/workspaces_permissions_section:37
+#.  
+msgid "anybody can see the workspace, users can register to be able to edit"
+msgstr "誰でもワークスペースを閲覧できますが、編集するには登録が必要です。"
+
+#: share/template/view/weblog:120
+#.  
+msgid "attachments"
+msgstr "添付"
+
+#: lib/Socialtext/TimeZonePlugin.pm:95
+#.  
+msgid "automatic, United States"
+msgstr "自動、アメリカ合衆国"
+
+#: share/template/view/refcard:13
+#.  
+msgid "bold words"
+msgstr "太字"
+
+#: share/template/view/homepage:128
+#.  
+msgid "change"
+msgstr "変更"
+
+#: share/template/view/homepage:128
+#.  
+msgid "changes"
+msgstr "変更"
+
+#: lib/Socialtext/Pages.pm:144
+#.  
+msgid "click to create page"
+msgstr "クリックしてページを作成"
+
+#: share/template/element/page/details:25 share/template/view/weblog:105
+#.  
+msgid "comment"
+msgstr "コメント"
+
+#: lib/Socialtext/Page.pm:515
+#. (
+msgid "contributed by {user: %1} on {date: %2}"
+msgstr "contributed by {user: %1} on %2"
+
+#: lib/Socialtext/TimeZonePlugin.pm:93
+#.  
+msgid "currently in DST"
+msgstr "現在夏時間である"
+
+#: lib/Socialtext/TimeZonePlugin.pm:94
+#.  
+msgid "currently not in DST"
+msgstr "現在夏時間でない"
+
+#: share/template/view/refcard:25
+#.  
+msgid "different-workspace"
+msgstr "別のワークスペース"
+
+#: share/template/view/refcard:19
+#.  
+msgid "dinette"
+msgstr "テーブルといす"
+
+#: share/template/element/page/details:14 share/template/element/weblog/edit_link:9 share/template/view/homepage:51 share/template/view/homepage:63
+#.  
+msgid "edit"
+msgstr "編集"
+
+#: share/template/view/weblog:112
+#.  
+msgid "edit this post"
+msgstr "この投稿を編集"
+
+#: share/template/view/refcard:32
+#.  
+msgid "email link"
+msgstr "Email リンク"
+
+#: share/template/element/settings/save:10
+#.  
+msgid "error:"
+msgstr "エラー:"
+
+#: share/template/view/refcard:35
+#.  
+msgid "external image"
+msgstr "外部からの画像"
+
+#: lib/Socialtext/Formatter/Phrase.pm:266 lib/Socialtext/Formatter/Phrase.pm:329 share/template/view/refcard:31
+#.  
+msgid "external link"
+msgstr "外部リンク"
+
+#: share/template/view/refcard:39
+#.  
+msgid "heading 1"
+msgstr "見出し1"
+
+#: share/template/view/refcard:40
+#.  
+msgid "heading 2"
+msgstr "見出し2"
+
+#: share/template/view/refcard:41
+#.  
+msgid "heading 3"
+msgstr "見出し3"
+
+#: share/template/view/refcard:42
+#.  
+msgid "heading 4"
+msgstr "見出し4"
+
+#: share/template/view/refcard:43
+#.  
+msgid "heading 5"
+msgstr "見出し5"
+
+#: share/template/view/refcard:44
+#.  
+msgid "heading 6"
+msgstr "見出し6"
+
+#: share/template/view/refcard:29
+#.  
+msgid "headings are sections too"
+msgstr "見出しもセクションです。"
+
+#: share/template/element/settings/workspaces_permissions_section:66
+#.  
+msgid "if you use this setting, the workspace is likely to be spammed"
+msgstr "これに設定すると、ワークスペースはスパム攻撃を受ける可能性があります。"
+
+#: share/template/view/refcard:49
+#.  
+msgid "image attached to a page in another workspace"
+msgstr "別のワークスペースのページに添付している画像"
+
+#: share/template/view/refcard:46
+#.  
+msgid "image attached to page"
+msgstr "ページに添付している画像"
+
+#: share/template/view/refcard:45 share/template/view/refcard:47
+#.  
+msgid "image attachment"
+msgstr "添付画像"
+
+#: share/template/view/weblog:20
+#. (
+msgid "in %1"
+msgstr "%1 に"
+
+#: share/template/view/refcard:20
+#.  
+msgid "indented"
+msgstr "インデント"
+
+#: lib/Socialtext/Formatter/WaflPhrase.pm:415
+#. (
+msgid "inter-workspace link: %1"
+msgstr "内部ワークスペースリンク: %1"
+
+#: share/template/view/refcard:14
+#.  
+msgid "italic words"
+msgstr "イタリック"
+
+#: share/template/view/refcard:36
+#.  
+msgid "item 1"
+msgstr "項目 1"
+
+#: share/template/view/refcard:37
+#.  
+msgid "item 2"
+msgstr "項目 2"
+
+#: share/template/view/refcard:21
+#.  
+msgid "lines"
+msgstr "行"
+
+#: share/template/view/refcard:16
+#.  
+msgid "monospace"
+msgstr "等幅"
+
+#: lib/Socialtext/TimeZonePlugin.pm:96
+#.  
+msgid "never in DST"
+msgstr "夏時間がない"
+
+#: share/template/element/settings/workspaces_permissions_section:28
+#.  
+msgid "only invited users can access the workspace"
+msgstr "招待されたユーザだけが、このワークスペースにアクセスできます。"
+
+#: share/template/element/settings/workspaces_settings_appearance_section:27 share/template/element/settings/workspaces_settings_appearance_section:36
+#.  
+msgid "optional"
+msgstr "オプショナル"
+
+#: share/template/view/weblog:146
+#.  
+msgid "or post by email:"
+msgstr "または email で投稿"
+
+#: share/template/view/refcard:50
+#.  
+msgid "page name"
+msgstr "ページ名"
+
+#: share/template/view/weblog:116
+#.  
+msgid "permalink"
+msgstr "パーマリンク"
+
+#: lib/Socialtext/WeblogPlugin.pm:146
+#.  
+msgid "recent changes"
+msgstr "最近の変更"
+
+#: share/template/element/settings/workspaces_permissions_section:116
+#.  
+msgid "registered users"
+msgstr "登録したユーザ"
+
+#: share/template/element/settings/weblog_create:11 share/template/element/settings/workspaces_create_section:11 share/template/element/settings/workspaces_create_section:26 share/template/element/settings/workspaces_settings_appearance_section:10
+#.  
+msgid "required"
+msgstr "必須"
+
+#: share/template/view/page_revision_list:60
+#.  
+msgid "revision"
+msgstr "改訂数"
+
+#: lib/Socialtext/Formatter/WaflPhrase.pm:411
+#.  
+msgid "section link"
+msgstr "セクションリンク"
+
+#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:328
+#.  
+msgid "start irc session"
+msgstr "irc セッションを開始"
+
+#: share/template/view/refcard:15
+#.  
+msgid "strikeout"
+msgstr "取り消し"
+
+#: share/template/view/refcard:38
+#.  
+msgid "subitem 1"
+msgstr "サブアイテム 1"
+
+#: share/template/view/refcard:17
+#.  
+msgid "table"
+msgstr "表"
+
+#: share/template/view/refcard:53
+#.  
+msgid "this text is not bold"
+msgstr "このテキストは太字ではありません。"
+
+#: share/template/popup/email_page:123
+#.  
+msgid "type email address here"
+msgstr "ここに email アドレスをタイプしてください。"
+
+#: share/template/email/st/workspace-invitation-body.html:31
+#.  
+msgid "username:"
+msgstr "ユーザ名:"
+
+#: share/template/view/refcard:18
+#.  
+msgid "value"
+msgstr "値"
+
+#: share/template/element/settings/save:7
+#.  
+msgid "warning:"
+msgstr "警告:"
+
+#: share/template/email/st/workspace-invitation-body.html:30
+#.  
+msgid "web address:"
+msgstr "web アドレス"
+
+#: share/template/view/refcard:48
+#.  
+msgid "workspace"
+msgstr "ワークスペース"
+
+#: share/template/element/settings/workspaces_permissions_section:116
+#.  
+msgid "workspace members"
+msgstr "ワークスペースメンバー"
+
+#: share/template/element/settings/users_invite_section:20
+#.  
+msgid "your.friend@example.com"
+msgstr "your.friend@example.com"
+
+#: share/template/view/refcard:203
+#.  
+msgid "{file: proposal.pdf} on this page"
+msgstr "このページの{file: proposal.pdf}"
+

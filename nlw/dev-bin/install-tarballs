@@ -1,0 +1,40 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use File::Spec;
+use File::Basename qw(dirname);
+use Digest::MD5 qw(md5_hex);
+
+my %SEEN;
+my $DEV_BIN = dirname(__FILE__);
+
+while (not seen_deps()) {
+    print "\n\n=== ",
+          "INSTALLING MODULES (looping until we reach a fixed point)",
+          " ===\n";
+    my $install = File::Spec->catfile( $DEV_BIN, 'install-local-module' );
+    system($^X, $install, '-p', $^X, 'missing');
+}
+
+my @missing = missing_deps();
+if ( @missing ) {
+    my $msg = "\n\nThe following modules were not installed by $0:\n";
+    $msg .= join "\n", map {"   $_"} @missing;
+    die "$msg\n";
+} else {
+    print "DONE.  ALL DEPENDENCIES INSTALLED.\n";
+    exit 0;
+}
+
+sub seen_deps {
+    my $key = md5_hex( join "-*-*-*", missing_deps() );
+    return 1 if exists $SEEN{$key};
+    $SEEN{$key} = $key;
+    return 0;
+}
+
+sub missing_deps {
+    my $deps = File::Spec->catfile( $DEV_BIN, 'list-module-deps' );
+    chomp( my @deps = `$deps 2>/dev/null` );
+    return sort map {s/\s+.*$//; $_} @deps;
+}

@@ -1,0 +1,90 @@
+[%# @COPYRIGHT@ -%]
+[% USE html_encode %]
+[% ns = 'st-popup-rename' %]
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>[% loc("Rename '[_1]'", page_title) %]</title>
+
+    [% INCLUDE "element/wiki/js-bootstrap" %] 
+    [% PROCESS css_links.html + javascript_links.html %]
+
+    <script type="text/javascript">
+      push_onload_function( function() {
+          document.forms["rename"].new_title.focus();
+      } );
+    </script>
+  </head>
+  <body id="[% ns %]" class="st-popup" onload="call_onload_functions()">
+    <form name="rename" method="post" action="[% script_name %]" enctype="application/x-www-form-urlencoded">
+      <p class="st-popup-title">
+      [% loc('Rename <span id="[_1]-pagetitle">"[_2]"</span>', ns, page_title) %]
+      </p>
+      [%
+        PROCESS page_title_too_long IF page_title_too_long;
+        PROCESS page_title_error IF page_title_bad;
+        PROCESS page_exists_error IF page_exists;
+        PROCESS same_title IF same_title;
+        PROCESS form_inputs;
+      %]
+      <div id="[% ns %]-buttons">
+        [% PROCESS standard_popup_buttons.html submit_button_value = loc('Rename') %]
+      </div>
+      [% PROCESS duplicate_form_hidden_inputs %]
+    </form>
+    <p class="st-popup-hint">([% loc('The main window will navigate to the new page after you click "Rename".') %])</p>
+  </body>
+</html>
+
+[% BLOCK page_title_too_long %]
+  <p class="st-popup-errormessage">
+    [% loc('The page name you selected, "[_1]", is too long after URL encoding.', new_title) %]
+  </p>
+[% END %]
+
+[% BLOCK page_title_error %]
+  <p class="st-popup-errormessage">
+    [% loc('The page name you selected, "[_1]", is not allowed. Please enter or change the page name.', new_title) %]
+  </p>
+[% END %]
+
+[% BLOCK page_exists_error %]
+  <p class="st-popup-errormessage">
+    [% loc('The new page name you selected, "[_1]", is already in use. Please choose a different name.', new_title) %]
+    [% loc('If you are sure you wish to overwrite the existing "[_1]" page, please press "Rename" again.', new_title)%]
+  </p>
+[% END %]
+
+[% BLOCK same_title %]
+  <p class="st-popup-errormessage">
+    [% SET new_page_title = '"' _ new_title _ '"' %]
+    [% loc("The page name you selected, [_1], is the same as the page's current title. Please enter a new page name.", new_page_title) %]
+  </p>
+[% END %]
+
+[% BLOCK form_inputs %]
+  [%
+    SET new_title_value = new_title IF page_title_bad OR page_exists;
+  %]
+  <p class="input"><label for="new_title" class="duplicate-page-form-element">[% loc('New page name') %]:
+    <input type="text" name="new_title" value="[% new_title_value | html_encode %]" size="34" />
+  </label>
+  </p>
+  <p class="input">
+  <label for="keep_categories" class="duplicate-page-form-element">[% loc('Keep categories') %]:
+    <input type="checkbox" name="keep_categories" value="1" checked="true" />
+  </label>
+  </p>
+  <p class="input"><label for="keep_attachments" class="duplicate-page-form-element">[% loc('Keep attachments') %]:
+    <input type="checkbox" name="keep_attachments" value="1" checked="true" />
+  </label>
+  </p>
+[% END %]
+
+[% BLOCK duplicate_form_hidden_inputs %]
+  <input type="hidden" name="action" value="rename_page" />
+  <input type="hidden" name="page_name" value="[% page_title | html_encode %]" />
+  [% IF page_title_bad OR page_exists %]
+    <input type="hidden" name="clobber" value="[% new_title | html_encode %]" />
+  [% END %]
+[% END %]

@@ -1,0 +1,3 @@
+#!/bin/sh
+find share/l10n -name '*.po' |egrep -v '.svn|zz.po|zj.po' |LC_ALL=C xargs --verbose --max-args=1 msgfmt -c -v  
+
