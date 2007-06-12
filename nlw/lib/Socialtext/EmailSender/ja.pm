@@ -28,6 +28,7 @@ use Encode::Alias;
 use Encode::Unicode::Japanese;
 use Lingua::JA::Fold;
 use Jcode;
+use Unicode::Japanese;
 
 $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
 
@@ -39,6 +40,13 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
     sub new {
         my $pkg = shift;
         bless {}, $pkg;
+    }
+
+    sub _convert_specification {
+        my $self    = shift;
+        my $text    = shift;
+        $text = Unicode::Japanese->new($text)->h2zKana->get();
+        return $text;
     }
 
     sub _encode_address {
@@ -63,8 +71,10 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
 
             # This shuts up a "wide character in print" warning from
             # inside Email::Send::Sendmail.
+            $subject = $self->_convert_specification($subject);
             $subject = Encode::encode( 'MIME-Header-ISO_2022_JP', $subject );
         }
+
         return $subject;
     }
 
@@ -86,7 +96,11 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
             if($line_length > 988) {
                 $line = fold( 'text' => $line, 'length' => 300 );
             }
-            $folded_body .= $line . "\n";
+            
+            $folded_body .= $line;
+            if(@lines > 1) {
+                $folded_body .= "\n";
+            }
         }
         $body = $folded_body;
         return $body; 
@@ -97,6 +111,7 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
         my $body     = shift;
         my $encoding = shift;
 
+        $body = $self->_convert_specification($body);
         $body = $self->_fold_body($body);
         
         # solve WAVE DASH problem
