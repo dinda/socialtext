@@ -41,7 +41,7 @@ sub bugs_dump {
     my $dump = eval { YAML::Dump($self->retrieve($self->cgi->bug_id)) } || $@;
     return $self->hub->template->process('bugs_dump.html',
        content_pane => 'bugs_dump.html',
-       display_title => 'Bug Dump',
+       display_title => loc('Bug Dump'),
        dump => $dump,
     );
 }

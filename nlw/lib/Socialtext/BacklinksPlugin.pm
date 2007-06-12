@@ -74,7 +74,7 @@ sub show_all_backlinks {
     my $page_id = $self->cgi->page_id;
     my $page = $self->hub->pages->new_from_name($page_id);
     $self->screen_wrap(
-        'All backlinks for "' . $page->metadata->Subject . '"',
+        loc('All backlinks for "[_1]"', $page->metadata->Subject),
         $self->present_tense_description_for_page($page)
     );
 }
