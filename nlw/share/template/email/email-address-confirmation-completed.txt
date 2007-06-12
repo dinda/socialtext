@@ -1,7 +1,8 @@
 [% loc('Hello,') %]
 
+[% SET escaped_str = title | html %]
 [% loc('You have confirmed your email address and can now log on to the
-[_1] workspace.',  title | html) %]
+[_1] workspace.', escaped_str) %]
 
 [% loc('To do so, go to this web address:') %] [% uri | html %]
 
