@@ -14,7 +14,7 @@ BEGIN {
 }
 
 my $count = 1;
-my $tests = 28;
+my $tests = 29;
 plan tests => $tests + 1;
 
 use Socialtext::EmailSender::Factory;
@@ -275,6 +275,20 @@ HTMLBODY_IS_JAPANESE: {
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'HTMLBODY_IS_JAPANESE',
        html_body => '<a href="#">ＨＴＭＬボディ</a>',
+    );
+    ok(1);
+    $count++;
+}
+
+SUBJECT_AND_BODY_IS_HANKAKU: {
+    Email::Send::Test->clear();
+    my $email_sender = Socialtext::EmailSender::Factory->create('ja');
+
+    $email_sender->send(
+       to        => $to_email_address,
+       from      => 'test2@example.com',
+       subject   => "[$count/$tests]" . 'HANKAKU_日本語ﾀｲﾄﾙ',
+       text_body => 'ﾃｷｽﾄﾎﾞﾃﾞｨ～終',
     );
     ok(1);
     $count++;
