@@ -511,12 +511,16 @@ sub _get_html_body {
     }
 
     return unless @lines;
+    
+    my $html = join '', @lines;
+    my $encode_type = Socialtext::File->_guess_string_encoding('ja', $html);
+    Encode::_utf8_off($html) if Encode::is_utf8($html);
 
     my $converter = HTML::WikiConverter->new(
         dialect         => 'Socialtext::Fixed',
         escape_entities => 0
     );
-    my $body = $converter->html2wiki( join '', @lines );
+    my $body = $converter->html2wiki( $html );
 
     $body =~ s/{image:\s+cid:(\S+?)}/$self->_wafl_for_cid($1)/eg;
 
@@ -677,6 +681,8 @@ sub _page_body_from_email {
     my $self = shift;
 
     my $header = $self->_make_page_header();
+    Encode::_utf8_on($header) unless Encode::is_utf8($header);
+    Encode::_utf8_on($self->{body}) unless Encode::is_utf8($self->{body});
     my $body   = join '', @$header, $self->{body};
 
     return \$body;
