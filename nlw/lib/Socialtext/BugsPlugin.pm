@@ -28,8 +28,8 @@ sub register {
 
 sub bugs_report {
     my $self = shift;
-    return $self->save_comment if $self->cgi->Button eq 'Report Bug';
-    return $self->ignore_bug if $self->cgi->Button eq 'Ignore Bug';
+    return $self->save_comment if $self->cgi->Button eq loc('Report Bug');
+    return $self->ignore_bug if $self->cgi->Button eq loc('Ignore Bug');
     my $bug_id = $self->save_report(@_);
     return $self->hub->template->process('bugs_content.html',
         bug_id => $bug_id,
