@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 142;
+use Test::Socialtext tests => 168;
 fixtures( 'admin_no_pages' );
 
 use_ok('Socialtext::EmailReceiver::Factory');
@@ -15,7 +15,7 @@ isa_ok( $hub, 'Socialtext::Hub' );
 my $ws = $hub->current_workspace();
 
 RECEIVE_STRING_SIMPLE: {
-    my $file = 't/test-data/email/mason';
+    my $file = 't/test-data/email/EmailReceiver';
     open my $fh, '<', $file
         or die "Cannot read $file: $!";
     my $email = do { local $/ = undef; <$fh> };
@@ -30,13 +30,13 @@ RECEIVE_STRING_SIMPLE: {
                 });
     $email_receiver->receive();
 
-    tests_for_mason_email();
+    tests_for_email();
 
     my $user = Socialtext::User->new( email_address => 'williams@tni.com' );
     isa_ok( $user, 'Socialtext::User',
         'A new user was created because of an accepted email' );
 
-    my $page = $hub->pages->new_from_name('[Mason] CVS Mason and Apache2');
+    my $page = $hub->pages->new_from_name('[monkey] CVS monkey and ape2');
     isa_ok( $page, 'Socialtext::Page' );
     $page->purge();
 
@@ -44,7 +44,7 @@ RECEIVE_STRING_SIMPLE: {
 }
 
 RECEIVE_HANDLE_SIMPLE: {
-    my $file = 't/test-data/email/mason';
+    my $file = 't/test-data/email/EmailReceiver';
     open my $fh, '<', $file
         or die "Cannot read $file: $!";
 
@@ -58,17 +58,17 @@ RECEIVE_HANDLE_SIMPLE: {
                 });
     $email_receiver->receive();
 
-    tests_for_mason_email();
+    tests_for_email();
 
     remove_guest_email_in($ws);
 }
 
-sub tests_for_mason_email {
-    my $page = $hub->pages()->new_from_name('[Mason] CVS Mason and Apache2');
+sub tests_for_email {
+    my $page = $hub->pages()->new_from_name('[monkey] CVS monkey and ape2');
     isa_ok( $page, 'Socialtext::Page' );
 
-    ok( $page->active(), "Found a page with the name '[Mason] CVS Mason and Apache2'" );
-    is( $page->title(), '[Mason] CVS Mason and Apache2',
+    ok( $page->active(), "Found a page with the name '[monkey] CVS monkey and ape2'" );
+    is( $page->title(), '[monkey] CVS monkey and ape2',
         'check that page title matches subject' );
     like( $page->content(), qr{From:\s+"John Williams"\s+<mailto:williams\@tni.com>},
           'content includes email sender name & address' );
@@ -86,8 +86,8 @@ sub tests_for_mason_email {
     my $categories = $page->metadata()->Category();
     ok( scalar @$categories, 'page has category metadata' );
     is_deeply( [ sort @$categories ],
-               [ 'Apache', 'Email', 'Mason' ],
-               'categories are Apache, Email, & Mason' );
+               [ 'Email', 'ape', 'monkey' ],
+               'categories are ape, Email, & monkey' );
 
     my $attachments = $page->hub()->attachments()->all( page_id => $page->id );
     is( @$attachments, 0,
@@ -1010,3 +1010,310 @@ sub remove_guest_email_in {
         permission => $perm,
     );
 }
+
+use utf8;
+
+TITLE_IS_JAPANESE: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: 日本語タイトル
+
+abcdefg
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('日本語タイトル');
+    isa_ok( $page, 'Socialtext::Page' );
+    like( $page->content(), qr/\Qabcdefg\E/,
+          'new text is in page content' );
+}
+ 
+TITLE_IS_JAPANESE_HANKAKU: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: 日本語ﾀｲﾄﾙ
+
+abcdefg
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('日本語ﾀｲﾄﾙ');
+    isa_ok( $page, 'Socialtext::Page' );
+    like( $page->content(), qr/\Qabcdefg\E/,
+          'new text is in page content' );
+}
+ 
+BODY_IS_JAPANESE: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: Start Here by Japanese 1
+
+日本語ボディ
+EOF
+    
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Start Here by Japanese 1');
+    like( $page->content(), qr/\Q日本語ボディ\E/,
+          'new text is in page content' );
+}
+ 
+BODY_IS_JAPANESE_HANKAKU: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: Start Here by Japanese 2
+
+日本語ﾎﾞﾃﾞｨ
+EOF
+    
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Start Here by Japanese 2');
+    like( $page->content(), qr/\Q日本語ﾎﾞﾃﾞｨ\E/,
+          'new text is in page content' );
+}
+
+CATEGORY_IS_JAPANESE_IN_TO_ADDRESS: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin+New=20=E3=82=BF=E3=82=B0@example.com
+Subject: In New Cat by Japanese
+
+Blah blah
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('In New Cat by Japanese');
+    isa_ok( $page, 'Socialtext::Page' );
+    is_deeply(
+        [ sort @{ $page->metadata()->Category() } ],
+        [ 'Email', 'New タグ' ],
+        'page is in Email and New Cat categories'
+    );
+}
+
+CATEGORY_IS_JAPANESE_IN_CC_ADDRESS: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: bubba@example.com
+Cc: admin+New=20=E3=82=BF=E3=82=B0@example.com
+Subject: In New Cat2 by Japanese
+
+Blah blah
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('In New Cat2 by Japanese');
+    isa_ok( $page, 'Socialtext::Page' );
+    is_deeply(
+        [ sort @{ $page->metadata()->Category() } ],
+        [ 'Email', 'New タグ' ],
+        'page is in Email and New Cat2 categories'
+    );
+}
+
+CATEGORY_COMMANDS_JA: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: Cats in Body by Japanese
+
+Category: タグ１
+Category: タグ２, タグ４
+category: タグ３
+
+Blah blah
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Cats in Body by Japanese');
+    isa_ok( $page, 'Socialtext::Page' );
+    is_deeply(
+        [ sort @{ $page->metadata()->Category() } ],
+        [ 'Email', 'タグ１', 'タグ２', 'タグ３', 'タグ４' ],
+        'page is in  Email, タグ１, タグ２, タグ３ and タグ４ categories'
+    );
+
+    unlike( $page->content(), qr/Category:/,
+            'category commands are not in the page body' );
+}
+
+TAG_COMMANDS_JA: {
+    my $email = <<'EOF';
+From: devnull1@socialtext.com
+To: admin@example.com
+Subject: Tags in Body by Japanese
+
+Tag: タグ１
+Tag: タグ２, タグ４
+tag: タグ３
+
+Blah blah
+EOF
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => $test_locale,
+                    string    => $email,
+                    workspace => $ws
+                });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Tags in Body by Japanese');
+    is_deeply(
+        [ sort @{ $page->metadata()->Category() } ],
+        [ 'Email', 'タグ１', 'タグ２', 'タグ３', 'タグ４' ],
+        'page is in  Email, タグ１, タグ２, タグ３ and タグ４ categories'
+    );
+
+    unlike( $page->content(), qr/tag:/,
+            'category commands are not in the page body' );
+}
+
+ONE_ATTACHMENT_JA: {
+    my $file = 't/test-data/email/one-attachment-japanese';
+    open my $fh, '<', $file
+        or die "Cannot read $file: $!";
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+            {
+                locale => $test_locale,
+                handle    => $fh,,
+                workspace => $ws
+            });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('添付ファイル１');
+    isa_ok( $page, 'Socialtext::Page' );
+
+    ok( $page->active(), 'Found a page with the name of "attachments"' );
+    is( $page->title(), '添付ファイル１',
+        'check that page title matches subject' );
+
+    my $attachments
+        = $page->hub()->attachments()->all( page_id => $page->id );
+    is( @$attachments, 1, 'page generated from email has one attachment' );
+
+    like( $page->content(), qr/\Q{file: 日本語.doc}\E/,
+          'check that page content contains link to attached file' );
+
+    my $all = $hub->attachments()->all_in_workspace();
+    is( @$all, 1+7,
+        'only one attachment in workspace' );
+
+    $page->purge();
+}
+
+ATTACHED_IMAGE_JA: {
+    my $file = 't/test-data/email/attached-image-japanese';
+    open my $fh, '<', $file
+        or die "Cannot read $file: $!";
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+            {
+                locale => $test_locale,
+                handle    => $fh,,
+                workspace => $ws
+            });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('添付ファイル２');
+    isa_ok( $page, 'Socialtext::Page' );
+
+    ok( $page->active(), "Found a page with the name of '添付ファイル２'" );
+    is( $page->title(), '添付ファイル２',
+        'check that page title matches subject' );
+
+    my $attachments
+        = $page->hub()->attachments()->all( page_id => $page->id );
+    is( @$attachments, 1, 'page generated from email has one attachment' );
+
+    like( $page->content(), qr/\Q{image: 日本語イメージ.JPG}\E/,
+          'check that page content contains image link to attached image' );
+}
+
+#TEXT_HTML_BODY_ONLY_JA: {
+#    my $file = 't/test-data/email/text-html-body-japanese';
+#    open my $fh, '<', $file
+#        or die "Cannot read $file: $!";
+#
+#    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+#            {
+#                locale => $test_locale,
+#                handle    => $fh,,
+#                workspace => $ws
+#            });
+#    $email_receiver->receive();
+#
+#    my $page = $hub->pages()->new_from_name('Text/HTML Body');
+#    isa_ok( $page, 'Socialtext::Page' );
+#
+#    ok( $page->active(), 'Found a page with the name of "Text/HTML Body"' );
+#    is( $page->title(), 'Text/HTML Body', 'title matches subject' );
+#
+#    like( $page->content(),
+#          qr{\*ボールドテキスト\*},
+#          'page contains expected HTML content as wikitext' );
+#
+#    my $attachments = $page->hub()->attachments()->all( page_id => $page->id );
+#    is( @$attachments, 1,
+#        'when using html body, it is also saved as an attachment' );
+#
+#    is( $attachments->[0]->mime_type(), 'text/html', 'attachment type is text/html' );
+#    ok( $attachments->[0]->content(), 'html attachment has some content' );
+#
+#    unlike( $page->content(), qr/{file: .+}/,
+#            'saving HTML body as an attachment does not create a file wafl in the body' );
+#}
+
