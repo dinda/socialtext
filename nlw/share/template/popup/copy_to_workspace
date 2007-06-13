@@ -21,7 +21,7 @@
         <select name="target_workspace_id">
           [% FOREACH workspace = workspaces %]
             <option value="[% workspace.workspace_id %]"[% IF workspace.workspace_id == target_workspace.workspace_id %] selected="selected"[% END %]>
-              [% workspace.name %]
+              [%workspace.title%] ([% workspace.name %])
             </option>
           [% END %]
         </select>
