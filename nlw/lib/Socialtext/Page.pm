@@ -46,6 +46,9 @@ field database_directory => -init =>
 sub _MAX_PAGE_ID_LENGTH () {
     my $locale = system_locale();
     if($locale eq 'ja') {
+        # If title length is 64 charctor, id length is 64 * 9.
+        # when we encode a japanese charactor, the length of encoded japanese
+        # charctor is 9.
         return 255*9;
     } else {
         return 255;
