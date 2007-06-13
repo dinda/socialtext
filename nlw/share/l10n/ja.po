@@ -27,7 +27,7 @@ msgstr "%1 ウェブログ"
 #: share/template/view/category_display:32
 #. (
 msgid "%1 as a weblog"
-msgstr ""
+msgstr "ウェブログとして %1"
 
 #: lib/Socialtext/User/Default.pm:171
 #. (
@@ -41,13 +41,13 @@ msgstr "%1 は有効な email アドレスではありません。"
 
 #: lib/Socialtext/Handler/Authen.pm:163 lib/Socialtext/Handler/Authen.pm:335
 #. (
-msgid "%1 is not registered as a user.  Try a different email address?"
-msgstr ""
+msgid "%1 is not registered as a user. Try a different email address?"
+msgstr "%1 はユーザとして登録されていません。違う email アドレスにしますか？"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
 msgid "%1 would like to ask you to invite new users into the\n%2 workspace:"
-msgstr ""
+msgstr "%1 から \n%2 ワークスペースに新しいユーザを招待するリクエストが届いています。"
 
 #: lib/Socialtext/FavoritesPlugin.pm:31
 #. (
@@ -77,7 +77,7 @@ msgstr "%quant(%1,ビュー,ビュー)"
 #: lib/Socialtext/Workspace.pm:415
 #. (
 msgid "'%1' is a reserved workspace name and cannot be used."
-msgstr ""
+msgstr "ワークスペース名 '%1' は予約されており、使用できません。"
 
 #: lib/Socialtext/CLI.pm:438
 #. (
@@ -87,7 +87,7 @@ msgstr "'%1'は有効なロケールではありません。"
 #: share/template/email/recent-changes.html:34 share/template/email/recent-changes.txt:16 share/template/email/watchlist.html:34 share/template/email/watchlist.txt:16
 #. (
 msgid "(by %1 on %2)"
-msgstr ""
+msgstr "(by %1 on %2)"
 
 #: lib/Socialtext/TimeZonePlugin.pm:33
 #.  
@@ -239,10 +239,10 @@ msgstr "-1100 ノーム時間"
 msgid "-1200 International Date Line West"
 msgstr "-1200 国際日付変更線、西側"
 
-#: share/template/element/settings/users_invite_search_section:109 share/template/element/settings/users_invite_section:62
+#: share/template/element/settings/users_invite_search_section:108 share/template/element/settings/users_invite_section:62
 #.  
 msgid "<Your personal message goes here.>"
-msgstr ""
+msgstr "<ここに個人的なメッセージを書いてください。>"
 
 #: share/template/view/refcard:207
 #.  
@@ -299,15 +299,15 @@ msgstr "異なるワークスペースへの<u>ページリンク</u>"
 msgid "A dialog box will pop up after your password is changed."
 msgstr "パスワード変更後ダイアログボックスが現れます。"
 
+#: share/template/element/settings/users_invite_search_section:14
+#.  
+msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern:"
+msgstr "このワークスペースにはフィルターが設定されています。すべての email\n アドレスは以下のパターンと一致する必要があります："
+
 #: share/template/element/settings/users_invite_section:14
 #. (
 msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
 msgstr "フィルターがこのワークスペースに設定されています。All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
-
-#: share/template/element/settings/users_invite_search_section:14
-#.  
-msgid "A filter has been set on this workspace. All candidate email\n     addresses must match this pattern:"
-msgstr ""
 
 #: lib/Socialtext/EditPlugin.pm:148
 #.  
@@ -322,12 +322,12 @@ msgstr "保存するにはタイトルが必要です。"
 #: lib/Socialtext/User/Default.pm:187
 #.  
 msgid "A password is required to create a new user."
-msgstr ""
+msgstr "新規ユーザを作成するにはパスワードが必要です。"
 
 #: lib/Socialtext/Handler/Authen.pm:195
 #. (
 msgid "A user with this email address (%1) already exists."
-msgstr ""
+msgstr "この email アドレス (%1) はすでに別のユーザが使用しています。"
 
 #: share/template/view/refcard:228
 #.  
@@ -347,7 +347,7 @@ msgstr "仲間のコミュニティにアクセスしよう"
 #: lib/Socialtext/Account.pm:58
 #.  
 msgid "Account name is a required field."
-msgstr ""
+msgstr "アカウント名は必須です。"
 
 #: share/template/popup/.email_page.swp:13 share/template/popup/email_page:130 share/template/popup/email_page:138
 #.  
@@ -414,7 +414,7 @@ msgstr "宛先を追加"
 msgid "Admin"
 msgstr "管理者"
 
-#: share/template/element/settings/users_invite_search_section:118 share/template/element/settings/users_invite_section:71
+#: share/template/element/settings/users_invite_search_section:117 share/template/element/settings/users_invite_section:71
 #.  
 msgid "Administrator Notification"
 msgstr "管理者への通知"
@@ -432,7 +432,7 @@ msgstr "すべてのファイル"
 #: share/template/view/attachmentslist:7
 #. (
 msgid "All Files in %1"
-msgstr ""
+msgstr "%1 のすべてのファイル"
 
 #: lib/Socialtext/RecentChangesPlugin.pm:171 share/template/element/listview/actionbar:10
 #.  
@@ -442,7 +442,7 @@ msgstr "すべてのページ"
 #: share/template/lite/changes/changes.html:16
 #. (
 msgid "All Pages in %1"
-msgstr ""
+msgstr "%1 のすべてのページ"
 
 #: share/template/element/page/revision_compare_actions:15 share/template/view/page_revision_list:3
 #.  
@@ -467,7 +467,7 @@ msgstr "ワークスペースにあるすべてのタグ"
 #: lib/Socialtext/BacklinksPlugin.pm:77
 #. (
 msgid "All backlinks for \"%1\""
-msgstr ""
+msgstr "\"%1\" のすべてのバックリンク"
 
 #: share/template/element/wiki/subnav-dashboard:14
 #.  
@@ -487,7 +487,7 @@ msgstr "すべてのタグ"
 #: share/template/email/workspace-invitation.html:5
 #. (
 msgid "An Invitation to join %1"
-msgstr ""
+msgstr "%1 への招待状"
 
 #: lib/Socialtext/Workspace.pm:376
 #.  
@@ -497,17 +497,17 @@ msgstr "すべての新しいワークスペースにアカウントを指定す
 #: share/template/bugs_content.html:17
 #.  
 msgid "An application error has occurred in the Socialtext Workspace system."
-msgstr ""
+msgstr "Socialtext のワークスペースシステムにアプリケーションエラーが発生しました。"
 
 #: lib/Socialtext/Handler/Authen.pm:246
 #. (
 msgid "An email confirming your registration has been sent to %1."
-msgstr ""
+msgstr "登録を確認する email が %1 に送られました。"
 
 #: lib/Socialtext/Handler/Authen.pm:171
 #. (
 msgid "An email with instructions on changing your password has been sent to %1."
-msgstr ""
+msgstr "パスワードの変更方法を記載した email が %1 に送られました。"
 
 #: lib/Socialtext/WikiwygPlugin.pm:210 lib/Socialtext/WikiwygPlugin.pm:69
 #. (
@@ -517,7 +517,7 @@ msgstr "ページIDが無効です: %1"
 #: share/template/element/settings/users_invite_section:40
 #.  
 msgid "And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
-msgstr "何も壊れることはないので、心配しないでください。このページの前バージョンが保存されているので、常に作業中のページはバックアップがあります。"
+msgstr "何かを壊したり、なくすことはないので、心配しないでください。このページの前バージョンが保存されているので、常に作業中のページはバックアップがとられています。"
 
 #: share/template/view/homepage:54
 #.  
@@ -534,12 +534,12 @@ msgstr "誰でも%1にEmailを送れます。"
 msgid "Anyone can send email to this workspace."
 msgstr "誰でもこのワークスペースにemailを送ることができます。"
 
-#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:74
+#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:74
 #.  
 msgid "Append the extra text below?"
 msgstr "以下に別のテキストを追加しますか？"
 
-#: share/template/element/settings/users_invite_search_section:80 share/template/element/settings/users_invite_section:35
+#: share/template/element/settings/users_invite_search_section:79 share/template/element/settings/users_invite_section:35
 #.  
 msgid "Append the personal message below?"
 msgstr "以下のメッセージを添えますか？"
@@ -547,17 +547,17 @@ msgstr "以下のメッセージを添えますか？"
 #: share/template/element/page/newpage_duplicate:10
 #.  
 msgid "Append your text to the bottom of the existing page named:"
-msgstr ""
+msgstr "テキストを次の既存のページの一番下に追加する："
 
 #: share/template/bugs_content.html:5
 #.  
 msgid "Application Error"
-msgstr ""
+msgstr "アプリケーションエラー"
 
 #: share/template/bugs_dump.html:5
 #.  
 msgid "Application Error Bug Dump"
-msgstr ""
+msgstr "アプリケーションエラー　バグダンプ"
 
 #: lib/Socialtext/BugsPlugin.pm:121
 #. (
@@ -582,12 +582,12 @@ msgstr "%1 にアプリケーションエラー発生: %2"
 #: share/template/view/homepage:89
 #. (
 msgid "As a Socialtext customer, you have access to the %1."
-msgstr ""
+msgstr "Socialtext カスタマーとして %1 にアクセスします。"
 
-#: share/template/search_help_field.html:30
+#: share/template/search_help_field.html:29
 #.  
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
-msgstr ""
+msgstr "検索システムの開発が進むにつれ、利用できるオプションと使用するインターフェースが改善されていきます。"
 
 #: lib/Socialtext/AttachmentsUIPlugin.pm:61
 #.  
@@ -602,7 +602,7 @@ msgstr "添付"
 #: share/template/lite/page/display.html:10
 #.  
 msgid "Attachments for this page:"
-msgstr ""
+msgstr "このページへの添付："
 
 #: share/template/element/page/attachment_manage_interface:12
 #.  
@@ -612,7 +612,7 @@ msgstr "作成者"
 #: share/template/view/page/stats_index:7
 #.  
 msgid "Available Reports"
-msgstr ""
+msgstr "利用できるレポート"
 
 #: share/template/element/page/revision_compare_actions:8 share/template/element/page/revision_list_actions:7
 #.  
@@ -622,17 +622,17 @@ msgstr "現バージョンに戻る"
 #: share/template/authen/forgot_password.html:36
 #.  
 msgid "Back to <a href=\"/nlw/login.html\">Log in to Socialtext</a>."
-msgstr ""
+msgstr "Socialtext</a> にログインするには <a href=\"/nlw/login.html\"> へ戻る。"
 
 #: share/template/email/st/workspace-invitation.txt:18
 #. (
 msgid "Because you already have %1 %2 account, the password is the\nsame as the password you use for your other %3 workspaces. If\nyou don't remember it, follow this link to select a new password:"
-msgstr ""
+msgstr "すでに %1 %2 アカウントをお持ちですので、パスワードは 他のワークスペース %3 で使用しているパスワードと同じになります。忘れてしまった場合は、このリンクから新しいパスワードを設定してください:"
 
 #: share/template/email/st/workspace-invitation-body.html:37
 #. (
 msgid "Because you already have %1 %2 account, the password is the\nsame as the password you use for your other %3 workspaces. If\nyou don't remember it, just <a href=\"%4\">click\nhere to select a new password</a>."
-msgstr ""
+msgstr "すでに %1 %2 アカウントをお持ちですので、パスワードは 他のワークスペース %3 で使用しているパスワードと同じになります。忘れてしまった場合は、<a href=\"%4\">ここをクリック</a> して新しいパスワードを設定してください。"
 
 #: share/template/view/refcard:232
 #.  
@@ -657,7 +657,7 @@ msgstr "Socialtext でお楽しみください。"
 #: lib/Socialtext/BugsPlugin.pm:44
 #.  
 msgid "Bug Dump"
-msgstr ""
+msgstr "バグダンプ"
 
 #: lib/Socialtext/UserSettingsPlugin.pm:229
 #.  
@@ -672,7 +672,7 @@ msgstr "キャンセル"
 #: share/template/lite/header.html:14
 #.  
 msgid "Cancel Edit"
-msgstr ""
+msgstr "編集をキャンセル"
 
 #: lib/Socialtext/DeletePagePlugin.pm:45
 #.  
@@ -712,12 +712,12 @@ msgstr "%1 の管理者に確認してください。"
 #: share/template/authen/choose_password.html:2
 #.  
 msgid "Choose Password"
-msgstr ""
+msgstr "パスワードを選択してください。"
 
 #: share/template/authen/choose_password.html:27
 #.  
 msgid "Choose Password:"
-msgstr ""
+msgstr "パスワードの選択:"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:58
 #.  
@@ -727,7 +727,7 @@ msgstr "古い順"
 #: share/template/new_form_page/new_form_page_buttons.html:8
 #.  
 msgid "Clear"
-msgstr ""
+msgstr "クリア"
 
 #: share/template/lite/page/contention.html:6
 #. (
@@ -892,7 +892,7 @@ msgstr "バージョン%1と%2を比較"
 #: share/template/workspaces_created_section.html:7
 #. (
 msgid "Congratulations! You have just created \"%1\", a brand new Socialtext Workspace. You are the administrator. The web address of the new workspace is %2."
-msgstr ""
+msgstr "おめでとうございます！ 新しい Socialtext ワークスペース \"%1\" が作成されました。あなたが管理者です。新しいワークスペースの web アドレスは %2 です。"
 
 #: share/template/popup/.copy_to_workspace.swp:4 share/template/popup/copy_to_workspace:36
 #.  
@@ -957,7 +957,7 @@ msgstr "%2 で %1 が作成"
 #: share/template/view/page/stats_index:6
 #.  
 msgid "Current Report"
-msgstr ""
+msgstr "現在のレポート"
 
 #: share/template/element/settings/users_settings_section:29
 #.  
@@ -997,7 +997,7 @@ msgstr "アップロードした日"
 #: lib/Socialtext/EmailReceiver/Base.pm:706
 #.  
 msgid "Date:"
-msgstr ""
+msgstr "日:"
 
 #: share/template/element/page/actions:38
 #.  
@@ -1057,7 +1057,7 @@ msgstr "ダブルクリックしてページを編集しますか?"
 #: share/template/view/page/stats:30
 #.  
 msgid "Downloads"
-msgstr ""
+msgstr "ダウンロード"
 
 #: share/template/popup/duplicate:28
 #.  
@@ -1097,7 +1097,7 @@ msgstr "編集"
 #: share/template/lite/page/edit.html:2
 #. (
 msgid "Edit %1"
-msgstr ""
+msgstr "%1 を編集"
 
 #: share/template/element/page/edit:11
 #.  
@@ -1117,7 +1117,7 @@ msgstr "編集"
 #: share/template/view/page/stats:22
 #.  
 msgid "Edits"
-msgstr ""
+msgstr "編集"
 
 #: share/template/element/page/actions:28 share/template/element/settings/users_settings_section:9
 #.  
@@ -1132,12 +1132,12 @@ msgstr "Email アドレス"
 #: share/template/element/settings/users_invite_openid_invite:13
 #.  
 msgid "Email Address for this user:"
-msgstr ""
+msgstr "このユーザの Email アドレス:"
 
 #: lib/Socialtext/Handler/Authen.pm:83 share/template/authen/forgot_password.html:5
 #.  
 msgid "Email Address:"
-msgstr ""
+msgstr "Email アドレス:"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:18
 #.  
@@ -1147,12 +1147,12 @@ msgstr "Email による通知"
 #: share/template/element/page/actions:45
 #.  
 msgid "Email To This Page"
-msgstr "このページに email を送る"
+msgstr "このページに Email を送る"
 
 #: share/template/element/page/actions:44
 #.  
 msgid "Email To This Workspace"
-msgstr "このワークスペースに email を送る"
+msgstr "このワークスペースに Email を送る"
 
 #: share/template/element/page/actions:28
 #.  
@@ -1162,7 +1162,7 @@ msgstr "このページを Email で送る"
 #: share/template/element/settings/users_invite_openid_invite:19 share/template/new_form_page/generic/new_form_page_query.html:25 share/template/new_form_page/new_form_page_query.html:29
 #.  
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #: share/template/element/settings/workspaces_settings_features_section:41
 #.  
@@ -1177,17 +1177,17 @@ msgstr "英語"
 #: share/template/email/password-change.html:26 share/template/email/password-change.txt:13
 #.  
 msgid "Enjoy!"
-msgstr ""
+msgstr "お楽しみください！"
 
 #: share/template/element/settings/users_invite_section:9
 #.  
 msgid "Enter a list of email addresses (one address per line) of people you would like to invite to this Workspace."
-msgstr "このワークスペースに招待したい人のemail アドレス（１行につき１アドレス）を入力してください。"
+msgstr "このワークスペースに招待したい人の Email アドレス（１行につき１アドレス）を入力してください。"
 
 #: share/template/element/page/newpage_save:9
 #.  
 msgid "Enter a meaningful and distinctive title for your page."
-msgstr "あなたのページにわかりやすい目立つタイトルをつけてください。"
+msgstr "あなたのページにわかりやすいタイトルをつけてください。"
 
 #: share/javascript/tagqueue.js:192 share/template/element/page/tag_queue_interface:7
 #.  
@@ -1197,22 +1197,22 @@ msgstr "タグを入力し ”別のタグを追加” をクリックしてく�
 #: share/template/element/settings/users_invite_search_section:9
 #.  
 msgid "Enter part of a user's first or last name, or email address."
-msgstr ""
+msgstr "ユーザの名前の一部か、Email アドレスを入力してください。"
 
 #: share/template/element/settings/users_invite_openid_invite:9
 #.  
 msgid "Enter the information for the user you would like to invite to this workspace."
-msgstr ""
+msgstr "このワークスペースに招待したいユーザの情報を入力してください。"
 
 #: share/template/authen/forgot_password.html:11
 #.  
 msgid "Enter your email address below. Enter the email address you normally use for your Socialtext account. If you got here by clicking a link you received in an email message, look at that message, and use the email address it was sent to."
-msgstr ""
+msgstr "以下に Email アドレスを入力してください。Socialtext のアカウントに対して通常使用している Email アドレスを入力してください。受け取った Email に記載のリンクをクリックしてここに来たのであれば、Email が送付された Email アドレスを使用してください。"
 
 #: share/template/lite/search/search.html:14
 #.  
 msgid "Error:"
-msgstr ""
+msgstr "エラー:"
 
 #: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:57
 #.  
@@ -1259,7 +1259,7 @@ msgstr "毎分"
 msgid "Every Week"
 msgstr "毎週"
 
-#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:24 share/template/element/settings/users_invite_section:19
+#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:23 share/template/element/settings/users_invite_section:19
 #.  
 msgid "Example:"
 msgstr "例："
@@ -1332,7 +1332,7 @@ msgstr "アップロードするファイル:"
 #: share/template/lite/changes/changes.html:11
 #.  
 msgid "Filter by category"
-msgstr ""
+msgstr "カテゴリによるフィルター"
 
 #: share/template/element/settings/users_settings_section:10
 #.  
@@ -1347,7 +1347,7 @@ msgstr "%1の最初の投稿"
 #: share/template/new_form_page/generic/new_form_page_query.html:15 share/template/new_form_page/new_form_page_query.html:13
 #.  
 msgid "First name:"
-msgstr ""
+msgstr "名:"
 
 #: lib/Socialtext/DisplayPlugin.pm:26
 #.  
@@ -1362,7 +1362,7 @@ msgstr "発信者"
 #: lib/Socialtext/EmailReceiver/Base.pm:689
 #.  
 msgid "From:"
-msgstr ""
+msgstr "送信者:"
 
 #: share/template/element/settings/workspaces_permissions_section:64
 #.  
@@ -1382,7 +1382,7 @@ msgstr "Go to:"
 #: share/template/email/password-change.html:12 share/template/email/password-change.txt:1
 #.  
 msgid "Greetings from Socialtext,"
-msgstr ""
+msgstr "Socialtext からユーザの皆様へ"
 
 #: lib/Socialtext/DisplayPlugin.pm:25
 #.  
@@ -1392,7 +1392,7 @@ msgstr "Haxor"
 #: share/template/email/email-address-confirmation-completed.html:9 share/template/email/email-address-confirmation-completed.txt:1 share/template/email/openid/invite-request-email.html:8 share/template/email/openid/invite-request-email.txt:1 share/template/email/st/invite-request-email.html:8 share/template/email/st/invite-request-email.txt:1
 #.  
 msgid "Hello,"
-msgstr ""
+msgstr "こんにちは。"
 
 #: share/template/popup/.email_page.swp:6 share/template/popup/email_page:75
 #. (
@@ -1462,17 +1462,17 @@ msgstr "日付の書式を選択してください。"
 #: share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
 #. (
 msgid "I'm inviting you to join %1, one of our shared workspaces."
-msgstr "私たちの共有ワークスペースである%1にあなたをご招待します。"
+msgstr "私たちの共有ワークスペース %1 にあなたをご招待します。"
 
 #: share/template/email/openid/workspace-invitation.txt:5
 #. (
 msgid "I'm inviting you to join %1, one of our shared workspaces. Sign in using the information below:"
-msgstr ""
+msgstr "私たちの共有ワークスペース %1 にあなたをご招待します。次の情報を使ってサインインしてください。"
 
 #: share/template/email/openid/workspace-invitation-body.html:15
 #. (
 msgid "I'm inviting you to join %1, one of our\nshared workspaces."
-msgstr ""
+msgstr "私たちの共有ワークスペース %1 にあなたをご招待します。"
 
 #: share/template/element/settings/workspaces_settings_features_section:9
 #.  
@@ -1492,7 +1492,7 @@ msgstr "既に存在する \"%1\" ページを本当に上書きしたいので�
 #: share/template/errors/settings_requires_account:5 share/template/errors/watchlist_requires_account:5
 #. (
 msgid "If you do not already have an account, you can <a href=\"/nlw/register.html?redirect_to=%1\">register here</a>."
-msgstr ""
+msgstr "まだアカウントをお持ちでない場合は <a href=\"/nlw/register.html?redirect_to=%1\">ここから登録</a> することができます。"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:24
 #.  
@@ -1502,39 +1502,39 @@ msgstr "画像を選択しない場合は、Socialtext のロゴが使用され�
 #: share/template/email/password-change.txt:10
 #. (
 msgid "If you have any questions, please feel free to send email to\n%1."
-msgstr ""
+msgstr "ご質問はお気軽に %1 まで email でお寄せください。"
 
 #: share/template/email/password-change.html:21
 #. (
 msgid "If you have any questions, please feel free to send email to\n<a href=\"mailto:%1\">%2</a>."
-msgstr ""
+msgstr "ご質問はお気軽に \n<a href=\"mailto:%1\">%2</a> まで email でお寄せください。"
 
 #: share/template/email/standard-footer.html:7
 #. (
 msgid "If you have questions about this email, contact your wiki support at %1"
-msgstr "このemail に質問がある場合は、wiki サポート %1までご連絡ください。"
+msgstr "この Email についてのご質問は、wiki サポート %1 までお寄せください。"
 
 #: share/template/email/standard-footer.txt:3
 #. (
 msgid "If you have questions about this email, contact your wiki support at\n%1."
-msgstr ""
+msgstr "この Email についてのご質問は、wiki サポート %1 までお寄せください。"
 
 #: share/template/element/settings/users_invite_section:38
 #.  
 msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page."
-msgstr "何か追加したり、内容を変更したい場合は、各ページの一番上にある\"編集\"をクリックしてください。"
+msgstr "追加したり、変更したい内容がある場合は、各ページの一番上にある\"編集\"をクリックしてください。"
 
-#: share/template/element/settings/users_invite_search_section:85
+#: share/template/element/settings/users_invite_search_section:84
 #.  
-msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page.  Make your contributions in the text box, then click \"Save\"."
-msgstr ""
+msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page. Make your contributions in the text box, then click \"Save\"."
+msgstr "追加したり、変更したい内容がある場合は、各ページの一番上にある \"編集\" をクリックしてください。テキストボックス内を編集したら \"保存\" をクリックしてください。"
 
-#: share/template/search_help_field.html:22
+#: share/template/search_help_field.html:21
 #.  
 msgid "If you try to search on a field that does not exist (<tt>link:hello</tt>) or without a query (<tt>link:</tt>) you will see this message."
-msgstr ""
+msgstr "存在しないフィールド (<tt>link:hello</tt>) 、あるいは、クエリ (<tt>link:</tt>) なしで検索しようとすると、次のメッセージが表示されます。"
 
-#: share/template/element/settings/users_invite_search_section:77 share/template/element/settings/users_invite_section:32
+#: share/template/element/settings/users_invite_search_section:76 share/template/element/settings/users_invite_section:32
 #.  
 msgid "If you wish, you can include a personal message in the invitation email. You can edit the message to say anything you want."
 msgstr "Email 招待状にあなたのメッセージを添えることができます。"
@@ -1557,7 +1557,7 @@ msgstr "このページへのリンク"
 #: lib/Socialtext/Workspace.pm:366
 #.  
 msgid "Incoming email placement must be one of top, bottom, or replace."
-msgstr ""
+msgstr "受信した Email を上か下のどちらかに置くか、置き換えます。"
 
 #: share/template/element/settings/workspaces_permissions_section:77
 #.  
@@ -1572,7 +1572,7 @@ msgstr "changes parameter に無効な文字 '/' が含まれます。"
 #: share/template/email/openid/invite-request-email.html:4 share/template/email/st/invite-request-email.html:4
 #.  
 msgid "Invitation Request"
-msgstr ""
+msgstr "ユーザ招待のリクエスト"
 
 #: lib/Socialtext/OpenIdPlugin.pm:122
 #. (
@@ -1596,8 +1596,8 @@ msgstr "他のユーザを招待する"
 
 #: share/template/search_help_field.html:3
 #.  
-msgid "It looks like you are trying to search on a field in the search index.\n  At this time the fields available are:"
-msgstr ""
+msgid "It looks like you are trying to search on a field in the search index. At this time the fields available are:"
+msgstr "検索インデックス内のフィールドで検索しようとしているようです。\n 今回、利用できるフィールド:"
 
 #: share/template/element/settings/workspaces_create_section:24
 #.  
@@ -1682,7 +1682,7 @@ msgstr "最後に編集した人: %1"
 #: share/template/new_form_page/generic/new_form_page_query.html:20 share/template/new_form_page/new_form_page_query.html:21
 #.  
 msgid "Last name:"
-msgstr ""
+msgstr "姓:"
 
 #: share/template/view/refcard:24
 #.  
@@ -1707,17 +1707,17 @@ msgstr "%1のロケールは%2になっています。"
 #: share/template/authen/choose_password.html:3
 #.  
 msgid "Log in to Socialtext"
-msgstr ""
+msgstr "Socialtext にログイン"
 
 #: share/template/authen/choose_password.html:12
 #.  
 msgid "Log in with an existing account"
-msgstr ""
+msgstr "既存のアカウントでログイン"
 
 #: share/template/email/email-address-confirmation-completed.html:23 share/template/email/email-address-confirmation-completed.txt:9
 #.  
 msgid "Log in with your email address:"
-msgstr ""
+msgstr "Email アドレスでログイン:"
 
 #: share/template/element/wiki/nav:8
 #.  
@@ -1742,7 +1742,7 @@ msgstr "ログイン + 編集"
 #: lib/Socialtext/Workspace.pm:529
 #.  
 msgid "Logo file must be a gif, jpeg, or png file."
-msgstr ""
+msgstr "ロゴファイルは gif, jpeg, あるいは png でなければなりません。"
 
 #: share/template/view/empty_watchlist:14
 #. (
@@ -1844,7 +1844,7 @@ msgstr "新しいパスワードは6文字以上にしてください。"
 msgid "New search"
 msgstr "ワードを入力"
 
-#: share/template/element/settings/users_invite_search_section:99 share/template/element/settings/users_invite_section:52
+#: share/template/element/settings/users_invite_search_section:98 share/template/element/settings/users_invite_section:52
 #.  
 msgid "New users will be sent the following invitation email:"
 msgstr "次の招待状を email で新しいユーザに送ります。"
@@ -1872,7 +1872,7 @@ msgstr "いいえ"
 #: share/template/view/page/stats:65
 #.  
 msgid "No downloads."
-msgstr ""
+msgstr "ダウンロードはありません。"
 
 #: lib/Socialtext/UserSettingsPlugin.pm:298
 #.  
@@ -1887,7 +1887,7 @@ msgstr "ページID を入力してください。"
 #: share/template/authen/forgot_password.html:7
 #.  
 msgid "No problem, we can send you an email that will help. You will be able to change your password back to something you know."
-msgstr ""
+msgstr "問題ありません。あなたになじみのあるパスワードに戻すことができますので、送られてくる Email をご覧ください。。"
 
 #: share/template/view/page/display:88
 #.  
@@ -1917,7 +1917,7 @@ msgstr "このページに stats はまだありません。"
 #: share/template/view/page/stats:55
 #.  
 msgid "No uploads."
-msgstr ""
+msgstr "アップロードはありません。"
 
 #: lib/Socialtext/OpenIdPlugin.pm:36
 #.  
@@ -1937,7 +1937,7 @@ msgstr "ページ名が無効です。"
 #: share/template/element/page/newpage_duplicate:15
 #.  
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: lib/Socialtext/UserSettingsPlugin.pm:77
 #.  
@@ -1947,12 +1947,12 @@ msgstr "古いパスワードが間違っています。"
 #: share/template/email/st/workspace-invitation-body.html:26
 #.  
 msgid "Once you have confirmed your account, you will receive a second email with login details."
-msgstr "あなたのアカウントが確認されると、ログインの詳細を記載した2通目の email が送られてきます。"
+msgstr "あなたのアカウントが確認されると、ログインの詳細を記載した2通目の Email が送られてきます。"
 
 #: share/template/email/st/workspace-invitation.txt:10
 #.  
 msgid "Once you have confirmed your account, you will receive a second email\nwith login details."
-msgstr ""
+msgstr "あなたのアカウントが確認されると、ログインの詳細を記載した2通目の Email が送られてきます。"
 
 #: share/template/element/settings/workspaces_permissions_section:117
 #. (
@@ -1977,12 +1977,12 @@ msgstr "ワークスペースのメンバーだけが%1に Email を送ること
 #: share/template/element/settings/users_invite_openid_invite:12
 #.  
 msgid "OpenID for this user:"
-msgstr ""
+msgstr "このユーザの OpenID:"
 
 #: share/template/element/settings/users_invite_openid_invite:18
 #.  
 msgid "OpenID:"
-msgstr ""
+msgstr "OpenID:"
 
 #: share/template/workspaces_created_section.html:23
 #. (
@@ -2002,7 +2002,7 @@ msgstr "他の参加者も閲覧することができるので、あなたへメ
 #: share/template/element/page/newpage_duplicate:6
 #.  
 msgid "Page Already Exists"
-msgstr ""
+msgstr "すでに存在しているページ"
 
 #: lib/Socialtext/WikiwygPlugin.pm:20
 #.  
@@ -2012,7 +2012,7 @@ msgstr "ページの編集"
 #: share/template/lite/page/display.html:6
 #.  
 msgid "Page Last Updated:"
-msgstr ""
+msgstr "最後に更新されたページ:"
 
 #: share/template/view/refcard:23
 #.  
@@ -2087,9 +2087,9 @@ msgstr "'%1' (%2) を含むページ"
 #: lib/Socialtext/User/Default.pm:227
 #.  
 msgid "Passwords must be at least 6 characters long."
-msgstr ""
+msgstr "パスワードは6文字以上にしてください。"
 
-#: share/template/element/settings/users_invite_search_section:75 share/template/element/settings/users_invite_section:30
+#: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
 #.  
 msgid "Personal Message"
 msgstr "個人的な招待メッセージ"
@@ -2102,7 +2102,7 @@ msgstr "あなたの email アドレスを確認するには、<a href=\"%1\">�
 #: share/template/email/email-address-confirmation.html:15
 #. (
 msgid "Please <a href=\"%1\">click on\nthis link to confirm your email address and choose a password.</a>"
-msgstr ""
+msgstr "<a href=\"%1\">Email アドレスを確認しパスワードを選択するには、このリンクをクリックしてください。</a>"
 
 #: share/template/popup/.copy_to_workspace.swp:4 share/template/popup/copy_to_workspace:52
 #.  
@@ -2117,29 +2117,29 @@ msgstr "違う名前を選択してください。すでに存在する\"%1\" �
 #: share/template/email/password-change.html:6
 #.  
 msgid "Please choose a new Socialtext password"
-msgstr ""
+msgstr "新しい Socialtext パスワードを選択してください。"
 
 #: share/template/email/st/workspace-invitation.txt:8
 #.  
 msgid "Please click on this link to confirm your email address:"
-msgstr ""
+msgstr "このリンクをクリックして Email アドレスを確認してください:"
 
 #: share/template/email/email-address-confirmation.html:4
 #.  
 msgid "Please confirm your email address"
-msgstr ""
+msgstr "Email アドレスを確認してください。"
 
 #: lib/Socialtext/Handler/Authen.pm:185
 #.  
 msgid "Please enter an email address."
-msgstr ""
+msgstr "Email アドレスを入力してください。"
 
 #: share/template/element/settings/weblog_create:9
 #.  
 msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
 msgstr "あなたのウェブログに名前を付けてください。名前が \"Blog\" か \"Weblog\"で終わらない場合は、あなたの付けた名前に \"Blog\"が自動的に追加されます。\"保存\"をクリックすると、新しいウェブログが表示されます。"
 
-#: share/template/element/settings/users_invite_search_section:122 share/template/element/settings/users_invite_section:75
+#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
 msgid "Please invite these people into the %1 workspace."
 msgstr "この方たちを%1ワークスペースに招待してください。"
@@ -2147,7 +2147,7 @@ msgstr "この方たちを%1ワークスペースに招待してください。"
 #: share/template/view/category_display:39
 #.  
 msgid "Post to this tag by email:"
-msgstr ""
+msgstr "このタグを Email で投稿する"
 
 #: share/template/view/weblog:92 share/template/view/weblog:96
 #. (
@@ -2222,7 +2222,7 @@ msgstr "クイックジャンプ"
 #: share/template/authen/choose_password.html:32
 #.  
 msgid "Re-type Password:"
-msgstr ""
+msgstr "パスワード（再度入力）:"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
 #. (
@@ -2342,7 +2342,7 @@ msgstr "ページを回復"
 #: share/template/view/page/stats_index:6
 #.  
 msgid "Return to page"
-msgstr ""
+msgstr "ページに戻る"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:59
 #.  
@@ -2357,7 +2357,7 @@ msgstr "%1の設定を確認する、または、変更する:"
 #: lib/Socialtext/RevisionPlugin.pm:152 lib/Socialtext/RevisionPlugin.pm:76
 #. (
 msgid "Revision %1"
-msgstr "バージョン%1"
+msgstr "バージョン %1"
 
 #: share/template/element/listview/pages:80
 #.  
@@ -2367,7 +2367,7 @@ msgstr "バージョン"
 #: share/template/view/page_revision_list:10
 #.  
 msgid "Revisions to the current document"
-msgstr ""
+msgstr "現行のドキュメントの前バージョン"
 
 #: share/template/element/settings/workspaces_permissions_section:12
 #.  
@@ -2397,12 +2397,12 @@ msgstr "タグを保存する"
 #: share/template/element/page/newpage_duplicate:9
 #. (
 msgid "Save the page with the name \"<span id=\"%1-suggest\">XXX</span>\""
-msgstr ""
+msgstr "ページを \"<span id=\"%1-suggest\">XXX</span>\" という名前で保存する"
 
 #: share/template/element/page/newpage_duplicate:8
 #.  
 msgid "Save with a different name:"
-msgstr ""
+msgstr "違い名前で保存する:"
 
 #: lib/Socialtext/DisplayPlugin.pm:19
 #.  
@@ -2432,17 +2432,17 @@ msgstr "ワークスペース %2 で　%1 を検索"
 #: share/template/google_soap.html:18
 #. (
 msgid "Search for &quot;%1&quot;"
-msgstr ""
+msgstr "&quot;%1&quot; を検索する"
 
 #: share/template/element/settings/users_invite_search_section:6
 #.  
 msgid "Search for Users to Invite"
-msgstr ""
+msgstr "招待するユーザを検索する"
 
 #: share/template/lite/search/search.html:8
 #.  
 msgid "Search for the following terms:"
-msgstr ""
+msgstr "次のワードで検索する:"
 
 #: share/template/view/refcard:28
 #.  
@@ -2511,8 +2511,8 @@ msgstr "Simple"
 
 #: share/template/authen/forgot_password.html:32
 #.  
-msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system.  Please contact your directory administrator for assistance."
-msgstr ""
+msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system. Please contact your directory administrator for assistance."
+msgstr "あなたのパスワードは、あなたの所属する組織のディレクトリに保管されています。ですから、Socialtext のシステムからパスワードをリセットすることはできません。ディレクトリ管理者に連絡してください。"
 
 #: share/template/element/page/attachment_manage_interface:14 share/template/view/attachmentslist:21
 #.  
@@ -2549,7 +2549,7 @@ msgstr "最初に投稿された時間で並べ替える"
 msgid "Sort entries by last updated time"
 msgstr "最後に更新された時間で並べ替える"
 
-#: share/template/element/settings/users_invite_search_section:97 share/template/element/settings/users_invite_section:50
+#: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
 #.  
 msgid "Standard Welcome Message"
 msgstr "標準的な招待メッセージ"
@@ -2557,7 +2557,7 @@ msgstr "標準的な招待メッセージ"
 #: share/template/view/page/stats_index:4
 #.  
 msgid "Statistics Reports"
-msgstr ""
+msgstr "統計レポート"
 
 #: share/template/popup/.email_page.swp:8 share/template/popup/email_page:30
 #.  
@@ -2567,12 +2567,12 @@ msgstr "主題"
 #: share/template/authen/choose_password.html:37 share/template/new_form_page/new_form_page_buttons.html:4
 #.  
 msgid "Submit"
-msgstr ""
+msgstr "提出"
 
 #: share/template/element/pagestats/attachments_table:17
 #.  
 msgid "Subtotal for this attachment"
-msgstr ""
+msgstr "この添付についての小計"
 
 #: share/template/element/page/tag_queue_interface:11 share/template/element/page/tags:22
 #.  
@@ -2582,7 +2582,7 @@ msgstr "提案："
 #: share/template/view/page/stats:9
 #.  
 msgid "Summary"
-msgstr ""
+msgstr "要約"
 
 #: lib/Socialtext/SyndicatePlugin.pm:42
 #.  
@@ -2622,42 +2622,42 @@ msgstr "あなたの参加をお待ちしております。"
 #: lib/Socialtext/User/Default.pm:164
 #. (
 msgid "The %1 you provided (%2) is already in use."
-msgstr ""
+msgstr "あなたの入力した %1 (%2) はすでに使用されています。"
 
 #: share/template/element/settings/users_invite_section:36
 #.  
 msgid "The Workspace is easy to use. Click links to browse through the pages."
 msgstr "ワークスペースを使うのは簡単。リンクをクリックして、ページを閲覧してください。"
 
-#: share/template/element/settings/users_invite_search_section:82
+#: share/template/element/settings/users_invite_search_section:81
 #.  
 msgid "The Workspace is easy to use. Click links to browse through the\n>pages."
-msgstr ""
+msgstr "ワークスペースを使うのは簡単。リンクをクリックして、ページを閲覧してください。"
 
 #: lib/Socialtext/Account.pm:62
 #. (
 msgid "The account name you chose, %1, is already in use."
-msgstr ""
+msgstr "アカウント %1 はすでに使用されています。"
 
 #: lib/Socialtext/Handler/Authen.pm:273
 #.  
 msgid "The confirmation URL you used has expired. A new one will be sent."
-msgstr ""
+msgstr "あなたが使用していた確認用 URL は期限が切れています。新しい URL を送ります。"
 
 #: lib/Socialtext/Handler/Authen.pm:347
 #.  
 msgid "The confirmation email has been resent. Please follow the link in this email to activate your account."
-msgstr ""
+msgstr "確認の Email が再送信されました。この Email に記載のリンクからアカウントを有効にしてください。"
 
 #: lib/Socialtext/Handler/Authen.pm:340
 #. (
 msgid "The email address for %1 has already been confirmed."
-msgstr ""
+msgstr "%1 さんの Email アドレスは確認済みです。"
 
 #: share/template/authen/forgot_password.html:28
 #. (
 msgid "The email we will send you will come from <strong>%1</strong>. To ensure you receive it, please add <strong>%1</strong> to your address book or safe list."
-msgstr ""
+msgstr "<strong>%1</strong> から Email が送られます。受信を確認するために、 <strong>%1</strong> をアドレス帳、あるいは、受信許可リストに追加してください。"
 
 #: share/template/element/settings/users_invited_section:10
 #.  
@@ -2667,12 +2667,12 @@ msgstr "次の email アドレスは無効です。"
 #: share/template/email/recent-changes.html:24 share/template/email/recent-changes.txt:10
 #. (
 msgid "The following pages in %1 have recently changed:"
-msgstr ""
+msgstr "%1 の次のページは最近変更がありました:"
 
 #: share/template/email/watchlist.html:24 share/template/email/watchlist.txt:10
 #. (
 msgid "The following pages you are watching in %1 have recently changed:"
-msgstr ""
+msgstr "%1 であなたが見ている次のページは、最近変更がありました:"
 
 #: share/template/element/settings/users_invited_section:6
 #.  
@@ -2687,7 +2687,7 @@ msgstr "次のユーザをこのワークスペースに招待しました。"
 #: lib/Socialtext/Handler/Authen.pm:259 lib/Socialtext/Handler/Authen.pm:299 lib/Socialtext/Handler/Authen.pm:60
 #.  
 msgid "The given confirmation URL does not match any pending confirmations."
-msgstr ""
+msgstr "その確認用の URL に一致する、まだ行われていない確認はありません。"
 
 #: share/template/popup/rename:35
 #.  
@@ -2732,7 +2732,7 @@ msgstr "指定したページ ID (%1) は無効です。"
 #: share/template/popup/rename:61
 #. (
 msgid "The page name you selected, %1, is the same as the page's current title. Please enter a new page name."
-msgstr ""
+msgstr "ページ名 %1 はそのページの現在のタイトルです。新しいページ名を入力してください。"
 
 #: share/template/popup/.copy_to_workspace.swp:4 share/template/popup/copy_to_workspace:47 share/template/popup/duplicate:44 share/template/popup/rename:47
 #. (
@@ -2747,7 +2747,7 @@ msgstr "選択したページ名\"%1\" は、URL のエンコード処理を行�
 #: lib/Socialtext/Handler/Authen.pm:207 lib/Socialtext/Handler/Authen.pm:306
 #.  
 msgid "The passwords you provided did not match."
-msgstr ""
+msgstr "パスワードが一致しません。"
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:335
 #. (
@@ -2769,7 +2769,7 @@ msgstr "最近最もよく訪問されたワークスペースをダッシュボ
 msgid "The text you just edited is shown below. You can copy and paste your changes from there:"
 msgstr "今編集したテキストが以下に表示されますので、そこから変更をコピーして貼り付けることができます。"
 
-#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:73
+#: share/template/element/settings/users_invite_search_section:119 share/template/element/settings/users_invite_section:73
 #.  
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr "あなたのリクエストをこのワークスペースの管理者に送り、その後ユーザが招待されます。"
@@ -2797,7 +2797,7 @@ msgstr "このページにはタグはありません。"
 #: share/template/element/page/newpage_duplicate:7
 #. (
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
-msgstr ""
+msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の <span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span> 存在します。 しますか:"
 
 #: lib/Socialtext/WeblogPlugin.pm:89
 #. (
@@ -2807,7 +2807,7 @@ msgstr "'%1' ウェブログはすでに存在します。別の名前を選択�
 #: share/template/fetchrss.html:34
 #.  
 msgid "There was an error:"
-msgstr ""
+msgstr "エラーが発生しました:"
 
 #: share/template/element/settings/select:32
 #.  
@@ -2822,12 +2822,12 @@ msgstr "ページを指定する必要があります。"
 #: share/template/new_form_page/new_form_page_instructions.html:3
 #.  
 msgid "This form will create your profile page for Inbox. You can edit your\nprofile in the workspace afterwards if you'd like, but you don't have\nto. Except for your name, all fields are optional."
-msgstr ""
+msgstr "このフォームはあなたの Inbox の紹介ページを作成します。後にワークスペース内であなたの紹介文を編集することもできます。名前以外のフィールドはオプショナルです。"
 
 #: share/template/new_form_page/generic/new_form_page_instructions.html:3
 #.  
 msgid "This form will create your profile page. You can edit your\nprofile in the workspace afterwards if you'd like, but you don't have\nto. Except for your name, all fields are optional."
-msgstr ""
+msgstr "このフォームはあなたの Inbox の紹介ページを作成します。後にワークスペース内であなたの紹介文を編集することもできます。名前以外のフィールドはオプショナルです。"
 
 #: share/template/element/settings/workspaces_create_section:23
 #.  
@@ -2842,12 +2842,12 @@ msgstr "これは %1 の最初の投稿です。新しく投稿するには、Ne
 #: share/template/element/settings/workspaces_settings_appearance_section:8
 #.  
 msgid "This is the title of your workspace. It may be changed at any time."
-msgstr ""
+msgstr "あなたのワークスペースのタイトルです。いつでも変更できます。"
 
 #: share/template/element/settings/workspaces_create_section:9
 #.  
 msgid "This is the title of your workspace. It may be changed later if you want."
-msgstr ""
+msgstr "あなたのワークスペースのタイトルです。後で変更できます。"
 
 #: share/template/view/homepage:72
 #.  
@@ -2862,7 +2862,7 @@ msgstr "このページへのリンク:"
 #: lib/Socialtext/Handler/Authen.pm:113
 #.  
 msgid "This username has no associated email address."
-msgstr ""
+msgstr "このユーザには関連した Email アドレスがありません。"
 
 #: lib/Socialtext/TimeZonePlugin.pm:17
 #.  
@@ -2882,7 +2882,7 @@ msgstr "タイトル"
 #: lib/Socialtext/SearchPlugin.pm:119
 #. (
 msgid "Titles containing '%1' (%2)"
-msgstr ""
+msgstr "'%1' (%2) を含むタイトル"
 
 #: share/template/view/refcard:253
 #.  
@@ -2892,27 +2892,32 @@ msgstr "このように表記させるには..."
 #: share/template/email/password-change.txt:3
 #.  
 msgid "To change your password, please follow this link:"
-msgstr ""
+msgstr "パスワードの変更はこのリンクから:"
 
 #: share/template/email/email-address-confirmation-completed.html:19 share/template/email/email-address-confirmation-completed.txt:7
 #.  
 msgid "To do so, go to this web address:"
-msgstr ""
+msgstr "そうするにはこの web アドレスに行ってください:"
 
-#: share/template/email/openid/invite-request-email.html:26 share/template/email/st/invite-request-email.html:26
+#: share/template/email/openid/invite-request-email.html:26
 #.  
-msgid "To invite these users into the workspace, visit the user invite page for the <br />\nworkspace and copy and paste the list above into the invite box.  The User <br />\nInvite page can be found at:"
-msgstr ""
+msgid "To invite these users into the workspace, visit the user invite page for the <br /> workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
+msgstr "これらのユーザをワークスペースに招待するには、ワークスペースにユーザを招待するページで、上記のアドレスを招待ボックスにコピー＆ペーストしてください。ユーザ招待ページはここから。"
+
+#: share/template/email/st/invite-request-email.html:26
+#.  
+msgid "To invite these users into the workspace, visit the user invite page for the <br />workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
+msgstr "これらのユーザをワークスペースに招待するには、ワークスペースにユーザを招待するページで、上記のアドレスを招待ボックスにコピー＆ペーストしてください。ユーザ招待ページはここから。"
 
 #: share/template/email/openid/invite-request-email.txt:12 share/template/email/st/invite-request-email.txt:12
 #.  
 msgid "To invite these users into the workspace, visit the user invite page\nfor the workspace and copy and paste the list above into the invite box.\nThe User Invite page can be found at:"
-msgstr ""
+msgstr "これらのユーザをワークスペースに招待するには、ワークスペースにユーザを招待するページで、上記のアドレスを招待ボックスにコピー＆ペーストしてください。ユーザ招待ページはここから。"
 
-#: share/template/element/settings/users_invite_search_section:89
+#: share/template/element/settings/users_invite_search_section:88
 #.  
 msgid "To make a link to another page (even if it doesn't exist yet), put [square brackets around a word or phrase]."
-msgstr ""
+msgstr "別のページ（存在していないページも含む）にリンクを作成するには、四角括弧でワードやフレーズを囲んでください。"
 
 #: share/template/element/settings/users_invite_section:42
 #.  
@@ -2922,37 +2927,37 @@ msgstr "別のページ（存在していなくても可）にリンクを作成
 #: share/template/authen/choose_password.html:15
 #.  
 msgid "To proceed, please choose a password."
-msgstr ""
+msgstr "次に進むにはパスワードを選択してください。"
 
 #: share/template/errors/settings_requires_account:3
 #.  
 msgid "To set your preferences for a workspace, you must be logged in."
-msgstr ""
+msgstr "ワークスペースの設定を行うには、ログインする必要があります。"
 
 #: share/template/email/recent-changes.txt:3
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto %1, go to"
-msgstr ""
+msgstr "%1 の変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには..."
 
 #: share/template/email/recent-changes.html:16
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr ""
+msgstr "%1 の変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">設定を変更</a> してください。"
 
 #: share/template/email/watchlist.txt:3
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto your watchlist in %1, go to:"
-msgstr ""
+msgstr "%1 のウォッチリストの変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには..."
 
 #: share/template/email/watchlist.html:16
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto your watchlist in %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr ""
+msgstr "%1 のウォッチリストの変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">設定を変更</a> してください。"
 
 #: share/template/errors/watchlist_requires_account:3
 #.  
 msgid "To use the watchlist feature in a workspace, you must be logged in."
-msgstr ""
+msgstr "ワークスペースのウォッチリスト機能を使用するには、ログインする必要があります。"
 
 #: share/template/popup/.email_page.swp:13 share/template/popup/email_page:119
 #. (
@@ -2977,12 +2982,12 @@ msgstr "ページの一番上"
 #: share/template/view/page/stats:13
 #.  
 msgid "Total"
-msgstr ""
+msgstr "合計"
 
 #: share/template/view/page/stats:12
 #.  
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #: share/template/view/refcard:253
 #.  
@@ -2997,7 +3002,7 @@ msgstr "新しいパスワード（再入力）"
 #: lib/Socialtext/Workspace.pm:549
 #.  
 msgid "Unable to process logo file. Is it an image?"
-msgstr ""
+msgstr "ロゴファイルを処理できません。画像ファイルですか？"
 
 #: share/template/element/settings/select:27
 #.  
@@ -3057,7 +3062,7 @@ msgstr "アップロードしたユーザ"
 #: share/template/view/page/stats:26
 #.  
 msgid "Uploads"
-msgstr ""
+msgstr "アップロード"
 
 #: share/template/element/settings/users_settings_section:26
 #.  
@@ -3067,12 +3072,12 @@ msgstr "再ログイン時には、あなたの email アドレスと新しい�
 #: lib/Socialtext/WebApp.pm:215
 #.  
 msgid "Username"
-msgstr ""
+msgstr "ユーザ名"
 
 #: lib/Socialtext/Handler/Authen.pm:83 share/template/authen/choose_password.html:22
 #.  
 msgid "Username:"
-msgstr ""
+msgstr "ユーザ名:"
 
 #: share/template/element/settings/select:3
 #.  
@@ -3107,7 +3112,7 @@ msgstr "バリデーターのサブルーチンがバリデーターの外部を
 #: share/template/view/category_display:31
 #.  
 msgid "View"
-msgstr ""
+msgstr "閲覧"
 
 #: share/template/element/page/revision_compare_actions:23
 #.  
@@ -3122,7 +3127,7 @@ msgstr "バーションを見る"
 #: share/template/view/page/stats:18
 #.  
 msgid "Views"
-msgstr ""
+msgstr "閲覧"
 
 #: share/template/element/settings/workspaces_permissions_section:66
 #.  
@@ -3147,12 +3152,12 @@ msgstr "ウォッチリスト"
 #: share/template/email/watchlist.html:5
 #. (
 msgid "Watchlist Update for %1"
-msgstr ""
+msgstr "%1 のウォッチリストの更新"
 
 #: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:8
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
-msgstr ""
+msgstr "Socialtext wiki でお楽しみください。"
 
 #: share/template/view/weblog:15
 #.  
@@ -3192,7 +3197,7 @@ msgstr "ようこそ"
 #: share/template/email/email-address-confirmation.html:10 share/template/email/email-address-confirmation.txt:1
 #. (
 msgid "Welcome to %1"
-msgstr ""
+msgstr "%1 へようこそ"
 
 #: share/template/view/homepage:9
 #. (
@@ -3252,22 +3257,22 @@ msgstr "このワークスペースで\"Home\" をクリックした時に、あ
 #: share/template/email/password-change.html:16
 #. (
 msgid "When you <a href=\"[_1:]\">click on this link</a>, you\nwill be taken to a page which allows you to choose a new password."
-msgstr ""
+msgstr "<a href=\"[_1:]\">このリンクをクリック</a> すると、新しいパスワードの入力ページが表示されます。"
 
 #: share/template/email/password-change.txt:7
 #.  
 msgid "When you click on this link, you will be taken to a page which allows\nyou to choose a new password."
-msgstr ""
+msgstr "このリンクをクリックすると、新しいパスワードの入力ページが表示されます。"
 
 #: share/template/element/settings/users_invite_section:40
 #.  
 msgid "When you're entering text, just type in paragraphs."
 msgstr "テキストを入力する時は、段落に区切って入力してください。"
 
-#: share/template/element/settings/users_invite_search_section:87
+#: share/template/element/settings/users_invite_search_section:86
 #.  
 msgid "When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
-msgstr ""
+msgstr "テキストを入力する時は、段落に区切ってタイプしてください。壊したりしないかと心配しないでください。ページの前バージョンが保存されていますので、常に作業中のページのバックアップがあります。"
 
 #: lib/Socialtext/DisplayPlugin.pm:115
 #.  
@@ -3342,7 +3347,7 @@ msgstr "ワークスペースのウェブログの並べ替え"
 #: lib/Socialtext/Workspace.pm:410
 #.  
 msgid "Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes."
-msgstr ""
+msgstr "ワークスペース名は 3-30 文字でなければなりません。大文字、小文字、数字、アンダースコア、ダッシュのみを使用してください。"
 
 #: lib/Socialtext/Workspace.pm:361
 #.  
@@ -3387,7 +3392,7 @@ msgstr "ワークスペース: 退会する"
 #: lib/Socialtext/Handler/Authen.pm:122 lib/Socialtext/Handler/Authen.pm:132
 #.  
 msgid "Wrong email address or password - please try again."
-msgstr ""
+msgstr "Email あるいは、パスワードが間違っています。再入力してください。"
 
 #: share/template/view/refcard:222
 #.  
@@ -3407,7 +3412,7 @@ msgstr "はい"
 #: share/template/errors/unauthorized_workspace:3
 #.  
 msgid "You are not authorized to view this workspace."
-msgstr ""
+msgstr "このワークスペースを閲覧する権限がありません。"
 
 #: share/template/view/homepage:74
 #.  
@@ -3416,8 +3421,8 @@ msgstr "また、ここに覚えておきたいページへのリンクを作成
 
 #: share/template/bugs_content.html:20
 #. (
-msgid "You can assist the Socialtext team to fix this bug by entering a\n      comment about what actions you were performing when this bug\n      occurred<a\n      href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n      color: black; text-decoration: none;\">.</a> Please enter your\n      comments in the box below."
-msgstr ""
+msgid "You can assist the Socialtext team to fix this bug by entering a comment about what actions you were performing when this bug occurred<a href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-color: black; text-decoration: none;\">.</a> Please enter your comments in the box below."
+msgstr "どのような作業を行っている時にこのバグが発生したか <a\n href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n color: black; text-decoration: none;\">.</a> 報告してください。 Socialtext チームがバグを修正する助けになります。 以下のボックスに記述してください。"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:22
 #.  
@@ -3437,72 +3442,72 @@ msgstr "ウェブログのエントリを、更新日、または、エントリ
 #: share/template/email/openid/workspace-invitation.txt:10
 #.  
 msgid "You can now sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
-msgstr ""
+msgstr "OpenID を使用してサインインできます。Socialtext のログイン画面で、指定のフィールドにあなたの OpenID を入力してください。OpenID サイトが立ち上がり、あなたの身元を確認します。身元確認後、Socialtext のサイトに戻りますので、ワークスペースにアクセスできます。"
 
 #: share/template/email/openid/workspace-invitation-body.html:25
 #.  
-msgid "You can sign into our system using OpenID.  On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity.  Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
-msgstr ""
+msgid "You can sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
+msgstr "OpenID を使用してサインインできます。Socialtext のログイン画面で、指定のフィールドにあなたの OpenID を入力してください。OpenID サイトが立ち上がり、あなたの身元を確認します。身元確認後、Socialtext のサイトに戻りますので、ワークスペースにアクセスできます。"
 
 #: lib/Socialtext/Account.pm:70
 #.  
 msgid "You cannot change is_system_created for an account after it has been created."
-msgstr ""
+msgstr "アカウントの is_system_created は作成後、変更することができません。"
 
 #: lib/Socialtext/User/Default.pm:197
 #.  
 msgid "You cannot change the email address of a system-created user."
-msgstr ""
+msgstr "システムが作成したユーザの Email アドレスは変更することができません。"
 
 #: lib/Socialtext/Account.pm:66
 #.  
 msgid "You cannot change the name of a system-created account."
-msgstr ""
+msgstr "システムが作成したアカウント名は変更することができません。"
 
 #: lib/Socialtext/User/Default.pm:193
 #.  
 msgid "You cannot change the name of a system-created user."
-msgstr ""
+msgstr "システムが作成したユーザ名は変更することができません。"
 
 #: share/template/email/email-address-confirmation-completed.html:14 share/template/email/email-address-confirmation-completed.txt:4
 #. (
 msgid "You have confirmed your email address and can now log on to the\n%1 workspace."
-msgstr ""
+msgstr "あなたの Email アドレスが確認されたので、%1 ワークスペースにログインできます。"
 
-#: share/template/search_help_field.html:13
+#: share/template/search_help_field.html:12
 #.  
 msgid "You may search on a field by separating the field name from the query with a colon, like this:"
-msgstr ""
+msgstr "フィールド名とクエリをコロンで区切ることで、フィールド上で検索することができます。 例:"
 
 #: share/template/email/openid/workspace-invitation-body.html:28 share/template/email/openid/workspace-invitation.txt:12 share/template/email/st/workspace-invitation-body.html:44 share/template/email/st/workspace-invitation.txt:24
 #.  
 msgid "You may want to keep this email for future reference."
-msgstr ""
+msgstr "この Email を大切に保管しておいてください。"
 
 #: share/template/email/email-address-confirmation-completed.html:27
 #.  
 msgid "You may want to keep this email for future reference. If you have\nquestions, please contact your wiki support at"
-msgstr ""
+msgstr "この Email を大切に保管しておいてください。ご質問は wiki サポートまでお寄せください。"
 
 #: share/template/email/email-address-confirmation-completed.txt:11
 #. (
 msgid "You may want to keep this email for future reference. If you have\nquestions, please contact your wiki support at %1."
-msgstr ""
+msgstr "この Email を大切に保管しておいてください。ご質問は wiki サポート %1 までお寄せください。"
 
 #: share/template/errors/login_to_edit:3
 #. (
 msgid "You must be logged in to edit the %1 workspace."
-msgstr ""
+msgstr "%1 ワークスペースを編集するには、ログインする必要があります。"
 
 #: share/template/errors/authenticate_to_read:3
 #. (
-msgid "You must be logged in to view the %1 workspace.  If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
-msgstr ""
+msgid "You must be logged in to view the %1 workspace. If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
+msgstr "%1 ワークスペースを編集するには、ログインする必要があります。すでにアカウントをお持ちでしたら、すぐにログインしてください。 <br /> そうでなければ、 <a href=\"/nlw/register.html?redirect_to=%2\">新しいアカウントを作成する</a> ことができます。"
 
 #: share/template/errors/require_business_admin:2
 #.  
 msgid "You must have admin privileges to access this URI."
-msgstr ""
+msgstr "この URI にアクセスするには管理者権限が必要です。"
 
 #: lib/Socialtext/OpenIdPlugin.pm:42
 #.  
@@ -3512,37 +3517,37 @@ msgstr "OpenID と email の両方を入力してください。"
 #: share/template/errors/not_logged_in:2
 #.  
 msgid "You must login to view this page."
-msgstr ""
+msgstr "このページを見るにはログインする必要があります。"
 
 #: lib/Socialtext/Handler/Authen.pm:96
 #.  
 msgid "You must provide a valid email address."
-msgstr ""
+msgstr "有効な Email アドレスを指定してください。"
 
 #: share/template/errors/requires_confirmation:2
 #.  
 msgid "You need to confirm your email address to activate this account."
-msgstr ""
+msgstr "このアカウントを有効にするには、あなたのEmail アドレスを確認する必要があります。"
 
 #: share/template/errors/requires_confirmation:4
 #.  
 msgid "You should have received an email with a confirmation link."
-msgstr ""
+msgstr "確認用のリンクが記載された Email を受け取っているはずです。"
 
 #: share/template/email/email-address-confirmation.html:14
 #.  
 msgid "You signed up for a new account with our system and we need to confirm\nyour email address."
-msgstr ""
+msgstr "新しいアカウントでサインアップしたので、あなたの Email アドレスを確認する必要があります。"
 
 #: share/template/email/email-address-confirmation.txt:3
 #.  
 msgid "You signed up for a new account with our system and we need to confirm\nyour email address. Please follow this link to confirm your address:"
-msgstr ""
+msgstr "新しいアカウントでサインアップしたので、あなたの Email アドレスを確認する必要があります。このリンクからあなたのアドレスを確認してください:"
 
 #: share/template/workspaces_created_section.html:10
 #.  
 msgid "You're ready to jump to your new workspace, if you want to. Choose your next step:"
-msgstr ""
+msgstr "あなたの新しいワークスペースにジャンプすることもできます。次のステップを選択してください:"
 
 #: lib/Socialtext/FavoritesPlugin.pm:12 share/template/view/homepage:66
 #.  
@@ -3557,22 +3562,22 @@ msgstr "あなたのワークスペース"
 #: share/template/email/email-address-confirmation-completed.html:3
 #.  
 msgid "Your email address has been confirmed"
-msgstr ""
+msgstr "あなたの Email アドレスが確認されました。"
 
 #: lib/Socialtext/Handler/Authen.pm:285
 #. (
 msgid "Your email address, %1, has been confirmed. Please login."
-msgstr ""
+msgstr "あなたの Email アドレス %1 が確認されました。ログインしてください。"
 
 #: lib/Socialtext/Handler/Authen.pm:320
 #.  
 msgid "Your password has been set and you can now login."
-msgstr ""
+msgstr "あなたのパスワードが設定されましたので、ログインできます。"
 
-#: share/template/search_help_field.html:26
+#: share/template/search_help_field.html:25
 #. (
 msgid "Your query was \"%1\""
-msgstr ""
+msgstr "あなたのクエリは \"%1\" でした。"
 
 #: share/template/element/settings/users_invited_section:18
 #.  
@@ -3649,15 +3654,15 @@ msgstr "自動、アメリカ合衆国"
 msgid "bold words"
 msgstr "太字"
 
-#: share/template/search_help_field.html:9
+#: share/template/search_help_field.html:8
 #.  
 msgid "category"
-msgstr ""
+msgstr "カテゴリー"
 
-#: share/template/search_help_field.html:18
+#: share/template/search_help_field.html:17
 #.  
 msgid "category:help"
-msgstr ""
+msgstr "category:help"
 
 #: share/template/view/homepage:128
 #.  
@@ -3862,7 +3867,7 @@ msgstr "パーマリンク"
 #: lib/Socialtext/WeblogPlugin.pm:146
 #.  
 msgid "recent changes"
-msgstr ""
+msgstr "最近の変更"
 
 #: share/template/element/settings/workspaces_permissions_section:116
 #.  
@@ -3909,15 +3914,15 @@ msgstr "表"
 msgid "this text is not bold"
 msgstr "このテキストは太字ではありません。"
 
-#: share/template/search_help_field.html:8
+#: share/template/search_help_field.html:7
 #.  
 msgid "title"
-msgstr ""
+msgstr "タイトル"
 
-#: share/template/search_help_field.html:17
+#: share/template/search_help_field.html:16
 #.  
 msgid "title:hello"
-msgstr ""
+msgstr "title:hello"
 
 #: share/template/popup/.email_page.swp:13 share/template/popup/email_page:123
 #.  
@@ -3927,7 +3932,7 @@ msgstr "ここに email アドレスをタイプしてください。"
 #: share/template/email/openid/workspace-invitation-body.html:22 share/template/email/openid/workspace-invitation.txt:8 share/template/email/st/workspace-invitation-body.html:31 share/template/email/st/workspace-invitation.txt:14
 #.  
 msgid "username:"
-msgstr ""
+msgstr "ユーザ名:"
 
 #: share/template/view/refcard:18
 #.  

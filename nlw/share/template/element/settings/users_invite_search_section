@@ -11,8 +11,7 @@
 
    [% IF invitation_filter %]
    <div class="workspace-entry-p">
-     [% loc('A filter has been set on this workspace. All candidate email
-     addresses must match this pattern:') %]
+     [% loc('A filter has been set on this workspace. All candidate email addresses must match this pattern:') %]
      <span style="color: red">
        [% invitation_filter %]
      </span>

@@ -41,7 +41,7 @@ msgstr ""
 
 #: lib/Socialtext/Handler/Authen.pm:163 lib/Socialtext/Handler/Authen.pm:335
 #. (
-msgid "%1 is not registered as a user.  Try a different email address?"
+msgid "%1 is not registered as a user. Try a different email address?"
 msgstr ""
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
@@ -239,7 +239,7 @@ msgstr ""
 msgid "-1200 International Date Line West"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:109 share/template/element/settings/users_invite_section:62
+#: share/template/element/settings/users_invite_search_section:108 share/template/element/settings/users_invite_section:62
 #.  
 msgid "<Your personal message goes here.>"
 msgstr ""
@@ -299,14 +299,14 @@ msgstr ""
 msgid "A dialog box will pop up after your password is changed."
 msgstr ""
 
+#: share/template/element/settings/users_invite_search_section:14
+#.  
+msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern:"
+msgstr ""
+
 #: share/template/element/settings/users_invite_section:14
 #. (
 msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
-msgstr ""
-
-#: share/template/element/settings/users_invite_search_section:14
-#.  
-msgid "A filter has been set on this workspace. All candidate email\n     addresses must match this pattern:"
 msgstr ""
 
 #: lib/Socialtext/EditPlugin.pm:148
@@ -414,7 +414,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:118 share/template/element/settings/users_invite_section:71
+#: share/template/element/settings/users_invite_search_section:117 share/template/element/settings/users_invite_section:71
 #.  
 msgid "Administrator Notification"
 msgstr ""
@@ -534,12 +534,12 @@ msgstr ""
 msgid "Anyone can send email to this workspace."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:74
+#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:74
 #.  
 msgid "Append the extra text below?"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:80 share/template/element/settings/users_invite_section:35
+#: share/template/element/settings/users_invite_search_section:79 share/template/element/settings/users_invite_section:35
 #.  
 msgid "Append the personal message below?"
 msgstr ""
@@ -584,7 +584,7 @@ msgstr ""
 msgid "As a Socialtext customer, you have access to the %1."
 msgstr ""
 
-#: share/template/search_help_field.html:30
+#: share/template/search_help_field.html:29
 #.  
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr ""
@@ -1259,7 +1259,7 @@ msgstr ""
 msgid "Every Week"
 msgstr ""
 
-#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:24 share/template/element/settings/users_invite_section:19
+#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:23 share/template/element/settings/users_invite_section:19
 #.  
 msgid "Example:"
 msgstr ""
@@ -1524,17 +1524,17 @@ msgstr ""
 msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:85
+#: share/template/element/settings/users_invite_search_section:84
 #.  
-msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page.  Make your contributions in the text box, then click \"Save\"."
+msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page. Make your contributions in the text box, then click \"Save\"."
 msgstr ""
 
-#: share/template/search_help_field.html:22
+#: share/template/search_help_field.html:21
 #.  
 msgid "If you try to search on a field that does not exist (<tt>link:hello</tt>) or without a query (<tt>link:</tt>) you will see this message."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:77 share/template/element/settings/users_invite_section:32
+#: share/template/element/settings/users_invite_search_section:76 share/template/element/settings/users_invite_section:32
 #.  
 msgid "If you wish, you can include a personal message in the invitation email. You can edit the message to say anything you want."
 msgstr ""
@@ -1596,7 +1596,7 @@ msgstr ""
 
 #: share/template/search_help_field.html:3
 #.  
-msgid "It looks like you are trying to search on a field in the search index.\n  At this time the fields available are:"
+msgid "It looks like you are trying to search on a field in the search index. At this time the fields available are:"
 msgstr ""
 
 #: share/template/element/settings/workspaces_create_section:24
@@ -1844,7 +1844,7 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:99 share/template/element/settings/users_invite_section:52
+#: share/template/element/settings/users_invite_search_section:98 share/template/element/settings/users_invite_section:52
 #.  
 msgid "New users will be sent the following invitation email:"
 msgstr ""
@@ -2089,7 +2089,7 @@ msgstr ""
 msgid "Passwords must be at least 6 characters long."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:75 share/template/element/settings/users_invite_section:30
+#: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
 #.  
 msgid "Personal Message"
 msgstr ""
@@ -2139,7 +2139,7 @@ msgstr ""
 msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:122 share/template/element/settings/users_invite_section:75
+#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
 msgid "Please invite these people into the %1 workspace."
 msgstr ""
@@ -2511,7 +2511,7 @@ msgstr ""
 
 #: share/template/authen/forgot_password.html:32
 #.  
-msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system.  Please contact your directory administrator for assistance."
+msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system. Please contact your directory administrator for assistance."
 msgstr ""
 
 #: share/template/element/page/attachment_manage_interface:14 share/template/view/attachmentslist:21
@@ -2549,7 +2549,7 @@ msgstr ""
 msgid "Sort entries by last updated time"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:97 share/template/element/settings/users_invite_section:50
+#: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
 #.  
 msgid "Standard Welcome Message"
 msgstr ""
@@ -2629,7 +2629,7 @@ msgstr ""
 msgid "The Workspace is easy to use. Click links to browse through the pages."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:82
+#: share/template/element/settings/users_invite_search_section:81
 #.  
 msgid "The Workspace is easy to use. Click links to browse through the\n>pages."
 msgstr ""
@@ -2769,7 +2769,7 @@ msgstr ""
 msgid "The text you just edited is shown below. You can copy and paste your changes from there:"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:73
+#: share/template/element/settings/users_invite_search_section:119 share/template/element/settings/users_invite_section:73
 #.  
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr ""
@@ -2899,9 +2899,14 @@ msgstr ""
 msgid "To do so, go to this web address:"
 msgstr ""
 
-#: share/template/email/openid/invite-request-email.html:26 share/template/email/st/invite-request-email.html:26
+#: share/template/email/openid/invite-request-email.html:26
 #.  
-msgid "To invite these users into the workspace, visit the user invite page for the <br />\nworkspace and copy and paste the list above into the invite box.  The User <br />\nInvite page can be found at:"
+msgid "To invite these users into the workspace, visit the user invite page for the <br /> workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
+msgstr ""
+
+#: share/template/email/st/invite-request-email.html:26
+#.  
+msgid "To invite these users into the workspace, visit the user invite page for the <br />workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
 msgstr ""
 
 #: share/template/email/openid/invite-request-email.txt:12 share/template/email/st/invite-request-email.txt:12
@@ -2909,7 +2914,7 @@ msgstr ""
 msgid "To invite these users into the workspace, visit the user invite page\nfor the workspace and copy and paste the list above into the invite box.\nThe User Invite page can be found at:"
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:89
+#: share/template/element/settings/users_invite_search_section:88
 #.  
 msgid "To make a link to another page (even if it doesn't exist yet), put [square brackets around a word or phrase]."
 msgstr ""
@@ -3264,7 +3269,7 @@ msgstr ""
 msgid "When you're entering text, just type in paragraphs."
 msgstr ""
 
-#: share/template/element/settings/users_invite_search_section:87
+#: share/template/element/settings/users_invite_search_section:86
 #.  
 msgid "When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr ""
@@ -3416,7 +3421,7 @@ msgstr ""
 
 #: share/template/bugs_content.html:20
 #. (
-msgid "You can assist the Socialtext team to fix this bug by entering a\n      comment about what actions you were performing when this bug\n      occurred<a\n      href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n      color: black; text-decoration: none;\">.</a> Please enter your\n      comments in the box below."
+msgid "You can assist the Socialtext team to fix this bug by entering a comment about what actions you were performing when this bug occurred<a href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-color: black; text-decoration: none;\">.</a> Please enter your comments in the box below."
 msgstr ""
 
 #: share/template/element/settings/workspaces_settings_appearance_section:22
@@ -3441,7 +3446,7 @@ msgstr ""
 
 #: share/template/email/openid/workspace-invitation-body.html:25
 #.  
-msgid "You can sign into our system using OpenID.  On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity.  Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
+msgid "You can sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
 msgstr ""
 
 #: lib/Socialtext/Account.pm:70
@@ -3469,7 +3474,7 @@ msgstr ""
 msgid "You have confirmed your email address and can now log on to the\n%1 workspace."
 msgstr ""
 
-#: share/template/search_help_field.html:13
+#: share/template/search_help_field.html:12
 #.  
 msgid "You may search on a field by separating the field name from the query with a colon, like this:"
 msgstr ""
@@ -3496,7 +3501,7 @@ msgstr ""
 
 #: share/template/errors/authenticate_to_read:3
 #. (
-msgid "You must be logged in to view the %1 workspace.  If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
+msgid "You must be logged in to view the %1 workspace. If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
 msgstr ""
 
 #: share/template/errors/require_business_admin:2
@@ -3569,7 +3574,7 @@ msgstr ""
 msgid "Your password has been set and you can now login."
 msgstr ""
 
-#: share/template/search_help_field.html:26
+#: share/template/search_help_field.html:25
 #. (
 msgid "Your query was \"%1\""
 msgstr ""
@@ -3649,12 +3654,12 @@ msgstr ""
 msgid "bold words"
 msgstr ""
 
-#: share/template/search_help_field.html:9
+#: share/template/search_help_field.html:8
 #.  
 msgid "category"
 msgstr ""
 
-#: share/template/search_help_field.html:18
+#: share/template/search_help_field.html:17
 #.  
 msgid "category:help"
 msgstr ""
@@ -3909,12 +3914,12 @@ msgstr ""
 msgid "this text is not bold"
 msgstr ""
 
-#: share/template/search_help_field.html:8
+#: share/template/search_help_field.html:7
 #.  
 msgid "title"
 msgstr ""
 
-#: share/template/search_help_field.html:17
+#: share/template/search_help_field.html:16
 #.  
 msgid "title:hello"
 msgstr ""

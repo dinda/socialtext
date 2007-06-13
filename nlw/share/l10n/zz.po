@@ -41,8 +41,8 @@ msgstr "%1 Is n07 4 v4lId 3M4Il 4DdR3Ss."
 
 #: lib/Socialtext/Handler/Authen.pm:163 lib/Socialtext/Handler/Authen.pm:335
 #. (
-msgid "%1 is not registered as a user.  Try a different email address?"
-msgstr "%1 Is n07 r3gIs73R3D 4s 4 uS3R.  7rY 4 DiFf3r3n7 3m4iL 4dDr3sS?"
+msgid "%1 is not registered as a user. Try a different email address?"
+msgstr "%1 Is n07 r3gIs73R3D 4s 4 uS3R. 7Ry 4 dIfF3R3N7 3M4Il 4DdR3Ss?"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
@@ -239,7 +239,7 @@ msgstr "-1100 n0m3"
 msgid "-1200 International Date Line West"
 msgstr "-1200 iN73rN47i0n4l d473 LiN3 w3s7"
 
-#: share/template/element/settings/users_invite_search_section:109 share/template/element/settings/users_invite_section:62
+#: share/template/element/settings/users_invite_search_section:108 share/template/element/settings/users_invite_section:62
 #.  
 msgid "<Your personal message goes here.>"
 msgstr "<Y0Ur p3rS0N4L M3Ss4g3 G03s h3r3.>"
@@ -299,15 +299,15 @@ msgstr "<U>P4G3 lInK</u> 70 dIfF3R3N7-w0rKsP4C3"
 msgid "A dialog box will pop up after your password is changed."
 msgstr "4 dI4L0G 80X WiLl p0p uP 4f73R Y0Ur p4sSw0rD Is cH4Ng3d."
 
+#: share/template/element/settings/users_invite_search_section:14
+#.  
+msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern:"
+msgstr "4 fIl73R H4S 833n s37 0N 7hIs w0rKsP4C3. 4lL C4NdId473 3m4iL 4dDr3sS3S MuS7 m47Ch 7HiS P4773rN:"
+
 #: share/template/element/settings/users_invite_section:14
 #. (
 msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
 msgstr "4 fIl73R H4S 833n s37 0N 7hIs w0rKsP4C3. 4lL C4NdId473 3m4iL 4dDr3sS3S MuS7 m47Ch 7HiS P4773rN: <Sp4n s7yL3=\"c0l0r: R3D\"> %1 </Sp4n>"
-
-#: share/template/element/settings/users_invite_search_section:14
-#.  
-msgid "A filter has been set on this workspace. All candidate email\n     addresses must match this pattern:"
-msgstr "4 fIl73R H4S 833n s37 0N 7hIs w0rKsP4C3. 4lL C4NdId473 3m4iL\N     4dDr3sS3S MuS7 m47Ch 7HiS P4773rN:"
 
 #: lib/Socialtext/EditPlugin.pm:148
 #.  
@@ -414,7 +414,7 @@ msgstr "4DdI7I0N4L R3CiPi3n7"
 msgid "Admin"
 msgstr "4DmIn"
 
-#: share/template/element/settings/users_invite_search_section:118 share/template/element/settings/users_invite_section:71
+#: share/template/element/settings/users_invite_search_section:117 share/template/element/settings/users_invite_section:71
 #.  
 msgid "Administrator Notification"
 msgstr "4DmInIs7r470r n07IfIc47I0N"
@@ -534,12 +534,12 @@ msgstr "4Ny0n3 C4N S3Nd 3M4Il 70 %1."
 msgid "Anyone can send email to this workspace."
 msgstr "4Ny0n3 C4N S3Nd 3M4Il 70 7hIs w0rKsP4C3."
 
-#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:74
+#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:74
 #.  
 msgid "Append the extra text below?"
 msgstr "4Pp3nD 7h3 3x7r4 73X7 83l0w?"
 
-#: share/template/element/settings/users_invite_search_section:80 share/template/element/settings/users_invite_section:35
+#: share/template/element/settings/users_invite_search_section:79 share/template/element/settings/users_invite_section:35
 #.  
 msgid "Append the personal message below?"
 msgstr "4Pp3nD 7h3 P3Rs0n4l m3sS4G3 83l0w?"
@@ -584,7 +584,7 @@ msgstr "4PpLiC47i0n 3Rr0r 0N %1: %2"
 msgid "As a Socialtext customer, you have access to the %1."
 msgstr "4S 4 S0Ci4l73X7 cUs70M3R, y0u h4v3 4cC3Ss 70 7h3 %1."
 
-#: share/template/search_help_field.html:30
+#: share/template/search_help_field.html:29
 #.  
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "4S W3 c0n7iNu3 70 d3v3l0p 7H3 s34RcH SyS73m, 7h3 0p7i0nS Y0U WiLl h4v3 4nD 7h3 In73Rf4c3 Y0U H4V3 70 M4K3 uS3 0F 7h3m wIlL ImPr0v3."
@@ -1259,7 +1259,7 @@ msgstr "3V3Ry mInU73"
 msgid "Every Week"
 msgstr "3V3Ry w33K"
 
-#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:24 share/template/element/settings/users_invite_section:19
+#: share/template/element/settings/users_invite_openid_invite:17 share/template/element/settings/users_invite_search_section:23 share/template/element/settings/users_invite_section:19
 #.  
 msgid "Example:"
 msgstr "3X4MpL3:"
@@ -1524,17 +1524,17 @@ msgstr "iF Y0U H4V3 qU3S7I0Ns 480U7 7HiS 3m4iL, c0n74C7 y0uR WiKi sUpP0R7 47\N%1
 msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page."
 msgstr "iF Y0U S33 S0M37hInG Y0U'D LiK3 70 4dD 70 0R Ch4nG3, ClIcK 7h3 \"3dI7\" lInK 47 7H3 70p 0F 34Ch p4g3."
 
-#: share/template/element/settings/users_invite_search_section:85
+#: share/template/element/settings/users_invite_search_section:84
 #.  
-msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page.  Make your contributions in the text box, then click \"Save\"."
-msgstr "iF Y0U S33 S0M37hInG Y0U'D LiK3 70 4dD 70 0R Ch4nG3, ClIcK 7h3 \"3dI7\" lInK 47 7H3 70p 0F 34Ch p4g3.  M4K3 y0uR C0N7Ri8u7i0nS In 7H3 73x7 80X, 7H3N ClIcK \"S4V3\"."
+msgid "If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page. Make your contributions in the text box, then click \"Save\"."
+msgstr "iF Y0U S33 S0M37hInG Y0U'D LiK3 70 4dD 70 0R Ch4nG3, ClIcK 7h3 \"3dI7\" lInK 47 7H3 70p 0F 34Ch p4g3. m4k3 Y0Ur c0n7rI8U7I0Ns iN 7h3 73X7 80x, 7h3n cLiCk \"s4v3\"."
 
-#: share/template/search_help_field.html:22
+#: share/template/search_help_field.html:21
 #.  
 msgid "If you try to search on a field that does not exist (<tt>link:hello</tt>) or without a query (<tt>link:</tt>) you will see this message."
 msgstr "iF Y0U 7rY 70 s34RcH 0n 4 fI3Ld 7H47 D03s n07 3XiS7 (<77>LiNk:h3lL0</77>) 0R Wi7h0u7 4 Qu3rY (<77>lInK:</77>) y0u wIlL S33 7hIs m3sS4G3."
 
-#: share/template/element/settings/users_invite_search_section:77 share/template/element/settings/users_invite_section:32
+#: share/template/element/settings/users_invite_search_section:76 share/template/element/settings/users_invite_section:32
 #.  
 msgid "If you wish, you can include a personal message in the invitation email. You can edit the message to say anything you want."
 msgstr "iF Y0U WiSh, Y0U C4N InClUd3 4 P3Rs0n4l m3sS4G3 iN 7h3 InVi747i0n 3M4Il. Y0U C4N 3dI7 7H3 m3sS4G3 70 S4Y 4nY7HiNg y0u w4n7."
@@ -1596,8 +1596,8 @@ msgstr "iNvI73 07H3R Us3rS"
 
 #: share/template/search_help_field.html:3
 #.  
-msgid "It looks like you are trying to search on a field in the search index.\n  At this time the fields available are:"
-msgstr "i7 L00kS LiK3 y0u 4R3 7RyInG 70 s34RcH 0n 4 fI3Ld iN 7h3 S34rCh iNd3x.\N  47 7hIs 7Im3 7h3 Fi3lDs 4V4Il48L3 4R3:"
+msgid "It looks like you are trying to search on a field in the search index. At this time the fields available are:"
+msgstr "i7 L00kS LiK3 y0u 4R3 7RyInG 70 s34RcH 0n 4 fI3Ld iN 7h3 S34rCh iNd3x. 47 7HiS 7iM3 7H3 fI3LdS 4v4iL48l3 4r3:"
 
 #: share/template/element/settings/workspaces_create_section:24
 #.  
@@ -1844,7 +1844,7 @@ msgstr "n3w p4sSw0rDs mUs7 83 47 L34s7 6 Ch4r4c73Rs l0nG."
 msgid "New search"
 msgstr "n3w s34RcH"
 
-#: share/template/element/settings/users_invite_search_section:99 share/template/element/settings/users_invite_section:52
+#: share/template/element/settings/users_invite_search_section:98 share/template/element/settings/users_invite_section:52
 #.  
 msgid "New users will be sent the following invitation email:"
 msgstr "n3w uS3Rs wIlL 83 s3n7 7h3 F0Ll0wInG InVi747i0n 3M4Il:"
@@ -2089,7 +2089,7 @@ msgstr "p4g3s c0n74InInG '%1' (%2)"
 msgid "Passwords must be at least 6 characters long."
 msgstr "p4sSw0rDs mUs7 83 47 L34s7 6 Ch4r4c73Rs l0nG."
 
-#: share/template/element/settings/users_invite_search_section:75 share/template/element/settings/users_invite_section:30
+#: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
 #.  
 msgid "Personal Message"
 msgstr "p3rS0N4L M3Ss4g3"
@@ -2139,7 +2139,7 @@ msgstr "pL34s3 3n73R 4n 3M4Il 4DdR3Ss."
 msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
 msgstr "pL34s3 GiV3 y0uR W38l0g 4 n4m3. iF 7h3 N4M3 y0u pR0ViD3 d03S N07 3nD Wi7h \"8L0G\" 0r \"w38L0G\", 7H3 sYs73M WiLl 4Dd \"8L0G\" 70 7H3 n4m3 Y0U Pr0vId3. 4F73r y0u cLiCk \"s4v3\", y0u'lL 83 74k3n rIgH7 70 7h3 N3W W38l0g."
 
-#: share/template/element/settings/users_invite_search_section:122 share/template/element/settings/users_invite_section:75
+#: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
 msgid "Please invite these people into the %1 workspace."
 msgstr "pL34s3 InVi73 7H3S3 p30Pl3 In70 7H3 %1 W0RkSp4c3."
@@ -2511,8 +2511,8 @@ msgstr "sImPl3"
 
 #: share/template/authen/forgot_password.html:32
 #.  
-msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system.  Please contact your directory administrator for assistance."
-msgstr "sInC3 y0uR P4SsW0Rd iS S70r3d iN 7h3 DiR3C70rY F0R Y0Ur 0Rg4nIz47I0N, 7H3R3 iS N0 w4y 70 R3S37 Y0Ur p4sSw0rD Wi7hIn 7H3 s0cI4L73x7 SyS73m.  pL34s3 C0N74c7 Y0Ur dIr3c70Ry 4DmInIs7r470r f0r 4SsIs74Nc3."
+msgid "Since your password is stored in the directory for your organization, there is no way to reset your password within the Socialtext system. Please contact your directory administrator for assistance."
+msgstr "sInC3 y0uR P4SsW0Rd iS S70r3d iN 7h3 DiR3C70rY F0R Y0Ur 0Rg4nIz47I0N, 7H3R3 iS N0 w4y 70 R3S37 Y0Ur p4sSw0rD Wi7hIn 7H3 s0cI4L73x7 SyS73m. Pl34S3 c0n74C7 y0uR DiR3C70rY 4dMiNiS7R470R F0R 4sSiS74nC3."
 
 #: share/template/element/page/attachment_manage_interface:14 share/template/view/attachmentslist:21
 #.  
@@ -2549,7 +2549,7 @@ msgstr "s0r7 3n7rI3S 8y fIrS7 p0s73D 7iM3"
 msgid "Sort entries by last updated time"
 msgstr "s0r7 3n7rI3S 8y l4s7 UpD473D 7iM3"
 
-#: share/template/element/settings/users_invite_search_section:97 share/template/element/settings/users_invite_section:50
+#: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
 #.  
 msgid "Standard Welcome Message"
 msgstr "s74Nd4rD W3Lc0m3 M3Ss4g3"
@@ -2629,7 +2629,7 @@ msgstr "7H3 %1 Y0U Pr0vId3d (%2) Is 4Lr34Dy iN Us3."
 msgid "The Workspace is easy to use. Click links to browse through the pages."
 msgstr "7H3 w0rKsP4C3 iS 34Sy 70 Us3. cLiCk lInKs 70 8r0wS3 7Hr0uGh 7H3 p4g3s."
 
-#: share/template/element/settings/users_invite_search_section:82
+#: share/template/element/settings/users_invite_search_section:81
 #.  
 msgid "The Workspace is easy to use. Click links to browse through the\n>pages."
 msgstr "7H3 w0rKsP4C3 iS 34Sy 70 Us3. cLiCk lInKs 70 8r0wS3 7Hr0uGh 7H3\n>p4g3s."
@@ -2769,7 +2769,7 @@ msgstr "7H3 73n m0s7 R3C3N7Ly vIsI73d 0F 7h3s3 W0RkSp4c3s 4R3 dIsPl4y3d iN 7h3 D
 msgid "The text you just edited is shown below. You can copy and paste your changes from there:"
 msgstr "7H3 73x7 Y0U JuS7 3Di73D Is sH0Wn 83l0w. Y0U C4N C0Py 4Nd p4s73 y0uR Ch4nG3S Fr0m 7H3R3:"
 
-#: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:73
+#: share/template/element/settings/users_invite_search_section:119 share/template/element/settings/users_invite_section:73
 #.  
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr "7H3 w0rKsP4C3 4DmInIs7r470rS F0R 7hIs sP4C3 wIlL R3C3Iv3 4 N07iFiC47i0n 0F Y0Ur r3qU3S7 s0 7h47 7H3 uS3Rs c4n 83 InVi73D."
@@ -2899,17 +2899,22 @@ msgstr "70 Ch4nG3 y0uR P4SsW0Rd, Pl34S3 f0lL0W 7hIs lInK:"
 msgid "To do so, go to this web address:"
 msgstr "70 D0 s0, g0 70 7HiS W38 4dDr3sS:"
 
-#: share/template/email/openid/invite-request-email.html:26 share/template/email/st/invite-request-email.html:26
+#: share/template/email/openid/invite-request-email.html:26
 #.  
-msgid "To invite these users into the workspace, visit the user invite page for the <br />\nworkspace and copy and paste the list above into the invite box.  The User <br />\nInvite page can be found at:"
-msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 <8R />\nW0RkSp4c3 4nD C0Py 4Nd p4s73 7H3 lIs7 480v3 In70 7H3 iNvI73 80X.  7h3 Us3r <8r />\NiNvI73 P4G3 c4n 83 F0UnD 47:"
+msgid "To invite these users into the workspace, visit the user invite page for the <br /> workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
+msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 <8R /> w0rKsP4C3 4Nd c0pY 4nD P4S73 7h3 LiS7 480V3 iN70 7h3 InVi73 80x. 7h3 Us3r <8r />iNvI73 P4G3 c4n 83 F0UnD 47:"
+
+#: share/template/email/st/invite-request-email.html:26
+#.  
+msgid "To invite these users into the workspace, visit the user invite page for the <br />workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
+msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 <8R />W0RkSp4c3 4nD C0Py 4Nd p4s73 7H3 lIs7 480v3 In70 7H3 iNvI73 80X. 7H3 uS3R <8R />InVi73 p4g3 C4N 83 f0uNd 47:"
 
 #: share/template/email/openid/invite-request-email.txt:12 share/template/email/st/invite-request-email.txt:12
 #.  
 msgid "To invite these users into the workspace, visit the user invite page\nfor the workspace and copy and paste the list above into the invite box.\nThe User Invite page can be found at:"
 msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3\Nf0r 7H3 w0rKsP4C3 4Nd c0pY 4nD P4S73 7h3 LiS7 480V3 iN70 7h3 InVi73 80x.\N7H3 uS3R InVi73 p4g3 C4N 83 f0uNd 47:"
 
-#: share/template/element/settings/users_invite_search_section:89
+#: share/template/element/settings/users_invite_search_section:88
 #.  
 msgid "To make a link to another page (even if it doesn't exist yet), put [square brackets around a word or phrase]."
 msgstr "70 M4K3 4 lInK 70 4N07h3r p4g3 (3V3N If i7 D03sN'7 3xIs7 Y37), Pu7 [sQu4r3 8r4cK37s 4R0UnD 4 W0Rd 0R PhR4S3]."
@@ -3264,7 +3269,7 @@ msgstr "wH3N Y0U ClIcK 0n 7HiS LiNk, Y0U WiLl 83 74K3N 70 4 p4g3 WhIcH 4lL0Ws\nY
 msgid "When you're entering text, just type in paragraphs."
 msgstr "wH3N Y0U'R3 3N73rInG 73X7, JuS7 7Yp3 In p4r4gR4PhS."
 
-#: share/template/element/settings/users_invite_search_section:87
+#: share/template/element/settings/users_invite_search_section:86
 #.  
 msgid "When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "wH3N Y0U'R3 3N73rInG 73X7, JuS7 7Yp3 In p4r4gR4PhS. 4Nd d0n'7 w0rRy 480U7 8R34kInG 4nY7HiNg - pR3Vi0uS V3RsI0Ns 0F 7h3 P4G3 4R3 s4v3d, S0 7H3R3's 4Lw4yS 4 84CkUp c0pY 0f 7H3 p4g3 Y0U'R3 w0rKiNg 0N."
@@ -3416,8 +3421,8 @@ msgstr "y0u c4n 4Ls0 Pu7 LiNkS H3R3 70 P4G3S Y0U W4N7 70 R3M3M83r."
 
 #: share/template/bugs_content.html:20
 #. (
-msgid "You can assist the Socialtext team to fix this bug by entering a\n      comment about what actions you were performing when this bug\n      occurred<a\n      href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n      color: black; text-decoration: none;\">.</a> Please enter your\n      comments in the box below."
-msgstr "y0u c4n 4SsIs7 7h3 S0Ci4l73X7 734M 70 fIx 7HiS 8uG 8y 3N73rInG 4\N      c0mM3N7 480U7 wH47 4c7i0nS Y0U W3R3 p3rF0RmInG Wh3n 7HiS 8uG\N      0CcUrR3D<4\N      hR3F=\"%1?4C7I0N=8uGs_dUmP;8uG_Id=%2\" S7Yl3=\"73X7-\N      c0l0r: 8l4cK; 73x7-D3C0R47i0n: N0N3;\">.</4> Pl34S3 3N73r y0uR\N      c0mM3N7S In 7H3 80x 83l0w."
+msgid "You can assist the Socialtext team to fix this bug by entering a comment about what actions you were performing when this bug occurred<a href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-color: black; text-decoration: none;\">.</a> Please enter your comments in the box below."
+msgstr "y0u c4n 4SsIs7 7h3 S0Ci4l73X7 734M 70 fIx 7HiS 8uG 8y 3N73rInG 4 C0Mm3n7 480u7 Wh47 4C7I0Ns y0u w3r3 P3Rf0rMiNg wH3N 7hIs 8Ug 0CcUrR3D<a href=\"%1?4c7i0n=8UgS_DuMp;8Ug_iD=%2\" s7yL3=\"73x7-C0L0R: 8L4Ck; 73X7-d3c0r47I0N: n0n3;\">.</4> pL34s3 3n73R Y0Ur c0mM3N7S In 7H3 80x 83l0w."
 
 #: share/template/element/settings/workspaces_settings_appearance_section:22
 #.  
@@ -3441,8 +3446,8 @@ msgstr "y0u c4n n0w sIgN In70 0Ur sYs73M UsInG 0p3nId. 0n 7H3 s0cI4L73x7 L0GiN S
 
 #: share/template/email/openid/workspace-invitation-body.html:25
 #.  
-msgid "You can sign into our system using OpenID.  On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity.  Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
-msgstr "y0u c4n sIgN In70 0Ur sYs73M UsInG 0p3nId.  0N 7h3 S0Ci4l73X7 l0gIn sCr33N, pL34s3 InPu7 Y0Ur 0P3NiD In70 7H3 iNdIc473d fI3Ld 4Nd y0u wIlL 83 r3dIr3c73D 70 7H3 0P3NiD Si73 70 V3RiFy y0uR Id3n7i7y.  0Nc3 Y0U H4V3 v3rIfI3D Y0Ur iD3N7I7Y, y0u wIlL 83 s3n7 84Ck 70 7h3 S0Ci4l73X7 sI73 4nD 83 48l3 70 4Cc3sS 7h3 W0RkSp4c3."
+msgid "You can sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
+msgstr "y0u c4n sIgN In70 0Ur sYs73M UsInG 0p3nId. 0n 7H3 s0cI4L73x7 L0GiN ScR33n, Pl34S3 iNpU7 y0uR 0p3nId iN70 7h3 InDiC473D Fi3lD 4nD Y0U WiLl 83 R3DiR3C73d 70 7h3 0p3nId sI73 70 v3rIfY Y0Ur iD3N7I7Y. 0Nc3 Y0U H4V3 v3rIfI3D Y0Ur iD3N7I7Y, y0u wIlL 83 s3n7 84Ck 70 7h3 S0Ci4l73X7 sI73 4nD 83 48l3 70 4Cc3sS 7h3 W0RkSp4c3."
 
 #: lib/Socialtext/Account.pm:70
 #.  
@@ -3469,7 +3474,7 @@ msgstr "y0u c4nN07 Ch4nG3 7H3 n4m3 0f 4 sYs73M-Cr3473D Us3r."
 msgid "You have confirmed your email address and can now log on to the\n%1 workspace."
 msgstr "y0u h4v3 C0NfIrM3D Y0Ur 3M4Il 4DdR3Ss 4Nd c4n n0w l0g 0N 70 7H3\n%1 w0rKsP4C3."
 
-#: share/template/search_help_field.html:13
+#: share/template/search_help_field.html:12
 #.  
 msgid "You may search on a field by separating the field name from the query with a colon, like this:"
 msgstr "y0u m4y s34RcH 0n 4 fI3Ld 8Y S3P4R47iNg 7H3 fI3Ld n4m3 Fr0m 7H3 qU3Ry wI7H 4 C0L0N, lIk3 7hIs:"
@@ -3496,8 +3501,8 @@ msgstr "y0u mUs7 83 l0gG3D In 70 3dI7 7H3 %1 W0RkSp4c3."
 
 #: share/template/errors/authenticate_to_read:3
 #. (
-msgid "You must be logged in to view the %1 workspace.  If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
-msgstr "y0u mUs7 83 l0gG3D In 70 Vi3w 7H3 %1 W0RkSp4c3.  If y0u 4Lr34Dy h4v3 4n 4Cc0uN7, Pl34S3 l0gIn n0w.<8r /> 07H3RwIs3, y0u c4n <a href=\"/NlW/R3GiS73r.h7mL?R3DiR3C7_70=%2\">cR3473 4 N3W 4cC0Un7</4>"
+msgid "You must be logged in to view the %1 workspace. If you already have an account, please login now.<br /> Otherwise, you can <a href=\"/nlw/register.html?redirect_to=%2\">create a new account</a>"
+msgstr "y0u mUs7 83 l0gG3D In 70 Vi3w 7H3 %1 W0RkSp4c3. iF Y0U 4lR34dY H4V3 4N 4cC0Un7, pL34s3 L0GiN N0W.<8R /> 07h3rWiS3, Y0U C4N <a href=\"/nLw/r3gIs73R.H7Ml?r3dIr3c7_70=%2\">Cr3473 4 n3w 4Cc0uN7</4>"
 
 #: share/template/errors/require_business_admin:2
 #.  
@@ -3569,7 +3574,7 @@ msgstr "y0uR 3m4iL 4dDr3sS, %1, h4s 833N C0NfIrM3D. pL34s3 L0GiN."
 msgid "Your password has been set and you can now login."
 msgstr "y0uR P4SsW0Rd h4s 833N S37 4nD Y0U C4N N0W L0GiN."
 
-#: share/template/search_help_field.html:26
+#: share/template/search_help_field.html:25
 #. (
 msgid "Your query was \"%1\""
 msgstr "y0uR Qu3rY W4S \"%1\""
@@ -3649,12 +3654,12 @@ msgstr "4U70m47Ic, UnI73d s7473S"
 msgid "bold words"
 msgstr "80lD W0RdS"
 
-#: share/template/search_help_field.html:9
+#: share/template/search_help_field.html:8
 #.  
 msgid "category"
 msgstr "c473g0rY"
 
-#: share/template/search_help_field.html:18
+#: share/template/search_help_field.html:17
 #.  
 msgid "category:help"
 msgstr "c473g0rY:H3Lp"
@@ -3909,12 +3914,12 @@ msgstr "748L3"
 msgid "this text is not bold"
 msgstr "7HiS 73X7 iS N07 80Ld"
 
-#: share/template/search_help_field.html:8
+#: share/template/search_help_field.html:7
 #.  
 msgid "title"
 msgstr "7I7L3"
 
-#: share/template/search_help_field.html:17
+#: share/template/search_help_field.html:16
 #.  
 msgid "title:hello"
 msgstr "7I7L3:h3lL0"
