@@ -332,7 +332,7 @@ sub resend_confirmation {
 
     my $user = Socialtext::User->new( email_address => $email_address );
     unless ($user) {
-        $self->session->add_error(loc("[_1] is not registered as a user.  Try a different email address?", $email_address));
+        $self->session->add_error(loc("[_1] is not registered as a user. Try a different email address?", $email_address));
         return $self->_redirect('/nlw/login.html');
     }
 

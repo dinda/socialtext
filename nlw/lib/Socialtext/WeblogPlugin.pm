@@ -11,6 +11,7 @@ use Socialtext::MLDBMAccess;
 use URI;
 use URI::QueryParam;
 use Socialtext::l10n qw( loc );
+use utf8;
 
 sub class_id { 'weblog' }
 const class_title => 'Weblogs';
@@ -67,9 +68,22 @@ sub weblogs_create {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => 'Create New Weblog',
+        display_title     => loc('Create New Weblog'),
         pref_list         => $self->_get_pref_list,
     );
+}
+
+sub _get_weblog_category_suffix {
+    my $self = shift;
+    my $locale = $self->hub->best_locale;
+    my $weblog_category_suffix;
+    if ($locale eq 'ja') {
+        $weblog_category_suffix = qr/ブログ/;
+    } else {
+        $weblog_category_suffix = qr/blog/;
+    }
+
+    $weblog_category_suffix;
 }
 
 sub _create_weblog {
@@ -77,7 +91,9 @@ sub _create_weblog {
     my $weblog_category = $self->cgi->weblog_title;
     $weblog_category =~ s/^\s+|\s+$//g;
 
-    unless ( $weblog_category =~ /blog$/i ) {
+    my $weblog_category_suffix = $self->_get_weblog_category_suffix(); 
+
+    unless ( $weblog_category =~ /$weblog_category_suffix$/i ) {
         $weblog_category = loc("[_1] Weblog", $weblog_category);
     }
 
