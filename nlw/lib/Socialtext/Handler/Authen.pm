@@ -160,7 +160,7 @@ sub forgot_password {
     my $username = $self->{args}{username} || '';
     my $user = Socialtext::User->new( username => $username );
     unless ( $user ) {
-        $self->session->add_error(loc("[_1] is not registered as a user.  Try a different email address?", $username));
+        $self->session->add_error(loc("[_1] is not registered as a user. Try a different email address?", $username));
         return $self->_redirect('/nlw/forgot_password.html');
     }
 
