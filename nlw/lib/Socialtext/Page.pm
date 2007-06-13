@@ -43,7 +43,14 @@ field full_uri =>
 field database_directory => -init =>
     'Socialtext::Paths::page_data_directory( $self->hub->current_workspace->name )';
 
-sub _MAX_PAGE_ID_LENGTH () { 255 }
+sub _MAX_PAGE_ID_LENGTH () {
+    my $locale = system_locale();
+    if($locale eq 'ja') {
+        return 255*9;
+    } else {
+        return 255;
+    }
+}
 
 =head1 METHODS
 
