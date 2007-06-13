@@ -82,7 +82,7 @@ function toggle_all() {
 >[% loc('The Workspace is easy to use. Click links to browse through the
 >pages.') %]
 
-[% loc("If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page.  Make your contributions in the text box, then click \"Save\".") %]
+[% loc("If you see something you'd like to add to or change, click the \"Edit\" link at the top of each page. Make your contributions in the text box, then click \"Save\".") %]
 
 [% loc("When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on.") %]
 
