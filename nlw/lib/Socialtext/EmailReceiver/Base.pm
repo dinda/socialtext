@@ -19,7 +19,9 @@ use Email::MIME::Modifier;    # provides walk_parts()
 use Fcntl qw( SEEK_SET );
 use Filesys::DfPortable ();
 use HTML::TreeBuilder   ();
+
 use HTML::WikiConverter ();
+use Socialtext::Fixed;
 use Socialtext::Authz;
 use Socialtext::CategoryPlugin;
 use Socialtext::Exceptions qw( auth_error system_error );
@@ -31,11 +33,6 @@ use Socialtext::File;
 use Socialtext::l10n qw(loc system_locale);
 use DateTime::Format::Mail;
 use Data::Dumper;
-
-sub _log {
-    open( FILE, ">>/home/yoshino/email_receive.log" ) or die;
-    print FILE "$_[0]\n";
-}
 
 sub _new {
     my $class     = shift;
@@ -517,9 +514,9 @@ sub _get_html_body {
     Encode::_utf8_off($html) if Encode::is_utf8($html);
 
     my $converter = HTML::WikiConverter->new(
-        dialect         => 'Socialtext::Fixed',
-        escape_entities => 0
-    );
+            dialect         => 'Socialtext::Fixed',
+            escape_entities => 0
+        );
     my $body = $converter->html2wiki( $html );
 
     $body =~ s/{image:\s+cid:(\S+?)}/$self->_wafl_for_cid($1)/eg;
@@ -557,7 +554,7 @@ sub _html_lines_from_part {
     $body_tree ||= $tree;
 
     push @$lines, split /\n/, join '',
-        map { ref $_ ? $_->as_HTML : $_ } $body_tree->content_list();
+        map { ref $_ ? $_->as_HTML('utf8') : $_ } $body_tree->content_list();
 
     $body_tree->delete() if $body_tree->can('delete');
     $tree->delete();
