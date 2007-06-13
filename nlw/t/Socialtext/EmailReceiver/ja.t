@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 168;
+use Test::Socialtext tests => 176;
 fixtures( 'admin_no_pages' );
 
 use_ok('Socialtext::EmailReceiver::Factory');
@@ -1283,37 +1283,37 @@ ATTACHED_IMAGE_JA: {
           'check that page content contains image link to attached image' );
 }
 
-#TEXT_HTML_BODY_ONLY_JA: {
-#    my $file = 't/test-data/email/text-html-body-japanese';
-#    open my $fh, '<', $file
-#        or die "Cannot read $file: $!";
-#
-#    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
-#            {
-#                locale => $test_locale,
-#                handle    => $fh,,
-#                workspace => $ws
-#            });
-#    $email_receiver->receive();
-#
-#    my $page = $hub->pages()->new_from_name('Text/HTML Body');
-#    isa_ok( $page, 'Socialtext::Page' );
-#
-#    ok( $page->active(), 'Found a page with the name of "Text/HTML Body"' );
-#    is( $page->title(), 'Text/HTML Body', 'title matches subject' );
-#
-#    like( $page->content(),
-#          qr{\*ボールドテキスト\*},
-#          'page contains expected HTML content as wikitext' );
-#
-#    my $attachments = $page->hub()->attachments()->all( page_id => $page->id );
-#    is( @$attachments, 1,
-#        'when using html body, it is also saved as an attachment' );
-#
-#    is( $attachments->[0]->mime_type(), 'text/html', 'attachment type is text/html' );
-#    ok( $attachments->[0]->content(), 'html attachment has some content' );
-#
-#    unlike( $page->content(), qr/{file: .+}/,
-#            'saving HTML body as an attachment does not create a file wafl in the body' );
-#}
+TEXT_HTML_BODY_ONLY_JA: {
+    my $file = 't/test-data/email/text-html-body-japanese';
+    open my $fh, '<', $file
+        or die "Cannot read $file: $!";
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+            {
+                locale => $test_locale,
+                handle    => $fh,,
+                workspace => $ws
+            });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Text/HTML Body by Japanese');
+    isa_ok( $page, 'Socialtext::Page' );
+
+    ok( $page->active(), 'Found a page with the name of "Text/HTML Body by Japanese"' );
+    is( $page->title(), 'Text/HTML Body by Japanese', 'title matches subject' );
+
+    like( $page->content(),
+          qr{\*ボールドテキスト\*},
+          'page contains expected HTML content as wikitext' );
+
+    my $attachments = $page->hub()->attachments()->all( page_id => $page->id );
+    is( @$attachments, 1,
+        'when using html body, it is also saved as an attachment' );
+
+    is( $attachments->[0]->mime_type(), 'text/html', 'attachment type is text/html' );
+    ok( $attachments->[0]->content(), 'html attachment has some content' );
+
+    unlike( $page->content(), qr/{file: .+}/,
+            'saving HTML body as an attachment does not create a file wafl in the body' );
+}
 
