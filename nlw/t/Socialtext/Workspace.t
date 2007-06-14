@@ -184,8 +184,8 @@ sub check_errors {
         qr/one of top, bottom, or replace/,
         qr/title is a required field/,
         ) {
-        ok( ( grep { /$regex/ } $e->messages ),
-            "got error message matching $regex" );
+            my $errors = join ', ', $e->messages;           
+            like $errors, $regex, "got error message matching $regex";
     }
 
  TODO:

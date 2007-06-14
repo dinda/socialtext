@@ -11,6 +11,10 @@ our $SYS_LOCALE = 'en';
 # XXX: Might want something smarter.  I didn't need this for my purposes.
 sub loc {
     my $str = shift;
+    for my $n ( 1 .. @_ ) {
+        my $value = $_[$n-1];
+        $str =~ s/\[_$n\]/$value/g;
+    }
     return $str;
 }
 

@@ -2,7 +2,6 @@
 ~$
 \.swp$
 \.svn/
-build/tarballs/
 build/EnterpriseDeps\.yaml
 build/tmp/
 debian*

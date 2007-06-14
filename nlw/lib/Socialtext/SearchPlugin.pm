@@ -253,6 +253,7 @@ cgi search_term => '-html_clean';
 package Socialtext::Search::Wafl;
 
 use base 'Socialtext::Query::Wafl';
+use Socialtext::l10n qw(loc);
 
 sub _set_titles {
     my $self = shift;

@@ -14,7 +14,6 @@
 # Appliance- and hosted-building items.
 # Not stored in SF repo
 ^appliance-bin/
-^build/tarballs/
 ^build/custom-ws-config/
 
 # Workspace-specific build items
@@ -35,7 +34,6 @@
 # Dev items not useful to the general public
 # Not stored in SF repo
 ^bench/
-=build/bin/st-install
 =dev-bin/add-dependency
 =dev-bin/bad-bot-does-not-follow-redirect
 =dev-bin/catch.cgi
@@ -43,7 +41,6 @@
 =dev-bin/dev-ceqlotron-runner
 =dev-bin/import-user-data-1
 =dev-bin/import-workspace-user-data-2
-=dev-bin/install-tarballs
 =dev-bin/make-branch
 =dev-bin/make-release
 =dev-bin/memory-watchdog

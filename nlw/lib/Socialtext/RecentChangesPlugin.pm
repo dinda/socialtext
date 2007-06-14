@@ -224,6 +224,7 @@ package Socialtext::RecentChanges::Wafl;
 
 use Socialtext::CategoryPlugin;
 use base 'Socialtext::Category::Wafl';
+use Socialtext::l10n qw/loc/;
 
 sub _set_titles {
     my $self = shift;

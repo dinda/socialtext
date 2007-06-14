@@ -16,7 +16,7 @@ use Socialtext::Apache::User;
 use Socialtext::User;
 use Socialtext::Session;
 use Socialtext::Helpers;
-use Socialtext::l10n qw( loc );
+use Socialtext::l10n qw( loc loc_lang system_locale );
 use URI::Escape qw(uri_escape_utf8);
 
 sub handler ($$) {
@@ -25,6 +25,8 @@ sub handler ($$) {
 
     my $self = bless {r => $r}, __PACKAGE__; # new can kiss my ass
     $self->{args} = { $r->args, $r->content };
+
+    loc_lang( system_locale() );
 
     (my $uri = $r->uri) =~ s[^/nlw/?][];
     if ($uri =~ m[submit/]) {
@@ -103,7 +105,7 @@ sub login {
     );
 
     unless ( $user_check ) {
-        $self->session->add_error(loc(qq("[_1]" is not a valid email address. Please use your email address to log in.), $username));
+        $self->session->add_error( loc('"[_1]" is not a valid email address. Please use your email address to log in.', $username) );
         return $self->_redirect('/nlw/login.html');
     }
     my $auth = Socialtext::Authen->new;

@@ -33,7 +33,6 @@ my @skip_paths = qw(
 my %skip_paths = map { ($_,1) } @skip_paths;
 
 my @skip_files = qw(
-    dev-bin/install-tarballs
     share/js-test/run/bin/render-template
     dev-bin/bad-bot-does-not-follow-redirect
 );

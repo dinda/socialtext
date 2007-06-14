@@ -22,7 +22,6 @@ const cgi_class => 'Socialtext::Display::CGI';
 const languages => {
     'en' => loc('English'),
     'ja' => loc('Japanese'),
-    'zz' => loc('Haxor'),
     'fr' => loc('French'),
     'de' => loc('German'),
 };

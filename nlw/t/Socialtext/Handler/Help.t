@@ -3,13 +3,14 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 5;
-fixtures('help');
-
 BEGIN {
-    use mocked qw/Apache::Constants/;
-    use mocked qw(Socialtext::l10n system_locale);
+    use mocked 'Apache';
+    use mocked 'Socialtext::l10n', qw(system_locale);
     use Socialtext::Workspace;
+
+    use Test::Socialtext tests => 5;
+    fixtures('help');
+
     use_ok('Socialtext::Handler::Help');
 }
 

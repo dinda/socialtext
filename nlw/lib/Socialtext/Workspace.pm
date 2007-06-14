@@ -53,7 +53,6 @@ use Socialtext::User;
 use Socialtext::UserWorkspaceRole;
 use Socialtext::WorkspaceBreadcrumb;
 use URI;
-use Socialtext::l10n qw( loc );
 
 field breadcrumbs => '';
 

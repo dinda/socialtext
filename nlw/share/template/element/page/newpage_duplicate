@@ -2,6 +2,7 @@
 <div id="[% ns %]">
     <form onsubmit="return false;">
     <div id="[% ns %]-overlay" class="popup-overlay"></div>
+    <div>
     <div id="[% ns %]-interface">
         <div id="[% ns %]-title">[% loc('Page Already Exists') %]</div>
         <p class="[% ns %]-prompt">[% loc('There is <span id="st-newpage-duplicate-emphasis">already a page</span> named <a id="[_1]-link" href="#" target="">XXX</a>. Would you like to:', ns)%]</p>
@@ -16,6 +17,7 @@
             </tr>
             </table>
         </div>
+    </div>
     </div>
     </form>
 </div>

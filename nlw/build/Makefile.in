@@ -55,6 +55,7 @@ INSTALL_BASE = install-css        \
                install-dev        \
                install-html       \
                install-images     \
+               install-fonts      \
                install-javascript \
                install-js-test    \
                install-test       \
@@ -161,15 +162,6 @@ install-debian:
 
 install-appliance-bin: install-ok
 	$(INSTALL_ROOT) `$(FIND) appliance-bin/ -maxdepth 1 -type f` $(INSTALLSCRIPT)
-
-# st-install is for install on prod, staging and other like machines
-# that use dual apache
-st-install: install-ok      \
-         shared-install     \
-         install-st-init-d  \
-         st-apache          \
-	 install-cron-jobs  \
-         clean-temps
 
 # Used by OSR installs
 install: install-ok         \
@@ -383,7 +375,6 @@ critic:
         dev-env                  \
         release                  \
         bundles                  \
-        st-install               \
         install                  \
         install-ok               \
 	shared-install           \

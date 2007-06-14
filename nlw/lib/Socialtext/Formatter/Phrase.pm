@@ -71,8 +71,8 @@ use base 'Socialtext::Formatter::Phrase';
 use Class::Field qw( const );
 
 const formatter_id  => 'del';
-const pattern_start => qr/(^|(?<=\s))-(?=[^\-\s])/;
-const pattern_end   => qr/-(\z|(?=\s))/;
+const pattern_start => qr/(^|(?<=[^${ALPHANUM}\-]))-(?=[^\s\-])/;
+const pattern_end   => qr/-(?=[^{$ALPHANUM}\-]|\z)/;
 const html_start    => '<del>';
 const html_end      => '</del>';
 
@@ -116,7 +116,7 @@ sub match {
     Socialtext::BrowserDetect::ie()
         ? $self->extra_space( $1 ? "&nbsp;" : '' )
         : $self->extra_space( $1 || '' );
-    $self->asis_text( substr( $text, $match_start, $-[0] - $match_start ) );
+    $self->asis_text( substr( $text, $match_start, $-[0] - $match_start ) || return );
     $self->start_end_offset( $-[0] );
     return 1;
 }
@@ -125,11 +125,10 @@ sub html {
     my $self = shift;
     my $text = $self->escape_html( $self->asis_text );
     my $space = $self->extra_space;
-
-    # This is broken into two strings to avoid xgettext.pl thinking the 
-    # double { is a localized string.
-    return qq(<span class="nlw_phrase">$text<!-- wiki: {)
-         . qq({$text}} --></span>$space);
+    # Avoid two { or } chars in a row, it screws up xgettext.pl
+    $self->hub->wikiwyg->generate_widget_image("{"."{$text}"."}");
+    return qq(<span class="nlw_phrase">$text<!-- wiki: {) . qq({$text}) . 
+           qq(} --></span>$space);
 }
 
 ################################################################################
@@ -264,12 +263,14 @@ sub html {
         : $match =~ /^irc:/
         ? "<a title=\"(" . loc('start irc session') . ")\" href=\"$href\">$href</a>"
         : "<a $target title=\"(" . loc('external link') . ")\" href=\"$href\">$href</a>";
+
     return $wrap_start . $output . $wrap_finish;
 }
 
 sub _special_http_link {
     my $self = shift;
     my $match = shift;
+    $self->hub->wikiwyg->generate_widget_image($match);
     $match =~ s/^\w+://;
     return $self->hub->viewer->link_dictionary->format_link(
         link => 'special_http',
@@ -323,7 +324,7 @@ sub html {
     my $escaped_text = $self->html_escape($text);
     my $output =
         $match =~ /\.(gif|jpg|jpeg|jpe|png|pbm)$/i
-        ? qq{<img alt="$escaped_text" src="$href" border="0" />}
+        ?  ( $text ? qq{<a href="$href">$text</a>} : qq{<img alt="$escaped_text" src="$href" border="0" />} )
         : $match =~ /^irc:/
         ? "<a title=\"(" . loc('start irc session') . "\" href=\"$href\">$escaped_text</a>"
         : "<a $target title=\"(" . loc('external link') .')" '
@@ -344,6 +345,7 @@ my %im_types = (
     ymsgr  => 'yahoo',
     callto => 'callto',
     skype  => 'callto',
+    callme => 'callto', 
     aim    => 'aim',
     msn    => 'msn',
     asap   => 'asap',
@@ -370,10 +372,12 @@ sub html {
 # to wafl, which seems fishy and leaves out http:base/foo/bar.png
 sub _enspan_nlw_link {
     my $self = shift;
-    my $scheme    = shift;
+    my $scheme = shift;
     my $recipient = shift;
-    my $text      = shift;
-    qq{<span class="nlw_phrase">$text<!-- wiki: $scheme:$recipient --></span>};
+    my $text = shift;
+    my $link = "$scheme:$recipient";
+    $self->hub->wikiwyg->generate_widget_image($link);
+    qq{<span class="nlw_phrase">$text<!-- wiki: $link --></span>};
 }
 
 sub _yahoo_link {
