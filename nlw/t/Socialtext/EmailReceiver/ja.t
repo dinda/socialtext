@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 176;
+use Test::Socialtext tests => 211;
 fixtures( 'admin_no_pages' );
 
 use_ok('Socialtext::EmailReceiver::Factory');
@@ -1317,3 +1317,150 @@ TEXT_HTML_BODY_ONLY_JA: {
             'saving HTML body as an attachment does not create a file wafl in the body' );
 }
 
+TEXT_HTML_BODY_DIALECT: {
+    my $file = 't/test-data/email/text-html-body-dialect';
+    open my $fh, '<', $file
+        or die "Cannot read $file: $!";
+
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+            {
+                locale => $test_locale,
+                handle    => $fh,,
+                workspace => $ws
+            });
+    $email_receiver->receive();
+
+    my $page = $hub->pages()->new_from_name('Text/HTML Dialect');
+    isa_ok( $page, 'Socialtext::Page' );
+
+    ok( $page->active(), 'Found a page with the name of "Text/HTML Dialect"' );
+    is( $page->title(), 'Text/HTML Dialect', 'title matches subject' );
+
+    like( $page->content(),
+              qr{Heading1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Heading2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Heading3},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Heading4},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Heading5},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Heading6},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Paragraph},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Bold},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Strong},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Italic},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{EMphasis},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Under-line},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{strike-through},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Strike-through\(s\)},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{TeleType},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{code},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{TeleType},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{PREformatted text},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{A1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{A2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{A3},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{B1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{B2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{B3},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{C1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{C2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{C3},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Unordered List 1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Unordered List 2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Ordered List 1},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Ordered List 2},
+                        'page contains expected HTML content as wikitext' );
+
+    like( $page->content(),
+              qr{Definition List},
+                        'page contains expected HTML content as wikitext' );
+}
