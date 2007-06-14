@@ -48,7 +48,11 @@
 [% BLOCK notes %]
     <div id="st-group-notes" class="st-homepage-section">
       [% IF checker.check_permission('edit') %]
-      <div class="st-homepage-notes-edit" id="st-group-notes-edit"><a id="st-group-notes-edit-link" href="[% group_notes.edit_path %];caller_action=homepage#edit" class="st-homepage-notes-edit-link">[% loc('edit') %]</a></div>
+      [% IF loc_lang == 'en' %]
+        <div class="st-homepage-notes-edit" id="st-group-notes-edit"><a id="st-group-notes-edit-link" href="[% group_notes.edit_path %];caller_action=homepage#edit" class="st-homepage-notes-edit-link">[% loc('edit') %]</a></div>
+      [% ELSE %]
+        <div class="st-homepage-notes-edit" id="st-group-notes-edit"><a id="st-group-notes-edit-link" href="[% group_notes.edit_path %];caller_action=homepage#edit" class="st-homepage-notes-edit-text-link">[% loc('edit') %]</a></div>
+      [% END %]
       [% END %]
       <div id="st-group-notes-title" class="st-homepage-section-title">
           <a href="[% group_notes.view_path %]">[% loc('Announcements and Links') %]</a>
@@ -60,7 +64,11 @@
 
     <div id="st-personal-notes" class="st-homepage-section">
       [% IF checker.check_permission('edit') %]
-      <div class="st-homepage-notes-edit" id="st-personal-notes-edit"><a id="st-personal-notes-edit-link" href="[% personal_notes.edit_path %]#edit" class="st-homepage-notes-edit-link">[% loc('edit') %]</a></div>
+      [% IF loc_lang == 'en' %]
+        <div class="st-homepage-notes-edit" id="st-personal-notes-edit"><a id="st-personal-notes-edit-link" href="[% personal_notes.edit_path %]#edit" class="st-homepage-notes-edit-link">[% loc('edit') %]</a></div>
+      [% ELSE %]
+        <div class="st-homepage-notes-edit" id="st-personal-notes-edit"><a id="st-personal-notes-edit-link" href="[% personal_notes.edit_path %]#edit" class="st-homepage-notes-edit-text-link">[% loc('edit') %]</a></div>
+      [% END %]
       [% END %]
       <div id="st-personal-notes-title" class="st-homepage-section-title">
           <a href="[% personal_notes.html ? personal_notes.view_path : personal_notes.edit_path %]">[% loc('Your Notepad') %]</a>
