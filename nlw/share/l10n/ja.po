@@ -19,7 +19,7 @@ msgstr "%1 - Atom で %2 を検索する"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RSS で %2 を検索する"
 
-#: lib/Socialtext/WeblogPlugin.pm:81
+#: lib/Socialtext/WeblogPlugin.pm:97
 #. (
 msgid "%1 Weblog"
 msgstr "%1 ウェブログ"
@@ -242,7 +242,7 @@ msgstr "-1200 国際日付変更線、西側"
 #: share/template/element/settings/users_invite_search_section:108 share/template/element/settings/users_invite_section:62
 #.  
 msgid "<Your personal message goes here.>"
-msgstr "<ここに個人的なメッセージを書いてください。>"
+msgstr "<ここにあなた自身のメッセージを書いてください。>"
 
 #: share/template/view/refcard:207
 #.  
@@ -447,7 +447,7 @@ msgstr "%1 のすべてのページ"
 #: share/template/element/page/revision_compare_actions:15 share/template/view/page_revision_list:3
 #.  
 msgid "All Revisions"
-msgstr "すべてのバージョン"
+msgstr "すべてのリビジョン"
 
 #: share/template/element/listview/actionbar:11
 #.  
@@ -617,7 +617,7 @@ msgstr "利用できるレポート"
 #: share/template/element/page/revision_compare_actions:8 share/template/element/page/revision_list_actions:7
 #.  
 msgid "Back To Current Revision"
-msgstr "現バージョンに戻る"
+msgstr "現在のリビジョンに戻る"
 
 #: share/template/authen/forgot_password.html:36
 #.  
@@ -677,7 +677,7 @@ msgstr "編集をキャンセル"
 #: lib/Socialtext/DeletePagePlugin.pm:45
 #.  
 msgid "Cannot undelete a page with only one revision. Returning to front page."
-msgstr "1つのバージョンだけでページを復活させることはできません。最初のページに戻ります。"
+msgstr "1つのリビジョンだけでページを復活させることはできません。最初のページに戻ります。"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:66 share/template/view/homepage:30
 #.  
@@ -882,12 +882,12 @@ msgstr "コメント"
 #: share/template/view/page_revision_list:34
 #.  
 msgid "Compare Revisions"
-msgstr "バージョンを比較"
+msgstr "リビジョンを比較"
 
 #: lib/Socialtext/RevisionPlugin.pm:110
 #. (
 msgid "Compare Revisions %1 and %2"
-msgstr "バージョン%1と%2を比較"
+msgstr "リビジョン%1と%2を比較"
 
 #: share/template/workspaces_created_section.html:7
 #. (
@@ -924,7 +924,7 @@ msgstr "作成"
 msgid "Create A Weblog"
 msgstr "ウェブログを作成する"
 
-#: share/template/element/settings/select:43
+#: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
 #.  
 msgid "Create New Weblog"
 msgstr "ウェブログを新規作成"
@@ -1022,7 +1022,7 @@ msgstr "\"%1\"を削除しました"
 #: share/template/view/page/delete_epilogue:6
 #.  
 msgid "Did you delete this page in error? If so, you can restore the page."
-msgstr "間違えて削除してしまいましたか？"
+msgstr "誤って削除してしまった場合は、元に戻すことができます。 元に戻しますか？"
 
 #: share/template/view/homepage:81
 #.  
@@ -1037,7 +1037,7 @@ msgstr "横のボックス \\\"%1\\\" を表示しますか？"
 #: lib/Socialtext/RecentChangesPlugin.pm:72
 #.  
 msgid "Display as a side box in page view?"
-msgstr "ページを閲覧している時に、新着情報をサイドボックスに表示させますか？"
+msgstr "ページの閲覧時に、新着情報をサイドボックスに表示させますか？"
 
 #: share/template/element/settings/workspaces_permissions_section:17
 #.  
@@ -1339,7 +1339,7 @@ msgstr "カテゴリによるフィルター"
 msgid "First Name"
 msgstr "名"
 
-#: lib/Socialtext/WeblogPlugin.pm:95
+#: lib/Socialtext/WeblogPlugin.pm:111
 #. (
 msgid "First Post in %1"
 msgstr "%1の最初の投稿"
@@ -1439,7 +1439,7 @@ msgstr "横のボックスに表示させるページ数を設定してくださ
 msgid "How many posts should be displayed in outgoing feeds?"
 msgstr "送信フィードに表示する投稿数"
 
-#: lib/Socialtext/WeblogPlugin.pm:37
+#: lib/Socialtext/WeblogPlugin.pm:38
 #.  
 msgid "How many posts should be displayed in weblog view?"
 msgstr "ウェブログビューに表示する投稿数を設定してください。"
@@ -1538,6 +1538,11 @@ msgstr "存在しないフィールド (<tt>link:hello</tt>) 、あるいは、�
 #.  
 msgid "If you wish, you can include a personal message in the invitation email. You can edit the message to say anything you want."
 msgstr "Email 招待状にあなたのメッセージを添えることができます。"
+
+#: lib/Socialtext/BugsPlugin.pm:32 share/template/bugs_content.html:25
+#.  
+msgid "Ignore Bug"
+msgstr ""
 
 #: share/template/element/settings/workspaces_settings_appearance_section:26
 #.  
@@ -1799,7 +1804,7 @@ msgstr "私のワークスペース"
 msgid "Name"
 msgstr "名前"
 
-#: lib/Socialtext/WeblogPlugin.pm:382
+#: lib/Socialtext/WeblogPlugin.pm:398
 #. (
 msgid "Navigation for: %1"
 msgstr "ナビゲート先: %1"
@@ -1892,7 +1897,7 @@ msgstr "問題ありません。あなたになじみのあるパスワードに
 #: share/template/view/page/display:88
 #.  
 msgid "No revisions"
-msgstr "改訂版はありません。"
+msgstr "リビジョンはありません。"
 
 #: lib/Socialtext/HitCounterPlugin.pm:192
 #. (
@@ -2092,7 +2097,7 @@ msgstr "パスワードは6文字以上にしてください。"
 #: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
 #.  
 msgid "Personal Message"
-msgstr "個人的な招待メッセージ"
+msgstr "あなた自身の招待メッセージ"
 
 #: share/template/email/st/workspace-invitation-body.html:22
 #. (
@@ -2324,6 +2329,11 @@ msgstr "既存のページを置き換える"
 msgid "Replace this text with your own."
 msgstr "このテキストを書き換えてください。"
 
+#: lib/Socialtext/BugsPlugin.pm:31 share/template/bugs_content.html:24
+#.  
+msgid "Report Bug"
+msgstr ""
+
 #: lib/Socialtext/UserSettingsPlugin.pm:476
 #. (
 msgid "Request to invite new users to the %1 workspace"
@@ -2357,17 +2367,17 @@ msgstr "%1の設定を確認する、または、変更する:"
 #: lib/Socialtext/RevisionPlugin.pm:152 lib/Socialtext/RevisionPlugin.pm:76
 #. (
 msgid "Revision %1"
-msgstr "バージョン %1"
+msgstr "リビジョン %1"
 
 #: share/template/element/listview/pages:80
 #.  
 msgid "Revisions"
-msgstr "バージョン"
+msgstr "リビジョン"
 
 #: share/template/view/page_revision_list:10
 #.  
 msgid "Revisions to the current document"
-msgstr "現行のドキュメントの前バージョン"
+msgstr "現行のドキュメントのリビジョン"
 
 #: share/template/element/settings/workspaces_permissions_section:12
 #.  
@@ -2799,7 +2809,7 @@ msgstr "このページにはタグはありません。"
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の <span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span> 存在します。 しますか:"
 
-#: lib/Socialtext/WeblogPlugin.pm:89
+#: lib/Socialtext/WeblogPlugin.pm:105
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
@@ -2834,7 +2844,7 @@ msgstr "このフォームはあなたの Inbox の紹介ページを作成し�
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "あなたのワークスペースを見つけるのに便利な名前をつけてください。ワークスペース名は web アドレスと email アドレスの一部になります。"
 
-#: lib/Socialtext/WeblogPlugin.pm:107
+#: lib/Socialtext/WeblogPlugin.pm:123
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "これは %1 の最初の投稿です。新しく投稿するには、New Post をクリックしてください。"
@@ -3067,7 +3077,7 @@ msgstr "アップロード"
 #: share/template/element/settings/users_settings_section:26
 #.  
 msgid "Use your email address and new password to log in again."
-msgstr "再ログイン時には、あなたの email アドレスと新しいパスワードを使用してください。"
+msgstr "再ログイン時には、 email アドレスと新しいパスワードを使用してください。"
 
 #: lib/Socialtext/WebApp.pm:215
 #.  
@@ -3122,7 +3132,7 @@ msgstr "書式表示"
 #: share/template/view/page_revision_list:45
 #.  
 msgid "View Revision"
-msgstr "バーションを見る"
+msgstr "リビジョンを見る"
 
 #: share/template/view/page/stats:18
 #.  
@@ -3169,17 +3179,17 @@ msgstr "ウェブログ"
 msgid "Weblog Archives"
 msgstr "ウェブログアーカイブ"
 
-#: lib/Socialtext/WeblogPlugin.pm:365 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:381 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "ウェブログナビゲーション"
 
-#: lib/Socialtext/WeblogPlugin.pm:127
+#: lib/Socialtext/WeblogPlugin.pm:143
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "ウェブログ: %1 Atom"
 
-#: lib/Socialtext/WeblogPlugin.pm:122
+#: lib/Socialtext/WeblogPlugin.pm:138
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "ウェブログ: %1 RSS"
@@ -3217,7 +3227,7 @@ msgstr "どの順番で更新を並び替えますか？"
 #: lib/Socialtext/RecentChangesPlugin.pm:41
 #.  
 msgid "What time interval should \"What's New\" display?"
-msgstr "”新着情報”を表示する間隔を選択してください。"
+msgstr "いつからの ”新着情報” を表示させるか選択してください。"
 
 #: lib/Socialtext/TimeZonePlugin.pm:66
 #.  
@@ -3627,7 +3637,7 @@ msgstr "誰でもページを閲覧、編集、ファイルをアップロード
 #: share/template/element/settings/workspaces_permissions_section:55
 #.  
 msgid "anybody can see the workspace and make comments, only privately invited members can edit"
-msgstr "誰でもワークスペースを閲覧し、コメントできますが、個人的に招待したメンバーだけが編集できます。"
+msgstr "誰でもワークスペースを閲覧し、コメントできますが、個人的に招待されたメンバーだけが編集できます。"
 
 #: share/template/element/settings/workspaces_permissions_section:46
 #.  
@@ -3797,7 +3807,7 @@ msgstr "添付画像"
 #: share/template/view/weblog:20
 #. (
 msgid "in %1"
-msgstr "%1 に"
+msgstr "%1"
 
 #: share/template/view/refcard:20
 #.  
@@ -3864,7 +3874,7 @@ msgstr "ページ名"
 msgid "permalink"
 msgstr "パーマリンク"
 
-#: lib/Socialtext/WeblogPlugin.pm:146
+#: lib/Socialtext/WeblogPlugin.pm:162
 #.  
 msgid "recent changes"
 msgstr "最近の変更"
@@ -3882,7 +3892,7 @@ msgstr "必須"
 #: share/template/view/page_revision_list:60
 #.  
 msgid "revision"
-msgstr "改訂数"
+msgstr "リビジョン"
 
 #: lib/Socialtext/Formatter/WaflPhrase.pm:411
 #.  
