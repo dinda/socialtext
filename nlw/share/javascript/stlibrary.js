@@ -1,7 +1,7 @@
 // Pop up a new HTML window
 function query_popup(url, width, height, left, top) {
     if (!width) width = 400;
-    if (!height) height = 275;
+    if (!height) height = 287;
     if (!left) left = 400-width/2;
     if (!top) top = 280-height/2;
     window.open(url, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, titlebar=no, scrollbars=yes, resizable=yes, width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
