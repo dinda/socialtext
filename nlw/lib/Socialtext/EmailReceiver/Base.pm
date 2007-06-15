@@ -21,7 +21,7 @@ use Filesys::DfPortable ();
 use HTML::TreeBuilder   ();
 
 use HTML::WikiConverter ();
-use Socialtext::Fixed;
+#use Socialtext::Fixed;
 use Socialtext::Authz;
 use Socialtext::CategoryPlugin;
 use Socialtext::Exceptions qw( auth_error system_error );
