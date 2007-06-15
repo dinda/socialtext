@@ -61,8 +61,7 @@ $Socialtext::EmailSender::Base::SendClass = 'Test';
           'check Content-Type header' );
     like( $emails[0]->header('Content-Type'), qr{charset="ISO-2022-JP"},
           'check charset in Content-Type header' );
-    is( $emails[0]->body(), "small body\n",
-        'check body' );
+    is( $emails[0]->body(), "small body", 'check body' );
 }
 
 {
