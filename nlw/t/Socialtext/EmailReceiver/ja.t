@@ -7,7 +7,7 @@ use Test::Socialtext tests => 211;
 fixtures( 'admin_no_pages' );
 
 use_ok('Socialtext::EmailReceiver::Factory');
-use_ok('Socialtext::Fixed');
+#use_ok('HTML::WikiConverter::Socialtext::Fixed');
 
 my $test_locale = 'ja';
 my $hub = new_hub('admin');

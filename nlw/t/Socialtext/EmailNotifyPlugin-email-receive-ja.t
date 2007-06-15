@@ -68,7 +68,15 @@ sub deliver_email {
 
     open my $fh, '<', $file or die $!;
 
-    Socialtext::EmailReceiver::ja->receive_handle(
+    my $email_receiver = Socialtext::EmailReceiver::Factory->create(
+                {
+                    locale => 'ja',
+                    handle => $fh,
+                    workspace => $hub->current_workspace()
+                });
+ 
+
+    $email_receiver->receive(
         handle    => $fh,
         workspace => $hub->current_workspace(),
     );
