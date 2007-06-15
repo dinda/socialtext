@@ -17,7 +17,7 @@ plan tests => 4;
 
 $Socialtext::EmailSender::Base::SendClass = 'Test';
 use Socialtext::EmailNotifier;
-use Socialtext::EmailReceiver::ja;
+use Socialtext::EmailReceiver::Factory;
 
 my $hub = new_hub('admin');
 
