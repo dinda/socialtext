@@ -21,7 +21,6 @@ use Filesys::DfPortable ();
 use HTML::TreeBuilder   ();
 
 use HTML::WikiConverter ();
-#use Socialtext::Fixed;
 use Socialtext::Authz;
 use Socialtext::CategoryPlugin;
 use Socialtext::Exceptions qw( auth_error system_error );
@@ -508,16 +507,16 @@ sub _get_html_body {
     }
 
     return unless @lines;
-    
+
     my $html = join '', @lines;
-    my $encode_type = Socialtext::File->_guess_string_encoding('ja', $html);
+    my $encode_type = Socialtext::File->_guess_string_encoding( 'ja', $html );
     Encode::_utf8_off($html) if Encode::is_utf8($html);
 
     my $converter = HTML::WikiConverter->new(
-            dialect         => 'Socialtext::Fixed',
-            escape_entities => 0
-        );
-    my $body = $converter->html2wiki( $html );
+        dialect         => 'Socialtext::Fixed',
+        escape_entities => 0
+    );
+    my $body = $converter->html2wiki($html);
 
     $body =~ s/{image:\s+cid:(\S+?)}/$self->_wafl_for_cid($1)/eg;
 
@@ -575,8 +574,10 @@ sub _save_html_body_as_attachment {
 
     return unless $ct->{discrete} eq 'text' and $ct->{composite} eq 'html';
 
-    $self->_save_attachment_from_part( $part, 'ignore disposition',
-        'no wafl' );
+    $self->_save_attachment_from_part(
+        $part, 'ignore disposition',
+        'no wafl'
+    );
 }
 
 sub _set_page_categories {
@@ -678,9 +679,9 @@ sub _page_body_from_email {
     my $self = shift;
 
     my $header = $self->_make_page_header();
-    Encode::_utf8_on($header) unless Encode::is_utf8($header);
-    Encode::_utf8_on($self->{body}) unless Encode::is_utf8($self->{body});
-    my $body   = join '', @$header, $self->{body};
+    Encode::_utf8_on($header)         unless Encode::is_utf8($header);
+    Encode::_utf8_on( $self->{body} ) unless Encode::is_utf8( $self->{body} );
+    my $body = join '', @$header, $self->{body};
 
     return \$body;
 }
@@ -723,6 +724,111 @@ sub _make_page_header {
 
 sub format_date {
     die "SubClass must be implemented(format_date).\n";
+}
+
+package HTML::WikiConverter::Socialtext::Fixed;
+
+use strict;
+use warnings;
+
+use base 'HTML::WikiConverter::Socialtext';
+
+# This works around a bug present in 0.03 of
+# HTML::WikiConvert::Socialtext. Presumably KJ will fix it in future
+# versions and this can be removed.
+sub _image {
+    my ( $self, $node, $rules ) = @_;
+    my $image_file = $node->attr('src');
+    return unless defined $image_file && length $image_file;
+    if ( $image_file !~ /http/ ) {
+        $image_file =~ s/.*\/([^\/]+)$/$1/g;
+        $image_file =~ s/\?action=.*$//g;
+        return '{image: ' . $image_file . '} ' || '';
+    }
+    else {
+        return $image_file;
+    }
+}
+
+# Gah, the original uses direct references to the code (\&_image)
+# instead of calling them as methods, so we have to redefine the rules
+# to get it to see our new version of _image. KJ, can you fix this
+# too?
+
+sub rules {
+    return {
+        hr => { replace => "\n----\n" },
+        br => { replace => "\n" },
+
+        h1 => {
+            start => '^ ', block => 1, trim => 'both', line_format => 'single'
+        },
+        h2 => {
+            start => '^^ ', block => 1, trim => 'both',
+            line_format => 'single'
+        },
+        h3 => {
+            start => '^^^ ', block => 1, trim => 'both',
+            line_format => 'single'
+        },
+        h4 => {
+            start => '^^^^ ', block => 1, trim => 'both',
+            line_format => 'single'
+        },
+        h5 => {
+            start => '^^^^^ ', block => 1, trim => 'both',
+            line_format => 'single'
+        },
+        h6 => {
+            start => '^^^^^^ ', block => 1, trim => 'both',
+            line_format => 'single'
+        },
+
+        p => { block => 1, line_format => 'multi' },
+        b => {
+            start => '*', end => '*', line_format => 'single', trim => 'both'
+        },
+        strong => { alias => 'b' },
+        i      => {
+            start => '_', end => '_', line_format => 'single', trim => 'both'
+        },
+        em => { alias => 'i' },
+        u  => {
+            start => '_', end => '_', line_format => 'single', trim => 'both'
+        },
+        strike => {
+            start => '-', end => '-', line_format => 'single', trim => 'both'
+        },
+        s => { alias => 'strike' },
+
+        tt => {
+            start => '`', end => '`', trim => 'both', line_format => 'single'
+        },
+        code => { alias => 'tt' },
+        pre  => {
+            start => "\n.pre\n", end => "\n.pre\n", line_prefix => '',
+            line_format => 'blocks'
+        },
+
+        a => {
+            replace => sub { shift->_link(@_) }
+        },
+        img => {
+            replace => sub { shift->_image(@_) }
+        },
+
+        table => { block => 1, line_format => 'multi', trim => 'none' },
+        tr    => { end   => " |\n" },
+        td => { start => '| ', end => ' ' },
+        th => { alias => 'td' },
+
+        ul => { line_format => 'multi', block => 1 },
+        ol => { alias       => 'ul' },
+        li => { start => sub { shift->_li_start(@_) }, trim => 'leading' },
+        dl => { alias => 'ul' },
+        dt => { alias => 'li' },
+        dd => { alias => 'li' },
+    };
 }
 
 1;

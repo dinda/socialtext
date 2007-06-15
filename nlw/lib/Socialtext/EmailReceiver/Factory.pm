@@ -66,7 +66,7 @@ sub create {
         # this code is used when we use test locale
         eval "use $receiver_class";
         if($@) {
-            $receiver_class = Socialtext::EmailReceiver::en->_new($email, $workspace);
+            $receiver_class = 'Socialtext::EmailReceiver::en'
         }
     }
 
