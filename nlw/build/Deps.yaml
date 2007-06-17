@@ -39,6 +39,7 @@ DateTime::Format::HTTP: 0.36
 DateTime::Format::Mail: 0.2901
 DateTime::Format::Pg: 0.10
 DateTime::Format::Strptime: 1.0700
+DateTime::Format::Japanese: 0.03 
 DBD::Pg: 1.43
 DB_File::Lock: 0.05
 DBI: 1.48
