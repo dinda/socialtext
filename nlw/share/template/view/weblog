@@ -9,7 +9,7 @@
 
 <table id="st-weblog-banner" width="100%">
     <tr valign="top">
-        <td>
+        <td nowrap>
             <div id="st-weblog-title">
                 <span id="st-weblog-titletext">
                     [% loc('Weblog') %]: [% display_title | html %]&nbsp;
