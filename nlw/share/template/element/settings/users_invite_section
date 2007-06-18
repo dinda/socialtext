@@ -59,7 +59,7 @@
       requires_confirmation => 1,
       inviting_user         => hub.current_user.best_full_name,
       confirmation_uri      => ''
-      extra_text            => [% loc('<Your personal message goes here.>') %],
+      extra_text            => loc('<Your personal message goes here.>'),
     %]
 
    </div>
