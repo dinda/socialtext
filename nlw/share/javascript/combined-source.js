@@ -15433,6 +15433,7 @@ proto.add_styles = function() {
             'option', { 'value': value }
         );
         var labelValue = labels[value] || value;
+        var labelValue = labelValue.replace(/\\'/g, "'"); 
         var text = loc(labelValue);
         option.appendChild(document.createTextNode(text));
         this.styleSelect.appendChild(option);
@@ -17006,6 +17007,7 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                 var widget_string = self['handle_widget_' + widget](form);
                 var widget_text = self.getWidgetImageText(widget_string);
                 clearInterval(intervalId);
+                
                 Ajax.post(
                     location.pathname,
                     'action=wikiwyg_generate_widget_image;' +

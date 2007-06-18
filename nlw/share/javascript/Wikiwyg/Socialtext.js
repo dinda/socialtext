@@ -1073,6 +1073,7 @@ proto.add_styles = function() {
             'option', { 'value': value }
         );
         var labelValue = labels[value] || value;
+        var labelValue = labelValue.replace(/\\'/g, "'"); 
         var text = loc(labelValue);
         option.appendChild(document.createTextNode(text));
         this.styleSelect.appendChild(option);
