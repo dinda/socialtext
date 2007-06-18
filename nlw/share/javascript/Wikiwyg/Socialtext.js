@@ -1058,6 +1058,33 @@ proto.resetModeSelector = function() {
     this.wikiwyg.disable_button(this.wikiwyg.first_mode.classname);
 }
 
+proto.add_styles = function() {
+    var options = this.config.styleSelector;
+    var labels = this.config.controlLabels;
+
+    this.styleSelect = document.createElement('select');
+    this.styleSelect.className = 'wikiwyg_selector';
+    if (this.config.selectorWidth)
+        this.styleSelect.style.width = this.config.selectorWidth;
+
+    for (var i = 0; i < options.length; i++) {
+        value = options[i];
+        var option = Wikiwyg.createElementWithAttrs(
+            'option', { 'value': value }
+        );
+        var labelValue = labels[value] || value;
+        var text = loc(labelValue);
+        option.appendChild(document.createTextNode(text));
+        this.styleSelect.appendChild(option);
+    }
+    var self = this;
+    this.styleSelect.onchange = function() { 
+        self.set_style(this.value) 
+    };
+    this.div.appendChild(this.styleSelect);
+}
+
+
 /*==============================================================================
 Socialtext Wysiwyg subclass.
  =============================================================================*/

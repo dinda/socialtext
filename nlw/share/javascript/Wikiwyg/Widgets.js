@@ -68,7 +68,7 @@ Wikiwyg.Widgets.mapMultipleSameWidgets = function(widget_parse) {
 
 // Shortcut globals.
 Wikiwyg.Toolbar.Socialtext.prototype.setup_widgets = function() {
-    this.setup_widgets_pulldown('Insert...');
+    this.setup_widgets_pulldown(loc('Insert...'));
 }
 
 var widgets_list = Wikiwyg.Widgets.widgets;
@@ -1038,14 +1038,14 @@ Widget.Lightbox.prototype.toggleOptions = function() {
     var panel = document.getElementById('st-widgets-moreoptionspanel');
     var icon = document.getElementById('st-widgets-optionsicon');
     if (panel) {
-        if (link.innerHTML == 'More options') {
+        if (link.innerHTML == loc('More options')) {
             panel.style.display = "block";
-            link.innerHTML = 'Fewer options';
+            link.innerHTML = loc('Fewer options');
             icon.src = nlw_make_static_path('/images/st/hide_more.gif');
         }
         else {
             panel.style.display = "none";
-            link.innerHTML = 'More options';
+            link.innerHTML = loc('More options');
             icon.src = nlw_make_static_path('/images/st/show_more.gif');
         }
     }
