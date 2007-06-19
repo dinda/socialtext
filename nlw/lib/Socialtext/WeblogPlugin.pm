@@ -10,7 +10,7 @@ use Socialtext::Pages;
 use Socialtext::MLDBMAccess;
 use URI;
 use URI::QueryParam;
-use Socialtext::l10n qw( loc );
+use Socialtext::l10n qw( loc system_locale );
 use utf8;
 
 sub class_id { 'weblog' }
@@ -89,7 +89,14 @@ sub _get_weblog_category_suffix {
 sub _create_weblog {
     my $self = shift;
     my $weblog_category = $self->cgi->weblog_title;
+    my $weblog_name = $weblog_category;
     $weblog_category =~ s/^\s+|\s+$//g;
+
+    if (length($weblog_name) < 2 or length($weblog_name) > 28) {
+        my $message = loc("Weblog name must be between 2 and 28 characters long.");
+        $self->add_error($message);
+        return;
+    }
 
     my $weblog_category_suffix = $self->_get_weblog_category_suffix(); 
 
@@ -109,7 +116,7 @@ sub _create_weblog {
     }
 
     my $first_post_title = loc("First Post in [_1]", $weblog_category);
-    my $first_post_id = Socialtext::Page->name_to_id($first_post_title);
+    my $first_post_id = Socialtext::Page->name_to_id($weblog_name);
     my $first_post = $self->hub->pages->new_page($first_post_id);
 
     my $metadata = $first_post->metadata;
