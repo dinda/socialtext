@@ -213,8 +213,14 @@ proto.attachTooltip = function(elem) {
     }
     if (newtitle_args != "") {
         newtitle = eval("loc(\"" + newtitle + "\"" + newtitle_args + ")");
+        if ( newtitle == 'undefined' ){
+            newtitle = title;
+        }
     }else{
         newtitle = eval("loc(\"" + newtitle + "\")");
+        if ( newtitle == 'undefined' ){
+            newtitle = title;
+        }
     }
     elem.setAttribute("title", newtitle);
 
@@ -606,8 +612,14 @@ proto.getWidgetImageText = function(widget_text) {
         }
         if (newtext_args != "") {
             newtext = eval("loc(\"" + newtext + "\"" + newtext_args + ")");
+            if ( newtext == 'undefined' ){
+                newtext = text;
+            }
         }else{
             newtext = eval("loc(\"" + newtext + "\")");
+            if ( newtext == 'undefined' ){
+                newtext = text;
+            }
         }
         text = newtext;
     }
