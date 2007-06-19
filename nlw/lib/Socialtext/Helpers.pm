@@ -157,11 +157,21 @@ sub global_template_vars {
 
 sub _get_css_info {
     my ($self) = @_;
-    return {
-        screen  => $self->hub->css->uri_for_css('screen.css'),
-        print  => $self->hub->css->uri_for_css('print.css'),
-        wikiwyg => $self->hub->css->uri_for_css('wikiwyg.css'),
-    };
+
+    if($self->hub->best_locale eq 'ja') {
+        return {
+            per_locale => $self->hub->css->uri_for_css('ja.css'),
+            screen  => $self->hub->css->uri_for_css('screen.css'),
+            print  => $self->hub->css->uri_for_css('print.css'),
+            wikiwyg => $self->hub->css->uri_for_css('wikiwyg.css'),
+        };
+    } else {
+        return {
+            screen  => $self->hub->css->uri_for_css('screen.css'),
+            print  => $self->hub->css->uri_for_css('print.css'),
+            wikiwyg => $self->hub->css->uri_for_css('wikiwyg.css'),
+        };
+    }
 }
 
 sub _get_images_info {

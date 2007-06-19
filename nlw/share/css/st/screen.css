@@ -1977,7 +1977,7 @@ div#st-pagetools li {
     list-style: none;
     margin: 0;
     float: left;
-    width: 6em;
+    width: 7em;
     line-height: 11px;
 }
 
@@ -2002,7 +2002,7 @@ div#st-pagetools ul ul {
 
 div#st-pagetools ul ul li {
     line-height: 1.5em;
-    width: 20em;
+    width: 14em;
 }
 
 .first {
@@ -2032,7 +2032,7 @@ div#st-pagetools ul.level1 li.submenu:hover ul.level2 {
 
 div#st-pagetools ul.level2 {
     top: 1.0em;
-    left: -13.0em;
+    left: -6.0em;
 }
 
 /*
@@ -3082,7 +3082,7 @@ div#st-listtools li {
     list-style: none;
     margin: 0;
     float: left;
-    width: 6.5em;
+    width: 5em;
 }
 
 div#st-listtools ul li {
@@ -3122,7 +3122,7 @@ div#st-listtools ul.level2 {
 
 div#st-listtools ul ul li {
     line-height: 1.5em;
-    width: 11.2em;
+    width: 10.6em;
     padding-top: 2px;
     padding-bottom: 2px;
     font-size: 12px;

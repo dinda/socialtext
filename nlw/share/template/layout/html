@@ -4,6 +4,10 @@
     <head>
         <title>[% title || display_title %] / [% wiki.title %]</title>
         <link rel="stylesheet" type="text/css" href="[% css.screen %]" media="screen" />
+        [% IF loc_lang == 'ja' %]
+        <link rel="stylesheet" type="text/css" href="[% css.per_locale %]" media="screen" />
+        [% END %]
+
         <link rel="stylesheet" type="text/css" href="[% css.print %]" media="print" />
         <!--[if IE 6]>
         <link rel="stylesheet" type="text/css" href="[% wiki.static_path %]/css/st/ie.css" media="screen" />
