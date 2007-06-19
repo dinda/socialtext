@@ -250,7 +250,7 @@
 ] %]
 
     <table class="st-refcard-table">
-      <tr class="st-refcard-table-row"><th>i[% loc('To Get This...') %] </th><th>[% loc('Type This') %]</th></tr>
+      <tr class="st-refcard-table-row"><th>[% loc('To Get This...') %] </th><th>[% loc('Type This') %]</th></tr>
       [% FOREACH row = refcard %]
         <tr class="st-refcard-table-row"><td>[% row.html %]</td><td>[% row.text %]</td></tr>
       [% END %]
