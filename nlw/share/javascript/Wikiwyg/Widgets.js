@@ -196,18 +196,27 @@ proto.attachTooltip = function(elem) {
         : widget_data[this.currentWidget.id].title['default']
       : widget_data[this.currentWidget.id].title;
 
-    var self = this;
-    title = title.replace(/\$(\w+)/g, function() {
-        var text = self.currentWidget[arguments[1]];
+    var params = title.match(/\$(\w+)/g);
+    var newtitle = title; 
+    var newtitle_args = "";
+    for ( i = 0; i < params.length; i++) {
+        params[i] = params[i].replace(/^\$/, "");
+        var text = this.currentWidget[params[i]];
         if (text == '') {
-            if (arguments[1] == 'page_title')
+            newtitle = newtitle.replace(params[i], "[_" + ( i + 1 ) + "]");
+            if (params[i] == 'page_title')
                 text = Page.page_title;
-            else if (arguments[1] == 'workspace_id')
+            else if (params[i] == 'workspace_id')
                 text = Page.wiki_title;
+            newtitle_args += ", \"" + text + "\"";
         }
-        return text;
-    });
-    elem.setAttribute("title", title);
+    }
+    if (newtitle_args != "") {
+        newtitle = eval("loc(\"" + newtitle + "\"" + newtitle_args + ")");
+    }else{
+        newtitle = eval("loc(\"" + newtitle + "\")");
+    }
+    elem.setAttribute("title", newtitle);
 
     this.attachWidgetHandlers(elem);
 }
@@ -584,15 +593,23 @@ proto.getWidgetImageText = function(widget_text) {
             }
         }
 
-        var fields = text.match(new RegExp('%\\S+', 'g'));
-        if (fields)
-            for (var i=0; i < fields.length; i++) {
-                var field = fields[i].slice(1);
-                if (widget[field])
-                    text = text.replace(new RegExp('%' + field), widget[field]);
-                else
-                    text = text.replace(new RegExp('%' + field), '');
+        var params = text.match(/%(\w+)/g);
+        var newtext = text; 
+        var newtext_args = "";
+        for ( i = 0; i < params.length; i++) {
+            params[i] = params[i].replace(/^%/, "");
+            var mytext = widget[params[i]];
+            if (mytext != '') {
+                newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
+                newtext_args += ", \"" + mytext + "\"";
             }
+        }
+        if (newtext_args != "") {
+            newtext = eval("loc(\"" + newtext + "\"" + newtext_args + ")");
+        }else{
+            newtext = eval("loc(\"" + newtext + "\")");
+        }
+        text = newtext;
     }
     catch (E) {
         // parseWidget can throw an error
