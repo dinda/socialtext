@@ -39,11 +39,11 @@ for my $f (@tmpls ) {
     print "Linking in $f...\n";
     (my $dir = $f) =~ s#^(.+)/.+#$1#;
     
-    unless (-d "share/template/console/$dir") {
-        mkpath "share/template/console/$dir" or die "Can't mkpath $dir: $!";
+    unless (-d "share/console-template/$dir") {
+        mkpath "share/console-template/$dir" or die "Can't mkpath $dir: $!";
     }
-    unlink "share/console/$f";
-    symlink "$console_dir/$f", "share/template/console/$f" or die "Can't symlink $console_dir/$f, $f: $!";
+    unlink "share/console-template/$f";
+    symlink "$console_dir/$f", "share/console-template/$f" or die "Can't symlink $console_dir/$f, $f: $!";
 }
 
 
