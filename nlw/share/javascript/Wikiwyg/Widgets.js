@@ -203,11 +203,13 @@ proto.attachTooltip = function(elem) {
         params[i] = params[i].replace(/^\$/, "");
         var text = this.currentWidget[params[i]];
         if (text == '') {
-            newtitle = newtitle.replace(params[i], "[_" + ( i + 1 ) + "]");
             if (params[i] == 'page_title')
                 text = Page.page_title;
             else if (params[i] == 'workspace_id')
                 text = Page.wiki_title;
+        }
+        if (text != '') {
+            newtitle = newtitle.replace("\$" + params[i], "[_" + ( i + 1 ) + "]");
             newtitle_args += ", \"" + text + "\"";
         }
     }
