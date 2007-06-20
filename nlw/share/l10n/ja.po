@@ -787,12 +787,12 @@ msgstr "このページの最新版を見るには、<a href=\"%1\">here</a>を�
 #: share/template/element/page/attachment_queue_interface:9
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
-msgstr "\"閲覧する\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルを追加\" をクリックすると、このファイルがこのページの添付リストに追加され、ページを保存した時にアップロードされます。"
+msgstr "\"参照...\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルを追加\" をクリックすると、このファイルがこのページの添付リストに追加され、ページを保存した時にアップロードされます。"
 
 #: share/javascript/pageview.js:515 share/template/element/page/attachment_attach_interface:10
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
-msgstr "\"閲覧する\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルをアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
+msgstr "\"参照...\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルをアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
 
 #: share/template/view/edit_contention:4
 #.  
@@ -1111,7 +1111,7 @@ msgstr "ページの閲覧時に、新着情報をサイドボックスに表示
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:105
 #.  
-msgid "Do you really want to delete all workspaces and create a new initial workspace?  (This action cannot be undone.)"
+msgid "Do you really want to delete all workspaces and create a new initial workspace? (This action cannot be undone.)"
 msgstr ""
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:77
