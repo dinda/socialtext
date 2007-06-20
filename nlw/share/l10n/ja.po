@@ -19,7 +19,7 @@ msgstr "%1 - Atom で %2 を検索する"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RSS で %2 を検索する"
 
-#: lib/Socialtext/WeblogPlugin.pm:97
+#: lib/Socialtext/WeblogPlugin.pm:104
 #. (
 msgid "%1 Weblog"
 msgstr "%1 ウェブログ"
@@ -64,6 +64,11 @@ msgstr "%1: %2 を検索"
 msgid "%1: watchlist for %2"
 msgstr "%1: %2 のウォッチリスト"
 
+#: share/template/authen/register.html:26 share/template/authen/register.html:31
+#.  
+msgid "%asis_content"
+msgstr "(オプショナル)"
+
 #: share/template/element/page/details:38 share/template/view/page/display:88
 #. (
 msgid "%quant(%1,revision)"
@@ -83,11 +88,6 @@ msgstr "ワークスペース名 '%1' は予約されており、使用できま
 #. (
 msgid "'%1' is not a valid locale"
 msgstr "'%1'は有効なロケールではありません。"
-
-#: share/template/authen/register.html:26 share/template/authen/register.html:31
-#.  
-msgid "(Optional)"
-msgstr ""
 
 #: share/template/email/recent-changes.html:34 share/template/email/recent-changes.txt:16 share/template/email/watchlist.html:34 share/template/email/watchlist.txt:16
 #. (
@@ -599,7 +599,7 @@ msgstr "検索システムの開発が進むにつれ、利用できるオプシ
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1130 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1131 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "添付"
@@ -627,7 +627,7 @@ msgstr "現在のリビジョンに戻る"
 #: share/template/authen/forgot_password.html:36
 #. (
 msgid "Back to <a href=\"%1\">Log in to Socialtext</a>."
-msgstr ""
+msgstr "<a href=\"%1\">Socialtext にログインする </a> に戻る"
 
 #: share/template/email/st/workspace-invitation.txt:18
 #. (
@@ -1349,7 +1349,7 @@ msgstr "名"
 msgid "First Name:"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:111
+#: lib/Socialtext/WeblogPlugin.pm:118
 #. (
 msgid "First Post in %1"
 msgstr "%1の最初の投稿"
@@ -1829,7 +1829,7 @@ msgstr "私のワークスペース"
 msgid "Name"
 msgstr "名前"
 
-#: lib/Socialtext/WeblogPlugin.pm:398
+#: lib/Socialtext/WeblogPlugin.pm:405
 #. (
 msgid "Navigation for: %1"
 msgstr "ナビゲート先: %1"
@@ -1887,7 +1887,7 @@ msgstr "新しいワークスペース"
 #: share/template/view/weblog:142
 #.  
 msgid "New&nbsp;Post"
-msgstr "新しい&nbsp;投稿"
+msgstr "新規投稿"
 
 #: share/template/view/weblog:76
 #.  
@@ -2192,22 +2192,22 @@ msgstr "%2の投稿者: %1"
 #: share/template/element/settings/select:47
 #.  
 msgid "Preferences"
-msgstr "設定"
+msgstr "詳細設定"
 
 #: lib/Socialtext/UserPreferencesPlugin.pm:34
 #.  
 msgid "Preferences Class ID is missing"
-msgstr "設定のクラス ID がありません。"
+msgstr "詳細設定のクラス ID がありません。"
 
 #: lib/Socialtext/UserPreferencesPlugin.pm:46
 #.  
 msgid "Preferences saved"
-msgstr "設定を保存しました"
+msgstr "詳細設定を保存しました"
 
 #: lib/Socialtext/UserPreferencesPlugin.pm:64
 #. (
 msgid "Preferences: %1"
-msgstr "設定: %1"
+msgstr "詳細設定: %1"
 
 #: share/javascript/Wikiwyg/Socialtext.js:397 share/template/element/page/edit:7
 #.  
@@ -2849,7 +2849,7 @@ msgstr "このページにはタグはありません。"
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の <span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span> 存在します。 しますか:"
 
-#: lib/Socialtext/WeblogPlugin.pm:105
+#: lib/Socialtext/WeblogPlugin.pm:112
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
@@ -2884,10 +2884,10 @@ msgstr "このフォームはあなたの Inbox の紹介ページを作成し�
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "あなたのワークスペースを見つけるのに便利な名前をつけてください。ワークスペース名は web アドレスと email アドレスの一部になります。"
 
-#: lib/Socialtext/WeblogPlugin.pm:123
+#: lib/Socialtext/WeblogPlugin.pm:130
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
-msgstr "これは %1 の最初の投稿です。新しく投稿するには、New Post をクリックしてください。"
+msgstr "これは %1 の最初の投稿です。新しく投稿するには *新規投稿* をクリックしてください。"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:8
 #.  
@@ -2982,7 +2982,7 @@ msgstr "次に進むにはパスワードを選択してください。"
 #: share/template/errors/settings_requires_account:3
 #.  
 msgid "To set your preferences for a workspace, you must be logged in."
-msgstr "ワークスペースの設定を行うには、ログインする必要があります。"
+msgstr "ワークスペースの詳細設定を行うには、ログインする必要があります。"
 
 #: share/template/email/recent-changes.txt:3
 #. (
@@ -2992,7 +2992,7 @@ msgstr "%1 の変更に関する Email 受信設定を解除したり、受け�
 #: share/template/email/recent-changes.html:16
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr "%1 の変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">設定を変更</a> してください。"
+msgstr "%1 の変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">詳細設定を変更</a> してください。"
 
 #: share/template/email/watchlist.txt:3
 #. (
@@ -3002,7 +3002,7 @@ msgstr "%1 のウォッチリストの変更に関する Email 受信設定を�
 #: share/template/email/watchlist.html:16
 #. (
 msgid "To stop receiving or change how often you receive emails about changes\nto your watchlist in %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr "%1 のウォッチリストの変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">設定を変更</a> してください。"
+msgstr "%1 のウォッチリストの変更に関する Email 受信設定を解除したり、受け取る頻度を変更するには、 \n<a href=\"%2\">詳細設定を変更</a> してください。"
 
 #: share/template/errors/watchlist_requires_account:3
 #.  
@@ -3219,17 +3219,22 @@ msgstr "ウェブログ"
 msgid "Weblog Archives"
 msgstr "ウェブログアーカイブ"
 
-#: lib/Socialtext/WeblogPlugin.pm:381 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:388 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "ウェブログナビゲーション"
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:96
+#.  
+msgid "Weblog name must be between 2 and 28 characters long."
+msgstr ""
+
+#: lib/Socialtext/WeblogPlugin.pm:150
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "ウェブログ: %1 Atom"
 
-#: lib/Socialtext/WeblogPlugin.pm:138
+#: lib/Socialtext/WeblogPlugin.pm:145
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "ウェブログ: %1 RSS"
@@ -3652,7 +3657,7 @@ msgstr "あなたのワークスペース"
 #: lib/Socialtext/Handler/Authen.pm:108
 #. (
 msgid "\"%1\" is not a valid email address. Please use your email address to log in."
-msgstr ""
+msgstr "\"%1\" は有効な Email アドレスではありません。ご自身の Email アドレスでログインしてください。"
 
 #: share/template/element/settings/workspaces_create_section:34
 #.  
@@ -3919,7 +3924,7 @@ msgstr "ページ名"
 msgid "permalink"
 msgstr "パーマリンク"
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:169 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "最近の変更"
