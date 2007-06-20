@@ -285,12 +285,15 @@ sub users_invitation {
     );
 }
 
+
 sub users_invite {
     my $self = shift;
     if ( !$self->hub->checker->check_permission('request_invite') ) {
         $self->hub->assert_current_user_is_admin;
     }
 
+    my @emails;
+    my @invalid;
     if ( $self->cgi->users_new_ids ) {
         my @lines = $self->_split_email_addresses( $self->cgi->users_new_ids );
 
@@ -299,8 +302,6 @@ sub users_invite {
             return;
         }
 
-        my @emails;
-        my @invalid;
         for my $line (@lines) {
             my ( $email, $first_name, $last_name )
               = $self->_parse_email_address($line);
@@ -311,10 +312,14 @@ sub users_invite {
 
             push @emails, $email;
         }
-
-        my $html = $self->_invite_users(\@emails, \@invalid);
-        return $html if $html;
     }
+    else
+    {
+        push @invalid, loc("No email addresses specified");
+    }
+
+    my $html = $self->_invite_users(\@emails, \@invalid);
+    return $html if $html;
 }
 
 sub users_search {
