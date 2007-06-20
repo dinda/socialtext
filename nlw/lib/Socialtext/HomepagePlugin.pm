@@ -9,6 +9,7 @@ use base 'Socialtext::Plugin';
 use Socialtext::TT2::Renderer;
 use Socialtext::Watchlist;
 use Socialtext::l10n qw( loc );
+use URI::Escape;
 # XXX This code has no documentation
 
 sub class_id    () { 'homepage' }
@@ -58,6 +59,7 @@ sub dashboard {
     );
 }
 
+
 sub _get_group_notes_info {
     my ($self) = @_;
     my $page_title = 'Announcements and Links';
@@ -71,11 +73,12 @@ sub _get_group_notes_info {
 sub _get_personal_notes_info {
     my ($self) = @_;
     my $page_title = $self->hub->favorites->preferences->which_page->value;
+
     if ($page_title) {
         return {
             html      => $self->hub->pages->new_from_name($page_title)->to_html_or_default,
             edit_path => $self->hub->favorites->favorites_edit_path . ';caller_action=homepage',
-            view_path => $self->hub->helpers->page_display_path($page_title),
+            view_path => $self->hub->helpers->page_display_path(URI::Escape::uri_escape_utf8($page_title)),
         };
     }
     return {
