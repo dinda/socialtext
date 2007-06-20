@@ -20,10 +20,12 @@ my @exclude_rx = (
 my @include_rx = (
     qr/\.(?:pm|js)$/, 
     qr/share\/template/,
+    qr/share\/console-template\/template/,
 );
-my @files = get_files( "lib/", "share/template", "share/javascript" );
+my @files = get_files( "lib/", "share/template", "share/javascript", "share/console-template" );
 
 my $en_file = "nlw-en.po";
+shell_run("l10n-widget-to-js");
 call_xgettext( $en_file => @files );
 po_to_wiki($en_file);
 exit;
