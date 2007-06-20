@@ -110,7 +110,7 @@ test_http "GET json from Workspace sorted size" {
     my $response = jsonToObj( $test->response->content );
 
     is $response->[0]->{name}, 'thing.png', 'first element in sorted attachments is thing.png';
-    is $response->[3]->{name}, 'O Star.txt', 'fourth element in sorted attachments is O Star.txt';
+    is $response->[11]->{name}, 'O Star.txt', 'fourth element in sorted attachments is O Star.txt';
 }
 
 my $attachment_uri;
