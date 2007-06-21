@@ -550,13 +550,13 @@ proto.newpage_save = function(page_name, pagename_editfield) {
     var saved = false;
     page_name = trim(page_name);
     if (page_name.length == 0) {
-        alert('You must specify a page name');
+        alert(loc('You must specify a page name'));
         if (pagename_editfield) {
             pagename_editfield.focus();
         }
     }
     else if (is_reserved_pagename(page_name)) {
-        alert('"' + page_name + '" is a reserved page name. Please use a different name');
+        alert(loc('"[_1]" is a reserved page name. Please use a different name', page_name));
         if (pagename_editfield) {
             pagename_editfield.focus();
         }
@@ -1105,7 +1105,7 @@ proto.show_messages = function(html) {
     };
     var message_bodies = {
         wiki:
-            loc('Advanced content is shown inside a grey border. Switch to [_1]  to edit areas inside a grey border.',advanced_link),
+            loc('Advanced content is shown inside a grey border. Switch to [_1] to edit areas inside a grey border.',advanced_link),
         table: loc('Use [_1] to change the number of rows and columns in a table.', advanced_link),
         both: ''
     };
