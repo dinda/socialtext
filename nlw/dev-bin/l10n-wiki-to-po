@@ -17,7 +17,7 @@ my $l10n = load_localizations();
 
 my $js_output = 'share/javascript/l10ns.js';
 my $is_js     = qr#share/javascript|share/template/element/jst#;
-my $is_po     = qr#lib/\S+\.pm|share/template#;
+my $is_po     = qr#lib/\S+\.pm|share/template|share/console-template/template#;
 create_perl_l10ns( 'share/l10n', $l10n );
 create_js_l10ns( 'share/javascript/l10ns.js', $l10n );
 exit;
