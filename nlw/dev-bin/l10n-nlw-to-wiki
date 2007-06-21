@@ -28,7 +28,7 @@ my @include_rx = (
 my @files = get_files( "lib/", "share/template", "share/javascript", "share/console-template" );
 
 my $en_file = "nlw-en.po";
-shell_run("l10n-widget-to-js");
+shell_run("dev-bin/l10n-widget-to-js");
 call_xgettext( $en_file => @files );
 po_to_wiki($en_file);
 exit;
