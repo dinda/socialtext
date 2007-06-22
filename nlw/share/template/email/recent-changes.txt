@@ -1,7 +1,6 @@
 [% user.guess_real_name %],
 
-[% loc('To stop receiving or change how often you receive emails about changes
-to [_1], go to', workspace.title) %]:
+[% loc('To stop receiving or change how often you receive emails about changes to [_1], go to', workspace.title) %]:
 
  [% preference_uri %]
 

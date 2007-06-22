@@ -1,7 +1,8 @@
-[% loc('Welcome to [_1]', PROCESS system_name) %].
+[% PROCESS system_name %]
+Welcome to [% system_name %].
 
-[% loc('You signed up for a new account with our system and we need to confirm
-your email address. Please follow this link to confirm your address:') %]
+[% loc('You signed up for a new account with our system and we need to confirm your email address.') %]
+[% loc('Please follow this link to confirm your address:') %]
 
   [% confirmation_uri %]
 

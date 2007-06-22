@@ -7,17 +7,15 @@
 [% IF requires_confirmation -%]
 [% loc("Please click on this link to confirm your email address:") %] [% confirmation_uri | html %]
 
-[% loc("Once you have confirmed your account, you will receive a second email
-with login details.") %]
+[% loc("Once you have confirmed your account, you will receive a second email with login details.") %]
 [% ELSE -%]
 [% loc('web address:') %] [% workspace_uri | html %]
 [% loc('username:') %] [% username | html %]
 
 [% IF appconfig.is_default('user_factories') %] 
 [% IF app_name; a = 'a'; ELSE; a = 'an'; END %]
-[% loc("Because you already have [_1] [_2] account, the password is the
-same as the password you use for your other [_3] workspaces. If
-you don't remember it, follow this link to select a new password:", a, app_name, app_name) %]
+[% loc("Because you already have [_1] [_2] account, the password is the same as the password you use for your other [_3] workspaces.", a, app_name, app_name) %]
+[% loc("If you don't remember it, follow this link to select a new password:") %]
 [% forgot_password_uri %]
 
 [% END %]
