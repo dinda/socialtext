@@ -299,14 +299,30 @@ sub to_hash {
   return $hash;
 }
 
+sub _get_full_name {
+    my $full_name;
+    my $first_name = shift;
+    my $last_name = shift;
+
+    if (system_locale() eq 'ja') {
+        $full_name = join ' ', grep { defined and length }
+            $last_name, $first_name;
+    }
+    else {
+        $full_name = join ' ', grep { defined and length }
+        $first_name, $last_name;
+    }
+    return $full_name;
+}
+
+
 {
     Readonly my $spec => { workspace => WORKSPACE_TYPE( default => undef ) };
     sub best_full_name {
         my $self = shift;
         my %p = validate( @_, $spec );
 
-        my $name = join ' ', grep { defined and length }
-          $self->first_name, $self->last_name;
+        my $name = _get_full_name($self->first_name, $self->last_name);
 
         return $name if length $name;
 
@@ -345,8 +361,7 @@ sub name_and_email {
 sub FormattedEmail {
     my ( $class, $first_name, $last_name, $email_address ) = @_;
 
-    my $name = join ' ', grep { defined and length }
-          $first_name, $last_name;
+    my $name = _get_full_name($first_name, $last_name);
 
     # Dave suggested this improvement, but many of our templates anticipate
     # the previous format, so is being temporarily reverted
@@ -363,8 +378,7 @@ sub FormattedEmail {
 sub guess_real_name {
     my $self = shift;
 
-    my $name = join ' ', grep { defined and length }
-      $self->first_name, $self->last_name;
+    my $name = _get_full_name($self->first_name, $self->last_name);
 
     return $name if length $name;
 
