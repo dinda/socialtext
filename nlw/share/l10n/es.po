@@ -19,7 +19,7 @@ msgstr ""
 msgid "%1 - RSS Search for %2"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:97
+#: lib/Socialtext/WeblogPlugin.pm:104
 #. (
 msgid "%1 Weblog"
 msgstr ""
@@ -92,6 +92,16 @@ msgstr ""
 #: share/template/email/recent-changes.html:34 share/template/email/recent-changes.txt:16 share/template/email/watchlist.html:34 share/template/email/watchlist.txt:16
 #. (
 msgid "(by %1 on %2)"
+msgstr ""
+
+#: share/console-template/template/help.html:8
+#.  
+msgid "(contact <a href=\"mailto:support@socialtext.com\">Socialtext Support</a> if you need access)"
+msgstr ""
+
+#: share/console-template/template/setup.html:33
+#.  
+msgid "(leave blank to use appliance's built-in SMTP server)"
 msgstr ""
 
 #: lib/Socialtext/TimeZonePlugin.pm:33
@@ -354,14 +364,29 @@ msgstr ""
 msgid "Account name is a required field."
 msgstr ""
 
+#: lib/Socialtext/Appliance/UsageStats.pm:146 lib/Socialtext/Appliance/UsageStats.pm:165 lib/Socialtext/Appliance/UserReport.pm:124 lib/Socialtext/Appliance/UserReport.pm:143
+#. (
+msgid "Active user count for %1: %2"
+msgstr ""
+
 #: share/template/popup/email_page:130 share/template/popup/email_page:138
 #.  
 msgid "Add"
 msgstr ""
 
+#: share/console-template/template/setup.html:53
+#.  
+msgid "Add Administrator"
+msgstr ""
+
 #: share/template/popup/email_page:134
 #.  
 msgid "Add All"
+msgstr ""
+
+#: share/console-template/template/setup.html:49
+#.  
+msgid "Add Appliance Administrators"
 msgstr ""
 
 #: share/template/comment_popup.html:51
@@ -404,7 +429,7 @@ msgstr ""
 msgid "Add&nbsp;tag"
 msgstr ""
 
-#: share/template/layout/html:106
+#: share/template/layout/html:110
 #.  
 msgid "Add&nbsp;tags"
 msgstr ""
@@ -539,6 +564,16 @@ msgstr ""
 msgid "Anyone can send email to this workspace."
 msgstr ""
 
+#: share/console-template/template/setup.html:21
+#.  
+msgid "Apache Logs"
+msgstr ""
+
+#: share/console-template/template/setup.html:23
+#.  
+msgid "Apache error log"
+msgstr ""
+
 #: share/template/element/settings/users_invite_search_section:120 share/template/element/settings/users_invite_section:74
 #.  
 msgid "Append the extra text below?"
@@ -552,6 +587,26 @@ msgstr ""
 #: share/template/element/page/newpage_duplicate:11
 #.  
 msgid "Append your text to the bottom of the existing page named:"
+msgstr ""
+
+#: share/console-template/template/console_wrapper.tmpl:58
+#.  
+msgid "Appliance Console"
+msgstr ""
+
+#: share/console-template/template/help.html:6
+#.  
+msgid "Appliance Documentation"
+msgstr ""
+
+#: share/console-template/template/help.html:7
+#.  
+msgid "Appliance Manual Workspace"
+msgstr ""
+
+#: share/console-template/template/form.tmpl:6
+#.  
+msgid "Appliance clock when this screen was generated:"
 msgstr ""
 
 #: share/template/bugs_content.html:5
@@ -584,6 +639,11 @@ msgstr ""
 msgid "Application error on %1: %2"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:227
+#.  
+msgid "Archive Directory"
+msgstr ""
+
 #: share/template/view/homepage:97
 #. (
 msgid "As a Socialtext customer, you have access to the %1."
@@ -599,7 +659,7 @@ msgstr ""
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1130 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1131 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr ""
@@ -612,6 +672,11 @@ msgstr ""
 #: share/template/element/page/attachment_manage_interface:13
 #.  
 msgid "Author"
+msgstr ""
+
+#: share/console-template/template/backup.html:39
+#.  
+msgid "Automatic Backup Schedule"
 msgstr ""
 
 #: share/template/view/page/stats_index:7
@@ -627,6 +692,41 @@ msgstr ""
 #: share/template/authen/forgot_password.html:36
 #. (
 msgid "Back to <a href=\"%1\">Log in to Socialtext</a>."
+msgstr ""
+
+#: share/console-template/template/console_wrapper.tmpl:37
+#.  
+msgid "Backup"
+msgstr ""
+
+#: share/console-template/template/backup.html:94
+#.  
+msgid "Backup Destination"
+msgstr ""
+
+#: share/console-template/template/backup.html:11
+#.  
+msgid "Backup Now"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:220
+#.  
+msgid "Backup Server name"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:71
+#.  
+msgid "Backup already running"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:206
+#.  
+msgid "Backup destination updated"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:43
+#. (
+msgid "Backup is in progress - started at %1"
 msgstr ""
 
 #: share/template/email/st/workspace-invitation.txt:18
@@ -664,12 +764,12 @@ msgstr ""
 msgid "Bug Dump"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:229
+#: lib/Socialtext/UserSettingsPlugin.pm:230
 #.  
 msgid "Can't remove privileges of the last admin"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr ""
@@ -684,6 +784,21 @@ msgstr ""
 msgid "Cannot undelete a page with only one revision. Returning to front page."
 msgstr ""
 
+#: lib/Socialtext/Appliance/UsageStats.pm:144
+#.  
+msgid "Category: usage report blog - detailed"
+msgstr ""
+
+#: lib/Socialtext/Appliance/UsageStats.pm:163
+#.  
+msgid "Category: usage report blog - summary"
+msgstr ""
+
+#: lib/Socialtext/Appliance/UserReport.pm:139
+#.  
+msgid "Category: usage report blog - summary\n\n"
+msgstr ""
+
 #: share/template/element/settings/workspaces_settings_appearance_section:66 share/template/view/homepage:30
 #.  
 msgid "Central page"
@@ -694,7 +809,7 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:103 lib/Socialtext/UserSettingsPlugin.pm:232 lib/Socialtext/WorkspacesUIPlugin.pm:67
+#: lib/Socialtext/UserSettingsPlugin.pm:104 lib/Socialtext/UserSettingsPlugin.pm:233 lib/Socialtext/WorkspacesUIPlugin.pm:67
 #.  
 msgid "Changes Saved"
 msgstr ""
@@ -764,7 +879,7 @@ msgstr ""
 msgid "Click this button to add a file to the page"
 msgstr ""
 
-#: share/template/element/page/tags:14 share/template/layout/html:106
+#: share/template/element/page/tags:14 share/template/layout/html:110
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr ""
@@ -819,7 +934,7 @@ msgstr ""
 msgid "Click this button to save recently viewed pages to your computer for offline use."
 msgstr ""
 
-#: lib/Socialtext/HomepagePlugin.pm:56 lib/Socialtext/RecentChangesPlugin.pm:111
+#: lib/Socialtext/HomepagePlugin.pm:57 lib/Socialtext/RecentChangesPlugin.pm:111
 #. (
 msgid "Click this button to save the %1 most recent pages to your computer for offline use."
 msgstr ""
@@ -859,7 +974,7 @@ msgstr ""
 msgid "Click this button to save your tag"
 msgstr ""
 
-#: share/template/layout/html:103
+#: share/template/layout/html:107
 #.  
 msgid "Click this button to upload a file to the page"
 msgstr ""
@@ -869,7 +984,7 @@ msgstr ""
 msgid "Click to view previous versions of this page."
 msgstr ""
 
-#: share/template/element/page/attachment_manage_interface:23
+#: share/console-template/template/popup.html:32 share/template/element/page/attachment_manage_interface:23
 #.  
 msgid "Close"
 msgstr ""
@@ -899,6 +1014,11 @@ msgstr ""
 msgid "Congratulations! You have just created \"%1\", a brand new Socialtext Workspace. You are the administrator. The web address of the new workspace is %2."
 msgstr ""
 
+#: share/console-template/template/help.html:10
+#.  
+msgid "Contact Socialtext Support"
+msgstr ""
+
 #: share/template/popup/copy_to_workspace:36
 #.  
 msgid "Copy"
@@ -919,6 +1039,16 @@ msgstr ""
 msgid "Copy the page %1 to another workspace?"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:256
+#.  
+msgid "Could not read/write to share"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:130
+#. (
+msgid "Couldn't open connection to mailer: %1"
+msgstr ""
+
 #: share/template/element/settings/weblog_create:2 share/template/element/settings/workspaces_create_section:2
 #.  
 msgid "Create"
@@ -927,6 +1057,11 @@ msgstr ""
 #: share/template/element/settings/weblog_create:6
 #.  
 msgid "Create A Weblog"
+msgstr ""
+
+#: share/console-template/template/setup.html:57 share/console-template/template/setup.html:60
+#.  
+msgid "Create Initial Workspace"
 msgstr ""
 
 #: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
@@ -959,6 +1094,11 @@ msgstr ""
 msgid "Created by %1 on %2."
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:311
+#. (
+msgid "Creating backup tarball (%1) ...\n"
+msgstr ""
+
 #: share/template/view/page/stats_index:6
 #.  
 msgid "Current Report"
@@ -974,7 +1114,7 @@ msgstr ""
 msgid "Custom privacy setting"
 msgstr ""
 
-#: lib/Socialtext/HomepagePlugin.pm:47 share/template/element/settings/workspaces_settings_appearance_section:59 share/template/element/wiki/subnav-default:5 share/template/element/wiki/subnav-listview:5 share/template/element/wiki/subnav-weblog:5
+#: lib/Socialtext/HomepagePlugin.pm:48 share/template/element/settings/workspaces_settings_appearance_section:59 share/template/element/wiki/subnav-default:5 share/template/element/wiki/subnav-listview:5 share/template/element/wiki/subnav-weblog:5
 #.  
 msgid "Dashboard"
 msgstr ""
@@ -1024,6 +1164,11 @@ msgstr ""
 msgid "Deleted \"%1\""
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:272
+#. (
+msgid "Did not get %1"
+msgstr ""
+
 #: share/template/view/page/delete_epilogue:6
 #.  
 msgid "Did you delete this page in error? If so, you can restore the page."
@@ -1034,6 +1179,11 @@ msgstr ""
 msgid "Did you know?"
 msgstr ""
 
+#: share/console-template/template/overview.html:12
+#.  
+msgid "Disk Usage"
+msgstr ""
+
 #: lib/Socialtext/BreadCrumbsPlugin.pm:33
 #. (
 msgid "Display \\\"%1\\\" side pane box?"
@@ -1042,6 +1192,21 @@ msgstr ""
 #: lib/Socialtext/RecentChangesPlugin.pm:72
 #.  
 msgid "Display as a side box in page view?"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:105
+#.  
+msgid "Do you really want to delete all workspaces and create a new initial workspace?  (This action cannot be undone.)"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:77
+#.  
+msgid "Do you really want to reboot the appliance?"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:91
+#.  
+msgid "Do you really want to shutdown the appliance?"
 msgstr ""
 
 #: share/template/element/settings/workspaces_permissions_section:17
@@ -1114,7 +1279,7 @@ msgstr ""
 msgid "Edited By"
 msgstr ""
 
-#: share/template/layout/html:93
+#: share/template/layout/html:97
 #.  
 msgid "Editing"
 msgstr ""
@@ -1157,6 +1322,11 @@ msgstr ""
 #: share/template/element/page/actions:44
 #.  
 msgid "Email To This Workspace"
+msgstr ""
+
+#: share/console-template/template/setup.html:42
+#.  
+msgid "Email address for testing:"
 msgstr ""
 
 #: share/template/element/page/actions:28
@@ -1212,6 +1382,11 @@ msgstr ""
 #: share/template/authen/forgot_password.html:11
 #.  
 msgid "Enter your email address below. Enter the email address you normally use for your Socialtext account. If you got here by clicking a link you received in an email message, look at that message, and use the email address it was sent to."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:69
+#. (
+msgid "Error updating from timeserver %1"
 msgstr ""
 
 #: share/template/lite/search/search.html:14
@@ -1319,6 +1494,21 @@ msgstr ""
 msgid "Export to Word"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:301
+#. (
+msgid "Exporting %1\n"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:297
+#.  
+msgid "Exporting workspaces ...\n"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:343
+#.  
+msgid "Fetching backup file from SMB share ...\n"
+msgstr ""
+
 #: share/template/element/page/attachment_manage_interface:12
 #.  
 msgid "File Name"
@@ -1349,7 +1539,7 @@ msgstr ""
 msgid "First Name:"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:111
+#: lib/Socialtext/WeblogPlugin.pm:118
 #. (
 msgid "First Post in %1"
 msgstr ""
@@ -1367,6 +1557,11 @@ msgstr ""
 #: lib/Socialtext/DisplayPlugin.pm:25
 #.  
 msgid "French"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Fri"
 msgstr ""
 
 #: share/template/popup/email_page:23
@@ -1394,6 +1589,11 @@ msgstr ""
 msgid "Go to:"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:275
+#. (
+msgid "Got file %1"
+msgstr ""
+
 #: share/template/email/password-change.html:12 share/template/email/password-change.txt:1
 #.  
 msgid "Greetings from Socialtext,"
@@ -1409,7 +1609,7 @@ msgstr ""
 msgid "Hello, this is a page from the workspace that I wanted you to see. This page is also available for viewing or editing on the web at:\n\n%1"
 msgstr ""
 
-#: share/template/element/wiki/nav:10
+#: share/console-template/template/console_wrapper.tmpl:37 share/template/element/wiki/nav:10
 #.  
 msgid "Help"
 msgstr ""
@@ -1564,6 +1764,11 @@ msgstr ""
 msgid "Image Already On The Web"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:357
+#.  
+msgid "Importing workspaces from tarballs ...\n"
+msgstr ""
+
 #: lib/Socialtext/DisplayPlugin.pm:105
 #.  
 msgid "Include Recently Viewed items as a side box when viewing pages?"
@@ -1579,6 +1784,31 @@ msgstr ""
 msgid "Incoming email placement must be one of top, bottom, or replace."
 msgstr ""
 
+#: share/console-template/template/popup.html:41
+#.  
+msgid "Initial Appliance Administrator Email"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:106
+#.  
+msgid "Initialize Workspaces"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:104
+#.  
+msgid "Initialize Workspaces?"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:352
+#.  
+msgid "Initializing workspaces ...\n"
+msgstr ""
+
+#: share/console-template/template/setup.html:7
+#.  
+msgid "Internet Time Server"
+msgstr ""
+
 #: share/template/element/settings/workspaces_permissions_section:77
 #.  
 msgid "Intranet"
@@ -1587,6 +1817,11 @@ msgstr ""
 #: lib/Socialtext/RecentChangesPlugin.pm:83
 #.  
 msgid "Invalid character '/' in changes parameter"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:45
+#. (
+msgid "Invalid host: %1"
 msgstr ""
 
 #: share/template/email/openid/invite-request-email.html:4 share/template/email/st/invite-request-email.html:4
@@ -1704,6 +1939,11 @@ msgstr ""
 msgid "Last edited by <span class=\"st-homepage-whatsnew-author\">%1</span> on <span class=\"st-homepage-whatsnew-date\">%2</span>"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:47
+#. (
+msgid "Last manual backup was %1"
+msgstr ""
+
 #: share/template/new_form_page/generic/new_form_page_query.html:20 share/template/new_form_page/new_form_page_query.html:21
 #.  
 msgid "Last name:"
@@ -1804,6 +2044,11 @@ msgstr ""
 msgid "Meeting notes category"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Mon"
+msgstr ""
+
 #: share/template/element/settings/select:6
 #.  
 msgid "My Settings"
@@ -1829,9 +2074,14 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:398
+#: lib/Socialtext/WeblogPlugin.pm:405
 #. (
 msgid "Navigation for: %1"
+msgstr ""
+
+#: share/console-template/template/console_wrapper.tmpl:34
+#.  
+msgid "Navigation tabs to select different sections of the control panel."
 msgstr ""
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:37
@@ -1849,6 +2099,11 @@ msgstr ""
 msgid "New Workspace"
 msgstr ""
 
+#: share/console-template/template/setup.html:51
+#.  
+msgid "New administrator email address:"
+msgstr ""
+
 #: share/template/popup/copy_to_workspace:33 share/template/popup/duplicate:61 share/template/popup/rename:69
 #.  
 msgid "New page name"
@@ -1859,7 +2114,7 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:79
+#: lib/Socialtext/UserSettingsPlugin.pm:80
 #.  
 msgid "New passwords do not match"
 msgstr ""
@@ -1904,9 +2159,19 @@ msgstr ""
 msgid "No downloads."
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:298
+#: lib/Socialtext/UserSettingsPlugin.pm:304 lib/Socialtext/UserSettingsPlugin.pm:321
 #.  
 msgid "No email addresses specified"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:264
+#.  
+msgid "No file provided to verify"
+msgstr ""
+
+#: share/console-template/template/backup.html:35
+#.  
+msgid "No files available to restore."
 msgstr ""
 
 #: lib/Socialtext/WikiwygPlugin.pm:531 lib/Socialtext/WikiwygPlugin.pm:681
@@ -1969,7 +2234,7 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:77
+#: lib/Socialtext/UserSettingsPlugin.pm:78
 #.  
 msgid "Old password is incorrect"
 msgstr ""
@@ -2027,6 +2292,16 @@ msgstr ""
 #: share/template/view/homepage:81
 #.  
 msgid "Other participants can see it, too, and can edit it to leave notes for you."
+msgstr ""
+
+#: share/console-template/template/setup.html:31
+#.  
+msgid "Outgoing mail server"
+msgstr ""
+
+#: share/console-template/template/console_wrapper.tmpl:37
+#.  
+msgid "Overview"
 msgstr ""
 
 #: share/template/element/page/newpage_duplicate:7
@@ -2114,6 +2389,11 @@ msgstr ""
 msgid "Pages containing '%1' (%2)"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:223
+#.  
+msgid "Password"
+msgstr ""
+
 #: share/template/authen/login.html:25 share/template/authen/register.html:15
 #.  
 msgid "Password:"
@@ -2122,6 +2402,16 @@ msgstr ""
 #: lib/Socialtext/User/Default.pm:227
 #.  
 msgid "Passwords must be at least 6 characters long."
+msgstr ""
+
+#: share/console-template/template/backup.html:6
+#.  
+msgid "Perform Backup Now"
+msgstr ""
+
+#: share/console-template/template/backup.html:16
+#.  
+msgid "Perform Restore"
 msgstr ""
 
 #: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
@@ -2164,6 +2454,16 @@ msgstr ""
 msgid "Please confirm your email address"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Setup.pm:145 lib/Socialtext/Appliance/Model/Setup.pm:165
+#.  
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:154
+#.  
+msgid "Please enter an email address"
+msgstr ""
+
 #: lib/Socialtext/Handler/Authen.pm:187
 #.  
 msgid "Please enter an email address."
@@ -2177,6 +2477,21 @@ msgstr ""
 #: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
 msgid "Please invite these people into the %1 workspace."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:81
+#.  
+msgid "Please select a file to restore"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:88
+#.  
+msgid "Please wait until the backup finishes, then retry."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:64
+#.  
+msgid "Please wait until the restore finishes, then retry."
 msgstr ""
 
 #: share/template/view/category_display:39
@@ -2249,14 +2564,44 @@ msgstr ""
 msgid "Public read-only"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:254
+#.  
+msgid "Put and retrieved test file"
+msgstr ""
+
 #: share/template/element/wiki/subnav-dashboard:3 share/template/element/wiki/subnav-default:3 share/template/element/wiki/subnav-listview:3 share/template/element/wiki/subnav-weblog:3
 #.  
 msgid "Quick jump"
 msgstr ""
 
+#: share/console-template/template/setup.html:10
+#.  
+msgid "RFC 868 Time Server"
+msgstr ""
+
 #: share/template/authen/choose_password.html:32 share/template/authen/register.html:20
 #.  
 msgid "Re-type Password:"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:78
+#.  
+msgid "Reboot"
+msgstr ""
+
+#: share/console-template/template/shutdown.html:12
+#.  
+msgid "Reboot Appliance"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:76
+#.  
+msgid "Reboot Appliance?"
+msgstr ""
+
+#: share/console-template/template/shutdown.html:15
+#.  
+msgid "Reboot Now"
 msgstr ""
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
@@ -2307,6 +2652,16 @@ msgstr ""
 #: share/template/popup/email_page:145
 #.  
 msgid "Recipient(s)"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:117
+#. (
+msgid "Redirecting to %1"
+msgstr ""
+
+#: share/console-template/template/backup.html:20
+#.  
+msgid "Refresh file list"
 msgstr ""
 
 #: share/template/authen/register.html:35 share/template/element/wiki/nav:6
@@ -2369,7 +2724,7 @@ msgstr ""
 msgid "Report Bug"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:476
+#: lib/Socialtext/UserSettingsPlugin.pm:484
 #. (
 msgid "Request to invite new users to the %1 workspace"
 msgstr ""
@@ -2379,9 +2734,29 @@ msgstr ""
 msgid "Reset Password"
 msgstr ""
 
+#: share/console-template/template/backup.html:31
+#.  
+msgid "Restore Now"
+msgstr ""
+
 #: share/template/view/page/delete_epilogue:11
 #.  
 msgid "Restore Page"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:53
+#. (
+msgid "Restore in progress - started at %1"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:95
+#.  
+msgid "Restore is already running"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:334
+#. (
+msgid "Restoring backup from (%1) ...\n"
 msgstr ""
 
 #: share/template/view/page/stats_index:6
@@ -2424,9 +2799,19 @@ msgstr ""
 msgid "Sample Weblog"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Sat"
+msgstr ""
+
 #: share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
+msgstr ""
+
+#: share/console-template/template/backup.html:90
+#.  
+msgid "Save Backup Schedule"
 msgstr ""
 
 #: share/template/element/page/newpage_save:8
@@ -2514,14 +2899,44 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+#: share/console-template/template/setup.html:40 share/console-template/template/setup.html:44
+#.  
+msgid "Send Test Email"
+msgstr ""
+
 #: share/template/popup/email_page:7
 #. (
 msgid "Sending '%1' page by email"
 msgstr ""
 
+#: share/console-template/template/backup.html:109
+#.  
+msgid "Set Backup Destination"
+msgstr ""
+
+#: share/console-template/template/setup.html:29 share/console-template/template/setup.html:34
+#.  
+msgid "Set Email Configuration"
+msgstr ""
+
+#: share/console-template/template/setup.html:12
+#.  
+msgid "Set Time Server"
+msgstr ""
+
 #: share/template/element/settings/select:2 share/template/element/wiki/nav:3
 #.  
 msgid "Settings"
+msgstr ""
+
+#: share/console-template/template/console_wrapper.tmpl:37
+#.  
+msgid "Setup"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:221
+#.  
+msgid "Shared Directory Name"
 msgstr ""
 
 #: lib/Socialtext/DisplayPlugin.pm:97
@@ -2544,6 +2959,26 @@ msgstr ""
 msgid "Should users of this workspace receive email notifications of changes to this workspace?"
 msgstr ""
 
+#: share/console-template/template/shutdown.html:6
+#.  
+msgid "Shut Down Appliance"
+msgstr ""
+
+#: share/console-template/template/shutdown.html:9
+#.  
+msgid "Shut Down Now"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:92 share/console-template/template/console_wrapper.tmpl:37
+#.  
+msgid "Shutdown"
+msgstr ""
+
+#: lib/Socialtext/Appliance/ConsoleController.pm:90
+#.  
+msgid "Shutdown Appliance?"
+msgstr ""
+
 #: share/template/email/openid/workspace-invitation-body.html:19 share/template/email/st/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation.txt:5
 #.  
 msgid "Sign in using the information below:"
@@ -2564,6 +2999,16 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
+#: share/console-template/template/console_wrapper.tmpl:22 share/console-template/template/console_wrapper.tmpl:5
+#.  
+msgid "Socialtext Appliance"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:122
+#.  
+msgid "Socialtext Appliance Test Email"
+msgstr ""
+
 #: share/template/view/refcard:34
 #.  
 msgid "Socialtext Email"
@@ -2579,9 +3024,19 @@ msgstr ""
 msgid "Socialtext Workspace Punctuation Help"
 msgstr ""
 
+#: lib/Socialtext/Appliance/UsageStats.pm:154 lib/Socialtext/Appliance/UserReport.pm:132
+#.  
+msgid "Socialtext detailed use report:"
+msgstr ""
+
 #: share/template/authen/forgot_password.html:3
 #.  
 msgid "Socialtext password help"
+msgstr ""
+
+#: lib/Socialtext/Appliance/UsageStats.pm:171 lib/Socialtext/Appliance/UserReport.pm:149
+#.  
+msgid "Socialtext summary use report:"
 msgstr ""
 
 #: share/template/lite/page/contention.html:5 share/template/view/edit_contention:3
@@ -2634,9 +3089,29 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Sun"
+msgstr ""
+
+#: share/console-template/template/setup.html:17
+#.  
+msgid "Synchronize With Time Server Now"
+msgstr ""
+
 #: lib/Socialtext/SyndicatePlugin.pm:42
 #.  
 msgid "Syndicate"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/System.pm:56
+#.  
+msgid "System rebooting ..."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/System.pm:62
+#.  
+msgid "System shutting down ..."
 msgstr ""
 
 #: share/javascript/Wikiwyg/Jemplate.js:1398 share/template/view/taglistview:20
@@ -2687,6 +3162,11 @@ msgstr ""
 #: lib/Socialtext/Account.pm:62
 #. (
 msgid "The account name you chose, %1, is already in use."
+msgstr ""
+
+#: share/console-template/template/backup.html:98
+#.  
+msgid "The appliance can store backup files on a Windows- or SMB-compatible shared directory/folder on another computer.  Set the backup server, directory and username here."
 msgstr ""
 
 #: lib/Socialtext/Handler/Authen.pm:275
@@ -2849,7 +3329,7 @@ msgstr ""
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:105
+#: lib/Socialtext/WeblogPlugin.pm:112
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr ""
@@ -2869,6 +3349,16 @@ msgstr ""
 msgid "This action requires a page to be specified."
 msgstr ""
 
+#: share/console-template/template/setup.html:58
+#.  
+msgid "This action will delete all existing workspaces and users on this appliance, and create the Admin workspace."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:125
+#.  
+msgid "This email was sent from the Socialtext Appliance."
+msgstr ""
+
 #: share/template/new_form_page/new_form_page_instructions.html:3
 #.  
 msgid "This form will create your profile page for Inbox. You can edit your\nprofile in the workspace afterwards if you'd like, but you don't have\nto. Except for your name, all fields are optional."
@@ -2884,7 +3374,7 @@ msgstr ""
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:123
+#: lib/Socialtext/WeblogPlugin.pm:130
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr ""
@@ -2914,9 +3404,19 @@ msgstr ""
 msgid "This username has no associated email address."
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Thu"
+msgstr ""
+
 #: lib/Socialtext/TimeZonePlugin.pm:17
 #.  
 msgid "Time"
+msgstr ""
+
+#: share/console-template/template/backup.html:64
+#.  
+msgid "Time each day:"
 msgstr ""
 
 #: share/template/element/page/newpage_save:14
@@ -2979,6 +3479,11 @@ msgstr ""
 msgid "To proceed, please choose a password."
 msgstr ""
 
+#: share/console-template/template/overview.html:8
+#.  
+msgid "To see a list of all the workspaces and users on the system, go to the <a href=\"/nlw/control/\">Socialtext Accounts Admin</a> tool."
+msgstr ""
+
 #: share/template/errors/settings_requires_account:3
 #.  
 msgid "To set your preferences for a workspace, you must be logged in."
@@ -3034,6 +3539,16 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+#: lib/Socialtext/Appliance/UsageStats.pm:145 lib/Socialtext/Appliance/UsageStats.pm:164 lib/Socialtext/Appliance/UserReport.pm:123 lib/Socialtext/Appliance/UserReport.pm:142
+#. (
+msgid "Total user count for %1: %2"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Tue"
+msgstr ""
+
 #: share/template/view/page/stats:12
 #.  
 msgid "Type"
@@ -3079,6 +3594,21 @@ msgstr ""
 msgid "Updated by %1 on %2."
 msgstr ""
 
+#: lib/Socialtext/Appliance/Model/Setup.pm:97
+#. (
+msgid "Updated mail server to %1"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:101
+#.  
+msgid "Updated mail server to use built-in server"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:67
+#. (
+msgid "Updated time from %1"
+msgstr ""
+
 #: share/template/element/settings/workspaces_settings_appearance_section:35
 #.  
 msgid "Upload An Image"
@@ -3099,7 +3629,7 @@ msgstr ""
 msgid "Upload files"
 msgstr ""
 
-#: share/template/layout/html:103
+#: share/template/layout/html:107
 #.  
 msgid "Upload&nbsp;files"
 msgstr ""
@@ -3114,12 +3644,17 @@ msgstr ""
 msgid "Uploads"
 msgstr ""
 
+#: share/console-template/template/popup.html:54
+#.  
+msgid "Use the email address you entered above as the username, and <strong>password</strong> as the password.  You can change your password later."
+msgstr ""
+
 #: share/template/element/settings/users_settings_section:26
 #.  
 msgid "Use your email address and new password to log in again."
 msgstr ""
 
-#: lib/Socialtext/WebApp.pm:215
+#: lib/Socialtext/Appliance/Model/Backup.pm:222 lib/Socialtext/WebApp.pm:215
 #.  
 msgid "Username"
 msgstr ""
@@ -3134,22 +3669,22 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:364 lib/Socialtext/UserSettingsPlugin.pm:425
+#: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:284 lib/Socialtext/UserSettingsPlugin.pm:372 lib/Socialtext/UserSettingsPlugin.pm:433
 #.  
 msgid "Users: Invite New Users"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:141
+#: lib/Socialtext/UserSettingsPlugin.pm:142
 #.  
 msgid "Users: List All Users"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:140
+#: lib/Socialtext/UserSettingsPlugin.pm:141
 #.  
 msgid "Users: Manage All Users"
 msgstr ""
 
-#: lib/Socialtext/UserSettingsPlugin.pm:64
+#: lib/Socialtext/UserSettingsPlugin.pm:65
 #.  
 msgid "Users: My Settings"
 msgstr ""
@@ -3219,17 +3754,22 @@ msgstr ""
 msgid "Weblog Archives"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:381 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:388 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:96
+#.  
+msgid "Weblog name must be between 2 and 28 characters long."
+msgstr ""
+
+#: lib/Socialtext/WeblogPlugin.pm:150
 #. (
 msgid "Weblog: %1 Atom"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:138
+#: lib/Socialtext/WeblogPlugin.pm:145
 #. (
 msgid "Weblog: %1 RSS"
 msgstr ""
@@ -3237,6 +3777,11 @@ msgstr ""
 #: share/template/element/settings/select:41 share/template/element/wiki/subnav-dashboard:6 share/template/element/wiki/subnav-default:13 share/template/element/wiki/subnav-default:9 share/template/element/wiki/subnav-listview:10 share/template/element/wiki/subnav-listview:7
 #.  
 msgid "Weblogs"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#.  
+msgid "Wed"
 msgstr ""
 
 #: lib/Socialtext/Workspace.pm:147
@@ -3404,9 +3949,14 @@ msgstr ""
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr ""
 
-#: share/template/element/settings/select:18
+#: share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
 msgid "Workspaces"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Setup.pm:162
+#. (
+msgid "Workspaces initialized.<br>Log: %1"
 msgstr ""
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:176
@@ -3497,6 +4047,11 @@ msgstr ""
 #: share/template/email/openid/workspace-invitation-body.html:25
 #.  
 msgid "You can sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
+msgstr ""
+
+#: share/console-template/template/form.tmpl:9
+#.  
+msgid "You can synchronize the appliance clock with another computer using the Internet Time protocol.  The appliance must be able to contact that server via port 37."
 msgstr ""
 
 #: lib/Socialtext/Account.pm:70
@@ -3592,6 +4147,11 @@ msgstr ""
 #: share/template/email/email-address-confirmation.txt:3
 #.  
 msgid "You signed up for a new account with our system and we need to confirm\nyour email address. Please follow this link to confirm your address:"
+msgstr ""
+
+#: share/console-template/template/popup.html:53
+#.  
+msgid "You will be asked to log into the Console after you click \"Initialize Workspaces\"."
 msgstr ""
 
 #: share/template/workspaces_created_section.html:10
@@ -3794,6 +4354,11 @@ msgstr ""
 msgid "external link"
 msgstr ""
 
+#: share/console-template/template/overview.html:14
+#.  
+msgid "free"
+msgstr ""
+
 #: share/template/view/refcard:39
 #.  
 msgid "heading 1"
@@ -3914,14 +4479,24 @@ msgstr ""
 msgid "page name"
 msgstr ""
 
+#: share/console-template/template/overview.html:14
+#.  
+msgid "percent free"
+msgstr ""
+
 #: share/template/view/weblog:116
 #.  
 msgid "permalink"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:169 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
+msgstr ""
+
+#: share/console-template/template/form.tmpl:7
+#.  
+msgid "refresh"
 msgstr ""
 
 #: share/template/element/settings/workspaces_permissions_section:116
@@ -3977,6 +4552,11 @@ msgstr ""
 #: share/template/search_help_field.html:16
 #.  
 msgid "title:hello"
+msgstr ""
+
+#: share/console-template/template/overview.html:14
+#.  
+msgid "total"
 msgstr ""
 
 #: share/template/popup/email_page:123
