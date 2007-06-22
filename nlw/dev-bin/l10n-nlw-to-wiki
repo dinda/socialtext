@@ -14,6 +14,7 @@ use Cwd;
 my $LIVE = shift;
 
 link_enterprise_features();
+update_enterprise_features();
 
 my @exclude_rx = (
     qr/tiddlytext/,
@@ -32,6 +33,10 @@ shell_run("dev-bin/l10n-widget-to-js");
 call_xgettext( $en_file => @files );
 po_to_wiki($en_file);
 exit;
+
+sub update_enterprise_features {
+    shell_run("svk pull $ENV{HOME}/src/st/appliance/");
+}
 
 sub link_enterprise_features {
 #   _call_link_control_panel();
