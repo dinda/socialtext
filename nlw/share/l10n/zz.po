@@ -46,8 +46,8 @@ msgstr "%1 Is n07 r3gIs73R3D 4s 4 uS3R. 7Ry 4 dIfF3R3N7 3M4Il 4DdR3Ss?"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
-msgid "%1 would like to ask you to invite new users into the\n%2 workspace:"
-msgstr "%1 W0UlD LiK3 70 4sK Y0U 70 iNvI73 N3W Us3rS In70 7H3\n%2 w0rKsP4C3:"
+msgid "%1 would like to ask you to invite new users into the %2 workspace:"
+msgstr "%1 W0UlD LiK3 70 4sK Y0U 70 iNvI73 N3W Us3rS In70 7H3 %2 W0RkSp4c3:"
 
 #: lib/Socialtext/FavoritesPlugin.pm:31
 #. (
@@ -89,7 +89,7 @@ msgstr "'%1' Is n07 4 v4lId l0c4l3"
 msgid "(Optional)"
 msgstr "(0p7i0n4l)"
 
-#: share/template/email/recent-changes.html:34 share/template/email/recent-changes.txt:16 share/template/email/watchlist.html:34 share/template/email/watchlist.txt:16
+#: share/template/email/recent-changes.html:32 share/template/email/recent-changes.txt:15 share/template/email/watchlist.html:32 share/template/email/watchlist.txt:15
 #. (
 msgid "(by %1 on %2)"
 msgstr "(8y %1 0n %2)"
@@ -364,10 +364,15 @@ msgstr "4Cc3sS 4 C0MmUnI7Y 0f p33Rs"
 msgid "Account name is a required field."
 msgstr "4Cc0uN7 n4m3 Is 4 r3qUiR3D Fi3lD."
 
-#: lib/Socialtext/Appliance/UsageStats.pm:146 lib/Socialtext/Appliance/UsageStats.pm:165 lib/Socialtext/Appliance/UserReport.pm:124 lib/Socialtext/Appliance/UserReport.pm:143
+#: lib/Socialtext/Appliance/UsageStats.pm:136 lib/Socialtext/Appliance/UsageStats.pm:155 lib/Socialtext/Appliance/UserReport.pm:124 lib/Socialtext/Appliance/UserReport.pm:143
 #. (
 msgid "Active user count for %1: %2"
 msgstr "4C7Iv3 Us3r c0uN7 f0r %1: %2"
+
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125
+#.  
+msgid "Active?"
+msgstr "4C7Iv3?"
 
 #: share/template/popup/email_page:130 share/template/popup/email_page:138
 #.  
@@ -589,7 +594,7 @@ msgstr "4Pp3nD 7h3 P3Rs0n4l m3sS4G3 83l0w?"
 msgid "Append your text to the bottom of the existing page named:"
 msgstr "4Pp3nD Y0Ur 73x7 70 7H3 80770M 0f 7H3 3XiS7InG P4G3 n4m3d:"
 
-#: share/console-template/template/console_wrapper.tmpl:58
+#: share/console-template/template/console_wrapper.tmpl:60
 #.  
 msgid "Appliance Console"
 msgstr "4PpLi4nC3 c0nS0L3"
@@ -694,7 +699,7 @@ msgstr "84cK 70 cUrR3N7 r3vIsI0N"
 msgid "Back to <a href=\"%1\">Log in to Socialtext</a>."
 msgstr "84cK 70 <a href=\"%1\">L0G In 70 S0Ci4l73X7</4>."
 
-#: share/console-template/template/console_wrapper.tmpl:37
+#: share/console-template/template/console_wrapper.tmpl:39
 #.  
 msgid "Backup"
 msgstr "84cKuP"
@@ -729,15 +734,10 @@ msgstr "84cKuP D3S7In47I0N UpD473D"
 msgid "Backup is in progress - started at %1"
 msgstr "84cKuP Is iN Pr0gR3Ss - s74R73d 47 %1"
 
-#: share/template/email/st/workspace-invitation.txt:18
+#: share/template/email/st/workspace-invitation-body.html:37 share/template/email/st/workspace-invitation.txt:17
 #. (
-msgid "Because you already have %1 %2 account, the password is the\nsame as the password you use for your other %3 workspaces. If\nyou don't remember it, follow this link to select a new password:"
-msgstr "83c4uS3 y0u 4Lr34Dy h4v3 %1 %2 4cC0Un7, 7H3 p4sSw0rD Is 7H3\nS4M3 4S 7h3 P4SsW0Rd y0u uS3 f0r y0uR 07H3R %3 w0rKsP4C3S. iF\Ny0u d0n'7 r3m3m83R I7, F0Ll0w 7HiS LiNk 70 S3L3C7 4 n3w p4sSw0rD:"
-
-#: share/template/email/st/workspace-invitation-body.html:37
-#. (
-msgid "Because you already have %1 %2 account, the password is the\nsame as the password you use for your other %3 workspaces. If\nyou don't remember it, just <a href=\"%4\">click\nhere to select a new password</a>."
-msgstr "83c4uS3 y0u 4Lr34Dy h4v3 %1 %2 4cC0Un7, 7H3 p4sSw0rD Is 7H3\nS4M3 4S 7h3 P4SsW0Rd y0u uS3 f0r y0uR 07H3R %3 w0rKsP4C3S. iF\Ny0u d0n'7 r3m3m83R I7, JuS7 <a href=\"%4\">ClIcK\Nh3r3 70 s3l3c7 4 N3W P4SsW0Rd</4>."
+msgid "Because you already have %1 %2 account, the password is the same as the password you use for your other %3 workspaces."
+msgstr "83c4uS3 y0u 4Lr34Dy h4v3 %1 %2 4cC0Un7, 7H3 p4sSw0rD Is 7H3 s4m3 4s 7H3 p4sSw0rD Y0U Us3 F0R Y0Ur 07h3r %3 W0RkSp4c3s."
 
 #: share/template/view/refcard:232
 #.  
@@ -754,7 +754,7 @@ msgstr "8L0Ck 0F 73X7 wI7H N0 *Sp3cI4L* pUnC7U47i0n"
 msgid "Bottom of page"
 msgstr "80770M 0f p4g3"
 
-#: share/template/email/standard-footer.html:12 share/template/email/standard-footer.txt:6
+#: share/template/email/standard-footer.html:12 share/template/email/standard-footer.txt:5
 #.  
 msgid "Brought to you by Socialtext."
 msgstr "8R0UgH7 70 Y0U 8y s0cI4L73x7."
@@ -764,7 +764,7 @@ msgstr "8R0UgH7 70 Y0U 8y s0cI4L73x7."
 msgid "Bug Dump"
 msgstr "8Ug dUmP"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:230
+#: lib/Socialtext/UserSettingsPlugin.pm:229
 #.  
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
@@ -784,12 +784,12 @@ msgstr "c4nC3L 3dI7"
 msgid "Cannot undelete a page with only one revision. Returning to front page."
 msgstr "c4nN07 UnD3L373 4 p4g3 Wi7h 0NlY 0n3 R3ViSi0n. R37uRnInG 70 fR0N7 p4g3."
 
-#: lib/Socialtext/Appliance/UsageStats.pm:144
+#: lib/Socialtext/Appliance/UsageStats.pm:134
 #.  
 msgid "Category: usage report blog - detailed"
 msgstr "c473g0rY: uS4G3 r3p0r7 8l0g - d374iL3D"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:163
+#: lib/Socialtext/Appliance/UsageStats.pm:153
 #.  
 msgid "Category: usage report blog - summary"
 msgstr "c473g0rY: uS4G3 r3p0r7 8l0g - sUmM4Ry"
@@ -809,7 +809,7 @@ msgstr "c3n7r4l p4g3"
 msgid "Change Password"
 msgstr "cH4Ng3 P4SsW0Rd"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:104 lib/Socialtext/UserSettingsPlugin.pm:233 lib/Socialtext/WorkspacesUIPlugin.pm:67
+#: lib/Socialtext/UserSettingsPlugin.pm:103 lib/Socialtext/UserSettingsPlugin.pm:232 lib/Socialtext/WorkspacesUIPlugin.pm:67
 #.  
 msgid "Changes Saved"
 msgstr "cH4Ng3s s4v3d"
@@ -1044,11 +1044,6 @@ msgstr "c0pY 7h3 P4G3 %1 70 4N07h3r w0rKsP4C3?"
 msgid "Could not read/write to share"
 msgstr "c0uLd n07 r34D/WrI73 70 sH4R3"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:130
-#. (
-msgid "Couldn't open connection to mailer: %1"
-msgstr "c0uLdN'7 0p3n c0nN3C7I0N 70 m4iL3R: %1"
-
 #: share/template/element/settings/weblog_create:2 share/template/element/settings/workspaces_create_section:2
 #.  
 msgid "Create"
@@ -1094,10 +1089,10 @@ msgstr "cR3473 Y0Ur pR0FiL3"
 msgid "Created by %1 on %2."
 msgstr "cR3473d 8Y %1 0N %2."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:311
+#: lib/Socialtext/Appliance/Model/Backup.pm:312
 #. (
-msgid "Creating backup tarball (%1) ...\n"
-msgstr "cR347InG 84CkUp 74r84Ll (%1) ...\N"
+msgid "Creating backup tarball (%1) ..."
+msgstr "cR347InG 84CkUp 74r84Ll (%1) ..."
 
 #: share/template/view/page/stats_index:6
 #.  
@@ -1196,8 +1191,8 @@ msgstr "dIsPl4y 4S 4 SiD3 80x iN P4G3 vI3W?"
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:105
 #.  
-msgid "Do you really want to delete all workspaces and create a new initial workspace?  (This action cannot be undone.)"
-msgstr "d0 Y0U R34lLy w4n7 70 d3l373 4lL W0RkSp4c3s 4Nd cR3473 4 N3W InI7I4L W0RkSp4c3?  (7HiS 4c7i0n c4nN07 83 uNd0n3.)"
+msgid "Do you really want to delete all workspaces and create a new initial workspace? (This action cannot be undone.)"
+msgstr "d0 Y0U R34lLy w4n7 70 d3l373 4lL W0RkSp4c3s 4Nd cR3473 4 N3W InI7I4L W0RkSp4c3? (7hIs 4C7I0N C4Nn07 83 UnD0N3.)"
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:77
 #.  
@@ -1349,7 +1344,7 @@ msgstr "3N48l3 3m4iL N07iFiC47i0nS F0R 7hIs w0rKsP4C3?"
 msgid "English"
 msgstr "3NgLiSh"
 
-#: share/template/email/password-change.html:26 share/template/email/password-change.txt:13
+#: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
 msgid "Enjoy!"
 msgstr "3Nj0y!"
@@ -1384,7 +1379,7 @@ msgstr "3N73r 7H3 iNf0rM47i0n f0r 7H3 uS3R Y0U W0UlD LiK3 70 InVi73 70 7hIs w0rK
 msgid "Enter your email address below. Enter the email address you normally use for your Socialtext account. If you got here by clicking a link you received in an email message, look at that message, and use the email address it was sent to."
 msgstr "3N73r y0uR 3m4iL 4dDr3sS 83L0W. 3N73r 7H3 3M4Il 4DdR3Ss y0u n0rM4LlY Us3 F0R Y0Ur s0cI4L73x7 4cC0Un7. iF Y0U G07 H3R3 8Y ClIcKiNg 4 lInK Y0U R3C3Iv3d iN 4n 3M4Il m3sS4G3, L00k 47 7h47 m3sS4G3, 4nD Us3 7h3 3m4iL 4dDr3sS I7 w4s s3n7 70."
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:69
+#: lib/Socialtext/Appliance/Model/Setup.pm:70
 #. (
 msgid "Error updating from timeserver %1"
 msgstr "3Rr0r uPd47InG Fr0m 7Im3s3rV3R %1"
@@ -1469,6 +1464,11 @@ msgstr "3X4MpL3: 4cM3-pR0DuC7-d3v cR3473s 7HiS W0RkSp4c3 4dDr3sS:"
 msgid "Example: http://www.socialtext.com/images/socialtext-logo-30.gif"
 msgstr "3X4MpL3: H77p://wWw.s0cI4L73x7.C0M/Im4g3s/s0cI4L73x7-L0G0-30.GiF"
 
+#: share/template/new_form_page/generic/new_form_page_instructions.html:5 share/template/new_form_page/new_form_page_instructions.html:5
+#.  
+msgid "Except for your name, all fields are optional."
+msgstr "3Xc3p7 F0R Y0Ur n4m3, 4Ll fI3LdS 4r3 0p7i0n4l."
+
 #: share/template/element/page/attachment_attach_interface:27 share/template/element/page/attachment_queue_interface:27
 #.  
 msgid "Expand zip archive and attach individual files to the page"
@@ -1494,20 +1494,20 @@ msgstr "3Xp0r7 70 pDf"
 msgid "Export to Word"
 msgstr "3Xp0r7 70 w0rD"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:301
+#: lib/Socialtext/Appliance/Model/Backup.pm:302
 #. (
-msgid "Exporting %1\n"
-msgstr "3Xp0r7iNg %1\N"
+msgid "Exporting %1"
+msgstr "3Xp0r7iNg %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:297
+#: lib/Socialtext/Appliance/Model/Backup.pm:298
 #.  
-msgid "Exporting workspaces ...\n"
-msgstr "3Xp0r7iNg w0rKsP4C3S ...\N"
+msgid "Exporting workspaces ..."
+msgstr "3Xp0r7iNg w0rKsP4C3S ..."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:343
+#: lib/Socialtext/Appliance/Model/Backup.pm:344
 #.  
-msgid "Fetching backup file from SMB share ...\n"
-msgstr "f37ChInG 84CkUp fIl3 Fr0m sM8 sH4R3 ...\n"
+msgid "Fetching backup file from SMB share ..."
+msgstr "f37ChInG 84CkUp fIl3 Fr0m sM8 sH4R3 ..."
 
 #: share/template/element/page/attachment_manage_interface:12
 #.  
@@ -1609,7 +1609,7 @@ msgstr "h3lL0,"
 msgid "Hello, this is a page from the workspace that I wanted you to see. This page is also available for viewing or editing on the web at:\n\n%1"
 msgstr "h3lL0, 7hIs iS 4 P4G3 fR0M 7h3 W0RkSp4c3 7h47 i w4n73D Y0U 70 s33. 7hIs p4g3 Is 4Ls0 4v4iL48l3 F0R Vi3wInG 0r 3Di7iNg 0N 7h3 W38 47:\N\N%1"
 
-#: share/console-template/template/console_wrapper.tmpl:37 share/template/element/wiki/nav:10
+#: share/console-template/template/console_wrapper.tmpl:39 share/template/element/wiki/nav:10
 #.  
 msgid "Help"
 msgstr "h3lP"
@@ -1674,7 +1674,7 @@ msgstr "h0w sH0UlD DiSpL4Y3D D473S 83 f0rM4773d?"
 msgid "I don't know my password."
 msgstr "i d0n'7 kN0W My p4sSw0rD."
 
-#: share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
+#: share/template/email/openid/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
 #. (
 msgid "I'm inviting you to join %1, one of our shared workspaces."
 msgstr "i'm iNvI7InG Y0U 70 j0iN %1, 0n3 0f 0Ur sH4R3D W0RkSp4c3s."
@@ -1683,11 +1683,6 @@ msgstr "i'm iNvI7InG Y0U 70 j0iN %1, 0n3 0f 0Ur sH4R3D W0RkSp4c3s."
 #. (
 msgid "I'm inviting you to join %1, one of our shared workspaces. Sign in using the information below:"
 msgstr "i'm iNvI7InG Y0U 70 j0iN %1, 0n3 0f 0Ur sH4R3D W0RkSp4c3s. SiGn iN UsInG 7h3 InF0Rm47I0N 83L0W:"
-
-#: share/template/email/openid/workspace-invitation-body.html:15
-#. (
-msgid "I'm inviting you to join %1, one of our\nshared workspaces."
-msgstr "i'm iNvI7InG Y0U 70 j0iN %1, 0n3 0f 0Ur\nSh4r3d w0rKsP4C3S."
 
 #: share/template/element/settings/workspaces_settings_features_section:9
 #.  
@@ -1709,20 +1704,30 @@ msgstr "iF Y0U 4r3 SuR3 y0u wIsH 70 0V3RwRi73 7H3 3XiS7InG \"%1\" p4g3, pL34s3 P
 msgid "If you do not already have an account, you can <a href=\"/nlw/register.html?redirect_to=%1\">register here</a>."
 msgstr "iF Y0U D0 n07 4Lr34Dy h4v3 4n 4Cc0uN7, Y0U C4N <a href=\"/nLw/r3gIs73R.H7Ml?r3dIr3c7_70=%1\">R3GiS73r h3r3</4>."
 
+#: share/template/email/st/workspace-invitation.txt:18
+#.  
+msgid "If you don't remember it, follow this link to select a new password:"
+msgstr "iF Y0U D0N'7 R3M3M83r i7, f0lL0W 7hIs lInK 70 s3l3c7 4 N3W P4SsW0Rd:"
+
+#: share/template/email/st/workspace-invitation-body.html:38
+#. (
+msgid "If you don't remember it, just <a href=\"%4\">click here to select a new password</a>."
+msgstr "iF Y0U D0N'7 R3M3M83r i7, jUs7 <a href=\"%4\">cLiCk h3r3 70 s3l3c7 4 N3W P4SsW0Rd</4>."
+
 #: share/template/element/settings/workspaces_settings_appearance_section:24
 #.  
 msgid "If you don't select an image, a Socialtext logo will be used instead."
 msgstr "iF Y0U D0N'7 S3L3C7 4N Im4g3, 4 s0cI4L73x7 L0G0 wIlL 83 uS3D InS734D."
 
-#: share/template/email/password-change.txt:10
+#: share/template/email/password-change.txt:9
 #. (
-msgid "If you have any questions, please feel free to send email to\n%1."
-msgstr "iF Y0U H4V3 4Ny qU3S7I0Ns, Pl34S3 f33L Fr33 70 S3Nd 3M4Il 70\N%1."
+msgid "If you have any questions, please feel free to send email to %1."
+msgstr "iF Y0U H4V3 4Ny qU3S7I0Ns, Pl34S3 f33L Fr33 70 S3Nd 3M4Il 70 %1."
 
-#: share/template/email/password-change.html:21
+#: share/template/email/password-change.html:20
 #. (
-msgid "If you have any questions, please feel free to send email to\n<a href=\"mailto:%1\">%2</a>."
-msgstr "iF Y0U H4V3 4Ny qU3S7I0Ns, Pl34S3 f33L Fr33 70 S3Nd 3M4Il 70\N<a href=\"m4iL70:%1\">%2</4>."
+msgid "If you have any questions, please feel free to send email to <a href=\"mailto:%1\">%2</a>."
+msgstr "iF Y0U H4V3 4Ny qU3S7I0Ns, Pl34S3 f33L Fr33 70 S3Nd 3M4Il 70 <a href=\"M4Il70:%1\">%2</4>."
 
 #: share/template/email/standard-footer.html:7
 #. (
@@ -1731,8 +1736,18 @@ msgstr "iF Y0U H4V3 qU3S7I0Ns 480U7 7HiS 3m4iL, c0n74C7 y0uR WiKi sUpP0R7 47 %1"
 
 #: share/template/email/standard-footer.txt:3
 #. (
-msgid "If you have questions about this email, contact your wiki support at\n%1."
-msgstr "iF Y0U H4V3 qU3S7I0Ns 480U7 7HiS 3m4iL, c0n74C7 y0uR WiKi sUpP0R7 47\N%1."
+msgid "If you have questions about this email, contact your wiki support at %1."
+msgstr "iF Y0U H4V3 qU3S7I0Ns 480U7 7HiS 3m4iL, c0n74C7 y0uR WiKi sUpP0R7 47 %1."
+
+#: share/template/email/email-address-confirmation-completed.html:27
+#.  
+msgid "If you have questions, please contact your wiki support at"
+msgstr "iF Y0U H4V3 qU3S7I0Ns, Pl34S3 c0n74C7 y0uR WiKi sUpP0R7 47"
+
+#: share/template/email/email-address-confirmation-completed.txt:11
+#. (
+msgid "If you have questions, please contact your wiki support at %1."
+msgstr "iF Y0U H4V3 qU3S7I0Ns, Pl34S3 c0n74C7 y0uR WiKi sUpP0R7 47 %1."
 
 #: share/template/element/settings/users_invite_section:38
 #.  
@@ -1764,10 +1779,10 @@ msgstr "iGn0r3 8uG"
 msgid "Image Already On The Web"
 msgstr "iM4G3 4Lr34Dy 0N 7h3 W38"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:357
+#: lib/Socialtext/Appliance/Model/Backup.pm:358
 #.  
-msgid "Importing workspaces from tarballs ...\n"
-msgstr "iMp0r7iNg w0rKsP4C3S Fr0m 74r84LlS ...\N"
+msgid "Importing workspaces from tarballs ..."
+msgstr "iMp0r7iNg w0rKsP4C3S Fr0m 74r84LlS ..."
 
 #: lib/Socialtext/DisplayPlugin.pm:105
 #.  
@@ -1799,10 +1814,10 @@ msgstr "iNi7i4lIz3 W0RkSp4c3s"
 msgid "Initialize Workspaces?"
 msgstr "iNi7i4lIz3 W0RkSp4c3s?"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:352
+#: lib/Socialtext/Appliance/Model/Backup.pm:353
 #.  
-msgid "Initializing workspaces ...\n"
-msgstr "iNi7i4lIzInG W0RkSp4c3s ...\n"
+msgid "Initializing workspaces ..."
+msgstr "iNi7i4lIzInG W0RkSp4c3s ..."
 
 #: share/console-template/template/setup.html:7
 #.  
@@ -1819,7 +1834,7 @@ msgstr "iN7R4N37"
 msgid "Invalid character '/' in changes parameter"
 msgstr "iNv4lId cH4R4C73r '/' iN Ch4nG3S P4R4M373R"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:45
+#: lib/Socialtext/Appliance/Model/Setup.pm:46
 #. (
 msgid "Invalid host: %1"
 msgstr "iNv4lId h0s7: %1"
@@ -1909,6 +1924,11 @@ msgstr "l4s7 3 D4Ys"
 msgid "Last Edited By"
 msgstr "l4s7 3dI73d 8Y"
 
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125
+#.  
+msgid "Last Login"
+msgstr "l4s7 L0GiN"
+
 #: lib/Socialtext/RecentChangesPlugin.pm:49
 #.  
 msgid "Last Month"
@@ -1984,7 +2004,7 @@ msgstr "l0g iN 70 s0cI4L73x7"
 msgid "Log in with an existing account"
 msgstr "l0g iN Wi7h 4N 3xIs7iNg 4Cc0uN7"
 
-#: share/template/email/email-address-confirmation-completed.html:23 share/template/email/email-address-confirmation-completed.txt:9
+#: share/template/email/email-address-confirmation-completed.html:22 share/template/email/email-address-confirmation-completed.txt:8
 #.  
 msgid "Log in with your email address:"
 msgstr "l0g iN Wi7h y0uR 3m4iL 4dDr3sS:"
@@ -2079,7 +2099,7 @@ msgstr "n4m3"
 msgid "Navigation for: %1"
 msgstr "n4vIg47I0N F0R: %1"
 
-#: share/console-template/template/console_wrapper.tmpl:34
+#: share/console-template/template/console_wrapper.tmpl:36
 #.  
 msgid "Navigation tabs to select different sections of the control panel."
 msgstr "n4vIg47I0N 748s 70 S3L3C7 dIfF3R3N7 s3c7i0nS 0f 7H3 c0n7r0l p4n3l."
@@ -2114,7 +2134,7 @@ msgstr "n3w p4g3 N4M3"
 msgid "New password"
 msgstr "n3w p4sSw0rD"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:80
+#: lib/Socialtext/UserSettingsPlugin.pm:79
 #.  
 msgid "New passwords do not match"
 msgstr "n3w p4sSw0rDs d0 N07 M47cH"
@@ -2159,7 +2179,7 @@ msgstr "n0"
 msgid "No downloads."
 msgstr "n0 D0WnL04dS."
 
-#: lib/Socialtext/UserSettingsPlugin.pm:304 lib/Socialtext/UserSettingsPlugin.pm:321
+#: lib/Socialtext/UserSettingsPlugin.pm:301 lib/Socialtext/UserSettingsPlugin.pm:318
 #.  
 msgid "No email addresses specified"
 msgstr "n0 3m4iL 4dDr3sS3S Sp3cIfI3D"
@@ -2234,20 +2254,15 @@ msgstr "n07 4 v4lId p4g3 N4M3"
 msgid "Ok"
 msgstr "0K"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:78
+#: lib/Socialtext/UserSettingsPlugin.pm:77
 #.  
 msgid "Old password is incorrect"
 msgstr "0Ld p4sSw0rD Is iNc0rR3C7"
 
-#: share/template/email/st/workspace-invitation-body.html:26
+#: share/template/email/st/workspace-invitation-body.html:26 share/template/email/st/workspace-invitation.txt:10
 #.  
 msgid "Once you have confirmed your account, you will receive a second email with login details."
 msgstr "0Nc3 Y0U H4V3 c0nFiRm3d y0uR 4cC0Un7, y0u wIlL R3C3Iv3 4 S3C0Nd 3M4Il wI7H L0GiN D374IlS."
-
-#: share/template/email/st/workspace-invitation.txt:10
-#.  
-msgid "Once you have confirmed your account, you will receive a second email\nwith login details."
-msgstr "0Nc3 Y0U H4V3 c0nFiRm3d y0uR 4cC0Un7, y0u wIlL R3C3Iv3 4 S3C0Nd 3M4Il\nWi7h l0gIn d374iLs."
 
 #: share/template/element/settings/workspaces_permissions_section:117
 #. (
@@ -2299,7 +2314,7 @@ msgstr "07h3r p4r7iCiP4N7S C4N S33 I7, 700, 4Nd c4n 3Di7 I7 70 L34v3 N073S F0R Y
 msgid "Outgoing mail server"
 msgstr "0U7G0InG M4Il s3rV3R"
 
-#: share/console-template/template/console_wrapper.tmpl:37
+#: share/console-template/template/console_wrapper.tmpl:39
 #.  
 msgid "Overview"
 msgstr "0V3RvI3W"
@@ -2419,15 +2434,15 @@ msgstr "p3rF0Rm r3s70R3"
 msgid "Personal Message"
 msgstr "p3rS0N4L M3Ss4g3"
 
+#: share/template/email/email-address-confirmation.html:16
+#. (
+msgid "Please <a href=\"%1\">click on this link to confirm your email address and choose a password.</a>"
+msgstr "pL34s3 <a href=\"%1\">cLiCk 0N 7hIs lInK 70 c0nFiRm y0uR 3m4iL 4dDr3sS 4nD Ch00S3 4 p4sSw0rD.</4>"
+
 #: share/template/email/st/workspace-invitation-body.html:22
 #. (
 msgid "Please <a href=\"%1\">click on this link</a> to confirm your email address."
 msgstr "pL34s3 <a href=\"%1\">cLiCk 0N 7hIs lInK</4> 70 c0nFiRm y0uR 3m4iL 4dDr3sS."
-
-#: share/template/email/email-address-confirmation.html:15
-#. (
-msgid "Please <a href=\"%1\">click on\nthis link to confirm your email address and choose a password.</a>"
-msgstr "pL34s3 <a href=\"%1\">cLiCk 0N\N7HiS LiNk 70 C0NfIrM Y0Ur 3M4Il 4DdR3Ss 4Nd cH00s3 4 P4SsW0Rd.</4>"
 
 #: share/template/popup/copy_to_workspace:52
 #.  
@@ -2449,17 +2464,17 @@ msgstr "pL34s3 Ch00S3 4 n3w s0cI4L73x7 P4SsW0Rd"
 msgid "Please click on this link to confirm your email address:"
 msgstr "pL34s3 ClIcK 0n 7HiS LiNk 70 C0NfIrM Y0Ur 3M4Il 4DdR3Ss:"
 
-#: share/template/email/email-address-confirmation.html:4
+#: share/template/email/email-address-confirmation.html:5
 #.  
 msgid "Please confirm your email address"
 msgstr "pL34s3 C0NfIrM Y0Ur 3M4Il 4DdR3Ss"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:145 lib/Socialtext/Appliance/Model/Setup.pm:165
+#: lib/Socialtext/Appliance/Model/Setup.pm:140 lib/Socialtext/Appliance/Model/Setup.pm:160
 #.  
 msgid "Please enter a valid email address"
 msgstr "pL34s3 3n73R 4 V4LiD 3m4iL 4dDr3sS"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:154
+#: lib/Socialtext/Appliance/Model/Setup.pm:149
 #.  
 msgid "Please enter an email address"
 msgstr "pL34s3 3n73R 4n 3M4Il 4DdR3Ss"
@@ -2468,6 +2483,11 @@ msgstr "pL34s3 3n73R 4n 3M4Il 4DdR3Ss"
 #.  
 msgid "Please enter an email address."
 msgstr "pL34s3 3n73R 4n 3M4Il 4DdR3Ss."
+
+#: share/template/email/email-address-confirmation.txt:5
+#.  
+msgid "Please follow this link to confirm your address:"
+msgstr "pL34s3 F0Ll0w 7HiS LiNk 70 C0NfIrM Y0Ur 4DdR3Ss:"
 
 #: share/template/element/settings/weblog_create:9
 #.  
@@ -2724,7 +2744,7 @@ msgstr "r3pL4C3 7HiS 73X7 wI7H Y0Ur 0Wn."
 msgid "Report Bug"
 msgstr "r3p0r7 8uG"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:484
+#: lib/Socialtext/UserSettingsPlugin.pm:481
 #. (
 msgid "Request to invite new users to the %1 workspace"
 msgstr "r3qU3S7 70 InVi73 n3w uS3Rs 70 7h3 %1 w0rKsP4C3"
@@ -2754,10 +2774,10 @@ msgstr "r3s70R3 iN Pr0gR3Ss - s74R73d 47 %1"
 msgid "Restore is already running"
 msgstr "r3s70R3 iS 4lR34dY RuNnInG"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:334
+#: lib/Socialtext/Appliance/Model/Backup.pm:335
 #. (
-msgid "Restoring backup from (%1) ...\n"
-msgstr "r3s70RiNg 84cKuP Fr0m (%1) ...\N"
+msgid "Restoring backup from (%1) ..."
+msgstr "r3s70RiNg 84cKuP Fr0m (%1) ..."
 
 #: share/template/view/page/stats_index:6
 #.  
@@ -2909,6 +2929,11 @@ msgstr "s3nD 73S7 3M4Il"
 msgid "Sending '%1' page by email"
 msgstr "s3nDiNg '%1' P4G3 8Y 3m4iL"
 
+#: lib/Socialtext/Appliance/Model/Setup.pm:117
+#. (
+msgid "Sent test email to %1"
+msgstr "s3n7 73S7 3M4Il 70 %1"
+
 #: share/console-template/template/backup.html:109
 #.  
 msgid "Set Backup Destination"
@@ -2929,7 +2954,7 @@ msgstr "s37 7Im3 S3Rv3r"
 msgid "Settings"
 msgstr "s377iNgS"
 
-#: share/console-template/template/console_wrapper.tmpl:37
+#: share/console-template/template/console_wrapper.tmpl:39
 #.  
 msgid "Setup"
 msgstr "s37Up"
@@ -2969,7 +2994,7 @@ msgstr "sHu7 D0Wn 4PpLi4nC3"
 msgid "Shut Down Now"
 msgstr "sHu7 D0Wn n0w"
 
-#: lib/Socialtext/Appliance/ConsoleController.pm:92 share/console-template/template/console_wrapper.tmpl:37
+#: lib/Socialtext/Appliance/ConsoleController.pm:92 share/console-template/template/console_wrapper.tmpl:39
 #.  
 msgid "Shutdown"
 msgstr "sHu7d0wN"
@@ -2979,7 +3004,7 @@ msgstr "sHu7d0wN"
 msgid "Shutdown Appliance?"
 msgstr "sHu7d0wN 4pPlI4Nc3?"
 
-#: share/template/email/openid/workspace-invitation-body.html:19 share/template/email/st/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation.txt:5
+#: share/template/email/openid/workspace-invitation-body.html:18 share/template/email/st/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation.txt:5
 #.  
 msgid "Sign in using the information below:"
 msgstr "sIgN In uSiNg 7H3 iNf0rM47i0n 83l0w:"
@@ -2999,12 +3024,12 @@ msgstr "sInC3 y0uR P4SsW0Rd iS S70r3d iN 7h3 DiR3C70rY F0R Y0Ur 0Rg4nIz47I0N, 7H
 msgid "Size"
 msgstr "sIz3"
 
-#: share/console-template/template/console_wrapper.tmpl:22 share/console-template/template/console_wrapper.tmpl:5
+#: share/console-template/template/console_wrapper.tmpl:24 share/console-template/template/console_wrapper.tmpl:7
 #.  
 msgid "Socialtext Appliance"
 msgstr "s0cI4L73x7 4pPlI4Nc3"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:122
+#: lib/Socialtext/Appliance/Model/Setup.pm:123
 #.  
 msgid "Socialtext Appliance Test Email"
 msgstr "s0cI4L73x7 4pPlI4Nc3 73S7 3M4Il"
@@ -3024,7 +3049,7 @@ msgstr "s0cI4L73x7 H0M3 p4g3"
 msgid "Socialtext Workspace Punctuation Help"
 msgstr "s0cI4L73x7 W0RkSp4c3 PuNc7u47I0N H3Lp"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:154 lib/Socialtext/Appliance/UserReport.pm:132
+#: lib/Socialtext/Appliance/UsageStats.pm:144 lib/Socialtext/Appliance/UserReport.pm:132
 #.  
 msgid "Socialtext detailed use report:"
 msgstr "s0cI4L73x7 D374Il3d uS3 r3p0r7:"
@@ -3034,7 +3059,7 @@ msgstr "s0cI4L73x7 D374Il3d uS3 r3p0r7:"
 msgid "Socialtext password help"
 msgstr "s0cI4L73x7 P4SsW0Rd h3lP"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:171 lib/Socialtext/Appliance/UserReport.pm:149
+#: lib/Socialtext/Appliance/UsageStats.pm:161 lib/Socialtext/Appliance/UserReport.pm:149
 #.  
 msgid "Socialtext summary use report:"
 msgstr "s0cI4L73x7 SuMm4rY Us3 R3P0R7:"
@@ -3139,7 +3164,7 @@ msgstr "74gS"
 msgid "Tags:"
 msgstr "74gS:"
 
-#: share/template/email/openid/workspace-invitation-body.html:33 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:49
+#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
 #.  
 msgid "Thanks,"
 msgstr "7H4NkS,"
@@ -3148,6 +3173,11 @@ msgstr "7H4NkS,"
 #. (
 msgid "The %1 you provided (%2) is already in use."
 msgstr "7H3 %1 Y0U Pr0vId3d (%2) Is 4Lr34Dy iN Us3."
+
+#: share/template/email/openid/invite-request-email.txt:12 share/template/email/st/invite-request-email.txt:12
+#.  
+msgid "The User Invite page can be found at:"
+msgstr "7H3 uS3R InVi73 p4g3 C4N 83 f0uNd 47:"
 
 #: share/template/element/settings/users_invite_section:36
 #.  
@@ -3166,8 +3196,8 @@ msgstr "7H3 4Cc0uN7 n4m3 Y0U Ch0s3, %1, iS 4lR34dY In uS3."
 
 #: share/console-template/template/backup.html:98
 #.  
-msgid "The appliance can store backup files on a Windows- or SMB-compatible shared directory/folder on another computer.  Set the backup server, directory and username here."
-msgstr "7H3 4PpLi4nC3 c4n s70R3 84cKuP FiL3S 0n 4 wInD0Ws- 0r sM8-c0mP47i8l3 Sh4r3d dIr3c70Ry/f0lD3R 0n 4N07h3r c0mPu73R.  S37 7h3 84CkUp s3rV3R, dIr3c70Ry 4Nd uS3Rn4m3 H3R3."
+msgid "The appliance can store backup files on a Windows- or SMB-compatible shared directory/folder on another computer. Set the backup server, directory and username here."
+msgstr "7H3 4PpLi4nC3 c4n s70R3 84cKuP FiL3S 0n 4 wInD0Ws- 0r sM8-c0mP47i8l3 Sh4r3d dIr3c70Ry/f0lD3R 0n 4N07h3r c0mPu73R. s37 7H3 84cKuP S3Rv3r, DiR3C70rY 4nD Us3rN4M3 h3r3."
 
 #: lib/Socialtext/Handler/Authen.pm:275
 #.  
@@ -3194,12 +3224,12 @@ msgstr "7H3 3M4Il w3 WiLl s3nD Y0U WiLl c0m3 Fr0m <S7R0Ng>%1</s7r0nG>. 70 3NsUr3
 msgid "The following email addresses were invalid"
 msgstr "7H3 f0lL0WiNg 3M4Il 4DdR3Ss3s w3r3 InV4LiD"
 
-#: share/template/email/recent-changes.html:24 share/template/email/recent-changes.txt:10
+#: share/template/email/recent-changes.html:22 share/template/email/recent-changes.txt:9
 #. (
 msgid "The following pages in %1 have recently changed:"
 msgstr "7H3 f0lL0WiNg p4g3s iN %1 h4v3 R3C3N7Ly cH4Ng3d:"
 
-#: share/template/email/watchlist.html:24 share/template/email/watchlist.txt:10
+#: share/template/email/watchlist.html:22 share/template/email/watchlist.txt:9
 #. (
 msgid "The following pages you are watching in %1 have recently changed:"
 msgstr "7H3 f0lL0WiNg p4g3s y0u 4R3 w47ChInG In %1 H4V3 r3c3n7lY Ch4nG3D:"
@@ -3354,20 +3384,20 @@ msgstr "7HiS 4c7i0n r3qUiR3S 4 P4G3 70 83 sP3CiFi3d."
 msgid "This action will delete all existing workspaces and users on this appliance, and create the Admin workspace."
 msgstr "7HiS 4c7i0n wIlL D3L373 4Ll 3XiS7InG W0RkSp4c3s 4Nd uS3Rs 0N 7hIs 4PpLi4nC3, 4nD Cr3473 7H3 4DmIn w0rKsP4C3."
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:125
+#: lib/Socialtext/Appliance/Model/Setup.pm:124
 #.  
 msgid "This email was sent from the Socialtext Appliance."
 msgstr "7HiS 3m4iL W4S S3N7 fR0M 7h3 S0Ci4l73X7 4PpLi4nC3."
 
 #: share/template/new_form_page/new_form_page_instructions.html:3
 #.  
-msgid "This form will create your profile page for Inbox. You can edit your\nprofile in the workspace afterwards if you'd like, but you don't have\nto. Except for your name, all fields are optional."
-msgstr "7HiS F0Rm wIlL Cr3473 y0uR Pr0fIl3 P4G3 f0r iN80x. Y0U C4N 3dI7 y0uR\NpR0FiL3 iN 7h3 W0RkSp4c3 4f73Rw4rDs iF Y0U'D LiK3, 8u7 Y0U D0N'7 H4V3\n70. 3xC3P7 f0r y0uR N4M3, 4lL Fi3lDs 4R3 0P7I0N4L."
+msgid "This form will create your profile page for Inbox."
+msgstr "7HiS F0Rm wIlL Cr3473 y0uR Pr0fIl3 P4G3 f0r iN80x."
 
 #: share/template/new_form_page/generic/new_form_page_instructions.html:3
 #.  
-msgid "This form will create your profile page. You can edit your\nprofile in the workspace afterwards if you'd like, but you don't have\nto. Except for your name, all fields are optional."
-msgstr "7HiS F0Rm wIlL Cr3473 y0uR Pr0fIl3 P4G3. Y0U C4N 3dI7 y0uR\NpR0FiL3 iN 7h3 W0RkSp4c3 4f73Rw4rDs iF Y0U'D LiK3, 8u7 Y0U D0N'7 H4V3\n70. 3xC3P7 f0r y0uR N4M3, 4lL Fi3lDs 4R3 0P7I0N4L."
+msgid "This form will create your profile page."
+msgstr "7HiS F0Rm wIlL Cr3473 y0uR Pr0fIl3 P4G3."
 
 #: share/template/element/settings/workspaces_create_section:23
 #.  
@@ -3444,25 +3474,25 @@ msgstr "70 G37 7hIs..."
 msgid "To change your password, please follow this link:"
 msgstr "70 Ch4nG3 y0uR P4SsW0Rd, Pl34S3 f0lL0W 7hIs lInK:"
 
-#: share/template/email/email-address-confirmation-completed.html:19 share/template/email/email-address-confirmation-completed.txt:7
+#: share/template/email/email-address-confirmation-completed.html:18 share/template/email/email-address-confirmation-completed.txt:6
 #.  
 msgid "To do so, go to this web address:"
 msgstr "70 D0 s0, g0 70 7HiS W38 4dDr3sS:"
 
-#: share/template/email/openid/invite-request-email.html:26
+#: share/template/email/openid/invite-request-email.html:25
 #.  
 msgid "To invite these users into the workspace, visit the user invite page for the <br /> workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
 msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 <8R /> w0rKsP4C3 4Nd c0pY 4nD P4S73 7h3 LiS7 480V3 iN70 7h3 InVi73 80x. 7h3 Us3r <8r />iNvI73 P4G3 c4n 83 F0UnD 47:"
 
-#: share/template/email/st/invite-request-email.html:26
+#: share/template/email/st/invite-request-email.html:25
 #.  
 msgid "To invite these users into the workspace, visit the user invite page for the <br />workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:"
 msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 <8R />W0RkSp4c3 4nD C0Py 4Nd p4s73 7H3 lIs7 480v3 In70 7H3 iNvI73 80X. 7H3 uS3R <8R />InVi73 p4g3 C4N 83 f0uNd 47:"
 
-#: share/template/email/openid/invite-request-email.txt:12 share/template/email/st/invite-request-email.txt:12
+#: share/template/email/openid/invite-request-email.txt:11 share/template/email/st/invite-request-email.txt:11
 #.  
-msgid "To invite these users into the workspace, visit the user invite page\nfor the workspace and copy and paste the list above into the invite box.\nThe User Invite page can be found at:"
-msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3\Nf0r 7H3 w0rKsP4C3 4Nd c0pY 4nD P4S73 7h3 LiS7 480V3 iN70 7h3 InVi73 80x.\N7H3 uS3R InVi73 p4g3 C4N 83 f0uNd 47:"
+msgid "To invite these users into the workspace, visit the user invite page for the workspace and copy and paste the list above into the invite box."
+msgstr "70 InVi73 7H3S3 uS3Rs iN70 7h3 W0RkSp4c3, vIsI7 7H3 uS3R InVi73 p4g3 F0R 7h3 W0RkSp4c3 4nD C0Py 4Nd p4s73 7H3 lIs7 480v3 In70 7H3 iNvI73 80X."
 
 #: share/template/element/settings/users_invite_search_section:88
 #.  
@@ -3491,23 +3521,23 @@ msgstr "70 S37 Y0Ur pR3F3R3Nc3s f0r 4 w0rKsP4C3, Y0U MuS7 83 L0Gg3d iN."
 
 #: share/template/email/recent-changes.txt:3
 #. (
-msgid "To stop receiving or change how often you receive emails about changes\nto %1, go to"
-msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S\N70 %1, G0 70"
+msgid "To stop receiving or change how often you receive emails about changes to %1, go to"
+msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S 70 %1, g0 70"
 
 #: share/template/email/recent-changes.html:16
 #. (
-msgid "To stop receiving or change how often you receive emails about changes\nto %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S\N70 %1, Y0U C4N\N<a href=\"%2\">Ch4nG3 y0uR Pr3f3r3nC3S</4>."
+msgid "To stop receiving or change how often you receive emails about changes to %1, you can <a href=\"%2\">change your preferences</a>."
+msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S 70 %1, y0u c4n <a href=\"%2\">Ch4nG3 y0uR Pr3f3r3nC3S</4>."
 
 #: share/template/email/watchlist.txt:3
 #. (
-msgid "To stop receiving or change how often you receive emails about changes\nto your watchlist in %1, go to:"
-msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S\N70 Y0Ur w47ChLiS7 iN %1, G0 70:"
+msgid "To stop receiving or change how often you receive emails about changes to your watchlist in %1, go to:"
+msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S 70 y0uR W47cHlIs7 In %1, g0 70:"
 
 #: share/template/email/watchlist.html:16
 #. (
-msgid "To stop receiving or change how often you receive emails about changes\nto your watchlist in %1, you can\n<a href=\"%2\">change your preferences</a>."
-msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S\N70 Y0Ur w47ChLiS7 iN %1, Y0U C4N\N<a href=\"%2\">Ch4nG3 y0uR Pr3f3r3nC3S</4>."
+msgid "To stop receiving or change how often you receive emails about changes to your watchlist in %1, you can <a href=\"%2\">change your preferences</a>."
+msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S 70 y0uR W47cHlIs7 In %1, y0u c4n <a href=\"%2\">Ch4nG3 y0uR Pr3f3r3nC3S</4>."
 
 #: share/template/errors/watchlist_requires_account:3
 #.  
@@ -3539,7 +3569,7 @@ msgstr "70p 0F P4G3"
 msgid "Total"
 msgstr "7074l"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:145 lib/Socialtext/Appliance/UsageStats.pm:164 lib/Socialtext/Appliance/UserReport.pm:123 lib/Socialtext/Appliance/UserReport.pm:142
+#: lib/Socialtext/Appliance/UsageStats.pm:135 lib/Socialtext/Appliance/UsageStats.pm:154 lib/Socialtext/Appliance/UserReport.pm:123 lib/Socialtext/Appliance/UserReport.pm:142
 #. (
 msgid "Total user count for %1: %2"
 msgstr "7074l uS3R C0Un7 F0R %1: %2"
@@ -3594,17 +3624,17 @@ msgstr "uPd473d 8Y %1 0N %2"
 msgid "Updated by %1 on %2."
 msgstr "uPd473d 8Y %1 0N %2."
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:97
+#: lib/Socialtext/Appliance/Model/Setup.pm:98
 #. (
 msgid "Updated mail server to %1"
 msgstr "uPd473d m4iL S3Rv3r 70 %1"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:101
+#: lib/Socialtext/Appliance/Model/Setup.pm:102
 #.  
 msgid "Updated mail server to use built-in server"
 msgstr "uPd473d m4iL S3Rv3r 70 Us3 8uIl7-In s3rV3R"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:67
+#: lib/Socialtext/Appliance/Model/Setup.pm:68
 #. (
 msgid "Updated time from %1"
 msgstr "uPd473d 7Im3 Fr0m %1"
@@ -3646,13 +3676,18 @@ msgstr "uPl04Ds"
 
 #: share/console-template/template/popup.html:54
 #.  
-msgid "Use the email address you entered above as the username, and <strong>password</strong> as the password.  You can change your password later."
-msgstr "uS3 7H3 3M4Il 4DdR3Ss y0u 3N73r3d 480V3 4S 7h3 Us3rN4M3, 4nD <s7r0nG>P4SsW0Rd</S7R0Ng> 4s 7H3 p4sSw0rD.  Y0U C4N Ch4nG3 y0uR P4SsW0Rd l473r."
+msgid "Use the email address you entered above as the username, and <strong>password</strong> as the password. You can change your password later."
+msgstr "uS3 7H3 3M4Il 4DdR3Ss y0u 3N73r3d 480V3 4S 7h3 Us3rN4M3, 4nD <s7r0nG>P4SsW0Rd</S7R0Ng> 4s 7H3 p4sSw0rD. y0u c4n cH4Ng3 Y0Ur p4sSw0rD L473R."
 
 #: share/template/element/settings/users_settings_section:26
 #.  
 msgid "Use your email address and new password to log in again."
 msgstr "uS3 y0uR 3m4iL 4dDr3sS 4nD N3W P4SsW0Rd 70 L0G In 4G4In."
+
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1972
+#.  
+msgid "User Name"
+msgstr "uS3R N4M3"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:222 lib/Socialtext/WebApp.pm:215
 #.  
@@ -3669,22 +3704,22 @@ msgstr "uS3Rn4m3:"
 msgid "Users"
 msgstr "uS3Rs"
 
-#: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:284 lib/Socialtext/UserSettingsPlugin.pm:372 lib/Socialtext/UserSettingsPlugin.pm:433
+#: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:369 lib/Socialtext/UserSettingsPlugin.pm:430
 #.  
 msgid "Users: Invite New Users"
 msgstr "uS3Rs: InVi73 n3w uS3Rs"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:142
+#: lib/Socialtext/UserSettingsPlugin.pm:141
 #.  
 msgid "Users: List All Users"
 msgstr "uS3Rs: LiS7 4Ll uS3Rs"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:141
+#: lib/Socialtext/UserSettingsPlugin.pm:140
 #.  
 msgid "Users: Manage All Users"
 msgstr "uS3Rs: M4N4G3 4Ll uS3Rs"
 
-#: lib/Socialtext/UserSettingsPlugin.pm:65
+#: lib/Socialtext/UserSettingsPlugin.pm:64
 #.  
 msgid "Users: My Settings"
 msgstr "uS3Rs: My s377iNgS"
@@ -3739,7 +3774,7 @@ msgstr "w47ChLiS7"
 msgid "Watchlist Update for %1"
 msgstr "w47ChLiS7 uPd473 F0R %1"
 
-#: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:8
+#: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:9
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
 msgstr "w3 H0P3 y0u 3Nj0y uSiNg 7H3 s0cI4L73x7 WiKi."
@@ -3788,11 +3823,6 @@ msgstr "w3d"
 #.  
 msgid "Welcome"
 msgstr "w3lC0M3"
-
-#: share/template/email/email-address-confirmation.html:10 share/template/email/email-address-confirmation.txt:1
-#. (
-msgid "Welcome to %1"
-msgstr "w3lC0M3 70 %1"
 
 #: share/template/view/homepage:9
 #. (
@@ -3851,13 +3881,13 @@ msgstr "wH3N Us3rS ClIcK \"H0M3\" iN 7hIs w0rKsP4C3, Sh0uLd 7H3Y S33 4 P3Rs0n4l 
 
 #: share/template/email/password-change.html:16
 #. (
-msgid "When you <a href=\"[_1:]\">click on this link</a>, you\nwill be taken to a page which allows you to choose a new password."
-msgstr "wH3N Y0U <a href=\"[_1:]\">ClIcK 0n 7HiS LiNk</4>, Y0U\NwIlL 83 74k3n 70 4 P4G3 wHiCh 4Ll0wS Y0U 70 cH00s3 4 N3W P4SsW0Rd."
+msgid "When you <a href=\"[_1:]\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
+msgstr "wH3N Y0U <a href=\"[_1:]\">ClIcK 0n 7HiS LiNk</4>, Y0U WiLl 83 74K3N 70 4 p4g3 WhIcH 4lL0Ws y0u 70 Ch00S3 4 n3w p4sSw0rD."
 
 #: share/template/email/password-change.txt:7
 #.  
-msgid "When you click on this link, you will be taken to a page which allows\nyou to choose a new password."
-msgstr "wH3N Y0U ClIcK 0n 7HiS LiNk, Y0U WiLl 83 74K3N 70 4 p4g3 WhIcH 4lL0Ws\nY0U 70 cH00s3 4 N3W P4SsW0Rd."
+msgid "When you click on this link, you will be taken to a page which allows you to choose a new password."
+msgstr "wH3N Y0U ClIcK 0n 7HiS LiNk, Y0U WiLl 83 74K3N 70 4 p4g3 WhIcH 4lL0Ws y0u 70 Ch00S3 4 n3w p4sSw0rD."
 
 #: share/template/element/settings/users_invite_section:40
 #.  
@@ -3878,6 +3908,11 @@ msgstr "wHiCh l4nGu4g3 D0 y0u uS3?"
 #.  
 msgid "Who can send email to this workspace?"
 msgstr "wH0 c4n s3nD 3m4iL 70 7HiS W0RkSp4c3?"
+
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125
+#.  
+msgid "Workspace"
+msgstr "w0rKsP4C3"
 
 #: lib/Socialtext/Workspace.pm:338
 #. (
@@ -3954,7 +3989,7 @@ msgstr "w0rKsP4C3 7I7L3 mUs7 83 837W33n 2 4Nd 64 Ch4r4c73Rs l0nG."
 msgid "Workspaces"
 msgstr "w0rKsP4C3S"
 
-#: lib/Socialtext/Appliance/Model/Setup.pm:162
+#: lib/Socialtext/Appliance/Model/Setup.pm:157
 #. (
 msgid "Workspaces initialized.<br>Log: %1"
 msgstr "w0rKsP4C3S InI7I4LiZ3D.<8R>L0G: %1"
@@ -4039,20 +4074,25 @@ msgstr "y0u c4n cH00s3 7h3 L3V3L 0f pRiV4Cy f0r y0uR W0RkSp4c3. f0r m0r3 InF0Rm4
 msgid "You can choose to sort weblog entries by the date an entry is updated, or by the date an entry was first posted."
 msgstr "y0u c4n cH00s3 70 s0r7 W38l0g 3N7Ri3s 8Y 7h3 D473 4N 3n7rY Is uPd473d, 0r 8Y 7h3 D473 4N 3n7rY W4S FiRs7 P0S73d."
 
+#: share/template/new_form_page/generic/new_form_page_instructions.html:4 share/template/new_form_page/new_form_page_instructions.html:4
+#.  
+msgid "You can edit your profile in the workspace afterwards if you'd like, but you don't have to."
+msgstr "y0u c4n 3Di7 Y0Ur pR0FiL3 iN 7h3 W0RkSp4c3 4f73Rw4rDs iF Y0U'D LiK3, 8u7 Y0U D0N'7 H4V3 70."
+
 #: share/template/email/openid/workspace-invitation.txt:10
 #.  
 msgid "You can now sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
 msgstr "y0u c4n n0w sIgN In70 0Ur sYs73M UsInG 0p3nId. 0n 7H3 s0cI4L73x7 L0GiN ScR33n, Pl34S3 iNpU7 y0uR 0p3nId iN70 7h3 InDiC473D Fi3lD 4nD Y0U WiLl 83 R3DiR3C73d 70 7h3 0p3nId sI73 70 v3rIfY Y0Ur iD3N7I7Y. 0Nc3 Y0U H4V3 v3rIfI3D Y0Ur iD3N7I7Y, y0u wIlL 83 s3n7 84Ck 70 7h3 S0Ci4l73X7 sI73 4nD 83 48l3 70 4Cc3sS 7h3 W0RkSp4c3."
 
-#: share/template/email/openid/workspace-invitation-body.html:25
+#: share/template/email/openid/workspace-invitation-body.html:24
 #.  
 msgid "You can sign into our system using OpenID. On the Socialtext login screen, please input your OpenID into the indicated field and you will be redirected to the OpenID site to verify your identity. Once you have verified your identity, you will be sent back to the Socialtext site and be able to access the workspace."
 msgstr "y0u c4n sIgN In70 0Ur sYs73M UsInG 0p3nId. 0n 7H3 s0cI4L73x7 L0GiN ScR33n, Pl34S3 iNpU7 y0uR 0p3nId iN70 7h3 InDiC473D Fi3lD 4nD Y0U WiLl 83 R3DiR3C73d 70 7h3 0p3nId sI73 70 v3rIfY Y0Ur iD3N7I7Y. 0Nc3 Y0U H4V3 v3rIfI3D Y0Ur iD3N7I7Y, y0u wIlL 83 s3n7 84Ck 70 7h3 S0Ci4l73X7 sI73 4nD 83 48l3 70 4Cc3sS 7h3 W0RkSp4c3."
 
 #: share/console-template/template/form.tmpl:9
 #.  
-msgid "You can synchronize the appliance clock with another computer using the Internet Time protocol.  The appliance must be able to contact that server via port 37."
-msgstr "y0u c4n sYnChR0NiZ3 7H3 4PpLi4nC3 cL0Ck wI7H 4n07H3R C0MpU73r uSiNg 7H3 iN73rN37 7iM3 pR070C0L.  7h3 4pPlI4Nc3 MuS7 83 48L3 70 C0N74c7 7h47 s3rV3R Vi4 P0R7 37."
+msgid "You can synchronize the appliance clock with another computer using the Internet Time protocol. The appliance must be able to contact that server via port 37."
+msgstr "y0u c4n sYnChR0NiZ3 7H3 4PpLi4nC3 cL0Ck wI7H 4n07H3R C0MpU73r uSiNg 7H3 iN73rN37 7iM3 pR070C0L. 7H3 4PpLi4nC3 mUs7 83 48l3 70 c0n74C7 7H47 S3Rv3r vI4 p0r7 37."
 
 #: lib/Socialtext/Account.pm:70
 #.  
@@ -4076,28 +4116,18 @@ msgstr "y0u c4nN07 Ch4nG3 7H3 n4m3 0f 4 sYs73M-Cr3473D Us3r."
 
 #: share/template/email/email-address-confirmation-completed.html:14 share/template/email/email-address-confirmation-completed.txt:4
 #. (
-msgid "You have confirmed your email address and can now log on to the\n%1 workspace."
-msgstr "y0u h4v3 C0NfIrM3D Y0Ur 3M4Il 4DdR3Ss 4Nd c4n n0w l0g 0N 70 7H3\n%1 w0rKsP4C3."
+msgid "You have confirmed your email address and can now log on to the %1 workspace."
+msgstr "y0u h4v3 C0NfIrM3D Y0Ur 3M4Il 4DdR3Ss 4Nd c4n n0w l0g 0N 70 7H3 %1 W0RkSp4c3."
 
 #: share/template/search_help_field.html:12
 #.  
 msgid "You may search on a field by separating the field name from the query with a colon, like this:"
 msgstr "y0u m4y s34RcH 0n 4 fI3Ld 8Y S3P4R47iNg 7H3 fI3Ld n4m3 Fr0m 7H3 qU3Ry wI7H 4 C0L0N, lIk3 7hIs:"
 
-#: share/template/email/openid/workspace-invitation-body.html:28 share/template/email/openid/workspace-invitation.txt:12 share/template/email/st/workspace-invitation-body.html:44 share/template/email/st/workspace-invitation.txt:24
+#: share/template/email/email-address-confirmation-completed.html:26 share/template/email/email-address-confirmation-completed.txt:10 share/template/email/openid/workspace-invitation-body.html:27 share/template/email/openid/workspace-invitation.txt:12 share/template/email/st/workspace-invitation-body.html:42 share/template/email/st/workspace-invitation.txt:22
 #.  
 msgid "You may want to keep this email for future reference."
 msgstr "y0u m4y w4n7 70 k33P 7hIs 3M4Il f0r fU7Ur3 R3F3R3Nc3."
-
-#: share/template/email/email-address-confirmation-completed.html:27
-#.  
-msgid "You may want to keep this email for future reference. If you have\nquestions, please contact your wiki support at"
-msgstr "y0u m4y w4n7 70 k33P 7hIs 3M4Il f0r fU7Ur3 R3F3R3Nc3. iF Y0U H4V3\nQu3s7i0nS, pL34s3 C0N74c7 Y0Ur wIkI SuPp0r7 47"
-
-#: share/template/email/email-address-confirmation-completed.txt:11
-#. (
-msgid "You may want to keep this email for future reference. If you have\nquestions, please contact your wiki support at %1."
-msgstr "y0u m4y w4n7 70 k33P 7hIs 3M4Il f0r fU7Ur3 R3F3R3Nc3. iF Y0U H4V3\nQu3s7i0nS, pL34s3 C0N74c7 Y0Ur wIkI SuPp0r7 47 %1."
 
 #: share/template/errors/login_to_edit:3
 #. (
@@ -4139,15 +4169,10 @@ msgstr "y0u n33D 70 c0nFiRm y0uR 3m4iL 4dDr3sS 70 4C7Iv473 7hIs 4Cc0uN7."
 msgid "You should have received an email with a confirmation link."
 msgstr "y0u sH0UlD H4V3 r3c3iV3D 4n 3M4Il wI7H 4 C0NfIrM47i0n lInK."
 
-#: share/template/email/email-address-confirmation.html:14
+#: share/template/email/email-address-confirmation.html:15 share/template/email/email-address-confirmation.txt:4
 #.  
-msgid "You signed up for a new account with our system and we need to confirm\nyour email address."
-msgstr "y0u sIgN3D Up f0r 4 n3w 4Cc0uN7 wI7H 0uR SyS73m 4Nd w3 N33d 70 C0NfIrM\Ny0uR 3m4iL 4dDr3sS."
-
-#: share/template/email/email-address-confirmation.txt:3
-#.  
-msgid "You signed up for a new account with our system and we need to confirm\nyour email address. Please follow this link to confirm your address:"
-msgstr "y0u sIgN3D Up f0r 4 n3w 4Cc0uN7 wI7H 0uR SyS73m 4Nd w3 N33d 70 C0NfIrM\Ny0uR 3m4iL 4dDr3sS. pL34s3 F0Ll0w 7HiS LiNk 70 C0NfIrM Y0Ur 4DdR3Ss:"
+msgid "You signed up for a new account with our system and we need to confirm your email address."
+msgstr "y0u sIgN3D Up f0r 4 n3w 4Cc0uN7 wI7H 0uR SyS73m 4Nd w3 N33d 70 C0NfIrM Y0Ur 3M4Il 4DdR3Ss."
 
 #: share/console-template/template/popup.html:53
 #.  
@@ -4564,7 +4589,7 @@ msgstr "7074l"
 msgid "type email address here"
 msgstr "7Yp3 3m4iL 4dDr3sS H3R3"
 
-#: share/template/email/openid/workspace-invitation-body.html:22 share/template/email/openid/workspace-invitation.txt:8 share/template/email/st/workspace-invitation-body.html:31 share/template/email/st/workspace-invitation.txt:14
+#: share/template/email/openid/workspace-invitation-body.html:21 share/template/email/openid/workspace-invitation.txt:8 share/template/email/st/workspace-invitation-body.html:31 share/template/email/st/workspace-invitation.txt:13
 #.  
 msgid "username:"
 msgstr "uS3Rn4m3:"
@@ -4579,7 +4604,7 @@ msgstr "v4lU3"
 msgid "warning:"
 msgstr "w4rNiNg:"
 
-#: share/template/email/openid/workspace-invitation-body.html:21 share/template/email/openid/workspace-invitation.txt:7 share/template/email/st/workspace-invitation-body.html:30 share/template/email/st/workspace-invitation.txt:13
+#: share/template/email/openid/workspace-invitation-body.html:20 share/template/email/openid/workspace-invitation.txt:7 share/template/email/st/workspace-invitation-body.html:30 share/template/email/st/workspace-invitation.txt:12
 #.  
 msgid "web address:"
 msgstr "w38 4DdR3Ss:"

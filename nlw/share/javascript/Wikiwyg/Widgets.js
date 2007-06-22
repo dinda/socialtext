@@ -256,7 +256,7 @@ proto.attachWidgetHandlers = function(elem) {
             if ( e.target.getAttribute("mouseup") == 0 ) {
                 if ( Wikiwyg.Widgets.widget_editing > 0 )
                     return;
-                alert("This is not an editable widget. Please edit it in advanced mode.")
+                alert(loc("This is not an editable widget. Please edit it in advanced mode."))
             }
             e.target.setAttribute("mouseup", 1);
         });

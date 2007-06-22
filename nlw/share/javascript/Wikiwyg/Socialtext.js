@@ -265,7 +265,7 @@ function setup_wikiwyg() {
         wysiwyg_link.style.textDecoration = 'line-through';
         // XXX stopObserving
         wysiwyg_link.onclick = function() {
-            alert("Safari does not support simple mode editing");
+            alert(loc("Safari does not support simple mode editing"));
             return false;
         }
     }
