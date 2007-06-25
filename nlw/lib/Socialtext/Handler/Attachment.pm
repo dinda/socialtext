@@ -203,10 +203,10 @@ sub _get_attachment {
     }
 
     my $filename = $attachment->filename;
+    # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
         $filename = URI::Escape::uri_escape_utf8($filename);
     }
-
 
     $r->header_out('Content-length' => -s $file );
     $r->header_out('Content-disposition' => 'inline; filename="' . $filename . '"');

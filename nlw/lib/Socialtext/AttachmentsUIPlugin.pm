@@ -87,6 +87,7 @@ sub attachments_download {
     my $filename = $attachment->filename;
     $self->log_action("DOWNLOAD_ATTACHMENT", $filename);
     
+    # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
         $filename = URI::Escape::uri_escape_utf8($filename);
     }

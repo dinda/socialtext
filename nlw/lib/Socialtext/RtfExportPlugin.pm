@@ -67,6 +67,7 @@ sub rtf_export {
 
     my $filename = $self->cgi->filename || "$page_names[0].rtf";
 
+    # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
         $filename = URI::Escape::uri_escape_utf8($filename);
     }
