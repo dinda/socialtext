@@ -65,9 +65,11 @@ sub wikiwyg_generate_widget_image {
     my $text = $self->cgi->widget;
 
     my $widget_string = $self->cgi->widget_string;
+    my $widget_localize_string = $self->cgi->widget_localize_string;
     my $uneditable = $self->widget_is_uneditable($widget_string);
 
-    return $self->do_generate_widget_image($text, $uneditable);
+    my $image_file = $self->get_image_file_name($text);
+    return $self->do_generate_widget_image($widget_localize_string, $image_file, $uneditable);
 }
 
 sub generate_widget_image {
@@ -77,7 +79,8 @@ sub generate_widget_image {
     my $uneditable = $self->widget_is_uneditable($text);
 
     $text = $self->widget_image_text($text);
-    $self->do_generate_widget_image($text, $uneditable);
+    my $image_file = $self->get_image_file_name($text);
+    $self->do_generate_widget_image($text, $image_file, $uneditable);
 }
 
 sub set_fields {
@@ -307,7 +310,7 @@ sub widget_image_text {
             }
         }
 
-        my @tokens = $text =~ /%(\S+)/g;
+        my @tokens = $text =~ /%(\w+)/g;
         foreach my $token (@tokens) {
             if (exists($widget->{$token})) {
                 my $match = '%' . $token;
@@ -329,7 +332,8 @@ sub generate_phrase_widget_image {
     my $uneditable = $self->widget_is_uneditable($text);
     $text = $self->widget_image_text($text);
 
-    $self->do_generate_widget_image($text, $uneditable);
+    my $image_file = $self->get_image_file_name($text);
+    $self->do_generate_widget_image($text, $image_file, $uneditable);
 }
 
 sub generate_block_widget_image {
@@ -343,7 +347,8 @@ sub generate_block_widget_image {
         $yaml->{widget}{$method}{title} :
         'unknown';
 
-    $self->do_generate_widget_image($text);
+    my $image_file = $self->get_image_file_name($text);
+    $self->do_generate_widget_image($text, $image_file);
 }
 
 sub widget_is_uneditable {
@@ -375,18 +380,30 @@ my $max = 300;
 my $height = 19;
 my $ellipsis = '...';
 
-sub do_generate_widget_image {
+sub get_image_file_name {
     my $self = shift;
     my $text = shift;
-    my $uneditable = shift;
-    my $current = 0;
-
     Encode::_utf8_off($text);
     my $file_name = Digest::MD5::md5_hex($text) . '.png';
     my $image_file = "$widgets_path/$file_name";
+    Encode::_utf8_on($text);
+
+    return $image_file;
+}
+
+sub do_generate_widget_image {
+    my $self = shift;
+    my $text = shift;
+    my $image_file = shift;
+    my $uneditable = shift;
+    my $current = 0;
+
+#    Encode::_utf8_off($text);
+#    my $file_name = Digest::MD5::md5_hex($text) . '.png';
+#    my $image_file = "$widgets_path/$file_name";
 
     return if -f $image_file;
-    Encode::_utf8_on($text);
+#    Encode::_utf8_on($text);
 
     my @texts;
     my $text_num = 0;
@@ -768,5 +785,6 @@ cgi 'page_id';
 cgi 'session_id';
 cgi 'widget';
 cgi 'widget_string';
+cgi 'widget_localize_string';
 
 1;
