@@ -12,6 +12,8 @@ use Socialtext::TT2::Renderer;
 use DateTime;
 use DateTime::Format::Strptime;
 use Socialtext::l10n qw(system_locale);
+use URI::Escape;
+use Socialtext::BrowserDetect;
 
 $JSON::UTF8 = 1;
 
@@ -199,8 +201,15 @@ sub _get_attachment {
     } else {
         $r->content_type( $mime_type );
     }
+
+    my $filename = $attachment->filename;
+    if( Socialtext::BrowserDetect::ie() ) {
+        $filename = URI::Escape::uri_escape_utf8($filename);
+    }
+
+
     $r->header_out('Content-length' => -s $file );
-    $r->header_out('Content-disposition' => 'inline; filename="' . $attachment->filename . '"');
+    $r->header_out('Content-disposition' => 'inline; filename="' . $filename . '"');
     # Normally, we'd want to turn off caching, but see
     # http://support.microsoft.com/default.aspx?scid=kb;en-us;812935
     # for why we don't - gotta love IE.

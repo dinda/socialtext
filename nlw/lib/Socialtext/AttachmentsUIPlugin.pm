@@ -11,6 +11,8 @@ use Socialtext::Helpers;
 use Socialtext::Exceptions;
 use Socialtext::l10n qw(loc system_locale);
 use Socialtext::WebApp;
+use URI::Escape;
+use Socialtext::BrowserDetect;
 
 sub class_id { 'attachments_ui' }
 const class_title => 'Attachments';
@@ -84,6 +86,10 @@ sub attachments_download {
     # Add the headers for an attachment
     my $filename = $attachment->filename;
     $self->log_action("DOWNLOAD_ATTACHMENT", $filename);
+    
+    if( Socialtext::BrowserDetect::ie() ) {
+        $filename = URI::Escape::uri_escape_utf8($filename);
+    }
 
     $self->hub->headers->add_attachment(
         filename => $filename,

@@ -8,6 +8,8 @@ use Socialtext::WebApp;
 use Class::Field 'const';
 use Imager;
 use Socialtext::l10n qw(loc);
+use URI::Escape;
+use Socialtext::BrowserDetect;
 
 =head1 NAME
 
@@ -50,6 +52,8 @@ An action callable by the web interface to return an RTF
 version of multiple pages named in the CGI page variable C<page_selected>.
 
 =cut
+
+
 sub rtf_export {
     my $self = shift;
 
@@ -62,6 +66,11 @@ sub rtf_export {
     $self->export( \@page_names, \$content );
 
     my $filename = $self->cgi->filename || "$page_names[0].rtf";
+
+    if( Socialtext::BrowserDetect::ie() ) {
+        $filename = URI::Escape::uri_escape_utf8($filename);
+    }
+
     $self->hub->headers->add_attachment(
         filename => $filename,
         len => length($content),
