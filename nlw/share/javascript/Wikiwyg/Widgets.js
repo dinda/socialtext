@@ -582,7 +582,47 @@ proto.insert_widget = function(widget, widget_element) {
     changer();
 }
 
+
 proto.getWidgetImageText = function(widget_text) {
+    var text = widget_text;
+    try {
+        var widget = this.parseWidget(widget_text);
+
+        // XXX Hack for html block. Should key off of 'uneditable' flag.
+        if (widget_text.match(/^\.html/))
+            text = widget_data.html.title;
+        else if (widget.id && widget_data[widget.id].image_text) {
+            for (var i=0; i < widget_data[widget.id].image_text.length; i++) {
+                if (widget_data[widget.id].image_text[i].field == 'default') {
+                    text = widget_data[widget.id].image_text[i].text;
+                    break;
+                }
+                else if (widget[widget_data[widget.id].image_text[i].field]) {
+                    text = widget_data[widget.id].image_text[i].text;
+                    break;
+                }
+            }
+        }
+
+        var fields = text.match(new RegExp('%\\S+', 'g'));
+        if (fields)
+            for (var i=0; i < fields.length; i++) {
+                var field = fields[i].slice(1);
+                if (widget[field])
+                    text = text.replace(new RegExp('%' + field), widget[field]);
+                else
+                    text = text.replace(new RegExp('%' + field), '');
+            }
+    }
+    catch (E) {
+        // parseWidget can throw an error
+        // Just ignore and set the text to be the widget text
+    }
+
+    return text;
+}
+
+proto.getWidgetImageText_Localize = function(widget_text) {
     var text = widget_text;
     try {
         var widget = this.parseWidget(widget_text);
@@ -936,12 +976,14 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
             try {
                 var widget_string = self['handle_widget_' + widget](form);
                 var widget_text = self.getWidgetImageText(widget_string);
+                var widget_localize_text = self.getWidgetImageText_Localize(widget_string);
                 clearInterval(intervalId);
                 Ajax.post(
                     location.pathname,
                     'action=wikiwyg_generate_widget_image;' +
                     'widget=' + encodeURIComponent(widget_text) +
-                    ';widget_string=' + encodeURIComponent(widget_string),
+                    ';widget_string=' + encodeURIComponent(widget_string) +
+                    ';widget_localize_string=' + encodeURIComponent(widget_localize_text),
                     function() {
                         self.insert_widget(widget_string, widget_element);
                         box.release();
