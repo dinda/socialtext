@@ -199,18 +199,20 @@ proto.attachTooltip = function(elem) {
     var params = title.match(/\$(\w+)/g);
     var newtitle = title; 
     var newtitle_args = "";
-    for ( i = 0; i < params.length; i++) {
-        params[i] = params[i].replace(/^\$/, "");
-        var text = this.currentWidget[params[i]];
-        if (text == '') {
-            if (params[i] == 'page_title')
-                text = Page.page_title;
-            else if (params[i] == 'workspace_id')
-                text = Page.wiki_title;
-        }
-        if (text != '') {
-            newtitle = newtitle.replace("\$" + params[i], "[_" + ( i + 1 ) + "]");
-            newtitle_args += ", \"" + text + "\"";
+    if ( params != null ){
+        for ( i = 0; i < params.length; i++) {
+            params[i] = params[i].replace(/^\$/, "");
+            var text = this.currentWidget[params[i]];
+            if (text == '') {
+                if (params[i] == 'page_title')
+                    text = Page.page_title;
+                else if (params[i] == 'workspace_id')
+                    text = Page.wiki_title;
+            }
+            if (text != '') {
+                newtitle = newtitle.replace("\$" + params[i], "[_" + ( i + 1 ) + "]");
+                newtitle_args += ", \"" + text + "\"";
+            }
         }
     }
     if (newtitle_args != "") {
@@ -604,12 +606,14 @@ proto.getWidgetImageText = function(widget_text) {
         var params = text.match(/%(\w+)/g);
         var newtext = text; 
         var newtext_args = "";
-        for ( i = 0; i < params.length; i++) {
-            params[i] = params[i].replace(/^%/, "");
-            var mytext = widget[params[i]];
-            if (mytext != '') {
-                newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
-                newtext_args += ", \"" + mytext + "\"";
+        if ( params != null ){
+            for ( i = 0; i < params.length; i++) {
+                params[i] = params[i].replace(/^%/, "");
+                var mytext = widget[params[i]];
+                if (mytext != '') {
+                    newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
+                    newtext_args += ", \"" + mytext + "\"";
+                }
             }
         }
         if (newtext_args != "") {
