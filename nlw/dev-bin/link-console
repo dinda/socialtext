@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 use File::Path qw/mkpath/;
-use lib 'lib';
+use FindBin;
+use lib "$FindBin::Bin/../lib";
 use Socialtext::File qw/set_contents/;
 
 my $branch = shift;

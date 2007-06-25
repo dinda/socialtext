@@ -216,6 +216,10 @@ sub _user_root {
         }
         else {
             $dir = Cwd::abs_path( "$base_dir/t/tmp" );
+            unless ($dir) {
+                my $base = File::Basename::dirname(__FILE__);
+                $dir = Cwd::abs_path("$base/../../t/tmp");
+            }
         }
 
         die "Cannot find the user root with the HARNESS_ACTIVE env var set\n"
