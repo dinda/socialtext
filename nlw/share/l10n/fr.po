@@ -3881,7 +3881,7 @@ msgstr ""
 
 #: share/template/email/password-change.html:16
 #. (
-msgid "When you <a href=\"[_1:]\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
+msgid "When you <a href=\"%1\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
 msgstr ""
 
 #: share/template/email/password-change.txt:7

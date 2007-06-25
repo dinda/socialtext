@@ -3647,7 +3647,7 @@ msgstr "画像をアップロードする"
 #: share/template/element/page/attachment_attach_interface:8 share/template/element/page/attachment_queue_interface:7
 #.  
 msgid "Upload Files"
-msgstr "ファイルをアップロードする"
+msgstr "ファイルをアップロード"
 
 #: share/javascript/pageview.js:514 share/javascript/pageview.js:600 share/template/element/page/attachment_attach_interface:33
 #.  
@@ -3662,7 +3662,7 @@ msgstr "ファイルをアップロード"
 #: share/template/layout/html:107
 #.  
 msgid "Upload&nbsp;files"
-msgstr "ファイルをアップロードする"
+msgstr "ファイルをアップロード"
 
 #: share/template/view/attachmentslist:19
 #.  
@@ -3881,7 +3881,7 @@ msgstr "このワークスペースで\"Home\" をクリックした時に、あ
 
 #: share/template/email/password-change.html:16
 #. (
-msgid "When you <a href=\"[_1:]\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
+msgid "When you <a href=\"%1\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
 msgstr ""
 
 #: share/template/email/password-change.txt:7

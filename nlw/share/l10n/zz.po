@@ -3881,8 +3881,8 @@ msgstr "wH3N Us3rS ClIcK \"H0M3\" iN 7hIs w0rKsP4C3, Sh0uLd 7H3Y S33 4 P3Rs0n4l 
 
 #: share/template/email/password-change.html:16
 #. (
-msgid "When you <a href=\"[_1:]\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
-msgstr "wH3N Y0U <a href=\"[_1:]\">ClIcK 0n 7HiS LiNk</4>, Y0U WiLl 83 74K3N 70 4 p4g3 WhIcH 4lL0Ws y0u 70 Ch00S3 4 n3w p4sSw0rD."
+msgid "When you <a href=\"%1\">click on this link</a>, you will be taken to a page which allows you to choose a new password."
+msgstr "wH3N Y0U <a href=\"%1\">cLiCk 0N 7hIs lInK</4>, y0u wIlL 83 74k3n 70 4 P4G3 wHiCh 4Ll0wS Y0U 70 cH00s3 4 N3W P4SsW0Rd."
 
 #: share/template/email/password-change.txt:7
 #.  
