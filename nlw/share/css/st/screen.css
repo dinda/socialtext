@@ -691,6 +691,7 @@ body {
     overflow: hidden;
     float: left;
     height: 25px;
+    padding-bottom: 3px;
 }
 
 #wikiwyg_wikitext_textarea {
