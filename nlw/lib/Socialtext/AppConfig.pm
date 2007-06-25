@@ -21,6 +21,8 @@ use YAML ();
 use YAML::Dumper;
 use Socialtext::Build qw( get_build_setting get_prefixed_dir );
 
+my $base_dir = Cwd::getcwd();
+
 # We capture this at load time and then will later check
 # $Current_user->uid to see if the user _when the module was loaded_
 # was root. We do not want to check $> later because under mod_perl
@@ -213,8 +215,7 @@ sub _user_root {
             $dir =~ s{(.+t/tmp).*}{$1};
         }
         else {
-            my $base = File::Basename::dirname(__FILE__);
-            $dir = Cwd::abs_path( "$base/../../t/tmp" );
+            $dir = Cwd::abs_path( "$base_dir/t/tmp" );
         }
 
         die "Cannot find the user root with the HARNESS_ACTIVE env var set\n"
