@@ -344,6 +344,11 @@ msgstr "あ pあsSwおrD いs rえqういRえD 7お cRえあ7え あ NえW うs�
 msgid "A user with this email address (%1) already exists."
 msgstr "あ うSえR Wい7h 7HいS えmあいL あdDrえsS (%1) あLrえあDy えXいS7S."
 
+#: lib/Socialtext/Widget_resource.pm:57 share/javascript/widget_resource.js:57
+#. (
+msgid "AIM: %1"
+msgstr "あいm: %1"
+
 #: share/template/view/refcard:228
 #.  
 msgid "AOL user aim:aimuser presence"
@@ -544,7 +549,7 @@ msgstr "あN えmあいL CおNfいrMいNg yおうR RえGいS7Rあ7いおn hあs 
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "あN えmあいL Wい7h いNs7rうc7いおnS おn cHあNgいnG Yおうr pあsSwおrD HあS 8ええn sえn7 7お %1."
 
-#: lib/Socialtext/WikiwygPlugin.pm:540 lib/Socialtext/WikiwygPlugin.pm:690
+#: lib/Socialtext/WikiwygPlugin.pm:557 lib/Socialtext/WikiwygPlugin.pm:707
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "あN いnVあLいD PあGえ いD WあS GいVえN: %1"
@@ -659,7 +664,7 @@ msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "あS Wえ cおn7いNうえ 7お dえvえlおp 7Hえ sえあRcH SyS7えm, 7hえ おp7いおnS Yおう WいLl hあvえ あnD 7hえ いn7えRfあcえ Yおう HあVえ 7お MあKえ うSえ おF 7hえm wいlL いmPrおvえ."
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:61
+#: lib/Socialtext/AttachmentsUIPlugin.pm:63
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "あ77あcHmえn7 Nお7 FおうnD. 7Hえ pあgえ NあMえ, FいLえ nあmえ おr いDえN7いfえr nうm8えR いn 7Hえ lいnK MあY 8え いNcおrRえC7, おr 7Hえ あ77あcHmえn7 MあY HあVえ 8ええN DえLえ7えD おr いS Nお7 Prえsえn7 いn 7HいS WおRkSpあcえ."
@@ -763,6 +768,16 @@ msgstr "8RおうgH7 7お Yおう 8y sおcいあL7えx7."
 #.  
 msgid "Bug Dump"
 msgstr "8うg dうmP"
+
+#: lib/Socialtext/Widget_resource.pm:29 share/javascript/widget_resource.js:29
+#. (
+msgid "Call '%1' using Convoq. Click to edit."
+msgstr "cあlL '%1' うSいNg cおnVおQ. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:25 share/javascript/widget_resource.js:25
+#. (
+msgid "Call '%1' using Skype. Click to edit."
+msgstr "cあlL '%1' うSいNg sKyPえ. ClいcK 7お えDい7."
 
 #: lib/Socialtext/UserSettingsPlugin.pm:229
 #.  
@@ -1019,6 +1034,11 @@ msgstr "cおnGrあ7うlあ7いおNs! Yおう HあVえ jうs7 Crえあ7えD \"%1\
 msgid "Contact Socialtext Support"
 msgstr "cおn7あC7 sおcいあL7えx7 SうPpおr7"
 
+#: lib/Socialtext/Widget_resource.pm:63 share/javascript/widget_resource.js:63
+#. (
+msgid "Convoq: %1"
+msgstr "cおnVおQ: %1"
+
 #: share/template/popup/copy_to_workspace:36
 #.  
 msgid "Copy"
@@ -1179,6 +1199,11 @@ msgstr "dいd yおう kNおW?"
 msgid "Disk Usage"
 msgstr "dいsK うsあgえ"
 
+#: lib/Socialtext/Widget_resource.pm:27 share/javascript/widget_resource.js:27
+#. (
+msgid "Display '%1' in reader's time zone. Click to edit."
+msgstr "dいsPlあy '%1' いn rえあDえR'S 7いMえ zおnえ. cLいCk 7お えdい7."
+
 #: lib/Socialtext/BreadCrumbsPlugin.pm:33
 #. (
 msgid "Display \\\"%1\\\" side pane box?"
@@ -1188,6 +1213,31 @@ msgstr "dいsPlあy \\\"%1\\\" SいDえ pあnえ 8おX?"
 #.  
 msgid "Display as a side box in page view?"
 msgstr "dいsPlあy あS あ SいDえ 8おx いN PあGえ vいえW?"
+
+#: lib/Socialtext/Widget_resource.pm:4 share/javascript/widget_resource.js:4
+#. (
+msgid "Display image '%1'. Click to edit."
+msgstr "dいsPlあy いMあGえ '%1'. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:13 share/javascript/widget_resource.js:13
+#. (
+msgid "Display pages with the '%1' tag. Click to edit."
+msgstr "dいsPlあy pあgえs wい7H 7hえ '%1' 7あg. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:20 share/javascript/widget_resource.js:20
+#. (
+msgid "Display result for searching '%1'. Click to edit."
+msgstr "dいsPlあy rえsうl7 FおR SえあrChいnG '%1'. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:16 share/javascript/widget_resource.js:16
+#. (
+msgid "Display the weblog '%1'. Click to edit."
+msgstr "dいsPlあy 7Hえ wえ8LおG '%1'. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:10 share/javascript/widget_resource.js:10
+#. (
+msgid "Display what's new in the '%1' workspace. Click to edit."
+msgstr "dいsPlあy wHあ7'S NえW いn 7Hえ '%1' WおRkSpあcえ. cLいCk 7お えdい7."
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:105
 #.  
@@ -1214,7 +1264,7 @@ msgstr "dお Yおう WあN7 7お Sえ7 うp 7HいS WおRkSpあcえ あs:"
 msgid "Done"
 msgstr "dおnえ"
 
-#: lib/Socialtext/WikiwygPlugin.pm:597
+#: lib/Socialtext/WikiwygPlugin.pm:614
 #.  
 msgid "Double-click to edit a page?"
 msgstr "dおう8lえ-ClいcK 7お えDい7 あ PあGえ?"
@@ -1389,7 +1439,7 @@ msgstr "えRrおr うPdあ7いnG Frおm 7いmえsえrVえR %1"
 msgid "Error:"
 msgstr "えRrおr:"
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:57
+#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:61
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr "えRrおr:<Prえ>Nお pあgえs sえlえc7えD FおR えxPおR7</Prえ>\n"
@@ -1588,6 +1638,11 @@ msgstr "gえrMあN"
 #.  
 msgid "Go to:"
 msgstr "gお 7お:"
+
+#: lib/Socialtext/Widget_resource.pm:55 share/javascript/widget_resource.js:55
+#. (
+msgid "Google: %1"
+msgstr "gおおGlえ: %1"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:275
 #. (
@@ -1789,6 +1844,26 @@ msgstr "いMpおr7いNg wおrKsPあCえS Frおm 7あr8あLlS ..."
 msgid "Include Recently Viewed items as a side box when viewing pages?"
 msgstr "いNcLうDえ rえcえn7lY Vいえwえd い7えMs あS あ SいDえ 8おx wHえN VいえwいnG PあGえS?"
 
+#: lib/Socialtext/Widget_resource.pm:18 share/javascript/widget_resource.js:18
+#. (
+msgid "Include the '%1' Atom feed. Click to edit."
+msgstr "いNcLうDえ 7Hえ '%1' あ7おm fええD. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:17 share/javascript/widget_resource.js:17
+#. (
+msgid "Include the '%1' RSS feed. Click to edit."
+msgstr "いNcLうDえ 7Hえ '%1' RsS Fええd. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:7 share/javascript/widget_resource.js:7
+#. (
+msgid "Include the page '%1'. Click to edit."
+msgstr "いNcLうDえ 7Hえ pあgえ '%1'. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:15 share/javascript/widget_resource.js:15
+#. (
+msgid "Include the weblog '%1'. Click to edit."
+msgstr "いNcLうDえ 7Hえ wえ8LおG '%1'. ClいcK 7お えDい7."
+
 #: share/template/view/page/display:39
 #.  
 msgid "Incoming Links"
@@ -1818,6 +1893,16 @@ msgstr "いNい7いあlいzえ WおRkSpあcえs?"
 #.  
 msgid "Initializing workspaces ..."
 msgstr "いNい7いあlいzいnG WおRkSpあcえs ..."
+
+#: lib/Socialtext/Widget_resource.pm:23 share/javascript/widget_resource.js:23
+#. (
+msgid "Instant message to '%1' using AIM. Click to edit."
+msgstr "いNs7あN7 mえsSあGえ 7お '%1' うSいNg あいm. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:24 share/javascript/widget_resource.js:24
+#. (
+msgid "Instant message to '%1' using Yahoo! Click to edit."
+msgstr "いNs7あN7 mえsSあGえ 7お '%1' うSいNg yあhおお! ClいcK 7お えDい7."
 
 #: share/console-template/template/setup.html:7
 #.  
@@ -1973,6 +2058,31 @@ msgstr "lあs7 NあMえ:"
 #.  
 msgid "Link text"
 msgstr "lいnK 7えX7"
+
+#: lib/Socialtext/Widget_resource.pm:3 share/javascript/widget_resource.js:3
+#. (
+msgid "Link to '%1' in '%2'. Click to edit."
+msgstr "lいnK 7お '%1' いn '%2'. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:2 share/javascript/widget_resource.js:2
+#. (
+msgid "Link to '%1'. Click to edit."
+msgstr "lいnK 7お '%1'. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:5 share/javascript/widget_resource.js:5
+#. (
+msgid "Link to file '%1'. Click to edit."
+msgstr "lいnK 7お fいlえ '%1'. ClいcK 7お えDい7."
+
+#: lib/Socialtext/Widget_resource.pm:11 share/javascript/widget_resource.js:11
+#. (
+msgid "Link to tag '%1'. Click to edit."
+msgstr "lいnK 7お 7あg '%1'. cLいCk 7お えdい7."
+
+#: lib/Socialtext/Widget_resource.pm:14 share/javascript/widget_resource.js:14
+#. (
+msgid "Link to weblog '%1'. Click to edit."
+msgstr "lいnK 7お wえ8LおG '%1'. ClいcK 7お えDい7."
 
 #: share/template/element/settings/select:10
 #.  
@@ -2194,7 +2304,7 @@ msgstr "nお FいLえ pRおVいDえD 7お vえrいfY"
 msgid "No files available to restore."
 msgstr "nお FいLえS あvあいLあ8lえ 7お rえs7おRえ."
 
-#: lib/Socialtext/WikiwygPlugin.pm:531 lib/Socialtext/WikiwygPlugin.pm:681
+#: lib/Socialtext/WikiwygPlugin.pm:548 lib/Socialtext/WikiwygPlugin.pm:698
 #.  
 msgid "No page ID given"
 msgstr "nお PあGえ いD GいVえN"
@@ -2403,6 +2513,11 @@ msgstr "pあgえs yおう'rえ Wあ7cHいNg"
 #. (
 msgid "Pages containing '%1' (%2)"
 msgstr "pあgえs cおn7あいnいnG '%1' (%2)"
+
+#: lib/Socialtext/Widget_resource.pm:12 share/javascript/widget_resource.js:12
+#. (
+msgid "Pages with the '%1' tag. Click to edit."
+msgstr "pあgえs wい7H 7hえ '%1' 7あg. ClいcK 7お えDい7."
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:223
 #.  
@@ -2864,10 +2979,20 @@ msgstr "sCrええN LあYおう7"
 msgid "Search"
 msgstr "sえあRcH"
 
+#: lib/Socialtext/Widget_resource.pm:21 share/javascript/widget_resource.js:21
+#. (
+msgid "Search Google for '%1'. Click to edit."
+msgstr "sえあRcH GおおgLえ fおr '%1'. cLいCk 7お えdい7."
+
 #: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1303
 #.  
 msgid "Search Results"
 msgstr "sえあRcH RえSうL7S"
+
+#: lib/Socialtext/Widget_resource.pm:22 share/javascript/widget_resource.js:22
+#. (
+msgid "Search Technorati for '%1'. Click to edit."
+msgstr "sえあRcH 7えChNおRあ7い fおr '%1'. cLいCk 7お えdい7."
 
 #: lib/Socialtext/SearchPlugin.pm:265
 #. (
@@ -2884,6 +3009,11 @@ msgstr "sえあRcH FおR %1 いN WおRkSpあcえ %2"
 msgid "Search for &quot;%1&quot;"
 msgstr "sえあRcH FおR &qうお7;%1&qうお7;"
 
+#: lib/Socialtext/Widget_resource.pm:19 share/javascript/widget_resource.js:19
+#. (
+msgid "Search for '%1'. Click to edit."
+msgstr "sえあRcH FおR '%1'. ClいcK 7お えDい7."
+
 #: share/template/element/settings/users_invite_search_section:6
 #.  
 msgid "Search for Users to Invite"
@@ -2898,6 +3028,11 @@ msgstr "sえあRcH FおR 7hえ FおLlおwいnG 7えRmS:"
 #.  
 msgid "Section"
 msgstr "sえc7いおn"
+
+#: lib/Socialtext/Widget_resource.pm:8 share/javascript/widget_resource.js:8
+#. (
+msgid "Section marker '%1'. Click to edit."
+msgstr "sえc7いおn mあrKえR '%1'. ClいcK 7お えDい7."
 
 #: share/template/element/wiki/subnav-dashboard:9
 #.  
@@ -2984,6 +3119,11 @@ msgstr "sHおうlD 7いMえS 8え dいsPlあyえd いN 12-hおうR おr 24-Hお�
 msgid "Should users of this workspace receive email notifications of changes to this workspace?"
 msgstr "sHおうlD うsえrS おf 7HいS WおRkSpあcえ RえCえいvえ えmあいL Nお7いFいCあ7いおnS おf cHあNgえs 7お 7hいs wおrKsPあCえ?"
 
+#: lib/Socialtext/Widget_resource.pm:26 share/javascript/widget_resource.js:26
+#. (
+msgid "Show full name for '%1'. Click to edit."
+msgstr "sHおW FうLl nあmえ FおR '%1'. ClいcK 7お えDい7."
+
 #: share/console-template/template/shutdown.html:6
 #.  
 msgid "Shut Down Appliance"
@@ -3023,6 +3163,11 @@ msgstr "sいnCえ yおうR PあSsWおRd いS S7おrえd いN 7hえ DいRえC7お
 #.  
 msgid "Size"
 msgstr "sいzえ"
+
+#: lib/Socialtext/Widget_resource.pm:59 share/javascript/widget_resource.js:59
+#. (
+msgid "Skype: %1"
+msgstr "sKyPえ: %1"
 
 #: share/console-template/template/console_wrapper.tmpl:24 share/console-template/template/console_wrapper.tmpl:7
 #.  
@@ -3114,7 +3259,7 @@ msgstr "sうgGえS7いおNs:"
 msgid "Summary"
 msgstr "sうmMあRy"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:178
 #.  
 msgid "Sun"
 msgstr "sうn"
@@ -3138,6 +3283,11 @@ msgstr "sYs7えM Rえ8おお7いnG ..."
 #.  
 msgid "System shutting down ..."
 msgstr "sYs7えM Shう77いNg dおwN ..."
+
+#: lib/Socialtext/Widget_resource.pm:6 share/javascript/widget_resource.js:6
+#. (
+msgid "Table of contents for '%1'. Click to edit."
+msgstr "7あ8Lえ おF CおN7えn7s fおr '%1'. cLいCk 7お えdい7."
 
 #: share/javascript/Wikiwyg/Jemplate.js:1398 share/template/view/taglistview:20
 #.  
@@ -3163,6 +3313,11 @@ msgstr "7あgS"
 #.  
 msgid "Tags:"
 msgstr "7あgS:"
+
+#: lib/Socialtext/Widget_resource.pm:56 share/javascript/widget_resource.js:56
+#. (
+msgid "Technorati: %1"
+msgstr "7えcHnおrあ7い: %1"
 
 #: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
 #.  
@@ -3599,6 +3754,11 @@ msgstr "7Ypえ NえW PあSsWおRd あGあいn"
 msgid "Unable to process logo file. Is it an image?"
 msgstr "うNあ8lえ 7お pRおCえSs lおgお FいLえ. いs い7 あn いMあGえ?"
 
+#: lib/Socialtext/Widget_resource.pm:28 share/javascript/widget_resource.js:28
+#.  
+msgid "Unformatted Content"
+msgstr "うNfおrMあ77えd cおn7えN7"
+
 #: share/template/element/settings/select:27
 #.  
 msgid "Unsubscribe"
@@ -3674,6 +3834,11 @@ msgstr "うPlおあDえD 8y"
 msgid "Uploads"
 msgstr "うPlおあDs"
 
+#: lib/Socialtext/Widget_resource.pm:30 share/javascript/widget_resource.js:30
+#. (
+msgid "Use %1 to generate a form. Click to edit."
+msgstr "うSえ %1 7お gえnえrあ7え あ FおRm. ClいcK 7お えDい7."
+
 #: share/console-template/template/popup.html:54
 #.  
 msgid "Use the email address you entered above as the username, and <strong>password</strong> as the password. You can change your password later."
@@ -3724,7 +3889,7 @@ msgstr "うSえRs: MあNあGえ あLl うSえRs"
 msgid "Users: My Settings"
 msgstr "うSえRs: My sえ77いNgS"
 
-#: lib/Socialtext/WikiwygPlugin.pm:545
+#: lib/Socialtext/WikiwygPlugin.pm:562
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "vあlいdあ7いおN Sう8rおう7いNえ cあlLえD おう7sいdえ おf vあlいdあ7おr"
@@ -3868,6 +4033,11 @@ msgstr "wHあ7'S NえW"
 #. (
 msgid "What's new in %1"
 msgstr "wHあ7'S NえW いn %1"
+
+#: lib/Socialtext/Widget_resource.pm:9 share/javascript/widget_resource.js:9
+#. (
+msgid "What's new in the '%1' workspace. Click to edit."
+msgstr "wHあ7'S NえW いn 7Hえ '%1' WおRkSpあcえ. cLいCk 7お えdい7."
 
 #: share/template/element/settings/workspaces_settings_features_section:8
 #.  
@@ -4038,6 +4208,11 @@ msgstr "yあhおお うSえR YあHおおうSえR PrえsえnCえ"
 #.  
 msgid "Yahoo user ymsgr:yahoouser presence"
 msgstr "yあhおお うSえR YmSgR:YあHおおうSえR PrえsえnCえ"
+
+#: lib/Socialtext/Widget_resource.pm:58 share/javascript/widget_resource.js:58
+#. (
+msgid "Yahoo! IM: %1"
+msgstr "yあhおお! いm: %1"
 
 #: share/template/element/settings/workspaces_settings_features_section:49
 #.  
@@ -4339,6 +4514,11 @@ msgstr "cうrRえN7Ly いN Ds7"
 msgid "currently not in DST"
 msgstr "cうrRえN7Ly nお7 いN Ds7"
 
+#: lib/Socialtext/Widget_resource.pm:61 share/javascript/widget_resource.js:61
+#. (
+msgid "date: %1"
+msgstr "dあ7え: %1"
+
 #: share/template/view/refcard:25
 #.  
 msgid "different-workspace"
@@ -4378,6 +4558,21 @@ msgstr "えX7えrNあL いmあgえ"
 #.  
 msgid "external link"
 msgstr "えX7えrNあL LいNk"
+
+#: lib/Socialtext/Widget_resource.pm:52 lib/Socialtext/Widget_resource.pm:53 share/javascript/widget_resource.js:52 share/javascript/widget_resource.js:53
+#. (
+msgid "feed: %1"
+msgstr "fええD: %1"
+
+#: lib/Socialtext/Widget_resource.pm:38 lib/Socialtext/Widget_resource.pm:39 share/javascript/widget_resource.js:38 share/javascript/widget_resource.js:39
+#. (
+msgid "file: %1"
+msgstr "fいlえ: %1"
+
+#: lib/Socialtext/Widget_resource.pm:64 share/javascript/widget_resource.js:64
+#. (
+msgid "form: %1"
+msgstr "fおrM: %1"
 
 #: share/console-template/template/overview.html:14
 #.  
@@ -4439,10 +4634,20 @@ msgstr "いMあGえ あ77あcHえD 7お pあgえ"
 msgid "image attachment"
 msgstr "いMあGえ あ77あcHmえn7"
 
+#: lib/Socialtext/Widget_resource.pm:36 lib/Socialtext/Widget_resource.pm:37 share/javascript/widget_resource.js:36 share/javascript/widget_resource.js:37
+#. (
+msgid "image: %1"
+msgstr "いMあGえ: %1"
+
 #: share/template/view/weblog:20
 #. (
 msgid "in %1"
 msgstr "いN %1"
+
+#: lib/Socialtext/Widget_resource.pm:42 share/javascript/widget_resource.js:42
+#. (
+msgid "include: %1"
+msgstr "いNcLうDえ: %1"
 
 #: share/template/view/refcard:20
 #.  
@@ -4473,6 +4678,16 @@ msgstr "い7えM 2"
 #.  
 msgid "lines"
 msgstr "lいnえs"
+
+#: lib/Socialtext/Widget_resource.pm:31 lib/Socialtext/Widget_resource.pm:32 lib/Socialtext/Widget_resource.pm:33 lib/Socialtext/Widget_resource.pm:35 share/javascript/widget_resource.js:31 share/javascript/widget_resource.js:32 share/javascript/widget_resource.js:33 share/javascript/widget_resource.js:35
+#. (
+msgid "link: %1"
+msgstr "lいnK: %1"
+
+#: lib/Socialtext/Widget_resource.pm:34 share/javascript/widget_resource.js:34
+#. (
+msgid "link: %1 (%2 )"
+msgstr "lいnK: %1 (%2 )"
 
 #: share/template/view/refcard:16
 #.  
@@ -4514,10 +4729,15 @@ msgstr "pえrCえN7 fRええ"
 msgid "permalink"
 msgstr "pえrMあLいNk"
 
-#: lib/Socialtext/WeblogPlugin.pm:169 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "rえcえn7 ChあnGえS"
+
+#: lib/Socialtext/Widget_resource.pm:44 share/javascript/widget_resource.js:44
+#. (
+msgid "recent changes: %1"
+msgstr "rえcえn7 ChあnGえS: %1"
 
 #: share/console-template/template/form.tmpl:7
 #.  
@@ -4539,10 +4759,20 @@ msgstr "rえqういRえD"
 msgid "revision"
 msgstr "rえvいsいおN"
 
+#: lib/Socialtext/Widget_resource.pm:54 share/javascript/widget_resource.js:54
+#. (
+msgid "search: %1"
+msgstr "sえあRcH: %1"
+
 #: lib/Socialtext/Formatter/WaflPhrase.pm:442
 #.  
 msgid "section link"
 msgstr "sえc7いおn lいnK"
+
+#: lib/Socialtext/Widget_resource.pm:43 share/javascript/widget_resource.js:43
+#. (
+msgid "section: %1"
+msgstr "sえc7いおn: %1"
 
 #: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:329
 #.  
@@ -4564,6 +4794,16 @@ msgstr "sう8い7えm 1"
 msgid "table"
 msgstr "7あ8Lえ"
 
+#: lib/Socialtext/Widget_resource.pm:48 share/javascript/widget_resource.js:48
+#. (
+msgid "tag list: %1"
+msgstr "7あg lいs7: %1"
+
+#: lib/Socialtext/Widget_resource.pm:46 lib/Socialtext/Widget_resource.pm:47 share/javascript/widget_resource.js:46 share/javascript/widget_resource.js:47
+#. (
+msgid "tag: %1"
+msgstr "7あg: %1"
+
 #: share/template/view/refcard:53
 #.  
 msgid "this text is not bold"
@@ -4579,6 +4819,16 @@ msgstr "7い7Lえ"
 msgid "title:hello"
 msgstr "7い7Lえ:hえlLお"
 
+#: lib/Socialtext/Widget_resource.pm:41 share/javascript/widget_resource.js:41
+#.  
+msgid "toc"
+msgstr "7おc"
+
+#: lib/Socialtext/Widget_resource.pm:40 share/javascript/widget_resource.js:40
+#. (
+msgid "toc: %1"
+msgstr "7おc: %1"
+
 #: share/console-template/template/overview.html:14
 #.  
 msgid "total"
@@ -4588,6 +4838,16 @@ msgstr "7お7あl"
 #.  
 msgid "type email address here"
 msgstr "7Ypえ えmあいL あdDrえsS HえRえ"
+
+#: lib/Socialtext/Widget_resource.pm:62 share/javascript/widget_resource.js:62
+#. (
+msgid "unformatted: %1"
+msgstr "うNfおrMあ77えd: %1"
+
+#: lib/Socialtext/Widget_resource.pm:60 share/javascript/widget_resource.js:60
+#. (
+msgid "user: %1"
+msgstr "うSえR: %1"
 
 #: share/template/email/openid/workspace-invitation-body.html:21 share/template/email/openid/workspace-invitation.txt:8 share/template/email/st/workspace-invitation-body.html:31 share/template/email/st/workspace-invitation.txt:13
 #.  
@@ -4608,6 +4868,16 @@ msgstr "wあrNいNg:"
 #.  
 msgid "web address:"
 msgstr "wえ8 あDdRえSs:"
+
+#: lib/Socialtext/Widget_resource.pm:51 share/javascript/widget_resource.js:51
+#. (
+msgid "weblog list: %1"
+msgstr "wえ8LおG LいS7: %1"
+
+#: lib/Socialtext/Widget_resource.pm:49 lib/Socialtext/Widget_resource.pm:50 share/javascript/widget_resource.js:49 share/javascript/widget_resource.js:50
+#. (
+msgid "weblog: %1"
+msgstr "wえ8LおG: %1"
 
 #: share/template/view/refcard:48
 #.  
