@@ -17,7 +17,7 @@
         PROCESS users_listing
          label = loc('Your request to invite the following users has been sent'),
          users = users_invited
-         IF !checker.check_permission('admin_workspace') ;
+         IF !checker.check_permission('admin_workspace') AND users_invited.size;
      %]
    </td>
   </tr>
