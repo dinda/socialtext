@@ -307,35 +307,43 @@ sub widget_image_text {
             }
         }
 
-        my $newtext = $text;
-        my $newtext_args = "";
-        my @params = $text =~ /%(\w+)/g;
-        my $count = 1;
-        foreach my $param (@params) {
-            if (exists($widget->{$param})) {
-                $newtext =~ s/%$param/[_$count]/;
-                $newtext_args .= ", \"$widget->{$param}\"";
-                $count++;
-            }
-        }
-
-        if ($newtext_args ne "") {
-            $newtext = eval("loc(\"" . $newtext . "\"" . $newtext_args . ")");
-            if ($@) {
-                $newtext = $text;
-            }
-        }else{
-            $newtext = eval("loc(\"" . $newtext . "\")");
-            if ($@) {
-                $newtext = $text;
-            }
-        }
-        $text = $newtext;
+        $text = $self->localize_widget_image_text($text, $widget);
     }
 
     return $text;
 }
 
+sub localize_widget_image_text {
+    my $self = shift;
+    my $text = shift;
+    my $widget = shift;
+
+    my $newtext = $text;
+    my $newtext_args = "";
+    my @params = $text =~ /%(\w+)/g;
+    my $count = 1;
+    foreach my $param (@params) {
+        if (exists($widget->{$param})) {
+            $newtext =~ s/%$param/[_$count]/;
+            $newtext_args .= ", \"$widget->{$param}\"";
+            $count++;
+        }
+    }
+
+    if ($newtext_args ne "") {
+        $newtext = eval("loc(\"" . $newtext . "\"" . $newtext_args . ")");
+        if ($@) {
+            $newtext = $text;
+        }
+    }else{
+        $newtext = eval("loc(\"" . $newtext . "\")");
+        if ($@) {
+            $newtext = $text;
+        }
+    }
+
+    return $newtext;
+}
 
 sub generate_phrase_widget_image {
     my $self = shift;

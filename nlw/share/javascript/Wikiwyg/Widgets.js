@@ -602,32 +602,7 @@ proto.getWidgetImageText = function(widget_text) {
                 }
             }
         }
-
-        var params = text.match(/%(\w+)/g);
-        var newtext = text; 
-        var newtext_args = "";
-        if ( params != null ){
-            for ( i = 0; i < params.length; i++) {
-                params[i] = params[i].replace(/^%/, "");
-                var mytext = widget[params[i]];
-                if (mytext != '') {
-                    newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
-                    newtext_args += ", \"" + mytext + "\"";
-                }
-            }
-        }
-        if (newtext_args != "") {
-            newtext = eval("loc(\"" + newtext + "\"" + newtext_args + ")");
-            if ( newtext == 'undefined' ){
-                newtext = text;
-            }
-        }else{
-            newtext = eval("loc(\"" + newtext + "\")");
-            if ( newtext == 'undefined' ){
-                newtext = text;
-            }
-        }
-        text = newtext;
+        text = this.getWidgetImageLocalizeText(widget, text);
     }
     catch (E) {
         // parseWidget can throw an error
@@ -635,6 +610,34 @@ proto.getWidgetImageText = function(widget_text) {
     }
 
     return text;
+}
+
+proto.getWidgetImageLocalizeText = function(widget, text) {
+    var params = text.match(/%(\w+)/g);
+    var newtext = text; 
+    var newtext_args = "";
+    if ( params != null ){
+        for ( i = 0; i < params.length; i++) {
+            params[i] = params[i].replace(/^%/, "");
+            var mytext = widget[params[i]];
+            if (mytext != '') {
+                newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
+                newtext_args += ", \"" + mytext + "\"";
+            }
+        }
+    }
+    if (newtext_args != "") {
+        newtext = eval("loc(\"" + newtext + "\"" + newtext_args + ")");
+        if ( newtext == 'undefined' ){
+            newtext = text;
+        }
+    }else{
+        newtext = eval("loc(\"" + newtext + "\")");
+        if ( newtext == 'undefined' ){
+            newtext = text;
+        }
+    }
+    return newtext;
 }
 
 proto.getWidgetImageUrl = function(widget_text) {
