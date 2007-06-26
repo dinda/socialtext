@@ -11,7 +11,6 @@ use Socialtext::Helpers;
 use Socialtext::Exceptions;
 use Socialtext::l10n qw(loc system_locale);
 use Socialtext::WebApp;
-use URI::Escape;
 use Socialtext::BrowserDetect;
 
 sub class_id { 'attachments_ui' }
@@ -89,7 +88,7 @@ sub attachments_download {
     
     # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
-        $filename = URI::Escape::uri_escape_utf8($filename);
+        $filename = $self->uri_escape($filename);
     }
 
     $self->hub->headers->add_attachment(
