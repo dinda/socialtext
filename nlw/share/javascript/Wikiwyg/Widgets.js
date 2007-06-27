@@ -442,7 +442,7 @@ proto.parseWidget = function(widget) {
         return widget_parse;
     }
     else
-        throw('Unexpected Widget >>' + widget + '<< in parseWidget');
+        throw(loc('Unexpected Widget >>[_1]<< in parseWidget', widget));
 }
 
 for (var i = 0; i < widgets_list.length; i++) {
@@ -738,7 +738,7 @@ proto.validate_fields = function(widget, values) {
             var field = required[i];
             if (! values[field].length) {
                 var label = Wikiwyg.Widgets.fields[field];
-                throw("'" + label + "' is a required field");
+                throw(loc("'[_1]' is a required field", label));
             }
         }
     }
@@ -754,7 +754,7 @@ proto.validate_fields = function(widget, values) {
                 found++;
         }
         if (! found)
-            throw("Requires one of: " + labels.join(', '));
+            throw(loc("Requires one of: [_1]", labels.join(', ')));
     }
 
     for (var field in values) {
@@ -769,7 +769,7 @@ proto.validate_fields = function(widget, values) {
 
         if (!fieldOk) {
             var label = Wikiwyg.Widgets.fields[field];
-            throw("'" + label + "' has an invalid value");
+            throw(loc("'[_1]' has an invalid value", label));
         }
     }
 
@@ -784,7 +784,7 @@ proto.validate_fields = function(widget, values) {
 
 proto.require_page_if_workspace = function(values) {
     if (values.workspace_id.length && ! values.page_title.length)
-        throw("Page Title required if Workspace Id specified");
+        throw(loc("Page Title required if Workspace Id specified"));
 }
 
 proto.hookLookaheads = function(dialog) {
