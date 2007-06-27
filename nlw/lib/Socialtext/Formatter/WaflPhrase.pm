@@ -603,9 +603,13 @@ sub html {
             workspace  => $ws,
         );
 
+    my $hub = $self->hub_for_workspace_name($workspace_name);
+    my $cur_page = $hub->pages->new_page($page_id);
+    my $cur_page_title = $cur_page->title;
+
     return $self->syntax_error
         if not Socialtext::Pages->page_exists_in_workspace(
-        $page_id,
+        $cur_page_title,
         $workspace_name,
         );
 
