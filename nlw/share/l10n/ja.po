@@ -549,7 +549,7 @@ msgstr "登録を確認する email が %1 に送られました。"
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "パスワードの変更方法を記載した email が %1 に送られました。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:557 lib/Socialtext/WikiwygPlugin.pm:707
+#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "ページIDが無効です: %1"
@@ -664,7 +664,7 @@ msgstr "Socialtext カスタマーとして %1 にアクセスします。"
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "検索システムの開発が進むにつれ、利用できるオプションと使用するインターフェースが改善されていきます。"
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:63
+#: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
@@ -959,7 +959,7 @@ msgstr "オフラインで使用のコンピューターに、%1 最も最近の
 msgid "Click this button to save the pages from this search to your computer for offline use"
 msgstr "オフラインで使用のコンピューターに、今回検索したページを保存するには、このボタンをクリックしてください。"
 
-#: lib/Socialtext/CategoryPlugin.pm:148
+#: lib/Socialtext/CategoryPlugin.pm:149
 #. (
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "オフラインで使用のコンピューターに、タグ %1 が付いたページを保存するには、このボタンをクリックしてください。"
@@ -1264,7 +1264,7 @@ msgstr "このワークスペースを次のように設定しますか？:"
 msgid "Done"
 msgstr "終了"
 
-#: lib/Socialtext/WikiwygPlugin.pm:614
+#: lib/Socialtext/WikiwygPlugin.pm:622
 #.  
 msgid "Double-click to edit a page?"
 msgstr "ダブルクリックしてページを編集しますか?"
@@ -1439,7 +1439,7 @@ msgstr "%1 タイムサーバから更新するエラー"
 msgid "Error:"
 msgstr "エラー:"
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:61
+#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:60
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr "エラー: <pre> エクスポートするページが選択されていません </pre>\n"
@@ -2304,7 +2304,7 @@ msgstr "確認するファイルがありません。"
 msgid "No files available to restore."
 msgstr "回復できるファイルがありません。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:548 lib/Socialtext/WikiwygPlugin.pm:698
+#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
 #.  
 msgid "No page ID given"
 msgstr "ページID を入力してください。"
@@ -2744,22 +2744,22 @@ msgstr "今すぐ再起動する"
 msgid "Recent Changes In %1 Workspace"
 msgstr "%1 ワークスペースの最近の変更"
 
-#: lib/Socialtext/CategoryPlugin.pm:618
+#: lib/Socialtext/CategoryPlugin.pm:619
 #. (
 msgid "Recent Changes in Tag %1"
 msgstr "タグ %1 の最近の変更"
 
-#: lib/Socialtext/CategoryPlugin.pm:616
+#: lib/Socialtext/CategoryPlugin.pm:617
 #. (
 msgid "Recent Changes in Tag %1 in workspace %2"
 msgstr "ワークスペース %2 のタグ %1 の最近の変更"
 
-#: lib/Socialtext/CategoryPlugin.pm:611
+#: lib/Socialtext/CategoryPlugin.pm:612
 #. (
 msgid "Recent Posts from %1"
 msgstr "%1 からの最近の投稿"
 
-#: lib/Socialtext/CategoryPlugin.pm:609
+#: lib/Socialtext/CategoryPlugin.pm:610
 #. (
 msgid "Recent Posts from %1 in workspace %2"
 msgstr "ワークスペース %2 の %1 からの最近の投稿"
@@ -2984,7 +2984,7 @@ msgstr "検索"
 msgid "Search Google for '%1'. Click to edit."
 msgstr "Google で '%1' を検索する。クリックして編集してください。"
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1303
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
 #.  
 msgid "Search Results"
 msgstr "結果を検索"
@@ -3289,7 +3289,7 @@ msgstr "システムをシャットダウン中 ..."
 msgid "Table of contents for '%1'. Click to edit."
 msgstr "'%1' の目次。クリックして編集してください。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:1398 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr "タグ"
@@ -3299,7 +3299,7 @@ msgstr "タグ"
 msgid "Tag:"
 msgstr "タグ:"
 
-#: lib/Socialtext/CategoryPlugin.pm:140
+#: lib/Socialtext/CategoryPlugin.pm:141
 #. (
 msgid "Tag: %1"
 msgstr "タグ: %1"
@@ -3609,7 +3609,7 @@ msgstr "各日の時間"
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr "コツ: 選択したタイトルを使えば、あとでこのページを見つけることができます。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:1409 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr "タイトル"
@@ -3849,7 +3849,7 @@ msgstr "上で入力した Email アドレスをユーザ名として、<strong>
 msgid "Use your email address and new password to log in again."
 msgstr "再ログイン時には、 email アドレスと新しいパスワードを使用してください。"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1972
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
 #.  
 msgid "User Name"
 msgstr "ユーザ名"
@@ -3889,7 +3889,7 @@ msgstr "ユーザ: ユーザを管理する"
 msgid "Users: My Settings"
 msgstr "ユーザ: プロフィールとパスワード"
 
-#: lib/Socialtext/WikiwygPlugin.pm:562
+#: lib/Socialtext/WikiwygPlugin.pm:570
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "バリデーターのサブルーチンがバリデーターの外部を参照しました。"
@@ -4014,7 +4014,7 @@ msgstr "”更新情報” をいつから表示させるか選択してくだ�
 msgid "What time zone should times be displayed in?"
 msgstr "表示するタイムゾーン"
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1213 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr "更新情報"

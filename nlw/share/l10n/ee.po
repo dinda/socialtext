@@ -549,7 +549,7 @@ msgstr ""
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:557 lib/Socialtext/WikiwygPlugin.pm:707
+#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr ""
@@ -664,7 +664,7 @@ msgstr ""
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr ""
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:63
+#: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr ""
@@ -959,7 +959,7 @@ msgstr ""
 msgid "Click this button to save the pages from this search to your computer for offline use"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:148
+#: lib/Socialtext/CategoryPlugin.pm:149
 #. (
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr ""
@@ -1264,7 +1264,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:614
+#: lib/Socialtext/WikiwygPlugin.pm:622
 #.  
 msgid "Double-click to edit a page?"
 msgstr ""
@@ -1439,7 +1439,7 @@ msgstr ""
 msgid "Error:"
 msgstr ""
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:61
+#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:60
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr ""
@@ -2304,7 +2304,7 @@ msgstr ""
 msgid "No files available to restore."
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:548 lib/Socialtext/WikiwygPlugin.pm:698
+#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
 #.  
 msgid "No page ID given"
 msgstr ""
@@ -2744,22 +2744,22 @@ msgstr ""
 msgid "Recent Changes In %1 Workspace"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:618
+#: lib/Socialtext/CategoryPlugin.pm:619
 #. (
 msgid "Recent Changes in Tag %1"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:616
+#: lib/Socialtext/CategoryPlugin.pm:617
 #. (
 msgid "Recent Changes in Tag %1 in workspace %2"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:611
+#: lib/Socialtext/CategoryPlugin.pm:612
 #. (
 msgid "Recent Posts from %1"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:609
+#: lib/Socialtext/CategoryPlugin.pm:610
 #. (
 msgid "Recent Posts from %1 in workspace %2"
 msgstr ""
@@ -2984,7 +2984,7 @@ msgstr ""
 msgid "Search Google for '%1'. Click to edit."
 msgstr ""
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1303
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
 #.  
 msgid "Search Results"
 msgstr ""
@@ -3289,7 +3289,7 @@ msgstr ""
 msgid "Table of contents for '%1'. Click to edit."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:1398 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr ""
@@ -3299,7 +3299,7 @@ msgstr ""
 msgid "Tag:"
 msgstr ""
 
-#: lib/Socialtext/CategoryPlugin.pm:140
+#: lib/Socialtext/CategoryPlugin.pm:141
 #. (
 msgid "Tag: %1"
 msgstr ""
@@ -3609,7 +3609,7 @@ msgstr ""
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:1409 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr ""
@@ -3849,7 +3849,7 @@ msgstr ""
 msgid "Use your email address and new password to log in again."
 msgstr ""
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1972
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
 #.  
 msgid "User Name"
 msgstr ""
@@ -3889,7 +3889,7 @@ msgstr ""
 msgid "Users: My Settings"
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:562
+#: lib/Socialtext/WikiwygPlugin.pm:570
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr ""
@@ -4014,7 +4014,7 @@ msgstr ""
 msgid "What time zone should times be displayed in?"
 msgstr ""
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1213 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr ""

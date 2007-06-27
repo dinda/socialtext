@@ -549,7 +549,7 @@ msgstr "あN えmあいL CおNfいrMいNg yおうR RえGいS7Rあ7いおn hあs 
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "あN えmあいL Wい7h いNs7rうc7いおnS おn cHあNgいnG Yおうr pあsSwおrD HあS 8ええn sえn7 7お %1."
 
-#: lib/Socialtext/WikiwygPlugin.pm:557 lib/Socialtext/WikiwygPlugin.pm:707
+#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "あN いnVあLいD PあGえ いD WあS GいVえN: %1"
@@ -664,7 +664,7 @@ msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "あS Wえ cおn7いNうえ 7お dえvえlおp 7Hえ sえあRcH SyS7えm, 7hえ おp7いおnS Yおう WいLl hあvえ あnD 7hえ いn7えRfあcえ Yおう HあVえ 7お MあKえ うSえ おF 7hえm wいlL いmPrおvえ."
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:63
+#: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "あ77あcHmえn7 Nお7 FおうnD. 7Hえ pあgえ NあMえ, FいLえ nあmえ おr いDえN7いfえr nうm8えR いn 7Hえ lいnK MあY 8え いNcおrRえC7, おr 7Hえ あ77あcHmえn7 MあY HあVえ 8ええN DえLえ7えD おr いS Nお7 Prえsえn7 いn 7HいS WおRkSpあcえ."
@@ -959,7 +959,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ %1 MおS7 rえcえn7 PあG
 msgid "Click this button to save the pages from this search to your computer for offline use"
 msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ pあgえs fRおM 7hいs sえあRcH 7お yおうR CおMpう7えr fおr おFfLいNえ うSえ"
 
-#: lib/Socialtext/CategoryPlugin.pm:148
+#: lib/Socialtext/CategoryPlugin.pm:149
 #. (
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ pあgえs wい7H 7hえ 7あG %1 7お Yおうr cおmPう7えR FおR おfFlいnえ うsえ."
@@ -1264,7 +1264,7 @@ msgstr "dお Yおう WあN7 7お Sえ7 うp 7HいS WおRkSpあcえ あs:"
 msgid "Done"
 msgstr "dおnえ"
 
-#: lib/Socialtext/WikiwygPlugin.pm:614
+#: lib/Socialtext/WikiwygPlugin.pm:622
 #.  
 msgid "Double-click to edit a page?"
 msgstr "dおう8lえ-ClいcK 7お えDい7 あ PあGえ?"
@@ -1439,7 +1439,7 @@ msgstr "えRrおr うPdあ7いnG Frおm 7いmえsえrVえR %1"
 msgid "Error:"
 msgstr "えRrおr:"
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:61
+#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:60
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr "えRrおr:<Prえ>Nお pあgえs sえlえc7えD FおR えxPおR7</Prえ>\n"
@@ -2304,7 +2304,7 @@ msgstr "nお FいLえ pRおVいDえD 7お vえrいfY"
 msgid "No files available to restore."
 msgstr "nお FいLえS あvあいLあ8lえ 7お rえs7おRえ."
 
-#: lib/Socialtext/WikiwygPlugin.pm:548 lib/Socialtext/WikiwygPlugin.pm:698
+#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
 #.  
 msgid "No page ID given"
 msgstr "nお PあGえ いD GいVえN"
@@ -2744,22 +2744,22 @@ msgstr "rえ8おお7 NおW"
 msgid "Recent Changes In %1 Workspace"
 msgstr "rえcえn7 ChあnGえS いn %1 WおRkSpあcえ"
 
-#: lib/Socialtext/CategoryPlugin.pm:618
+#: lib/Socialtext/CategoryPlugin.pm:619
 #. (
 msgid "Recent Changes in Tag %1"
 msgstr "rえcえn7 ChあnGえS いn 7あg %1"
 
-#: lib/Socialtext/CategoryPlugin.pm:616
+#: lib/Socialtext/CategoryPlugin.pm:617
 #. (
 msgid "Recent Changes in Tag %1 in workspace %2"
 msgstr "rえcえn7 ChあnGえS いn 7あg %1 いn wおrKsPあCえ %2"
 
-#: lib/Socialtext/CategoryPlugin.pm:611
+#: lib/Socialtext/CategoryPlugin.pm:612
 #. (
 msgid "Recent Posts from %1"
 msgstr "rえcえn7 PおS7S Frおm %1"
 
-#: lib/Socialtext/CategoryPlugin.pm:609
+#: lib/Socialtext/CategoryPlugin.pm:610
 #. (
 msgid "Recent Posts from %1 in workspace %2"
 msgstr "rえcえn7 PおS7S Frおm %1 いn wおrKsPあCえ %2"
@@ -2984,7 +2984,7 @@ msgstr "sえあRcH"
 msgid "Search Google for '%1'. Click to edit."
 msgstr "sえあRcH GおおgLえ fおr '%1'. cLいCk 7お えdい7."
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1303
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
 #.  
 msgid "Search Results"
 msgstr "sえあRcH RえSうL7S"
@@ -3289,7 +3289,7 @@ msgstr "sYs7えM Shう77いNg dおwN ..."
 msgid "Table of contents for '%1'. Click to edit."
 msgstr "7あ8Lえ おF CおN7えn7s fおr '%1'. cLいCk 7お えdい7."
 
-#: share/javascript/Wikiwyg/Jemplate.js:1398 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr "7あg"
@@ -3299,7 +3299,7 @@ msgstr "7あg"
 msgid "Tag:"
 msgstr "7あg:"
 
-#: lib/Socialtext/CategoryPlugin.pm:140
+#: lib/Socialtext/CategoryPlugin.pm:141
 #. (
 msgid "Tag: %1"
 msgstr "7あg: %1"
@@ -3609,7 +3609,7 @@ msgstr "7いmえ えあCh dあy:"
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr "7いp: Yおう'Ll 8え あ8Lえ 7お FいNd 7HいS PあGえ lあ7えr 8Y うsいnG 7hえ 7い7lえ Yおう ChおおSえ."
 
-#: share/javascript/Wikiwyg/Jemplate.js:1409 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr "7い7Lえ"
@@ -3849,7 +3849,7 @@ msgstr "うSえ 7Hえ えMあいl あDdRえSs yおう えN7えrえd あ8おVえ 
 msgid "Use your email address and new password to log in again."
 msgstr "うSえ yおうR えmあいL あdDrえsS あnD NえW PあSsWおRd 7お LおG いn あGあいn."
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1972
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
 #.  
 msgid "User Name"
 msgstr "うSえR NあMえ"
@@ -3889,7 +3889,7 @@ msgstr "うSえRs: MあNあGえ あLl うSえRs"
 msgid "Users: My Settings"
 msgstr "うSえRs: My sえ77いNgS"
 
-#: lib/Socialtext/WikiwygPlugin.pm:562
+#: lib/Socialtext/WikiwygPlugin.pm:570
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "vあlいdあ7いおN Sう8rおう7いNえ cあlLえD おう7sいdえ おf vあlいdあ7おr"
@@ -4014,7 +4014,7 @@ msgstr "wHあ7 7いMえ いN7えrVあL ShおうLd \"wHあ7'S NえW\" DいSpLあY
 msgid "What time zone should times be displayed in?"
 msgstr "wHあ7 7いMえ zおnえ ShおうLd 7いmえs 8え DいSpLあYえD いn?"
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1213 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr "wHあ7'S NえW"
