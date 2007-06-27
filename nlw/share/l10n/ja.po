@@ -37,12 +37,12 @@ msgstr "%1 は必須です。"
 #: lib/Socialtext/User/Default.pm:178
 #. (
 msgid "%1 is not a valid email address."
-msgstr "%1 は有効な email アドレスではありません。"
+msgstr "%1 は有効な Email アドレスではありません。"
 
 #: lib/Socialtext/Handler/Authen.pm:165 lib/Socialtext/Handler/Authen.pm:337
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
-msgstr "%1 はユーザとして登録されていません。違う email アドレスにしますか？"
+msgstr "%1 はユーザとして登録されていません。違う Email アドレスにしますか？"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
@@ -597,7 +597,7 @@ msgstr "以下のメッセージを添えますか？"
 #: share/template/element/page/newpage_duplicate:11
 #.  
 msgid "Append your text to the bottom of the existing page named:"
-msgstr "テキストを次の既存のページの一番下に追加する："
+msgstr "テキストを次のページの一番下に追加する："
 
 #: share/console-template/template/console_wrapper.tmpl:60
 #.  
@@ -784,7 +784,7 @@ msgstr "Skype で '%1' に電話をかけます。クリックして編集して
 msgid "Can't remove privileges of the last admin"
 msgstr "前回の管理者の権限を削除できません。"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "キャンセル"
@@ -877,7 +877,7 @@ msgstr "\"参照\"をクリックし、アップロードしたいファイル�
 #: share/javascript/pageview.js:515 share/template/element/page/attachment_attach_interface:10
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
-msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルをアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
+msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルのアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
 
 #: share/template/view/edit_contention:4
 #.  
@@ -1052,7 +1052,7 @@ msgstr "'%1'を他のワークスペースにコピーする"
 #: share/template/element/page/actions:41
 #.  
 msgid "Copy Page to Workspace"
-msgstr "ページをワークスペースにコピー"
+msgstr "ワークスペースにページをコピー"
 
 #: share/template/popup/copy_to_workspace:15
 #. (
@@ -1162,7 +1162,7 @@ msgstr "日:"
 #: share/template/element/page/actions:38
 #.  
 msgid "Delete Page"
-msgstr "ページを削除"
+msgstr "ページの削除"
 
 #: share/template/view/attachmentslist:43
 #.  
@@ -1522,7 +1522,7 @@ msgstr "名前以外のフィールドはすべてオプショナルです。"
 #: share/template/element/page/attachment_attach_interface:27 share/template/element/page/attachment_queue_interface:27
 #.  
 msgid "Expand zip archive and attach individual files to the page"
-msgstr "zip アーカイブを解凍し、ページに個々のファイルを添付してください。"
+msgstr "zip アーカイブを解凍し、個々のファイルをページに添付してください。"
 
 #: share/template/element/listview/actions:3
 #.  
@@ -1662,7 +1662,7 @@ msgstr "こんにちは。"
 #: share/template/popup/email_page:75
 #. (
 msgid "Hello, this is a page from the workspace that I wanted you to see. This page is also available for viewing or editing on the web at:\n\n%1"
-msgstr "こんにちは。あなたに見て欲しかったワークスペースのページです。　このページは次の web からも閲覧および編集できます。: \n\n%1"
+msgstr "こんにちは。あなたに見て欲しいワークスペースのページです。　このページは次の web からも閲覧および編集できます。: \n\n%1"
 
 #: share/console-template/template/console_wrapper.tmpl:39 share/template/element/wiki/nav:10
 #.  
@@ -1682,7 +1682,7 @@ msgstr "ホーム"
 #: lib/Socialtext/WatchlistPlugin.pm:46
 #.  
 msgid "How frequently would you like to receive watchlist emails?"
-msgstr "ウォッチリストの email を受信する頻度を設定してください。"
+msgstr "ウォッチリストの Email を受信する頻度を設定してください。"
 
 #: lib/Socialtext/RecentChangesPlugin.pm:59
 #.  
@@ -2262,7 +2262,7 @@ msgstr "ワードを入力"
 #: share/template/element/settings/users_invite_search_section:98 share/template/element/settings/users_invite_section:52
 #.  
 msgid "New users will be sent the following invitation email:"
-msgstr "次の招待状を email で新しいユーザに送ります。"
+msgstr "次の招待状を Email で新しいユーザに送ります。"
 
 #: share/template/popup/copy_to_workspace:20
 #.  
@@ -2377,7 +2377,7 @@ msgstr "あなたのアカウントが確認されると、ログインの詳細
 #: share/template/element/settings/workspaces_permissions_section:117
 #. (
 msgid "Only %1 can send email to this workspace."
-msgstr "%1 だけが、このワークスペースにemail を送ることができます。"
+msgstr "%1 だけが、このワークスペースに Email を送ることができます。"
 
 #: share/template/element/settings/workspaces_unsubscribe_section:8
 #.  
@@ -2837,12 +2837,12 @@ msgstr "'%1'の名前を変更する"
 #: share/template/popup/rename:21
 #. (
 msgid "Rename <span id=\"%1-pagetitle\">\"%2\"</span>"
-msgstr "<span id=\"%1-pagetitle\">\"%2\"</span>の名前を変更する"
+msgstr "<span id=\"%1-pagetitle\">\"%2\"</span>の名前の変更"
 
 #: share/template/element/page/actions:35
 #.  
 msgid "Rename Page"
-msgstr "ページ名を変更"
+msgstr "ページ名の変更"
 
 #: share/template/element/settings/workspaces_settings_features_section:28
 #.  
@@ -2939,7 +2939,7 @@ msgstr "サンプル Weblog"
 msgid "Sat"
 msgstr "土"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "保存"
@@ -2967,7 +2967,7 @@ msgstr "ページを \"<span id=\"%1-suggest\">XXX</span>\" という名前で�
 #: share/template/element/page/newpage_duplicate:9
 #.  
 msgid "Save with a different name:"
-msgstr "違い名前で保存する:"
+msgstr "違う名前で保存する:"
 
 #: lib/Socialtext/DisplayPlugin.pm:19
 #.  
@@ -2984,7 +2984,7 @@ msgstr "検索"
 msgid "Search Google for '%1'. Click to edit."
 msgstr "Google で '%1' を検索する。クリックして編集してください。"
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1298
 #.  
 msgid "Search Results"
 msgstr "結果を検索"
@@ -3289,7 +3289,7 @@ msgstr "システムをシャットダウン中 ..."
 msgid "Table of contents for '%1'. Click to edit."
 msgstr "'%1' の目次。クリックして編集してください。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr "タグ"
@@ -3377,7 +3377,7 @@ msgstr "<strong>%1</strong> から Email が送られます。受信を確認す
 #: share/template/element/settings/users_invited_section:10
 #.  
 msgid "The following email addresses were invalid"
-msgstr "次の email アドレスは無効です。"
+msgstr "次の Email アドレスは無効です。"
 
 #: share/template/email/recent-changes.html:22 share/template/email/recent-changes.txt:9
 #. (
@@ -3512,7 +3512,7 @@ msgstr "このページにはタグはありません。"
 #: share/template/element/page/newpage_duplicate:8
 #. (
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
-msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の <span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span> 存在します。 しますか:"
+msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の<span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span>存在します。"
 
 #: lib/Socialtext/WeblogPlugin.pm:112
 #. (
@@ -3609,7 +3609,7 @@ msgstr "各日の時間"
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr "コツ: 選択したタイトルを使えば、あとでこのページを見つけることができます。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr "タイトル"
@@ -3757,7 +3757,7 @@ msgstr "ロゴファイルを処理できません。画像ファイルですか
 #: lib/Socialtext/Widget_resource.pm:28 share/javascript/widget_resource.js:28
 #.  
 msgid "Unformatted Content"
-msgstr "未整形の内容"
+msgstr "書式なしテキスト"
 
 #: share/template/element/settings/select:27
 #.  
@@ -3802,27 +3802,27 @@ msgstr "%1 から時間を更新しました"
 #: share/template/element/settings/workspaces_settings_appearance_section:35
 #.  
 msgid "Upload An Image"
-msgstr "画像をアップロードする"
+msgstr "画像のアップロード"
 
 #: share/template/element/page/attachment_attach_interface:8 share/template/element/page/attachment_queue_interface:7
 #.  
 msgid "Upload Files"
-msgstr "ファイルをアップロード"
+msgstr "ファイルのアップロード"
 
 #: share/javascript/pageview.js:514 share/javascript/pageview.js:600 share/template/element/page/attachment_attach_interface:33
 #.  
 msgid "Upload file"
-msgstr "ファイルをアップロード"
+msgstr "ファイルのアップロード"
 
 #: share/template/element/page/attachments:15
 #.  
 msgid "Upload files"
-msgstr "ファイルをアップロード"
+msgstr "ファイルのアップロード"
 
 #: share/template/layout/html:107
 #.  
 msgid "Upload&nbsp;files"
-msgstr "ファイルをアップロード"
+msgstr "ファイルのアップロード"
 
 #: share/template/view/attachmentslist:19
 #.  
@@ -3849,7 +3849,7 @@ msgstr "上で入力した Email アドレスをユーザ名として、<strong>
 msgid "Use your email address and new password to log in again."
 msgstr "再ログイン時には、 email アドレスと新しいパスワードを使用してください。"
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1957
 #.  
 msgid "User Name"
 msgstr "ユーザ名"
@@ -4014,7 +4014,7 @@ msgstr "”更新情報” をいつから表示させるか選択してくだ�
 msgid "What time zone should times be displayed in?"
 msgstr "表示するタイムゾーン"
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1210 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr "更新情報"
@@ -4077,7 +4077,7 @@ msgstr "使用する言語"
 #: share/template/element/settings/workspaces_permissions_section:97
 #.  
 msgid "Who can send email to this workspace?"
-msgstr "このワークスペースに email を送ることができる人を設定してください。"
+msgstr "このワークスペースに Email を送ることができる人を設定してください。"
 
 #: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125
 #.  
@@ -4322,7 +4322,7 @@ msgstr "この URI にアクセスするには管理者権限が必要です。"
 #: lib/Socialtext/OpenIdPlugin.pm:42
 #.  
 msgid "You must input both an OpenID and an email."
-msgstr "OpenID と email の両方を入力してください。"
+msgstr "OpenID と Email の両方を入力してください。"
 
 #: share/template/errors/not_logged_in:2
 #.  
@@ -4337,7 +4337,7 @@ msgstr "有効な Email アドレスを指定してください。"
 #: share/template/errors/requires_confirmation:2
 #.  
 msgid "You need to confirm your email address to activate this account."
-msgstr "このアカウントを有効にするには、あなたのEmail アドレスを確認する必要があります。"
+msgstr "このアカウントを有効にするには、あなたの Email アドレスを確認する必要があります。"
 
 #: share/template/errors/requires_confirmation:4
 #.  
@@ -4412,12 +4412,12 @@ msgstr "あなたのワークスペース"
 #: lib/Socialtext/Handler/Authen.pm:108
 #. (
 msgid "\"%1\" is not a valid email address. Please use your email address to log in."
-msgstr "\"%1\" は有効な Email アドレスではありません。ご自身の Email アドレスでログインしてください。"
+msgstr "\"%1\" は有効な Email アドレスではありません。ご自分の Email アドレスでログインしてください。"
 
 #: share/template/element/settings/workspaces_create_section:34
 #.  
 msgid "and this email address:"
-msgstr "email アドレス:"
+msgstr "Email アドレス:"
 
 #: share/template/view/refcard:30
 #.  
@@ -4437,7 +4437,7 @@ msgstr "誰でもページを閲覧、編集できます。"
 #: share/template/element/settings/workspaces_permissions_section:77
 #.  
 msgid "anybody can see and edit pages, upload files and send email"
-msgstr "誰でもページを閲覧、編集、ファイルをアップロード、email を送付することができます。"
+msgstr "誰でもページの閲覧、編集、ファイルのアップロード、Email 送信を行うことができます。"
 
 #: share/template/element/settings/workspaces_permissions_section:55
 #.  
@@ -4712,7 +4712,7 @@ msgstr "オプショナル"
 #: share/template/view/weblog:146
 #.  
 msgid "or post by email:"
-msgstr "または email で投稿"
+msgstr "または Email で投稿"
 
 #: share/template/view/refcard:50
 #.  
@@ -4842,7 +4842,7 @@ msgstr "ここに email アドレスをタイプしてください。"
 #: lib/Socialtext/Widget_resource.pm:62 share/javascript/widget_resource.js:62
 #. (
 msgid "unformatted: %1"
-msgstr "未整形: %1"
+msgstr "書式なし: %1"
 
 #: lib/Socialtext/Widget_resource.pm:60 share/javascript/widget_resource.js:60
 #. (

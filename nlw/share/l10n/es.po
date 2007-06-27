@@ -784,7 +784,7 @@ msgstr ""
 msgid "Can't remove privileges of the last admin"
 msgstr ""
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr ""
@@ -2939,7 +2939,7 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr ""
@@ -2984,7 +2984,7 @@ msgstr ""
 msgid "Search Google for '%1'. Click to edit."
 msgstr ""
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1298
 #.  
 msgid "Search Results"
 msgstr ""
@@ -3289,7 +3289,7 @@ msgstr ""
 msgid "Table of contents for '%1'. Click to edit."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr ""
@@ -3609,7 +3609,7 @@ msgstr ""
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr ""
@@ -3849,7 +3849,7 @@ msgstr ""
 msgid "Use your email address and new password to log in again."
 msgstr ""
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1957
 #.  
 msgid "User Name"
 msgstr ""
@@ -4014,7 +4014,7 @@ msgstr ""
 msgid "What time zone should times be displayed in?"
 msgstr ""
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1210 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr ""

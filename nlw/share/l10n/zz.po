@@ -784,7 +784,7 @@ msgstr "c4lL '%1' uSiNg sKyP3. ClIcK 70 3Di7."
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "c4nC3L"
@@ -2939,7 +2939,7 @@ msgstr "s4mPl3 W38l0g"
 msgid "Sat"
 msgstr "s47"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "s4v3"
@@ -2984,7 +2984,7 @@ msgstr "s34RcH"
 msgid "Search Google for '%1'. Click to edit."
 msgstr "s34RcH G00gL3 f0r '%1'. cLiCk 70 3dI7."
 
-#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1287
+#: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1298
 #.  
 msgid "Search Results"
 msgstr "s34RcH R3SuL7S"
@@ -3289,7 +3289,7 @@ msgstr "sYs73M ShU77iNg d0wN ..."
 msgid "Table of contents for '%1'. Click to edit."
 msgstr "748L3 0F C0N73n7s f0r '%1'. cLiCk 70 3dI7."
 
-#: share/javascript/Wikiwyg/Jemplate.js:1380 share/template/view/taglistview:20
+#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/view/taglistview:20
 #.  
 msgid "Tag"
 msgstr "74g"
@@ -3609,7 +3609,7 @@ msgstr "7Im3 34Ch d4y:"
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr "7Ip: Y0U'Ll 83 48L3 70 FiNd 7HiS P4G3 l473r 8Y UsInG 7h3 7i7l3 Y0U Ch00S3."
 
-#: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:71
 #.  
 msgid "Title"
 msgstr "7I7L3"
@@ -3849,7 +3849,7 @@ msgstr "uS3 7H3 3M4Il 4DdR3Ss y0u 3N73r3d 480V3 4S 7h3 Us3rN4M3, 4nD <s7r0nG>P4S
 msgid "Use your email address and new password to log in again."
 msgstr "uS3 y0uR 3m4iL 4dDr3sS 4nD N3W P4SsW0Rd 70 L0G In 4G4In."
 
-#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1946
+#: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1957
 #.  
 msgid "User Name"
 msgstr "uS3R N4M3"
@@ -4014,7 +4014,7 @@ msgstr "wH47 7iM3 iN73rV4L Sh0uLd \"wH47'S N3W\" DiSpL4Y?"
 msgid "What time zone should times be displayed in?"
 msgstr "wH47 7iM3 z0n3 Sh0uLd 7Im3s 83 DiSpL4Y3D In?"
 
-#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1199 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
+#: lib/Socialtext/RecentChangesPlugin.pm:14 lib/Socialtext/RecentChangesPlugin.pm:235 share/javascript/Wikiwyg/Jemplate.js:1210 share/template/element/listview/actionbar:4 share/template/element/page/recent_changes:2
 #.  
 msgid "What's New"
 msgstr "wH47'S N3W"
