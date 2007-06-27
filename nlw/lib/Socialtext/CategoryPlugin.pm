@@ -89,9 +89,10 @@ sub category_delete_from_page {
  
     return unless $self->hub->checker->check_permission('edit');
 
-    my $page_id = shift || $self->cgi->page_id;
+    my $page_id = shift || $self->uri_escape($self->cgi->page_id);
     my $category = shift || $self->cgi->category;
     my $page = $self->hub->pages->new_page($page_id);
+
     $page->delete_tag($category);
     $page->metadata->update(user => $self->hub->current_user);
     $page->store( user => $self->hub->current_user );
