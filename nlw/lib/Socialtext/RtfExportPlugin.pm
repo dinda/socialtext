@@ -8,7 +8,6 @@ use Socialtext::WebApp;
 use Class::Field 'const';
 use Imager;
 use Socialtext::l10n qw(loc);
-use URI::Escape;
 use Socialtext::BrowserDetect;
 
 =head1 NAME
@@ -69,7 +68,7 @@ sub rtf_export {
 
     # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
-        $filename = URI::Escape::uri_escape_utf8($filename);
+        $filename = $self->uri_escape($filename);
     }
 
     $self->hub->headers->add_attachment(
