@@ -95,7 +95,6 @@
 [% <! widget.id !>_st_widget_dialog_defaultradio_current %]
 <! END -!>
 [%- JAVASCRIPT -%]stash.set("<! widget.id !>_st_widget_<! field !>_rb_or",loc('or'));[%- END -%]
-[%- <! widget.id !>_st_widget_<! field !>_rb_or -%]
 <i>&nbsp;&nbsp;[%- <! widget.id !>_st_widget_<! field !>_rb_or -%]</i></p>
 <p class="st-widget-dialog-choiceradio">
   <input type="radio" name="st-widget-<! field !>-rb" value="other">
