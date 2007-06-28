@@ -549,6 +549,7 @@ proto.newpage_display_duplicate_dialog = function(page_name) {
 proto.newpage_save = function(page_name, pagename_editfield) {
     var saved = false;
     page_name = trim(page_name);
+
     if (page_name.length == 0) {
         alert(loc('You must specify a page name'));
         if (pagename_editfield) {
@@ -696,6 +697,14 @@ proto.saveNewPage = function() {
             return this.newpage_saveClicked();
         }
         else  {
+
+            if (new_page_name.value.length > 28) {
+                alert(loc("Page name must be 28 characters long or less."));   
+                if (pagename_editfield) {
+                    pagename_editfield.focus();
+                }
+            }
+
             edit_page_name.value = new_page_name.value;
             this.saveContent();
         }
