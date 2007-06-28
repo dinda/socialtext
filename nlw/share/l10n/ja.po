@@ -697,7 +697,7 @@ msgstr "現在のリビジョンに戻る"
 #: share/template/authen/forgot_password.html:36
 #. (
 msgid "Back to <a href=\"%1\">Log in to Socialtext</a>."
-msgstr "<a href=\"%1\">Socialtext にログインする </a> に戻る"
+msgstr "<a href=\"%1\">Socialtext にログインする </a>"
 
 #: share/console-template/template/console_wrapper.tmpl:39
 #.  
@@ -832,12 +832,12 @@ msgstr "%1 の管理者に確認してください。"
 #: share/template/authen/choose_password.html:2
 #.  
 msgid "Choose Password"
-msgstr "パスワードを選択してください。"
+msgstr "新規パスワードを入力してください。"
 
 #: share/template/authen/choose_password.html:27
 #.  
 msgid "Choose Password:"
-msgstr "パスワードの選択:"
+msgstr "新規パスワード:"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:58
 #.  
@@ -1267,7 +1267,7 @@ msgstr "%1 を編集"
 #: share/template/element/page/edit:11
 #.  
 msgid "Edit Tips"
-msgstr "書式一覧"
+msgstr "記述方法"
 
 #: share/template/view/page_revision_list:46
 #.  
@@ -1672,7 +1672,7 @@ msgstr "日付の書式を選択してください。"
 #: share/template/authen/login.html:39
 #.  
 msgid "I don't know my password."
-msgstr "パスワードを忘れました。"
+msgstr "パスワードを忘れた方はこちら"
 
 #: share/template/email/openid/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
 #. (
@@ -1682,7 +1682,7 @@ msgstr "私たちの共有ワークスペース %1 にあなたをご招待し�
 #: share/template/email/openid/workspace-invitation.txt:5
 #. (
 msgid "I'm inviting you to join %1, one of our shared workspaces. Sign in using the information below:"
-msgstr "私たちの共有ワークスペース %1 にあなたをご招待します。次の情報を使ってサインインしてください。"
+msgstr "私たちの共有ワークスペース %1 にあなたをご招待します。以下の情報を使用してサインインしてください。"
 
 #: share/template/element/settings/workspaces_settings_features_section:9
 #.  
@@ -2437,12 +2437,12 @@ msgstr "パーソナルな招待メッセージ"
 #: share/template/email/email-address-confirmation.html:16
 #. (
 msgid "Please <a href=\"%1\">click on this link to confirm your email address and choose a password.</a>"
-msgstr "<a href=\"%1\">このリンクをクリックし、あなたの Email アドレスを確認し、パスワードを選択してください。</a>"
+msgstr "<a href=\"%1\">Email アドレスを確認し、新規パスワードを入力するには、このリンクをクリックしてください。</a>"
 
 #: share/template/email/st/workspace-invitation-body.html:22
 #. (
 msgid "Please <a href=\"%1\">click on this link</a> to confirm your email address."
-msgstr "あなたの email アドレスを確認するには、<a href=\"%1\">このリンクをクリック</a>してください。"
+msgstr "あなたの Email アドレスを確認するには、<a href=\"%1\">このリンクをクリック</a>してください。"
 
 #: share/template/popup/copy_to_workspace:52
 #.  
@@ -2457,7 +2457,7 @@ msgstr "違う名前を選択してください。すでに存在する\"%1\" �
 #: share/template/email/password-change.html:6
 #.  
 msgid "Please choose a new Socialtext password"
-msgstr "新しい Socialtext パスワードを選択してください。"
+msgstr "新しい Socialtext パスワードを入力してください。"
 
 #: share/template/email/st/workspace-invitation.txt:8
 #.  
@@ -2692,7 +2692,7 @@ msgstr "登録"
 #: share/template/authen/login.html:32
 #.  
 msgid "Remember me on this computer."
-msgstr "次回から自動ログインする。"
+msgstr "次回から自動ログインする"
 
 #: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:131
 #.  
@@ -3097,7 +3097,7 @@ msgstr "主題"
 #: share/template/authen/choose_password.html:37 share/template/authen/forgot_password.html:22 share/template/new_form_page/new_form_page_buttons.html:4
 #.  
 msgid "Submit"
-msgstr "提出"
+msgstr "送信"
 
 #: share/template/element/pagestats/attachments_table:17
 #.  
@@ -3252,7 +3252,7 @@ msgstr "次のユーザをこのワークスペースに招待しました。"
 #: lib/Socialtext/Handler/Authen.pm:261 lib/Socialtext/Handler/Authen.pm:301 lib/Socialtext/Handler/Authen.pm:62
 #.  
 msgid "The given confirmation URL does not match any pending confirmations."
-msgstr "その確認用の URL に一致する、まだ行われていない確認はありません。"
+msgstr "入力された URL ページは開くことができません。"
 
 #: share/template/popup/rename:35
 #.  
@@ -3512,7 +3512,7 @@ msgstr "別のページ（存在していなくても可）にリンクを作成
 #: share/template/authen/choose_password.html:15
 #.  
 msgid "To proceed, please choose a password."
-msgstr "次に進むにはパスワードを選択してください。"
+msgstr "次に進むには新規パスワードを入力してください。"
 
 #: share/console-template/template/overview.html:8
 #.  
@@ -3687,7 +3687,7 @@ msgstr "上で入力した Email アドレスをユーザ名として、<strong>
 #: share/template/element/settings/users_settings_section:26
 #.  
 msgid "Use your email address and new password to log in again."
-msgstr "再ログイン時には、 email アドレスと新しいパスワードを使用してください。"
+msgstr "再ログイン時には、 Email アドレスと新しいパスワードを使用してください。"
 
 #: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/Wikiwyg/Jemplate.js:1957
 #.  
@@ -3932,7 +3932,7 @@ msgstr "ワークスペース　アドレス帳"
 #: share/template/element/settings/select:34 share/template/workspaces_created_section.html:17
 #.  
 msgid "Workspace Appearance"
-msgstr "ワークスペースの見た目"
+msgstr "ワークスペースの見栄え"
 
 #: share/template/element/settings/workspaces_settings_features_section:35
 #.  
