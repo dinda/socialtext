@@ -608,6 +608,8 @@ sub html {
     my $cur_page = $hub->pages->new_page($page_id);
     my $cur_page_title = $cur_page->title;
 
+    return $self->syntax_error if not $cur_page_title;
+
     return $self->syntax_error
         if not Socialtext::Pages->page_exists_in_workspace(
         $cur_page_title,
