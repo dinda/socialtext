@@ -44,15 +44,7 @@ field database_directory => -init =>
     'Socialtext::Paths::page_data_directory( $self->hub->current_workspace->name )';
 
 sub _MAX_PAGE_ID_LENGTH () {
-    my $locale = system_locale();
-    if($locale eq 'ja') {
-        # If title length is 64 charctor, id length is 64 * 9.
-        # when we encode a japanese charactor, the length of encoded japanese
-        # charctor is 9.
-        return 255*9;
-    } else {
-        return 255;
-    }
+    return 255;
 }
 
 =head1 METHODS

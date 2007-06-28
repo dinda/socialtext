@@ -355,9 +355,9 @@ sub _validate_and_clean_data {
     }
 
     if ( defined $p->{title}
-         and ( length $p->{title} < 2 or length $p->{title} > 64 )
+         and ( length $p->{title} < 2 or length $p->{title} > 28 )
        ) {
-        push @errors, loc('Workspace title must be between 2 and 64 characters long.');
+        push @errors, loc('Workspace title must be between 2 and 28 characters long.');
     }
 
     if ( $p->{incoming_email_placement}
