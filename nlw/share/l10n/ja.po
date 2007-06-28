@@ -344,11 +344,6 @@ msgstr "新規ユーザを作成するにはパスワードが必要です。"
 msgid "A user with this email address (%1) already exists."
 msgstr "この email アドレス (%1) はすでに別のユーザが使用しています。"
 
-#: lib/Socialtext/Widget_resource.pm:57 share/javascript/widget_resource.js:57
-#. (
-msgid "AIM: %1"
-msgstr "AIM: %1"
-
 #: share/template/view/refcard:228
 #.  
 msgid "AOL user aim:aimuser presence"
@@ -769,16 +764,6 @@ msgstr "Socialtext でお楽しみください。"
 msgid "Bug Dump"
 msgstr "バグダンプ"
 
-#: lib/Socialtext/Widget_resource.pm:29 share/javascript/widget_resource.js:29
-#. (
-msgid "Call '%1' using Convoq. Click to edit."
-msgstr "Convoq で '%1' に電話をかけます。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:25 share/javascript/widget_resource.js:25
-#. (
-msgid "Call '%1' using Skype. Click to edit."
-msgstr "Skype で '%1' に電話をかけます。クリックして編集してください。"
-
 #: lib/Socialtext/UserSettingsPlugin.pm:229
 #.  
 msgid "Can't remove privileges of the last admin"
@@ -1034,11 +1019,6 @@ msgstr "おめでとうございます！ 新しい Socialtext ワークスペ�
 msgid "Contact Socialtext Support"
 msgstr "Socialtext サポートに連絡"
 
-#: lib/Socialtext/Widget_resource.pm:63 share/javascript/widget_resource.js:63
-#. (
-msgid "Convoq: %1"
-msgstr "Convoq: %1"
-
 #: share/template/popup/copy_to_workspace:36
 #.  
 msgid "Copy"
@@ -1199,11 +1179,6 @@ msgstr "ご存知ですか？"
 msgid "Disk Usage"
 msgstr "ディスクの使用状況"
 
-#: lib/Socialtext/Widget_resource.pm:27 share/javascript/widget_resource.js:27
-#. (
-msgid "Display '%1' in reader's time zone. Click to edit."
-msgstr "ユーザのタイムゾーンで '%1' を表示します。クリックして編集してください。"
-
 #: lib/Socialtext/BreadCrumbsPlugin.pm:33
 #. (
 msgid "Display \\\"%1\\\" side pane box?"
@@ -1213,31 +1188,6 @@ msgstr "横のボックス \\\"%1\\\" を表示しますか？"
 #.  
 msgid "Display as a side box in page view?"
 msgstr "ページの閲覧時に、更新情報をサイドボックスに表示させますか？"
-
-#: lib/Socialtext/Widget_resource.pm:4 share/javascript/widget_resource.js:4
-#. (
-msgid "Display image '%1'. Click to edit."
-msgstr "画像 '%1' を表示します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:13 share/javascript/widget_resource.js:13
-#. (
-msgid "Display pages with the '%1' tag. Click to edit."
-msgstr "'%1' タグが付いたページを表示します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:20 share/javascript/widget_resource.js:20
-#. (
-msgid "Display result for searching '%1'. Click to edit."
-msgstr "'%1' の検索結果を表示します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:16 share/javascript/widget_resource.js:16
-#. (
-msgid "Display the weblog '%1'. Click to edit."
-msgstr "ウェブログ '%1' を表示します。 クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:10 share/javascript/widget_resource.js:10
-#. (
-msgid "Display what's new in the '%1' workspace. Click to edit."
-msgstr "'%1' ワークスペースの更新情報を表示します。 クリックして編集してください。"
 
 #: lib/Socialtext/Appliance/ConsoleController.pm:105
 #.  
@@ -1639,11 +1589,6 @@ msgstr "ドイツ語"
 msgid "Go to:"
 msgstr "Go to:"
 
-#: lib/Socialtext/Widget_resource.pm:55 share/javascript/widget_resource.js:55
-#. (
-msgid "Google: %1"
-msgstr "Google: %1"
-
 #: lib/Socialtext/Appliance/Model/Backup.pm:275
 #. (
 msgid "Got file %1"
@@ -1844,26 +1789,6 @@ msgstr "ターボールからワークスペースをインポート中 ..."
 msgid "Include Recently Viewed items as a side box when viewing pages?"
 msgstr "ページの閲覧時、最近閲覧した項目をサイドボックスに表示させますか？"
 
-#: lib/Socialtext/Widget_resource.pm:18 share/javascript/widget_resource.js:18
-#. (
-msgid "Include the '%1' Atom feed. Click to edit."
-msgstr "'%1' Atom フィードを挿入します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:17 share/javascript/widget_resource.js:17
-#. (
-msgid "Include the '%1' RSS feed. Click to edit."
-msgstr "'%1' RSS フィードを挿入します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:7 share/javascript/widget_resource.js:7
-#. (
-msgid "Include the page '%1'. Click to edit."
-msgstr "'%1' ページを挿入します。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:15 share/javascript/widget_resource.js:15
-#. (
-msgid "Include the weblog '%1'. Click to edit."
-msgstr "'%1' ウェブログを挿入します。クリックして編集してください。"
-
 #: share/template/view/page/display:39
 #.  
 msgid "Incoming Links"
@@ -1893,16 +1818,6 @@ msgstr "ワークスペースを初期化しますか？"
 #.  
 msgid "Initializing workspaces ..."
 msgstr "ワークスペースを初期化中 ..."
-
-#: lib/Socialtext/Widget_resource.pm:23 share/javascript/widget_resource.js:23
-#. (
-msgid "Instant message to '%1' using AIM. Click to edit."
-msgstr "'%1' への AIM インスタントメッセージです。クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:24 share/javascript/widget_resource.js:24
-#. (
-msgid "Instant message to '%1' using Yahoo! Click to edit."
-msgstr "'%1' への Yahoo! インスタントメッセージです。クリックして編集してください。"
 
 #: share/console-template/template/setup.html:7
 #.  
@@ -2058,31 +1973,6 @@ msgstr "姓:"
 #.  
 msgid "Link text"
 msgstr "リンクテキスト"
-
-#: lib/Socialtext/Widget_resource.pm:3 share/javascript/widget_resource.js:3
-#. (
-msgid "Link to '%1' in '%2'. Click to edit."
-msgstr "'%2' の '%1' へのリンクです。 クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:2 share/javascript/widget_resource.js:2
-#. (
-msgid "Link to '%1'. Click to edit."
-msgstr "'%1' へのリンクです。 クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:5 share/javascript/widget_resource.js:5
-#. (
-msgid "Link to file '%1'. Click to edit."
-msgstr "'%1' ファイルへのリンクです。 クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:11 share/javascript/widget_resource.js:11
-#. (
-msgid "Link to tag '%1'. Click to edit."
-msgstr "'%1' タグへのリンク: クリックして編集してください。"
-
-#: lib/Socialtext/Widget_resource.pm:14 share/javascript/widget_resource.js:14
-#. (
-msgid "Link to weblog '%1'. Click to edit."
-msgstr "'%1' ウェブログへのリンク: クリックして編集してください。"
 
 #: share/template/element/settings/select:10
 #.  
@@ -2513,11 +2403,6 @@ msgstr "ウォッチしているページ"
 #. (
 msgid "Pages containing '%1' (%2)"
 msgstr "'%1' (%2) を含むページ"
-
-#: lib/Socialtext/Widget_resource.pm:12 share/javascript/widget_resource.js:12
-#. (
-msgid "Pages with the '%1' tag. Click to edit."
-msgstr "'%1' タグの付いたページです。クリックして編集してください。"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:223
 #.  
@@ -2979,20 +2864,10 @@ msgstr "画面のレイアウト"
 msgid "Search"
 msgstr "検索"
 
-#: lib/Socialtext/Widget_resource.pm:21 share/javascript/widget_resource.js:21
-#. (
-msgid "Search Google for '%1'. Click to edit."
-msgstr "Google で '%1' を検索する。クリックして編集してください。"
-
 #: lib/Socialtext/SearchPlugin.pm:65 share/javascript/Wikiwyg/Jemplate.js:1298
 #.  
 msgid "Search Results"
 msgstr "結果を検索"
-
-#: lib/Socialtext/Widget_resource.pm:22 share/javascript/widget_resource.js:22
-#. (
-msgid "Search Technorati for '%1'. Click to edit."
-msgstr "Technorati で '%1' を検索する。クリックして編集してください。"
 
 #: lib/Socialtext/SearchPlugin.pm:265
 #. (
@@ -3009,11 +2884,6 @@ msgstr "ワークスペース %2 で　%1 を検索"
 msgid "Search for &quot;%1&quot;"
 msgstr "&quot;%1&quot; を検索する"
 
-#: lib/Socialtext/Widget_resource.pm:19 share/javascript/widget_resource.js:19
-#. (
-msgid "Search for '%1'. Click to edit."
-msgstr "'%1' を検索する。クリックして編集してください。"
-
 #: share/template/element/settings/users_invite_search_section:6
 #.  
 msgid "Search for Users to Invite"
@@ -3028,11 +2898,6 @@ msgstr "次のワードで検索する:"
 #.  
 msgid "Section"
 msgstr "セクション"
-
-#: lib/Socialtext/Widget_resource.pm:8 share/javascript/widget_resource.js:8
-#. (
-msgid "Section marker '%1'. Click to edit."
-msgstr "'%1' セクションマーカー。クリックして編集してください。"
 
 #: share/template/element/wiki/subnav-dashboard:9
 #.  
@@ -3119,11 +2984,6 @@ msgstr "時間の表示の仕方を選択してください。"
 msgid "Should users of this workspace receive email notifications of changes to this workspace?"
 msgstr "このワークスペースに変更があった場合、変更通知を email で受け取ることができます。"
 
-#: lib/Socialtext/Widget_resource.pm:26 share/javascript/widget_resource.js:26
-#. (
-msgid "Show full name for '%1'. Click to edit."
-msgstr "'%1' に対する完全な名前を表示します。クリックして編集してください。"
-
 #: share/console-template/template/shutdown.html:6
 #.  
 msgid "Shut Down Appliance"
@@ -3163,11 +3023,6 @@ msgstr "あなたのパスワードは、あなたの所属する組織のディ
 #.  
 msgid "Size"
 msgstr "容量"
-
-#: lib/Socialtext/Widget_resource.pm:59 share/javascript/widget_resource.js:59
-#. (
-msgid "Skype: %1"
-msgstr "Skype: %1"
 
 #: share/console-template/template/console_wrapper.tmpl:24 share/console-template/template/console_wrapper.tmpl:7
 #.  
@@ -3259,7 +3114,7 @@ msgstr "提案："
 msgid "Summary"
 msgstr "要約"
 
-#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
 #.  
 msgid "Sun"
 msgstr "日"
@@ -3284,10 +3139,10 @@ msgstr "システムを再起動中 ..."
 msgid "System shutting down ..."
 msgstr "システムをシャットダウン中 ..."
 
-#: lib/Socialtext/Widget_resource.pm:6 share/javascript/widget_resource.js:6
-#. (
-msgid "Table of contents for '%1'. Click to edit."
-msgstr "'%1' の目次。クリックして編集してください。"
+#: lib/Socialtext/Formatter/WaflPhrase.pm:644 share/javascript/Wikiwyg/Jemplate.js:1847
+#.  
+msgid "Table of Contents"
+msgstr "目次"
 
 #: share/javascript/Wikiwyg/Jemplate.js:1391 share/template/view/taglistview:20
 #.  
@@ -3313,11 +3168,6 @@ msgstr "タグ"
 #.  
 msgid "Tags:"
 msgstr "タグ:"
-
-#: lib/Socialtext/Widget_resource.pm:56 share/javascript/widget_resource.js:56
-#. (
-msgid "Technorati: %1"
-msgstr "Technorati: %1"
 
 #: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
 #.  
@@ -3754,11 +3604,6 @@ msgstr "新しいパスワード（再入力）"
 msgid "Unable to process logo file. Is it an image?"
 msgstr "ロゴファイルを処理できません。画像ファイルですか？"
 
-#: lib/Socialtext/Widget_resource.pm:28 share/javascript/widget_resource.js:28
-#.  
-msgid "Unformatted Content"
-msgstr "書式なしテキスト"
-
 #: share/template/element/settings/select:27
 #.  
 msgid "Unsubscribe"
@@ -3833,11 +3678,6 @@ msgstr "アップロードしたユーザ"
 #.  
 msgid "Uploads"
 msgstr "アップロード"
-
-#: lib/Socialtext/Widget_resource.pm:30 share/javascript/widget_resource.js:30
-#. (
-msgid "Use %1 to generate a form. Click to edit."
-msgstr "%1 を使用してフォームを作成してください。クリックして編集してください。"
 
 #: share/console-template/template/popup.html:54
 #.  
@@ -4034,11 +3874,6 @@ msgstr "更新情報"
 msgid "What's new in %1"
 msgstr "%1の更新情報"
 
-#: lib/Socialtext/Widget_resource.pm:9 share/javascript/widget_resource.js:9
-#. (
-msgid "What's new in the '%1' workspace. Click to edit."
-msgstr "'%1' ワークスペースの更新情報です。クリックして編集してください。"
-
 #: share/template/element/settings/workspaces_settings_features_section:8
 #.  
 msgid "When the workspace receives an email, the subject of the email becomes the title of a page, and the body of the email becomes the body of the page."
@@ -4208,11 +4043,6 @@ msgstr "Yahooユーザ yahoouser presence"
 #.  
 msgid "Yahoo user ymsgr:yahoouser presence"
 msgstr "Yahooユーザ yahoouser presence"
-
-#: lib/Socialtext/Widget_resource.pm:58 share/javascript/widget_resource.js:58
-#. (
-msgid "Yahoo! IM: %1"
-msgstr "Yahoo! IM: %1"
 
 #: share/template/element/settings/workspaces_settings_features_section:49
 #.  
@@ -4514,11 +4344,6 @@ msgstr "現在夏時間である"
 msgid "currently not in DST"
 msgstr "現在夏時間でない"
 
-#: lib/Socialtext/Widget_resource.pm:61 share/javascript/widget_resource.js:61
-#. (
-msgid "date: %1"
-msgstr "日: %1"
-
 #: share/template/view/refcard:25
 #.  
 msgid "different-workspace"
@@ -4558,21 +4383,6 @@ msgstr "外部からの画像"
 #.  
 msgid "external link"
 msgstr "外部リンク"
-
-#: lib/Socialtext/Widget_resource.pm:52 lib/Socialtext/Widget_resource.pm:53 share/javascript/widget_resource.js:52 share/javascript/widget_resource.js:53
-#. (
-msgid "feed: %1"
-msgstr "フィード: %1"
-
-#: lib/Socialtext/Widget_resource.pm:38 lib/Socialtext/Widget_resource.pm:39 share/javascript/widget_resource.js:38 share/javascript/widget_resource.js:39
-#. (
-msgid "file: %1"
-msgstr "ファイル: %1"
-
-#: lib/Socialtext/Widget_resource.pm:64 share/javascript/widget_resource.js:64
-#. (
-msgid "form: %1"
-msgstr "フォーム: %1"
 
 #: share/console-template/template/overview.html:14
 #.  
@@ -4634,20 +4444,10 @@ msgstr "ページに添付している画像"
 msgid "image attachment"
 msgstr "添付画像"
 
-#: lib/Socialtext/Widget_resource.pm:36 lib/Socialtext/Widget_resource.pm:37 share/javascript/widget_resource.js:36 share/javascript/widget_resource.js:37
-#. (
-msgid "image: %1"
-msgstr "画像: %1"
-
 #: share/template/view/weblog:20
 #. (
 msgid "in %1"
 msgstr "%1"
-
-#: lib/Socialtext/Widget_resource.pm:42 share/javascript/widget_resource.js:42
-#. (
-msgid "include: %1"
-msgstr "挿入: %1"
 
 #: share/template/view/refcard:20
 #.  
@@ -4678,16 +4478,6 @@ msgstr "項目 2"
 #.  
 msgid "lines"
 msgstr "行"
-
-#: lib/Socialtext/Widget_resource.pm:31 lib/Socialtext/Widget_resource.pm:32 lib/Socialtext/Widget_resource.pm:33 lib/Socialtext/Widget_resource.pm:35 share/javascript/widget_resource.js:31 share/javascript/widget_resource.js:32 share/javascript/widget_resource.js:33 share/javascript/widget_resource.js:35
-#. (
-msgid "link: %1"
-msgstr "リンク: %1"
-
-#: lib/Socialtext/Widget_resource.pm:34 share/javascript/widget_resource.js:34
-#. (
-msgid "link: %1 (%2 )"
-msgstr "リンク: %1 (%2 )"
 
 #: share/template/view/refcard:16
 #.  
@@ -4729,15 +4519,10 @@ msgstr "percent free"
 msgid "permalink"
 msgstr "パーマリンク"
 
-#: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:169 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "最近あった変更"
-
-#: lib/Socialtext/Widget_resource.pm:44 share/javascript/widget_resource.js:44
-#. (
-msgid "recent changes: %1"
-msgstr "最近あった変更: %1"
 
 #: share/console-template/template/form.tmpl:7
 #.  
@@ -4759,20 +4544,10 @@ msgstr "必須"
 msgid "revision"
 msgstr "リビジョン"
 
-#: lib/Socialtext/Widget_resource.pm:54 share/javascript/widget_resource.js:54
-#. (
-msgid "search: %1"
-msgstr "検索: %1"
-
 #: lib/Socialtext/Formatter/WaflPhrase.pm:442
 #.  
 msgid "section link"
 msgstr "セクションリンク"
-
-#: lib/Socialtext/Widget_resource.pm:43 share/javascript/widget_resource.js:43
-#. (
-msgid "section: %1"
-msgstr "セクション: %1"
 
 #: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:329
 #.  
@@ -4794,16 +4569,6 @@ msgstr "サブアイテム 1"
 msgid "table"
 msgstr "表"
 
-#: lib/Socialtext/Widget_resource.pm:48 share/javascript/widget_resource.js:48
-#. (
-msgid "tag list: %1"
-msgstr "タグ一覧: %1"
-
-#: lib/Socialtext/Widget_resource.pm:46 lib/Socialtext/Widget_resource.pm:47 share/javascript/widget_resource.js:46 share/javascript/widget_resource.js:47
-#. (
-msgid "tag: %1"
-msgstr "タグ: %1"
-
 #: share/template/view/refcard:53
 #.  
 msgid "this text is not bold"
@@ -4819,16 +4584,6 @@ msgstr "タイトル"
 msgid "title:hello"
 msgstr "title:hello"
 
-#: lib/Socialtext/Widget_resource.pm:41 share/javascript/widget_resource.js:41
-#.  
-msgid "toc"
-msgstr "toc"
-
-#: lib/Socialtext/Widget_resource.pm:40 share/javascript/widget_resource.js:40
-#. (
-msgid "toc: %1"
-msgstr "toc: %1"
-
 #: share/console-template/template/overview.html:14
 #.  
 msgid "total"
@@ -4838,16 +4593,6 @@ msgstr "合計"
 #.  
 msgid "type email address here"
 msgstr "ここに email アドレスをタイプしてください。"
-
-#: lib/Socialtext/Widget_resource.pm:62 share/javascript/widget_resource.js:62
-#. (
-msgid "unformatted: %1"
-msgstr "書式なし: %1"
-
-#: lib/Socialtext/Widget_resource.pm:60 share/javascript/widget_resource.js:60
-#. (
-msgid "user: %1"
-msgstr "ユーザ: %1"
 
 #: share/template/email/openid/workspace-invitation-body.html:21 share/template/email/openid/workspace-invitation.txt:8 share/template/email/st/workspace-invitation-body.html:31 share/template/email/st/workspace-invitation.txt:13
 #.  
@@ -4868,16 +4613,6 @@ msgstr "警告:"
 #.  
 msgid "web address:"
 msgstr "web アドレス"
-
-#: lib/Socialtext/Widget_resource.pm:51 share/javascript/widget_resource.js:51
-#. (
-msgid "weblog list: %1"
-msgstr "ウェブログ一覧: %1"
-
-#: lib/Socialtext/Widget_resource.pm:49 lib/Socialtext/Widget_resource.pm:50 share/javascript/widget_resource.js:49 share/javascript/widget_resource.js:50
-#. (
-msgid "weblog: %1"
-msgstr "ウェブログ: %1"
 
 #: share/template/view/refcard:48
 #.  

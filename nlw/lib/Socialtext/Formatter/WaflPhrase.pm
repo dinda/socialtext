@@ -587,6 +587,7 @@ package Socialtext::Formatter::Toc;
 use base 'Socialtext::Formatter::WaflPhraseDiv';
 use Class::Field qw( const );
 use Socialtext::Permission 'ST_READ_PERM';
+use Socialtext::l10n qw(loc);
 
 const wafl_id => 'toc';
 
@@ -639,7 +640,7 @@ sub _parse_page_for_headers {
         ? ''
         : $workspace_name;
 
-    my $title = qq(<div class="toc"><p>Table of Contents: )
+    my $title = qq(<div class="toc"><p>) . loc('Table of Contents') . ':'
         . $page_title
         . "</p>\n";
 
