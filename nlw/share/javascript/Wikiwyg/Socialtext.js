@@ -1189,6 +1189,16 @@ proto.socialtext_wikiwyg_image = function(image_name) {
     return this.wikiwyg.config.toolbar.imagesLocation + image_name;
 }
 
+
+proto.get_link_selection_text = function() {
+    var selection = this.get_selection_text();
+    if (! selection) {
+        alert(loc("Please select the text you would like to turn into a link."));
+        return;
+    }
+    return selection;
+}
+
 /*==============================================================================
 Socialtext Wikitext subclass.
  =============================================================================*/

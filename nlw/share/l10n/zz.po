@@ -539,6 +539,11 @@ msgstr "4N InVi747i0n 70 J0In %1"
 msgid "An account must be specified for all new workspaces."
 msgstr "4N 4cC0Un7 MuS7 83 Sp3cIfI3D F0R 4lL N3W W0RkSp4c3s."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:74
+#. (
+msgid "An account with this name (%1) already exists."
+msgstr "4N 4cC0Un7 Wi7h 7HiS N4M3 (%1) 4lR34dY 3xIs7s."
+
 #: share/template/bugs_content.html:17
 #.  
 msgid "An application error has occurred in the Socialtext Workspace system."
@@ -969,7 +974,7 @@ msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s fR0M 7hIs s34RcH 70 y0uR C0MpU73r f0
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s wI7H 7h3 74G %1 70 Y0Ur c0mPu73R F0R 0fFlIn3 Us3."
 
-#: lib/Socialtext/WatchlistPlugin.pm:211
+#: lib/Socialtext/WatchlistPlugin.pm:206
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s y0u'r3 W47cHiNg f0r 0FfLiN3 uS3."
@@ -1633,6 +1638,16 @@ msgstr "fR0M:"
 #.  
 msgid "Fully public"
 msgstr "fUlLy pU8LiC"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:114
+#. (
+msgid "Gave Socialtext Accounts access to %1"
+msgstr "g4v3 S0Ci4l73X7 4Cc0uN7S 4cC3Ss 70 %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:128
+#. (
+msgid "Gave Socialtext System Management access to %1"
+msgstr "g4v3 S0Ci4l73X7 sYs73M M4N4G3M3N7 4Cc3sS 70 %1"
 
 #: lib/Socialtext/DisplayPlugin.pm:26
 #.  
@@ -2354,7 +2369,7 @@ msgstr "n0 UpL04dS."
 msgid "No users entered"
 msgstr "n0 Us3rS 3n73R3D"
 
-#: lib/Socialtext/WatchlistPlugin.pm:197
+#: lib/Socialtext/WatchlistPlugin.pm:192
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr "n0 W47cHlIs7 F0R %1 iN %2"
@@ -2519,7 +2534,7 @@ msgstr "p4g3 7i7l3 MiSsInG"
 msgid "Pages"
 msgstr "p4g3s"
 
-#: lib/Socialtext/WatchlistPlugin.pm:265 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr "p4g3s y0u'r3 W47cHiNg"
@@ -2843,6 +2858,16 @@ msgstr "r3m0v3 %1 fR0M 7h3 Qu3u3"
 #.  
 msgid "Remove All"
 msgstr "r3m0v3 4lL"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:117
+#. (
+msgid "Removed Socialtext Accounts access from %1"
+msgstr "r3m0v3d s0cI4L73x7 4cC0Un7s 4Cc3sS Fr0m %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:131
+#. (
+msgid "Removed Socialtext System Management access from %1"
+msgstr "r3m0v3d s0cI4L73x7 SyS73m m4n4g3m3n7 4cC3Ss fR0M %1"
 
 #: share/template/popup/rename:31
 #.  
@@ -3244,6 +3269,66 @@ msgstr "s0cI4L73x7 SuMm4rY Us3 R3P0R7:"
 msgid "Somebody else made changes to the page while you were editing it."
 msgstr "s0m380dY 3lS3 m4d3 Ch4nG3S 70 7H3 p4g3 WhIl3 Y0U W3R3 3Di7iNg i7."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:370
+#.  
+msgid "Sort by account in ascending order"
+msgstr "s0r7 8y 4Cc0uN7 iN 4sC3NdInG 0rD3R"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:371
+#.  
+msgid "Sort by account in descending order"
+msgstr "s0r7 8y 4Cc0uN7 iN D3Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:378
+#.  
+msgid "Sort by creator in ascending order"
+msgstr "s0r7 8y cR3470r iN 4sC3NdInG 0rD3R"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:379
+#.  
+msgid "Sort by creator in descending order"
+msgstr "s0r7 8y cR3470r iN D3Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:374
+#.  
+msgid "Sort by date created in ascending order"
+msgstr "s0r7 8y d473 Cr3473D In 4Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:375
+#.  
+msgid "Sort by date created in descending order"
+msgstr "s0r7 8y d473 Cr3473D In d3sC3NdInG 0rD3R"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:358
+#.  
+msgid "Sort by name in ascending order"
+msgstr "s0r7 8y n4m3 In 4Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:359
+#.  
+msgid "Sort by name in descending order"
+msgstr "s0r7 8y n4m3 In d3sC3NdInG 0rD3R"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:366
+#.  
+msgid "Sort by number of users in ascending order"
+msgstr "s0r7 8y nUm83R 0f uS3Rs iN 4sC3NdInG 0rD3R"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:367
+#.  
+msgid "Sort by number of users in descending order"
+msgstr "s0r7 8y nUm83R 0f uS3Rs iN D3Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:362
+#.  
+msgid "Sort by number of workspaces in ascending order"
+msgstr "s0r7 8y nUm83R 0f w0rKsP4C3S In 4Sc3nDiNg 0Rd3r"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:363
+#.  
+msgid "Sort by number of workspaces in descending order"
+msgstr "s0r7 8y nUm83R 0f w0rKsP4C3S In d3sC3NdInG 0rD3R"
+
 #: share/template/element/settings/workspaces_settings_features_section:80
 #.  
 msgid "Sort entries by first posted time"
@@ -3294,7 +3379,7 @@ msgstr "sUgG3S7I0Ns:"
 msgid "Summary"
 msgstr "sUmM4Ry"
 
-#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
 #.  
 msgid "Sun"
 msgstr "sUn"
@@ -3363,6 +3448,16 @@ msgstr "73cHn0r47I: %1"
 #.  
 msgid "Thanks,"
 msgstr "7H4NkS,"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:80
+#. (
+msgid "The %1 account has been created."
+msgstr "7H3 %1 4cC0Un7 H4S 833n cR3473d."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:103
+#. (
+msgid "The %1 workspace is now part of the %2 account."
+msgstr "7H3 %1 W0RkSp4c3 Is n0w p4r7 0f 7H3 %2 4cC0Un7."
 
 #: lib/Socialtext/User/Default.pm:164
 #. (
@@ -3904,10 +3999,15 @@ msgstr "uS3Rn4m3"
 msgid "Username:"
 msgstr "uS3Rn4m3:"
 
-#: share/template/element/settings/select:3
+#: lib/Socialtext/Handler/ControlPanel.pm:313 share/template/element/settings/select:3
 #.  
 msgid "Users"
 msgstr "uS3Rs"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:301
+#. (
+msgid "Users matching \"%1\""
+msgstr "uS3Rs m47ChInG \"%1\""
 
 #: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:369 lib/Socialtext/UserSettingsPlugin.pm:430
 #.  
@@ -3974,7 +4074,7 @@ msgstr "w47Ch 7HiS P4G3"
 msgid "Watching this page"
 msgstr "w47ChInG 7hIs p4g3"
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:204
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
 #.  
 msgid "Watchlist"
 msgstr "w47ChLiS7"
@@ -4199,7 +4299,7 @@ msgstr "w0rKsP4C3 n4m3 MuS7 83 837w33N 3 4nD 30 cH4R4C73rS L0Ng, 4nD MuS7 c0n74I
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr "w0rKsP4C3 7I7L3 mUs7 83 837W33n 2 4Nd 64 Ch4r4c73Rs l0nG."
 
-#: share/console-template/template/overview.html:6 share/template/element/settings/select:18
+#: lib/Socialtext/Handler/ControlPanel.pm:269 share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
 msgid "Workspaces"
 msgstr "w0rKsP4C3S"
@@ -4208,6 +4308,11 @@ msgstr "w0rKsP4C3S"
 #. (
 msgid "Workspaces initialized.<br>Log: %1"
 msgstr "w0rKsP4C3S InI7I4LiZ3D.<8R>L0G: %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:257
+#. (
+msgid "Workspaces matching \"%1\""
+msgstr "w0rKsP4C3S M47cHiNg \"%1\""
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:176
 #.  
@@ -4374,10 +4479,25 @@ msgstr "y0u mUs7 InPu7 807h 4N 0p3nId 4Nd 4N 3m4iL."
 msgid "You must login to view this page."
 msgstr "y0u mUs7 L0GiN 70 vI3W 7hIs p4g3."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:68
+#.  
+msgid "You must provide a name to create a new account."
+msgstr "y0u mUs7 Pr0vId3 4 N4M3 70 Cr3473 4 n3w 4Cc0uN7."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:143
+#. (
+msgid "You must provide a user_id to this URI (%1)."
+msgstr "y0u mUs7 Pr0vId3 4 Us3r_iD 70 7HiS UrI (%1)."
+
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
 msgid "You must provide a valid email address."
 msgstr "y0u mUs7 Pr0vId3 4 V4LiD 3m4iL 4dDr3sS."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:96
+#. (
+msgid "You must provide a workspace and account to this URI (%1)"
+msgstr "y0u mUs7 Pr0vId3 4 W0RkSp4c3 4nD 4cC0Un7 70 7HiS UrI (%1)"
 
 #: share/template/errors/requires_confirmation:2
 #.  

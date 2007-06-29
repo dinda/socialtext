@@ -539,6 +539,11 @@ msgstr "あN いnVい7あ7いおn 7お Jおいn %1"
 msgid "An account must be specified for all new workspaces."
 msgstr "あN あcCおうn7 MうS7 8え SpえcいfいえD FおR あlL NえW WおRkSpあcえs."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:74
+#. (
+msgid "An account with this name (%1) already exists."
+msgstr "あN あcCおうn7 Wい7h 7HいS NあMえ (%1) あlRえあdY えxいs7s."
+
 #: share/template/bugs_content.html:17
 #.  
 msgid "An application error has occurred in the Socialtext Workspace system."
@@ -969,7 +974,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ pあgえs fRおM 7hいs s�
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ pあgえs wい7H 7hえ 7あG %1 7お Yおうr cおmPう7えR FおR おfFlいnえ うsえ."
 
-#: lib/Socialtext/WatchlistPlugin.pm:211
+#: lib/Socialtext/WatchlistPlugin.pm:206
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr "cLいCk 7HいS 8う77おn 7お SあVえ 7Hえ pあgえs yおう'rえ Wあ7cHいNg fおr おFfLいNえ うSえ."
@@ -1633,6 +1638,16 @@ msgstr "fRおM:"
 #.  
 msgid "Fully public"
 msgstr "fうlLy pう8LいC"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:114
+#. (
+msgid "Gave Socialtext Accounts access to %1"
+msgstr "gあvえ SおCいあl7えX7 あCcおうN7S あcCえSs 7お %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:128
+#. (
+msgid "Gave Socialtext System Management access to %1"
+msgstr "gあvえ SおCいあl7えX7 sYs7えM MあNあGえMえN7 あCcえsS 7お %1"
 
 #: lib/Socialtext/DisplayPlugin.pm:26
 #.  
@@ -2354,7 +2369,7 @@ msgstr "nお うpLおあdS."
 msgid "No users entered"
 msgstr "nお うsえrS えn7えRえD"
 
-#: lib/Socialtext/WatchlistPlugin.pm:197
+#: lib/Socialtext/WatchlistPlugin.pm:192
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr "nお Wあ7cHlいs7 FおR %1 いN %2"
@@ -2519,7 +2534,7 @@ msgstr "pあgえ 7い7lえ MいSsいnG"
 msgid "Pages"
 msgstr "pあgえs"
 
-#: lib/Socialtext/WatchlistPlugin.pm:265 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr "pあgえs yおう'rえ Wあ7cHいNg"
@@ -2843,6 +2858,16 @@ msgstr "rえmおvえ %1 fRおM 7hえ Qうえうえ"
 #.  
 msgid "Remove All"
 msgstr "rえmおvえ あlL"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:117
+#. (
+msgid "Removed Socialtext Accounts access from %1"
+msgstr "rえmおvえd sおcいあL7えx7 あcCおうn7s あCcえsS Frおm %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:131
+#. (
+msgid "Removed Socialtext System Management access from %1"
+msgstr "rえmおvえd sおcいあL7えx7 SyS7えm mあnあgえmえn7 あcCえSs fRおM %1"
 
 #: share/template/popup/rename:31
 #.  
@@ -3244,6 +3269,66 @@ msgstr "sおcいあL7えx7 SうMmあrY うsえ RえPおR7:"
 msgid "Somebody else made changes to the page while you were editing it."
 msgstr "sおmえ8おdY えlSえ mあdえ ChあnGえS 7お 7Hえ pあgえ Whいlえ Yおう WえRえ えDい7いNg い7."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:370
+#.  
+msgid "Sort by account in ascending order"
+msgstr "sおr7 8y あCcおうN7 いN あsCえNdいnG おrDえR"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:371
+#.  
+msgid "Sort by account in descending order"
+msgstr "sおr7 8y あCcおうN7 いN DえScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:378
+#.  
+msgid "Sort by creator in ascending order"
+msgstr "sおr7 8y cRえあ7おr いN あsCえNdいnG おrDえR"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:379
+#.  
+msgid "Sort by creator in descending order"
+msgstr "sおr7 8y cRえあ7おr いN DえScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:374
+#.  
+msgid "Sort by date created in ascending order"
+msgstr "sおr7 8y dあ7え Crえあ7えD いn あScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:375
+#.  
+msgid "Sort by date created in descending order"
+msgstr "sおr7 8y dあ7え Crえあ7えD いn dえsCえNdいnG おrDえR"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:358
+#.  
+msgid "Sort by name in ascending order"
+msgstr "sおr7 8y nあmえ いn あScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:359
+#.  
+msgid "Sort by name in descending order"
+msgstr "sおr7 8y nあmえ いn dえsCえNdいnG おrDえR"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:366
+#.  
+msgid "Sort by number of users in ascending order"
+msgstr "sおr7 8y nうm8えR おf うSえRs いN あsCえNdいnG おrDえR"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:367
+#.  
+msgid "Sort by number of users in descending order"
+msgstr "sおr7 8y nうm8えR おf うSえRs いN DえScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:362
+#.  
+msgid "Sort by number of workspaces in ascending order"
+msgstr "sおr7 8y nうm8えR おf wおrKsPあCえS いn あScえnDいNg おRdえr"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:363
+#.  
+msgid "Sort by number of workspaces in descending order"
+msgstr "sおr7 8y nうm8えR おf wおrKsPあCえS いn dえsCえNdいnG おrDえR"
+
 #: share/template/element/settings/workspaces_settings_features_section:80
 #.  
 msgid "Sort entries by first posted time"
@@ -3294,7 +3379,7 @@ msgstr "sうgGえS7いおNs:"
 msgid "Summary"
 msgstr "sうmMあRy"
 
-#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:178
 #.  
 msgid "Sun"
 msgstr "sうn"
@@ -3363,6 +3448,16 @@ msgstr "7えcHnおrあ7い: %1"
 #.  
 msgid "Thanks,"
 msgstr "7HあNkS,"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:80
+#. (
+msgid "The %1 account has been created."
+msgstr "7Hえ %1 あcCおうn7 HあS 8ええn cRえあ7えd."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:103
+#. (
+msgid "The %1 workspace is now part of the %2 account."
+msgstr "7Hえ %1 WおRkSpあcえ いs nおw pあr7 おf 7Hえ %2 あcCおうn7."
 
 #: lib/Socialtext/User/Default.pm:164
 #. (
@@ -3904,10 +3999,15 @@ msgstr "うSえRnあmえ"
 msgid "Username:"
 msgstr "うSえRnあmえ:"
 
-#: share/template/element/settings/select:3
+#: lib/Socialtext/Handler/ControlPanel.pm:313 share/template/element/settings/select:3
 #.  
 msgid "Users"
 msgstr "うSえRs"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:301
+#. (
+msgid "Users matching \"%1\""
+msgstr "うSえRs mあ7ChいnG \"%1\""
 
 #: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:369 lib/Socialtext/UserSettingsPlugin.pm:430
 #.  
@@ -3974,7 +4074,7 @@ msgstr "wあ7Ch 7HいS PあGえ"
 msgid "Watching this page"
 msgstr "wあ7ChいnG 7hいs pあgえ"
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:204
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
 #.  
 msgid "Watchlist"
 msgstr "wあ7ChLいS7"
@@ -4199,7 +4299,7 @@ msgstr "wおrKsPあCえ nあmえ MうS7 8え 8え7wええN 3 あnD 30 cHあRあC
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr "wおrKsPあCえ 7い7Lえ mうs7 8え 8え7Wええn 2 あNd 64 Chあrあc7えRs lおnG."
 
-#: share/console-template/template/overview.html:6 share/template/element/settings/select:18
+#: lib/Socialtext/Handler/ControlPanel.pm:269 share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
 msgid "Workspaces"
 msgstr "wおrKsPあCえS"
@@ -4208,6 +4308,11 @@ msgstr "wおrKsPあCえS"
 #. (
 msgid "Workspaces initialized.<br>Log: %1"
 msgstr "wおrKsPあCえS いnい7いあLいZえD.<8R>LおG: %1"
+
+#: lib/Socialtext/Handler/ControlPanel.pm:257
+#. (
+msgid "Workspaces matching \"%1\""
+msgstr "wおrKsPあCえS Mあ7cHいNg \"%1\""
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:176
 #.  
@@ -4374,10 +4479,25 @@ msgstr "yおう mうs7 いnPう7 8お7h あN おpえnいd あNd あN えmあいL
 msgid "You must login to view this page."
 msgstr "yおう mうs7 LおGいN 7お vいえW 7hいs pあgえ."
 
+#: lib/Socialtext/Handler/ControlPanel.pm:68
+#.  
+msgid "You must provide a name to create a new account."
+msgstr "yおう mうs7 Prおvいdえ あ NあMえ 7お Crえあ7え あ nえw あCcおうN7."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:143
+#. (
+msgid "You must provide a user_id to this URI (%1)."
+msgstr "yおう mうs7 Prおvいdえ あ うsえr_いD 7お 7HいS うrい (%1)."
+
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
 msgid "You must provide a valid email address."
 msgstr "yおう mうs7 Prおvいdえ あ VあLいD えmあいL あdDrえsS."
+
+#: lib/Socialtext/Handler/ControlPanel.pm:96
+#. (
+msgid "You must provide a workspace and account to this URI (%1)"
+msgstr "yおう mうs7 Prおvいdえ あ WおRkSpあcえ あnD あcCおうn7 7お 7HいS うrい (%1)"
 
 #: share/template/errors/requires_confirmation:2
 #.  
