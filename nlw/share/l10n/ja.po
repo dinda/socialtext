@@ -659,7 +659,7 @@ msgstr "%2 に %1 でアプリケーションエラー発生: %3"
 msgid "Application error on %1: %2"
 msgstr "%1 にアプリケーションエラー発生: %2"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:227
+#: lib/Socialtext/Appliance/Model/Backup.pm:240
 #.  
 msgid "Archive Directory"
 msgstr "アーカイブディレクトリ"
@@ -729,25 +729,30 @@ msgstr "バックアップ先"
 msgid "Backup Now"
 msgstr "今すぐバックアップする"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:220
+#: lib/Socialtext/Appliance/Model/Backup.pm:233
 #.  
 msgid "Backup Server name"
 msgstr "バックアップサーバ名"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:71
+#: lib/Socialtext/Appliance/Model/Backup.pm:84
 #.  
 msgid "Backup already running"
 msgstr "バックアップはすでに実行中です。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:206
+#: lib/Socialtext/Appliance/Model/Backup.pm:219
 #.  
 msgid "Backup destination updated"
 msgstr "更新されたバックアップ先"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:43
+#: lib/Socialtext/Appliance/Model/Backup.pm:46
 #. (
 msgid "Backup is in progress - started at %1"
 msgstr "バックアップ中 - %1 に開始"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:44
+#.  
+msgid "Backup is in progress - started at never"
+msgstr ""
 
 #: share/template/email/st/workspace-invitation-body.html:37 share/template/email/st/workspace-invitation.txt:17
 #. (
@@ -1069,7 +1074,7 @@ msgstr "ワークスペースにページをコピー"
 msgid "Copy the page %1 to another workspace?"
 msgstr "ページ %1 を他のワークスペースにコピーしますか?"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:256
+#: lib/Socialtext/Appliance/Model/Backup.pm:269
 #.  
 msgid "Could not read/write to share"
 msgstr "共有への読みこみ/ 書きこみをすることができませんでした。"
@@ -1119,7 +1124,7 @@ msgstr "あなたの自己紹介を作成"
 msgid "Created by %1 on %2."
 msgstr "%2 で %1 が作成"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:312
+#: lib/Socialtext/Appliance/Model/Backup.pm:325
 #. (
 msgid "Creating backup tarball (%1) ..."
 msgstr "ターボールのバックアップを作成中 (%1) ..."
@@ -1189,7 +1194,7 @@ msgstr "選択したファイルを削除する。"
 msgid "Deleted \"%1\""
 msgstr "\"%1\"を削除しました"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:272
+#: lib/Socialtext/Appliance/Model/Backup.pm:285
 #. (
 msgid "Did not get %1"
 msgstr "%1 を得ることができませんでした。"
@@ -1554,17 +1559,17 @@ msgstr "PDF にエクスポート"
 msgid "Export to Word"
 msgstr "Word にエクスポート"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:302
+#: lib/Socialtext/Appliance/Model/Backup.pm:315
 #. (
 msgid "Exporting %1"
 msgstr "%1 をエクスポートする"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:298
+#: lib/Socialtext/Appliance/Model/Backup.pm:311
 #.  
 msgid "Exporting workspaces ..."
 msgstr "ワークスペースをエクスポート中 ..."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:344
+#: lib/Socialtext/Appliance/Model/Backup.pm:357
 #.  
 msgid "Fetching backup file from SMB share ..."
 msgstr "SMB 共有からバックアップファイルを取ってきています ..."
@@ -1619,7 +1624,7 @@ msgstr "パスワードを忘れた方はこちら"
 msgid "French"
 msgstr "フランス語"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Fri"
 msgstr "金"
@@ -1664,7 +1669,7 @@ msgstr "Go to:"
 msgid "Google: %1"
 msgstr "Google: %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:275
+#: lib/Socialtext/Appliance/Model/Backup.pm:288
 #. (
 msgid "Got file %1"
 msgstr "ファイル %1 を取得しました。"
@@ -1854,7 +1859,7 @@ msgstr "バグを無視する"
 msgid "Image Already On The Web"
 msgstr "既に web 上にある画像"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:358
+#: lib/Socialtext/Appliance/Model/Backup.pm:371
 #.  
 msgid "Importing workspaces from tarballs ..."
 msgstr "ターボールからワークスペースをインポート中 ..."
@@ -1909,7 +1914,7 @@ msgstr "ワークスペースを初期化する"
 msgid "Initialize Workspaces?"
 msgstr "ワークスペースを初期化しますか？"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:353
+#: lib/Socialtext/Appliance/Model/Backup.pm:366
 #.  
 msgid "Initializing workspaces ..."
 msgstr "ワークスペースを初期化中 ..."
@@ -2064,10 +2069,15 @@ msgstr "最後に編集した人: %1"
 msgid "Last edited by <span class=\"st-homepage-whatsnew-author\">%1</span> on <span class=\"st-homepage-whatsnew-date\">%2</span>"
 msgstr "最後に編集した人: <span class=\"st-homepage-whatsnew-author\">%1</span> (<span class=\"st-homepage-whatsnew-date\">%2</span>)"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:47
+#: lib/Socialtext/Appliance/Model/Backup.pm:54
 #. (
 msgid "Last manual backup was %1"
 msgstr "最後に行われた手動バックアップは %1 です。"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:52
+#.  
+msgid "Last manual backup was never"
+msgstr ""
 
 #: share/template/new_form_page/generic/new_form_page_query.html:20 share/template/new_form_page/new_form_page_query.html:21
 #.  
@@ -2194,7 +2204,7 @@ msgstr "会議メモ"
 msgid "Meeting notes category"
 msgstr "会議メモ カテゴリ"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Mon"
 msgstr "月"
@@ -2314,7 +2324,7 @@ msgstr "ダウンロードはありません。"
 msgid "No email addresses specified"
 msgstr "Email アドレスが指定されていません。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:264
+#: lib/Socialtext/Appliance/Model/Backup.pm:277
 #.  
 msgid "No file provided to verify"
 msgstr "確認するファイルがありません。"
@@ -2549,7 +2559,7 @@ msgstr "'%1' (%2) を含むページ"
 msgid "Pages with the '%1' tag. Click to edit."
 msgstr "'%1' タグの付いたページです。クリックして編集してください。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:223
+#: lib/Socialtext/Appliance/Model/Backup.pm:236
 #.  
 msgid "Password"
 msgstr "パスワード"
@@ -2644,17 +2654,17 @@ msgstr "あなたのウェブログに名前を付けてください。名前が
 msgid "Please invite these people into the %1 workspace."
 msgstr "この方たちを%1ワークスペースに招待してください。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:81
+#: lib/Socialtext/Appliance/Model/Backup.pm:94
 #.  
 msgid "Please select a file to restore"
 msgstr "元に戻したいファイルを選択してください。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:88
+#: lib/Socialtext/Appliance/Model/Backup.pm:101
 #.  
 msgid "Please wait until the backup finishes, then retry."
 msgstr "バックアップが終わるまで待ってください。バックアップ終了後、もう一度トライしてください。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:64
+#: lib/Socialtext/Appliance/Model/Backup.pm:77
 #.  
 msgid "Please wait until the restore finishes, then retry."
 msgstr "回復が終わるまで待ってください。回復終了後、もう一度トライしてください。"
@@ -2729,7 +2739,7 @@ msgstr "閲覧とコメントのみ可能"
 msgid "Public read-only"
 msgstr "閲覧のみ可能"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:254
+#: lib/Socialtext/Appliance/Model/Backup.pm:267
 #.  
 msgid "Put and retrieved test file"
 msgstr "テストファイルを置き、回復しました。"
@@ -2934,17 +2944,22 @@ msgstr "ページを回復"
 msgid "Restore Revision %1"
 msgstr ""
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:53
+#: lib/Socialtext/Appliance/Model/Backup.pm:65
 #. (
 msgid "Restore in progress - started at %1"
 msgstr "回復中 - %1 に開始"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:95
+#: lib/Socialtext/Appliance/Model/Backup.pm:63
+#.  
+msgid "Restore in progress - started at never"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:108
 #.  
 msgid "Restore is already running"
 msgstr "すでに回復中"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:335
+#: lib/Socialtext/Appliance/Model/Backup.pm:348
 #. (
 msgid "Restoring backup from (%1) ..."
 msgstr "(%1) からバックアップを回復中 ..."
@@ -2989,7 +3004,7 @@ msgstr "ロールとパーミッションセット（標準ワークスペース
 msgid "Sample Weblog"
 msgstr "サンプル Weblog"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sat"
 msgstr "土"
@@ -3149,7 +3164,7 @@ msgstr "設定"
 msgid "Setup"
 msgstr "設定"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:221
+#: lib/Socialtext/Appliance/Model/Backup.pm:234
 #.  
 msgid "Shared Directory Name"
 msgstr "共有ディレクトリ名"
@@ -3379,7 +3394,7 @@ msgstr "提案："
 msgid "Summary"
 msgstr "要約"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr "日"
@@ -3724,7 +3739,7 @@ msgstr "このページへのリンク:"
 msgid "This username has no associated email address."
 msgstr "このユーザには関連した Email アドレスがありません。"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Thu"
 msgstr "木"
@@ -3864,7 +3879,7 @@ msgstr "合計"
 msgid "Total user count for %1: %2"
 msgstr "%1 のユーザカウント数: %2"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Tue"
 msgstr "火"
@@ -3989,7 +4004,7 @@ msgstr "再ログイン時には、 Email アドレスと新しいパスワー�
 msgid "User Name"
 msgstr "ユーザ名"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:222 lib/Socialtext/WebApp.pm:215
+#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:215
 #.  
 msgid "Username"
 msgstr "ユーザ名"
@@ -4124,7 +4139,7 @@ msgstr "ウェブログ: %1 RSS"
 msgid "Weblogs"
 msgstr "ウェブログ"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Wed"
 msgstr "水"

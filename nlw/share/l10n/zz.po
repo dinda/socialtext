@@ -659,7 +659,7 @@ msgstr "4PpLiC47i0n 3Rr0r iN %1 0N %2: %3"
 msgid "Application error on %1: %2"
 msgstr "4PpLiC47i0n 3Rr0r 0N %1: %2"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:227
+#: lib/Socialtext/Appliance/Model/Backup.pm:240
 #.  
 msgid "Archive Directory"
 msgstr "4RcHiV3 dIr3c70Ry"
@@ -729,25 +729,30 @@ msgstr "84cKuP D3S7In47I0N"
 msgid "Backup Now"
 msgstr "84cKuP N0W"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:220
+#: lib/Socialtext/Appliance/Model/Backup.pm:233
 #.  
 msgid "Backup Server name"
 msgstr "84cKuP S3Rv3r n4m3"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:71
+#: lib/Socialtext/Appliance/Model/Backup.pm:84
 #.  
 msgid "Backup already running"
 msgstr "84cKuP 4lR34dY RuNnInG"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:206
+#: lib/Socialtext/Appliance/Model/Backup.pm:219
 #.  
 msgid "Backup destination updated"
 msgstr "84cKuP D3S7In47I0N UpD473D"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:43
+#: lib/Socialtext/Appliance/Model/Backup.pm:46
 #. (
 msgid "Backup is in progress - started at %1"
 msgstr "84cKuP Is iN Pr0gR3Ss - s74R73d 47 %1"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:44
+#.  
+msgid "Backup is in progress - started at never"
+msgstr "84cKuP Is iN Pr0gR3Ss - s74R73d 47 N3V3R"
 
 #: share/template/email/st/workspace-invitation-body.html:37 share/template/email/st/workspace-invitation.txt:17
 #. (
@@ -1069,7 +1074,7 @@ msgstr "c0pY P4G3 70 W0RkSp4c3"
 msgid "Copy the page %1 to another workspace?"
 msgstr "c0pY 7h3 P4G3 %1 70 4N07h3r w0rKsP4C3?"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:256
+#: lib/Socialtext/Appliance/Model/Backup.pm:269
 #.  
 msgid "Could not read/write to share"
 msgstr "c0uLd n07 r34D/WrI73 70 sH4R3"
@@ -1119,7 +1124,7 @@ msgstr "cR3473 Y0Ur pR0FiL3"
 msgid "Created by %1 on %2."
 msgstr "cR3473d 8Y %1 0N %2."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:312
+#: lib/Socialtext/Appliance/Model/Backup.pm:325
 #. (
 msgid "Creating backup tarball (%1) ..."
 msgstr "cR347InG 84CkUp 74r84Ll (%1) ..."
@@ -1189,7 +1194,7 @@ msgstr "d3l373 S3L3C73d fIl3s"
 msgid "Deleted \"%1\""
 msgstr "d3l373d \"%1\""
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:272
+#: lib/Socialtext/Appliance/Model/Backup.pm:285
 #. (
 msgid "Did not get %1"
 msgstr "dId n07 g37 %1"
@@ -1554,17 +1559,17 @@ msgstr "3Xp0r7 70 pDf"
 msgid "Export to Word"
 msgstr "3Xp0r7 70 w0rD"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:302
+#: lib/Socialtext/Appliance/Model/Backup.pm:315
 #. (
 msgid "Exporting %1"
 msgstr "3Xp0r7iNg %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:298
+#: lib/Socialtext/Appliance/Model/Backup.pm:311
 #.  
 msgid "Exporting workspaces ..."
 msgstr "3Xp0r7iNg w0rKsP4C3S ..."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:344
+#: lib/Socialtext/Appliance/Model/Backup.pm:357
 #.  
 msgid "Fetching backup file from SMB share ..."
 msgstr "f37ChInG 84CkUp fIl3 Fr0m sM8 sH4R3 ..."
@@ -1619,7 +1624,7 @@ msgstr "f0rG07 P4SsW0Rd"
 msgid "French"
 msgstr "fR3NcH"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Fri"
 msgstr "fRi"
@@ -1664,7 +1669,7 @@ msgstr "g0 70:"
 msgid "Google: %1"
 msgstr "g00Gl3: %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:275
+#: lib/Socialtext/Appliance/Model/Backup.pm:288
 #. (
 msgid "Got file %1"
 msgstr "g07 fIl3 %1"
@@ -1854,7 +1859,7 @@ msgstr "iGn0r3 8uG"
 msgid "Image Already On The Web"
 msgstr "iM4G3 4Lr34Dy 0N 7h3 W38"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:358
+#: lib/Socialtext/Appliance/Model/Backup.pm:371
 #.  
 msgid "Importing workspaces from tarballs ..."
 msgstr "iMp0r7iNg w0rKsP4C3S Fr0m 74r84LlS ..."
@@ -1909,7 +1914,7 @@ msgstr "iNi7i4lIz3 W0RkSp4c3s"
 msgid "Initialize Workspaces?"
 msgstr "iNi7i4lIz3 W0RkSp4c3s?"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:353
+#: lib/Socialtext/Appliance/Model/Backup.pm:366
 #.  
 msgid "Initializing workspaces ..."
 msgstr "iNi7i4lIzInG W0RkSp4c3s ..."
@@ -2064,10 +2069,15 @@ msgstr "l4s7 3dI73d 8Y %1"
 msgid "Last edited by <span class=\"st-homepage-whatsnew-author\">%1</span> on <span class=\"st-homepage-whatsnew-date\">%2</span>"
 msgstr "l4s7 3dI73d 8Y <sP4N Cl4sS=\"S7-h0m3p4g3-Wh47Sn3w-4U7H0R\">%1</Sp4n> 0n <Sp4n cL4Ss=\"s7-H0M3P4G3-wH47sN3W-D473\">%2</sP4N>"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:47
+#: lib/Socialtext/Appliance/Model/Backup.pm:54
 #. (
 msgid "Last manual backup was %1"
 msgstr "l4s7 M4Nu4l 84cKuP W4S %1"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:52
+#.  
+msgid "Last manual backup was never"
+msgstr "l4s7 M4Nu4l 84cKuP W4S N3V3R"
 
 #: share/template/new_form_page/generic/new_form_page_query.html:20 share/template/new_form_page/new_form_page_query.html:21
 #.  
@@ -2194,7 +2204,7 @@ msgstr "m337iNg n073s"
 msgid "Meeting notes category"
 msgstr "m337iNg n073s c473g0rY"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Mon"
 msgstr "m0n"
@@ -2314,7 +2324,7 @@ msgstr "n0 D0WnL04dS."
 msgid "No email addresses specified"
 msgstr "n0 3m4iL 4dDr3sS3S Sp3cIfI3D"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:264
+#: lib/Socialtext/Appliance/Model/Backup.pm:277
 #.  
 msgid "No file provided to verify"
 msgstr "n0 FiL3 pR0ViD3D 70 v3rIfY"
@@ -2549,7 +2559,7 @@ msgstr "p4g3s c0n74InInG '%1' (%2)"
 msgid "Pages with the '%1' tag. Click to edit."
 msgstr "p4g3s wI7H 7h3 '%1' 74g. ClIcK 70 3Di7."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:223
+#: lib/Socialtext/Appliance/Model/Backup.pm:236
 #.  
 msgid "Password"
 msgstr "p4sSw0rD"
@@ -2644,17 +2654,17 @@ msgstr "pL34s3 GiV3 y0uR W38l0g 4 n4m3. iF 7h3 N4M3 y0u pR0ViD3 d03S N07 3nD Wi7
 msgid "Please invite these people into the %1 workspace."
 msgstr "pL34s3 InVi73 7H3S3 p30Pl3 In70 7H3 %1 W0RkSp4c3."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:81
+#: lib/Socialtext/Appliance/Model/Backup.pm:94
 #.  
 msgid "Please select a file to restore"
 msgstr "pL34s3 S3L3C7 4 fIl3 70 r3s70R3"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:88
+#: lib/Socialtext/Appliance/Model/Backup.pm:101
 #.  
 msgid "Please wait until the backup finishes, then retry."
 msgstr "pL34s3 W4I7 uN7Il 7H3 84cKuP FiNiSh3s, 7h3n r37Ry."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:64
+#: lib/Socialtext/Appliance/Model/Backup.pm:77
 #.  
 msgid "Please wait until the restore finishes, then retry."
 msgstr "pL34s3 W4I7 uN7Il 7H3 r3s70R3 fInIsH3S, 7H3N R37rY."
@@ -2729,7 +2739,7 @@ msgstr "pU8LiC R34d-4Nd-c0mM3N7-0NlY"
 msgid "Public read-only"
 msgstr "pU8LiC R34d-0NlY"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:254
+#: lib/Socialtext/Appliance/Model/Backup.pm:267
 #.  
 msgid "Put and retrieved test file"
 msgstr "pU7 4Nd r37Ri3v3d 73s7 FiL3"
@@ -2934,17 +2944,22 @@ msgstr "r3s70R3 p4g3"
 msgid "Restore Revision %1"
 msgstr "r3s70R3 r3vIsI0N %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:53
+#: lib/Socialtext/Appliance/Model/Backup.pm:65
 #. (
 msgid "Restore in progress - started at %1"
 msgstr "r3s70R3 iN Pr0gR3Ss - s74R73d 47 %1"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:95
+#: lib/Socialtext/Appliance/Model/Backup.pm:63
+#.  
+msgid "Restore in progress - started at never"
+msgstr "r3s70R3 iN Pr0gR3Ss - s74R73d 47 N3V3R"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm:108
 #.  
 msgid "Restore is already running"
 msgstr "r3s70R3 iS 4lR34dY RuNnInG"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:335
+#: lib/Socialtext/Appliance/Model/Backup.pm:348
 #. (
 msgid "Restoring backup from (%1) ..."
 msgstr "r3s70RiNg 84cKuP Fr0m (%1) ..."
@@ -2989,7 +3004,7 @@ msgstr "r0l3s 4Nd p3rMiSsI0N S37s (S74nD4Rd w0rKsP4C3 7Yp3s)"
 msgid "Sample Weblog"
 msgstr "s4mPl3 W38l0g"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sat"
 msgstr "s47"
@@ -3149,7 +3164,7 @@ msgstr "s377iNgS"
 msgid "Setup"
 msgstr "s37Up"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:221
+#: lib/Socialtext/Appliance/Model/Backup.pm:234
 #.  
 msgid "Shared Directory Name"
 msgstr "sH4R3D DiR3C70rY N4M3"
@@ -3379,7 +3394,7 @@ msgstr "sUgG3S7I0Ns:"
 msgid "Summary"
 msgstr "sUmM4Ry"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr "sUn"
@@ -3724,7 +3739,7 @@ msgstr "7HiS P4G3 iS LiNk3d 70 Fr0m:"
 msgid "This username has no associated email address."
 msgstr "7HiS Us3rN4M3 h4s n0 4sS0Ci473d 3M4Il 4DdR3Ss."
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Thu"
 msgstr "7Hu"
@@ -3864,7 +3879,7 @@ msgstr "7074l"
 msgid "Total user count for %1: %2"
 msgstr "7074l uS3R C0Un7 F0R %1: %2"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Tue"
 msgstr "7U3"
@@ -3989,7 +4004,7 @@ msgstr "uS3 y0uR 3m4iL 4dDr3sS 4nD N3W P4SsW0Rd 70 L0G In 4G4In."
 msgid "User Name"
 msgstr "uS3R N4M3"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:222 lib/Socialtext/WebApp.pm:215
+#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:215
 #.  
 msgid "Username"
 msgstr "uS3Rn4m3"
@@ -4124,7 +4139,7 @@ msgstr "w38L0G: %1 RsS"
 msgid "Weblogs"
 msgstr "w38L0Gs"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:178
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Wed"
 msgstr "w3d"
