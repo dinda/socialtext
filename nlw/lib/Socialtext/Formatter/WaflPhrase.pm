@@ -642,7 +642,7 @@ sub _parse_page_for_headers {
         ? ''
         : $workspace_name;
 
-    my $title = qq(<div class="toc"><p>) . loc('Table of Contents') . ':'
+    my $title = qq(<div class="toc"><p>) . loc('Table of Contents') . ': '
         . $page_title
         . "</p>\n";
 
