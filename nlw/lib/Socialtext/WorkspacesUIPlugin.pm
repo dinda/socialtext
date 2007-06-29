@@ -332,7 +332,7 @@ sub _set_workspace_permissions {
         );
     }
 
-    my $message = loc('The permissions for [_1] have been set to [_2].', $ws->name(),$set_name);
+    my $message = loc('The permissions for [_1] have been set to [_2].', $ws->name(), loc($set_name));
     if ($self->cgi()->guest_has_email_in()) {
         $message .= ' ' . loc('Anyone can send email to [_1].', $ws->name());
     } else {

@@ -1197,7 +1197,10 @@ sub rename {
     );
 
     if ($return) {
-        $self->content("Page renamed to [$new_page_title]");
+        my $localized_str = loc("Page renamed to [_1]", $new_page_title);
+        $localized_str =~ s/^Page\ renamed\ to\ /Page\ renamed\ to\ \[/;
+        $localized_str =~ s/$/\]/;
+        $self->content($localized_str);
         $self->store( user => $self->hub->current_user );
     }
 

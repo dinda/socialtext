@@ -819,6 +819,8 @@ sub comment_form_custom_fields {
         },
     );
 
+    my @PermissionSetsLocalize = (loc('public'), loc('member-only'), loc('authenticated-user-only'), loc('public-read-only'), loc('public-comment-only'), loc('public-authenticate-to-edit') ,loc('intranet'));
+
     # Impersonators should be able to do everything members can do, plus
     # impersonate.
     $_->{impersonator} = [ 'impersonate', @{ $_->{member} } ]

@@ -205,7 +205,7 @@ sub weblog_display {
 
     $self->hub->category->load;
     my $categories = $self->hub->category->all;
-    $categories->{'recent changes'} = 'Recent Changes';
+    $categories->{'recent changes'} = loc('Recent Changes');
     my @blogs = map {
 	{
 	    display => $categories->{$_},
