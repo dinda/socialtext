@@ -524,6 +524,11 @@ msgstr "4Ll p4g3s"
 msgid "All tags"
 msgstr "4Ll 74gS"
 
+#: share/template/element/page/revision_view_actions:16
+#.  
+msgid "All&nbsp;Revisions"
+msgstr "4Ll&n8sP;R3ViSi0nS"
+
 #: share/template/email/workspace-invitation.html:5
 #. (
 msgid "An Invitation to join %1"
@@ -669,7 +674,7 @@ msgstr "4S W3 c0n7iNu3 70 d3v3l0p 7H3 s34RcH SyS73m, 7h3 0p7i0nS Y0U WiLl h4v3 4
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "4774cHm3n7 N07 F0UnD. 7H3 p4g3 N4M3, FiL3 n4m3 0r iD3N7If3r nUm83R In 7H3 lInK M4Y 83 iNc0rR3C7, 0r 7H3 4774cHm3n7 M4Y H4V3 833N D3L373D 0r iS N07 Pr3s3n7 In 7HiS W0RkSp4c3."
 
-#: share/javascript/Wikiwyg/Socialtext.js:1131 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "4774cHm3n7s"
@@ -784,7 +789,7 @@ msgstr "c4lL '%1' uSiNg sKyP3. ClIcK 70 3Di7."
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "c4nC3L"
@@ -964,7 +969,7 @@ msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s fR0M 7hIs s34RcH 70 y0uR C0MpU73r f0
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s wI7H 7h3 74G %1 70 Y0Ur c0mPu73R F0R 0fFlIn3 Us3."
 
-#: lib/Socialtext/WatchlistPlugin.pm:206
+#: lib/Socialtext/WatchlistPlugin.pm:211
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 7H3 p4g3s y0u'r3 W47cHiNg f0r 0FfLiN3 uS3."
@@ -2349,10 +2354,15 @@ msgstr "n0 UpL04dS."
 msgid "No users entered"
 msgstr "n0 Us3rS 3n73R3D"
 
-#: lib/Socialtext/WatchlistPlugin.pm:192
+#: lib/Socialtext/WatchlistPlugin.pm:197
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr "n0 W47cHlIs7 F0R %1 iN %2"
+
+#: share/template/element/page/revision_view_actions:33
+#.  
+msgid "Normal View"
+msgstr "n0rM4L Vi3w"
 
 #: lib/Socialtext/DisplayPlugin.pm:157
 #.  
@@ -2484,12 +2494,17 @@ msgstr "p4g3 N4M3 4Nd lInK, pLuS 4u7h0r 4Nd d473"
 msgid "Page name is too long"
 msgstr "p4g3 N4M3 iS 700 L0Ng"
 
+#: lib/Socialtext/Page.pm:1200
+#. (
+msgid "Page renamed to %1"
+msgstr "p4g3 R3N4M3D 70 %1"
+
 #: share/template/view/refcard:102
 #.  
 msgid "Page section name"
 msgstr "p4g3 S3C7I0N N4M3"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:690
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "p4g3 7i7l3 Is 700 l0nG 4f73R UrL 3nC0DiNg"
@@ -2504,7 +2519,7 @@ msgstr "p4g3 7i7l3 MiSsInG"
 msgid "Pages"
 msgstr "p4g3s"
 
-#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:265 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr "p4g3s y0u'r3 W47cHiNg"
@@ -2739,6 +2754,11 @@ msgstr "r38007 4pPlI4Nc3?"
 msgid "Reboot Now"
 msgstr "r38007 N0W"
 
+#: lib/Socialtext/WeblogPlugin.pm:208
+#.  
+msgid "Recent Changes"
+msgstr "r3c3n7 Ch4nG3S"
+
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
 #. (
 msgid "Recent Changes In %1 Workspace"
@@ -2849,7 +2869,7 @@ msgstr "r3n4m3 P4G3"
 msgid "Replace existing page"
 msgstr "r3pL4C3 3XiS7InG P4G3"
 
-#: lib/Socialtext/Page.pm:740 share/javascript/Wikiwyg/Socialtext.js:86
+#: lib/Socialtext/Page.pm:732 share/javascript/Wikiwyg/Socialtext.js:86
 #.  
 msgid "Replace this text with your own."
 msgstr "r3pL4C3 7HiS 73X7 wI7H Y0Ur 0Wn."
@@ -2863,6 +2883,11 @@ msgstr "r3p0r7 8uG"
 #. (
 msgid "Request to invite new users to the %1 workspace"
 msgstr "r3qU3S7 70 InVi73 n3w uS3Rs 70 7h3 %1 w0rKsP4C3"
+
+#: share/template/errors/requires_confirmation:10
+#.  
+msgid "Resend confirmation"
+msgstr "r3s3nD C0NfIrM47i0n"
 
 #: share/template/element/settings/users_listall_section:11
 #.  
@@ -2878,6 +2903,11 @@ msgstr "r3s70R3 n0w"
 #.  
 msgid "Restore Page"
 msgstr "r3s70R3 p4g3"
+
+#: share/template/element/page/revision_view_actions:52
+#. (
+msgid "Restore Revision %1"
+msgstr "r3s70R3 r3vIsI0N %1"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:53
 #. (
@@ -2939,7 +2969,7 @@ msgstr "s4mPl3 W38l0g"
 msgid "Sat"
 msgstr "s47"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "s4v3"
@@ -3223,6 +3253,11 @@ msgstr "s0r7 3n7rI3S 8y fIrS7 p0s73D 7iM3"
 #.  
 msgid "Sort entries by last updated time"
 msgstr "s0r7 3n7rI3S 8y l4s7 UpD473D 7iM3"
+
+#: share/template/element/page/revision_view_actions:35
+#.  
+msgid "Source View"
+msgstr "s0uRc3 Vi3w"
 
 #: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
 #.  
@@ -3914,6 +3949,11 @@ msgstr "vI3W F0Rm4773D"
 msgid "View Revision"
 msgstr "vI3W R3ViSi0n"
 
+#: share/template/element/page/revision_view_actions:9
+#.  
+msgid "View&nbsp;Current&nbsp;Revision"
+msgstr "vI3W&N8Sp;cUrR3N7&n8sP;R3ViSi0n"
+
 #: share/template/view/page/stats:18
 #.  
 msgid "Views"
@@ -3934,7 +3974,7 @@ msgstr "w47Ch 7HiS P4G3"
 msgid "Watching this page"
 msgstr "w47ChInG 7hIs p4g3"
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:204
 #.  
 msgid "Watchlist"
 msgstr "w47ChLiS7"
@@ -4464,6 +4504,11 @@ msgstr "4Ny80Dy c4n s33 7H3 w0rKsP4C3, Us3rS C4N R3GiS73r 70 83 48l3 70 3Di7"
 msgid "attachments"
 msgstr "4774cHm3n7s"
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "authenticated-user-only"
+msgstr "4U7H3N7Ic473d-uS3R-0nLy"
+
 #: lib/Socialtext/TimeZonePlugin.pm:95
 #.  
 msgid "automatic, United States"
@@ -4504,7 +4549,7 @@ msgstr "cLiCk 70 Cr3473 p4g3"
 msgid "comment"
 msgstr "c0mM3N7"
 
-#: lib/Socialtext/Page.pm:671
+#: lib/Socialtext/Page.pm:663
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
 msgstr "c0n7rI8U73d 8Y {uS3R: %1} 0N {d473: %2}"
@@ -4664,6 +4709,11 @@ msgstr "iNd3n73D"
 msgid "inter-workspace link: %1"
 msgstr "iN73r-w0rKsP4C3 lInK: %1"
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "intranet"
+msgstr "iN7R4N37"
+
 #: share/template/view/refcard:14
 #.  
 msgid "italic words"
@@ -4693,6 +4743,11 @@ msgstr "lInK: %1"
 #. (
 msgid "link: %1 (%2 )"
 msgstr "lInK: %1 (%2 )"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "member-only"
+msgstr "m3m83R-0nLy"
 
 #: share/template/view/refcard:16
 #.  
@@ -4733,6 +4788,26 @@ msgstr "p3rC3N7 fR33"
 #.  
 msgid "permalink"
 msgstr "p3rM4LiNk"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public"
+msgstr "pU8LiC"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-authenticate-to-edit"
+msgstr "pU8LiC-4u7h3n7iC473-70-3dI7"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-comment-only"
+msgstr "pU8LiC-C0Mm3n7-0nLy"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-read-only"
+msgstr "pU8LiC-R34d-0NlY"
 
 #: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  

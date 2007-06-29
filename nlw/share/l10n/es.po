@@ -524,6 +524,11 @@ msgstr ""
 msgid "All tags"
 msgstr ""
 
+#: share/template/element/page/revision_view_actions:16
+#.  
+msgid "All&nbsp;Revisions"
+msgstr ""
+
 #: share/template/email/workspace-invitation.html:5
 #. (
 msgid "An Invitation to join %1"
@@ -669,7 +674,7 @@ msgstr ""
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1131 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr ""
@@ -784,7 +789,7 @@ msgstr ""
 msgid "Can't remove privileges of the last admin"
 msgstr ""
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr ""
@@ -964,7 +969,7 @@ msgstr ""
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:206
+#: lib/Socialtext/WatchlistPlugin.pm:211
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr ""
@@ -2349,9 +2354,14 @@ msgstr ""
 msgid "No users entered"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:192
+#: lib/Socialtext/WatchlistPlugin.pm:197
 #. (
 msgid "No watchlist for %1 in %2"
+msgstr ""
+
+#: share/template/element/page/revision_view_actions:33
+#.  
+msgid "Normal View"
 msgstr ""
 
 #: lib/Socialtext/DisplayPlugin.pm:157
@@ -2484,12 +2494,17 @@ msgstr ""
 msgid "Page name is too long"
 msgstr ""
 
+#: lib/Socialtext/Page.pm:1200
+#. (
+msgid "Page renamed to %1"
+msgstr ""
+
 #: share/template/view/refcard:102
 #.  
 msgid "Page section name"
 msgstr ""
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:690
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr ""
@@ -2504,7 +2519,7 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:265 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr ""
@@ -2739,6 +2754,11 @@ msgstr ""
 msgid "Reboot Now"
 msgstr ""
 
+#: lib/Socialtext/WeblogPlugin.pm:208
+#.  
+msgid "Recent Changes"
+msgstr ""
+
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
 #. (
 msgid "Recent Changes In %1 Workspace"
@@ -2849,7 +2869,7 @@ msgstr ""
 msgid "Replace existing page"
 msgstr ""
 
-#: lib/Socialtext/Page.pm:740 share/javascript/Wikiwyg/Socialtext.js:86
+#: lib/Socialtext/Page.pm:732 share/javascript/Wikiwyg/Socialtext.js:86
 #.  
 msgid "Replace this text with your own."
 msgstr ""
@@ -2862,6 +2882,11 @@ msgstr ""
 #: lib/Socialtext/UserSettingsPlugin.pm:481
 #. (
 msgid "Request to invite new users to the %1 workspace"
+msgstr ""
+
+#: share/template/errors/requires_confirmation:10
+#.  
+msgid "Resend confirmation"
 msgstr ""
 
 #: share/template/element/settings/users_listall_section:11
@@ -2877,6 +2902,11 @@ msgstr ""
 #: share/template/view/page/delete_epilogue:11
 #.  
 msgid "Restore Page"
+msgstr ""
+
+#: share/template/element/page/revision_view_actions:52
+#. (
+msgid "Restore Revision %1"
 msgstr ""
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:53
@@ -2939,7 +2969,7 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr ""
@@ -3222,6 +3252,11 @@ msgstr ""
 #: share/template/element/settings/workspaces_settings_features_section:74
 #.  
 msgid "Sort entries by last updated time"
+msgstr ""
+
+#: share/template/element/page/revision_view_actions:35
+#.  
+msgid "Source View"
 msgstr ""
 
 #: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
@@ -3914,6 +3949,11 @@ msgstr ""
 msgid "View Revision"
 msgstr ""
 
+#: share/template/element/page/revision_view_actions:9
+#.  
+msgid "View&nbsp;Current&nbsp;Revision"
+msgstr ""
+
 #: share/template/view/page/stats:18
 #.  
 msgid "Views"
@@ -3934,7 +3974,7 @@ msgstr ""
 msgid "Watching this page"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:204
 #.  
 msgid "Watchlist"
 msgstr ""
@@ -4464,6 +4504,11 @@ msgstr ""
 msgid "attachments"
 msgstr ""
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "authenticated-user-only"
+msgstr ""
+
 #: lib/Socialtext/TimeZonePlugin.pm:95
 #.  
 msgid "automatic, United States"
@@ -4504,7 +4549,7 @@ msgstr ""
 msgid "comment"
 msgstr ""
 
-#: lib/Socialtext/Page.pm:671
+#: lib/Socialtext/Page.pm:663
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
 msgstr ""
@@ -4664,6 +4709,11 @@ msgstr ""
 msgid "inter-workspace link: %1"
 msgstr ""
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "intranet"
+msgstr ""
+
 #: share/template/view/refcard:14
 #.  
 msgid "italic words"
@@ -4692,6 +4742,11 @@ msgstr ""
 #: lib/Socialtext/Widget_resource.pm:34 share/javascript/widget_resource.js:34
 #. (
 msgid "link: %1 (%2 )"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "member-only"
 msgstr ""
 
 #: share/template/view/refcard:16
@@ -4732,6 +4787,26 @@ msgstr ""
 #: share/template/view/weblog:116
 #.  
 msgid "permalink"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-authenticate-to-edit"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-comment-only"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-read-only"
 msgstr ""
 
 #: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45

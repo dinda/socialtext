@@ -524,6 +524,11 @@ msgstr "すべてのページ"
 msgid "All tags"
 msgstr "すべてのタグ"
 
+#: share/template/element/page/revision_view_actions:16
+#.  
+msgid "All&nbsp;Revisions"
+msgstr ""
+
 #: share/template/email/workspace-invitation.html:5
 #. (
 msgid "An Invitation to join %1"
@@ -669,7 +674,7 @@ msgstr "検索システムの開発が進むにつれ、利用できるオプシ
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1131 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "添付"
@@ -784,7 +789,7 @@ msgstr "Skype で '%1' に電話をかけます。クリックして編集して
 msgid "Can't remove privileges of the last admin"
 msgstr "前回の管理者の権限を削除できません。"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1030 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "キャンセル"
@@ -964,7 +969,7 @@ msgstr "オフラインで使用のコンピューターに、今回検索した
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "オフラインで使用のコンピューターに、タグ %1 が付いたページを保存するには、このボタンをクリックしてください。"
 
-#: lib/Socialtext/WatchlistPlugin.pm:206
+#: lib/Socialtext/WatchlistPlugin.pm:211
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr "オフラインで使用のコンピューターに、ウォッチしているページを保存するには、このボタンをクリックしてください。"
@@ -2349,10 +2354,15 @@ msgstr "アップロードはありません。"
 msgid "No users entered"
 msgstr "ユーザが入力されていません。"
 
-#: lib/Socialtext/WatchlistPlugin.pm:192
+#: lib/Socialtext/WatchlistPlugin.pm:197
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr "%2 の %1 のウォッチリストはありません。"
+
+#: share/template/element/page/revision_view_actions:33
+#.  
+msgid "Normal View"
+msgstr ""
 
 #: lib/Socialtext/DisplayPlugin.pm:157
 #.  
@@ -2484,12 +2494,17 @@ msgstr "ページの名前とリンク、作成者と日付"
 msgid "Page name is too long"
 msgstr "ページ名が長すぎます"
 
+#: lib/Socialtext/Page.pm:1200
+#. (
+msgid "Page renamed to %1"
+msgstr ""
+
 #: share/template/view/refcard:102
 #.  
 msgid "Page section name"
 msgstr "ページのセクション名"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:690
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。"
@@ -2504,7 +2519,7 @@ msgstr "ページにタイトルがありません。"
 msgid "Pages"
 msgstr "ページ数"
 
-#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:265 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr "ウォッチしているページ"
@@ -2739,6 +2754,11 @@ msgstr "アプライアンスを再起動しますか？"
 msgid "Reboot Now"
 msgstr "今すぐ再起動する"
 
+#: lib/Socialtext/WeblogPlugin.pm:208
+#.  
+msgid "Recent Changes"
+msgstr ""
+
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
 #. (
 msgid "Recent Changes In %1 Workspace"
@@ -2849,7 +2869,7 @@ msgstr "ページ名の変更"
 msgid "Replace existing page"
 msgstr "既存のページを置き換える"
 
-#: lib/Socialtext/Page.pm:740 share/javascript/Wikiwyg/Socialtext.js:86
+#: lib/Socialtext/Page.pm:732 share/javascript/Wikiwyg/Socialtext.js:86
 #.  
 msgid "Replace this text with your own."
 msgstr "このテキストを書き換えてください。"
@@ -2863,6 +2883,11 @@ msgstr "バグを報告する"
 #. (
 msgid "Request to invite new users to the %1 workspace"
 msgstr "%1 ワークスペースに新しいユーザを招待するリクエスト"
+
+#: share/template/errors/requires_confirmation:10
+#.  
+msgid "Resend confirmation"
+msgstr ""
 
 #: share/template/element/settings/users_listall_section:11
 #.  
@@ -2878,6 +2903,11 @@ msgstr "今すぐ回復する"
 #.  
 msgid "Restore Page"
 msgstr "ページを回復"
+
+#: share/template/element/page/revision_view_actions:52
+#. (
+msgid "Restore Revision %1"
+msgstr ""
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:53
 #. (
@@ -2939,7 +2969,7 @@ msgstr "サンプル Weblog"
 msgid "Sat"
 msgstr "土"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1048 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "保存"
@@ -3223,6 +3253,11 @@ msgstr "最初に投稿された時間で並べ替える"
 #.  
 msgid "Sort entries by last updated time"
 msgstr "最後に更新された時間で並べ替える"
+
+#: share/template/element/page/revision_view_actions:35
+#.  
+msgid "Source View"
+msgstr ""
 
 #: share/template/element/settings/users_invite_search_section:96 share/template/element/settings/users_invite_section:50
 #.  
@@ -3914,6 +3949,11 @@ msgstr "レイアウト表示 (ハイライト表示なし）"
 msgid "View Revision"
 msgstr "リビジョンを見る"
 
+#: share/template/element/page/revision_view_actions:9
+#.  
+msgid "View&nbsp;Current&nbsp;Revision"
+msgstr ""
+
 #: share/template/view/page/stats:18
 #.  
 msgid "Views"
@@ -3934,7 +3974,7 @@ msgstr "このページをウォッチする"
 msgid "Watching this page"
 msgstr "このページをウォッチ中"
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:204
 #.  
 msgid "Watchlist"
 msgstr "ウォッチリスト"
@@ -4464,6 +4504,11 @@ msgstr "誰でもワークスペースを閲覧できますが、編集するに
 msgid "attachments"
 msgstr "添付"
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "authenticated-user-only"
+msgstr ""
+
 #: lib/Socialtext/TimeZonePlugin.pm:95
 #.  
 msgid "automatic, United States"
@@ -4504,7 +4549,7 @@ msgstr "クリックしてページを作成"
 msgid "comment"
 msgstr "コメント"
 
-#: lib/Socialtext/Page.pm:671
+#: lib/Socialtext/Page.pm:663
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
 msgstr "contributed by {user: %1} on %2"
@@ -4664,6 +4709,11 @@ msgstr "インデント"
 msgid "inter-workspace link: %1"
 msgstr "内部ワークスペースリンク: %1"
 
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "intranet"
+msgstr ""
+
 #: share/template/view/refcard:14
 #.  
 msgid "italic words"
@@ -4693,6 +4743,11 @@ msgstr "リンク: %1"
 #. (
 msgid "link: %1 (%2 )"
 msgstr "リンク: %1 (%2 )"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "member-only"
+msgstr ""
 
 #: share/template/view/refcard:16
 #.  
@@ -4733,6 +4788,26 @@ msgstr "percent free"
 #.  
 msgid "permalink"
 msgstr "パーマリンク"
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-authenticate-to-edit"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-comment-only"
+msgstr ""
+
+#: lib/Socialtext/Workspace.pm:822
+#.  
+msgid "public-read-only"
+msgstr ""
 
 #: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
