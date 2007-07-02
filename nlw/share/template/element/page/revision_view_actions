@@ -49,5 +49,5 @@
   <input type="hidden" name="action" value="revision_restore" />
   <input type="hidden" name="page_name" value="[% page_uri %]" />
   <input type="hidden" name="revision_id" value="[% revision_id %]" />
-  [% INCLUDE element/formbutton name="Restore Revision") value=loc("Restore Revision [_1]", ${human_readable_revision})  %]
+  [% INCLUDE element/formbutton name=loc("Restore Revision") value=loc("Restore Revision [_1]", ${human_readable_revision})  %]
 [% END %]
