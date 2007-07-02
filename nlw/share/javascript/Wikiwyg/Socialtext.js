@@ -698,8 +698,8 @@ proto.saveNewPage = function() {
         }
         else  {
 
-            if (new_page_name.value.length > 28) {
-                alert(loc("Page name must be 28 characters long or less."));   
+            if (encodeURI(new_page_name.value).length > 255) {
+                alert(loc('Page title is too long after URL encoding'));
                 if (pagename_editfield) {
                     pagename_editfield.focus();
                 }
