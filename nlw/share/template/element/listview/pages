@@ -23,7 +23,12 @@
         </td>
     [% IF listview_extra_columns.watchlist %]
         <td class="[% style %]-row-watchlist query-results-row-watchlist">
-           <img src="[% wiki.static_path %]/images/st/pagetools/watch-on-list.gif" alt="[% row.page_uri %]" class="watchlist-list-toggle" />
+           [% IF loc_lang == 'en' %]
+               <img src="[% wiki.static_path %]/images/st/pagetools/watch-on-list.gif" alt="[% row.page_uri %]" class="watchlist-list-toggle" />
+           [% ELSE %]
+               <img src="[% wiki.static_path %]/images/st/pagetools/watch-star-on.gif" alt="[% row.page_uri %]" class="watchlist-list-toggle" />
+           [% END %]
+
         </td>
     [% END %]
         <td class="[% style %]-row-title query-results-row-title">

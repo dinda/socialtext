@@ -129,7 +129,8 @@ sub add_to_watchlist {
         user      => $self->hub->current_user,
         workspace => $self->hub->current_workspace
     );
-    my $page = $self->hub->pages->new_page( $self->cgi->page );
+
+    my $page = $self->hub->pages->new_from_name( $self->cgi->page );
     if ( !$watchlist->has_page( page => $page ) ) {
         $watchlist->add_page( page => $page );
     }
@@ -145,7 +146,7 @@ sub remove_from_watchlist {
     );
 
     if ( $self->cgi->page ) {
-        my $page = $self->hub->pages->new_page( $self->cgi->page );
+        my $page = $self->hub->pages->new_from_name( $self->cgi->page );
         $watchlist->remove_page( page => $page );
         return '0';
     }
