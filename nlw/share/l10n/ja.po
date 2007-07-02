@@ -1122,7 +1122,7 @@ msgstr "あなたの自己紹介を作成"
 #: share/template/element/page/details:6
 #. (
 msgid "Created by %1 on %2."
-msgstr "%2 で %1 が作成"
+msgstr "%2 に %1 が作成"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:325
 #. (
@@ -1852,7 +1852,7 @@ msgstr "Email 招待状にあなたのメッセージを添えることができ
 #: lib/Socialtext/BugsPlugin.pm:32 share/template/bugs_content.html:25
 #.  
 msgid "Ignore Bug"
-msgstr "バグを無視する"
+msgstr "バグを無視"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:26
 #.  
@@ -2912,7 +2912,7 @@ msgstr "このテキストを書き換えてください。"
 #: lib/Socialtext/BugsPlugin.pm:31 share/template/bugs_content.html:24
 #.  
 msgid "Report Bug"
-msgstr "バグを報告する"
+msgstr "バグを報告"
 
 #: lib/Socialtext/UserSettingsPlugin.pm:481
 #. (
@@ -4397,7 +4397,7 @@ msgstr "また、ここに覚えておきたいページへのリンクを作成
 #: share/template/bugs_content.html:20
 #. (
 msgid "You can assist the Socialtext team to fix this bug by entering a comment about what actions you were performing when this bug occurred<a href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-color: black; text-decoration: none;\">.</a> Please enter your comments in the box below."
-msgstr "どのような作業を行っている時にこのバグが発生したか <a\n href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n color: black; text-decoration: none;\">.</a> 報告してください。 Socialtext チームがバグを修正する助けになります。 以下のボックスに記述してください。"
+msgstr "どのような作業を行っている時にこのバグが発生したか<a\n href=\"%1?action=bugs_dump;bug_id=%2\" style=\"text-\n color: black; text-decoration: none;\">.</a>報告してください。 Socialtext チームがバグを修正する助けになります。 以下のボックスに記述してください。"
 
 #: share/template/element/settings/workspaces_settings_appearance_section:22
 #.  
