@@ -527,7 +527,7 @@ msgstr "すべてのタグ"
 #: share/template/element/page/revision_view_actions:16
 #.  
 msgid "All&nbsp;Revisions"
-msgstr "すべての &nbsp;リビジョン"
+msgstr "すべてのリビジョン"
 
 #: share/template/email/workspace-invitation.html:5
 #. (
