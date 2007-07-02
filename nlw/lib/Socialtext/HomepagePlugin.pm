@@ -62,7 +62,7 @@ sub dashboard {
 
 sub _get_group_notes_info {
     my ($self) = @_;
-    my $page_title = 'Announcements and Links';
+    my $page_title = loc('Announcements and Links');
     return {
         html      => $self->hub->pages->new_from_name($page_title)->to_html_or_default,
         edit_path => $self->hub->helpers->page_edit_path($page_title),
