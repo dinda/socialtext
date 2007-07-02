@@ -539,11 +539,6 @@ msgstr "%1 への招待状"
 msgid "An account must be specified for all new workspaces."
 msgstr "すべての新しいワークスペースにアカウントを指定する必要があります。"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:74
-#. (
-msgid "An account with this name (%1) already exists."
-msgstr "この名前 (%1) のアカウントはすでに存在します。"
-
 #: share/template/bugs_content.html:17
 #.  
 msgid "An application error has occurred in the Socialtext Workspace system."
@@ -979,7 +974,7 @@ msgstr "オフラインで使用のコンピューターに、今回検索した
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr "オフラインで使用のコンピューターに、タグ %1 が付いたページを保存するには、このボタンをクリックしてください。"
 
-#: lib/Socialtext/WatchlistPlugin.pm:206
+#: lib/Socialtext/WatchlistPlugin.pm:207
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr "オフラインで使用のコンピューターに、ウォッチしているページを保存するには、このボタンをクリックしてください。"
@@ -1159,7 +1154,7 @@ msgstr "ほとんどのユーザが多くのワークスペースを持ってい
 msgid "Dashboard: %1"
 msgstr "ダッシュボード: %1"
 
-#: share/template/element/listview/pages:77 share/template/view/page_revision_list:47
+#: share/template/element/listview/pages:82 share/template/view/page_revision_list:47
 #.  
 msgid "Date"
 msgstr "日付"
@@ -1644,16 +1639,6 @@ msgstr "送信者:"
 msgid "Fully public"
 msgstr "完全に公開"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:114
-#. (
-msgid "Gave Socialtext Accounts access to %1"
-msgstr "%1 に Socialtext アカウントへのアクセス権を与えました。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:128
-#. (
-msgid "Gave Socialtext System Management access to %1"
-msgstr "%1 に Socialtext システム管理へのアクセス権を与えました。"
-
 #: lib/Socialtext/DisplayPlugin.pm:26
 #.  
 msgid "German"
@@ -2029,7 +2014,7 @@ msgstr "24時間以内"
 msgid "Last 3 Days"
 msgstr "3日前"
 
-#: share/template/element/listview/pages:74
+#: share/template/element/listview/pages:79
 #.  
 msgid "Last Edited By"
 msgstr "最後に編集したユーザ"
@@ -2379,7 +2364,7 @@ msgstr "アップロードはありません。"
 msgid "No users entered"
 msgstr "ユーザが入力されていません。"
 
-#: lib/Socialtext/WatchlistPlugin.pm:192
+#: lib/Socialtext/WatchlistPlugin.pm:193
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr "%2 の %1 のウォッチリストはありません。"
@@ -2544,7 +2529,7 @@ msgstr "ページにタイトルがありません。"
 msgid "Pages"
 msgstr "ページ数"
 
-#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:261 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr "ウォッチしているページ"
@@ -2869,16 +2854,6 @@ msgstr "キューから%1を削除"
 msgid "Remove All"
 msgstr "すべて削除"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:117
-#. (
-msgid "Removed Socialtext Accounts access from %1"
-msgstr "%1 の Socialtext アカウントへのアクセス権を削除しました。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:131
-#. (
-msgid "Removed Socialtext System Management access from %1"
-msgstr "%1 の Socialtext システム管理へのアクセス権を削除しました。"
-
 #: share/template/popup/rename:31
 #.  
 msgid "Rename"
@@ -2939,7 +2914,7 @@ msgstr "今すぐ戻す"
 msgid "Restore Page"
 msgstr "ページを元に戻す"
 
-#: share/template/element/page/revision_view_actions:52
+#: share/template/element/page/revision_view_actions:53
 #. (
 msgid "Restore Revision %1"
 msgstr "リビジョン %1 に戻す"
@@ -2984,7 +2959,7 @@ msgstr "%1の設定を確認する、または、変更する:"
 msgid "Revision %1"
 msgstr "リビジョン %1"
 
-#: share/template/element/listview/pages:80
+#: share/template/element/listview/pages:85
 #.  
 msgid "Revisions"
 msgstr "リビジョン"
@@ -3284,66 +3259,6 @@ msgstr "Socialtext 使用レポート要約:"
 msgid "Somebody else made changes to the page while you were editing it."
 msgstr "編集中に別のユーザが修正を加えました。"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:370
-#.  
-msgid "Sort by account in ascending order"
-msgstr "アカウントを昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:371
-#.  
-msgid "Sort by account in descending order"
-msgstr "アカウントを降順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:378
-#.  
-msgid "Sort by creator in ascending order"
-msgstr "作成者を昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:379
-#.  
-msgid "Sort by creator in descending order"
-msgstr "作成者を降順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:374
-#.  
-msgid "Sort by date created in ascending order"
-msgstr "作成日を昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:375
-#.  
-msgid "Sort by date created in descending order"
-msgstr "作成日を降順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:358
-#.  
-msgid "Sort by name in ascending order"
-msgstr "名前を昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:359
-#.  
-msgid "Sort by name in descending order"
-msgstr "名前を降順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:366
-#.  
-msgid "Sort by number of users in ascending order"
-msgstr "ユーザ数を昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:367
-#.  
-msgid "Sort by number of users in descending order"
-msgstr "ユーザ数を降順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:362
-#.  
-msgid "Sort by number of workspaces in ascending order"
-msgstr "ワークスペース数を昇順で並べ替える"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:363
-#.  
-msgid "Sort by number of workspaces in descending order"
-msgstr "ワークスペース数を降順で並べ替える"
-
 #: share/template/element/settings/workspaces_settings_features_section:80
 #.  
 msgid "Sort entries by first posted time"
@@ -3394,7 +3309,7 @@ msgstr "提案："
 msgid "Summary"
 msgstr "要約"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:191
+#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr "日"
@@ -3463,16 +3378,6 @@ msgstr "Technorati: %1"
 #.  
 msgid "Thanks,"
 msgstr "あなたの参加をお待ちしております。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:80
-#. (
-msgid "The %1 account has been created."
-msgstr "アカウント ％１ が作成されました。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:103
-#. (
-msgid "The %1 workspace is now part of the %2 account."
-msgstr "ワークスペース %1 は %2 アカウントに属しています。"
 
 #: lib/Socialtext/User/Default.pm:164
 #. (
@@ -3759,7 +3664,7 @@ msgstr "各日の時間"
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr "コツ: 選択したタイトルを使えば、あとでこのページを見つけることができます。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:76
 #.  
 msgid "Title"
 msgstr "タイトル"
@@ -4014,15 +3919,10 @@ msgstr "ユーザ名"
 msgid "Username:"
 msgstr "ユーザ名:"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:313 share/template/element/settings/select:3
+#: share/template/element/settings/select:3
 #.  
 msgid "Users"
 msgstr "ユーザ"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:301
-#. (
-msgid "Users matching \"%1\""
-msgstr "\"%1\" と一致するユーザ"
 
 #: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:369 lib/Socialtext/UserSettingsPlugin.pm:430
 #.  
@@ -4089,7 +3989,7 @@ msgstr "このページをウォッチする"
 msgid "Watching this page"
 msgstr "このページをウォッチ中"
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:200
 #.  
 msgid "Watchlist"
 msgstr "ウォッチリスト"
@@ -4314,7 +4214,7 @@ msgstr "ワークスペース名は 3-30 文字でなければなりません。
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr "ワークスペースのタイトルは 2-64 文字でなければなりません。"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:269 share/console-template/template/overview.html:6 share/template/element/settings/select:18
+#: share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
 msgid "Workspaces"
 msgstr "ワークスペース"
@@ -4323,11 +4223,6 @@ msgstr "ワークスペース"
 #. (
 msgid "Workspaces initialized.<br>Log: %1"
 msgstr "ワークスペースが初期化されました。 <br>ログ: %1"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:257
-#. (
-msgid "Workspaces matching \"%1\""
-msgstr ""
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:176
 #.  
@@ -4494,25 +4389,10 @@ msgstr "OpenID と Email の両方を入力してください。"
 msgid "You must login to view this page."
 msgstr "このページを見るにはログインする必要があります。"
 
-#: lib/Socialtext/Handler/ControlPanel.pm:68
-#.  
-msgid "You must provide a name to create a new account."
-msgstr "新しいアカウントを作成するには、名前が必要です。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:143
-#. (
-msgid "You must provide a user_id to this URI (%1)."
-msgstr "この URI (%1) に user_id を指定してください。"
-
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
 msgid "You must provide a valid email address."
 msgstr "有効な Email アドレスを指定してください。"
-
-#: lib/Socialtext/Handler/ControlPanel.pm:96
-#. (
-msgid "You must provide a workspace and account to this URI (%1)"
-msgstr "この URI (%1) に 、ワークスペースとアカウントを指定してください。"
 
 #: share/template/errors/requires_confirmation:2
 #.  

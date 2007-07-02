@@ -539,11 +539,6 @@ msgstr ""
 msgid "An account must be specified for all new workspaces."
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:74
-#. (
-msgid "An account with this name (%1) already exists."
-msgstr ""
-
 #: share/template/bugs_content.html:17
 #.  
 msgid "An application error has occurred in the Socialtext Workspace system."
@@ -979,7 +974,7 @@ msgstr ""
 msgid "Click this button to save the pages with the tag %1 to your computer for offline use."
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:206
+#: lib/Socialtext/WatchlistPlugin.pm:207
 #.  
 msgid "Click this button to save the pages you're watching for offline use."
 msgstr ""
@@ -1159,7 +1154,7 @@ msgstr ""
 msgid "Dashboard: %1"
 msgstr ""
 
-#: share/template/element/listview/pages:77 share/template/view/page_revision_list:47
+#: share/template/element/listview/pages:82 share/template/view/page_revision_list:47
 #.  
 msgid "Date"
 msgstr ""
@@ -1644,16 +1639,6 @@ msgstr ""
 msgid "Fully public"
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:114
-#. (
-msgid "Gave Socialtext Accounts access to %1"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:128
-#. (
-msgid "Gave Socialtext System Management access to %1"
-msgstr ""
-
 #: lib/Socialtext/DisplayPlugin.pm:26
 #.  
 msgid "German"
@@ -2029,7 +2014,7 @@ msgstr ""
 msgid "Last 3 Days"
 msgstr ""
 
-#: share/template/element/listview/pages:74
+#: share/template/element/listview/pages:79
 #.  
 msgid "Last Edited By"
 msgstr ""
@@ -2379,7 +2364,7 @@ msgstr ""
 msgid "No users entered"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:192
+#: lib/Socialtext/WatchlistPlugin.pm:193
 #. (
 msgid "No watchlist for %1 in %2"
 msgstr ""
@@ -2544,7 +2529,7 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:260 share/template/view/empty_watchlist:7
+#: lib/Socialtext/WatchlistPlugin.pm:261 share/template/view/empty_watchlist:7
 #.  
 msgid "Pages You're Watching"
 msgstr ""
@@ -2869,16 +2854,6 @@ msgstr ""
 msgid "Remove All"
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:117
-#. (
-msgid "Removed Socialtext Accounts access from %1"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:131
-#. (
-msgid "Removed Socialtext System Management access from %1"
-msgstr ""
-
 #: share/template/popup/rename:31
 #.  
 msgid "Rename"
@@ -2939,7 +2914,7 @@ msgstr ""
 msgid "Restore Page"
 msgstr ""
 
-#: share/template/element/page/revision_view_actions:52
+#: share/template/element/page/revision_view_actions:53
 #. (
 msgid "Restore Revision %1"
 msgstr ""
@@ -2984,7 +2959,7 @@ msgstr ""
 msgid "Revision %1"
 msgstr ""
 
-#: share/template/element/listview/pages:80
+#: share/template/element/listview/pages:85
 #.  
 msgid "Revisions"
 msgstr ""
@@ -3284,66 +3259,6 @@ msgstr ""
 msgid "Somebody else made changes to the page while you were editing it."
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:370
-#.  
-msgid "Sort by account in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:371
-#.  
-msgid "Sort by account in descending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:378
-#.  
-msgid "Sort by creator in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:379
-#.  
-msgid "Sort by creator in descending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:374
-#.  
-msgid "Sort by date created in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:375
-#.  
-msgid "Sort by date created in descending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:358
-#.  
-msgid "Sort by name in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:359
-#.  
-msgid "Sort by name in descending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:366
-#.  
-msgid "Sort by number of users in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:367
-#.  
-msgid "Sort by number of users in descending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:362
-#.  
-msgid "Sort by number of workspaces in ascending order"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:363
-#.  
-msgid "Sort by number of workspaces in descending order"
-msgstr ""
-
 #: share/template/element/settings/workspaces_settings_features_section:80
 #.  
 msgid "Sort entries by first posted time"
@@ -3394,7 +3309,7 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:191
+#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr ""
@@ -3462,16 +3377,6 @@ msgstr ""
 #: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
 #.  
 msgid "Thanks,"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:80
-#. (
-msgid "The %1 account has been created."
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:103
-#. (
-msgid "The %1 workspace is now part of the %2 account."
 msgstr ""
 
 #: lib/Socialtext/User/Default.pm:164
@@ -3759,7 +3664,7 @@ msgstr ""
 msgid "Tip: You'll be able to find this page later by using the title you choose."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:71
+#: share/javascript/Wikiwyg/Jemplate.js:1402 share/template/element/listview/pages:76
 #.  
 msgid "Title"
 msgstr ""
@@ -4014,14 +3919,9 @@ msgstr ""
 msgid "Username:"
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:313 share/template/element/settings/select:3
+#: share/template/element/settings/select:3
 #.  
 msgid "Users"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:301
-#. (
-msgid "Users matching \"%1\""
 msgstr ""
 
 #: lib/Socialtext/OpenIdPlugin.pm:91 lib/Socialtext/UserSettingsPlugin.pm:283 lib/Socialtext/UserSettingsPlugin.pm:369 lib/Socialtext/UserSettingsPlugin.pm:430
@@ -4089,7 +3989,7 @@ msgstr ""
 msgid "Watching this page"
 msgstr ""
 
-#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:199
+#: lib/Socialtext/WatchlistPlugin.pm:18 lib/Socialtext/WatchlistPlugin.pm:200
 #.  
 msgid "Watchlist"
 msgstr ""
@@ -4314,7 +4214,7 @@ msgstr ""
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:269 share/console-template/template/overview.html:6 share/template/element/settings/select:18
+#: share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
 msgid "Workspaces"
 msgstr ""
@@ -4322,11 +4222,6 @@ msgstr ""
 #: lib/Socialtext/Appliance/Model/Setup.pm:157
 #. (
 msgid "Workspaces initialized.<br>Log: %1"
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:257
-#. (
-msgid "Workspaces matching \"%1\""
 msgstr ""
 
 #: lib/Socialtext/WorkspacesUIPlugin.pm:176
@@ -4494,24 +4389,9 @@ msgstr ""
 msgid "You must login to view this page."
 msgstr ""
 
-#: lib/Socialtext/Handler/ControlPanel.pm:68
-#.  
-msgid "You must provide a name to create a new account."
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:143
-#. (
-msgid "You must provide a user_id to this URI (%1)."
-msgstr ""
-
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
 msgid "You must provide a valid email address."
-msgstr ""
-
-#: lib/Socialtext/Handler/ControlPanel.pm:96
-#. (
-msgid "You must provide a workspace and account to this URI (%1)"
 msgstr ""
 
 #: share/template/errors/requires_confirmation:2
