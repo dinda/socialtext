@@ -104,7 +104,6 @@
             + email_page_user_select_right;
   END;
 %]
-
 [% BLOCK email_page_user_select_left %]
   <div id="[% ns %]-userselect-columnleft" class="email-page-user-select-column">
   [% IF users %]
