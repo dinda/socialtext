@@ -144,8 +144,8 @@ sub _copy_default_pages {
     $help_hub->registry->load;
 
     # Get all the default pages from the help workspace
-    my @pages = $help_hub->category->get_pages_for_category( loc("Welcome") );
-    push @pages, $help_hub->category->get_pages_for_category( loc("Top Page") );
+    my @pages = $help_hub->category->get_pages_for_category( "Welcome" );
+    push @pages, $help_hub->category->get_pages_for_category( "Top Page" );
 
     # Duplicate the pages
     for my $page (@pages) {
