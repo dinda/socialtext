@@ -82,8 +82,8 @@ sub format_date {
 
 sub page_display_link {
     my $self = shift;
-    my $id = shift;
-    my $page = $self->hub->pages->new_from_name($id);
+    my $name = shift;
+    my $page = $self->hub->pages->new_from_name($name);
     return $self->page_display_link_from_page($page);
 }
 
