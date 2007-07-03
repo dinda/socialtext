@@ -243,7 +243,7 @@ sub watchlist_changes {
 
         my $watchlist;
         foreach my $page (@$pages) {
-            my $page_object = $self->hub->pages->new_from_name($page);
+            my $page_object = $self->hub->pages->new_page($page);
 
             # If the page has been purged take it out of the watchlist
             if ( !$page_object->active ) {

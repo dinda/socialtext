@@ -264,6 +264,7 @@ sub html {
         ? "<a title=\"(" . loc('start irc session') . ")\" href=\"$href\">$href</a>"
         : "<a $target title=\"(" . loc('external link') . ")\" href=\"$href\">$href</a>";
 
+
     return $wrap_start . $output . $wrap_finish;
 }
 

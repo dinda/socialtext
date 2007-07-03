@@ -4,6 +4,7 @@
 use strict;
 use warnings;
 
+use Apache::Constants;
 use mocked 'Apache::Request', qw/get_log_reasons/;
 use mocked 'Apache::Cookie';
 

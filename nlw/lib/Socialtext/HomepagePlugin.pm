@@ -141,7 +141,7 @@ sub _get_watchlist_info {
     # Leave the rest of purging to display_watchlist action.
     # (Or further invocations to this function.)
     foreach ( $watchlist->pages() ) {
-        my $page = $self->hub->pages->new_from_name($_);
+        my $page = $self->hub->pages->new_page($_);
         if ( !$page->active ) {
             $watchlist ||= Socialtext::Watchlist->new(
                 user      => $self->hub->current_user,

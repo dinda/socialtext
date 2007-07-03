@@ -27,6 +27,10 @@ field widgets_definition => {} => -init => q{
         my $yaml_path = Socialtext::AppConfig->code_base . '/javascript/Widgets.yaml';
         YAML::LoadFile($yaml_path);
 };
+field widgets_definition => {} => -init => q{
+        my $yaml_path = Socialtext::AppConfig->code_base . '/javascript/Widgets.yaml';
+        YAML::LoadFile($yaml_path);
+};
 
 my $out_path = '/tmp/wikiwyg-' . $<;
 my $test_list_override = "";

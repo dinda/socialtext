@@ -3302,7 +3302,7 @@ msgstr "この添付についての小計"
 #: share/template/element/page/tag_queue_interface:12 share/template/element/page/tags:22
 #.  
 msgid "Suggestions:"
-msgstr "提案："
+msgstr "候補："
 
 #: share/template/view/page/stats:9
 #.  
