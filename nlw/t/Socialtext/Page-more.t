@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 37;
+use Test::Socialtext tests => 34;
 fixtures( 'admin_with_extra_pages' );
 
 my $hub = new_hub('admin');
