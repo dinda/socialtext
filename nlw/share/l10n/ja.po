@@ -379,7 +379,7 @@ msgstr "%1 のアクティブユーザ数: %2"
 msgid "Active?"
 msgstr "有効？"
 
-#: share/template/popup/email_page:130 share/template/popup/email_page:138
+#: share/template/popup/email_page:129 share/template/popup/email_page:137
 #.  
 msgid "Add"
 msgstr "追加"
@@ -389,7 +389,7 @@ msgstr "追加"
 msgid "Add Administrator"
 msgstr "管理者を追加"
 
-#: share/template/popup/email_page:134
+#: share/template/popup/email_page:133
 #.  
 msgid "Add All"
 msgstr "すべて追加"
@@ -424,7 +424,7 @@ msgstr "このページのトップにある添付にリンクを追加します
 msgid "Add file"
 msgstr "ファイルを追加"
 
-#: share/javascript/tagqueue.js:199 share/template/element/page/tags:14
+#: share/javascript/tagqueue.js:196 share/template/element/page/tags:14
 #.  
 msgid "Add tag"
 msgstr "タグを追加"
@@ -439,12 +439,12 @@ msgstr "このメッセージを Email の一番上に付けますか？ (次の
 msgid "Add&nbsp;tag"
 msgstr "タグを追加"
 
-#: share/template/layout/html:110
+#: share/template/layout/html:111
 #.  
 msgid "Add&nbsp;tags"
 msgstr "タグを追加"
 
-#: share/template/popup/email_page:117
+#: share/template/popup/email_page:116
 #.  
 msgid "Additional Recipient"
 msgstr "宛先を追加"
@@ -554,7 +554,7 @@ msgstr "登録を確認する Email が %1 に送られました。"
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "パスワードの変更方法を記載した Email が %1 に送られました。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
+#: lib/Socialtext/WikiwygPlugin.pm:569 lib/Socialtext/WikiwygPlugin.pm:719
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "ページIDが無効です: %1"
@@ -564,7 +564,7 @@ msgstr "ページIDが無効です: %1"
 msgid "And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "何かを壊したり、なくすことはないので、心配しないでください。このページの前バージョンが保存されているので、常に作業中のページはバックアップがとられています。"
 
-#: share/template/view/homepage:58
+#: lib/Socialtext/HomepagePlugin.pm:65 share/template/view/homepage:58
 #.  
 msgid "Announcements and Links"
 msgstr "お知らせとリンク"
@@ -674,7 +674,7 @@ msgstr "検索システムの開発が進むにつれ、利用できるオプシ
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "添付"
@@ -794,7 +794,7 @@ msgstr "'%1' と Skype 通話を開始します。クリックして編集して
 msgid "Can't remove privileges of the last admin"
 msgstr "前回の管理者の権限を削除できません。"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "キャンセル"
@@ -884,7 +884,7 @@ msgstr "このページの最新版を見るには、<a href=\"%1\">here</a>を�
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
 msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルを追加\" をクリックすると、このファイルがこのページの添付リストに追加され、ページを保存した時にアップロードされます。"
 
-#: share/javascript/pageview.js:515 share/template/element/page/attachment_attach_interface:10
+#: share/javascript/pageview.js:458 share/template/element/page/attachment_attach_interface:10
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
 msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルのアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
@@ -904,7 +904,7 @@ msgstr "このページにコメントを追加するには、このボタンを
 msgid "Click this button to add a file to the page"
 msgstr "このページにファイルを追加するには、このボタンをクリックしてください。"
 
-#: share/template/element/page/tags:14 share/template/layout/html:110
+#: share/template/element/page/tags:14 share/template/layout/html:111
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr "このページにタグを追加するには、このボタンをクリックしてください。"
@@ -999,7 +999,7 @@ msgstr "ページを保存するには、このボタンをクリックしてく
 msgid "Click this button to save your tag"
 msgstr "タグを保存するには、このボタンをクリックしてください。"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Click this button to upload a file to the page"
 msgstr "このページにファイルをアップロードするには、このボタンをクリックしてください。"
@@ -1274,7 +1274,7 @@ msgstr "このワークスペースを次のように設定しますか？:"
 msgid "Done"
 msgstr "終了"
 
-#: lib/Socialtext/WikiwygPlugin.pm:622
+#: lib/Socialtext/WikiwygPlugin.pm:626
 #.  
 msgid "Double-click to edit a page?"
 msgstr "ダブルクリックしてページを編集しますか?"
@@ -1334,7 +1334,7 @@ msgstr "記述方法"
 msgid "Edited By"
 msgstr "編集者"
 
-#: share/template/layout/html:97
+#: share/template/layout/html:98
 #.  
 msgid "Editing"
 msgstr "編集"
@@ -1419,7 +1419,7 @@ msgstr "このワークスペースに招待したい人の Email アドレス�
 msgid "Enter a meaningful and distinctive title for your page."
 msgstr "あなたのページにわかりやすいタイトルをつけてください。"
 
-#: share/javascript/tagqueue.js:200 share/template/element/page/tag_queue_interface:8
+#: share/javascript/tagqueue.js:197 share/template/element/page/tag_queue_interface:8
 #.  
 msgid "Enter a tag and click \"Add tag\". The tag will be saved when you save the page."
 msgstr "タグを入力し ”別のタグを追加” をクリックしてください。"
@@ -2169,6 +2169,11 @@ msgstr "ウォッチしたいページ上で<img border=\"0\" src=\"%1/images/st
 msgid "Make your contributions in the text box, then click \"Save\"."
 msgstr "追加、変更したい内容をテキストボックスに記述し、\"保存\"をクリックしてください。"
 
+#: lib/Socialtext/Hub.pm:139
+#.  
+msgid "Malformed query."
+msgstr "不正クエリです。"
+
 #: share/template/element/settings/select:8
 #.  
 msgid "Manage All Users"
@@ -2269,7 +2274,7 @@ msgstr "新しいパスワードが一致しません。"
 msgid "New passwords must be at least 6 characters long."
 msgstr "新しいパスワードは6文字以上にしてください。"
 
-#: share/javascript/pageview.js:1162 share/template/element/wiki/nav:16
+#: share/javascript/pageview.js:1107 share/template/element/wiki/nav:16
 #.  
 msgid "New search"
 msgstr "ワードを入力"
@@ -2319,7 +2324,7 @@ msgstr "確認するファイルがありません。"
 msgid "No files available to restore."
 msgstr "元に戻すファイルがありません。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
+#: lib/Socialtext/WikiwygPlugin.pm:560 lib/Socialtext/WikiwygPlugin.pm:710
 #.  
 msgid "No page ID given"
 msgstr "ページID を入力してください。"
@@ -2514,7 +2519,7 @@ msgstr "このページは %1 に名前が変更になりました。"
 msgid "Page section name"
 msgstr "ページのセクション名"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。"
@@ -2567,7 +2572,7 @@ msgstr "今すぐバックアップを行う"
 #: share/console-template/template/backup.html:16
 #.  
 msgid "Perform Restore"
-msgstr "回復を行う"
+msgstr "復元を行う"
 
 #: share/template/element/settings/users_invite_search_section:74 share/template/element/settings/users_invite_section:30
 #.  
@@ -2632,7 +2637,7 @@ msgstr "このリンクからあなたのアドレスを確認してください
 #: share/template/element/settings/weblog_create:9
 #.  
 msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
-msgstr "あなたのウェブログに名前を付けてください。名前が \"Blog\" か \"Weblog\"で終わらない場合は、あなたの付けた名前に \"Blog\"が自動的に追加されます。\"保存\"をクリックすると、新しいウェブログが表示されます。"
+msgstr "あなたのウェブログに名前を付けてください。名前が \"ウェブログ\" で終わらない場合は、あなたの付けた名前に \"ウェブログ\"が自動的に追加されます。\"保存\"をクリックすると、新しいウェブログが表示されます。"
 
 #: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
@@ -2643,6 +2648,11 @@ msgstr "この方たちを%1ワークスペースに招待してください。"
 #.  
 msgid "Please select a file to restore"
 msgstr "元に戻したいファイルを選択してください。"
+
+#: lib/Socialtext/Hub.pm:143
+#. (
+msgid "Please send email to <a href=\"mailto:%1\">%1</a> if you think it should have worked."
+msgstr "修正したい場合は、<a href=\"mailto:%1\">%1</a>に Email を送ってください。"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:101
 #.  
@@ -2767,7 +2777,7 @@ msgstr "今すぐ再起動する"
 #: lib/Socialtext/WeblogPlugin.pm:208
 #.  
 msgid "Recent Changes"
-msgstr ""
+msgstr "最近の更新"
 
 #: lib/Socialtext/EmailNotifyPlugin.pm:146
 #. (
@@ -2814,7 +2824,7 @@ msgstr "最近見たページ"
 msgid "Recently Viewed Pages"
 msgstr "最近見たページ"
 
-#: share/template/popup/email_page:145
+#: share/template/popup/email_page:144
 #.  
 msgid "Recipient(s)"
 msgstr "宛先"
@@ -2839,7 +2849,7 @@ msgstr "登録"
 msgid "Remember me on this computer."
 msgstr "次回から自動ログイン"
 
-#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:131
+#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:130
 #.  
 msgid "Remove"
 msgstr "削除"
@@ -2849,7 +2859,7 @@ msgstr "削除"
 msgid "Remove %1 from the queue"
 msgstr "キューから%1を削除"
 
-#: share/template/popup/email_page:135
+#: share/template/popup/email_page:134
 #.  
 msgid "Remove All"
 msgstr "すべて削除"
@@ -2984,7 +2994,7 @@ msgstr "サンプル Weblog"
 msgid "Sat"
 msgstr "土"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "保存"
@@ -3574,6 +3584,11 @@ msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の<span
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
 
+#: lib/Socialtext/Hub.pm:135
+#.  
+msgid "There was an error with your request"
+msgstr "あなたのリクエストでエラーが発生しました"
+
 #: share/template/fetchrss.html:34
 #.  
 msgid "There was an error:"
@@ -3754,7 +3769,7 @@ msgstr "%1 のウォッチリストにあるワークスペースであった変
 msgid "To use the watchlist feature in a workspace, you must be logged in."
 msgstr "ワークスペースのウォッチリスト機能を使用するには、ログインする必要があります。"
 
-#: share/template/popup/email_page:119
+#: share/template/popup/email_page:118
 #. (
 msgid "Too many users (%1) to display for selection. Please add recipients manually."
 msgstr "選択できるユーザ(%1)の数が多すぎます。宛先を手動で選択してください。"
@@ -3763,11 +3778,6 @@ msgstr "選択できるユーザ(%1)の数が多すぎます。宛先を手動�
 #.  
 msgid "Tools"
 msgstr "ツール"
-
-#: lib/Socialtext/Workspace.pm:148
-#.  
-msgid "Top Page"
-msgstr "トップページ"
 
 #: share/template/element/settings/workspaces_settings_features_section:16
 #.  
@@ -3864,7 +3874,7 @@ msgstr "画像のアップロード"
 msgid "Upload Files"
 msgstr "ファイルのアップロード"
 
-#: share/javascript/pageview.js:514 share/javascript/pageview.js:600 share/template/element/page/attachment_attach_interface:33
+#: share/javascript/pageview.js:457 share/javascript/pageview.js:543 share/template/element/page/attachment_attach_interface:33
 #.  
 msgid "Upload file"
 msgstr "ファイルのアップロード"
@@ -3874,7 +3884,7 @@ msgstr "ファイルのアップロード"
 msgid "Upload files"
 msgstr "ファイルのアップロード"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Upload&nbsp;files"
 msgstr "ファイルのアップロード"
@@ -3944,7 +3954,7 @@ msgstr "ユーザ: ユーザを管理する"
 msgid "Users: My Settings"
 msgstr "ユーザ: プロフィールとパスワード"
 
-#: lib/Socialtext/WikiwygPlugin.pm:570
+#: lib/Socialtext/WikiwygPlugin.pm:574
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "バリデーターのサブルーチンがバリデーターの外部を参照しました。"
@@ -4043,11 +4053,6 @@ msgstr "ウェブログ"
 #.  
 msgid "Wed"
 msgstr "水"
-
-#: lib/Socialtext/Workspace.pm:147
-#.  
-msgid "Welcome"
-msgstr "ようこそ"
 
 #: share/template/view/homepage:9
 #. (
@@ -4149,7 +4154,7 @@ msgstr "ワークスペース"
 msgid "Workspace %1 is a required field."
 msgstr "ワークスペース %1 は必須のフィールドです。"
 
-#: share/template/popup/email_page:111
+#: share/template/popup/email_page:110
 #.  
 msgid "Workspace Address Book"
 msgstr "ワークスペース　アドレス帳"
@@ -4619,7 +4624,7 @@ msgstr "エラー:"
 msgid "external image"
 msgstr "外部からの画像"
 
-#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:330 share/template/view/refcard:31
+#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:331 share/template/view/refcard:31
 #.  
 msgid "external link"
 msgstr "外部リンクの作成"
@@ -4832,7 +4837,7 @@ msgstr "最近の更新"
 #: lib/Socialtext/Widget_resource.pm:44 share/javascript/widget_resource.js:44
 #. (
 msgid "recent changes: %1"
-msgstr "最近あった変更: %1"
+msgstr "最近の更新: %1"
 
 #: share/console-template/template/form.tmpl:7
 #.  
@@ -4869,7 +4874,7 @@ msgstr "セクションリンク"
 msgid "section: %1"
 msgstr "セクション: %1"
 
-#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:329
+#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:330
 #.  
 msgid "start irc session"
 msgstr "irc セッションを開始"
@@ -4929,7 +4934,7 @@ msgstr "目次: %1"
 msgid "total"
 msgstr "合計"
 
-#: share/template/popup/email_page:123
+#: share/template/popup/email_page:122
 #.  
 msgid "type email address here"
 msgstr "ここに Email アドレスをタイプしてください。"

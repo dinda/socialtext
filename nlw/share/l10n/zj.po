@@ -379,7 +379,7 @@ msgstr "あC7いvえ うsえr cおうN7 fおr %1: %2"
 msgid "Active?"
 msgstr "あC7いvえ?"
 
-#: share/template/popup/email_page:130 share/template/popup/email_page:138
+#: share/template/popup/email_page:129 share/template/popup/email_page:137
 #.  
 msgid "Add"
 msgstr "あDd"
@@ -389,7 +389,7 @@ msgstr "あDd"
 msgid "Add Administrator"
 msgstr "あDd あDmいnいs7rあ7おr"
 
-#: share/template/popup/email_page:134
+#: share/template/popup/email_page:133
 #.  
 msgid "Add All"
 msgstr "あDd あLl"
@@ -424,7 +424,7 @@ msgstr "あDd あ lいnK 7お 7Hえ あ77あcHmえn7 あ7 7Hえ 7おp おF 7hえ
 msgid "Add file"
 msgstr "あDd fいlえ"
 
-#: share/javascript/tagqueue.js:199 share/template/element/page/tags:14
+#: share/javascript/tagqueue.js:196 share/template/element/page/tags:14
 #.  
 msgid "Add tag"
 msgstr "あDd 7あg"
@@ -439,12 +439,12 @@ msgstr "あDd 7HいS Nお7え あ7 7hえ Frおn7 おf 7Hえ えMあいl? (yお�
 msgid "Add&nbsp;tag"
 msgstr "あDd&n8sP;7あG"
 
-#: share/template/layout/html:110
+#: share/template/layout/html:111
 #.  
 msgid "Add&nbsp;tags"
 msgstr "あDd&n8sP;7あGs"
 
-#: share/template/popup/email_page:117
+#: share/template/popup/email_page:116
 #.  
 msgid "Additional Recipient"
 msgstr "あDdい7いおNあL RえCいPいえn7"
@@ -554,7 +554,7 @@ msgstr "あN えmあいL CおNfいrMいNg yおうR RえGいS7Rあ7いおn hあs 
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "あN えmあいL Wい7h いNs7rうc7いおnS おn cHあNgいnG Yおうr pあsSwおrD HあS 8ええn sえn7 7お %1."
 
-#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
+#: lib/Socialtext/WikiwygPlugin.pm:569 lib/Socialtext/WikiwygPlugin.pm:719
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "あN いnVあLいD PあGえ いD WあS GいVえN: %1"
@@ -564,7 +564,7 @@ msgstr "あN いnVあLいD PあGえ いD WあS GいVえN: %1"
 msgid "And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "あNd dおn'7 wおrRy あ8おう7 8RえあkいnG あnY7HいNg - pRえVいおうS VえRsいおNs おF 7hえ PあGえ あRえ sあvえd, Sお 7HえRえ's あLwあyS あ 8あCkうp cおpY おf 7Hえ pあgえ Yおう'Rえ wおrKいNg おN."
 
-#: share/template/view/homepage:58
+#: lib/Socialtext/HomepagePlugin.pm:65 share/template/view/homepage:58
 #.  
 msgid "Announcements and Links"
 msgstr "あNnおうNcえmえn7s あNd lいnKs"
@@ -674,7 +674,7 @@ msgstr "あS Wえ cおn7いNうえ 7お dえvえlおp 7Hえ sえあRcH SyS7えm,
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "あ77あcHmえn7 Nお7 FおうnD. 7Hえ pあgえ NあMえ, FいLえ nあmえ おr いDえN7いfえr nうm8えR いn 7Hえ lいnK MあY 8え いNcおrRえC7, おr 7Hえ あ77あcHmえn7 MあY HあVえ 8ええN DえLえ7えD おr いS Nお7 Prえsえn7 いn 7HいS WおRkSpあcえ."
 
-#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "あ77あcHmえn7s"
@@ -794,7 +794,7 @@ msgstr "cあlL '%1' うSいNg sKyPえ. ClいcK 7お えDい7."
 msgid "Can't remove privileges of the last admin"
 msgstr "cあn'7 rえmおvえ Prいvいlえgえs おF 7hえ LあS7 あDmいn"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "cあnCえL"
@@ -884,7 +884,7 @@ msgstr "cLいCk <あ Hrえf=\"%1\">HえRえ</あ> 7お Gお 7お 7hえ Lあ7えS
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
 msgstr "cLいCk \"8RおWsえ\" 7お fいnD 7hえ FいLえ yおう wあn7 7お うPlおあD. wHえN Yおう ClいcK \"あdD FいLえ\" 7HいS FいLえ wいlL 8え あDdえd 7お 7hえ LいS7 おF あ77あChMえN7S FおR 7hいs pあgえ, あNd うPlおあDえD Whえn yおう sあvえ 7hえ PあGえ."
 
-#: share/javascript/pageview.js:515 share/template/element/page/attachment_attach_interface:10
+#: share/javascript/pageview.js:458 share/template/element/page/attachment_attach_interface:10
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
 msgstr "cLいCk \"8RおWsえ\" 7お fいnD 7hえ FいLえ yおう wあn7 7お うPlおあD. wHえN Yおう ClいcK \"うpLおあd fいlえ\" Yおうr fいlえ WいLl 8え うpLおあdえd あNd あDdえd 7お 7hえ LいS7 おF あ77あChMえN7S FおR 7hいs pあgえ."
@@ -904,7 +904,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お あdD あ CおMmえn7 7お 7Hえ pあgえ
 msgid "Click this button to add a file to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お あdD あ FいLえ 7お 7hえ PあGえ"
 
-#: share/template/element/page/tags:14 share/template/layout/html:110
+#: share/template/element/page/tags:14 share/template/layout/html:111
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お あdD あ 7あG 7お 7Hえ pあgえ"
@@ -999,7 +999,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お SあVえ yおうR PあGえ"
 msgid "Click this button to save your tag"
 msgstr "cLいCk 7HいS 8う77おn 7お SあVえ yおうR 7あG"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Click this button to upload a file to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お うpLおあd あ fいlえ 7お 7Hえ pあgえ"
@@ -1274,7 +1274,7 @@ msgstr "dお Yおう WあN7 7お Sえ7 うp 7HいS WおRkSpあcえ あs:"
 msgid "Done"
 msgstr "dおnえ"
 
-#: lib/Socialtext/WikiwygPlugin.pm:622
+#: lib/Socialtext/WikiwygPlugin.pm:626
 #.  
 msgid "Double-click to edit a page?"
 msgstr "dおう8lえ-ClいcK 7お えDい7 あ PあGえ?"
@@ -1334,7 +1334,7 @@ msgstr "えDい7 7いPs"
 msgid "Edited By"
 msgstr "えDい7えD 8y"
 
-#: share/template/layout/html:97
+#: share/template/layout/html:98
 #.  
 msgid "Editing"
 msgstr "えDい7いNg"
@@ -1419,7 +1419,7 @@ msgstr "えN7えr あ lいs7 おf えMあいl あDdRえSsえs (おnえ あdDrえ
 msgid "Enter a meaningful and distinctive title for your page."
 msgstr "えN7えr あ mえあNいNgFうL あnD DいS7いnC7いvえ 7い7lえ FおR Yおうr pあgえ."
 
-#: share/javascript/tagqueue.js:200 share/template/element/page/tag_queue_interface:8
+#: share/javascript/tagqueue.js:197 share/template/element/page/tag_queue_interface:8
 #.  
 msgid "Enter a tag and click \"Add tag\". The tag will be saved when you save the page."
 msgstr "えN7えr あ 7あg あNd cLいCk \"あDd 7あg\". 7hえ 7あG WいLl 8え SあVえD Whえn yおう sあvえ 7hえ PあGえ."
@@ -2169,6 +2169,11 @@ msgstr "lおおK FおR <いMg 8おrDえR=\"0\" SrC=\"%1/いMあGえS/S7/pあgえ
 msgid "Make your contributions in the text box, then click \"Save\"."
 msgstr "mあkえ Yおうr cおn7rい8う7いおNs いN 7hえ 7えX7 8おx, 7hえn cLいCk \"sあvえ\"."
 
+#: lib/Socialtext/Hub.pm:139
+#.  
+msgid "Malformed query."
+msgstr "mあlFおRmえd qうえRy."
+
 #: share/template/element/settings/select:8
 #.  
 msgid "Manage All Users"
@@ -2269,7 +2274,7 @@ msgstr "nえw pあsSwおrDs dお Nお7 Mあ7cH"
 msgid "New passwords must be at least 6 characters long."
 msgstr "nえw pあsSwおrDs mうs7 8え あ7 Lえあs7 6 Chあrあc7えRs lおnG."
 
-#: share/javascript/pageview.js:1162 share/template/element/wiki/nav:16
+#: share/javascript/pageview.js:1107 share/template/element/wiki/nav:16
 #.  
 msgid "New search"
 msgstr "nえw sえあRcH"
@@ -2319,7 +2324,7 @@ msgstr "nお FいLえ pRおVいDえD 7お vえrいfY"
 msgid "No files available to restore."
 msgstr "nお FいLえS あvあいLあ8lえ 7お rえs7おRえ."
 
-#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
+#: lib/Socialtext/WikiwygPlugin.pm:560 lib/Socialtext/WikiwygPlugin.pm:710
 #.  
 msgid "No page ID given"
 msgstr "nお PあGえ いD GいVえN"
@@ -2514,7 +2519,7 @@ msgstr "pあgえ RえNあMえD 7お %1"
 msgid "Page section name"
 msgstr "pあgえ SえC7いおN NあMえ"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "pあgえ 7い7lえ いs 7おお lおnG あf7えR うrL えnCおDいNg"
@@ -2643,6 +2648,11 @@ msgstr "pLえあsえ いnVい7え 7HえSえ pえおPlえ いn7お 7Hえ %1 WおR
 #.  
 msgid "Please select a file to restore"
 msgstr "pLえあsえ SえLえC7 あ fいlえ 7お rえs7おRえ"
+
+#: lib/Socialtext/Hub.pm:143
+#. (
+msgid "Please send email to <a href=\"mailto:%1\">%1</a> if you think it should have worked."
+msgstr "pLえあsえ SえNd えMあいl 7お <あ hRえF=\"Mあいl7お:%1\">%1</あ> いF Yおう 7hいnK い7 sHおうlD HあVえ wおrKえD."
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:101
 #.  
@@ -2814,7 +2824,7 @@ msgstr "rえcえn7lY Vいえwえd"
 msgid "Recently Viewed Pages"
 msgstr "rえcえn7lY Vいえwえd pあgえs"
 
-#: share/template/popup/email_page:145
+#: share/template/popup/email_page:144
 #.  
 msgid "Recipient(s)"
 msgstr "rえcいpいえN7(s)"
@@ -2839,7 +2849,7 @@ msgstr "rえgいs7えR"
 msgid "Remember me on this computer."
 msgstr "rえmえm8えR Mえ おN 7hいs cおmPう7えR."
 
-#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:131
+#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:130
 #.  
 msgid "Remove"
 msgstr "rえmおvえ"
@@ -2849,7 +2859,7 @@ msgstr "rえmおvえ"
 msgid "Remove %1 from the queue"
 msgstr "rえmおvえ %1 fRおM 7hえ Qうえうえ"
 
-#: share/template/popup/email_page:135
+#: share/template/popup/email_page:134
 #.  
 msgid "Remove All"
 msgstr "rえmおvえ あlL"
@@ -2984,7 +2994,7 @@ msgstr "sあmPlえ Wえ8lおg"
 msgid "Sat"
 msgstr "sあ7"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "sあvえ"
@@ -3574,6 +3584,11 @@ msgstr "7HえRえ いS <sPあN いd=\"s7-NえWpあgえ-DうPlいcあ7え-えmPh�
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "7HえRえ いS あlRえあdY あ '%1' wえ8LおG. pLえあsえ ChおおSえ あ dいfFえRえN7 nあmえ."
 
+#: lib/Socialtext/Hub.pm:135
+#.  
+msgid "There was an error with your request"
+msgstr "7HえRえ wあs あN えrRおR Wい7h yおうR RえQうえs7"
+
 #: share/template/fetchrss.html:34
 #.  
 msgid "There was an error:"
@@ -3754,7 +3769,7 @@ msgstr "7お S7おp rえcえいVいNg おR ChあnGえ hおw おF7えn yおう r�
 msgid "To use the watchlist feature in a workspace, you must be logged in."
 msgstr "7お うsえ 7hえ Wあ7cHlいs7 Fえあ7うrえ いn あ wおrKsPあCえ, Yおう MうS7 8え LおGgえd いN."
 
-#: share/template/popup/email_page:119
+#: share/template/popup/email_page:118
 #. (
 msgid "Too many users (%1) to display for selection. Please add recipients manually."
 msgstr "7おお mあnY うsえrS (%1) 7お DいSpLあY FおR SえLえC7いおN. pLえあsえ あdD RえCいPいえn7s mあnうあLlY."
@@ -3763,11 +3778,6 @@ msgstr "7おお mあnY うsえrS (%1) 7お DいSpLあY FおR SえLえC7いおN. 
 #.  
 msgid "Tools"
 msgstr "7おおLs"
-
-#: lib/Socialtext/Workspace.pm:148
-#.  
-msgid "Top Page"
-msgstr "7おp pあgえ"
 
 #: share/template/element/settings/workspaces_settings_features_section:16
 #.  
@@ -3864,7 +3874,7 @@ msgstr "うPlおあD あn いMあGえ"
 msgid "Upload Files"
 msgstr "うPlおあD FいLえS"
 
-#: share/javascript/pageview.js:514 share/javascript/pageview.js:600 share/template/element/page/attachment_attach_interface:33
+#: share/javascript/pageview.js:457 share/javascript/pageview.js:543 share/template/element/page/attachment_attach_interface:33
 #.  
 msgid "Upload file"
 msgstr "うPlおあD FいLえ"
@@ -3874,7 +3884,7 @@ msgstr "うPlおあD FいLえ"
 msgid "Upload files"
 msgstr "うPlおあD FいLえS"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Upload&nbsp;files"
 msgstr "うPlおあD&N8Sp;fいlえs"
@@ -3944,7 +3954,7 @@ msgstr "うSえRs: MあNあGえ あLl うSえRs"
 msgid "Users: My Settings"
 msgstr "うSえRs: My sえ77いNgS"
 
-#: lib/Socialtext/WikiwygPlugin.pm:570
+#: lib/Socialtext/WikiwygPlugin.pm:574
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "vあlいdあ7いおN Sう8rおう7いNえ cあlLえD おう7sいdえ おf vあlいdあ7おr"
@@ -4043,11 +4053,6 @@ msgstr "wえ8LおGs"
 #.  
 msgid "Wed"
 msgstr "wえd"
-
-#: lib/Socialtext/Workspace.pm:147
-#.  
-msgid "Welcome"
-msgstr "wえlCおMえ"
 
 #: share/template/view/homepage:9
 #. (
@@ -4149,7 +4154,7 @@ msgstr "wおrKsPあCえ"
 msgid "Workspace %1 is a required field."
 msgstr "wおrKsPあCえ %1 いs あ rえqういRえD FいえlD."
 
-#: share/template/popup/email_page:111
+#: share/template/popup/email_page:110
 #.  
 msgid "Workspace Address Book"
 msgstr "wおrKsPあCえ あDdRえSs 8おおK"
@@ -4619,7 +4624,7 @@ msgstr "えRrおr:"
 msgid "external image"
 msgstr "えX7えrNあL いmあgえ"
 
-#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:330 share/template/view/refcard:31
+#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:331 share/template/view/refcard:31
 #.  
 msgid "external link"
 msgstr "えX7えrNあL LいNk"
@@ -4869,7 +4874,7 @@ msgstr "sえc7いおn lいnK"
 msgid "section: %1"
 msgstr "sえc7いおn: %1"
 
-#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:329
+#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:330
 #.  
 msgid "start irc session"
 msgstr "s7あR7 いRc sえsSいおn"
@@ -4929,7 +4934,7 @@ msgstr "7おc: %1"
 msgid "total"
 msgstr "7お7あl"
 
-#: share/template/popup/email_page:123
+#: share/template/popup/email_page:122
 #.  
 msgid "type email address here"
 msgstr "7Ypえ えmあいL あdDrえsS HえRえ"

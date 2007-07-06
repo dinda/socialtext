@@ -379,7 +379,7 @@ msgstr "4C7Iv3 Us3r c0uN7 f0r %1: %2"
 msgid "Active?"
 msgstr "4C7Iv3?"
 
-#: share/template/popup/email_page:130 share/template/popup/email_page:138
+#: share/template/popup/email_page:129 share/template/popup/email_page:137
 #.  
 msgid "Add"
 msgstr "4Dd"
@@ -389,7 +389,7 @@ msgstr "4Dd"
 msgid "Add Administrator"
 msgstr "4Dd 4DmInIs7r470r"
 
-#: share/template/popup/email_page:134
+#: share/template/popup/email_page:133
 #.  
 msgid "Add All"
 msgstr "4Dd 4Ll"
@@ -424,7 +424,7 @@ msgstr "4Dd 4 lInK 70 7H3 4774cHm3n7 47 7H3 70p 0F 7h3 P4G3? Im4g3s wIlL 4pP34r 
 msgid "Add file"
 msgstr "4Dd fIl3"
 
-#: share/javascript/tagqueue.js:199 share/template/element/page/tags:14
+#: share/javascript/tagqueue.js:196 share/template/element/page/tags:14
 #.  
 msgid "Add tag"
 msgstr "4Dd 74g"
@@ -439,12 +439,12 @@ msgstr "4Dd 7HiS N073 47 7h3 Fr0n7 0f 7H3 3M4Il? (y0u c4n cUs70MiZ3 7H3 n073 83L
 msgid "Add&nbsp;tag"
 msgstr "4Dd&n8sP;74G"
 
-#: share/template/layout/html:110
+#: share/template/layout/html:111
 #.  
 msgid "Add&nbsp;tags"
 msgstr "4Dd&n8sP;74Gs"
 
-#: share/template/popup/email_page:117
+#: share/template/popup/email_page:116
 #.  
 msgid "Additional Recipient"
 msgstr "4DdI7I0N4L R3CiPi3n7"
@@ -554,7 +554,7 @@ msgstr "4N 3m4iL C0NfIrMiNg y0uR R3GiS7R47i0n h4s 833N S3N7 70 %1."
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "4N 3m4iL Wi7h iNs7rUc7i0nS 0n cH4NgInG Y0Ur p4sSw0rD H4S 833n s3n7 70 %1."
 
-#: lib/Socialtext/WikiwygPlugin.pm:565 lib/Socialtext/WikiwygPlugin.pm:715
+#: lib/Socialtext/WikiwygPlugin.pm:569 lib/Socialtext/WikiwygPlugin.pm:719
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "4N InV4LiD P4G3 iD W4S GiV3N: %1"
@@ -564,7 +564,7 @@ msgstr "4N InV4LiD P4G3 iD W4S GiV3N: %1"
 msgid "And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "4Nd d0n'7 w0rRy 480U7 8R34kInG 4nY7HiNg - pR3Vi0uS V3RsI0Ns 0F 7h3 P4G3 4R3 s4v3d, S0 7H3R3's 4Lw4yS 4 84CkUp c0pY 0f 7H3 p4g3 Y0U'R3 w0rKiNg 0N."
 
-#: share/template/view/homepage:58
+#: lib/Socialtext/HomepagePlugin.pm:65 share/template/view/homepage:58
 #.  
 msgid "Announcements and Links"
 msgstr "4Nn0uNc3m3n7s 4Nd lInKs"
@@ -674,7 +674,7 @@ msgstr "4S W3 c0n7iNu3 70 d3v3l0p 7H3 s34RcH SyS73m, 7h3 0p7i0nS Y0U WiLl h4v3 4
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "4774cHm3n7 N07 F0UnD. 7H3 p4g3 N4M3, FiL3 n4m3 0r iD3N7If3r nUm83R In 7H3 lInK M4Y 83 iNc0rR3C7, 0r 7H3 4774cHm3n7 M4Y H4V3 833N D3L373D 0r iS N07 Pr3s3n7 In 7HiS W0RkSp4c3."
 
-#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "4774cHm3n7s"
@@ -794,7 +794,7 @@ msgstr "c4lL '%1' uSiNg sKyP3. ClIcK 70 3Di7."
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "c4nC3L"
@@ -884,7 +884,7 @@ msgstr "cLiCk <a href=\"%1\">H3R3</4> 70 G0 70 7h3 L473S7 v3rSi0n 0F 7h3 P4G3."
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
 msgstr "cLiCk \"8R0Ws3\" 70 fInD 7h3 FiL3 y0u w4n7 70 uPl04D. wH3N Y0U ClIcK \"4dD FiL3\" 7HiS FiL3 wIlL 83 4Dd3d 70 7h3 LiS7 0F 4774ChM3N7S F0R 7hIs p4g3, 4Nd uPl04D3D Wh3n y0u s4v3 7h3 P4G3."
 
-#: share/javascript/pageview.js:515 share/template/element/page/attachment_attach_interface:10
+#: share/javascript/pageview.js:458 share/template/element/page/attachment_attach_interface:10
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
 msgstr "cLiCk \"8R0Ws3\" 70 fInD 7h3 FiL3 y0u w4n7 70 uPl04D. wH3N Y0U ClIcK \"UpL04d fIl3\" Y0Ur fIl3 WiLl 83 UpL04d3d 4Nd 4Dd3d 70 7h3 LiS7 0F 4774ChM3N7S F0R 7hIs p4g3."
@@ -904,7 +904,7 @@ msgstr "cLiCk 7HiS 8u770n 70 4dD 4 C0Mm3n7 70 7H3 p4g3"
 msgid "Click this button to add a file to the page"
 msgstr "cLiCk 7HiS 8u770n 70 4dD 4 FiL3 70 7h3 P4G3"
 
-#: share/template/element/page/tags:14 share/template/layout/html:110
+#: share/template/element/page/tags:14 share/template/layout/html:111
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr "cLiCk 7HiS 8u770n 70 4dD 4 74G 70 7H3 p4g3"
@@ -999,7 +999,7 @@ msgstr "cLiCk 7HiS 8u770n 70 S4V3 y0uR P4G3"
 msgid "Click this button to save your tag"
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 y0uR 74G"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Click this button to upload a file to the page"
 msgstr "cLiCk 7HiS 8u770n 70 UpL04d 4 fIl3 70 7H3 p4g3"
@@ -1274,7 +1274,7 @@ msgstr "d0 Y0U W4N7 70 S37 Up 7HiS W0RkSp4c3 4s:"
 msgid "Done"
 msgstr "d0n3"
 
-#: lib/Socialtext/WikiwygPlugin.pm:622
+#: lib/Socialtext/WikiwygPlugin.pm:626
 #.  
 msgid "Double-click to edit a page?"
 msgstr "d0u8l3-ClIcK 70 3Di7 4 P4G3?"
@@ -1334,7 +1334,7 @@ msgstr "3Di7 7iPs"
 msgid "Edited By"
 msgstr "3Di73D 8y"
 
-#: share/template/layout/html:97
+#: share/template/layout/html:98
 #.  
 msgid "Editing"
 msgstr "3Di7iNg"
@@ -1419,7 +1419,7 @@ msgstr "3N73r 4 lIs7 0f 3M4Il 4DdR3Ss3s (0n3 4dDr3sS P3R LiN3) 0f p30Pl3 Y0U W0U
 msgid "Enter a meaningful and distinctive title for your page."
 msgstr "3N73r 4 m34NiNgFuL 4nD DiS7InC7Iv3 7i7l3 F0R Y0Ur p4g3."
 
-#: share/javascript/tagqueue.js:200 share/template/element/page/tag_queue_interface:8
+#: share/javascript/tagqueue.js:197 share/template/element/page/tag_queue_interface:8
 #.  
 msgid "Enter a tag and click \"Add tag\". The tag will be saved when you save the page."
 msgstr "3N73r 4 74g 4Nd cLiCk \"4Dd 74g\". 7h3 74G WiLl 83 S4V3D Wh3n y0u s4v3 7h3 P4G3."
@@ -2169,6 +2169,11 @@ msgstr "l00K F0R <iMg 80rD3R=\"0\" SrC=\"%1/iM4G3S/S7/p4g3700Ls/w47Ch-h0v3r.gIf\
 msgid "Make your contributions in the text box, then click \"Save\"."
 msgstr "m4k3 Y0Ur c0n7rI8U7I0Ns iN 7h3 73X7 80x, 7h3n cLiCk \"s4v3\"."
 
+#: lib/Socialtext/Hub.pm:139
+#.  
+msgid "Malformed query."
+msgstr "m4lF0Rm3d qU3Ry."
+
 #: share/template/element/settings/select:8
 #.  
 msgid "Manage All Users"
@@ -2269,7 +2274,7 @@ msgstr "n3w p4sSw0rDs d0 N07 M47cH"
 msgid "New passwords must be at least 6 characters long."
 msgstr "n3w p4sSw0rDs mUs7 83 47 L34s7 6 Ch4r4c73Rs l0nG."
 
-#: share/javascript/pageview.js:1162 share/template/element/wiki/nav:16
+#: share/javascript/pageview.js:1107 share/template/element/wiki/nav:16
 #.  
 msgid "New search"
 msgstr "n3w s34RcH"
@@ -2319,7 +2324,7 @@ msgstr "n0 FiL3 pR0ViD3D 70 v3rIfY"
 msgid "No files available to restore."
 msgstr "n0 FiL3S 4v4iL48l3 70 r3s70R3."
 
-#: lib/Socialtext/WikiwygPlugin.pm:556 lib/Socialtext/WikiwygPlugin.pm:706
+#: lib/Socialtext/WikiwygPlugin.pm:560 lib/Socialtext/WikiwygPlugin.pm:710
 #.  
 msgid "No page ID given"
 msgstr "n0 P4G3 iD GiV3N"
@@ -2514,7 +2519,7 @@ msgstr "p4g3 R3N4M3D 70 %1"
 msgid "Page section name"
 msgstr "p4g3 S3C7I0N N4M3"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "p4g3 7i7l3 Is 700 l0nG 4f73R UrL 3nC0DiNg"
@@ -2643,6 +2648,11 @@ msgstr "pL34s3 InVi73 7H3S3 p30Pl3 In70 7H3 %1 W0RkSp4c3."
 #.  
 msgid "Please select a file to restore"
 msgstr "pL34s3 S3L3C7 4 fIl3 70 r3s70R3"
+
+#: lib/Socialtext/Hub.pm:143
+#. (
+msgid "Please send email to <a href=\"mailto:%1\">%1</a> if you think it should have worked."
+msgstr "pL34s3 S3Nd 3M4Il 70 <a href=\"M4Il70:%1\">%1</4> iF Y0U 7hInK I7 sH0UlD H4V3 w0rK3D."
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:101
 #.  
@@ -2814,7 +2824,7 @@ msgstr "r3c3n7lY Vi3w3d"
 msgid "Recently Viewed Pages"
 msgstr "r3c3n7lY Vi3w3d p4g3s"
 
-#: share/template/popup/email_page:145
+#: share/template/popup/email_page:144
 #.  
 msgid "Recipient(s)"
 msgstr "r3cIpI3N7(s)"
@@ -2839,7 +2849,7 @@ msgstr "r3gIs73R"
 msgid "Remember me on this computer."
 msgstr "r3m3m83R M3 0N 7hIs c0mPu73R."
 
-#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:131
+#: share/template/element/settings/users_listall_section:5 share/template/popup/email_page:130
 #.  
 msgid "Remove"
 msgstr "r3m0v3"
@@ -2849,7 +2859,7 @@ msgstr "r3m0v3"
 msgid "Remove %1 from the queue"
 msgstr "r3m0v3 %1 fR0M 7h3 Qu3u3"
 
-#: share/template/popup/email_page:135
+#: share/template/popup/email_page:134
 #.  
 msgid "Remove All"
 msgstr "r3m0v3 4lL"
@@ -2984,7 +2994,7 @@ msgstr "s4mPl3 W38l0g"
 msgid "Sat"
 msgstr "s47"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "s4v3"
@@ -3574,6 +3584,11 @@ msgstr "7H3R3 iS <sP4N Id=\"s7-N3Wp4g3-DuPlIc473-3mPh4sIs\">4Lr34Dy 4 p4g3</sP4N
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "7H3R3 iS 4lR34dY 4 '%1' w38L0G. pL34s3 Ch00S3 4 dIfF3R3N7 n4m3."
 
+#: lib/Socialtext/Hub.pm:135
+#.  
+msgid "There was an error with your request"
+msgstr "7H3R3 w4s 4N 3rR0R Wi7h y0uR R3Qu3s7"
+
 #: share/template/fetchrss.html:34
 #.  
 msgid "There was an error:"
@@ -3754,7 +3769,7 @@ msgstr "70 S70p r3c3iViNg 0R Ch4nG3 h0w 0F73n y0u r3c3iV3 3M4IlS 480u7 Ch4nG3S 7
 msgid "To use the watchlist feature in a workspace, you must be logged in."
 msgstr "70 Us3 7h3 W47cHlIs7 F347Ur3 In 4 w0rKsP4C3, Y0U MuS7 83 L0Gg3d iN."
 
-#: share/template/popup/email_page:119
+#: share/template/popup/email_page:118
 #. (
 msgid "Too many users (%1) to display for selection. Please add recipients manually."
 msgstr "700 m4nY Us3rS (%1) 70 DiSpL4Y F0R S3L3C7I0N. pL34s3 4dD R3CiPi3n7s m4nU4LlY."
@@ -3763,11 +3778,6 @@ msgstr "700 m4nY Us3rS (%1) 70 DiSpL4Y F0R S3L3C7I0N. pL34s3 4dD R3CiPi3n7s m4nU
 #.  
 msgid "Tools"
 msgstr "700Ls"
-
-#: lib/Socialtext/Workspace.pm:148
-#.  
-msgid "Top Page"
-msgstr "70p p4g3"
 
 #: share/template/element/settings/workspaces_settings_features_section:16
 #.  
@@ -3864,7 +3874,7 @@ msgstr "uPl04D 4n iM4G3"
 msgid "Upload Files"
 msgstr "uPl04D FiL3S"
 
-#: share/javascript/pageview.js:514 share/javascript/pageview.js:600 share/template/element/page/attachment_attach_interface:33
+#: share/javascript/pageview.js:457 share/javascript/pageview.js:543 share/template/element/page/attachment_attach_interface:33
 #.  
 msgid "Upload file"
 msgstr "uPl04D FiL3"
@@ -3874,7 +3884,7 @@ msgstr "uPl04D FiL3"
 msgid "Upload files"
 msgstr "uPl04D FiL3S"
 
-#: share/template/layout/html:107
+#: share/template/layout/html:108
 #.  
 msgid "Upload&nbsp;files"
 msgstr "uPl04D&N8Sp;fIl3s"
@@ -3944,7 +3954,7 @@ msgstr "uS3Rs: M4N4G3 4Ll uS3Rs"
 msgid "Users: My Settings"
 msgstr "uS3Rs: My s377iNgS"
 
-#: lib/Socialtext/WikiwygPlugin.pm:570
+#: lib/Socialtext/WikiwygPlugin.pm:574
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "v4lId47I0N Su8r0u7iN3 c4lL3D 0u7sId3 0f v4lId470r"
@@ -4043,11 +4053,6 @@ msgstr "w38L0Gs"
 #.  
 msgid "Wed"
 msgstr "w3d"
-
-#: lib/Socialtext/Workspace.pm:147
-#.  
-msgid "Welcome"
-msgstr "w3lC0M3"
 
 #: share/template/view/homepage:9
 #. (
@@ -4149,7 +4154,7 @@ msgstr "w0rKsP4C3"
 msgid "Workspace %1 is a required field."
 msgstr "w0rKsP4C3 %1 Is 4 r3qUiR3D Fi3lD."
 
-#: share/template/popup/email_page:111
+#: share/template/popup/email_page:110
 #.  
 msgid "Workspace Address Book"
 msgstr "w0rKsP4C3 4DdR3Ss 800K"
@@ -4619,7 +4624,7 @@ msgstr "3Rr0r:"
 msgid "external image"
 msgstr "3X73rN4L Im4g3"
 
-#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:330 share/template/view/refcard:31
+#: lib/Socialtext/Formatter/Phrase.pm:265 lib/Socialtext/Formatter/Phrase.pm:331 share/template/view/refcard:31
 #.  
 msgid "external link"
 msgstr "3X73rN4L LiNk"
@@ -4869,7 +4874,7 @@ msgstr "s3c7i0n lInK"
 msgid "section: %1"
 msgstr "s3c7i0n: %1"
 
-#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:329
+#: lib/Socialtext/Formatter/Phrase.pm:264 lib/Socialtext/Formatter/Phrase.pm:330
 #.  
 msgid "start irc session"
 msgstr "s74R7 iRc s3sSi0n"
@@ -4929,7 +4934,7 @@ msgstr "70c: %1"
 msgid "total"
 msgstr "7074l"
 
-#: share/template/popup/email_page:123
+#: share/template/popup/email_page:122
 #.  
 msgid "type email address here"
 msgstr "7Yp3 3m4iL 4dDr3sS H3R3"
