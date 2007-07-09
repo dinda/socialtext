@@ -10,8 +10,7 @@ use Socialtext::Pages;
 use Socialtext::MLDBMAccess;
 use URI;
 use URI::QueryParam;
-use Socialtext::l10n qw( loc system_locale );
-use utf8;
+use Socialtext::l10n qw( loc );
 
 sub class_id { 'weblog' }
 const class_title => 'Weblogs';
@@ -116,7 +115,7 @@ sub _create_weblog {
     }
 
     my $first_post_title = loc("First Post in [_1]", $weblog_category);
-    my $first_post_id = Socialtext::Page->name_to_id($weblog_name);
+    my $first_post_id = Socialtext::Page->name_to_id($first_post_title);
     my $first_post = $self->hub->pages->new_page($first_post_id);
 
     my $metadata = $first_post->metadata;

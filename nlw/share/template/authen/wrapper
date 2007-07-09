@@ -23,7 +23,9 @@
 
 <!-- @COPYRIGHT@ -->
 <div id="product">
- <span id="product_id"><a target="_blank" href="http://www.socialtext.com/">Socialtext Workspace<sup>&trade;</sup> v2.11.6.1</a>
+ <span id="product_id"><a target="_blank"
+            href="http://www.socialtext.com/">Socialtext
+            Workspace<sup>&trade;</sup> v[% st_version %]</a>
  </span>
 </div>
 

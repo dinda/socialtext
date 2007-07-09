@@ -164,8 +164,6 @@ sub _guess_string_encoding {
         }
         return 'utf8';
     }
-
-
 }
 
 sub ensure_directory {

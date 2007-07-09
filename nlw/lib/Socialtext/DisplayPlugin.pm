@@ -10,7 +10,7 @@ use Socialtext::User;
 use Socialtext::String;
 use Socialtext::TT2::Renderer;
 use Socialtext::BrowserDetect ();
-use Socialtext::l10n qw/loc system_locale/;
+use Socialtext::l10n qw/loc system_locale available_locales/;
 use JSON;
 
 $JSON::UTF8 = 1;
@@ -19,12 +19,6 @@ sub class_id { 'display' }
 const class_title => loc('Screen Layout');
 const maximum_header_attachments => 5;
 const cgi_class => 'Socialtext::Display::CGI';
-const languages => {
-    'en' => loc('English'),
-    'ja' => loc('Japanese'),
-    'fr' => loc('French'),
-    'de' => loc('German'),
-};
                 
 sub register {
     my $self = shift;
@@ -113,8 +107,8 @@ sub locale {
     my $p = $self->new_preference('locale');
     $p->query(loc('Which language do you use?'));
     $p->type('pulldown');
-    my $languages = $self->languages;
-    my $choices = [map {$_ => $languages->{$_}} sort keys %$languages];
+    my $languages = available_locales();
+    my $choices = [ map {$_ => $languages->{$_}} sort keys %$languages ];
     $p->choices($choices);
     
     # XXX default value should be server locale

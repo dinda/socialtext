@@ -3558,6 +3558,7 @@ Widget.Lightbox.show = function(param) {
 }
 
 Widget.Lightbox.prototype.show = function(callback) {
+    this.scrollable = "no";
     var div = this.create();
     if ( this.div.style.display== "none" )
         this.div.style.display="block";
@@ -3574,7 +3575,7 @@ Widget.Lightbox.prototype.hide = function() {
     if (this.div.parentNode) {
         this.div.style.display="none";
         if (Widget.Lightbox.is_ie) {
-            document.body.scroll="yes"
+            document.body.scroll = this.scrollable = "yes";
         }
     }
 }
@@ -3694,7 +3695,7 @@ Widget.Lightbox.prototype.applyStyle = function() {
     divs.contentWrapper.style.left = my_left;
 
     if ( Widget.Lightbox.is_ie ) {
-        document.body.scroll="no";
+        document.body.scroll = this.scrollable;
         divs.background.style.height = win_height;
     }
 }
@@ -12442,7 +12443,7 @@ proto.find_right = function(t, selection_end, matcher) {
 }
 
 proto.get_lines = function() {
-    t = this.area; // XXX needs "var"?
+    var t = this.area;
     var selection_start = t.selectionStart;
     var selection_end = t.selectionEnd;
 
@@ -13832,12 +13833,12 @@ This Wikiwyg mode supports a DesignMode wysiwyg editor with toolbar buttons
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -13868,7 +13869,7 @@ proto.config = {
     editHeightAdjustment: 1.3,
     clearRegex: null
 };
-    
+
 proto.initializeObject = function() {
     this.edit_iframe = this.get_edit_iframe();
     this.div = this.edit_iframe;
@@ -13901,7 +13902,8 @@ proto.enableThis = function() {
     this.edit_iframe.width = '100%';
     this.setHeightOf(this.edit_iframe);
     this.fix_up_relative_imgs();
-    this.get_edit_document().designMode = 'on';
+    if (!Wikiwyg.is_ie)
+        this.get_edit_document().designMode = 'on';
     this.apply_stylesheets();
     this.enable_keybindings();
     this.clear_inner_html();
@@ -13974,13 +13976,13 @@ proto.apply_inline_stylesheet = function(style, head) {
 
             /* It's pretty strange that this doesnt work.
                That's why Ajax.get() is used to retrive the css text.
-               
+
             this.apply_linked_stylesheet({
                 href: style.cssRules[i].href,
                 type: 'text/css'
             }, head);
             */
-            
+
             style_string += Ajax.get(style.cssRules[i].href);
         } else {
             style_string += style.cssRules[i].cssText + "\n";
@@ -14037,6 +14039,8 @@ proto.apply_linked_stylesheet = function(style, head) {
 proto.process_command = function(command) {
     if (this['do_' + command])
         this['do_' + command](command);
+    if (! Wikiwyg.is_ie)
+        this.get_edit_window().focus();
 }
 
 proto.exec_command = function(command, option) {
@@ -14103,7 +14107,7 @@ proto.do_link = function() {
         url = match[2];
     }
     else {
-        url = '?' + escape(selection); 
+        url = '?' + escape(selection);
     }
     this.exec_command('createlink', url);
 }
@@ -14134,58 +14138,13 @@ Support for Internet Explorer in Wikiwyg.Wysiwyg
  =============================================================================*/
 if (Wikiwyg.is_ie) {
 
-proto.initializeObject = function() {
-    this.div = document.createElement('div');
-    this.div.contentEditable = true;
-    this.div.style.overflow = 'auto';
-    this.div.id = 'wysiwyg-editable-div';
-    this.edit_iframe = this.div;
-    this.div.onbeforedeactivate = this.onbeforedeactivate.bind(this);
-    this.div.onactivate = this.onactivate.bind(this);
-    return this.div;
+proto.get_edit_window = function() {
+    return this.edit_iframe;
 }
 
-proto.fromHtml = function(html) {
-    var dom = document.createElement('div');
-    dom.innerHTML = html;
-    this.sanitize_dom(dom);
-    this.set_inner_html(dom.innerHTML);
+proto.get_edit_document = function() {
+    return this.edit_iframe.contentWindow.document;
 }
-
-proto.enableThis = function() {
-    Wikiwyg.Mode.prototype.enableThis.call(this);
-    this.div.style.border = '1px black solid';
-    this.div.width = '100%';
-    this.setHeightOf(this.div);
-    this.fix_up_relative_imgs();
-    this.apply_stylesheets();
-    this.enable_keybindings();
-    this.clear_inner_html();
-}
-
-proto.get_div = function() {
-    return this.div;
-}
-
-proto.get_keybinding_area = function() {
-    return this.get_div();
-}
-
-proto.get_edit_window = function() { return window }
-proto.get_edit_document = function() { return document }
-
-proto.get_inner_html = function() {
-    return this.get_div().innerHTML;
-}
-
-proto.set_inner_html = function(html) {
-    this.get_div().innerHTML = html;
-}
-
-// We don't need to apply stylesheets that have already been applied
-proto.apply_stylesheets = function() {}
-
-proto.enable_keybindings = function () {}
 
 proto.onbeforedeactivate = function() {
     this.__range = this.get_edit_document().selection.createRange();
@@ -14196,11 +14155,8 @@ proto.onactivate = function() {
 }
 
 proto.get_selection_text = function() {
-    if (this.__range) {
-        return this.__range.htmlText;
-    }
-
     var selection = this.get_edit_document().selection;
+
     if (selection != null) {
         this.__range = selection.createRange();
         return this.__range.htmlText;
@@ -14223,6 +14179,57 @@ proto.insert_html = function(html) {
         this.__range = null;
     }
 }
+
+proto.get_inner_html = function( cb ) {
+    if ( cb ) {
+        this.get_inner_html_async( cb );
+        return;
+    }
+    return this.get_editable_div().innerHTML;
+}
+
+proto.get_editable_div = function () {
+    if (!this._editable_div) {
+        this._editable_div = this.get_edit_document().createElement('div');
+        this._editable_div.contentEditable = true;
+        this._editable_div.style.overflow = 'auto';
+        this._editable_div.style.border = 'none'
+        this._editable_div.id = 'wysiwyg-editable-div';
+        this._editable_div.onbeforedeactivate = this.onbeforedeactivate.bind(this);
+        this._editable_div.onactivate = this.onactivate.bind(this);
+        this.get_edit_document().body.appendChild(this._editable_div);
+    }
+    return this._editable_div;
+}
+
+proto.get_inner_html_async = function( cb ) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.get_inner_html(cb);
+        }, 50);
+    } else {
+        var html = this.get_editable_div().innerHTML;
+        cb(html);
+        return html;
+    }
+}
+
+proto.set_inner_html = function(html) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.set_inner_html(html);
+        }, 50);
+    } else {
+        this.get_editable_div().innerHTML = html;
+    }
+}
+
+// Use IE's design mode default key bindings for now.
+proto.enable_keybindings = function() {}
 
 } // end of global if
 // BEGIN ../../../js-modules/Wikiwyg-copy/lib/Wikiwyg/HTML.js
@@ -16132,18 +16139,6 @@ var widget_data = Wikiwyg.Widgets.widget;
 
 proto = eval(WW_SIMPLE_MODE).prototype;
 
-proto.enableThis = function() {
-    Wikiwyg.Mode.prototype.enableThis.call(this);
-    this.edit_iframe.style.border = '1px black solid';
-    this.edit_iframe.width = '100%';
-    this.setHeightOf(this.edit_iframe);
-    this.fix_up_relative_imgs();
-    this.get_edit_document().designMode = 'on';
-    this.apply_stylesheets();
-    this.enable_keybindings();
-    this.clear_inner_html();
-}
-
 proto.fromHtml = function(html) {
     Wikiwyg.Wysiwyg.prototype.fromHtml.call(this, html);
     try {
@@ -16968,7 +16963,7 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
     var template = 'widget_' + widget + '_edit.html';
     var html = Jemplate.process(template, this.currentWidget);
 
-    var box = new Widget.Lightbox({contentClassName: 'jsan-widget-lightbox-content-wrapper', wrapperClassName: 'st-lightbox-dialog'});
+    var box = new Widget.Lightbox.Socialtext({contentClassName: 'jsan-widget-lightbox-content-wrapper', wrapperClassName: 'st-lightbox-dialog'});
     box.content( html );
     box.effects('RoundedCorners');
     box.create();
@@ -17072,7 +17067,13 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
     box.show(callback);
 }
 
-Widget.Lightbox.prototype.restrictFocus = function(form) {
+Widget.Lightbox.Socialtext = function (param) {
+    Widget.Lightbox.call(this,param);
+}
+
+Widget.Lightbox.Socialtext.prototype = new Widget.Lightbox;
+
+Widget.Lightbox.Socialtext.prototype.restrictFocus = function(form) {
     this._focusd_form = form;
 
     // Need to get a list of any tag that can get focus: e.g. input and anchors
@@ -17100,7 +17101,7 @@ Widget.Lightbox.prototype.restrictFocus = function(form) {
     }
 }
 
-Widget.Lightbox.prototype.releaseFocus = function(form){
+Widget.Lightbox.Socialtext.prototype.releaseFocus = function(form){
     if ( !form ) form = this._focusd_form;
     if ( !form ) return;
     var inputs = form.getElementsByTagName("input");
@@ -17111,7 +17112,7 @@ Widget.Lightbox.prototype.releaseFocus = function(form){
     }
 }
 
-Widget.Lightbox.prototype.applyHandlers = function(){
+Widget.Lightbox.Socialtext.prototype.applyHandlers = function(){
     if(!this.div)
         return;
 
@@ -17129,7 +17130,7 @@ Widget.Lightbox.prototype.applyHandlers = function(){
     }
 }
 
-Widget.Lightbox.prototype.toggleOptions = function() {
+Widget.Lightbox.Socialtext.prototype.toggleOptions = function() {
     var link = document.getElementById('st-widgets-moreoptions');
     var panel = document.getElementById('st-widgets-moreoptionspanel');
     var icon = document.getElementById('st-widgets-optionsicon');
@@ -17147,7 +17148,7 @@ Widget.Lightbox.prototype.toggleOptions = function() {
     }
 }
 
-Widget.Lightbox.prototype.release = function() {
+Widget.Lightbox.Socialtext.prototype.release = function() {
     /**
      * What we would prefer to do is remove the entire lighbox from the DOM
      * but IE does not handle the delete well. So, instead, we delete everything
@@ -17159,16 +17160,13 @@ Widget.Lightbox.prototype.release = function() {
     this.hide();
 }
 
-Widget.Lightbox.prototype.hide = function() {
-    if (!this.div.parentNode) return;
-    this.div.style.display="none";
-    if (Widget.Lightbox.is_ie) {
-        document.body.scroll="yes"
-    }
-    this.releaseFocus();
-
-    if (Wikiwyg.is_ie) {
-        wikiwyg.toolbarObject.styleSelect.style.display=""
+Widget.Lightbox.Socialtext.prototype.hide = function() {
+    Widget.Lightbox.prototype.hide.call(this);
+    if (this.div.parentNode) {
+        this.releaseFocus();
+        if (Wikiwyg.is_ie) {
+            wikiwyg.toolbarObject.styleSelect.style.display=""
+        }
     }
 }
 

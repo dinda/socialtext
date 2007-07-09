@@ -644,7 +644,6 @@ ST.Attachments.prototype = {
 
     _refresh_uploaded_list: function () {
         if (this._uploaded_list.length > 0) {
-            var temp = this._uploaded_list.join;
             Element.update(this.element.attachFileList, '<span class="st-attachments-attach-listlabel">' + loc('Uploaded files:') + ' </span>' + this._uploaded_list.join(', '));
             $(this.element.attachFileList).style.display = 'block';
         }

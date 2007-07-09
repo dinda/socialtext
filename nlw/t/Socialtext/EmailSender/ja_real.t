@@ -117,12 +117,14 @@ TO_IS_OVER_80_ASCII_MULTI: {
     $count++;
 }
 
+my $test_address = 'devnull8@socialtext.com';
+
 CC_IS_ASCII: {
     Email::Send::Test->clear();
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => $to_email_address,
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'CC_IS_ASCII',
@@ -137,7 +139,7 @@ CC_IS_JAPANESE: {
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => '日本人 <' . $to_email_address . '>',
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'CC_IS_JAPANESE',
@@ -154,7 +156,7 @@ CC_IS_OVER_80_JAPANESE_SINGLE: {
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => 'あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ <' . $to_email_address . '>',
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'CC_IS_OVER_80_JAPANESE_SINGLE',
@@ -169,7 +171,7 @@ CC_IS_OVER_80_JAPANESE_MULTI: {
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => 'あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ <' . $to_email_address . '>,' . '亜伊卯江尾亜伊卯江尾 <' . $to_email_address . '>',
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'CC_IS_OVER_80_JAPANESE_MULTI',
@@ -185,7 +187,7 @@ CC_IS_OVER_80_ASCII_SINGLE: {
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => '0123456789012345678901234567890123456789012345678901234567890123456789 <' . $to_email_address . '>',
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'CC_IS_OVER_80_ASCII_SINGLE',
@@ -200,7 +202,7 @@ CC_IS_OVER_80_ASCII_MULTI: {
     my $email_sender = Socialtext::EmailSender::Factory->create('ja');
 
     $email_sender->send(
-       to        => 'test@example.com',
+       to        => $test_address,
        cc        => 'abcdefghijklmnopqrstuvxyz <' . $to_email_address . '>,' . 'zyxvutsrqponmlkjihgfedcba <' . $to_email_address . '>',
        from      => 'test2@example.com',
        subject   => "[$count/$tests]" . 'TO_IS_OVER_80_ASCII_MULTI',
@@ -216,7 +218,7 @@ FROM_IS_ASCII: {
 
     $email_sender->send(
        to        => $to_email_address,
-       from      => 'test@example.com',
+       from      => $test_address,
        subject   => "[$count/$tests]" . 'FROM_IS_ASCII',
        text_body => 'test',
     );

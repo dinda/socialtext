@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use base 'Socialtext::Plugin';
-use Socialtext::l10n qw( loc loc_lang );
+use Socialtext::l10n qw( loc loc_lang valid_code );
 
 use Class::Field qw( const field );
 use Socialtext::Exceptions qw( data_validation_error );
@@ -81,7 +81,15 @@ sub save {
             $pref =~ s/-boolean$//;
 
             # immediately show the new locale if it is changed
-            loc_lang($cgi{$_}) if $pref eq 'locale';
+            if ($pref eq 'locale') {
+                if (valid_code($cgi{$_})) {
+                    loc_lang($cgi{$_});
+                }
+                else {
+                    # Find the old locale to re-save from pkg name
+                    ($cgi{$_} = ref(loc_lang)) =~ s/.+:://;
+                }
+            }
 
             $settings->{$pref} = $cgi{$_}
               unless exists $settings->{$pref};

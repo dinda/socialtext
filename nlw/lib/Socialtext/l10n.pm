@@ -4,7 +4,8 @@ use strict;
 use warnings;
 use base 'Exporter';
 use Socialtext::AppConfig;
-our @EXPORT_OK = qw(loc loc_lang valid_code system_locale best_locale);
+our @EXPORT_OK = qw(loc loc_lang valid_code system_locale best_locale
+                    available_locales);
 
 =head1 NAME
 
@@ -47,6 +48,11 @@ Returns the current system wide locale code.
 
 Returns true if the locale code is supported.
 
+=head2 available_locales 
+
+Returns a hash ref of available locales.  The key to the hash is the 
+locale code, the value is the locale name.
+
 =head1 Localization Files
 
 The .po files are kept in share/l10n.
@@ -65,7 +71,23 @@ Locale::Maketext::Simple->import (
 );
 
 sub valid_code { 
-    return 1; # everything goes
+    my $code = shift;
+    my $available = available_locales();
+
+    # Add sekret locales
+    $available->{zz} = 'Hax0r';
+    $available->{jz} = 'Japanese Hax0r';
+
+    return $available->{$code};
+}
+
+sub available_locales {
+    # hardcoded for now, can be dynamic in the future
+
+    return {
+        'en' => loc('English'),
+        'ja' => loc('Japanese'),
+    };
 }
 
 sub best_locale {

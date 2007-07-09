@@ -4396,6 +4396,16 @@ msgstr ""
 
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
+msgid "You must provide a name to create a new account."
+msgstr ""
+
+#: lib/Socialtext/Handler/ControlPanel.pm:143
+#. (
+msgid "You must provide a user_id to this URI (%1)."
+msgstr ""
+
+#: lib/Socialtext/Handler/Authen.pm:98
+#.  
 msgid "You must provide a valid email address."
 msgstr ""
 
