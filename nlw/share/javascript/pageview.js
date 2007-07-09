@@ -870,7 +870,7 @@ ST.Tags.prototype = {
         new Ajax.Request (
             uri,
             {
-                method: 'POST',
+                method: 'post',
                 requestHeaders: ['Accept','text/javascript'],
                 onComplete: (function (req) {
                     this._remove_from_deleted_list(tagToAdd);
