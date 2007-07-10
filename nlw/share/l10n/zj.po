@@ -4396,16 +4396,6 @@ msgstr "yおう mうs7 LおGいN 7お vいえW 7hいs pあgえ."
 
 #: lib/Socialtext/Handler/Authen.pm:98
 #.  
-msgid "You must provide a name to create a new account."
-msgstr "yおう mうs7 Prおvいdえ あ NあMえ 7お Crえあ7え あ nえw あCcおうN7."
-
-#: lib/Socialtext/Handler/ControlPanel.pm:143
-#. (
-msgid "You must provide a user_id to this URI (%1)."
-msgstr "yおう mうs7 Prおvいdえ あ うsえr_いD 7お 7HいS うrい (%1)."
-
-#: lib/Socialtext/Handler/Authen.pm:98
-#.  
 msgid "You must provide a valid email address."
 msgstr "yおう mうs7 Prおvいdえ あ VあLいD えmあいL あdDrえsS."
 

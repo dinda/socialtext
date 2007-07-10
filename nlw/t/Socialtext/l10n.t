@@ -34,8 +34,7 @@ Test_locale: {
 }
 
 Valid_codes: {
-    # everything is valid at this point.  We'll strengthen this up as needed.
-    for (qw(en fr jp en_CA)) {
+    for (qw(en ja zz zj)) {
         ok valid_code($_), "$_ is valid";
     }
 }

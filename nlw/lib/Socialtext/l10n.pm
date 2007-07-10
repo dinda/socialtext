@@ -76,7 +76,7 @@ sub valid_code {
 
     # Add sekret locales
     $available->{zz} = 'Hax0r';
-    $available->{jz} = 'Japanese Hax0r';
+    $available->{zj} = 'Japanese Hax0r';
 
     return $available->{$code};
 }
