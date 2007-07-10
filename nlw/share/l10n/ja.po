@@ -2522,7 +2522,7 @@ msgstr "ページのセクション名"
 #: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
-msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。"
+msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
 
 #: lib/Socialtext/EditPlugin.pm:42
 #.  
@@ -3522,7 +3522,7 @@ msgstr "選択したページ名\"%1\"は無効です。ページ名を入力す
 #: share/template/popup/duplicate:38 share/template/popup/rename:41
 #. (
 msgid "The page name you selected, \"%1\", is too long after URL encoding."
-msgstr "選択したページ名\"%1\" は、URL のエンコード処理を行うと、長くなりすぎます。"
+msgstr "選択したページ名\"%1\" は、URL のエンコード処理を行うと、長くなりすぎます。全角文字は28字まで使用できます。"
 
 #: lib/Socialtext/Handler/Authen.pm:209 lib/Socialtext/Handler/Authen.pm:308
 #.  
