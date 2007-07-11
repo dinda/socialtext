@@ -13,6 +13,7 @@ use DateTime;
 use DateTime::Format::Strptime;
 use Socialtext::l10n qw(system_locale);
 use Socialtext::BrowserDetect;
+use Socialtext::WebHelpers;
 
 $JSON::UTF8 = 1;
 
@@ -204,7 +205,7 @@ sub _get_attachment {
     my $filename = $attachment->filename;
     # XXX: should test with safari
     if( Socialtext::BrowserDetect::ie() ) {
-        $filename = $class->uri_escape($filename);
+        $filename = Socialtext::WebHelpers->uri_escape($filename);
     }
 
     $r->header_out('Content-length' => -s $file );
