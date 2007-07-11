@@ -11,6 +11,7 @@ use Socialtext::MLDBMAccess;
 use URI;
 use URI::QueryParam;
 use Socialtext::l10n qw( loc );
+use Encode;
 
 sub class_id { 'weblog' }
 const class_title => 'Weblogs';
@@ -97,6 +98,7 @@ sub _create_weblog {
         return;
     }
 
+    Encode::_utf8_off($weblog_category) if Encode::is_utf8($weblog_category);
     my $weblog_category_suffix = $self->_get_weblog_category_suffix(); 
 
     unless ( $weblog_category =~ /$weblog_category_suffix$/i ) {
