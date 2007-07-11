@@ -98,10 +98,10 @@ sub _create_weblog {
         return;
     }
 
-    Encode::_utf8_off($weblog_category) if Encode::is_utf8($weblog_category);
+    my $weblog_category_for_compare = $weblog_category;
+    Encode::_utf8_off($weblog_category_for_compare) if Encode::is_utf8($weblog_category_for_compare);
     my $weblog_category_suffix = $self->_get_weblog_category_suffix(); 
-
-    unless ( $weblog_category =~ /$weblog_category_suffix$/i ) {
+    unless ( $weblog_category_for_compare =~ /$weblog_category_suffix$/i ) {
         $weblog_category = loc("[_1] Weblog", $weblog_category);
     }
 
