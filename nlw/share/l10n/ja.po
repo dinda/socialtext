@@ -412,12 +412,12 @@ msgstr "タグを追加"
 #: share/template/element/page/attachment_queue_interface:20
 #.  
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page when the page is saved."
-msgstr "このページのトップにある添付にリンクを追加しますか？ ページを保存するとページに画像が表示されます。"
+msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、ページを保存するとページ内に画像が表示されます。"
 
 #: share/template/element/page/attachment_attach_interface:20
 #.  
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
-msgstr "このページのトップにある添付にリンクを追加しますか？ ページに画像が表示されます。"
+msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、、画像がページ内に表示されます。"
 
 #: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
 #.  
@@ -1422,7 +1422,7 @@ msgstr "あなたのページにわかりやすいタイトルをつけてくだ
 #: share/javascript/tagqueue.js:197 share/template/element/page/tag_queue_interface:8
 #.  
 msgid "Enter a tag and click \"Add tag\". The tag will be saved when you save the page."
-msgstr "タグを入力し ”別のタグを追加” をクリックしてください。"
+msgstr "タグを入力し ”タグを追加” をクリックしてください。タグはページ保存時に追加されます。"
 
 #: share/template/element/settings/users_invite_search_section:9
 #.  
