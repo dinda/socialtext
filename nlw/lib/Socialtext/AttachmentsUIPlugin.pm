@@ -6,11 +6,11 @@ use warnings;
 use base 'Socialtext::Plugin';
 
 use Class::Field qw( const field );
+use IO::File;
 use Socialtext::AppConfig;
 use Socialtext::Helpers;
 use Socialtext::Exceptions;
 use Socialtext::l10n qw(loc system_locale);
-use Socialtext::WebApp;
 use Socialtext::BrowserDetect;
 
 sub class_id { 'attachments_ui' }
@@ -71,9 +71,8 @@ sub attachments_download {
         # TODO: make 404 a real HTTP 404
         die "404: File Not Found: '$file'";
     }
-
-    open my $fh, '<', $file
-      or die "Cannot read $file: $!";
+    my $fh = new IO::File $file, 'r';
+    die "Cannot read $file: $!" unless $fh;
 
     my $mime_type = $attachment->mime_type;
     my $charset = 'UTF-8';
@@ -102,38 +101,57 @@ sub attachments_download {
     if ( not $attachment->should_popup or $self->cgi->as_page ) {
         $self->hub->headers->content_disposition(undef);
     }
-    # Send the data across the wire
-    $self->hub->headers->print;
-    if ( $ENV{MOD_PERL} ) {
-        Apache->request->send_fd($fh);
-    }
-    else {
-        print while <$fh>;
-    }
-
-    Socialtext::WebApp::Exception::ContentSent->throw();
+    # return the glob so the framework can write it down
+    return $fh;
 }
 
 sub attachments_upload {
     my $self = shift;
-    Socialtext::Exception::DataValidation->throw("No file given for upload\n")
-        unless defined $self->cgi->file;
-    return $self->_finish
-        unless $self->hub->checker->check_permission('attachments');
 
-    my $error_code = $self->save_attachment(
-        $self->cgi->file,
-        $self->cgi->embed,
-        $self->cgi->unpack,
+    my @files = $self->cgi->file;
+    my @embeds = $self->cgi->embed;
+    my @unpacks = $self->cgi->unpack;
+
+    my $args = $self->process_attachments_upload(
+        files  => \@files,
+        embed  => \@embeds,
+        unpack => \@unpacks,
     );
 
-    my %args;
-    if ($error_code) {
-        $error_code =~ s/\. at.*//s;    # grr... stinkin auto-added backtrace.
-        $args{attachment_error} = $error_code;
-    }
+    return $self->_finish(%$args);
+}
 
-    return $self->_finish(%args);
+sub process_attachments_upload {
+    my $self = shift;
+    my %p    = @_;
+
+    my @files = @{$p{files}};
+    my @embeds = @{$p{embed}};
+    my @unpacks = @{$p{unpack}};
+
+    my $count = scalar(@files);
+
+    Socialtext::Exception::DataValidation->throw("No file given for upload\n")
+        unless $count;
+    return +{}
+        unless $self->hub->checker->check_permission('attachments');
+
+    my %args;
+    if ($count) {
+        for (my $i=0; $i < $count; $i++) {
+            my $error_code = $self->save_attachment(
+                $files[$i],
+                $embeds[$i],
+                $unpacks[$i],
+            );
+            if ($error_code) {
+                $error_code =~ s/\. at.*//s;    # grr... stinkin auto-added backtrace.
+                $args{attachment_error} .= $error_code;
+            }
+
+        }
+    }
+    return \%args;
 }
 
 sub save_attachment {
@@ -269,7 +287,6 @@ cgi 'caller_action';
 cgi 'button';
 cgi 'checkbox';
 cgi 'selected';
-cgi 'id' => '-clean_path';
 cgi 'filename';
 cgi 'caller_action';
 cgi 'page_name';
@@ -278,4 +295,3 @@ cgi 'as_page';
 cgi 'unpack';
 
 1;
-
