@@ -52,6 +52,7 @@ use Socialtext::MultiCursor;
 use Socialtext::User;
 use Socialtext::UserWorkspaceRole;
 use Socialtext::WorkspaceBreadcrumb;
+use Socialtext::Page;
 use URI;
 
 field breadcrumbs => '';
@@ -358,6 +359,12 @@ sub _validate_and_clean_data {
          and ( length $p->{title} < 2 or length $p->{title} > 64 )
        ) {
         push @errors, loc('Workspace title must be between 2 and 64 characters long.');
+    }
+
+    if ( defined $p->{title}
+         and ( length Socialtext::Page->uri_escape($p->{title}) > Socialtext::Page->_MAX_PAGE_ID_LENGTH() )
+       ) {
+        push @errors, loc('Workspace title is too long after URL encoding');
     }
 
     if ( $p->{incoming_email_placement}
