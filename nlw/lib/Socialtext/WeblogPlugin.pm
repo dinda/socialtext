@@ -86,7 +86,7 @@ sub _get_weblog_category_suffix {
     $weblog_category_suffix;
 }
 
-sub _create_dummy_current_for_data_validation_error {
+sub _create_new_page_for_data_validation_error {
     my $self = shift;
     my $page_name = shift;
     my $page_id = substr(Socialtext::Page->name_to_id($page_name), 0, Socialtext::Page->_MAX_PAGE_ID_LENGTH());
@@ -126,8 +126,8 @@ sub _create_weblog {
     my $first_post_title = loc("First Post in [_1]", $weblog_category);
     my $first_post_id = Socialtext::Page->name_to_id($weblog_category);
     my $first_post = $self->hub->pages->new_page($first_post_id);
-    if(!defined $self->hub->pages->new_page($first_post_id)) {
-        $first_post = $self->_create_dummy_current_for_data_validation_error($weblog_category);
+    if(!defined $first_post) {
+        $first_post = $self->_create_new_page_for_data_validation_error($weblog_category);
     }
 
     my $metadata = $first_post->metadata;
