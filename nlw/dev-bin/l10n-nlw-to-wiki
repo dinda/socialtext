@@ -49,7 +49,9 @@ sub _call_link_control_panel {
 }
 
 sub _call_link_console {
-    my $branch_name = _get_branch_name(); 
+    #my $branch_name = _get_branch_name(); 
+    #XXX: fix this later.
+    my $branch_name = "i18n-p3";
     shell_run("dev-bin/link-console $branch_name");
 }
 
