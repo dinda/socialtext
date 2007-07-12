@@ -14,3 +14,8 @@ font: odokai.ttf
 lower: 12544
 upper: 40959
 size: 16
+---
+font: ipag-mona.ttf
+lower: 65280
+upper: 65519
+size: 16
