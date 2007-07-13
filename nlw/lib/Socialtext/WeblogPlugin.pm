@@ -93,15 +93,46 @@ sub _create_new_page_for_data_validation_error {
     return $self->hub->pages->new_page($page_id); 
 }
 
+sub _weblog_title_is_valid {
+    my $self = shift;
+    my $weblog_name = shift;
+    my $message;
+
+    if (length($weblog_name) < 2 or length($weblog_name) > 28) {
+        $message = loc("Weblog name must be between 2 and 28 characters long.");
+        $self->add_error($message);
+        return 0;
+    }
+   
+    return 1;
+}
+
+sub _create_first_post {
+    my $self = shift;
+    my $weblog_category = shift;
+
+    my $first_post_title = loc("First Post in [_1]", $weblog_category);
+    my $first_post_id = Socialtext::Page->name_to_id($weblog_category);
+    my $first_post = $self->hub->pages->new_page($first_post_id);
+    if(!defined $first_post) {
+        $first_post = $self->_create_new_page_for_data_validation_error($weblog_category);
+    }
+
+    my $metadata = $first_post->metadata;
+    $metadata->Subject($first_post_title)
+        unless $metadata->Subject;
+
+    return $first_post;
+}
+
 sub _create_weblog {
     my $self = shift;
     my $weblog_category = $self->cgi->weblog_title;
     my $weblog_name = $weblog_category;
     $weblog_category =~ s/^\s+|\s+$//g;
+    my $weblog_category_for_id = $weblog_category;
 
-    if (length($weblog_name) < 2 or length($weblog_name) > 28) {
-        my $message = loc("Weblog name must be between 2 and 28 characters long.");
-        $self->add_error($message);
+    if(! $self->_weblog_title_is_valid($weblog_name)) {
         return;
     }
 
@@ -123,24 +154,14 @@ sub _create_weblog {
         }
     }
 
-    my $first_post_title = loc("First Post in [_1]", $weblog_category);
-    my $first_post_id = Socialtext::Page->name_to_id($weblog_category);
-    my $first_post = $self->hub->pages->new_page($first_post_id);
-    if(!defined $first_post) {
-        $first_post = $self->_create_new_page_for_data_validation_error($weblog_category);
-    }
-
-    my $metadata = $first_post->metadata;
-    $metadata->Subject($first_post_title)
-        unless $metadata->Subject;
-
-    my $categories = $metadata->Category;
+    my $first_post = $self->_create_first_post($weblog_category);
+    my $categories = $first_post->metadata->Category;
 
     push @$categories, $weblog_category;
 
     my $content = loc("This is the first post in [_1]. Click *New Post* to add another post.", $weblog_category);
     $first_post->content($content);
-    $metadata->update( user => $self->hub->current_user );
+    $first_post->metadata->update( user => $self->hub->current_user );
     $first_post->store( user => $self->hub->current_user );
 
     $self->redirect('action=weblog_display;category=' . $weblog_category);
