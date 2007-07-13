@@ -45,14 +45,46 @@ sub link_enterprise_features {
 
 sub _call_link_control_panel {
     my $branch_name = _get_branch_name(); 
-    shell_run("dev-bin/link-control-panel $branch_name");
+    my $control_panel_branch_name = get_control_panel_branch_name($branch_name);
+    if($control_panel_branch_name) {
+        shell_run("dev-bin/link-control-panel $control_panel_branch_name");
+    } else {
+        shell_run("dev-bin/link-control-panel");
+    }
 }
 
 sub _call_link_console {
-    #my $branch_name = _get_branch_name(); 
-    #XXX: fix this later.
-    my $branch_name = "i18n-p3";
-    shell_run("dev-bin/link-console $branch_name");
+    my $branch_name = _get_branch_name();
+    my $console_branch_name = get_link_console_branch_name($branch_name);
+    if($console_branch_name) {
+        shell_run("dev-bin/link-console $console_branch_name");
+    } else {
+        shell_run("dev-bin/link-console"); 
+    }
+}
+
+sub get_link_console_branch_name {
+    my $branch_name = shift;
+
+    my $appliance_base = "$ENV{HOME}/src/st/appliance";
+    my $console_branch_dir = $appliance_base . "/branches/". $branch_name;
+
+    unless(-d $console_branch_dir) {
+        $branch_name = undef;
+    }
+    return $branch_name; 
+}
+
+sub get_control_panel_branch_name {
+    my $branch_name = shift;
+
+    my $controlpanel_base = "$ENV{HOME}/src/st/control";
+    my $controlpanel_branch_dir = $controlpanel_base . "/branches/". $branch_name;
+
+    unless(-d $controlpanel_branch_dir) {
+        $branch_name = undef;
+    }
+    return $branch_name; 
 }
 
 sub _get_branch_name {
@@ -65,7 +97,7 @@ sub _get_branch_name {
        $branch_name = $1;
     }
     if($branch_name eq "") {
-        $branch_name = "trunk";
+        die "branch isn't found. you should run this script after run cdnlw.";
     }
     return $branch_name; 
 }
