@@ -12,7 +12,7 @@ sub load_existing_l10ns {
     my $r     = shift;
     my $title = shift;
 
-    my $content = decode_utf8( $r->get_page($title) );
+    my $content = $r->get_page($title);
     return {} if $r->response->code ne 200;
 
     #use Data::Dumper;
