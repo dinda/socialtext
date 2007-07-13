@@ -19,7 +19,7 @@ msgstr "%1 - Atom で %2 を検索する"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RSS で %2 を検索する"
 
-#: lib/Socialtext/WeblogPlugin.pm:104
+#: lib/Socialtext/WeblogPlugin.pm:112
 #. (
 msgid "%1 Weblog"
 msgstr "%1 ウェブログ"
@@ -39,7 +39,7 @@ msgstr "%1 は必須です。"
 msgid "%1 is not a valid email address."
 msgstr "%1 は有効な Email アドレスではありません。"
 
-#: lib/Socialtext/Handler/Authen.pm:165 lib/Socialtext/Handler/Authen.pm:337
+#: lib/Socialtext/Handler/Authen.pm:167 lib/Socialtext/Handler/Authen.pm:339
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
 msgstr "%1 はユーザとして登録されていません。違う Email アドレスにしますか？"
@@ -64,7 +64,7 @@ msgstr "%1: %2 を検索"
 msgid "%1: watchlist for %2"
 msgstr "%1: %2 のウォッチリスト"
 
-#: share/template/element/page/details:38 share/template/view/page/display:88
+#: share/template/element/page/details:38 share/template/view/page/display:75
 #. (
 msgid "%quant(%1,revision)"
 msgstr "%quant(%1,リビジョン,リビジョンズ)"
@@ -74,7 +74,7 @@ msgstr "%quant(%1,リビジョン,リビジョンズ)"
 msgid "%quant(%1,view)"
 msgstr "%quant(%1,ビュー,ビュー)"
 
-#: lib/Socialtext/Workspace.pm:414
+#: lib/Socialtext/Workspace.pm:421
 #. (
 msgid "'%1' is a reserved workspace name and cannot be used."
 msgstr "ワークスペース名 '%1' は予約されており、使用できません。"
@@ -324,12 +324,12 @@ msgstr "このワークスペースにはフィルターが設定されていま
 msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
 msgstr "フィルターがこのワークスペースに設定されています。すべてのEmail アドレスは以下のパターンと一致する必要があります。: <span style=\"color: red\"> %1 </span>"
 
-#: lib/Socialtext/EditPlugin.pm:148
+#: lib/Socialtext/EditPlugin.pm:149
 #.  
 msgid "A page must have a body to be saved."
 msgstr "保存するには本文が必要です。"
 
-#: lib/Socialtext/EditPlugin.pm:142
+#: lib/Socialtext/EditPlugin.pm:143
 #.  
 msgid "A page must have a title to be saved."
 msgstr "保存するにはタイトルが必要です。"
@@ -339,7 +339,7 @@ msgstr "保存するにはタイトルが必要です。"
 msgid "A password is required to create a new user."
 msgstr "新規ユーザを作成するにはパスワードが必要です。"
 
-#: lib/Socialtext/Handler/Authen.pm:197
+#: lib/Socialtext/Handler/Authen.pm:199
 #. (
 msgid "A user with this email address (%1) already exists."
 msgstr "この Email アドレス (%1) はすでに別のユーザが使用しています。"
@@ -414,7 +414,7 @@ msgstr "タグを追加"
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page when the page is saved."
 msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、ページを保存するとページ内に画像が表示されます。"
 
-#: share/template/element/page/attachment_attach_interface:20
+#: share/template/element/page/attachment_attach_interface:22
 #.  
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、、画像がページ内に表示されます。"
@@ -504,7 +504,7 @@ msgstr "%1にあるすべてのタグ"
 msgid "All Tags in Workspace"
 msgstr "ワークスペースにあるすべてのタグ"
 
-#: lib/Socialtext/BacklinksPlugin.pm:77
+#: lib/Socialtext/BacklinksPlugin.pm:73
 #. (
 msgid "All backlinks for \"%1\""
 msgstr "\"%1\" のすべてのバックリンク"
@@ -534,7 +534,7 @@ msgstr "すべてのリビジョン"
 msgid "An Invitation to join %1"
 msgstr "%1 への招待状"
 
-#: lib/Socialtext/Workspace.pm:375
+#: lib/Socialtext/Workspace.pm:382
 #.  
 msgid "An account must be specified for all new workspaces."
 msgstr "すべての新しいワークスペースにアカウントを指定する必要があります。"
@@ -544,17 +544,17 @@ msgstr "すべての新しいワークスペースにアカウントを指定す
 msgid "An application error has occurred in the Socialtext Workspace system."
 msgstr "Socialtext のワークスペースシステムにアプリケーションエラーが発生しました。"
 
-#: lib/Socialtext/Handler/Authen.pm:248
+#: lib/Socialtext/Handler/Authen.pm:250
 #. (
 msgid "An email confirming your registration has been sent to %1."
 msgstr "登録を確認する Email が %1 に送られました。"
 
-#: lib/Socialtext/Handler/Authen.pm:173
+#: lib/Socialtext/Handler/Authen.pm:175
 #. (
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "パスワードの変更方法を記載した Email が %1 に送られました。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:569 lib/Socialtext/WikiwygPlugin.pm:719
+#: lib/Socialtext/WikiwygPlugin.pm:573 lib/Socialtext/WikiwygPlugin.pm:723
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "ページIDが無効です: %1"
@@ -884,7 +884,7 @@ msgstr "このページの最新版を見るには、<a href=\"%1\">here</a>を�
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
 msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルを追加\" をクリックすると、このファイルがこのページの添付リストに追加され、ページを保存した時にアップロードされます。"
 
-#: share/javascript/pageview.js:458 share/template/element/page/attachment_attach_interface:10
+#: share/template/element/page/attachment_attach_interface:12
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
 msgstr "\"参照\"をクリックし、アップロードしたいファイルを選択してください。 \"ファイルのアップロード\" をクリックすると、そのファイルがアップロードされ、このページの添付リストに追加されます。"
@@ -899,7 +899,7 @@ msgstr "このページの最新版を見るには、ここをクリックして
 msgid "Click this button to add a comment to the page"
 msgstr "このページにコメントを追加するには、このボタンをクリックしてください。"
 
-#: share/template/element/page/attachments:15
+#: share/template/element/page/attachments:14
 #.  
 msgid "Click this button to add a file to the page"
 msgstr "このページにファイルを追加するには、このボタンをクリックしてください。"
@@ -939,7 +939,7 @@ msgstr "新しいワークスペースを作成するには、このボタンを
 msgid "Click this button to edit the page"
 msgstr "このページを編集するには、このボタンをクリックしてください。"
 
-#: share/template/element/page/attachments:18
+#: share/template/element/page/attachments:17
 #.  
 msgid "Click this button to manage files attached to the page"
 msgstr "このページの添付ファイルを管理するには、このボタンをクリックしてください。"
@@ -1004,7 +1004,7 @@ msgstr "タグを保存するには、このボタンをクリックしてくだ
 msgid "Click this button to upload a file to the page"
 msgstr "このページにファイルをアップロードするには、このボタンをクリックしてください。"
 
-#: share/template/view/page/display:82 share/template/view/page/display:88
+#: share/template/view/page/display:69 share/template/view/page/display:75
 #.  
 msgid "Click to view previous versions of this page."
 msgstr "クリックすると、このページの前バージョンを見ることができます。"
@@ -1269,12 +1269,12 @@ msgstr "本当にアプライアンスをシャットダウンしますか？"
 msgid "Do you want to set up this workspace as:"
 msgstr "このワークスペースを次のように設定しますか？:"
 
-#: share/template/element/page/attachment_attach_interface:32 share/template/element/page/attachment_queue_interface:31 share/template/element/page/tag_queue_interface:14
+#: share/template/element/page/attachment_attach_interface:34 share/template/element/page/attachment_queue_interface:31 share/template/element/page/tag_queue_interface:14
 #.  
 msgid "Done"
 msgstr "終了"
 
-#: lib/Socialtext/WikiwygPlugin.pm:626
+#: lib/Socialtext/WikiwygPlugin.pm:630
 #.  
 msgid "Double-click to edit a page?"
 msgstr "ダブルクリックしてページを編集しますか?"
@@ -1349,7 +1349,7 @@ msgstr "編集"
 msgid "Email"
 msgstr "Email"
 
-#: lib/Socialtext/WebApp.pm:214 share/template/element/settings/users_listall_section:7
+#: lib/Socialtext/WebApp.pm:209 share/template/element/settings/users_listall_section:7
 #.  
 msgid "Email Address"
 msgstr "Email アドレス"
@@ -1359,7 +1359,7 @@ msgstr "Email アドレス"
 msgid "Email Address for this user:"
 msgstr "このユーザの Email アドレス:"
 
-#: lib/Socialtext/Handler/Authen.pm:85 share/template/authen/forgot_password.html:5 share/template/authen/register.html:10
+#: lib/Socialtext/Handler/Authen.pm:87 share/template/authen/forgot_password.html:5 share/template/authen/register.html:10
 #.  
 msgid "Email Address:"
 msgstr "Email アドレス:"
@@ -1398,11 +1398,6 @@ msgstr "Email:"
 #.  
 msgid "Enable email notifications for this workspace?"
 msgstr "このワークスペースについて、Email による変更通知を受信するように設定しますか？"
-
-#: lib/Socialtext/DisplayPlugin.pm:23
-#.  
-msgid "English"
-msgstr "英語"
 
 #: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
@@ -1449,7 +1444,7 @@ msgstr "%1 タイムサーバから更新するエラー"
 msgid "Error:"
 msgstr "エラー:"
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:60
+#: lib/Socialtext/PdfExportPlugin.pm:61 lib/Socialtext/RtfExportPlugin.pm:59
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr "エラー: <pre> エクスポートするページが選択されていません </pre>\n"
@@ -1529,7 +1524,7 @@ msgstr "例："
 msgid "Except for your name, all fields are optional."
 msgstr "名前以外のフィールドはすべてオプショナルです。"
 
-#: share/template/element/page/attachment_attach_interface:27 share/template/element/page/attachment_queue_interface:27
+#: share/template/element/page/attachment_attach_interface:29 share/template/element/page/attachment_queue_interface:27
 #.  
 msgid "Expand zip archive and attach individual files to the page"
 msgstr "zip アーカイブを解凍し、個々のファイルをページに添付してください。"
@@ -1599,7 +1594,7 @@ msgstr "名"
 msgid "First Name:"
 msgstr "名:"
 
-#: lib/Socialtext/WeblogPlugin.pm:118
+#: lib/Socialtext/WeblogPlugin.pm:126
 #. (
 msgid "First Post in %1"
 msgstr "%1の最初の投稿"
@@ -1613,11 +1608,6 @@ msgstr "名:"
 #.  
 msgid "Forgot Password"
 msgstr "パスワードを忘れた方はこちら"
-
-#: lib/Socialtext/DisplayPlugin.pm:25
-#.  
-msgid "French"
-msgstr "フランス語"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
@@ -1638,11 +1628,6 @@ msgstr "送信者:"
 #.  
 msgid "Fully public"
 msgstr "完全に公開"
-
-#: lib/Socialtext/DisplayPlugin.pm:26
-#.  
-msgid "German"
-msgstr "ドイツ語"
 
 #: share/template/element/weblog/actions:11
 #.  
@@ -1849,7 +1834,7 @@ msgstr "既に web 上にある画像"
 msgid "Importing workspaces from tarballs ..."
 msgstr "ターボールからワークスペースをインポート中 ..."
 
-#: lib/Socialtext/DisplayPlugin.pm:105
+#: lib/Socialtext/DisplayPlugin.pm:100
 #.  
 msgid "Include Recently Viewed items as a side box when viewing pages?"
 msgstr "ページの閲覧時、最近閲覧した項目をサイドボックスに表示させますか？"
@@ -1879,7 +1864,7 @@ msgstr "'%1' ウェブログを挿入します。クリックして編集して�
 msgid "Incoming Links"
 msgstr "このページへのリンク"
 
-#: lib/Socialtext/Workspace.pm:365
+#: lib/Socialtext/Workspace.pm:372
 #.  
 msgid "Incoming email placement must be one of top, bottom, or replace."
 msgstr "受信した Email を上か下のどちらかに置くか、置き換えます。"
@@ -1973,11 +1958,6 @@ msgstr "英字小文字とダッシュのみを使用し、3-30文字にして�
 #.  
 msgid "It's where you can share tips and best practices with other Socialtext customers."
 msgstr "他のユーザとの情報交換の場です。"
-
-#: lib/Socialtext/DisplayPlugin.pm:24
-#.  
-msgid "Japanese"
-msgstr "日本語"
 
 #: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
 #.  
@@ -2154,7 +2134,7 @@ msgstr "ログイン +"
 msgid "Login + Edit"
 msgstr "ログイン + 編集"
 
-#: lib/Socialtext/Workspace.pm:528
+#: lib/Socialtext/Workspace.pm:530
 #.  
 msgid "Logo file must be a gif, jpeg, or png file."
 msgstr "ロゴファイルは gif, jpeg, あるいは png でなければなりません。"
@@ -2169,7 +2149,7 @@ msgstr "ウォッチしたいページ上で<img border=\"0\" src=\"%1/images/st
 msgid "Make your contributions in the text box, then click \"Save\"."
 msgstr "追加、変更したい内容をテキストボックスに記述し、\"保存\"をクリックしてください。"
 
-#: lib/Socialtext/Hub.pm:139
+#: lib/Socialtext/Hub.pm:143
 #.  
 msgid "Malformed query."
 msgstr "不正クエリです。"
@@ -2179,7 +2159,7 @@ msgstr "不正クエリです。"
 msgid "Manage All Users"
 msgstr "ユーザの管理"
 
-#: share/template/element/page/attachments:18
+#: share/template/element/page/attachments:17
 #.  
 msgid "Manage files"
 msgstr "ファイルの管理"
@@ -2224,7 +2204,7 @@ msgstr "参加ワークスペース"
 msgid "Name"
 msgstr "名前の登録"
 
-#: lib/Socialtext/WeblogPlugin.pm:405
+#: lib/Socialtext/WeblogPlugin.pm:416
 #. (
 msgid "Navigation for: %1"
 msgstr "ナビゲート先: %1"
@@ -2274,7 +2254,7 @@ msgstr "新しいパスワードが一致しません。"
 msgid "New passwords must be at least 6 characters long."
 msgstr "新しいパスワードは6文字以上にしてください。"
 
-#: share/javascript/pageview.js:1107 share/template/element/wiki/nav:16
+#: share/javascript/pageview.js:214 share/template/element/wiki/nav:16
 #.  
 msgid "New search"
 msgstr "ワードを入力"
@@ -2324,7 +2304,7 @@ msgstr "確認するファイルがありません。"
 msgid "No files available to restore."
 msgstr "元に戻すファイルがありません。"
 
-#: lib/Socialtext/WikiwygPlugin.pm:560 lib/Socialtext/WikiwygPlugin.pm:710
+#: lib/Socialtext/WikiwygPlugin.pm:564 lib/Socialtext/WikiwygPlugin.pm:714
 #.  
 msgid "No page ID given"
 msgstr "ページID を入力してください。"
@@ -2334,7 +2314,7 @@ msgstr "ページID を入力してください。"
 msgid "No problem, we can send you an email that will help. You will be able to change your password back to something you know."
 msgstr "大丈夫です。 パスワードを変更することができますので、送られてくる Email をご覧ください。"
 
-#: share/template/view/page/display:90
+#: share/template/view/page/display:77
 #.  
 msgid "No revisions"
 msgstr "リビジョンはありません。"
@@ -2379,7 +2359,7 @@ msgstr "%2 の %1 のウォッチリストはありません。"
 msgid "Normal View"
 msgstr "標準表示"
 
-#: lib/Socialtext/DisplayPlugin.pm:157
+#: lib/Socialtext/DisplayPlugin.pm:152
 #.  
 msgid "Not a valid page name"
 msgstr "ページ名が無効です。"
@@ -2434,7 +2414,7 @@ msgstr "OpenID:"
 msgid "Or you may continue to work in this workspace, and visit \"%1\" later."
 msgstr "あるいは、このワークスペースで作業を続け、あとで \"%1\" を訪問することもできます。"
 
-#: lib/Socialtext/BacklinksPlugin.pm:113 lib/Socialtext/BacklinksPlugin.pm:94 share/template/element/listview/actionbar:9
+#: lib/Socialtext/BacklinksPlugin.pm:109 lib/Socialtext/BacklinksPlugin.pm:90 share/template/element/listview/actionbar:9
 #.  
 msgid "Orphaned Pages"
 msgstr "リンクのないページ"
@@ -2504,12 +2484,12 @@ msgstr "ページの名前とリンクのみ"
 msgid "Page name and link, plus author and date"
 msgstr "ページの名前とリンク、作成者と日付"
 
-#: lib/Socialtext/DisplayPlugin.pm:53
+#: lib/Socialtext/DisplayPlugin.pm:48
 #.  
 msgid "Page name is too long"
 msgstr "ページ名が長すぎます"
 
-#: lib/Socialtext/Page.pm:1200
+#: lib/Socialtext/Page.pm:1201
 #. (
 msgid "Page renamed to %1"
 msgstr "このページは %1 に名前が変更になりました。"
@@ -2519,7 +2499,7 @@ msgstr "このページは %1 に名前が変更になりました。"
 msgid "Page section name"
 msgstr "ページのセクション名"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
@@ -2624,7 +2604,7 @@ msgstr "有効な Email アドレスを入力してください。"
 msgid "Please enter an email address"
 msgstr "Email アドレスを入力してください。"
 
-#: lib/Socialtext/Handler/Authen.pm:187
+#: lib/Socialtext/Handler/Authen.pm:189
 #.  
 msgid "Please enter an email address."
 msgstr "Email アドレスを入力してください。"
@@ -2649,7 +2629,7 @@ msgstr "この方たちを%1ワークスペースに招待してください。"
 msgid "Please select a file to restore"
 msgstr "元に戻したいファイルを選択してください。"
 
-#: lib/Socialtext/Hub.pm:143
+#: lib/Socialtext/Hub.pm:147
 #. (
 msgid "Please send email to <a href=\"mailto:%1\">%1</a> if you think it should have worked."
 msgstr "修正したい場合は、<a href=\"mailto:%1\">%1</a>に Email を送ってください。"
@@ -2774,7 +2754,7 @@ msgstr "アプライアンスを再起動しますか？"
 msgid "Reboot Now"
 msgstr "今すぐ再起動する"
 
-#: lib/Socialtext/WeblogPlugin.pm:208
+#: lib/Socialtext/WeblogPlugin.pm:219
 #.  
 msgid "Recent Changes"
 msgstr "最近の更新"
@@ -2889,7 +2869,7 @@ msgstr "ページ名の変更"
 msgid "Replace existing page"
 msgstr "既存のページを置き換える"
 
-#: lib/Socialtext/Page.pm:732 share/javascript/Wikiwyg/Socialtext.js:86
+#: lib/Socialtext/Page.pm:733 share/javascript/Wikiwyg/Socialtext.js:86
 #.  
 msgid "Replace this text with your own."
 msgstr "このテキストを書き換えてください。"
@@ -3024,7 +3004,7 @@ msgstr "ページを \"<span id=\"%1-suggest\">XXX</span>\" という名前で�
 msgid "Save with a different name:"
 msgstr "違う名前で保存する:"
 
-#: lib/Socialtext/DisplayPlugin.pm:19
+#: lib/Socialtext/DisplayPlugin.pm:20
 #.  
 msgid "Screen Layout"
 msgstr "画面のレイアウト"
@@ -3154,7 +3134,7 @@ msgstr "設定"
 msgid "Shared Directory Name"
 msgstr "共有ディレクトリ名"
 
-#: lib/Socialtext/DisplayPlugin.pm:97
+#: lib/Socialtext/DisplayPlugin.pm:92
 #.  
 msgid "Should hovering your mouse over a link display the first part of the page?"
 msgstr "マウスをリンクの上に置くと、そのページの最初の部分を表示するように設定しますか？"
@@ -3319,7 +3299,7 @@ msgstr "候補："
 msgid "Summary"
 msgstr "要約"
 
-#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:191
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr "日"
@@ -3419,17 +3399,17 @@ msgstr "アカウント %1 はすでに使用されています。"
 msgid "The appliance can store backup files on a Windows- or SMB-compatible shared directory/folder on another computer. Set the backup server, directory and username here."
 msgstr "アプライアンスは、別のコンピュータの Windows あるいは SMB と互換性のある共有ディレクトリ/ フォルダーにあるバックアップファイルを保管することができます。ここでバックアップサーバー、ディレクトリ、ユーザ名を設定してください。"
 
-#: lib/Socialtext/Handler/Authen.pm:275
+#: lib/Socialtext/Handler/Authen.pm:277
 #.  
 msgid "The confirmation URL you used has expired. A new one will be sent."
 msgstr "あなたが使用していた確認用 URL は期限が切れています。新しい URL を送ります。"
 
-#: lib/Socialtext/Handler/Authen.pm:349
+#: lib/Socialtext/Handler/Authen.pm:351
 #.  
 msgid "The confirmation email has been resent. Please follow the link in this email to activate your account."
 msgstr "確認の Email が再送信されました。この Email に記載のリンクからアカウントを有効にしてください。"
 
-#: lib/Socialtext/Handler/Authen.pm:342
+#: lib/Socialtext/Handler/Authen.pm:344
 #. (
 msgid "The email address for %1 has already been confirmed."
 msgstr "%1 さんの Email アドレスは確認済みです。"
@@ -3464,7 +3444,7 @@ msgstr "次のユーザはすでにこのワークスペースのメンバーで
 msgid "The following users were invited into this Workspace"
 msgstr "次のユーザをこのワークスペースに招待しました。"
 
-#: lib/Socialtext/Handler/Authen.pm:261 lib/Socialtext/Handler/Authen.pm:301 lib/Socialtext/Handler/Authen.pm:62
+#: lib/Socialtext/Handler/Authen.pm:263 lib/Socialtext/Handler/Authen.pm:303 lib/Socialtext/Handler/Authen.pm:64
 #.  
 msgid "The given confirmation URL does not match any pending confirmations."
 msgstr "入力された URL ページは開くことができません。"
@@ -3494,12 +3474,12 @@ msgstr "新しいページ名\"%1\" はすでに使用されています。"
 msgid "The new page name you selected, \"%1\", is already in use. Please choose a different name."
 msgstr "新しいページ名\"%1\" はすでに使用されています。違う名前を選択してください。"
 
-#: lib/Socialtext/BacklinksPlugin.pm:241
+#: lib/Socialtext/BacklinksPlugin.pm:236
 #.  
 msgid "The page had no Backlinks."
 msgstr "このページのバックリンクはありません。"
 
-#: lib/Socialtext/BacklinksPlugin.pm:226
+#: lib/Socialtext/BacklinksPlugin.pm:221
 #.  
 msgid "The page had these Backlinks:"
 msgstr "このページのバックリンク："
@@ -3524,7 +3504,7 @@ msgstr "選択したページ名\"%1\"は無効です。ページ名を入力す
 msgid "The page name you selected, \"%1\", is too long after URL encoding."
 msgstr "選択したページ名\"%1\" は、URL のエンコード処理を行うと、長くなりすぎます。全角文字は28字まで使用できます。"
 
-#: lib/Socialtext/Handler/Authen.pm:209 lib/Socialtext/Handler/Authen.pm:308
+#: lib/Socialtext/Handler/Authen.pm:211 lib/Socialtext/Handler/Authen.pm:310
 #.  
 msgid "The passwords you provided did not match."
 msgstr "パスワードが一致しません。"
@@ -3534,7 +3514,7 @@ msgstr "パスワードが一致しません。"
 msgid "The permissions for %1 have been set to %2."
 msgstr "%1のパーミッションは%2に設定されています。"
 
-#: lib/Socialtext/Workspace.pm:371
+#: lib/Socialtext/Workspace.pm:378
 #. (
 msgid "The skin you specified,%1, does not exist."
 msgstr "スキン %1 は存在しません。"
@@ -3554,12 +3534,12 @@ msgstr "今編集したテキストが以下に表示されますので、そこ
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr "あなたのリクエストをこのワークスペースの管理者に送り、その後ユーザが招待されます。"
 
-#: lib/Socialtext/Workspace.pm:349
+#: lib/Socialtext/Workspace.pm:350
 #. (
 msgid "The workspace name you chose, %1, is already in use as an email alias."
 msgstr "ワークスペース名 %1 は、Email エイリアスとしてすでに使用されています。"
 
-#: lib/Socialtext/Workspace.pm:353
+#: lib/Socialtext/Workspace.pm:354
 #. (
 msgid "The workspace name you chose, %1, is already in use by another workspace."
 msgstr "ワークスペース名 %1 は、別のワークスペースですでに使用されています。"
@@ -3579,12 +3559,12 @@ msgstr "このページにはタグはありません。"
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の<span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span>存在します。"
 
-#: lib/Socialtext/WeblogPlugin.pm:112
+#: lib/Socialtext/WeblogPlugin.pm:120
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
 
-#: lib/Socialtext/Hub.pm:135
+#: lib/Socialtext/Hub.pm:139
 #.  
 msgid "There was an error with your request"
 msgstr "あなたのリクエストでエラーが発生しました"
@@ -3629,7 +3609,7 @@ msgstr "このフォームで あなたのプロファイルページを作成�
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "あなたのワークスペースを見つけるのに便利な名前をつけてください。ワークスペース名は web アドレスと Email アドレスの一部になります。"
 
-#: lib/Socialtext/WeblogPlugin.pm:130
+#: lib/Socialtext/WeblogPlugin.pm:141
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "これは %1 の最初の投稿です。新しく投稿するには *新規投稿* をクリックしてください。"
@@ -3649,12 +3629,12 @@ msgstr "あなたのワークスペースのタイトルです。後で変更で
 msgid "This is your personal notepad page. Edit it to your liking."
 msgstr "あなた自身のノートパッドのページです。お好きなように編集してください。"
 
-#: lib/Socialtext/BacklinksPlugin.pm:232
+#: lib/Socialtext/BacklinksPlugin.pm:227
 #.  
 msgid "This page is linked to from:"
 msgstr "このページへのリンク:"
 
-#: lib/Socialtext/Handler/Authen.pm:115
+#: lib/Socialtext/Handler/Authen.pm:117
 #.  
 msgid "This username has no associated email address."
 msgstr "このユーザには関連した Email アドレスがありません。"
@@ -3814,7 +3794,7 @@ msgstr "タイプする"
 msgid "Type new password again"
 msgstr "新しいパスワード（再入力）"
 
-#: lib/Socialtext/Workspace.pm:548
+#: lib/Socialtext/Workspace.pm:550
 #.  
 msgid "Unable to process logo file. Is it an image?"
 msgstr "ロゴファイルを処理できません。画像ファイルですか？"
@@ -3834,7 +3814,7 @@ msgstr "このワークスペースからの退会"
 msgid "Unsubscribe from the %1 workspace"
 msgstr "%1　ワークスペースからの退会"
 
-#: lib/Socialtext/DisplayPlugin.pm:66 share/javascript/main.js:165 share/javascript/stlibrary.js:102
+#: lib/Socialtext/DisplayPlugin.pm:61 share/javascript/main.js:165 share/javascript/stlibrary.js:102
 #.  
 msgid "Untitled Page"
 msgstr "タイトルなし"
@@ -3869,17 +3849,17 @@ msgstr "%1 から時間を更新しました"
 msgid "Upload An Image"
 msgstr "画像のアップロード"
 
-#: share/template/element/page/attachment_attach_interface:8 share/template/element/page/attachment_queue_interface:7
+#: share/template/element/page/attachment_attach_interface:10 share/template/element/page/attachment_queue_interface:7
 #.  
 msgid "Upload Files"
 msgstr "ファイルのアップロード"
 
-#: share/javascript/pageview.js:457 share/javascript/pageview.js:543 share/template/element/page/attachment_attach_interface:33
+#: share/template/element/page/attachment_attach_interface:35
 #.  
 msgid "Upload file"
 msgstr "ファイルのアップロード"
 
-#: share/template/element/page/attachments:15
+#: share/template/element/page/attachments:14
 #.  
 msgid "Upload files"
 msgstr "ファイルのアップロード"
@@ -3919,12 +3899,12 @@ msgstr "再ログイン時には、 Email アドレスと新しいパスワー�
 msgid "User Name"
 msgstr "ユーザ名"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:215
+#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:210
 #.  
 msgid "Username"
 msgstr "ユーザ名"
 
-#: lib/Socialtext/Handler/Authen.pm:85 share/template/authen/choose_password.html:22
+#: lib/Socialtext/Handler/Authen.pm:87 share/template/authen/choose_password.html:22
 #.  
 msgid "Username:"
 msgstr "ユーザ名:"
@@ -3954,7 +3934,7 @@ msgstr "ユーザ: ユーザを管理する"
 msgid "Users: My Settings"
 msgstr "ユーザ: プロフィールとパスワード"
 
-#: lib/Socialtext/WikiwygPlugin.pm:574
+#: lib/Socialtext/WikiwygPlugin.pm:578
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "バリデーターのサブルーチンがバリデーターの外部を参照しました。"
@@ -3989,12 +3969,12 @@ msgstr "閲覧"
 msgid "Warning"
 msgstr "警告"
 
-#: share/javascript/Watchlist.js:31 share/template/view/page/display:115
+#: share/javascript/Watchlist.js:34 share/template/view/page/display:102
 #.  
 msgid "Watch this page"
 msgstr "このページをウォッチする"
 
-#: share/javascript/Watchlist.js:24 share/template/view/page/display:113
+#: share/javascript/Watchlist.js:27 share/template/view/page/display:100
 #.  
 msgid "Watching this page"
 msgstr "このページをウォッチ中"
@@ -4024,22 +4004,22 @@ msgstr "ウェブログ"
 msgid "Weblog Archives"
 msgstr "ウェブログアーカイブ"
 
-#: lib/Socialtext/WeblogPlugin.pm:388 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:399 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "ウェブログナビゲーション"
 
-#: lib/Socialtext/WeblogPlugin.pm:96
+#: lib/Socialtext/WeblogPlugin.pm:103
 #.  
 msgid "Weblog name must be between 2 and 28 characters long."
 msgstr "ウェブログ名は 2-28 文字にしてください。"
 
-#: lib/Socialtext/WeblogPlugin.pm:150
+#: lib/Socialtext/WeblogPlugin.pm:161
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "ウェブログ: %1 Atom"
 
-#: lib/Socialtext/WeblogPlugin.pm:145
+#: lib/Socialtext/WeblogPlugin.pm:156
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "ウェブログ: %1 RSS"
@@ -4134,7 +4114,7 @@ msgstr "テキストを入力する時は、段落に区切って入力してく
 msgid "When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "テキストを入力する時は、段落に区切ってタイプしてください。壊したりしないかと心配しないでください。ページの前バージョンが保存されていますので、常に作業中のページのバックアップがあります。"
 
-#: lib/Socialtext/DisplayPlugin.pm:114
+#: lib/Socialtext/DisplayPlugin.pm:109
 #.  
 msgid "Which language do you use?"
 msgstr "使用する言語"
@@ -4149,7 +4129,7 @@ msgstr "このワークスペースに Email を送ることができる人を�
 msgid "Workspace"
 msgstr "ワークスペース"
 
-#: lib/Socialtext/Workspace.pm:338
+#: lib/Socialtext/Workspace.pm:339
 #. (
 msgid "Workspace %1 is a required field."
 msgstr "ワークスペース %1 は必須のフィールドです。"
@@ -4209,12 +4189,17 @@ msgstr "ワークスペースタイトル"
 msgid "Workspace Weblog Sort Order"
 msgstr "ワークスペースのウェブログの並べ替え"
 
-#: lib/Socialtext/Workspace.pm:409
+#: lib/Socialtext/Workspace.pm:416
 #.  
 msgid "Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes."
 msgstr "ワークスペース名は 3-30 文字でなければなりません。大文字、小文字、数字、アンダースコア、ダッシュのみを使用してください。"
 
-#: lib/Socialtext/Workspace.pm:360
+#: lib/Socialtext/Workspace.pm:367
+#.  
+msgid "Workspace title is too long after URL encoding"
+msgstr "URL のエンコード処理を行うと、ワークスペースタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
+
+#: lib/Socialtext/Workspace.pm:361
 #.  
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr "ワークスペースのタイトルは 2-64 文字でなければなりません。"
@@ -4259,7 +4244,7 @@ msgstr "ワークスペース: このワークスペース"
 msgid "Workspaces: Unsubscribe"
 msgstr "ワークスペース: 退会する"
 
-#: lib/Socialtext/Handler/Authen.pm:124 lib/Socialtext/Handler/Authen.pm:134
+#: lib/Socialtext/Handler/Authen.pm:126 lib/Socialtext/Handler/Authen.pm:136
 #.  
 msgid "Wrong email address or password - please try again."
 msgstr "Email あるいは、パスワードが間違っています。再入力してください。"
@@ -4394,7 +4379,7 @@ msgstr "OpenID と Email の両方を入力してください。"
 msgid "You must login to view this page."
 msgstr "このページを見るにはログインする必要があります。"
 
-#: lib/Socialtext/Handler/Authen.pm:98
+#: lib/Socialtext/Handler/Authen.pm:100
 #.  
 msgid "You must provide a valid email address."
 msgstr "有効な Email アドレスを指定してください。"
@@ -4439,12 +4424,12 @@ msgstr "あなたのウォッチリスト"
 msgid "Your email address has been confirmed"
 msgstr "あなたの Email アドレスが確認されました。"
 
-#: lib/Socialtext/Handler/Authen.pm:287
+#: lib/Socialtext/Handler/Authen.pm:289
 #. (
 msgid "Your email address, %1, has been confirmed. Please login."
 msgstr "あなたの Email アドレス %1 が確認されました。ログインしてください。"
 
-#: lib/Socialtext/Handler/Authen.pm:322
+#: lib/Socialtext/Handler/Authen.pm:324
 #.  
 msgid "Your password has been set and you can now login."
 msgstr "あなたのパスワードが設定されましたので、ログインできます。"
@@ -4474,7 +4459,7 @@ msgstr "あなたのウォッチリスト"
 msgid "Your workspaces"
 msgstr "あなたのワークスペース"
 
-#: lib/Socialtext/Handler/Authen.pm:108
+#: lib/Socialtext/Handler/Authen.pm:110
 #. (
 msgid "\"%1\" is not a valid email address. Please use your email address to log in."
 msgstr "\"%1\" は有効な Email アドレスではありません。ご自分の Email アドレスでログインしてください。"
@@ -4524,7 +4509,7 @@ msgstr "誰でもワークスペースを閲覧できますが、編集するに
 msgid "attachments"
 msgstr "添付"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "authenticated-user-only"
 msgstr "認証を受けたユーザのみ"
@@ -4569,7 +4554,7 @@ msgstr "クリックしてページを作成"
 msgid "comment"
 msgstr "コメント"
 
-#: lib/Socialtext/Page.pm:663
+#: lib/Socialtext/Page.pm:664
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
 msgstr "contributed by {user: %1} on %2"
@@ -4729,7 +4714,7 @@ msgstr "インデント"
 msgid "inter-workspace link: %1"
 msgstr "内部ワークスペースリンク: %1"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "intranet"
 msgstr "イントラネット"
@@ -4764,7 +4749,7 @@ msgstr "リンク: %1"
 msgid "link: %1 (%2 )"
 msgstr "リンク: %1 (%2 )"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "member-only"
 msgstr "メンバーのみ"
@@ -4809,27 +4794,27 @@ msgstr "percent free"
 msgid "permalink"
 msgstr "パーマリンク"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public"
 msgstr "完全に公開"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-authenticate-to-edit"
 msgstr "編集制限"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-comment-only"
 msgstr "閲覧とコメントのみ可能"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-read-only"
 msgstr "閲覧のみ可能"
 
-#: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:180 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "最近の更新"

@@ -19,7 +19,7 @@ msgstr "%1 - あ7おm sえあRcH FおR %2"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RsS SえあrCh fおr %2"
 
-#: lib/Socialtext/WeblogPlugin.pm:104
+#: lib/Socialtext/WeblogPlugin.pm:112
 #. (
 msgid "%1 Weblog"
 msgstr "%1 Wえ8lおg"
@@ -39,7 +39,7 @@ msgstr "%1 いs あ rえqういRえD FいえlD."
 msgid "%1 is not a valid email address."
 msgstr "%1 いs nお7 あ vあlいd えMあいl あDdRえSs."
 
-#: lib/Socialtext/Handler/Authen.pm:165 lib/Socialtext/Handler/Authen.pm:337
+#: lib/Socialtext/Handler/Authen.pm:167 lib/Socialtext/Handler/Authen.pm:339
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
 msgstr "%1 いs nお7 rえgいs7えRえD あs あ うSえR. 7Ry あ dいfFえRえN7 えMあいl あDdRえSs?"
@@ -64,7 +64,7 @@ msgstr "%1: sえあRcH FおR %2"
 msgid "%1: watchlist for %2"
 msgstr "%1: wあ7ChLいS7 fおr %2"
 
-#: share/template/element/page/details:38 share/template/view/page/display:88
+#: share/template/element/page/details:38 share/template/view/page/display:75
 #. (
 msgid "%quant(%1,revision)"
 msgstr "%quant(%1,rえvいsいおN)"
@@ -74,7 +74,7 @@ msgstr "%quant(%1,rえvいsいおN)"
 msgid "%quant(%1,view)"
 msgstr "%quant(%1,vいえW)"
 
-#: lib/Socialtext/Workspace.pm:414
+#: lib/Socialtext/Workspace.pm:421
 #. (
 msgid "'%1' is a reserved workspace name and cannot be used."
 msgstr "'%1' いs あ rえsえrVえD WおRkSpあcえ NあMえ あNd cあnNお7 8え うSえD."
@@ -324,12 +324,12 @@ msgstr "あ fいl7えR HあS 8ええn sえ7 おN 7hいs wおrKsPあCえ. あlL C
 msgid "A filter has been set on this workspace. All candidate email addresses must match this pattern: <span style=\"color: red\"> %1 </span>"
 msgstr "あ fいl7えR HあS 8ええn sえ7 おN 7hいs wおrKsPあCえ. あlL CあNdいdあ7え えmあいL あdDrえsSえS MうS7 mあ7Ch 7HいS Pあ77えrN: <Spあn s7yLえ=\"cおlおr: RえD\"> %1 </Spあn>"
 
-#: lib/Socialtext/EditPlugin.pm:148
+#: lib/Socialtext/EditPlugin.pm:149
 #.  
 msgid "A page must have a body to be saved."
 msgstr "あ pあgえ MうS7 hあvえ あ 8おDy 7お 8え sあvえd."
 
-#: lib/Socialtext/EditPlugin.pm:142
+#: lib/Socialtext/EditPlugin.pm:143
 #.  
 msgid "A page must have a title to be saved."
 msgstr "あ pあgえ MうS7 hあvえ あ 7い7lえ 7お 8え SあVえD."
@@ -339,7 +339,7 @@ msgstr "あ pあgえ MうS7 hあvえ あ 7い7lえ 7お 8え SあVえD."
 msgid "A password is required to create a new user."
 msgstr "あ pあsSwおrD いs rえqういRえD 7お cRえあ7え あ NえW うsえr."
 
-#: lib/Socialtext/Handler/Authen.pm:197
+#: lib/Socialtext/Handler/Authen.pm:199
 #. (
 msgid "A user with this email address (%1) already exists."
 msgstr "あ うSえR Wい7h 7HいS えmあいL あdDrえsS (%1) あLrえあDy えXいS7S."
@@ -414,7 +414,7 @@ msgstr "あDd 7あgS"
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page when the page is saved."
 msgstr "あDd あ lいnK 7お 7Hえ あ77あcHmえn7 あ7 7Hえ 7おp おF 7hえ PあGえ? いmあgえs wいlL あpPえあr いN 7hえ PあGえ wHえN 7hえ PあGえ いS SあVえD."
 
-#: share/template/element/page/attachment_attach_interface:20
+#: share/template/element/page/attachment_attach_interface:22
 #.  
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr "あDd あ lいnK 7お 7Hえ あ77あcHmえn7 あ7 7Hえ 7おp おF 7hえ PあGえ? いmあgえs wいlL あpPえあr いN 7hえ PあGえ."
@@ -504,7 +504,7 @@ msgstr "あLl 7あgS いn %1"
 msgid "All Tags in Workspace"
 msgstr "あLl 7あgS いn wおrKsPあCえ"
 
-#: lib/Socialtext/BacklinksPlugin.pm:77
+#: lib/Socialtext/BacklinksPlugin.pm:73
 #. (
 msgid "All backlinks for \"%1\""
 msgstr "あLl 8あcKlいnKs fおr \"%1\""
@@ -534,7 +534,7 @@ msgstr "あLl&n8sP;RえVいSいおnS"
 msgid "An Invitation to join %1"
 msgstr "あN いnVい7あ7いおn 7お Jおいn %1"
 
-#: lib/Socialtext/Workspace.pm:375
+#: lib/Socialtext/Workspace.pm:382
 #.  
 msgid "An account must be specified for all new workspaces."
 msgstr "あN あcCおうn7 MうS7 8え SpえcいfいえD FおR あlL NえW WおRkSpあcえs."
@@ -544,17 +544,17 @@ msgstr "あN あcCおうn7 MうS7 8え SpえcいfいえD FおR あlL NえW WおR
 msgid "An application error has occurred in the Socialtext Workspace system."
 msgstr "あN あpPlいcあ7いおN えrRおR HあS おcCうRrえd いN 7hえ SおCいあl7えX7 wおrKsPあCえ sYs7えM."
 
-#: lib/Socialtext/Handler/Authen.pm:248
+#: lib/Socialtext/Handler/Authen.pm:250
 #. (
 msgid "An email confirming your registration has been sent to %1."
 msgstr "あN えmあいL CおNfいrMいNg yおうR RえGいS7Rあ7いおn hあs 8ええN SえN7 7お %1."
 
-#: lib/Socialtext/Handler/Authen.pm:173
+#: lib/Socialtext/Handler/Authen.pm:175
 #. (
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr "あN えmあいL Wい7h いNs7rうc7いおnS おn cHあNgいnG Yおうr pあsSwおrD HあS 8ええn sえn7 7お %1."
 
-#: lib/Socialtext/WikiwygPlugin.pm:569 lib/Socialtext/WikiwygPlugin.pm:719
+#: lib/Socialtext/WikiwygPlugin.pm:573 lib/Socialtext/WikiwygPlugin.pm:723
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr "あN いnVあLいD PあGえ いD WあS GいVえN: %1"
@@ -884,7 +884,7 @@ msgstr "cLいCk <あ Hrえf=\"%1\">HえRえ</あ> 7お Gお 7お 7hえ Lあ7えS
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Add file\" this file will be added to the list of attachments for this page, and uploaded when you save the page."
 msgstr "cLいCk \"8RおWsえ\" 7お fいnD 7hえ FいLえ yおう wあn7 7お うPlおあD. wHえN Yおう ClいcK \"あdD FいLえ\" 7HいS FいLえ wいlL 8え あDdえd 7お 7hえ LいS7 おF あ77あChMえN7S FおR 7hいs pあgえ, あNd うPlおあDえD Whえn yおう sあvえ 7hえ PあGえ."
 
-#: share/javascript/pageview.js:458 share/template/element/page/attachment_attach_interface:10
+#: share/template/element/page/attachment_attach_interface:12
 #.  
 msgid "Click \"Browse\" to find the file you want to upload. When you click \"Upload file\" your file will be uploaded and added to the list of attachments for this page."
 msgstr "cLいCk \"8RおWsえ\" 7お fいnD 7hえ FいLえ yおう wあn7 7お うPlおあD. wHえN Yおう ClいcK \"うpLおあd fいlえ\" Yおうr fいlえ WいLl 8え うpLおあdえd あNd あDdえd 7お 7hえ LいS7 おF あ77あChMえN7S FおR 7hいs pあgえ."
@@ -899,7 +899,7 @@ msgstr "cLいCk hえrえ 7お gお 7お 7Hえ lあ7えs7 VえRsいおN おf 7H�
 msgid "Click this button to add a comment to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お あdD あ CおMmえn7 7お 7Hえ pあgえ"
 
-#: share/template/element/page/attachments:15
+#: share/template/element/page/attachments:14
 #.  
 msgid "Click this button to add a file to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お あdD あ FいLえ 7お 7hえ PあGえ"
@@ -939,7 +939,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お Crえあ7え あ nえw wおrKsPあCえ"
 msgid "Click this button to edit the page"
 msgstr "cLいCk 7HいS 8う77おn 7お えdい7 7Hえ pあgえ"
 
-#: share/template/element/page/attachments:18
+#: share/template/element/page/attachments:17
 #.  
 msgid "Click this button to manage files attached to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お MあNあGえ fいlえs あ77あcHえD 7お 7Hえ pあgえ"
@@ -1004,7 +1004,7 @@ msgstr "cLいCk 7HいS 8う77おn 7お SあVえ yおうR 7あG"
 msgid "Click this button to upload a file to the page"
 msgstr "cLいCk 7HいS 8う77おn 7お うpLおあd あ fいlえ 7お 7Hえ pあgえ"
 
-#: share/template/view/page/display:82 share/template/view/page/display:88
+#: share/template/view/page/display:69 share/template/view/page/display:75
 #.  
 msgid "Click to view previous versions of this page."
 msgstr "cLいCk 7お Vいえw pRえVいおうS VえRsいおNs おF 7hいs pあgえ."
@@ -1269,12 +1269,12 @@ msgstr "dお Yおう RえあlLy wあn7 7お sHう7dおwN 7hえ あpPlいあNcえ
 msgid "Do you want to set up this workspace as:"
 msgstr "dお Yおう WあN7 7お Sえ7 うp 7HいS WおRkSpあcえ あs:"
 
-#: share/template/element/page/attachment_attach_interface:32 share/template/element/page/attachment_queue_interface:31 share/template/element/page/tag_queue_interface:14
+#: share/template/element/page/attachment_attach_interface:34 share/template/element/page/attachment_queue_interface:31 share/template/element/page/tag_queue_interface:14
 #.  
 msgid "Done"
 msgstr "dおnえ"
 
-#: lib/Socialtext/WikiwygPlugin.pm:626
+#: lib/Socialtext/WikiwygPlugin.pm:630
 #.  
 msgid "Double-click to edit a page?"
 msgstr "dおう8lえ-ClいcK 7お えDい7 あ PあGえ?"
@@ -1349,7 +1349,7 @@ msgstr "えDい7s"
 msgid "Email"
 msgstr "えMあいl"
 
-#: lib/Socialtext/WebApp.pm:214 share/template/element/settings/users_listall_section:7
+#: lib/Socialtext/WebApp.pm:209 share/template/element/settings/users_listall_section:7
 #.  
 msgid "Email Address"
 msgstr "えMあいl あDdRえSs"
@@ -1359,7 +1359,7 @@ msgstr "えMあいl あDdRえSs"
 msgid "Email Address for this user:"
 msgstr "えMあいl あDdRえSs fおr 7HいS うsえr:"
 
-#: lib/Socialtext/Handler/Authen.pm:85 share/template/authen/forgot_password.html:5 share/template/authen/register.html:10
+#: lib/Socialtext/Handler/Authen.pm:87 share/template/authen/forgot_password.html:5 share/template/authen/register.html:10
 #.  
 msgid "Email Address:"
 msgstr "えMあいl あDdRえSs:"
@@ -1398,11 +1398,6 @@ msgstr "えMあいl:"
 #.  
 msgid "Enable email notifications for this workspace?"
 msgstr "えNあ8lえ えmあいL Nお7いFいCあ7いおnS FおR 7hいs wおrKsPあCえ?"
-
-#: lib/Socialtext/DisplayPlugin.pm:23
-#.  
-msgid "English"
-msgstr "えNgLいSh"
 
 #: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
@@ -1449,7 +1444,7 @@ msgstr "えRrおr うPdあ7いnG Frおm 7いmえsえrVえR %1"
 msgid "Error:"
 msgstr "えRrおr:"
 
-#: lib/Socialtext/PdfExportPlugin.pm:62 lib/Socialtext/RtfExportPlugin.pm:60
+#: lib/Socialtext/PdfExportPlugin.pm:61 lib/Socialtext/RtfExportPlugin.pm:59
 #.  
 msgid "Error:<pre>No pages selected for export</pre>\n"
 msgstr "えRrおr:<Prえ>Nお pあgえs sえlえc7えD FおR えxPおR7</Prえ>\n"
@@ -1529,7 +1524,7 @@ msgstr "えXあMpLえ: H77p://wWw.sおcいあL7えx7.CおM/いmあgえs/sおcい
 msgid "Except for your name, all fields are optional."
 msgstr "えXcえp7 FおR Yおうr nあmえ, あLl fいえLdS あrえ おp7いおnあl."
 
-#: share/template/element/page/attachment_attach_interface:27 share/template/element/page/attachment_queue_interface:27
+#: share/template/element/page/attachment_attach_interface:29 share/template/element/page/attachment_queue_interface:27
 #.  
 msgid "Expand zip archive and attach individual files to the page"
 msgstr "えXpあnD ZいP あrChいvえ あnD あ77あCh いNdいvいdうあL FいLえS 7お 7Hえ pあgえ"
@@ -1599,7 +1594,7 @@ msgstr "fいrS7 nあmえ"
 msgid "First Name:"
 msgstr "fいrS7 nあmえ:"
 
-#: lib/Socialtext/WeblogPlugin.pm:118
+#: lib/Socialtext/WeblogPlugin.pm:126
 #. (
 msgid "First Post in %1"
 msgstr "fいrS7 pおs7 いn %1"
@@ -1613,11 +1608,6 @@ msgstr "fいrS7 nあmえ:"
 #.  
 msgid "Forgot Password"
 msgstr "fおrGお7 PあSsWおRd"
-
-#: lib/Socialtext/DisplayPlugin.pm:25
-#.  
-msgid "French"
-msgstr "fRえNcH"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
@@ -1638,11 +1628,6 @@ msgstr "fRおM:"
 #.  
 msgid "Fully public"
 msgstr "fうlLy pう8LいC"
-
-#: lib/Socialtext/DisplayPlugin.pm:26
-#.  
-msgid "German"
-msgstr "gえrMあN"
 
 #: share/template/element/weblog/actions:11
 #.  
@@ -1849,7 +1834,7 @@ msgstr "いMあGえ あLrえあDy おN 7hえ Wえ8"
 msgid "Importing workspaces from tarballs ..."
 msgstr "いMpおr7いNg wおrKsPあCえS Frおm 7あr8あLlS ..."
 
-#: lib/Socialtext/DisplayPlugin.pm:105
+#: lib/Socialtext/DisplayPlugin.pm:100
 #.  
 msgid "Include Recently Viewed items as a side box when viewing pages?"
 msgstr "いNcLうDえ rえcえn7lY Vいえwえd い7えMs あS あ SいDえ 8おx wHえN VいえwいnG PあGえS?"
@@ -1879,7 +1864,7 @@ msgstr "いNcLうDえ 7Hえ wえ8LおG '%1'. ClいcK 7お えDい7."
 msgid "Incoming Links"
 msgstr "いNcおmいnG LいNkS"
 
-#: lib/Socialtext/Workspace.pm:365
+#: lib/Socialtext/Workspace.pm:372
 #.  
 msgid "Incoming email placement must be one of top, bottom, or replace."
 msgstr "いNcおmいnG えmあいL Plあcえmえn7 MうS7 8え おnえ おf 7おp, 8お77おm, おr rえpLあCえ."
@@ -1973,11 +1958,6 @@ msgstr "い7 MうS7 cおnSいS7 おF 3-30 lおwえrCあSえ lえ77えRs おR D�
 #.  
 msgid "It's where you can share tips and best practices with other Socialtext customers."
 msgstr "い7'S Whえrえ Yおう CあN Shあrえ 7いPs あNd 8えs7 Prあc7いCえS Wい7h お7hえr sおcいあL7えx7 CうS7おmえrS."
-
-#: lib/Socialtext/DisplayPlugin.pm:24
-#.  
-msgid "Japanese"
-msgstr "jあpあnえsえ"
 
 #: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
 #.  
@@ -2154,7 +2134,7 @@ msgstr "lおgいn +"
 msgid "Login + Edit"
 msgstr "lおgいn + えDい7"
 
-#: lib/Socialtext/Workspace.pm:528
+#: lib/Socialtext/Workspace.pm:530
 #.  
 msgid "Logo file must be a gif, jpeg, or png file."
 msgstr "lおgお FいLえ mうs7 8え あ gいf, Jpえg, おr pNg fいlえ."
@@ -2169,7 +2149,7 @@ msgstr "lおおK FおR <いMg 8おrDえR=\"0\" SrC=\"%1/いMあGえS/S7/pあgえ
 msgid "Make your contributions in the text box, then click \"Save\"."
 msgstr "mあkえ Yおうr cおn7rい8う7いおNs いN 7hえ 7えX7 8おx, 7hえn cLいCk \"sあvえ\"."
 
-#: lib/Socialtext/Hub.pm:139
+#: lib/Socialtext/Hub.pm:143
 #.  
 msgid "Malformed query."
 msgstr "mあlFおRmえd qうえRy."
@@ -2179,7 +2159,7 @@ msgstr "mあlFおRmえd qうえRy."
 msgid "Manage All Users"
 msgstr "mあnあgえ あlL うsえrS"
 
-#: share/template/element/page/attachments:18
+#: share/template/element/page/attachments:17
 #.  
 msgid "Manage files"
 msgstr "mあnあgえ FいLえS"
@@ -2224,7 +2204,7 @@ msgstr "mY WおRkSpあcえs"
 msgid "Name"
 msgstr "nあmえ"
 
-#: lib/Socialtext/WeblogPlugin.pm:405
+#: lib/Socialtext/WeblogPlugin.pm:416
 #. (
 msgid "Navigation for: %1"
 msgstr "nあvいgあ7いおN FおR: %1"
@@ -2274,7 +2254,7 @@ msgstr "nえw pあsSwおrDs dお Nお7 Mあ7cH"
 msgid "New passwords must be at least 6 characters long."
 msgstr "nえw pあsSwおrDs mうs7 8え あ7 Lえあs7 6 Chあrあc7えRs lおnG."
 
-#: share/javascript/pageview.js:1107 share/template/element/wiki/nav:16
+#: share/javascript/pageview.js:214 share/template/element/wiki/nav:16
 #.  
 msgid "New search"
 msgstr "nえw sえあRcH"
@@ -2324,7 +2304,7 @@ msgstr "nお FいLえ pRおVいDえD 7お vえrいfY"
 msgid "No files available to restore."
 msgstr "nお FいLえS あvあいLあ8lえ 7お rえs7おRえ."
 
-#: lib/Socialtext/WikiwygPlugin.pm:560 lib/Socialtext/WikiwygPlugin.pm:710
+#: lib/Socialtext/WikiwygPlugin.pm:564 lib/Socialtext/WikiwygPlugin.pm:714
 #.  
 msgid "No page ID given"
 msgstr "nお PあGえ いD GいVえN"
@@ -2334,7 +2314,7 @@ msgstr "nお PあGえ いD GいVえN"
 msgid "No problem, we can send you an email that will help. You will be able to change your password back to something you know."
 msgstr "nお Prお8LえM, wえ CあN SえNd yおう あN えmあいL 7hあ7 wいlL HえLp. Yおう WいLl 8え あ8Lえ 7お ChあnGえ yおうR PあSsWおRd 8あcK 7お sおmえ7HいNg yおう kNおW."
 
-#: share/template/view/page/display:90
+#: share/template/view/page/display:77
 #.  
 msgid "No revisions"
 msgstr "nお RえVいSいおnS"
@@ -2379,7 +2359,7 @@ msgstr "nお Wあ7cHlいs7 FおR %1 いN %2"
 msgid "Normal View"
 msgstr "nおrMあL Vいえw"
 
-#: lib/Socialtext/DisplayPlugin.pm:157
+#: lib/Socialtext/DisplayPlugin.pm:152
 #.  
 msgid "Not a valid page name"
 msgstr "nお7 あ vあlいd pあgえ NあMえ"
@@ -2434,7 +2414,7 @@ msgstr "おPえNいD:"
 msgid "Or you may continue to work in this workspace, and visit \"%1\" later."
 msgstr "おR Yおう MあY CおN7いnうえ 7お WおRk いN 7hいs wおrKsPあCえ, あnD VいSい7 \"%1\" lあ7えr."
 
-#: lib/Socialtext/BacklinksPlugin.pm:113 lib/Socialtext/BacklinksPlugin.pm:94 share/template/element/listview/actionbar:9
+#: lib/Socialtext/BacklinksPlugin.pm:109 lib/Socialtext/BacklinksPlugin.pm:90 share/template/element/listview/actionbar:9
 #.  
 msgid "Orphaned Pages"
 msgstr "おRpHあNえD PあGえS"
@@ -2504,12 +2484,12 @@ msgstr "pあgえ NあMえ あNd lいnK おnLy"
 msgid "Page name and link, plus author and date"
 msgstr "pあgえ NあMえ あNd lいnK, pLうS あう7hおr あNd dあ7え"
 
-#: lib/Socialtext/DisplayPlugin.pm:53
+#: lib/Socialtext/DisplayPlugin.pm:48
 #.  
 msgid "Page name is too long"
 msgstr "pあgえ NあMえ いS 7おお LおNg"
 
-#: lib/Socialtext/Page.pm:1200
+#: lib/Socialtext/Page.pm:1201
 #. (
 msgid "Page renamed to %1"
 msgstr "pあgえ RえNあMえD 7お %1"
@@ -2519,7 +2499,7 @@ msgstr "pあgえ RえNあMえD 7お %1"
 msgid "Page section name"
 msgstr "pあgえ SえC7いおN NあMえ"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:682 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "pあgえ 7い7lえ いs 7おお lおnG あf7えR うrL えnCおDいNg"
@@ -2624,7 +2604,7 @@ msgstr "pLえあsえ えn7えR あ VあLいD えmあいL あdDrえsS"
 msgid "Please enter an email address"
 msgstr "pLえあsえ えn7えR あn えMあいl あDdRえSs"
 
-#: lib/Socialtext/Handler/Authen.pm:187
+#: lib/Socialtext/Handler/Authen.pm:189
 #.  
 msgid "Please enter an email address."
 msgstr "pLえあsえ えn7えR あn えMあいl あDdRえSs."
@@ -2649,7 +2629,7 @@ msgstr "pLえあsえ いnVい7え 7HえSえ pえおPlえ いn7お 7Hえ %1 WおR
 msgid "Please select a file to restore"
 msgstr "pLえあsえ SえLえC7 あ fいlえ 7お rえs7おRえ"
 
-#: lib/Socialtext/Hub.pm:143
+#: lib/Socialtext/Hub.pm:147
 #. (
 msgid "Please send email to <a href=\"mailto:%1\">%1</a> if you think it should have worked."
 msgstr "pLえあsえ SえNd えMあいl 7お <あ hRえF=\"Mあいl7お:%1\">%1</あ> いF Yおう 7hいnK い7 sHおうlD HあVえ wおrKえD."
@@ -2774,7 +2754,7 @@ msgstr "rえ8おお7 あpPlいあNcえ?"
 msgid "Reboot Now"
 msgstr "rえ8おお7 NおW"
 
-#: lib/Socialtext/WeblogPlugin.pm:208
+#: lib/Socialtext/WeblogPlugin.pm:219
 #.  
 msgid "Recent Changes"
 msgstr "rえcえn7 ChあnGえS"
@@ -2889,7 +2869,7 @@ msgstr "rえnあmえ PあGえ"
 msgid "Replace existing page"
 msgstr "rえpLあCえ えXいS7いnG PあGえ"
 
-#: lib/Socialtext/Page.pm:732 share/javascript/Wikiwyg/Socialtext.js:86
+#: lib/Socialtext/Page.pm:733 share/javascript/Wikiwyg/Socialtext.js:86
 #.  
 msgid "Replace this text with your own."
 msgstr "rえpLあCえ 7HいS 7えX7 wい7H Yおうr おWn."
@@ -3024,7 +3004,7 @@ msgstr "sあvえ 7hえ PあGえ wい7H 7hえ NあMえ \"<Spあn いD=\"%1-sうgG
 msgid "Save with a different name:"
 msgstr "sあvえ Wい7h あ dいfFえRえN7 nあmえ:"
 
-#: lib/Socialtext/DisplayPlugin.pm:19
+#: lib/Socialtext/DisplayPlugin.pm:20
 #.  
 msgid "Screen Layout"
 msgstr "sCrええN LあYおう7"
@@ -3154,7 +3134,7 @@ msgstr "sえ7うp"
 msgid "Shared Directory Name"
 msgstr "sHあRえD DいRえC7おrY NあMえ"
 
-#: lib/Socialtext/DisplayPlugin.pm:97
+#: lib/Socialtext/DisplayPlugin.pm:92
 #.  
 msgid "Should hovering your mouse over a link display the first part of the page?"
 msgstr "sHおうlD HおVえRいNg yおうR Mおうsえ おvえr あ lいnK DいSpLあY 7hえ FいRs7 PあR7 おF 7hえ PあGえ?"
@@ -3319,7 +3299,7 @@ msgstr "sうgGえS7いおNs:"
 msgid "Summary"
 msgstr "sうmMあRy"
 
-#: lib/Socialtext/Appliance.pm:336 lib/Socialtext/Appliance/Model/Backup.pm:191
+#: lib/Socialtext/Appliance/Model/Backup.pm:191
 #.  
 msgid "Sun"
 msgstr "sうn"
@@ -3419,17 +3399,17 @@ msgstr "7Hえ あCcおうN7 nあmえ Yおう Chおsえ, %1, いS あlRえあdY �
 msgid "The appliance can store backup files on a Windows- or SMB-compatible shared directory/folder on another computer. Set the backup server, directory and username here."
 msgstr "7Hえ あPpLいあnCえ cあn s7おRえ 8あcKうP FいLえS おn あ wいnDおWs- おr sM8-cおmPあ7い8lえ Shあrえd dいrえc7おRy/fおlDえR おn あNお7hえr cおmPう7えR. sえ7 7Hえ 8あcKうP SえRvえr, DいRえC7おrY あnD うsえrNあMえ hえrえ."
 
-#: lib/Socialtext/Handler/Authen.pm:275
+#: lib/Socialtext/Handler/Authen.pm:277
 #.  
 msgid "The confirmation URL you used has expired. A new one will be sent."
 msgstr "7Hえ cおnFいRmあ7いおN うrL Yおう うsえd hあs えXpいrえd. あ NえW おnえ WいLl 8え SえN7."
 
-#: lib/Socialtext/Handler/Authen.pm:349
+#: lib/Socialtext/Handler/Authen.pm:351
 #.  
 msgid "The confirmation email has been resent. Please follow the link in this email to activate your account."
 msgstr "7Hえ cおnFいRmあ7いおN えmあいL HあS 8ええn rえsえn7. pLえあsえ FおLlおw 7Hえ lいnK いn 7HいS えmあいL 7お あC7いvあ7え Yおうr あCcおうN7."
 
-#: lib/Socialtext/Handler/Authen.pm:342
+#: lib/Socialtext/Handler/Authen.pm:344
 #. (
 msgid "The email address for %1 has already been confirmed."
 msgstr "7Hえ えMあいl あDdRえSs fおr %1 HあS あlRえあdY 8ええn cおnFいRmえd."
@@ -3464,7 +3444,7 @@ msgstr "7Hえ fおlLおWいNg うSえRs wえrえ あlRえあdY MえM8えrS おf 
 msgid "The following users were invited into this Workspace"
 msgstr "7Hえ fおlLおWいNg うSえRs wえrえ いnVい7えD いn7お 7HいS WおRkSpあcえ"
 
-#: lib/Socialtext/Handler/Authen.pm:261 lib/Socialtext/Handler/Authen.pm:301 lib/Socialtext/Handler/Authen.pm:62
+#: lib/Socialtext/Handler/Authen.pm:263 lib/Socialtext/Handler/Authen.pm:303 lib/Socialtext/Handler/Authen.pm:64
 #.  
 msgid "The given confirmation URL does not match any pending confirmations."
 msgstr "7Hえ gいvえn cおnFいRmあ7いおN うrL Dおえs nお7 mあ7Ch あNy pえnDいNg cおnFいRmあ7いおNs."
@@ -3494,12 +3474,12 @@ msgstr "7Hえ nえw pあgえ NあMえ yおう sえlえc7えD, \"%1\", いS あlR
 msgid "The new page name you selected, \"%1\", is already in use. Please choose a different name."
 msgstr "7Hえ nえw pあgえ NあMえ yおう sえlえc7えD, \"%1\", いS あlRえあdY いn うSえ. PlえあSえ cHおおsえ あ DいFfえrえn7 NあMえ."
 
-#: lib/Socialtext/BacklinksPlugin.pm:241
+#: lib/Socialtext/BacklinksPlugin.pm:236
 #.  
 msgid "The page had no Backlinks."
 msgstr "7Hえ pあgえ HあD Nお 8あcKlいnKs."
 
-#: lib/Socialtext/BacklinksPlugin.pm:226
+#: lib/Socialtext/BacklinksPlugin.pm:221
 #.  
 msgid "The page had these Backlinks:"
 msgstr "7Hえ pあgえ HあD 7hえsえ 8あCkLいNkS:"
@@ -3524,7 +3504,7 @@ msgstr "7Hえ pあgえ NあMえ yおう sえlえc7えD, \"%1\", いS Nお7 あlL
 msgid "The page name you selected, \"%1\", is too long after URL encoding."
 msgstr "7Hえ pあgえ NあMえ yおう sえlえc7えD, \"%1\", いS 7おお LおNg あF7えr うRl えNcおdいnG."
 
-#: lib/Socialtext/Handler/Authen.pm:209 lib/Socialtext/Handler/Authen.pm:308
+#: lib/Socialtext/Handler/Authen.pm:211 lib/Socialtext/Handler/Authen.pm:310
 #.  
 msgid "The passwords you provided did not match."
 msgstr "7Hえ pあsSwおrDs yおう pRおVいDえD DいD Nお7 Mあ7cH."
@@ -3534,7 +3514,7 @@ msgstr "7Hえ pあsSwおrDs yおう pRおVいDえD DいD Nお7 Mあ7cH."
 msgid "The permissions for %1 have been set to %2."
 msgstr "7Hえ pえrMいSsいおNs fおr %1 HあVえ 8ええN Sえ7 7お %2."
 
-#: lib/Socialtext/Workspace.pm:371
+#: lib/Socialtext/Workspace.pm:378
 #. (
 msgid "The skin you specified,%1, does not exist."
 msgstr "7Hえ sKいN Yおう SpえcいfいえD,%1, Dおえs nお7 えXいS7."
@@ -3554,12 +3534,12 @@ msgstr "7Hえ 7えx7 Yおう JうS7 えDい7えD いs sHおWn 8えlおw. Yおう
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr "7Hえ wおrKsPあCえ あDmいnいs7rあ7おrS FおR 7hいs sPあCえ wいlL RえCえいvえ あ Nお7いFいCあ7いおn おF Yおうr rえqうえS7 sお 7hあ7 7Hえ うSえRs cあn 8え いnVい7えD."
 
-#: lib/Socialtext/Workspace.pm:349
+#: lib/Socialtext/Workspace.pm:350
 #. (
 msgid "The workspace name you chose, %1, is already in use as an email alias."
 msgstr "7Hえ wおrKsPあCえ nあmえ Yおう Chおsえ, %1, いS あlRえあdY いn うSえ あS あn えMあいl あLいあs."
 
-#: lib/Socialtext/Workspace.pm:353
+#: lib/Socialtext/Workspace.pm:354
 #. (
 msgid "The workspace name you chose, %1, is already in use by another workspace."
 msgstr "7Hえ wおrKsPあCえ nあmえ Yおう Chおsえ, %1, いS あlRえあdY いn うSえ 8Y あnお7HえR WおRkSpあcえ."
@@ -3579,12 +3559,12 @@ msgstr "7HえRえ あRえ nお 7あGs fおr 7HいS PあGえ."
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "7HえRえ いS <sPあN いd=\"s7-NえWpあgえ-DうPlいcあ7え-えmPhあsいs\">あLrえあDy あ pあgえ</sPあN> nあmえd <あ いd=\"%1-LいNk\" hRえF=\"#\" 7あRgえ7=\"\">XxX</あ>. wおうLd yおう lいkえ 7お:"
 
-#: lib/Socialtext/WeblogPlugin.pm:112
+#: lib/Socialtext/WeblogPlugin.pm:120
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "7HえRえ いS あlRえあdY あ '%1' wえ8LおG. pLえあsえ ChおおSえ あ dいfFえRえN7 nあmえ."
 
-#: lib/Socialtext/Hub.pm:135
+#: lib/Socialtext/Hub.pm:139
 #.  
 msgid "There was an error with your request"
 msgstr "7HえRえ wあs あN えrRおR Wい7h yおうR RえQうえs7"
@@ -3629,7 +3609,7 @@ msgstr "7HいS FおRm wいlL Crえあ7え yおうR Prおfいlえ PあGえ."
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "7HいS いs あ sHおR7 うNいQうえ いdえn7いFいえr うSえD あs pあr7 おf yおうR WおRkSpあcえ'S Wえ8 あdDrえsS あnD えmあいL あdDrえsS."
 
-#: lib/Socialtext/WeblogPlugin.pm:130
+#: lib/Socialtext/WeblogPlugin.pm:141
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "7HいS いs 7Hえ fいrS7 pおs7 いn %1. cLいCk *NえW PおS7* 7お あDd あNお7hえr pおs7."
@@ -3649,12 +3629,12 @@ msgstr "7HいS いs 7Hえ 7い7Lえ おF Yおうr wおrKsPあCえ. い7 mあy 8�
 msgid "This is your personal notepad page. Edit it to your liking."
 msgstr "7HいS いs yおうR PえRsおnあl nお7えpあd pあgえ. えDい7 い7 7お Yおうr lいkいnG."
 
-#: lib/Socialtext/BacklinksPlugin.pm:232
+#: lib/Socialtext/BacklinksPlugin.pm:227
 #.  
 msgid "This page is linked to from:"
 msgstr "7HいS PあGえ いS LいNkえd 7お Frおm:"
 
-#: lib/Socialtext/Handler/Authen.pm:115
+#: lib/Socialtext/Handler/Authen.pm:117
 #.  
 msgid "This username has no associated email address."
 msgstr "7HいS うsえrNあMえ hあs nお あsSおCいあ7えd えMあいl あDdRえSs."
@@ -3814,7 +3794,7 @@ msgstr "7Ypえ 7hいs"
 msgid "Type new password again"
 msgstr "7Ypえ NえW PあSsWおRd あGあいn"
 
-#: lib/Socialtext/Workspace.pm:548
+#: lib/Socialtext/Workspace.pm:550
 #.  
 msgid "Unable to process logo file. Is it an image?"
 msgstr "うNあ8lえ 7お pRおCえSs lおgお FいLえ. いs い7 あn いMあGえ?"
@@ -3834,7 +3814,7 @@ msgstr "うNsう8ScRい8え"
 msgid "Unsubscribe from the %1 workspace"
 msgstr "うNsう8ScRい8え fRおM 7hえ %1 wおrKsPあCえ"
 
-#: lib/Socialtext/DisplayPlugin.pm:66 share/javascript/main.js:165 share/javascript/stlibrary.js:102
+#: lib/Socialtext/DisplayPlugin.pm:61 share/javascript/main.js:165 share/javascript/stlibrary.js:102
 #.  
 msgid "Untitled Page"
 msgstr "うN7い7LえD PあGえ"
@@ -3869,17 +3849,17 @@ msgstr "うPdあ7えd 7いmえ Frおm %1"
 msgid "Upload An Image"
 msgstr "うPlおあD あn いMあGえ"
 
-#: share/template/element/page/attachment_attach_interface:8 share/template/element/page/attachment_queue_interface:7
+#: share/template/element/page/attachment_attach_interface:10 share/template/element/page/attachment_queue_interface:7
 #.  
 msgid "Upload Files"
 msgstr "うPlおあD FいLえS"
 
-#: share/javascript/pageview.js:457 share/javascript/pageview.js:543 share/template/element/page/attachment_attach_interface:33
+#: share/template/element/page/attachment_attach_interface:35
 #.  
 msgid "Upload file"
 msgstr "うPlおあD FいLえ"
 
-#: share/template/element/page/attachments:15
+#: share/template/element/page/attachments:14
 #.  
 msgid "Upload files"
 msgstr "うPlおあD FいLえS"
@@ -3919,12 +3899,12 @@ msgstr "うSえ yおうR えmあいL あdDrえsS あnD NえW PあSsWおRd 7お L
 msgid "User Name"
 msgstr "うSえR NあMえ"
 
-#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:215
+#: lib/Socialtext/Appliance/Model/Backup.pm:235 lib/Socialtext/WebApp.pm:210
 #.  
 msgid "Username"
 msgstr "うSえRnあmえ"
 
-#: lib/Socialtext/Handler/Authen.pm:85 share/template/authen/choose_password.html:22
+#: lib/Socialtext/Handler/Authen.pm:87 share/template/authen/choose_password.html:22
 #.  
 msgid "Username:"
 msgstr "うSえRnあmえ:"
@@ -3954,7 +3934,7 @@ msgstr "うSえRs: MあNあGえ あLl うSえRs"
 msgid "Users: My Settings"
 msgstr "うSえRs: My sえ77いNgS"
 
-#: lib/Socialtext/WikiwygPlugin.pm:574
+#: lib/Socialtext/WikiwygPlugin.pm:578
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr "vあlいdあ7いおN Sう8rおう7いNえ cあlLえD おう7sいdえ おf vあlいdあ7おr"
@@ -3989,12 +3969,12 @@ msgstr "vいえWs"
 msgid "Warning"
 msgstr "wあrNいNg"
 
-#: share/javascript/Watchlist.js:31 share/template/view/page/display:115
+#: share/javascript/Watchlist.js:34 share/template/view/page/display:102
 #.  
 msgid "Watch this page"
 msgstr "wあ7Ch 7HいS PあGえ"
 
-#: share/javascript/Watchlist.js:24 share/template/view/page/display:113
+#: share/javascript/Watchlist.js:27 share/template/view/page/display:100
 #.  
 msgid "Watching this page"
 msgstr "wあ7ChいnG 7hいs pあgえ"
@@ -4024,22 +4004,22 @@ msgstr "wえ8LおG"
 msgid "Weblog Archives"
 msgstr "wえ8LおG あrChいvえs"
 
-#: lib/Socialtext/WeblogPlugin.pm:388 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:399 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "wえ8LおG NあVいGあ7いおn"
 
-#: lib/Socialtext/WeblogPlugin.pm:96
+#: lib/Socialtext/WeblogPlugin.pm:103
 #.  
 msgid "Weblog name must be between 2 and 28 characters long."
 msgstr "wえ8LおG NあMえ mうs7 8え 8え7Wええn 2 あNd 28 Chあrあc7えRs lおnG."
 
-#: lib/Socialtext/WeblogPlugin.pm:150
+#: lib/Socialtext/WeblogPlugin.pm:161
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "wえ8LおG: %1 あ7おm"
 
-#: lib/Socialtext/WeblogPlugin.pm:145
+#: lib/Socialtext/WeblogPlugin.pm:156
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "wえ8LおG: %1 RsS"
@@ -4134,7 +4114,7 @@ msgstr "wHえN Yおう'Rえ えN7えrいnG 7えX7, JうS7 7Ypえ いn pあrあgR
 msgid "When you're entering text, just type in paragraphs. And don't worry about breaking anything - previous versions of the page are saved, so there's always a backup copy of the page you're working on."
 msgstr "wHえN Yおう'Rえ えN7えrいnG 7えX7, JうS7 7Ypえ いn pあrあgRあPhS. あNd dおn'7 wおrRy あ8おう7 8RえあkいnG あnY7HいNg - pRえVいおうS VえRsいおNs おF 7hえ PあGえ あRえ sあvえd, Sお 7HえRえ's あLwあyS あ 8あCkうp cおpY おf 7Hえ pあgえ Yおう'Rえ wおrKいNg おN."
 
-#: lib/Socialtext/DisplayPlugin.pm:114
+#: lib/Socialtext/DisplayPlugin.pm:109
 #.  
 msgid "Which language do you use?"
 msgstr "wHいCh lあnGうあgえ Dお yおう うSえ?"
@@ -4149,7 +4129,7 @@ msgstr "wHお cあn sえnD えmあいL 7お 7HいS WおRkSpあcえ?"
 msgid "Workspace"
 msgstr "wおrKsPあCえ"
 
-#: lib/Socialtext/Workspace.pm:338
+#: lib/Socialtext/Workspace.pm:339
 #. (
 msgid "Workspace %1 is a required field."
 msgstr "wおrKsPあCえ %1 いs あ rえqういRえD FいえlD."
@@ -4209,12 +4189,17 @@ msgstr "wおrKsPあCえ 7い7Lえ"
 msgid "Workspace Weblog Sort Order"
 msgstr "wおrKsPあCえ wえ8LおG SおR7 おRdえr"
 
-#: lib/Socialtext/Workspace.pm:409
+#: lib/Socialtext/Workspace.pm:416
 #.  
 msgid "Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes."
 msgstr "wおrKsPあCえ nあmえ MうS7 8え 8え7wええN 3 あnD 30 cHあRあC7えrS LおNg, あnD MうS7 cおn7あいn おNlY うpPえR- おR LおWえR-CあSえ lえ77えRs, NうM8えrS, うNdえrScおrえs, あnD DあShえs."
 
-#: lib/Socialtext/Workspace.pm:360
+#: lib/Socialtext/Workspace.pm:367
+#.  
+msgid "Workspace title is too long after URL encoding"
+msgstr "wおrKsPあCえ 7い7Lえ いS 7おお LおNg あF7えr うRl えNcおdいnG"
+
+#: lib/Socialtext/Workspace.pm:361
 #.  
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr "wおrKsPあCえ 7い7Lえ mうs7 8え 8え7Wええn 2 あNd 64 Chあrあc7えRs lおnG."
@@ -4259,7 +4244,7 @@ msgstr "wおrKsPあCえS: 7HいS WおRkSpあcえ"
 msgid "Workspaces: Unsubscribe"
 msgstr "wおrKsPあCえS: うNsう8ScRい8え"
 
-#: lib/Socialtext/Handler/Authen.pm:124 lib/Socialtext/Handler/Authen.pm:134
+#: lib/Socialtext/Handler/Authen.pm:126 lib/Socialtext/Handler/Authen.pm:136
 #.  
 msgid "Wrong email address or password - please try again."
 msgstr "wRおNg えMあいl あDdRえSs おR PあSsWおRd - pLえあsえ 7rY あgあいN."
@@ -4394,7 +4379,7 @@ msgstr "yおう mうs7 いnPう7 8お7h あN おpえnいd あNd あN えmあいL
 msgid "You must login to view this page."
 msgstr "yおう mうs7 LおGいN 7お vいえW 7hいs pあgえ."
 
-#: lib/Socialtext/Handler/Authen.pm:98
+#: lib/Socialtext/Handler/Authen.pm:100
 #.  
 msgid "You must provide a valid email address."
 msgstr "yおう mうs7 Prおvいdえ あ VあLいD えmあいL あdDrえsS."
@@ -4439,12 +4424,12 @@ msgstr "yおうR Wあ7cHlいs7"
 msgid "Your email address has been confirmed"
 msgstr "yおうR えmあいL あdDrえsS HあS 8ええn cおnFいRmえd"
 
-#: lib/Socialtext/Handler/Authen.pm:287
+#: lib/Socialtext/Handler/Authen.pm:289
 #. (
 msgid "Your email address, %1, has been confirmed. Please login."
 msgstr "yおうR えmあいL あdDrえsS, %1, hあs 8ええN CおNfいrMえD. pLえあsえ LおGいN."
 
-#: lib/Socialtext/Handler/Authen.pm:322
+#: lib/Socialtext/Handler/Authen.pm:324
 #.  
 msgid "Your password has been set and you can now login."
 msgstr "yおうR PあSsWおRd hあs 8ええN Sえ7 あnD Yおう CあN NおW LおGいN."
@@ -4474,7 +4459,7 @@ msgstr "yおうR Wあ7cHlいs7"
 msgid "Your workspaces"
 msgstr "yおうR WおRkSpあcえs"
 
-#: lib/Socialtext/Handler/Authen.pm:108
+#: lib/Socialtext/Handler/Authen.pm:110
 #. (
 msgid "\"%1\" is not a valid email address. Please use your email address to log in."
 msgstr "\"%1\" いs nお7 あ vあlいd えMあいl あDdRえSs. PlえあSえ うSえ yおうR えmあいL あdDrえsS 7お lおg いN."
@@ -4524,7 +4509,7 @@ msgstr "あNy8おDy cあn sええ 7Hえ wおrKsPあCえ, うsえrS CあN RえG�
 msgid "attachments"
 msgstr "あ77あcHmえn7s"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "authenticated-user-only"
 msgstr "あう7HえN7いcあ7えd-うSえR-おnLy"
@@ -4569,7 +4554,7 @@ msgstr "cLいCk 7お Crえあ7え pあgえ"
 msgid "comment"
 msgstr "cおmMえN7"
 
-#: lib/Socialtext/Page.pm:663
+#: lib/Socialtext/Page.pm:664
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
 msgstr "cおn7rい8う7えd 8Y {うSえR: %1} おN {dあ7え: %2}"
@@ -4729,7 +4714,7 @@ msgstr "いNdえn7えD"
 msgid "inter-workspace link: %1"
 msgstr "いN7えr-wおrKsPあCえ lいnK: %1"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "intranet"
 msgstr "いN7RあNえ7"
@@ -4764,7 +4749,7 @@ msgstr "lいnK: %1"
 msgid "link: %1 (%2 )"
 msgstr "lいnK: %1 (%2 )"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "member-only"
 msgstr "mえm8えR-おnLy"
@@ -4809,27 +4794,27 @@ msgstr "pえrCえN7 fRええ"
 msgid "permalink"
 msgstr "pえrMあLいNk"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public"
 msgstr "pう8LいC"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-authenticate-to-edit"
 msgstr "pう8LいC-あう7hえn7いCあ7え-7お-えdい7"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-comment-only"
 msgstr "pう8LいC-CおMmえn7-おnLy"
 
-#: lib/Socialtext/Workspace.pm:822
+#: lib/Socialtext/Workspace.pm:824
 #.  
 msgid "public-read-only"
 msgstr "pう8LいC-Rえあd-おNlY"
 
-#: lib/Socialtext/WeblogPlugin.pm:169 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:180 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "rえcえn7 ChあnGえS"
