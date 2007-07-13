@@ -130,7 +130,7 @@ sub handle_command {
     # Try to guess _ok methods
 
     #Encode::_utf8_off($opt2) if Encode::is_utf8($opt2);
-
+    
     Encode::_utf8_on($opt2) unless Encode::is_utf8($opt2);
     $command .= '_ok' if { map { $_ => 1 } qw(open type) }->{$command};
     $self->$command($opt1, $opt2);
@@ -199,6 +199,11 @@ sub click_and_wait {
     my $sel = $self->{selenium};
 
     my @args;
+    if ($opt1 =~ /^link=(.+?)$/ ){
+        my $var = $1;
+        Encode::_utf8_on($var) unless Encode::is_utf8($var);
+        $opt1 = "link=" . $var;
+    }
     push @args, $opt2 if $opt2;
     $sel->click_ok($opt1, @args);
     $sel->wait_for_page_to_load_ok($self->{selenium_timeout}, @args);
