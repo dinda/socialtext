@@ -329,14 +329,25 @@ sub _validate_and_clean_data {
     }
 
     my @errors;
-    for my $k ( qw( name title ) ) {
-        $p->{$k} = Socialtext::String::trim( $p->{$k} )
-            if defined $p->{$k};
+    {
+        $p->{name} = Socialtext::String::trim( $p->{name} )
+            if defined $p->{name};
 
-        if ( ( exists $p->{$k} or $is_create )
+        if ( ( exists $p->{name} or $is_create )
              and not
-             ( defined $p->{$k} and length $p->{$k} ) ) {
-            push @errors, loc("Workspace [_1] is a required field.", $k);
+             ( defined $p->{name} and length $p->{name} ) ) {
+            push @errors, loc("Workspace name is a required field.");
+        }
+    }
+
+    {
+        $p->{title} = Socialtext::String::trim( $p->{title} )
+            if defined $p->{title};
+
+        if ( ( exists $p->{title} or $is_create )
+             and not
+             ( defined $p->{title} and length $p->{title} ) ) {
+            push @errors, loc("Workspace title is a required field.");
         }
     }
 
@@ -355,16 +366,10 @@ sub _validate_and_clean_data {
         }
     }
 
-    if ( defined $p->{title}
-         and ( length $p->{title} < 2 or length $p->{title} > 64 )
-       ) {
-        push @errors, loc('Workspace title must be between 2 and 64 characters long.');
-    }
+    if ( defined $p->{title} ) {
 
-    if ( defined $p->{title}
-         and ( length Socialtext::Page->uri_escape($p->{title}) > Socialtext::Page->_MAX_PAGE_ID_LENGTH() )
-       ) {
-        push @errors, loc('Workspace title is too long after URL encoding');
+        Socialtext::Workspace->TitleIsValid( title => $p->{title},
+                                            errors => \@errors );
     }
 
     if ( $p->{incoming_email_placement}
@@ -391,6 +396,33 @@ sub _validate_and_clean_data {
     if ($is_create) {
         $p->{created_by_user_id} ||= Socialtext::User->SystemUser()->user_id();
     }
+}
+
+
+sub TitleIsValid {
+    my $class = shift;
+
+    my %p = Params::Validate::validate( @_, {
+        title    => SCALAR_TYPE,
+        errors  => ARRAYREF_TYPE( default => [] ),
+    } );
+
+    my $title    = $p{title};
+    my $errors  = $p{errors};
+
+    if ( defined $title
+         and ( length $title < 2 or length $title > 64 )
+       ) {
+        push @{$errors}, loc('Workspace title must be between 2 and 64 characters long.');
+    }
+
+    if ( defined $title
+         and ( length Socialtext::Page->uri_escape($title) > Socialtext::Page->_MAX_PAGE_ID_LENGTH() )
+       ) {
+        push @{$errors}, loc('Workspace title is too long after URL encoding');
+    }
+
+    return @{$errors} > 0 ? 0 : 1;
 }
 
 
@@ -1933,6 +1965,27 @@ PARAMS can include:
 =over 4
 
 =item * name => $name - required
+
+=item * errors => \@errors - optional, an arrayref where violated constraints will be put
+
+=back
+
+=head2 Socialtext::Workspace->TitleIsValid(PARAMS)
+
+Validates whether a workspace title is valid according to syntax rules.
+It also checks the title against a list of reserved titles.  The method
+returns 1 if the title is valid, 0 if it is not.
+
+If the title is invalid and an arrayref is passed as errors, a
+description of each violated rule will be stored in the arrayref.
+
+It DOES NOT check to see if a workspace exists.
+
+PARAMS can include:
+
+=over 4
+
+=item * title => $title - required
 
 =item * errors => \@errors - optional, an arrayref where violated constraints will be put
 

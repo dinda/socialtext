@@ -1,6 +1,6 @@
 #!perl
 # @COPYRIGHT@
-use Test::Socialtext tests => 90;
+use Test::Socialtext tests => 98;
 
 use strict;
 use warnings;
@@ -9,6 +9,7 @@ fixtures( 'rdbms_clean', 'help' );
 
 use mocked qw(Socialtext::l10n system_locale);
 
+use utf8;
 use Socialtext::EmailAlias;
 use Socialtext::File;
 use Socialtext::Paths;
@@ -447,6 +448,47 @@ CHANGE_WORKSPACE_TITLE: {
     ok( $old_front_page->exists(), 'Page named after original workspace title exists' );
     like( $old_front_page->content(), qr/home page/,
           'original front page has expected content after rename to original title' );
+}
+
+TITLE_IS_VALID: {
+    #
+    # Check length boundary conditions.
+    #
+    
+    ok( ! Socialtext::Workspace->TitleIsValid( title => 'a'),
+        'Too-short workspace title fails'
+    );
+
+    ok( ! Socialtext::Workspace->TitleIsValid( title => ('a' x 65) ),
+        'Too-long workspace title fails'
+    );
+
+    ok( Socialtext::Workspace->TitleIsValid( title => 'aa' ),
+        'Workspace title of exactly 2 characters succeeds'
+    );
+    
+    ok( Socialtext::Workspace->TitleIsValid( title => ('a' x 64) ),
+        'Workspace title of exactly 64 characters succeeds'
+    );
+
+    #
+    # Check the title which had the utf8 characters.
+    #
+    ok( ! Socialtext::Workspace->TitleIsValid( title => 'あ'),
+        'Too-short workspace utf8 title fails'
+    );
+
+    ok( ! Socialtext::Workspace->TitleIsValid( title => ('あ' x 29) ),
+        'Too-long workspace utf8 title fails after URL encoding'
+    );
+
+    ok( Socialtext::Workspace->TitleIsValid( title => 'ああ' ),
+        'Workspace title of exactly 2 utf8 characters succeeds'
+    );
+    
+    ok( Socialtext::Workspace->TitleIsValid( title => ('あ' x 28) ),
+        'Workspace title of exactoly 28 utf8 charaters succeeds'
+    );
 }
 
 NAME_IS_VALID: {
