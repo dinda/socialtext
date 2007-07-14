@@ -274,9 +274,6 @@
     '/challenge':
         '*':                    [Socialtext::Rest::Challenge, handler]
 -
-    '/help/index.cgi':
-        '*':                    [Socialtext::Rest::Help, handler]
--
     '/:ws/index.cgi':
         '*':                    [Socialtext::Rest::App, handler]
 -

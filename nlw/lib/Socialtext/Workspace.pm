@@ -57,21 +57,6 @@ use URI;
 
 field breadcrumbs => '';
 
-# Special case the "help" workspace.  Since existing Wikitext (and rarely used
-# code) still refer to the "help" workspace, we need to capture that here and
-# call help_workspace(), which should automagically load up the right
-# workspace.
-sub new {
-    my ( $class, %args ) = @_;
-    if ( $args{name} and $args{name} eq 'help' ) {
-        delete $args{name};
-        return $class->help_workspace(%args);
-    }
-    else {
-        return $class->SUPER::new(%args);
-    }
-}
-
 sub _new_row {
     my $class = shift;
     my %p     = validate( @_, { name => SCALAR_TYPE } );
@@ -127,7 +112,8 @@ sub help_workspace {
     my $ws;
     delete $args{name};
     for my $locale ( system_locale(), "en" ) {
-        $ws ||= $class->new( name => "help-$locale", %args );
+        my $ws_name = $locale eq 'en' ? "help" : "help-$locale";
+        $ws ||= $class->new( name => $ws_name, %args );
     }
     return $ws;
 }

@@ -1,4 +1,5 @@
 package Socialtext::WikiFixture::Selenese;
+# @COPYRIGHT@
 use strict;
 use warnings;
 use base 'Socialtext::WikiFixture';

@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# @COPYRIGHT@
 
 use lib '../../../../..';
 use Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif;

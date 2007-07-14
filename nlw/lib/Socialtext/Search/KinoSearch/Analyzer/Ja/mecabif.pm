@@ -1,4 +1,5 @@
 package Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif;
+# @COPYRIGHT@
 
 use Encode qw(decode_utf8 encode_utf8 encode decode);
 use Text::MeCab;

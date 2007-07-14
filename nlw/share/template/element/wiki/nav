@@ -7,7 +7,9 @@
         [% ELSE %]
         <span id="st-wikinav-logout"> - <a href="/nlw/submit/logout[% IF wiki.is_public %]?redirect_to=[% wiki.uri | html %][% END %]" id="logout_btn">[% loc('Log out') %]</a></span>
         [% END %]
-        <span id="st-wikinav-help"> - <a href="/help/index.cgi?socialtext_documentation" target="_blank">[% loc('Help') %]</a>
+        [% SET WS_SUFFIX="-${loc_lang}" %]
+        [% SET WS_SUFFIX="" IF loc_lang == 'en' %]
+        <span id="st-wikinav-help"> - <a href="/help[% WS_SUFFIX %]/index.cgi" target="_blank">[% loc('Help') %]</a>
     </div>
     <div id="st-home">
         <a id="st-home-link" href="?">[% loc('Home') %]</a>

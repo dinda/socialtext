@@ -1,6 +1,6 @@
 #!perl
 # @COPYRIGHT@
-use Test::Socialtext tests => 98;
+use Test::Socialtext tests => 97;
 
 use strict;
 use warnings;
@@ -607,23 +607,8 @@ HELP_WORKSPACE_WITH_WS_MISSING: {
     system_locale('xx');  # Set locale to xx, but help-xx doesn't exist yet.
 
     my $ws1 = Socialtext::Workspace->help_workspace();
-    is( $ws1->name, "help-en", "help_workspace() is help-en" );
+    is( $ws1->name, "help", "help_workspace() is help" );
 
     my $ws2 = Socialtext::Workspace->new( name => "help" );
-    is( $ws2->name, "help-en", "new(name => help) DTRT" );
-}
-
-HELP_WORKSPACE_WITH_WS_NOT_MISSING: {
-    system_locale('xx');
-    Socialtext::Workspace->create(
-        name       => 'help-xx',
-        title      => 'Help XX',
-        account_id => Socialtext::Account->Socialtext()->account_id,
-    );
-
-    my $ws1 = Socialtext::Workspace->help_workspace();
-    is( $ws1->name, "help-xx", "help_workspace() is help-xx" );
-
-    my $ws2 = Socialtext::Workspace->new( name => "help" );
-    is( $ws2->name, "help-xx", "new(name => help) DTRT" );
+    is( $ws2->name, "help", "new(name => help) DTRT" );
 }

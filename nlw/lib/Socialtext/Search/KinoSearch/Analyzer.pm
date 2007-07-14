@@ -10,8 +10,6 @@ use File::Spec::Functions qw(catfile);
 use Data::Dumper;
 sub dump_it_for_me {
     my ($msg, $batch) = @_;
-    print STDERR "ST:S:KS:A:analyze $msg batch\n";
-    print STDERR "BEGIN\n";
     $batch->reset;
     my $ix = 0;
 
@@ -19,10 +17,8 @@ sub dump_it_for_me {
 	$ix++;
 	my $text = $batch->get_text;
 	$batch->set_text($text);
-	print STDERR "$ix: $text\n";
     }
     $batch->reset;
-    print STDERR "END\n";
 }
 
 my $CONFIG;
