@@ -3,6 +3,7 @@ package Socialtext::Search::KinoSearch::Factory;
 use strict;
 use warnings;
 
+use Socialtext::l10n qw(system_locale);
 use Socialtext::Search::KinoSearch::Analyzer;
 use Socialtext::Search::KinoSearch::Indexer;
 use Socialtext::Search::KinoSearch::Searcher;
@@ -13,20 +14,19 @@ use base 'Socialtext::Search::AbstractFactory';
 sub new { $_[0] }
 
 sub create_searcher {
-    my ( $self, $ws_name, $lang ) = @_;
-    return $self->_create( "Searcher", $ws_name, $lang );
+    my ( $self, $ws_name ) = @_;
+    return $self->_create( "Searcher", $ws_name );
 }
 
 sub create_indexer {
-    my ( $self, $ws_name, $lang ) = @_;
-    return $self->_create( "Indexer", $ws_name, $lang );
+    my ( $self, $ws_name ) = @_;
+    return $self->_create( "Indexer", $ws_name );
 }
 
 sub _create {
-    my ( $self, $kind, $ws_name, $lang ) = @_;
+    my ( $self, $kind, $ws_name ) = @_;
     my $class = 'Socialtext::Search::KinoSearch::' . $kind;
-    return $class->new( $ws_name, $lang, $self->_index($ws_name),
-        $self->_analyzer($lang) );
+    return $class->new( $ws_name, $self->_index($ws_name), $self->_analyzer );
 }
 
 sub _index {
@@ -35,8 +35,8 @@ sub _index {
 }
 
 sub _analyzer {
-    my ( $self, $lang ) = @_;
-    $lang ||= 'en';
+    my $self = shift;
+    my $lang = system_locale();
     return Socialtext::Search::KinoSearch::Analyzer->new( language => $lang );
 }
 

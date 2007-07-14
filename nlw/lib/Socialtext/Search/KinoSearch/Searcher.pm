@@ -15,18 +15,16 @@ use Socialtext::Search::SimplePageHit;
 
 field 'analyzer';
 field 'index';
-field 'language';
 field 'searcher';
 field 'workspace';
 
 sub new {
-    my ( $class, $ws_name, $language, $index, $analyzer ) = @_;
+    my ( $class, $ws_name, $index, $analyzer ) = @_;
     my $self = bless {}, $class;
 
     # Create Searcher
     $self->analyzer($analyzer);
     $self->index($index);
-    $self->language($language);
     $self->workspace($ws_name);
 
     return $self;
@@ -49,7 +47,7 @@ sub _init_searcher {
 
     # Ensure the index exists, this creates it if it does not.
     my $factory = Socialtext::Search::AbstractFactory->GetFactory();
-    $factory->create_indexer( $self->workspace, $self->language );
+    $factory->create_indexer( $self->workspace );
 
     $self->searcher(
         KinoSearch::Searcher->new(
