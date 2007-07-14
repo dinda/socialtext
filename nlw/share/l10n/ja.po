@@ -4207,7 +4207,7 @@ msgstr "URL のエンコード処理を行うと、ワークスペースタイ�
 #: lib/Socialtext/Workspace.pm:372
 #.  
 msgid "Workspace title must be between 2 and 64 characters long."
-msgstr "ワークスペースのタイトルは 2-64 文字でなければなりません。英数字64文字まで、全角文字は28字まで使用できます。"
+msgstr "ワークスペースのタイトルは 英数字で2-64 文字または全角文字で2-28文字でなければなりません。"
 
 #: share/console-template/template/overview.html:6 share/template/element/settings/select:18
 #.  
