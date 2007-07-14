@@ -12,6 +12,16 @@ use Encode qw(decode_utf8 encode_utf8);
 use KinoSearch::Analysis::TokenBatch;
 use Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif;
 
+my @dicdir = ();
+
+#################################################################
+# You would say something like the following...
+#
+# use Socialtext::AppConfig;
+# my $sharedir = Socialtext::AppConfig->new->code_base;
+# @dicdir = (dicdir => catdir($sharedir,  "l10n", "mecab"));
+#################################################################
+
 sub analyze {
     my ($self, $batch) = @_;
     local ($_);
@@ -22,7 +32,9 @@ sub analyze {
 	    push @all, decode_utf8($batch->get_text);
     }
 
-    my $if = Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif->new();
+    my $if = Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif->new(
+	@dicdir
+    );
 
     my $new_batch = KinoSearch::Analysis::TokenBatch->new;
     for ($if->analyze(@all)) {
