@@ -125,62 +125,58 @@ sub handle_morph {
 	return map { decode('euc-jp', $_) } @ret;
 }
 
-sub canonify {
-	my ($string) = @_;
-	for ($string) {
-		use utf8;
+our (%H2Z, $H2Z);
+sub add_h2z {
+	my ($hash, $decode_eucjp) = @_;
 
-		s/ｶﾞ/ガ/g; s/ｷﾞ/ギ/g; s/ｸﾞ/グ/g; s/ｹﾞ/ゲ/g; s/ｺﾞ/ゴ/g;
-		s/ｻﾞ/ザ/g; s/ｼﾞ/ジ/g; s/ｽﾞ/ズ/g; s/ｾﾞ/ゼ/g; s/ｿﾞ/ゾ/g;
-		s/ﾀﾞ/ダ/g; s/ﾁﾞ/ヂ/g; s/ﾂﾞ/ヅ/g; s/ﾃﾞ/デ/g; s/ﾄﾞ/ド/g;
-		s/ﾊﾞ/バ/g; s/ﾋﾞ/ビ/g; s/ﾌﾞ/ブ/g; s/ﾍﾞ/ベ/g; s/ﾎﾞ/ボ/g;
-		s/ﾊﾟ/パ/g; s/ﾋﾟ/ピ/g; s/ﾌﾟ/プ/g; s/ﾍﾟ/ペ/g; s/ﾎﾟ/ポ/g;
-		s/ｳﾞ/ヴ/g;
-
-		s/ｧ/ァ/g; s/ｨ/ィ/g; s/ｩ/ゥ/g; s/ｪ/ェ/g; s/ｫ/ォ/g; 
-		s/ｬ/ャ/g; s/ｭ/ュ/g; s/ｮ/ョ/g; s/ｯ/ッ/g; s/ｰ/ー/g;
-		s/ｱ/ア/g; s/ｲ/イ/g; s/ｳ/ウ/g; s/ｴ/エ/g; s/ｵ/オ/g;
-		s/ｶ/カ/g; s/ｷ/キ/g; s/ｸ/ク/g; s/ｹ/ケ/g; s/ｺ/コ/g;
-		s/ｻ/サ/g; s/ｼ/シ/g; s/ｽ/ス/g; s/ｾ/セ/g; s/ｿ/ソ/g;
-		s/ﾀ/タ/g; s/ﾁ/チ/g; s/ﾂ/ツ/g; s/ﾃ/テ/g; s/ﾄ/ト/g;
-		s/ﾅ/ナ/g; s/ﾆ/ニ/g; s/ﾇ/ヌ/g; s/ﾈ/ネ/g; s/ﾉ/ノ/g;
-		s/ﾊ/ハ/g; s/ﾋ/ヒ/g; s/ﾌ/フ/g; s/ﾍ/ヘ/g; s/ﾎ/ホ/g;
-		s/ﾏ/マ/g; s/ﾐ/ミ/g; s/ﾑ/ム/g; s/ﾒ/メ/g; s/ﾓ/モ/g;
-		s/ﾔ/ヤ/g; s/ﾕ/ユ/g; s/ﾖ/ヨ/g;
-		s/ﾗ/ラ/g; s/ﾘ/リ/g; s/ﾙ/ル/g; s/ﾚ/レ/g; s/ﾛ/ロ/g;
-		s/ﾜ/ワ/g; s/ｦ/ヲ/g; s/ﾝ/ン/g;
-		s/｡/。/g; s/｢/「/g; s/｣/」/g; s/､/、/g; s/･/・/g;
-		s/ﾞ/゛/g; s/ﾟ/゜/g;
-
-		s/　/\ /g;
-		s/０/0/g;	s/１/1/g;	s/２/2/g;	s/３/3/g;
-		s/４/4/g;	s/５/5/g;	s/６/6/g;	s/７/7/g;
-		s/８/8/g;	s/９/9/g;
-
-		s/Ａ/A/g;	s/Ｂ/B/g;	s/Ｃ/C/g;	s/Ｄ/D/g;
-		s/Ｅ/E/g;	s/Ｆ/F/g;	s/Ｇ/G/g;	s/Ｈ/H/g;
-		s/Ｉ/I/g;	s/Ｊ/J/g;	s/Ｋ/K/g;	s/Ｌ/L/g;
-		s/Ｍ/M/g;	s/Ｎ/N/g;	s/Ｏ/O/g;	s/Ｐ/P/g;
-		s/Ｑ/Q/g;	s/Ｒ/R/g;	s/Ｓ/S/g;	s/Ｔ/T/g;
-		s/Ｕ/U/g;	s/Ｖ/V/g;	s/Ｗ/W/g;	s/Ｘ/X/g;
-		s/Ｙ/Y/g;	s/Ｚ/Z/g;
-
-		s/ａ/a/g;	s/ｂ/b/g;	s/ｃ/c/g;	s/ｄ/d/g;
-		s/ｅ/e/g;	s/ｆ/f/g;	s/ｇ/g/g;	s/ｈ/h/g;
-		s/ｉ/i/g;	s/ｊ/j/g;	s/ｋ/k/g;	s/ｌ/l/g;
-		s/ｍ/m/g;	s/ｎ/n/g;	s/ｏ/o/g;	s/ｐ/p/g;
-		s/ｑ/q/g;	s/ｒ/r/g;	s/ｓ/s/g;	s/ｔ/t/g;
-		s/ｕ/u/g;	s/ｖ/v/g;	s/ｗ/w/g;	s/ｘ/x/g;
-		s/ｙ/y/g;	s/ｚ/z/g;
-
-		s/ヴァ/バ/g;	s/ヴィ/ビ/g;	s/ヴュ/ブ/g;	s/ヴゥ/ブ/g;
-		s/ヴェ/べ/g;	s/ヴォ/ボ/g;
-
-		s/ァ/ア/g;	s/ィ/イ/g;	s/ゥ/ウ/g;	s/ェ/エ/g;
-		s/ォ/オ/g;	s/ヵ/カ/g;	s/ヶ/ケ/g;
-
+	while (my ($key, $val) = each %$hash) {
+		if ($decode_eucjp) {
+			$key = decode('euc-jp', $key);
+			$val = decode('euc-jp', $val);
+		}
+		$H2Z{$key} = $val;
+		$H2Z .= (defined $H2Z ? '|' : '') . quotemeta($key);
 	}
-	return $string;
+}
+
+sub add_h2z_str {
+	my ($from, $to) = @_;
+	my $l = length($from);
+	if (length($to) != $l) { die "OOPS $from => $to???"; }
+	my %h = ();
+	for (my $i = 0; $i < $l; $i++) {
+		$h{substr($from, $i, 1)} = substr($to, $i, 1);
+	}
+	add_h2z(\%h);
+}
+
+BEGIN {
+	use Encode::JP::H2Z ();
+	use utf8;
+
+	# Data borrowed from this module is in EUC-JP and
+	# needs to be converted.
+	#
+	# - %Encode::JP::H2Z:_D2Z maps split-char in H to Z
+	# - %Encode::JP::H2Z:_H2Z maps H to Z
+	#
+	# D2Z needs to be applied first and then H2Z.
+	add_h2z(\%Encode::JP::H2Z::_D2Z, 1);
+	add_h2z(\%Encode::JP::H2Z::_H2Z, 1);
+
+	# "Violin" and friends.
+	add_h2z(+{
+		'ヴァ' => 'バ', 'ヴィ' => 'ビ', 'ヴュ' => 'ブ',
+		'ヴゥ' => 'ブ',	'ヴェ' => 'べ',	'ヴォ' => 'ボ',
+	});
+	add_h2z_str('ァィゥェォヵヶ', 'アイウエオカケ');
+
+	# ASCII
+	add_h2z_str('０１２３４５６７８９：；＜＝＞？', '0123456789:;<=>?');
+	add_h2z_str('＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯ', '@ABCDEFGHIJKLMNO');
+	add_h2z_str('ＰＱＲＳＴＵＶＷＸＹＺ［￥］＾＿', 'PQRSTUVWXYZ[\\]^_');
+	add_h2z_str('ａｂｃｄｅｆｇｈｉｊｋｌｍｎ', 'abcdefghijklmn');
+	add_h2z_str('ｐｑｒｓｔｕｖｗｘｙｚ｛｜｝', 'pqrstuvwxyz{|}');
 }
 
 sub analyze {
@@ -193,7 +189,8 @@ sub analyze {
 		s/([\000- ]+)/ /g;
 
 		# Run H2Z for Kana, and stuff.
-		$_ = canonify($_);
+		s/($H2Z)/(exists $H2Z{$1} ? $H2Z{$1} : $1)/ego;
+
 		# Splice them into ASCII sequence and others,
 		# and replace ASCII sequences with stubs.
 		while (/^(.*?)([!-~]+)(.*)$/) {
