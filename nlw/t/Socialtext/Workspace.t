@@ -1,6 +1,6 @@
 #!perl
 # @COPYRIGHT@
-use Test::Socialtext tests => 97;
+use Test::Socialtext tests => 96;
 
 use strict;
 use warnings;

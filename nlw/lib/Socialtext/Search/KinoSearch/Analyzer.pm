@@ -7,33 +7,17 @@ use YAML qw(LoadFile);
 use File::Basename qw(dirname);
 use File::Spec::Functions qw(catfile);
 
-use Data::Dumper;
-sub dump_it_for_me {
-    my ($msg, $batch) = @_;
-    $batch->reset;
-    my $ix = 0;
-
-    while ($batch->next) {
-	$ix++;
-	my $text = $batch->get_text;
-	$batch->set_text($text);
-    }
-    $batch->reset;
-}
-
 my $CONFIG;
 
 sub analyze {
     my ( $self, $input ) = @_;
     my $batch = $self->_get_batch_from_input($input);
 
-    dump_it_for_me('initial', $batch);
     for my $class ( _get_analyzer_classes( $self->{language} ) ) {
         eval "require $class; 1;";
         die "Could not load $class $@\n" if $@;
         my $analyzer = $class->new( language => $self->{language} );
         $batch = $analyzer->analyze($batch);
-	dump_it_for_me("post $class", $batch);
     }
     return $batch;
 }
