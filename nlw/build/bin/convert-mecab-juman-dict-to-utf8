@@ -1,0 +1,71 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/../../lib";
+
+use File::Spec::Functions qw(catdir catfile);
+use File::Copy qw(copy);
+use File::Basename qw(basename);
+use Socialtext::AppConfig;
+
+# Get the path to our juman dict directory
+my $sharedir = Socialtext::AppConfig->new->code_base;
+my $our_juman_dict = catdir( $sharedir, "l10n", "mecab" );
+
+# Path to the mecab dictionary indexer.  Default for Ubuntu.
+my $mecab_dict_index = "/usr/lib/mecab/mecab-dict-index";
+
+# Paths to the default Ubuntu Juman generated and source dicts
+my %default_juman_dict = (
+    generated => "/var/lib/mecab/dic/juman",
+    source    => "/usr/share/mecab/dic/juman",
+);
+
+# Ensure we can the generated and source Juman dictionaries exist.
+for my $kind (qw(generated source)) {
+    conversion_fails("$default_juman_dict{$kind} is not a valid directory")
+        unless -d $default_juman_dict{$kind} && -x _ && -r _;
+}
+
+# Ensure the conversion program exists and we can run it.
+unless ( -f $mecab_dict_index && -r _ && -x _ ) {
+    conversion_fails("$mecab_dict_index is not found or is not executable");
+}
+
+# Copy the old generated Juman files to our dir.  Exclude .bin and .dic files.
+my @files = glob "$default_juman_dict{generated}/*";
+@files = grep { $_ !~ /\.(dic|bin)$/ } @files;
+for my $src (@files) {
+    my $dest = catfile( $our_juman_dict, basename($src) );
+    copy( $src => $dest )
+        or conversion_fails("Could not copy $src to $dest: $!");
+}
+
+# Run the conversion utility to generate the utf-8 files.
+system( 
+    $mecab_dict_index, 
+    "-d" => $default_juman_dict{source}, 
+    "-o" => $our_juman_dict, 
+    "-f" => "euc-jp", 
+    "-t" => "utf-8" 
+) and conversion_fails("$mecab_dict_index failed to convert dictionary");
+
+print "Conversion successful\n";
+
+sub conversion_fails {
+    my $msg = shift;
+    warn "$0 FAILED: $msg\n\n";
+    my $readme = catfile( $our_juman_dict, "README" );
+    die <<MSG
+This script ($0) copies the default system-wide MeCab Juman dictionary and
+then converts the copy from EUC-JP to UTF-8.  Unfortunately this process
+failed (see above for the error message).
+
+This means that Japanese search and indexing will not work correctly.  This
+only affects you if you are using Socialtext with system-wide Japanese locale.
+
+You can attempt to rectify the situation by hand by reading $readme.  That
+file contains instructions on how to convert the dictionary by hand.
+MSG
+}

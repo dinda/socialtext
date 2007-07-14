@@ -1,0 +1,15 @@
+This directory should contain the UTF-8 Juman Dictionary for MeCab.
+Unfortuantely this dictionary is architecture dependent, and somewhat large.
+So we can't include it with Socialtext itself.  Usually MeCab ships with a
+EUC-JP encoded Juman Dictionary.  Socialtext tries to convert the EUC-JP
+dictonary at install time, but if it fails it will warn that you should read
+this file so you can do the conversion by hand.
+
+You can convert the EUC-JP dictoary to a UTF-8 one as follows: 
+
+# NOTE: Actual paths may differ based on how MeCab was installed
+
+cp /var/lib/mecab/dic/juman/* /path/to/usr/share/nlw/mecab/
+cd /path/to/usr/share/nlw/mecab/
+rm *.bin *.dic
+/usr/lib/mecab/mecab-dict-index -d /usr/share/mecab/dic/juman -o . -f euc-jp -t utf-8

@@ -11,16 +11,27 @@ require bytes;
 use Encode qw(decode_utf8 encode_utf8);
 use KinoSearch::Analysis::TokenBatch;
 use Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif;
+use Socialtext::AppConfig;
+use File::Spec::Functions qw(catdir catfile updir);
+use File::Basename qw(dirname);
+use Cwd qw(abs_path);
 
-my @dicdir = ();
+use Socialtext::AppConfig;
+my $config = Socialtext::AppConfig->new;
+my $sharedir = $config->code_base;
+my @dicdir = ( dicdir => catdir( $sharedir, "l10n", "mecab" ) );
 
-#################################################################
-# You would say something like the following...
-#
-# use Socialtext::AppConfig;
-# my $sharedir = Socialtext::AppConfig->new->code_base;
-# @dicdir = (dicdir => catdir($sharedir,  "l10n", "mecab"));
-#################################################################
+# Generate mecab files if this is a dev-env and it doesn't exist.
+if ( $config->_startup_user_is_human_user ) {
+    unless ( -e catfile( $dicdir[1], "dicrc" ) ) {
+        my $dir    = dirname(__FILE__);
+        my $script = abs_path(catfile(
+            $dir, (updir) x 6, "build", "bin",
+            "convert-mecab-juman-dict-to-utf8"
+        ));
+        system($script) and die "Could not generate Juman Mecab files!\n";
+    }
+}
 
 sub analyze {
     my ($self, $batch) = @_;

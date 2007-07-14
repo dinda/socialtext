@@ -59,6 +59,7 @@ INSTALL_BASE = install-css        \
                install-javascript \
                install-js-test    \
                install-test       \
+               install-mecab      \
                install-migrations \
                install-l10n \
                install-post-install \
@@ -224,6 +225,7 @@ install-files: install-ok         \
                javascript         \
                favicon            \
                install-base       \
+	       mecab              \
                $(INSTALL_FILE_TARGETS)
 
 DIR=$(subst install-,,$@)
@@ -242,6 +244,9 @@ $(INSTALL_FILE_TARGETS): install-ok
 
 install-base: install-ok $(INSTALL_BASE)
 	ln -f -s $(ST_INSTALL_DIR) $(ST_INSTALL_DIR)/base
+
+mecab: 
+	build/bin/convert-mecab-juman-dict-to-utf8 || /bin/true
 
 js: javascript
 javascript:
