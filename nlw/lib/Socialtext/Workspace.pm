@@ -291,7 +291,6 @@ my %ReservedNames = map { $_ => 1 } qw(
     console
     data
     feed
-    help
     id
     nlw
     noauth
