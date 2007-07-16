@@ -5,9 +5,13 @@ use Encode qw(decode_utf8 encode_utf8 encode decode);
 use Text::MeCab;
 
 sub new {
+	# This should not say 'use utf8' as it would slow down
+	# the regexp match to read from mecab considerbaly.
+
 	my $class = shift;
 	$class = ref $class if ref $class;
 	my $self = bless {}, $class;
+	my %attr = @_;
 
 	# We reuse a same MeCab instance.  It eats Japanese text
 	# stream (use Juman dictionary with it), and tokenizes
@@ -24,6 +28,7 @@ sub new {
 				     "%f[0]",	# word type
 				     "%f[6]",	# auxiliary information
 				     )),
+		%attr,
 	});
 
 	# Many of the words in Japanese are not "interesting" while
@@ -33,19 +38,20 @@ sub new {
 	# to nouns to mark which case the noun is used in the sentence,
 	# and they are usually of no interest for text search purposes.
 	# This lists the word types that are of interest.
+
 	$self->{handled_types} = +{
 		map { $_ => 1 }
-		("\306\260\273\354",		# VERB
-		 "\314\276\273\354",		# NOUN
-		 "\267\301\315\306\273\354",	# ADJECTIVE
-		 "\311\373\273\354"		# ADVERB
+		("動詞",		# VERB
+		 "名詞",		# NOUN
+		 "形容詞",		# ADJECTIVE
+		 "副詞",		# ADVERB
 		 )
 	    };
 
 	# The most important part of the auxiliary information
 	# is the "canonical" spelling definition, which follows
 	# this prefix in the MeCab output.
-	$self->{canon_label} = "\302\345\311\275\311\275\265\255:";
+	$self->{canon_label} = "代表表記:";
 
 	return $self;
 }
@@ -78,9 +84,6 @@ sub handle_morph {
 	my $canon_label = $self->{canon_label};
 	my $handled_types = $self->{handled_types};
 
-	# MeCab wants its interface in euc-jp.  Don't ask me why.
-	$text = encode('euc-jp', $text);
-
 	my $node = $mecab->parse($text);
 	my @ret;
 	my $in_ascii = '';
@@ -90,10 +93,9 @@ sub handle_morph {
 		my ($n, $word, $type, $aux) = split(/\t/, $parsed);
 		$node = $node->next;
 		if ($self->{debug} && $parsed ne '') {
-			my $d = decode('euc-jp', $parsed);
+			my $d = decode_utf8($parsed);
 			print STDERR "MECAB: $d\n";
 		}
-
 		next unless (defined $n && $n eq 'NODE');
 		if ($word =~ /^[ -~]*$/) {
 			# ASCII
@@ -119,11 +121,11 @@ sub handle_morph {
 		print STDERR "ANALYSIS\n";
 		for (@ret) {
 			$ix++;
-			my $d = decode('euc-jp', $_);
+			my $d = decode_utf8($_);
 			print STDERR "$ix: $d\n";
 		}
 	}
-	return map { decode('euc-jp', $_) } @ret;
+	return map { decode_utf8($_) } @ret;
 }
 
 our (%H2Z, $H2Z);
