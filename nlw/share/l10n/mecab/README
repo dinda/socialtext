@@ -9,7 +9,15 @@ You can convert the EUC-JP dictoary to a UTF-8 one as follows:
 
 # NOTE: Actual paths may differ based on how MeCab was installed
 
-cp /var/lib/mecab/dic/juman/* /path/to/usr/share/nlw/mecab/
-cd /path/to/usr/share/nlw/mecab/
+DICSRC=/usr/share/mecab/dic/juman
+DICDIR=/path/to/usr/share/nlw/mecab
+
+cp /var/lib/mecab/dic/juman/* $DICDIR
+cd $DICDIR
 rm *.bin *.dic
-/usr/lib/mecab/mecab-dict-index -d /usr/share/mecab/dic/juman -o . -f euc-jp -t utf-8
+mkdir dicsrc
+ln -s $DICSRC/* dicsrc/.
+rm -f dicsrc/char.def
+sed -e '/^KATAKANA/s/.*/KATAKANA	0 1 2/' \
+	<$DICSRC/char.def >dicsrc/char.def
+/usr/lib/mecab/mecab-dict-index -d dicsrc -o . -f euc-jp -t utf-8

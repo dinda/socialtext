@@ -7,12 +7,24 @@ use lib "$FindBin::Bin/../../lib";
 
 use File::Spec::Functions qw(catdir catfile);
 use File::Copy qw(copy);
+use File::Path qw(mkpath);
+use File::Temp qw(tempdir);
 use File::Basename qw(basename);
 use Socialtext::AppConfig;
 
 # Get the path to our juman dict directory
 my $sharedir = Socialtext::AppConfig->new->code_base;
-my $our_juman_dict = catdir( $sharedir, "l10n", "mecab" );
+my %our_juman_dict = (
+    generated => catdir( $sharedir, "l10n", "mecab" ),
+    source => tempdir( CLEANUP => 1 ),
+);
+
+# Ensure our directories exist
+for my $kind (qw(generated source)) {
+    next if -e $our_juman_dict{$kind};
+    mkpath( $our_juman_dict{$kind} )
+        or die "Could not create directory $our_juman_dict{$kind}: $!\n";
+}
 
 # Path to the mecab dictionary indexer.  Default for Ubuntu.
 my $mecab_dict_index = "/usr/lib/mecab/mecab-dict-index";
@@ -38,16 +50,39 @@ unless ( -f $mecab_dict_index && -r _ && -x _ ) {
 my @files = glob "$default_juman_dict{generated}/*";
 @files = grep { $_ !~ /\.(dic|bin)$/ } @files;
 for my $src (@files) {
-    my $dest = catfile( $our_juman_dict, basename($src) );
+    my $dest = catfile( $our_juman_dict{generated}, basename($src) );
     copy( $src => $dest )
         or conversion_fails("Could not copy $src to $dest: $!");
 }
 
+# Copy the old source files too, we need to munge char.def.
+@files = glob "$default_juman_dict{source}/*";
+for my $src (@files) {
+    next if ($src =~ /char.def$/);
+    my $dest = catfile( $our_juman_dict{source}, basename($src) );
+    copy( $src => $dest )
+	or conversion_fails("Could not copy $src to $dest: $!");
+}
+
+# Munge our char.def
+my $src = catfile($default_juman_dict{source}, "char.def");
+my $dst = catfile($our_juman_dict{source}, "char.def");
+open(my $in, "<$src") or die "Could not open $src: $!\n";
+open(my $out, ">$dst") or die "Could not open $dst: $!\n";
+while (<$in>) {
+    if (/^KATAKANA\s+\d+\s+\d+\s+\d+\s*$/) {
+	$_ = "KATAKANA	0 1 2\n";
+    }
+    print $out $_;
+}
+close($in);
+close($out) or die "Could not close $dst: $!\n";
+
 # Run the conversion utility to generate the utf-8 files.
 system( 
     $mecab_dict_index, 
-    "-d" => $default_juman_dict{source}, 
-    "-o" => $our_juman_dict, 
+    "-d" => $our_juman_dict{source},
+    "-o" => $our_juman_dict{generated},
     "-f" => "euc-jp", 
     "-t" => "utf-8" 
 ) and conversion_fails("$mecab_dict_index failed to convert dictionary");
@@ -56,17 +91,26 @@ print "Conversion successful\n";
 
 sub conversion_fails {
     my $msg = shift;
-    warn "$0 FAILED: $msg\n\n";
-    my $readme = catfile( $our_juman_dict, "README" );
+    my $readme = catfile( $our_juman_dict{generated}, "README" );
     die <<MSG
-This script ($0) copies the default system-wide MeCab Juman dictionary and
+
+=====================
+
+$0 FAILED: $msg
+
+=====================
+
+This script  copies the default system-wide MeCab Juman dictionary and
 then converts the copy from EUC-JP to UTF-8.  Unfortunately this process
 failed (see above for the error message).
 
 This means that Japanese search and indexing will not work correctly.  This
 only affects you if you are using Socialtext with system-wide Japanese locale.
 
-You can attempt to rectify the situation by hand by reading $readme.  That
-file contains instructions on how to convert the dictionary by hand.
+You can attempt to rectify the situation by hand by reading: 
+
+    $readme.
+    
+That file contains instructions on how to convert the dictionary by hand.
 MSG
 }
