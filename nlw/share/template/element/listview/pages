@@ -26,7 +26,7 @@
            [% IF loc_lang == 'en' %]
                <img src="[% wiki.static_path %]/images/st/pagetools/watch-on-list.gif" alt="[% row.page_uri %]" class="watchlist-list-toggle" />
            [% ELSE %]
-               <img src="[% wiki.static_path %]/images/st/pagetools/watch-star-on.gif" alt="[% row.Subject  %]" class="watchlist-list-toggle" />
+               <img src="[% wiki.static_path %]/images/st/pagetools/watch-star-on.gif" alt="[% row.Subject %]" class="watchlist-list-toggle" />
            [% END %]
 
         </td>
