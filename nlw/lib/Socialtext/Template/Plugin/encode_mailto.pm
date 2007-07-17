@@ -24,10 +24,9 @@ sub init {
 sub filter {
     my $str = $_[1];
     if (system_locale() eq 'ja') {
-        # XXX to be fixed by ishikawa-san
         Encode::_utf8_off($str) if Encode::is_utf8($str);
         from_to($str, 'utf8', 'cp932');
-        #$str = url_encode($str);
+        $str = url_encode($str);
     }
     return $str;
 }
