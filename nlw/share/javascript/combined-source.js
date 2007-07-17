@@ -8691,7 +8691,7 @@ ST.Attachments.prototype = {
 
     _hide_manage_file_interface: function () {
         this._pullAttachmentList();
-        Page.refresh_page_content();
+        Page.refresh_page_content(true);
 
         $(this.element.manageInterface).style.display = 'none';
         this._enable_scrollbar();
@@ -8931,7 +8931,12 @@ ST.Page.prototype = {
     },
 
     AttachmentListUri: function () {
-        return this.restApiUri() + '/attachments';
+        return this.restApiUri() + '/attachments' + '?' + this.ieCacheFix();
+    },
+
+    ieCacheFix: function () {
+        var date = new Date();
+        return 'iecacheworkaround=' + date.toLocaleTimeString();
     },
 
     ContentUri: function () {
@@ -8960,8 +8965,7 @@ ST.Page.prototype = {
     refresh_page_content: function (force_update) {
         var uri = Page.restApiUri();
         uri = uri + '?verbose=1;link_dictionary=s2';
-        var date = new Date();
-        uri += ';iecacheworkaround=' + date.toLocaleTimeString();
+        uri = uri + ';' + this.ieCacheFix();
         var request = new Ajax.Request (
             uri,
             {
@@ -9104,7 +9108,6 @@ ST.NavBar.prototype = {
         Event.observe(this.element.searchField, 'focus', this.clear_search.bind(this));
     }
 };
-
 // BEGIN attachqueue.js
 if (typeof ST == 'undefined') {
     ST = {};
@@ -13966,6 +13969,7 @@ proto.apply_linked_stylesheet = function(style, head) {
 proto.process_command = function(command) {
     if (this['do_' + command])
         this['do_' + command](command);
+    this.get_edit_window().focus();
 }
 
 proto.exec_command = function(command, option) {
@@ -14063,15 +14067,25 @@ Support for Internet Explorer in Wikiwyg.Wysiwyg
  =============================================================================*/
 if (Wikiwyg.is_ie) {
 
-proto.initializeObject = function() {
-    this.div = document.createElement('div');
-    this.div.contentEditable = true;
-    this.div.style.overflow = 'auto';
-    this.div.id = 'wysiwyg-editable-div';
-    this.edit_iframe = this.div;
-    this.div.onbeforedeactivate = this.onbeforedeactivate.bind(this);
-    this.div.onactivate = this.onactivate.bind(this);
-    return this.div;
+proto.enableThis = function() {
+    Wikiwyg.Mode.prototype.enableThis.call(this);
+    this.edit_iframe.style.border = '1px black solid';
+    this.edit_iframe.width = '100%';
+    this.setHeightOf(this.edit_iframe);
+    this.fix_up_relative_imgs();
+    this.apply_stylesheets();
+    this.enable_keybindings();
+    this.clear_inner_html();
+}
+
+proto.process_command = function(command) {
+    if (this['do_' + command])
+        this['do_' + command](command);
+}
+
+
+proto.get_edit_window = function() {
+    return this.edit_iframe;
 }
 
 proto.fromHtml = function(html) {
@@ -14152,6 +14166,59 @@ proto.insert_html = function(html) {
         this.__range = null;
     }
 }
+
+proto.get_inner_html = function( cb ) {
+    if ( cb ) {
+        this.get_inner_html_async( cb );
+        return;
+    }
+    return this.get_editable_div().innerHTML;
+}
+
+proto.get_editable_div = function () {
+    if (!this._editable_div) {
+        this._editable_div = this.get_edit_document().createElement('div');
+        this._editable_div.contentEditable = true;
+        this._editable_div.style.overflow = 'auto';
+        this._editable_div.style.border = 'none'
+        this._editable_div.id = 'wysiwyg-editable-div';
+        this._editable_div.onbeforedeactivate = this.onbeforedeactivate.bind(this);
+        this._editable_div.onactivate = this.onactivate.bind(this);
+        this.get_edit_document().body.appendChild(this._editable_div);
+        var self = this;
+        setTimeout(function () { self._editable_div.focus() }, 500);
+    }
+    return this._editable_div;
+}
+
+proto.get_inner_html_async = function( cb ) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.get_inner_html(cb);
+        }, 50);
+    } else {
+        var html = this.get_editable_div().innerHTML;
+        cb(html);
+        return html;
+    }
+}
+
+proto.set_inner_html = function(html) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.set_inner_html(html);
+        }, 50);
+    } else {
+        this.get_editable_div().innerHTML = html;
+    }
+}
+
+// Use IE's design mode default key bindings for now.
+proto.enable_keybindings = function() {}
 
 } // end of global if
 // BEGIN ../../../js-modules/Wikiwyg-copy/lib/Wikiwyg/HTML.js
@@ -14699,7 +14766,7 @@ proto.disable_button = function(mode_name) {
 }
 
 proto.button_disabled_func = function(mode_name) {
-    return function() { false }
+    return function() { return false }
 }
 
 proto.newpage_keyupHandler = function(event) {
@@ -17083,12 +17150,15 @@ Widget.Lightbox.Socialtext.prototype.release = function() {
 }
 
 Widget.Lightbox.Socialtext.prototype.hide = function() {
-    Widget.Lightbox.prototype.hide.call(this);
-    if (this.div.parentNode) {
-        this.releaseFocus();
-        if (Wikiwyg.is_ie) {
-            wikiwyg.toolbarObject.styleSelect.style.display=""
-        }
+    if (!this.div.parentNode) return;
+    this.div.style.display="none";
+    if (Widget.Lightbox.is_ie) {
+        document.body.scroll="yes"
+    }
+    this.releaseFocus();
+
+    if (Wikiwyg.is_ie) {
+        wikiwyg.toolbarObject.styleSelect.style.display=""
     }
 }
 
