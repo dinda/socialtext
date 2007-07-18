@@ -5,19 +5,30 @@ EUC-JP encoded Juman Dictionary.  Socialtext tries to convert the EUC-JP
 dictonary at install time, but if it fails it will warn that you should read
 this file so you can do the conversion by hand.
 
-You can convert the EUC-JP dictoary to a UTF-8 one as follows: 
+You can convert the EUC-JP dictoary to a UTF-8 one as follows:
 
 # NOTE: Actual paths may differ based on how MeCab was installed
 
+# The dictinary source directory from your distribution.
 DICSRC=/usr/share/mecab/dic/juman
+
+# The output dictionary to place UTF-8 Juman Dictionary.
 DICDIR=/path/to/usr/share/nlw/mecab
 
+# Copy the existing dictionary
 cp /var/lib/mecab/dic/juman/* $DICDIR
+
 cd $DICDIR
-rm *.bin *.dic
+rm *.bin *.dic dicsrc
 mkdir dicsrc
 ln -s $DICSRC/* dicsrc/.
+
+# Allow Katakana words to be split out from unknown sequences
 rm -f dicsrc/char.def
 sed -e '/^KATAKANA/s/.*/KATAKANA	0 1 2/' \
 	<$DICSRC/char.def >dicsrc/char.def
+
+# Build the dictionary in $DICDIR, using the modified dictionary
+# source in dicsrc/; the input dictionary is encoded in euc-jp
+# but the resulting dictionary should be in utf-8.
 /usr/lib/mecab/mecab-dict-index -d dicsrc -o . -f euc-jp -t utf-8
