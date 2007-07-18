@@ -164,6 +164,8 @@ sub _create_weblog {
     $first_post->metadata->update( user => $self->hub->current_user );
     $first_post->store( user => $self->hub->current_user );
 
+    $weblog_category = $self->hub->pages->title_to_uri($weblog_category);
+
     $self->redirect('action=weblog_display;category=' . $weblog_category);
 }
 
