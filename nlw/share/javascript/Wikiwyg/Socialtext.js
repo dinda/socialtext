@@ -1212,6 +1212,7 @@ proto.markupRules = {
     h4: ['start_line', '^^^^ '],
     h5: ['start_line', '^^^^^ '],
     h6: ['start_line', '^^^^^^ '],
+    hr: ['line_alone', '---- '],
     www: ['bound_phrase', '"', '"<http://...>'],
     attach: ['bound_phrase', '{file: ', '}'],
     image: ['bound_phrase', '{image: ', '}']

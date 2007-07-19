@@ -3558,6 +3558,7 @@ Widget.Lightbox.show = function(param) {
 }
 
 Widget.Lightbox.prototype.show = function(callback) {
+    this.scrollable = "no";
     var div = this.create();
     if ( this.div.style.display== "none" )
         this.div.style.display="block";
@@ -3574,7 +3575,7 @@ Widget.Lightbox.prototype.hide = function() {
     if (this.div.parentNode) {
         this.div.style.display="none";
         if (Widget.Lightbox.is_ie) {
-            document.body.scroll="yes"
+            document.body.scroll = this.scrollable = "yes";
         }
     }
 }
@@ -3694,7 +3695,7 @@ Widget.Lightbox.prototype.applyStyle = function() {
     divs.contentWrapper.style.left = my_left;
 
     if ( Widget.Lightbox.is_ie ) {
-        document.body.scroll="no";
+        document.body.scroll = this.scrollable;
         divs.background.style.height = win_height;
     }
 }
@@ -12376,7 +12377,7 @@ proto.find_right = function(t, selection_end, matcher) {
 }
 
 proto.get_lines = function() {
-    t = this.area; // XXX needs "var"?
+    var t = this.area;
     var selection_start = t.selectionStart;
     var selection_end = t.selectionEnd;
 
@@ -13766,12 +13767,12 @@ This Wikiwyg mode supports a DesignMode wysiwyg editor with toolbar buttons
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -13802,7 +13803,7 @@ proto.config = {
     editHeightAdjustment: 1.3,
     clearRegex: null
 };
-    
+
 proto.initializeObject = function() {
     this.edit_iframe = this.get_edit_iframe();
     this.div = this.edit_iframe;
@@ -13908,13 +13909,13 @@ proto.apply_inline_stylesheet = function(style, head) {
 
             /* It's pretty strange that this doesnt work.
                That's why Ajax.get() is used to retrive the css text.
-               
+
             this.apply_linked_stylesheet({
                 href: style.cssRules[i].href,
                 type: 'text/css'
             }, head);
             */
-            
+
             style_string += Ajax.get(style.cssRules[i].href);
         } else {
             style_string += style.cssRules[i].cssText + "\n";
@@ -14038,7 +14039,7 @@ proto.do_link = function() {
         url = match[2];
     }
     else {
-        url = '?' + escape(selection); 
+        url = '?' + escape(selection);
     }
     this.exec_command('createlink', url);
 }
@@ -14090,47 +14091,9 @@ proto.get_edit_window = function() {
     return this.edit_iframe;
 }
 
-proto.fromHtml = function(html) {
-    var dom = document.createElement('div');
-    dom.innerHTML = html;
-    this.sanitize_dom(dom);
-    this.set_inner_html(dom.innerHTML);
+proto.get_edit_document = function() {
+    return this.edit_iframe.contentWindow.document;
 }
-
-proto.enableThis = function() {
-    Wikiwyg.Mode.prototype.enableThis.call(this);
-    this.div.style.border = '1px black solid';
-    this.div.width = '100%';
-    this.setHeightOf(this.div);
-    this.fix_up_relative_imgs();
-    this.apply_stylesheets();
-    this.enable_keybindings();
-    this.clear_inner_html();
-}
-
-proto.get_div = function() {
-    return this.div;
-}
-
-proto.get_keybinding_area = function() {
-    return this.get_div();
-}
-
-proto.get_edit_window = function() { return window }
-proto.get_edit_document = function() { return document }
-
-proto.get_inner_html = function() {
-    return this.get_div().innerHTML;
-}
-
-proto.set_inner_html = function(html) {
-    this.get_div().innerHTML = html;
-}
-
-// We don't need to apply stylesheets that have already been applied
-proto.apply_stylesheets = function() {}
-
-proto.enable_keybindings = function () {}
 
 proto.onbeforedeactivate = function() {
     this.__range = this.get_edit_document().selection.createRange();
@@ -14141,11 +14104,8 @@ proto.onactivate = function() {
 }
 
 proto.get_selection_text = function() {
-    if (this.__range) {
-        return this.__range.htmlText;
-    }
-
     var selection = this.get_edit_document().selection;
+
     if (selection != null) {
         this.__range = selection.createRange();
         return this.__range.htmlText;
@@ -15503,6 +15463,7 @@ proto.markupRules = {
     h4: ['start_line', '^^^^ '],
     h5: ['start_line', '^^^^^ '],
     h6: ['start_line', '^^^^^^ '],
+    hr: ['line_alone', '---- '],
     www: ['bound_phrase', '"', '"<http://...>'],
     attach: ['bound_phrase', '{file: ', '}'],
     image: ['bound_phrase', '{image: ', '}']
