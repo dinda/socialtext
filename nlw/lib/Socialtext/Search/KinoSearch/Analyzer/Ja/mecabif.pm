@@ -44,13 +44,9 @@ sub new {
 	# and they are usually of no interest for text search purposes.
 	# This lists the word types that are of interest.
 
-	$self->{handled_types} = +{
+	$self->{unhandled_types} = +{
 		map { $_ => 1 }
-		("動詞",		# VERB
-		 "名詞",		# NOUN
-		 "形容詞",		# ADJECTIVE
-		 "副詞",		# ADVERB
-		 )
+		("指示詞", "特殊", "判定詞")
 	    };
 
 	# The most important part of the auxiliary information
@@ -87,7 +83,7 @@ sub handle_morph {
 
 	my $mecab = $self->{mecab};
 	my $canon_label = $self->{canon_label};
-	my $handled_types = $self->{handled_types};
+	my $unhandled_types = $self->{unhandled_types};
 
 	my $node = $mecab->parse($text);
 	my @ret;
@@ -107,7 +103,7 @@ sub handle_morph {
 			$in_ascii .= $word;
 			next;
 		}
-		next unless (exists $handled_types->{$type});
+		next if (exists $unhandled_types->{$type});
 		if ($aux =~ /$canon_label(\S+)/o) {
 			$word = $1;
 		}
