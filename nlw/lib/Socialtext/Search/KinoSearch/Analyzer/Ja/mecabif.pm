@@ -18,6 +18,9 @@ sub new {
 			$attr{'userdic'} = $d;
 		}
 	}
+	if (!exists $attr{'userdic'}) {
+	    $attr{'output_format_type'} = 'user';
+        }
 
 	# We reuse a same MeCab instance.  It eats Japanese text
 	# stream (use Juman dictionary with it), and tokenizes
