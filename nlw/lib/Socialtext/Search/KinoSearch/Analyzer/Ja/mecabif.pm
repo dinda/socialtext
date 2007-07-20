@@ -12,15 +12,6 @@ sub new {
 	$class = ref $class if ref $class;
 	my $self = bless {}, $class;
 	my %attr = @_;
-	if ($attr{'dicdir'}) {
-		my $d = "$attr{'dicdir'}/user.dic";
-		if (-r "$d") {
-			$attr{'userdic'} = $d;
-		}
-	}
-	if (!exists $attr{'userdic'}) {
-	    $attr{'output_format_type'} = 'user';
-        }
 
 	# We reuse a same MeCab instance.  It eats Japanese text
 	# stream (use Juman dictionary with it), and tokenizes
@@ -30,6 +21,7 @@ sub new {
 	# do away without the stemmer.
 
 	$self->{mecab} = Text::MeCab->new({
+		output_format_type => 'user',
 		node_format => join('\t',
 				    ("NODE",	# for easier parsing
 				     "%m",	# input word
