@@ -5,6 +5,11 @@ EUC-JP encoded Juman Dictionary.  Socialtext tries to convert the EUC-JP
 dictonary at install time, but if it fails it will warn that you should read
 this file so you can do the conversion by hand.
 
+Inclusion of customized entries to the dictionary can also be
+done by placing "user.csv" file (encoded in EUC-JP) in
+$DICDIR/dicsrc, before building Socialtext, or performing the
+conversion procedure described below.
+
 You can convert the EUC-JP dictoary to a UTF-8 one as follows:
 
 # NOTE: Actual paths may differ based on how MeCab was installed
@@ -27,6 +32,11 @@ ln -s $DICSRC/* dicsrc/.
 rm -f dicsrc/char.def
 sed -e '/^KATAKANA/s/.*/KATAKANA	0 1 2/' \
 	<$DICSRC/char.def >dicsrc/char.def
+
+# If you have customized entries to add to the dictionary,
+# create dicsrc/user.csv file at this point.  See
+# http://mecab.sourceforge.net/dic.html for details.
+
 
 # Build the dictionary in $DICDIR, using the modified dictionary
 # source in dicsrc/; the input dictionary is encoded in euc-jp

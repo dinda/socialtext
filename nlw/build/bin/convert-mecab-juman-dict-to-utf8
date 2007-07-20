@@ -14,9 +14,10 @@ use Socialtext::AppConfig;
 
 # Get the path to our juman dict directory
 my $sharedir = Socialtext::AppConfig->new->code_base;
+my $dicdir = catdir( $sharedir, "l10n", "mecab" );
 my %our_juman_dict = (
-    generated => catdir( $sharedir, "l10n", "mecab" ),
-    source => tempdir( CLEANUP => 1 ),
+    generated => $dicdir,
+    source => catdir( $dicdir, "dicsrc" ),
 );
 
 # Ensure our directories exist
@@ -26,47 +27,56 @@ for my $kind (qw(generated source)) {
         or die "Could not create directory $our_juman_dict{$kind}: $!\n";
 }
 
-# Path to the mecab dictionary indexer.  Default for Ubuntu.
+# Path to the mecab dictionary indexer.
+# Default for Debian and derived systems.  Use /usr/libexec instead
+# on Fedora.
 my $mecab_dict_index = "/usr/lib/mecab/mecab-dict-index";
 
-# Paths to the default Ubuntu Juman generated and source dicts
-my %default_juman_dict = (
-    generated => "/var/lib/mecab/dic/juman",
-    source    => "/usr/share/mecab/dic/juman",
-);
+# Path to the mecab juman dictionary sources.
+# Default for Debian and derived systems.
+# Use /usr/lib/mecab/dic/jumandic-EUCJP instead on Fedora
+my $mecab_dict_source = "/usr/share/mecab/dic/juman";
 
-# Ensure we can the generated and source Juman dictionaries exist.
-for my $kind (qw(generated source)) {
-    conversion_fails("$default_juman_dict{$kind} is not a valid directory")
-        unless -d $default_juman_dict{$kind} && -x _ && -r _;
-}
+# Ensure the Juman source dictionary exists.
+conversion_fails("$mecab_dict_source is not a valid directory")
+        unless -d $mecab_dict_source && -x _ && -r _;
 
 # Ensure the conversion program exists and we can run it.
 unless ( -f $mecab_dict_index && -r _ && -x _ ) {
     conversion_fails("$mecab_dict_index is not found or is not executable");
 }
 
-# Copy the old generated Juman files to our dir.  Exclude .bin and .dic files.
-my @files = glob "$default_juman_dict{generated}/*";
-@files = grep { $_ !~ /\.(dic|bin)$/ } @files;
-for my $src (@files) {
-    my $dest = catfile( $our_juman_dict{generated}, basename($src) );
-    copy( $src => $dest )
-        or conversion_fails("Could not copy $src to $dest: $!");
+my ($src, $dst);
+
+# Copy the source files, but we need to munge char.def.
+my @files = glob "$mecab_dict_source/*";
+for $src (@files) {
+    next if ($src =~ /char.def$/);
+    $dst = catfile( $our_juman_dict{source}, basename($src) );
+    copy( $src => $dst )
+	or conversion_fails("Could not copy $src to $dst: $!");
 }
 
-# Copy the old source files too, we need to munge char.def.
-@files = glob "$default_juman_dict{source}/*";
-for my $src (@files) {
-    next if ($src =~ /char.def$/);
-    my $dest = catfile( $our_juman_dict{source}, basename($src) );
-    copy( $src => $dest )
-	or conversion_fails("Could not copy $src to $dest: $!");
+# Symlink the files that should exist in the generated dictionary
+# directory from the source, just like the default system install.
+for $src qw(dicrc left-id.def right-id.def rewrite.def) {
+    $dst = catfile($our_juman_dict{generated}, $src);
+    next if -l "$dst" || -f _;
+    symlink("dicsrc/$src", $dst)
+	or conversion_fails("Could not make symlink $dst to dicsrc/$src: $!");
+}
+
+# If the user has custom dictionary source, include it in the
+# generated dictionary
+for $src (glob "$our_juman_dict{generated}/*.csv") {
+    $dst = catfile($our_juman_dict{source}, basename($src));
+    copy( $src => $dst)
+	or conversion_fails("Could not copy $src to $dst: $!");
 }
 
 # Munge our char.def
-my $src = catfile($default_juman_dict{source}, "char.def");
-my $dst = catfile($our_juman_dict{source}, "char.def");
+$src = catfile($mecab_dict_source, "char.def");
+$dst = catfile($our_juman_dict{source}, "char.def");
 open(my $in, "<$src") or die "Could not open $src: $!\n";
 open(my $out, ">$dst") or die "Could not open $dst: $!\n";
 while (<$in>) {
