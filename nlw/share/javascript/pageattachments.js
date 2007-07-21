@@ -133,10 +133,19 @@ ST.Attachments.prototype = {
         setTimeout(this._hide_attach_error.bind(this), 5 * 1000);
     },
 
+
     _attach_file_form_submit: function () {
         var filenameField = $(this.element.attachFilename);
         if (! filenameField.value) {
-            this._show_attach_error("Please click browse and select a file to upload.");
+            this._show_attach_error(loc("Please click browse and select a file to upload."));
+            return false;
+        }
+
+        filenameField.value.match(/\\|\/|:/g);
+        var filename = RegExp.rightContext;
+
+        if(encodeURIComponent(filename).length > 255 ) {
+            this._show_attach_error(loc("Filename is too long after URL encoding."));
             return false;
         }
 
@@ -148,7 +157,7 @@ ST.Attachments.prototype = {
     },
 
     _update_ui_for_upload: function (filename) {
-        Element.update(this.element.attachUploadMessage, 'Uploading ' + filename + '...');
+        Element.update(this.element.attachUploadMessage, loc('Uploading [_1]...', filename));
         $(this.element.attachSubmit).disabled = true;
 
         var cb = $(this.element.attachUnpackCheckbox);
@@ -262,7 +271,7 @@ ST.Attachments.prototype = {
         this._disable_scrollbar();
 
         $(this.element.attachSubmit).value = 'Upload file';
-        Element.update(this.element.attachMessage, 'Click "Browse" to find the file you want to upload. When you click "Upload file" your file will be uploaded and added to the list of attachments for this page.');
+        Element.update(this.element.attachMessage, loc('Click "Browse" to find the file you want to upload. When you click "Upload file" your file will be uploaded and added to the list of attachments for this page.'));
 
         var overlayElement = $('st-attachments-attach-attachinterface-overlay');
         var element = $('st-attachments-attach-interface');
