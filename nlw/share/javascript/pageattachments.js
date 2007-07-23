@@ -101,10 +101,10 @@ ST.Attachments.prototype = {
 
         this._update_uploaded_list($(this.element.attachFilename).value);
 
-        Element.update(this.element.attachMessage, 'Click "Browse" to find the file you want to upload. When you click "Upload another file" your file will be uploaded and added to the list of attachments for this page.');
-        $(this.element.attachSubmit).value = 'Upload another file';
+        Element.update(this.element.attachMessage, loc('Click "Browse" to find the file you want to upload. When you click "Upload another file" your file will be uploaded and added to the list of attachments for this page.'));
+        $(this.element.attachSubmit).value = loc('Upload another file');
         if (text.match(/Request Entity Too Large/)) {
-            text = 'File size exceeds maximum limit. File was not uploaded.';
+            text = loc('File size exceeds maximum limit. File was not uploaded.');
         }
         else {
             this._pullAttachmentList();
@@ -270,7 +270,7 @@ ST.Attachments.prototype = {
         $(this.element.attachmentInterface).style.display = 'block';
         this._disable_scrollbar();
 
-        $(this.element.attachSubmit).value = 'Upload file';
+        $(this.element.attachSubmit).value = loc('Upload file');
         Element.update(this.element.attachMessage, loc('Click "Browse" to find the file you want to upload. When you click "Upload file" your file will be uploaded and added to the list of attachments for this page.'));
 
         var overlayElement = $('st-attachments-attach-attachinterface-overlay');
@@ -354,7 +354,7 @@ ST.Attachments.prototype = {
     _hide_attach_file_interface: function () {
         if (!this._is_uploading_file()) {
             $(this.element.attachmentInterface).style.display = 'none';
-            $(this.element.attachSubmit).value = 'Upload file';
+            $(this.element.attachSubmit).value = loc('Upload file');
             this._enable_scrollbar();
             this._clear_uploaded_list();
         }
@@ -476,7 +476,7 @@ ST.Attachments.prototype = {
 
     _refresh_uploaded_list: function () {
         if (this._uploaded_list.length > 0) {
-            Element.update(this.element.attachFileList, '<span class="st-attachments-attach-listlabel">Uploaded files: </span>' + this._uploaded_list.join(', '));
+            Element.update(this.element.attachFileList, '<span class="st-attachments-attach-listlabel">' + loc('Uploaded files:') + ' </span>' + this._uploaded_list.join(', '));
             $(this.element.attachFileList).style.display = 'block';
         }
         else {
