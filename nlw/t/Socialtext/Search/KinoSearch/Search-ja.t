@@ -22,6 +22,10 @@ use_ok("Socialtext::Search::KinoSearch::Factory");
 our $workspace = 'admin';
 our $hub = new_hub('admin');
 
+#----------------------------------------------------------
+# Testcases
+#----------------------------------------------------------
+
 BASIC_SEARCH: {
     erase_index_ok();
     make_page_ok(
