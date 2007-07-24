@@ -313,7 +313,7 @@ sub analyze {
 			# single word could be split across physical
 			# lines, in which case we would want to join
 			# them back.
-			s/[\015]+//g;
+			s/[\012]+//g;
 			push @all, $_;
 		}
 	}
