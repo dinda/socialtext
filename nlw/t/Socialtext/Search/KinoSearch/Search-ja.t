@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::Socialtext tests => 132;
+use Test::Socialtext tests => 142;
 fixtures( 'admin_no_pages' );
 
 
@@ -130,15 +130,15 @@ COMPOUND_SEARCH: {
     search_ok( "そばめし", 1, "Compound Hiragana Search (in title) 1" );
     search_ok( "そば", 1, "Compound Hiragana Search (in title) 2" );
 
+    make_page_ok(
+        "複合語 アカデミー賞",
+        "２００２ＦＩＦＡワールドカップ、見ましたか？"
+    );
+    search_ok( "２００２ＦＩＦＡワールドカップ", 1, "Compound Complex Search 1" );
 # NOT SUPPORTED
-#    make_page_ok(
-#        "複合語 アカデミー賞",
-#        "２００２ＦＩＦＡワールドカップ、見ましたか？"
-#    );
-#    search_ok( "２００２ＦＩＦＡワールドカップ", 1, "Compound Complex Search 1" );
 #    search_ok( "ＦＩＦＡ", 1, "Compound Complex Search 2" );
-#    search_ok( "ワールドカップ", 1, "Compound Complex Search 3" );
-#    search_ok( "アカデミー賞", 1, "Compound Complex Search (in title) 1" );
+    search_ok( "ワールドカップ", 1, "Compound Complex Search 3" );
+    search_ok( "アカデミー賞", 1, "Compound Complex Search (in title) 1" );
 }
 
 FORMATTED_STRING_SEARCH: {
@@ -306,6 +306,24 @@ OTHER_SEARCH: {
     search_ok( "匍", 1, "Other Search (in title) 3" );
     search_ok( "凞", 1, "Other Search (in title) 4" );
     search_ok( "鸙", 1, "Other Search (in title) 5" );
+}
+
+SPLITTED_WORD_BY_RETURN: {
+    erase_index_ok();
+    make_page_ok(
+        "改行で分割された文字列1",
+        "たとえば、当り前のことですが、この単語は辞書にあります。"
+    );
+    make_page_ok(
+        "改行で分割された文字列2",
+        "たとえば、当り\n前のことですが、この単語は辞\n書にあります。"
+    );
+    make_page_ok(
+        "改行で分割された文字列3",
+        "たとえば、当り\n\n前のことですが、この単語は辞\n\n書にあります。"
+    );
+    search_ok( "当り前", 3, "Splitted word Search 1" );
+    search_ok( "辞書", 3, "Splitted word Search 1" );
 }
 
 #----------------------------------------------------------
