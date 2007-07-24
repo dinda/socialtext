@@ -73,7 +73,7 @@ sub timezone {
 }
 
 sub _default_timezone {
-    my $self;
+    my $self = shift;
     my $locale = shift;
     if ( $locale eq 'ja' ) {
         return '+0900';
