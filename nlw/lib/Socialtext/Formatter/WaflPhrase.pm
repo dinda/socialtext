@@ -656,10 +656,12 @@ sub _parse_page_for_headers {
             . $header->{text} . "}\n";
     }
 
-    $wikitext = "> {link $wikitext_workspace_name ["
-        . $page_title
-        . ']} does not have any headers.'
-        unless $wikitext;
+    unless ($wikitext) {
+        my $link_text = "> {link $wikitext_workspace_name ["
+            . $page_title
+            . ']}';
+        $wikitext = loc('[_1] does not have any headers.', $link_text);
+    }
 
     my $html = $self->hub->viewer->text_to_html( "\n" . $wikitext . "\n\n" );
     

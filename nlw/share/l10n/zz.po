@@ -29,6 +29,11 @@ msgstr "%1 W38l0g"
 msgid "%1 as a weblog"
 msgstr "%1 4s 4 w38L0G"
 
+#: lib/Socialtext/Formatter/WaflPhrase.pm:663
+#. (
+msgid "%1 does not have any headers."
+msgstr "%1 D03s n07 h4v3 4nY H34d3rS."
+
 #: lib/Socialtext/User/Default.pm:171
 #. (
 msgid "%1 is a required field."
