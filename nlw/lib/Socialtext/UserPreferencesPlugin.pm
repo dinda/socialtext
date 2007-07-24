@@ -105,7 +105,7 @@ sub save {
             $settings->{$pref} = $cgi{$_}
               unless exists $settings->{$pref};
 
-            if( ${class_id} eq 'favorites' ) {
+            if( $class_id eq 'favorites' ) {
                 if(! $self->_is_favorites_page_title_valid($settings->{$pref})) {
                     my $message = loc("Page title is too long after URL encoding");
                     $self->add_error($message);
