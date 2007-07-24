@@ -46,15 +46,51 @@ unless ( -f $mecab_dict_index && -r _ && -x _ ) {
     conversion_fails("$mecab_dict_index is not found or is not executable");
 }
 
-my ($src, $dst);
+my ($src, $dst, $in, $out);
 
-# Copy the source files, but we need to munge char.def.
+# Copy the source files while converting them to UTF-8,
+use Encode qw(encode_utf8 decode);
+
 my @files = glob "$mecab_dict_source/*";
 for $src (@files) {
-    next if ($src =~ /char.def$/);
     $dst = catfile( $our_juman_dict{source}, basename($src) );
-    copy( $src => $dst )
-	or conversion_fails("Could not copy $src to $dst: $!");
+
+    my $no_conversion = ($src =~ /matrix\.def$/);
+
+    if ($no_conversion) {
+	copy( $src => $dst)
+	    or conversion_fails("Could not convert $src to $dst: $!");
+	next;
+    }
+
+    my $skip_corrupted = (($src =~ /\.csv$/)
+			  ? Encode::FB_CROAK : Encode::FB_DEFAULT);
+
+    open($in, "<$src")
+	or die("Could not open $src: $!");
+    open($out, ">$dst") or die("Could not open $dst: $!");
+
+    while (<$in>) {
+	use utf8;
+
+	s/^(dictionary-charset =) euc-jp/$1 utf-8/;
+	eval {
+	    $_ = decode('euc-jp', $_, $skip_corrupted);
+	};
+	if ($@) {
+	    # print STDERR "Skipped one in $src\n";
+	    next;
+	}
+
+	# Canonicalize small AEIOU
+	s/ァ/ア/g; s/ェ/エ/g; s/ィ/イ/g; s/ゥ/ウ/g; s/ォ/オ/g;
+
+	$_ = encode_utf8($_);
+	print $out $_;
+    }
+    close($in);
+    close($out)
+	or conversion_fails("Could not close $dst: $!");
 }
 
 # Symlink the files that should exist in the generated dictionary
@@ -67,7 +103,7 @@ for $src qw(dicrc left-id.def right-id.def rewrite.def) {
 }
 
 # If the user has custom dictionary source, include it in the
-# generated dictionary
+# generated dictionary.  Custom dictionaries are already in UTF-8.
 for $src (glob "$our_juman_dict{generated}/*.csv") {
     $dst = catfile($our_juman_dict{source}, basename($src));
     copy( $src => $dst)
@@ -77,8 +113,8 @@ for $src (glob "$our_juman_dict{generated}/*.csv") {
 # Munge our char.def
 $src = catfile($mecab_dict_source, "char.def");
 $dst = catfile($our_juman_dict{source}, "char.def");
-open(my $in, "<$src") or die "Could not open $src: $!\n";
-open(my $out, ">$dst") or die "Could not open $dst: $!\n";
+open($in, "<$src") or die "Could not open $src: $!\n";
+open($out, ">$dst") or die "Could not open $dst: $!\n";
 while (<$in>) {
     if (/^KATAKANA\s+\d+\s+\d+\s+\d+\s*$/) {
 	$_ = "KATAKANA	0 1 2\n";
@@ -93,8 +129,8 @@ system(
     $mecab_dict_index, 
     "-d" => $our_juman_dict{source},
     "-o" => $our_juman_dict{generated},
-    "-f" => "euc-jp", 
-    "-t" => "utf-8" 
+    "-f" => "utf-8",
+    "-t" => "utf-8"
 ) and conversion_fails("$mecab_dict_index failed to convert dictionary");
 
 print "Conversion successful\n";
