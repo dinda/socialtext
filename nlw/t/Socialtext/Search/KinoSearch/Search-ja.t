@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::Socialtext tests => 133;
+use Test::Socialtext tests => 132;
 fixtures( 'admin_no_pages' );
 
 
@@ -297,12 +297,11 @@ OTHER_SEARCH: {
 
     make_page_ok(
         "特殊文字  ㍼ 匍 凞 鸙",
-        "特殊な漢字  ㈱ ～   昻  喆で終わります"
+        "特殊な漢字  ㈱    昻  喆で終わります"
     );
     search_ok( "㈱", 1, "Other Search  2" );
-    search_ok( "～", 1, "Other Search  3" );
-    search_ok( "昻", 1, "Other Search  4" );
-    search_ok( "喆", 1, "Other Search  5" );
+    search_ok( "昻", 1, "Other Search  3" );
+    search_ok( "喆", 1, "Other Search  4" );
     search_ok( "㍼", 1, "Other Search (in title) 2" );
     search_ok( "匍", 1, "Other Search (in title) 3" );
     search_ok( "凞", 1, "Other Search (in title) 4" );

@@ -124,7 +124,7 @@ sub handle_morph {
 	return map { decode_utf8($_) } @ret;
 }
 
-our (%H2Z, $H2Z);
+our (%H2Z, $H2Z, %H2Z0, $H2Z0, %H2Z1, $H2Z1);
 sub add_h2z {
 	my ($hash, $decode_e) = @_;
 	$decode_e ||= '';
@@ -166,12 +166,15 @@ BEGIN {
 	# D2Z needs to be applied first and then H2Z.
 	add_h2z(\%Encode::JP::H2Z::_D2Z, 'e');
 	add_h2z(\%Encode::JP::H2Z::_H2Z, 'e');
+	%H2Z0 = %H2Z; $H2Z0 = $H2Z; %H2Z = (); $H2Z = undef;
 
 	# "Violin" and friends.
 	add_h2z(+{
 		'ヴァ' => 'バ', 'ヴィ' => 'ビ', 'ヴュ' => 'ブ',
 		'ヴゥ' => 'ブ',	'ヴェ' => 'べ',	'ヴォ' => 'ボ',
 	});
+	%H2Z1 = %H2Z; $H2Z1 = $H2Z; %H2Z = (); $H2Z = undef;
+
 	add_h2z_str('ァィゥェォ', 'アイウエオ');
 
 	# ASCII
@@ -287,29 +290,30 @@ sub analyze {
 	my (@ascii_token, @all, $text);
 
 	for (@_) {
-		# Replace controls to SP -- this takes care of EOL
-		# as well.
-		s/([\000- ]+)/ /g;
+		# Replace controls to SP, except CR/LF
+		s/([\000-\011\013\014\016- ]+)/ /g;
+		s/([\012\015]+)/\012/g;
 
 		# Run H2Z for Kana, and stuff.
+		s/($H2Z0)/(exists $H2Z0{$1} ? $H2Z0{$1} : $1)/ego;
+		s/($H2Z1)/(exists $H2Z1{$1} ? $H2Z1{$1} : $1)/ego;
 		s/($H2Z)/(exists $H2Z{$1} ? $H2Z{$1} : $1)/ego;
 
 		# Splice them into ASCII sequence and others,
 		# and replace ASCII sequences with stubs.
 		while (/^(.*?)([!-~]+)(.*)$/) {
 			my ($na, $a, $rest) = ($1, $2, $3);
-			$na =~ s/ +//g;
 			push @all, $na;
 			push @all, (" <<" . scalar(@ascii_token) . ">> ");
 			push @ascii_token, $a;
 			$_ = $rest;
 		}
 		if ($_ ne '') {
-			# Japanese string.  Remove whitespaces,
-			# because a single word could be split
-			# across physical lines, in which case we
-			# would want to join them back.
-			s/ +//g;
+			# Japanese string.  Remove LF, because a
+			# single word could be split across physical
+			# lines, in which case we would want to join
+			# them back.
+			s/[\015]+//g;
 			push @all, $_;
 		}
 	}
