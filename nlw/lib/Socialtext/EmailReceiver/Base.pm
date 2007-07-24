@@ -23,7 +23,7 @@ use HTML::TreeBuilder   ();
 use HTML::WikiConverter ();
 use Socialtext::Authz;
 use Socialtext::CategoryPlugin;
-use Socialtext::Exceptions qw( auth_error system_error );
+use Socialtext::Exceptions qw( auth_error system_error data_validation_error );
 use Socialtext::Log qw( st_log );
 use Socialtext::Permission qw( ST_EMAIL_IN_PERM );
 use Socialtext::User ();
@@ -166,6 +166,10 @@ sub _get_page_for_subject {
     my $subject = $self->_clean_subject();
 
     my $page = $main->hub()->pages()->new_from_name($subject);
+    if (! defined($page) ) {
+     data_validation_error "Page title is too long after URL encoding";
+     return;
+    }
     $page->load();
 
     my $metadata = $page->metadata();
