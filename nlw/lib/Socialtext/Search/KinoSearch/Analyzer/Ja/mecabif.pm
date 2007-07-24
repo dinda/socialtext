@@ -178,7 +178,7 @@ BEGIN {
 	add_h2z_str('０１２３４５６７８９：；＜＝＞？', '0123456789:;<=>?');
 	add_h2z_str('＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯ', '@ABCDEFGHIJKLMNO');
 	add_h2z_str('ＰＱＲＳＴＵＶＷＸＹＺ［￥］＾＿', 'PQRSTUVWXYZ[\\]^_');
-	add_h2z_str('ａｂｃｄｅｆｇｈｉｊｋｌｍｎ', 'abcdefghijklmn');
+	add_h2z_str('ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏ', 'abcdefghijklmno');
 	add_h2z_str('ｐｑｒｓｔｕｖｗｘｙｚ｛｜｝', 'pqrstuvwxyz{|}');
 
 	# These are so-called "platform specific" idiosynchracies;
