@@ -662,7 +662,6 @@ proto.displayNewPageDialog = function() {
         'st-newpage-duplicate-emphasis'
     );
     // $('st-newpage-save').style.display = 'block';
-    $('st-newpage-save-pagename').focus();
 
     var divs = {
         wrapper: $('st-newpage-save'),
@@ -671,6 +670,8 @@ proto.displayNewPageDialog = function() {
         contentWrapper: $('st-newpage-save-interface').parentNode
     }
     Widget.Lightbox.show({ 'divs': divs, 'effects': ['RoundedCorners'] });
+
+    $('st-newpage-save-pagename').focus();
 
     return false;
 }
