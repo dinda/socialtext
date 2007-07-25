@@ -1024,7 +1024,7 @@ msgstr ""
 msgid "Date Uploaded"
 msgstr ""
 
-#: lib/Socialtext/EmailReceiver/Base.pm:710
+#: lib/Socialtext/EmailReceiver/Base.pm:714
 #.  
 msgid "Date:"
 msgstr ""
@@ -1424,7 +1424,7 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-#: lib/Socialtext/EmailReceiver/Base.pm:693
+#: lib/Socialtext/EmailReceiver/Base.pm:697
 #.  
 msgid "From:"
 msgstr ""
@@ -1522,6 +1522,11 @@ msgstr ""
 #: share/template/authen/login.html:39
 #.  
 msgid "I don't know my password."
+msgstr ""
+
+#: lib/Socialtext/WorkspaceInvitation.pm:88
+#. (
+msgid "I'm inviting you into the %1 workspace"
 msgstr ""
 
 #: share/template/email/openid/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
@@ -2214,7 +2219,7 @@ msgstr ""
 msgid "Page section name"
 msgstr ""
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr ""
@@ -2869,7 +2874,7 @@ msgstr ""
 msgid "Technorati: %1"
 msgstr ""
 
-#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
+#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47 share/template/email/st/workspace-invitation.txt:25
 #.  
 msgid "Thanks,"
 msgstr ""

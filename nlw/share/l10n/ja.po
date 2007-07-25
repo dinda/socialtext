@@ -647,7 +647,7 @@ msgstr "<a href=\"%1\">Socialtext にログインする </a>"
 #: share/template/email/st/workspace-invitation-body.html:37 share/template/email/st/workspace-invitation.txt:17
 #. (
 msgid "Because you already have %1 %2 account, the password is the same as the password you use for your other %3 workspaces."
-msgstr "%1 %2 アカウントをすでにお持ちですので、パスワードは他の %3 ワークスペースで使用しているものと同じになります。"
+msgstr "%2 アカウントをすでにお持ちですので、パスワードは他の %3 ワークスペースで使用しているものと同じになります。"
 
 #: share/template/view/refcard:232
 #.  
@@ -1024,7 +1024,7 @@ msgstr "日付"
 msgid "Date Uploaded"
 msgstr "アップロードした日"
 
-#: lib/Socialtext/EmailReceiver/Base.pm:710
+#: lib/Socialtext/EmailReceiver/Base.pm:714
 #.  
 msgid "Date:"
 msgstr "日:"
@@ -1424,7 +1424,7 @@ msgstr "パスワードを忘れた方はこちら"
 msgid "From"
 msgstr "発信者"
 
-#: lib/Socialtext/EmailReceiver/Base.pm:693
+#: lib/Socialtext/EmailReceiver/Base.pm:697
 #.  
 msgid "From:"
 msgstr "送信者:"
@@ -1523,6 +1523,11 @@ msgstr "日付の書式を選択してください。"
 #.  
 msgid "I don't know my password."
 msgstr "パスワードを忘れた方はこちら"
+
+#: lib/Socialtext/WorkspaceInvitation.pm:88
+#. (
+msgid "I'm inviting you into the %1 workspace"
+msgstr "ワークスペース %1 にあなたをご招待します"
 
 #: share/template/email/openid/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
 #. (
@@ -2214,7 +2219,7 @@ msgstr "このページは %1 に名前が変更になりました。"
 msgid "Page section name"
 msgstr "ページのセクション名"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
@@ -2869,7 +2874,7 @@ msgstr "タグ:"
 msgid "Technorati: %1"
 msgstr "Technorati: %1"
 
-#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
+#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47 share/template/email/st/workspace-invitation.txt:25
 #.  
 msgid "Thanks,"
 msgstr "あなたの参加をお待ちしております。"

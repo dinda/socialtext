@@ -1024,7 +1024,7 @@ msgstr "d473"
 msgid "Date Uploaded"
 msgstr "d473 UpL04d3d"
 
-#: lib/Socialtext/EmailReceiver/Base.pm:710
+#: lib/Socialtext/EmailReceiver/Base.pm:714
 #.  
 msgid "Date:"
 msgstr "d473:"
@@ -1424,7 +1424,7 @@ msgstr "f0rG07 P4SsW0Rd"
 msgid "From"
 msgstr "fR0M"
 
-#: lib/Socialtext/EmailReceiver/Base.pm:693
+#: lib/Socialtext/EmailReceiver/Base.pm:697
 #.  
 msgid "From:"
 msgstr "fR0M:"
@@ -1523,6 +1523,11 @@ msgstr "h0w sH0UlD DiSpL4Y3D D473S 83 f0rM4773d?"
 #.  
 msgid "I don't know my password."
 msgstr "i d0n'7 kN0W My p4sSw0rD."
+
+#: lib/Socialtext/WorkspaceInvitation.pm:88
+#. (
+msgid "I'm inviting you into the %1 workspace"
+msgstr "i'm iNvI7InG Y0U In70 7H3 %1 W0RkSp4c3"
 
 #: share/template/email/openid/workspace-invitation-body.html:15 share/template/email/st/workspace-invitation-body.html:13 share/template/email/st/workspace-invitation.txt:5
 #. (
@@ -2214,7 +2219,7 @@ msgstr "p4g3 R3N4M3D 70 %1"
 msgid "Page section name"
 msgstr "p4g3 S3C7I0N N4M3"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "p4g3 7i7l3 Is 700 l0nG 4f73R UrL 3nC0DiNg"
@@ -2869,7 +2874,7 @@ msgstr "74gS:"
 msgid "Technorati: %1"
 msgstr "73cHn0r47I: %1"
 
-#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47
+#: share/template/email/openid/workspace-invitation-body.html:32 share/template/email/openid/workspace-invitation.txt:14 share/template/email/st/workspace-invitation-body.html:47 share/template/email/st/workspace-invitation.txt:25
 #.  
 msgid "Thanks,"
 msgstr "7H4NkS,"
