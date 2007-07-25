@@ -392,7 +392,7 @@ msgstr "このページのトップにある添付にリンクを追加します
 #: share/template/element/page/attachment_attach_interface:22
 #.  
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
-msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、、画像がページ内に表示されます。"
+msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、画像がページ内に表示されます。"
 
 #: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
 #.  
