@@ -29,7 +29,7 @@ msgstr ""
 msgid "%1 as a weblog"
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:663
+#: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr ""
@@ -614,7 +614,7 @@ msgstr ""
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr ""
@@ -689,7 +689,7 @@ msgstr ""
 msgid "Can't remove privileges of the last admin"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr ""
@@ -1229,6 +1229,11 @@ msgstr ""
 msgid "Enable email notifications for this workspace?"
 msgstr ""
 
+#: lib/Socialtext/l10n.pm:88
+#.  
+msgid "English"
+msgstr ""
+
 #: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
 msgid "Enjoy!"
@@ -1729,6 +1734,11 @@ msgstr ""
 msgid "It's where you can share tips and best practices with other Socialtext customers."
 msgstr ""
 
+#: lib/Socialtext/l10n.pm:89
+#.  
+msgid "Japanese"
+msgstr ""
+
 #: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
 #.  
 msgid "Keep attachments"
@@ -2219,7 +2229,7 @@ msgstr ""
 msgid "Page section name"
 msgstr ""
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:702
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr ""
@@ -2584,7 +2594,7 @@ msgstr ""
 msgid "Sample Weblog"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr ""
@@ -2834,7 +2844,7 @@ msgstr ""
 msgid "Syndicate"
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:645 share/javascript/Wikiwyg/Jemplate.js:1847
+#: lib/Socialtext/Formatter/WaflPhrase.pm:646 share/javascript/Wikiwyg/Jemplate.js:1847
 #.  
 msgid "Table of Contents"
 msgstr ""
@@ -3472,6 +3482,11 @@ msgstr ""
 #: share/template/element/settings/select:41 share/template/element/wiki/subnav-dashboard:6 share/template/element/wiki/subnav-default:13 share/template/element/wiki/subnav-default:9 share/template/element/wiki/subnav-listview:10 share/template/element/wiki/subnav-listview:7
 #.  
 msgid "Weblogs"
+msgstr ""
+
+#: lib/Socialtext/l10n.pm:19
+#.  
+msgid "Welcome"
 msgstr ""
 
 #: share/template/view/homepage:9
@@ -4129,7 +4144,7 @@ msgstr ""
 msgid "indented"
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:446
+#: lib/Socialtext/Formatter/WaflPhrase.pm:447
 #. (
 msgid "inter-workspace link: %1"
 msgstr ""
@@ -4259,7 +4274,7 @@ msgstr ""
 msgid "search: %1"
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:442
+#: lib/Socialtext/Formatter/WaflPhrase.pm:443
 #.  
 msgid "section link"
 msgstr ""
@@ -4277,6 +4292,11 @@ msgstr ""
 #: share/template/view/refcard:15
 #.  
 msgid "strikeout"
+msgstr ""
+
+#: lib/Socialtext/l10n.pm:23
+#. (
+msgid "string %1"
 msgstr ""
 
 #: share/template/view/refcard:38

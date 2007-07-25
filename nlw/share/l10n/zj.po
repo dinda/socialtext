@@ -29,7 +29,7 @@ msgstr "%1 Wえ8lおg"
 msgid "%1 as a weblog"
 msgstr "%1 あs あ wえ8LおG"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:663
+#: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr "%1 Dおえs nお7 hあvえ あnY HえあdえrS."
@@ -614,7 +614,7 @@ msgstr "あS Wえ cおn7いNうえ 7お dえvえlおp 7Hえ sえあRcH SyS7えm,
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "あ77あcHmえn7 Nお7 FおうnD. 7Hえ pあgえ NあMえ, FいLえ nあmえ おr いDえN7いfえr nうm8えR いn 7Hえ lいnK MあY 8え いNcおrRえC7, おr 7Hえ あ77あcHmえn7 MあY HあVえ 8ええN DえLえ7えD おr いS Nお7 Prえsえn7 いn 7HいS WおRkSpあcえ."
 
-#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "あ77あcHmえn7s"
@@ -689,7 +689,7 @@ msgstr "cあlL '%1' うSいNg sKyPえ. ClいcK 7お えDい7."
 msgid "Can't remove privileges of the last admin"
 msgstr "cあn'7 rえmおvえ Prいvいlえgえs おF 7hえ LあS7 あDmいn"
 
-#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "cあnCえL"
@@ -1229,6 +1229,11 @@ msgstr "えMあいl:"
 msgid "Enable email notifications for this workspace?"
 msgstr "えNあ8lえ えmあいL Nお7いFいCあ7いおnS FおR 7hいs wおrKsPあCえ?"
 
+#: lib/Socialtext/l10n.pm:88
+#.  
+msgid "English"
+msgstr "えNgLいSh"
+
 #: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
 msgid "Enjoy!"
@@ -1729,6 +1734,11 @@ msgstr "い7 MうS7 cおnSいS7 おF 3-30 lおwえrCあSえ lえ77えRs おR D�
 msgid "It's where you can share tips and best practices with other Socialtext customers."
 msgstr "い7'S Whえrえ Yおう CあN Shあrえ 7いPs あNd 8えs7 Prあc7いCえS Wい7h お7hえr sおcいあL7えx7 CうS7おmえrS."
 
+#: lib/Socialtext/l10n.pm:89
+#.  
+msgid "Japanese"
+msgstr "jあpあnえsえ"
+
 #: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
 #.  
 msgid "Keep attachments"
@@ -2219,7 +2229,7 @@ msgstr "pあgえ RえNあMえD 7お %1"
 msgid "Page section name"
 msgstr "pあgえ SえC7いおN NあMえ"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:702
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "pあgえ 7い7lえ いs 7おお lおnG あf7えR うrL えnCおDいNg"
@@ -2584,7 +2594,7 @@ msgstr "rおlえs あNd pえrMいSsいおN Sえ7s (S7あnDあRd wおrKsPあCえ 
 msgid "Sample Weblog"
 msgstr "sあmPlえ Wえ8lおg"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "sあvえ"
@@ -2834,7 +2844,7 @@ msgstr "sうmMあRy"
 msgid "Syndicate"
 msgstr "sYnDいCあ7え"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:645 share/javascript/Wikiwyg/Jemplate.js:1847
+#: lib/Socialtext/Formatter/WaflPhrase.pm:646 share/javascript/Wikiwyg/Jemplate.js:1847
 #.  
 msgid "Table of Contents"
 msgstr "7あ8Lえ おF CおN7えn7s"
@@ -3473,6 +3483,11 @@ msgstr "wえ8LおG: %1 RsS"
 #.  
 msgid "Weblogs"
 msgstr "wえ8LおGs"
+
+#: lib/Socialtext/l10n.pm:19
+#.  
+msgid "Welcome"
+msgstr "wえlCおMえ"
 
 #: share/template/view/homepage:9
 #. (
@@ -4129,7 +4144,7 @@ msgstr "いNcLうDえ: %1"
 msgid "indented"
 msgstr "いNdえn7えD"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:446
+#: lib/Socialtext/Formatter/WaflPhrase.pm:447
 #. (
 msgid "inter-workspace link: %1"
 msgstr "いN7えr-wおrKsPあCえ lいnK: %1"
@@ -4259,7 +4274,7 @@ msgstr "rえvいsいおN"
 msgid "search: %1"
 msgstr "sえあRcH: %1"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:442
+#: lib/Socialtext/Formatter/WaflPhrase.pm:443
 #.  
 msgid "section link"
 msgstr "sえc7いおn lいnK"
@@ -4278,6 +4293,11 @@ msgstr "s7あR7 いRc sえsSいおn"
 #.  
 msgid "strikeout"
 msgstr "s7rいkえおう7"
+
+#: lib/Socialtext/l10n.pm:23
+#. (
+msgid "string %1"
+msgstr "s7rいnG %1"
 
 #: share/template/view/refcard:38
 #.  

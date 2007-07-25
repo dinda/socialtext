@@ -29,7 +29,7 @@ msgstr "%1 ウェブログ"
 msgid "%1 as a weblog"
 msgstr "ウェブログとして %1"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:663
+#: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr "%1 には見出しが１つもありません。"
@@ -614,7 +614,7 @@ msgstr "検索システムの開発が進むにつれ、利用できるオプシ
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "添付ファイルが見つかりませんでした。ページ名、ファイル名、または、リンクの識別子が間違っている可能性があります。あるいは、添付ファイルが削除されてしまっているか、このワークスペースに存在しない可能性があります。"
 
-#: share/javascript/Wikiwyg/Socialtext.js:1139 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1140 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "添付"
@@ -689,7 +689,7 @@ msgstr "'%1' と Skype 通話を開始します。クリックして編集して
 msgid "Can't remove privileges of the last admin"
 msgstr "前回の管理者の権限を削除できません。"
 
-#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1038 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1039 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "キャンセル"
@@ -1229,6 +1229,11 @@ msgstr "Email:"
 msgid "Enable email notifications for this workspace?"
 msgstr "このワークスペースについて、Email による変更通知を受信するように設定しますか？"
 
+#: lib/Socialtext/l10n.pm:88
+#.  
+msgid "English"
+msgstr "英語"
+
 #: share/template/email/password-change.html:24 share/template/email/password-change.txt:11
 #.  
 msgid "Enjoy!"
@@ -1729,6 +1734,11 @@ msgstr "英字小文字とダッシュのみを使用し、3-30文字にして�
 msgid "It's where you can share tips and best practices with other Socialtext customers."
 msgstr "他のユーザとの情報交換の場です。"
 
+#: lib/Socialtext/l10n.pm:89
+#.  
+msgid "Japanese"
+msgstr "日本語"
+
 #: share/template/popup/copy_to_workspace:35 share/template/popup/duplicate:71 share/template/popup/rename:78
 #.  
 msgid "Keep attachments"
@@ -2219,7 +2229,7 @@ msgstr "このページは %1 に名前が変更になりました。"
 msgid "Page section name"
 msgstr "ページのセクション名"
 
-#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:701
+#: lib/Socialtext/EditPlugin.pm:38 lib/Socialtext/Page.pm:683 lib/Socialtext/UserPreferencesPlugin.pm:110 share/javascript/Wikiwyg/Socialtext.js:702
 #.  
 msgid "Page title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ページタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
@@ -2584,7 +2594,7 @@ msgstr "ロールとパーミッションの設定（標準ワークスペース
 msgid "Sample Weblog"
 msgstr "サンプル Weblog"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1056 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "保存"
@@ -2834,7 +2844,7 @@ msgstr "要約"
 msgid "Syndicate"
 msgstr "シンジケート"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:645 share/javascript/Wikiwyg/Jemplate.js:1847
+#: lib/Socialtext/Formatter/WaflPhrase.pm:646 share/javascript/Wikiwyg/Jemplate.js:1847
 #.  
 msgid "Table of Contents"
 msgstr "目次"
@@ -3473,6 +3483,11 @@ msgstr "ウェブログ: %1 RSS"
 #.  
 msgid "Weblogs"
 msgstr "ウェブログ"
+
+#: lib/Socialtext/l10n.pm:19
+#.  
+msgid "Welcome"
+msgstr ""
 
 #: share/template/view/homepage:9
 #. (
@@ -4129,7 +4144,7 @@ msgstr "挿入: %1"
 msgid "indented"
 msgstr "インデント"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:446
+#: lib/Socialtext/Formatter/WaflPhrase.pm:447
 #. (
 msgid "inter-workspace link: %1"
 msgstr "内部ワークスペースリンク: %1"
@@ -4259,7 +4274,7 @@ msgstr "リビジョン"
 msgid "search: %1"
 msgstr "検索: %1"
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:442
+#: lib/Socialtext/Formatter/WaflPhrase.pm:443
 #.  
 msgid "section link"
 msgstr "セクションリンク"
@@ -4278,6 +4293,11 @@ msgstr "irc セッションを開始"
 #.  
 msgid "strikeout"
 msgstr "取り消し"
+
+#: lib/Socialtext/l10n.pm:23
+#. (
+msgid "string %1"
+msgstr ""
 
 #: share/template/view/refcard:38
 #.  
