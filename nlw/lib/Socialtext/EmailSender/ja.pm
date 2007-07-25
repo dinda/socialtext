@@ -29,6 +29,7 @@ use Encode::Unicode::Japanese;
 use Lingua::JA::Fold;
 use Jcode;
 use Unicode::Japanese;
+use utf8;
 
 $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
 our ($H2Z, %H2Z);
