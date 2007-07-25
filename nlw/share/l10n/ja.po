@@ -3982,7 +3982,7 @@ msgstr "コメント"
 #: lib/Socialtext/Page.pm:664
 #. (
 msgid "contributed by {user: %1} on {date: %2}"
-msgstr "contributed by {user: %1} on {date: %2}"
+msgstr "{date: %2} に {user: %1} がコメント"
 
 #: lib/Socialtext/TimeZonePlugin.pm:93
 #.  
