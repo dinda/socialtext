@@ -31,6 +31,9 @@ use Jcode;
 use Unicode::Japanese;
 
 $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
+our ($H2Z, %H2Z);
+
+
 
 {
 
@@ -42,6 +45,139 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
         bless {}, $pkg;
     }
 
+    sub _h2z {
+        my $self    = shift;
+        my $text    = shift;
+        $text = Unicode::Japanese->new($text)->h2zKana->get();
+        $text =~ s/($H2Z)/(exists $H2Z{$1} ? $H2Z{$1} : $1)/ego;
+        return $text;
+    }
+
+    sub _encode_address {
+        my $self    = shift;
+        my $address = shift;
+        $address = Jcode->new($address,'utf8')->mime_encode;
+        return $address;
+    }
+
+    sub _encode_subject {
+        my $self    = shift;
+        my $subject = shift;
+
+        # Encode::MIME::Header will buggily add extra spaces when
+        # encoding, so we only encode the subject, as that is the only
+        # part we think will ever need it. Dave is working on fixing
+        # the bug.
+        if ( $subject =~ /[\x7F-\xFF]/ ) {
+            $subject = Encode::encode( 'MIME-Header', $subject );
+        }
+        else {
+
+            # This shuts up a "wide character in print" warning from
+            # inside Email::Send::Sendmail.
+            $subject = $self->_h2z($subject);
+            $subject = Encode::encode( 'MIME-Header-ISO_2022_JP', $subject );
+        }
+
+        return $subject;
+    }
+
+    sub _fold_body {
+        my $self    = shift;
+        my $body    = shift; 
+        # fold line over 989bytes because some smtp server chop line over 989
+        # bytes and this causes mojibake
+        Encode::_utf8_on($body) unless Encode::is_utf8($body);
+
+        my $folded_body;
+        my $line_length;
+        my @lines = split /\n/, $body;
+        foreach my $line (@lines) {
+            {
+                use bytes;
+                $line_length = length($line);
+            }
+            if($line_length > 988) {
+                $line = fold( 'text' => $line, 'length' => 300 );
+            }
+            
+            $folded_body .= $line;
+            if(@lines > 1) {
+                $folded_body .= "\n";
+            }
+        }
+        $body = $folded_body;
+        return $body; 
+    }
+
+    sub _text_body {
+        my $self     = shift;
+        my $body     = shift;
+        my $encoding = shift;
+
+        $body = $self->_h2z($body);
+        $body = $self->_fold_body($body);
+
+        # solve WAVE DASH problem
+        $body =~ tr/[\x{ff5e}\x{2225}\x{ff0d}\x{ffe0}\x{ffe1}\x{ffe2}]/[\x{301c}\x{2016}\x{2212}\x{00a2}\x{00a3}\x{00ac}]/;
+
+        $body = Encode::encode($encoding, $body);
+
+        return $body;
+    }
+
+    sub _html_body {
+        my $self     = shift;
+        my $body     = shift;
+        my $encoding = shift;
+
+        $body = $self->_h2z($body);
+        $body = $self->_fold_body($body);
+
+        # solve WAVE DASH problem
+        $body =~ tr/[\x{ff5e}\x{2225}\x{ff0d}\x{ffe0}\x{ffe1}\x{ffe2}]/[\x{301c}\x{2016}\x{2212}\x{00a2}\x{00a3}\x{00ac}]/;
+
+        $body = Encode::encode($encoding, $body);
+        return $body;
+    }
+
+    sub _encode_filename {
+        my $self     = shift;
+        my $filename = shift;
+
+        Encode::_utf8_off($filename) if Encode::is_utf8($filename);
+
+        $filename = $self->_uri_unescape($filename);
+
+        # If filename is only ascii code, you do not encode fileme to MIME-B.
+        $filename = Encode::encode( 'MIME-Header-ISO_2022_JP', $filename );
+
+        return $filename;
+    }
+
+    sub _get_encoding {
+        return 'iso-2022-jp';
+    }
+
+    sub _uri_unescape {
+        my $self = shift;
+        my $data = shift;
+        $data = URI::Escape::uri_unescape($data);
+        return $self->_utf8_decode($data);
+    }
+
+    sub _utf8_decode {
+        my $self = shift;
+        my $data = shift;
+        $data = Encode::decode( 'utf8', $data )
+            if defined $data
+            and not Encode::is_utf8($data);
+        return $data;
+    }
+
+}
+
+BEGIN {
     my $normalize_table = {
                 "\342\221\240" => '(1)',
         	"\342\221\241" => '(2)',
@@ -123,142 +259,11 @@ $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
 		"\343\215\274" => '昭和',
     };
 
-    sub _convert_specification {
-        my $self    = shift;
-        my $text    = shift;
-        $text = Unicode::Japanese->new($text)->h2zKana->get();
 
-        my ($H2Z, %H2Z);
-	while (my ($key, $val) = each %$normalize_table) {
-    	    $H2Z{$key} = $val;
-            $H2Z .= (defined $H2Z ? '|' : '') . quotemeta($key);
-	}
-
-        $text =~ s/($H2Z)/(exists $H2Z{$1} ? $H2Z{$1} : $1)/ego;
-
-        return $text;
+    while (my ($key, $val) = each %$normalize_table) {
+        $H2Z{$key} = $val;
+        $H2Z .= (defined $H2Z ? '|' : '') . quotemeta($key);
     }
-
-    sub _encode_address {
-        my $self    = shift;
-        my $address = shift;
-        $address = Jcode->new($address,'utf8')->mime_encode;
-        return $address;
-    }
-
-    sub _encode_subject {
-        my $self    = shift;
-        my $subject = shift;
-
-        # Encode::MIME::Header will buggily add extra spaces when
-        # encoding, so we only encode the subject, as that is the only
-        # part we think will ever need it. Dave is working on fixing
-        # the bug.
-        if ( $subject =~ /[\x7F-\xFF]/ ) {
-            $subject = Encode::encode( 'MIME-Header', $subject );
-        }
-        else {
-
-            # This shuts up a "wide character in print" warning from
-            # inside Email::Send::Sendmail.
-            $subject = $self->_convert_specification($subject);
-            $subject = Encode::encode( 'MIME-Header-ISO_2022_JP', $subject );
-        }
-
-        return $subject;
-    }
-
-    sub _fold_body {
-        my $self    = shift;
-        my $body    = shift; 
-        # fold line over 989bytes because some smtp server chop line over 989
-        # bytes and this causes mojibake
-        Encode::_utf8_on($body) unless Encode::is_utf8($body);
-
-        my $folded_body;
-        my $line_length;
-        my @lines = split /\n/, $body;
-        foreach my $line (@lines) {
-            {
-                use bytes;
-                $line_length = length($line);
-            }
-            if($line_length > 988) {
-                $line = fold( 'text' => $line, 'length' => 300 );
-            }
-            
-            $folded_body .= $line;
-            if(@lines > 1) {
-                $folded_body .= "\n";
-            }
-        }
-        $body = $folded_body;
-        return $body; 
-    }
-
-    sub _text_body {
-        my $self     = shift;
-        my $body     = shift;
-        my $encoding = shift;
-
-        $body = $self->_convert_specification($body);
-        $body = $self->_fold_body($body);
-        
-        # solve WAVE DASH problem
-        $body =~ tr/[\x{ff5e}\x{2225}\x{ff0d}\x{ffe0}\x{ffe1}\x{ffe2}]/[\x{301c}\x{2016}\x{2212}\x{00a2}\x{00a3}\x{00ac}]/;
-
-        $body = Encode::encode($encoding, $body);
-        return $body;
-    }
-
-    sub _html_body {
-        my $self     = shift;
-        my $body     = shift;
-        my $encoding = shift;
-
-        $body = $self->_fold_body($body);
-
-        # solve WAVE DASH problem
-        $body =~ tr/[\x{ff5e}\x{2225}\x{ff0d}\x{ffe0}\x{ffe1}\x{ffe2}]/[\x{301c}\x{2016}\x{2212}\x{00a2}\x{00a3}\x{00ac}]/;
-
-        $body = Encode::encode($encoding, $body);
-        return $body;
-    }
-
-    sub _encode_filename {
-        my $self     = shift;
-        my $filename = shift;
-
-        Encode::_utf8_off($filename) if Encode::is_utf8($filename);
-
-        $filename = $self->_uri_unescape($filename);
-
-        # If filename is only ascii code, you do not encode fileme to MIME-B.
-        $filename = Encode::encode( 'MIME-Header-ISO_2022_JP', $filename );
-
-        return $filename;
-    }
-
-    sub _get_encoding {
-        return 'iso-2022-jp';
-    }
-
-    sub _uri_unescape {
-        my $self = shift;
-        my $data = shift;
-        $data = URI::Escape::uri_unescape($data);
-        return $self->_utf8_decode($data);
-    }
-
-    sub _utf8_decode {
-        my $self = shift;
-        my $data = shift;
-        $data = Encode::decode( 'utf8', $data )
-            if defined $data
-            and not Encode::is_utf8($data);
-        return $data;
-    }
-
 }
 
 1;
