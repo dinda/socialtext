@@ -231,8 +231,9 @@ sub html {
     return qq{<a href="$link">} . $self->label ."</a>"
         if $self->label;
 
+    my $alt_text = $self->uri_unescape($image_name);
     return 
-        qq{<img alt="$image_name" src="$link" />};
+        qq{<img alt="$alt_text" src="$link" />};
 }
 
 ################################################################################
