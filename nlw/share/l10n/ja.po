@@ -1347,7 +1347,7 @@ msgstr "例: ワークスペース名が acme-product-dev の場合、このワ�
 #: share/template/element/settings/workspaces_settings_appearance_section:31
 #.  
 msgid "Example: http://www.socialtext.com/images/socialtext-logo-30.gif"
-msgstr "例："
+msgstr "例： http://www.socialtext.com/images/socialtext-logo-30.gif"
 
 #: share/template/new_form_page/generic/new_form_page_instructions.html:5 share/template/new_form_page/new_form_page_instructions.html:5
 #.  
