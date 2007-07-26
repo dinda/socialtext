@@ -29,10 +29,20 @@ msgstr "%1 W38l0g"
 msgid "%1 as a weblog"
 msgstr "%1 4s 4 w38L0G"
 
+#: lib/Socialtext/Page.pm:932
+#. (
+msgid "%1 days"
+msgstr "%1 D4Ys"
+
 #: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr "%1 D03s n07 h4v3 4nY H34d3rS."
+
+#: lib/Socialtext/Page.pm:931
+#. (
+msgid "%1 hours"
+msgstr "%1 H0UrS"
 
 #: lib/Socialtext/User/Default.pm:171
 #. (
@@ -48,6 +58,26 @@ msgstr "%1 Is n07 4 v4lId 3M4Il 4DdR3Ss."
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
 msgstr "%1 Is n07 r3gIs73R3D 4s 4 uS3R. 7Ry 4 dIfF3R3N7 3M4Il 4DdR3Ss?"
+
+#: lib/Socialtext/Page.pm:930
+#. (
+msgid "%1 minutes"
+msgstr "%1 MiNu73S"
+
+#: lib/Socialtext/Page.pm:934
+#. (
+msgid "%1 months"
+msgstr "%1 M0N7Hs"
+
+#: lib/Socialtext/Page.pm:929
+#. (
+msgid "%1 seconds"
+msgstr "%1 S3C0NdS"
+
+#: lib/Socialtext/Page.pm:933
+#. (
+msgid "%1 weeks"
+msgstr "%1 W33kS"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
@@ -439,7 +469,7 @@ msgstr "4DmInIs7r470r n07IfIc47I0N"
 msgid "Advanced"
 msgstr "4Dv4nC3D"
 
-#: share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr "4Ll fIl3s"
@@ -2698,6 +2728,11 @@ msgstr "s3l3c7"
 #.  
 msgid "Select Recipients"
 msgstr "s3l3c7 R3CiPi3n7s"
+
+#: share/javascript/listview.js:18 share/template/element/listview/pages:63
+#.  
+msgid "Select all pages"
+msgstr "s3l3c7 4lL P4G3S"
 
 #: share/template/popup/email_page:88
 #.  

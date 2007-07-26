@@ -29,9 +29,19 @@ msgstr ""
 msgid "%1 as a weblog"
 msgstr ""
 
+#: lib/Socialtext/Page.pm:932
+#. (
+msgid "%1 days"
+msgstr ""
+
 #: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
+msgstr ""
+
+#: lib/Socialtext/Page.pm:931
+#. (
+msgid "%1 hours"
 msgstr ""
 
 #: lib/Socialtext/User/Default.pm:171
@@ -47,6 +57,26 @@ msgstr ""
 #: lib/Socialtext/Handler/Authen.pm:181 lib/Socialtext/Handler/Authen.pm:353
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
+msgstr ""
+
+#: lib/Socialtext/Page.pm:930
+#. (
+msgid "%1 minutes"
+msgstr ""
+
+#: lib/Socialtext/Page.pm:934
+#. (
+msgid "%1 months"
+msgstr ""
+
+#: lib/Socialtext/Page.pm:929
+#. (
+msgid "%1 seconds"
+msgstr ""
+
+#: lib/Socialtext/Page.pm:933
+#. (
+msgid "%1 weeks"
 msgstr ""
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
@@ -439,7 +469,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr ""
@@ -2697,6 +2727,11 @@ msgstr ""
 #: share/template/popup/email_page:37
 #.  
 msgid "Select Recipients"
+msgstr ""
+
+#: share/javascript/listview.js:18 share/template/element/listview/pages:63
+#.  
+msgid "Select all pages"
 msgstr ""
 
 #: share/template/popup/email_page:88

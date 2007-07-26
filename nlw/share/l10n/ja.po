@@ -29,10 +29,20 @@ msgstr "%1 ウェブログ"
 msgid "%1 as a weblog"
 msgstr "ウェブログとして %1"
 
+#: lib/Socialtext/Page.pm:932
+#. (
+msgid "%1 days"
+msgstr "%1 日前"
+
 #: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr "%1 には見出しが１つもありません。"
+
+#: lib/Socialtext/Page.pm:931
+#. (
+msgid "%1 hours"
+msgstr "%1 時間前"
 
 #: lib/Socialtext/User/Default.pm:171
 #. (
@@ -48,6 +58,26 @@ msgstr "%1 は有効な Email アドレスではありません。"
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
 msgstr "%1 はユーザとして登録されていません。違う Email アドレスにしますか？"
+
+#: lib/Socialtext/Page.pm:930
+#. (
+msgid "%1 minutes"
+msgstr "%1 分前"
+
+#: lib/Socialtext/Page.pm:934
+#. (
+msgid "%1 months"
+msgstr "%1 ヶ月前"
+
+#: lib/Socialtext/Page.pm:929
+#. (
+msgid "%1 seconds"
+msgstr "%1 秒前"
+
+#: lib/Socialtext/Page.pm:933
+#. (
+msgid "%1 weeks"
+msgstr "%1 週間前"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
@@ -439,7 +469,7 @@ msgstr "管理者への通知"
 msgid "Advanced"
 msgstr "高度編集"
 
-#: share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr "すべてのファイル"
@@ -2698,6 +2728,11 @@ msgstr "選択"
 #.  
 msgid "Select Recipients"
 msgstr "宛先を選択"
+
+#: share/javascript/listview.js:18 share/template/element/listview/pages:63
+#.  
+msgid "Select all pages"
+msgstr "すべてのページを選択"
 
 #: share/template/popup/email_page:88
 #.  

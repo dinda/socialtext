@@ -29,10 +29,20 @@ msgstr "%1 Wえ8lおg"
 msgid "%1 as a weblog"
 msgstr "%1 あs あ wえ8LおG"
 
+#: lib/Socialtext/Page.pm:932
+#. (
+msgid "%1 days"
+msgstr "%1 DあYs"
+
 #: lib/Socialtext/Formatter/WaflPhrase.pm:664
 #. (
 msgid "%1 does not have any headers."
 msgstr "%1 Dおえs nお7 hあvえ あnY HえあdえrS."
+
+#: lib/Socialtext/Page.pm:931
+#. (
+msgid "%1 hours"
+msgstr "%1 HおうrS"
 
 #: lib/Socialtext/User/Default.pm:171
 #. (
@@ -48,6 +58,26 @@ msgstr "%1 いs nお7 あ vあlいd えMあいl あDdRえSs."
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
 msgstr "%1 いs nお7 rえgいs7えRえD あs あ うSえR. 7Ry あ dいfFえRえN7 えMあいl あDdRえSs?"
+
+#: lib/Socialtext/Page.pm:930
+#. (
+msgid "%1 minutes"
+msgstr "%1 MいNう7えS"
+
+#: lib/Socialtext/Page.pm:934
+#. (
+msgid "%1 months"
+msgstr "%1 MおN7Hs"
+
+#: lib/Socialtext/Page.pm:929
+#. (
+msgid "%1 seconds"
+msgstr "%1 SえCおNdS"
+
+#: lib/Socialtext/Page.pm:933
+#. (
+msgid "%1 weeks"
+msgstr "%1 WええkS"
 
 #: share/template/email/openid/invite-request-email.html:10 share/template/email/openid/invite-request-email.txt:3 share/template/email/st/invite-request-email.html:10 share/template/email/st/invite-request-email.txt:3
 #. (
@@ -439,7 +469,7 @@ msgstr "あDmいnいs7rあ7おr nお7いfいcあ7いおN"
 msgid "Advanced"
 msgstr "あDvあnCえD"
 
-#: share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr "あLl fいlえs"
@@ -2698,6 +2728,11 @@ msgstr "sえlえc7"
 #.  
 msgid "Select Recipients"
 msgstr "sえlえc7 RえCいPいえn7s"
+
+#: share/javascript/listview.js:18 share/template/element/listview/pages:63
+#.  
+msgid "Select all pages"
+msgstr "sえlえc7 あlL PあGえS"
 
 #: share/template/popup/email_page:88
 #.  
