@@ -29,7 +29,6 @@ use Encode::Unicode::Japanese;
 use Lingua::JA::Fold;
 use Jcode;
 use Unicode::Japanese;
-use utf8;
 
 $Email::Send::Sendmail::SENDMAIL = '/usr/sbin/sendmail';
 our ($H2Z, %H2Z);
@@ -57,6 +56,8 @@ our ($H2Z, %H2Z);
     sub _encode_address {
         my $self    = shift;
         my $address = shift;
+        
+        $address = $self->_h2z($address);
         $address = Jcode->new($address,'utf8')->mime_encode;
         return $address;
     }
