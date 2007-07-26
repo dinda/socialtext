@@ -2352,7 +2352,7 @@ msgstr "このリンクからあなたのアドレスを確認してください
 #: share/template/element/settings/weblog_create:9
 #.  
 msgid "Please give your weblog a name. If the name you provide does not end with \"Blog\" or \"Weblog\", the system will add \"Blog\" to the name you provide. After you click \"Save\", you'll be taken right to the new weblog."
-msgstr "あなたのウェブログに名前を付けてください。名前が \"ウェブログ\" で終わらない場合は、あなたの付けた名前に \"ウェブログ\"が自動的に追加されます。\"保存\"をクリックすると、新しいウェブログが表示されます。"
+msgstr "あなたのウェブログに名前を付けてください。名前が \"ウェブログ\" で終わらない場合は、あなたの付けた名前に \"ウェブログ\"が自動的に追加されます。\"作成\"をクリックすると、新しいウェブログが表示されます。"
 
 #: share/template/element/settings/users_invite_search_section:121 share/template/element/settings/users_invite_section:75
 #. (
@@ -2622,7 +2622,7 @@ msgstr "ロールとパーミッションの設定（標準ワークスペース
 #: share/template/element/settings/weblog_create:12
 #.  
 msgid "Sample Weblog"
-msgstr "サンプル Weblog"
+msgstr "サンプル ウェブログ"
 
 #: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1057 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
