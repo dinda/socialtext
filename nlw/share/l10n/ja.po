@@ -19,7 +19,7 @@ msgstr "%1 - Atom で %2 を検索する"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RSS で %2 を検索する"
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:140
 #. (
 msgid "%1 Weblog"
 msgstr "%1 ウェブログ"
@@ -1129,7 +1129,7 @@ msgstr "ウェブログを作成する"
 msgid "Create Initial Workspace"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
+#: lib/Socialtext/WeblogPlugin.pm:72 share/template/element/settings/select:43
 #.  
 msgid "Create New Weblog"
 msgstr "ウェブログの新規作成"
@@ -1639,7 +1639,7 @@ msgstr "名"
 msgid "First Name:"
 msgstr "名:"
 
-#: lib/Socialtext/WeblogPlugin.pm:114
+#: lib/Socialtext/WeblogPlugin.pm:116
 #. (
 msgid "First Post in %1"
 msgstr "%1の最初の投稿"
@@ -1754,7 +1754,7 @@ msgstr "横のボックスに表示させるページ数を設定してくださ
 msgid "How many posts should be displayed in outgoing feeds?"
 msgstr "送信フィードに表示される投稿数"
 
-#: lib/Socialtext/WeblogPlugin.pm:38
+#: lib/Socialtext/WeblogPlugin.pm:39
 #.  
 msgid "How many posts should be displayed in weblog view?"
 msgstr "ウェブログビューに表示する投稿数を設定してください。"
@@ -2269,7 +2269,7 @@ msgstr "参加ワークスペース"
 msgid "Name"
 msgstr "名前の登録"
 
-#: lib/Socialtext/WeblogPlugin.pm:439
+#: lib/Socialtext/WeblogPlugin.pm:443
 #. (
 msgid "Navigation for: %1"
 msgstr "ナビゲート先: %1"
@@ -2819,7 +2819,7 @@ msgstr ""
 msgid "Reboot Now"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:242
+#: share/template/element/weblog/actions:16
 #.  
 msgid "Recent Changes"
 msgstr "最近の更新"
@@ -3709,7 +3709,7 @@ msgstr "このページにはタグはありません。"
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "<a id=\"%1-link\" href=\"#\" target=\"\">XXX</a> という名前の<span id=\"st-newpage-duplicate-emphasis\">ページがすでに</span>存在します。"
 
-#: lib/Socialtext/WeblogPlugin.pm:151
+#: lib/Socialtext/WeblogPlugin.pm:148
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "'%1' ウェブログはすでに存在します。別の名前を選択してください。"
@@ -3759,7 +3759,7 @@ msgstr "このフォームで あなたのプロファイルページを作成�
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "あなたのワークスペースを見つけるのに便利な名前をつけてください。ワークスペース名は web アドレスと Email アドレスの一部になります。"
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:163
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "これは %1 の最初の投稿です。新しく投稿するには *新規投稿* をクリックしてください。"
@@ -4159,22 +4159,22 @@ msgstr "ウェブログ"
 msgid "Weblog Archives"
 msgstr "ウェブログアーカイブ"
 
-#: lib/Socialtext/WeblogPlugin.pm:422 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:426 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "ウェブログナビゲーション"
 
-#: lib/Socialtext/WeblogPlugin.pm:102
+#: lib/Socialtext/WeblogPlugin.pm:104
 #.  
-msgid "Weblog name must be between 2 and 28 characters long."
-msgstr "ウェブログ名は 2-28 文字にしてください。"
+msgid "Weblog name is too long after URL encoding"
+msgstr "URL のエンコード処理を行うと、ウェブログ名が長くなりすぎます。全角文字は17字まで使用できます。"
 
-#: lib/Socialtext/WeblogPlugin.pm:184
+#: lib/Socialtext/WeblogPlugin.pm:185
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "ウェブログ: %1 Atom"
 
-#: lib/Socialtext/WeblogPlugin.pm:179
+#: lib/Socialtext/WeblogPlugin.pm:180
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "ウェブログ: %1 RSS"
@@ -4999,7 +4999,7 @@ msgstr "閲覧とコメントのみ可能"
 msgid "public-read-only"
 msgstr "閲覧のみ可能"
 
-#: lib/Socialtext/WeblogPlugin.pm:203 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:205 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "最近の更新"

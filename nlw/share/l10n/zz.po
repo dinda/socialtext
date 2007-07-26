@@ -19,7 +19,7 @@ msgstr "%1 - 470m s34RcH F0R %2"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RsS S34rCh f0r %2"
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:140
 #. (
 msgid "%1 Weblog"
 msgstr "%1 W38l0g"
@@ -1129,7 +1129,7 @@ msgstr "cR3473 4 W38l0g"
 msgid "Create Initial Workspace"
 msgstr "cR3473 InI7I4L W0RkSp4c3"
 
-#: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
+#: lib/Socialtext/WeblogPlugin.pm:72 share/template/element/settings/select:43
 #.  
 msgid "Create New Weblog"
 msgstr "cR3473 N3W W38l0g"
@@ -1639,7 +1639,7 @@ msgstr "fIrS7 n4m3"
 msgid "First Name:"
 msgstr "fIrS7 n4m3:"
 
-#: lib/Socialtext/WeblogPlugin.pm:114
+#: lib/Socialtext/WeblogPlugin.pm:116
 #. (
 msgid "First Post in %1"
 msgstr "fIrS7 p0s7 In %1"
@@ -1754,7 +1754,7 @@ msgstr "h0w m4nY P4G3S 70 sH0W In sId3 P4N3 80x?"
 msgid "How many posts should be displayed in outgoing feeds?"
 msgstr "h0w m4nY P0S7S Sh0uLd 83 DiSpL4Y3D In 0U7G0InG F33dS?"
 
-#: lib/Socialtext/WeblogPlugin.pm:38
+#: lib/Socialtext/WeblogPlugin.pm:39
 #.  
 msgid "How many posts should be displayed in weblog view?"
 msgstr "h0w m4nY P0S7S Sh0uLd 83 DiSpL4Y3D In w38L0G Vi3w?"
@@ -2269,7 +2269,7 @@ msgstr "mY W0RkSp4c3s"
 msgid "Name"
 msgstr "n4m3"
 
-#: lib/Socialtext/WeblogPlugin.pm:439
+#: lib/Socialtext/WeblogPlugin.pm:443
 #. (
 msgid "Navigation for: %1"
 msgstr "n4vIg47I0N F0R: %1"
@@ -2819,7 +2819,7 @@ msgstr "r38007 4pPlI4Nc3?"
 msgid "Reboot Now"
 msgstr "r38007 N0W"
 
-#: lib/Socialtext/WeblogPlugin.pm:242
+#: share/template/element/weblog/actions:16
 #.  
 msgid "Recent Changes"
 msgstr "r3c3n7 Ch4nG3S"
@@ -3709,7 +3709,7 @@ msgstr "7H3R3 4R3 n0 74Gs f0r 7HiS P4G3."
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "7H3R3 iS <sP4N Id=\"s7-N3Wp4g3-DuPlIc473-3mPh4sIs\">4Lr34Dy 4 p4g3</sP4N> n4m3d <4 Id=\"%1-LiNk\" hR3F=\"#\" 74Rg37=\"\">XxX</4>. w0uLd y0u lIk3 70:"
 
-#: lib/Socialtext/WeblogPlugin.pm:151
+#: lib/Socialtext/WeblogPlugin.pm:148
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "7H3R3 iS 4lR34dY 4 '%1' w38L0G. pL34s3 Ch00S3 4 dIfF3R3N7 n4m3."
@@ -3759,7 +3759,7 @@ msgstr "7HiS F0Rm wIlL Cr3473 y0uR Pr0fIl3 P4G3."
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "7HiS Is 4 sH0R7 uNiQu3 Id3n7iFi3r uS3D 4s p4r7 0f y0uR W0RkSp4c3'S W38 4dDr3sS 4nD 3m4iL 4dDr3sS."
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:163
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "7HiS Is 7H3 fIrS7 p0s7 In %1. cLiCk *N3W P0S7* 70 4Dd 4N07h3r p0s7."
@@ -4159,22 +4159,22 @@ msgstr "w38L0G"
 msgid "Weblog Archives"
 msgstr "w38L0G 4rChIv3s"
 
-#: lib/Socialtext/WeblogPlugin.pm:422 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:426 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "w38L0G N4ViG47i0n"
 
-#: lib/Socialtext/WeblogPlugin.pm:102
+#: lib/Socialtext/WeblogPlugin.pm:104
 #.  
-msgid "Weblog name must be between 2 and 28 characters long."
-msgstr "w38L0G N4M3 mUs7 83 837W33n 2 4Nd 28 Ch4r4c73Rs l0nG."
+msgid "Weblog name is too long after URL encoding"
+msgstr "w38L0G N4M3 iS 700 L0Ng 4F73r uRl 3Nc0dInG"
 
-#: lib/Socialtext/WeblogPlugin.pm:184
+#: lib/Socialtext/WeblogPlugin.pm:185
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "w38L0G: %1 470m"
 
-#: lib/Socialtext/WeblogPlugin.pm:179
+#: lib/Socialtext/WeblogPlugin.pm:180
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "w38L0G: %1 RsS"
@@ -4999,7 +4999,7 @@ msgstr "pU8LiC-C0Mm3n7-0nLy"
 msgid "public-read-only"
 msgstr "pU8LiC-R34d-0NlY"
 
-#: lib/Socialtext/WeblogPlugin.pm:203 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:205 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "r3c3n7 Ch4nG3S"

@@ -19,7 +19,7 @@ msgstr ""
 msgid "%1 - RSS Search for %2"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:140
 #. (
 msgid "%1 Weblog"
 msgstr ""
@@ -1129,7 +1129,7 @@ msgstr ""
 msgid "Create Initial Workspace"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
+#: lib/Socialtext/WeblogPlugin.pm:72 share/template/element/settings/select:43
 #.  
 msgid "Create New Weblog"
 msgstr ""
@@ -1639,7 +1639,7 @@ msgstr ""
 msgid "First Name:"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:114
+#: lib/Socialtext/WeblogPlugin.pm:116
 #. (
 msgid "First Post in %1"
 msgstr ""
@@ -1754,7 +1754,7 @@ msgstr ""
 msgid "How many posts should be displayed in outgoing feeds?"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:38
+#: lib/Socialtext/WeblogPlugin.pm:39
 #.  
 msgid "How many posts should be displayed in weblog view?"
 msgstr ""
@@ -2269,7 +2269,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:439
+#: lib/Socialtext/WeblogPlugin.pm:443
 #. (
 msgid "Navigation for: %1"
 msgstr ""
@@ -2819,7 +2819,7 @@ msgstr ""
 msgid "Reboot Now"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:242
+#: share/template/element/weblog/actions:16
 #.  
 msgid "Recent Changes"
 msgstr ""
@@ -3709,7 +3709,7 @@ msgstr ""
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:151
+#: lib/Socialtext/WeblogPlugin.pm:148
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr ""
@@ -3759,7 +3759,7 @@ msgstr ""
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:163
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr ""
@@ -4159,22 +4159,22 @@ msgstr ""
 msgid "Weblog Archives"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:422 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:426 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:102
+#: lib/Socialtext/WeblogPlugin.pm:104
 #.  
-msgid "Weblog name must be between 2 and 28 characters long."
+msgid "Weblog name is too long after URL encoding"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:184
+#: lib/Socialtext/WeblogPlugin.pm:185
 #. (
 msgid "Weblog: %1 Atom"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:179
+#: lib/Socialtext/WeblogPlugin.pm:180
 #. (
 msgid "Weblog: %1 RSS"
 msgstr ""
@@ -4999,7 +4999,7 @@ msgstr ""
 msgid "public-read-only"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:203 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:205 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr ""

@@ -19,7 +19,7 @@ msgstr "%1 - あ7おm sえあRcH FおR %2"
 msgid "%1 - RSS Search for %2"
 msgstr "%1 - RsS SえあrCh fおr %2"
 
-#: lib/Socialtext/WeblogPlugin.pm:143
+#: lib/Socialtext/WeblogPlugin.pm:140
 #. (
 msgid "%1 Weblog"
 msgstr "%1 Wえ8lおg"
@@ -1129,7 +1129,7 @@ msgstr "cRえあ7え あ Wえ8lおg"
 msgid "Create Initial Workspace"
 msgstr "cRえあ7え いnい7いあL WおRkSpあcえ"
 
-#: lib/Socialtext/WeblogPlugin.pm:71 share/template/element/settings/select:43
+#: lib/Socialtext/WeblogPlugin.pm:72 share/template/element/settings/select:43
 #.  
 msgid "Create New Weblog"
 msgstr "cRえあ7え NえW Wえ8lおg"
@@ -1639,7 +1639,7 @@ msgstr "fいrS7 nあmえ"
 msgid "First Name:"
 msgstr "fいrS7 nあmえ:"
 
-#: lib/Socialtext/WeblogPlugin.pm:114
+#: lib/Socialtext/WeblogPlugin.pm:116
 #. (
 msgid "First Post in %1"
 msgstr "fいrS7 pおs7 いn %1"
@@ -1754,7 +1754,7 @@ msgstr "hおw mあnY PあGえS 7お sHおW いn sいdえ PあNえ 8おx?"
 msgid "How many posts should be displayed in outgoing feeds?"
 msgstr "hおw mあnY PおS7S ShおうLd 8え DいSpLあYえD いn おう7GおいnG FええdS?"
 
-#: lib/Socialtext/WeblogPlugin.pm:38
+#: lib/Socialtext/WeblogPlugin.pm:39
 #.  
 msgid "How many posts should be displayed in weblog view?"
 msgstr "hおw mあnY PおS7S ShおうLd 8え DいSpLあYえD いn wえ8LおG Vいえw?"
@@ -2269,7 +2269,7 @@ msgstr "mY WおRkSpあcえs"
 msgid "Name"
 msgstr "nあmえ"
 
-#: lib/Socialtext/WeblogPlugin.pm:439
+#: lib/Socialtext/WeblogPlugin.pm:443
 #. (
 msgid "Navigation for: %1"
 msgstr "nあvいgあ7いおN FおR: %1"
@@ -2819,7 +2819,7 @@ msgstr "rえ8おお7 あpPlいあNcえ?"
 msgid "Reboot Now"
 msgstr "rえ8おお7 NおW"
 
-#: lib/Socialtext/WeblogPlugin.pm:242
+#: share/template/element/weblog/actions:16
 #.  
 msgid "Recent Changes"
 msgstr "rえcえn7 ChあnGえS"
@@ -3709,7 +3709,7 @@ msgstr "7HえRえ あRえ nお 7あGs fおr 7HいS PあGえ."
 msgid "There is <span id=\"st-newpage-duplicate-emphasis\">already a page</span> named <a id=\"%1-link\" href=\"#\" target=\"\">XXX</a>. Would you like to:"
 msgstr "7HえRえ いS <sPあN いd=\"s7-NえWpあgえ-DうPlいcあ7え-えmPhあsいs\">あLrえあDy あ pあgえ</sPあN> nあmえd <あ いd=\"%1-LいNk\" hRえF=\"#\" 7あRgえ7=\"\">XxX</あ>. wおうLd yおう lいkえ 7お:"
 
-#: lib/Socialtext/WeblogPlugin.pm:151
+#: lib/Socialtext/WeblogPlugin.pm:148
 #. (
 msgid "There is already a '%1' weblog. Please choose a different name."
 msgstr "7HえRえ いS あlRえあdY あ '%1' wえ8LおG. pLえあsえ ChおおSえ あ dいfFえRえN7 nあmえ."
@@ -3759,7 +3759,7 @@ msgstr "7HいS FおRm wいlL Crえあ7え yおうR Prおfいlえ PあGえ."
 msgid "This is a short unique identifier used as part of your workspace's web address and email address."
 msgstr "7HいS いs あ sHおR7 うNいQうえ いdえn7いFいえr うSえD あs pあr7 おf yおうR WおRkSpあcえ'S Wえ8 あdDrえsS あnD えmあいL あdDrえsS."
 
-#: lib/Socialtext/WeblogPlugin.pm:162
+#: lib/Socialtext/WeblogPlugin.pm:163
 #. (
 msgid "This is the first post in %1. Click *New Post* to add another post."
 msgstr "7HいS いs 7Hえ fいrS7 pおs7 いn %1. cLいCk *NえW PおS7* 7お あDd あNお7hえr pおs7."
@@ -4159,22 +4159,22 @@ msgstr "wえ8LおG"
 msgid "Weblog Archives"
 msgstr "wえ8LおG あrChいvえs"
 
-#: lib/Socialtext/WeblogPlugin.pm:422 share/template/view/weblog:136
+#: lib/Socialtext/WeblogPlugin.pm:426 share/template/view/weblog:136
 #.  
 msgid "Weblog Navigation"
 msgstr "wえ8LおG NあVいGあ7いおn"
 
-#: lib/Socialtext/WeblogPlugin.pm:102
+#: lib/Socialtext/WeblogPlugin.pm:104
 #.  
-msgid "Weblog name must be between 2 and 28 characters long."
-msgstr "wえ8LおG NあMえ mうs7 8え 8え7Wええn 2 あNd 28 Chあrあc7えRs lおnG."
+msgid "Weblog name is too long after URL encoding"
+msgstr "wえ8LおG NあMえ いS 7おお LおNg あF7えr うRl えNcおdいnG"
 
-#: lib/Socialtext/WeblogPlugin.pm:184
+#: lib/Socialtext/WeblogPlugin.pm:185
 #. (
 msgid "Weblog: %1 Atom"
 msgstr "wえ8LおG: %1 あ7おm"
 
-#: lib/Socialtext/WeblogPlugin.pm:179
+#: lib/Socialtext/WeblogPlugin.pm:180
 #. (
 msgid "Weblog: %1 RSS"
 msgstr "wえ8LおG: %1 RsS"
@@ -4999,7 +4999,7 @@ msgstr "pう8LいC-CおMmえn7-おnLy"
 msgid "public-read-only"
 msgstr "pう8LいC-Rえあd-おNlY"
 
-#: lib/Socialtext/WeblogPlugin.pm:203 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
+#: lib/Socialtext/WeblogPlugin.pm:205 lib/Socialtext/Widget_resource.pm:45 share/javascript/widget_resource.js:45
 #.  
 msgid "recent changes"
 msgstr "rえcえn7 ChあnGえS"
