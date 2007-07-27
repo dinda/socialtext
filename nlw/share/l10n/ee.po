@@ -424,7 +424,7 @@ msgstr ""
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr ""
 
-#: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
+#: share/javascript/attachqueue.js:226 share/template/element/page/attachment_queue_interface:32
 #.  
 msgid "Add file"
 msgstr ""
@@ -1559,7 +1559,7 @@ msgstr ""
 msgid "I don't know my password."
 msgstr ""
 
-#: lib/Socialtext/WorkspaceInvitation.pm:88
+#: lib/Socialtext/WorkspaceInvitation.pm:85
 #. (
 msgid "I'm inviting you into the %1 workspace"
 msgstr ""
@@ -1994,7 +1994,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:441
+#: lib/Socialtext/WeblogPlugin.pm:444
 #. (
 msgid "Navigation for: %1"
 msgstr ""
@@ -2339,9 +2339,19 @@ msgstr ""
 msgid "Please confirm your email address"
 msgstr ""
 
+#: lib/Socialtext/User.pm:1079
+#.  
+msgid "Please confirm your email address to register with Socialtext"
+msgstr ""
+
 #: lib/Socialtext/Handler/Authen.pm:203
 #.  
 msgid "Please enter an email address."
+msgstr ""
+
+#: lib/Socialtext/User.pm:1172
+#.  
+msgid "Please follow these instructions to change your Socialtext password"
 msgstr ""
 
 #: share/template/email/email-address-confirmation.txt:5
@@ -2449,7 +2459,7 @@ msgstr ""
 msgid "Recent Changes"
 msgstr ""
 
-#: lib/Socialtext/EmailNotifyPlugin.pm:146
+#: lib/Socialtext/EmailNotifyPlugin.pm:148
 #. (
 msgid "Recent Changes In %1 Workspace"
 msgstr ""
@@ -3479,6 +3489,11 @@ msgstr ""
 msgid "Watchlist Update for %1"
 msgstr ""
 
+#: lib/Socialtext/WatchlistPlugin.pm:352
+#. (
+msgid "Watchlist update for %1 Workspace"
+msgstr ""
+
 #: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:9
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
@@ -3684,7 +3699,7 @@ msgstr ""
 msgid "Workspace title is a required field."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:407
+#: lib/Socialtext/WeblogPlugin.pm:434 lib/Socialtext/Workspace.pm:407
 #.  
 msgid "Workspace title is too long after URL encoding"
 msgstr ""
@@ -3787,6 +3802,16 @@ msgstr ""
 #: share/template/new_form_page/generic/new_form_page_instructions.html:4 share/template/new_form_page/new_form_page_instructions.html:4
 #.  
 msgid "You can edit your profile in the workspace afterwards if you'd like, but you don't have to."
+msgstr ""
+
+#: lib/Socialtext/User.pm:1118
+#. (
+msgid "You can now login to the %1 application"
+msgstr ""
+
+#: lib/Socialtext/User.pm:1103
+#. (
+msgid "You can now login to the %1 workspace"
 msgstr ""
 
 #: share/template/email/openid/workspace-invitation.txt:10

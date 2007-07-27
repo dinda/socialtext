@@ -424,7 +424,7 @@ msgstr "このページのトップにある添付にリンクを追加します
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr "このページのトップにある添付にリンクを追加しますか？ 添付ファイルが画像の場合は、画像がページ内に表示されます。"
 
-#: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
+#: share/javascript/attachqueue.js:226 share/template/element/page/attachment_queue_interface:32
 #.  
 msgid "Add file"
 msgstr "ファイルを追加"
@@ -1559,7 +1559,7 @@ msgstr "日付の書式を選択してください。"
 msgid "I don't know my password."
 msgstr "パスワードを忘れた方はこちら"
 
-#: lib/Socialtext/WorkspaceInvitation.pm:88
+#: lib/Socialtext/WorkspaceInvitation.pm:85
 #. (
 msgid "I'm inviting you into the %1 workspace"
 msgstr "ワークスペース %1 にあなたをご招待します"
@@ -1994,7 +1994,7 @@ msgstr "参加ワークスペース"
 msgid "Name"
 msgstr "名前の登録"
 
-#: lib/Socialtext/WeblogPlugin.pm:441
+#: lib/Socialtext/WeblogPlugin.pm:444
 #. (
 msgid "Navigation for: %1"
 msgstr "ナビゲート先: %1"
@@ -2339,10 +2339,20 @@ msgstr "このリンクをクリックして Email アドレスを確認して�
 msgid "Please confirm your email address"
 msgstr "Email アドレスを確認してください。"
 
+#: lib/Socialtext/User.pm:1079
+#.  
+msgid "Please confirm your email address to register with Socialtext"
+msgstr "Socialtext に登録するために Email アドレスを確認してください"
+
 #: lib/Socialtext/Handler/Authen.pm:203
 #.  
 msgid "Please enter an email address."
 msgstr "Email アドレスを入力してください。"
+
+#: lib/Socialtext/User.pm:1172
+#.  
+msgid "Please follow these instructions to change your Socialtext password"
+msgstr "この手順で Socialtext パスワードを変更してください"
 
 #: share/template/email/email-address-confirmation.txt:5
 #.  
@@ -2449,7 +2459,7 @@ msgstr "パスワード（再度入力）:"
 msgid "Recent Changes"
 msgstr "最近の更新"
 
-#: lib/Socialtext/EmailNotifyPlugin.pm:146
+#: lib/Socialtext/EmailNotifyPlugin.pm:148
 #. (
 msgid "Recent Changes In %1 Workspace"
 msgstr "%1 ワークスペースの最近の変更"
@@ -3479,6 +3489,11 @@ msgstr "ウォッチリスト"
 msgid "Watchlist Update for %1"
 msgstr "%1 のウォッチリストの更新"
 
+#: lib/Socialtext/WatchlistPlugin.pm:352
+#. (
+msgid "Watchlist update for %1 Workspace"
+msgstr "ワークスペース %1 のウォッチリストの更新"
+
 #: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:9
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
@@ -3684,7 +3699,7 @@ msgstr "ワークスペース名は 3-30 文字でなければなりません。
 msgid "Workspace title is a required field."
 msgstr "ワークスペースのタイトルは必須のフィールドです。"
 
-#: lib/Socialtext/Workspace.pm:407
+#: lib/Socialtext/WeblogPlugin.pm:434 lib/Socialtext/Workspace.pm:407
 #.  
 msgid "Workspace title is too long after URL encoding"
 msgstr "URL のエンコード処理を行うと、ワークスペースタイトル が長くなりすぎます。全角文字は28字まで使用できます。"
@@ -3788,6 +3803,16 @@ msgstr "ウェブログのエントリを、更新日、または、エントリ
 #.  
 msgid "You can edit your profile in the workspace afterwards if you'd like, but you don't have to."
 msgstr "後でワークスペースであなたのプロファイルを編集することもできます。"
+
+#: lib/Socialtext/User.pm:1118
+#. (
+msgid "You can now login to the %1 application"
+msgstr "%1 アプリケーションにログインできます"
+
+#: lib/Socialtext/User.pm:1103
+#. (
+msgid "You can now login to the %1 workspace"
+msgstr "%1 ワークスペースにログインできます"
 
 #: share/template/email/openid/workspace-invitation.txt:10
 #.  

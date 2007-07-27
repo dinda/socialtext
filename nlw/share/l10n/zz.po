@@ -424,7 +424,7 @@ msgstr "4Dd 4 lInK 70 7H3 4774cHm3n7 47 7H3 70p 0F 7h3 P4G3? Im4g3s wIlL 4pP34r 
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr "4Dd 4 lInK 70 7H3 4774cHm3n7 47 7H3 70p 0F 7h3 P4G3? Im4g3s wIlL 4pP34r iN 7h3 P4G3."
 
-#: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
+#: share/javascript/attachqueue.js:226 share/template/element/page/attachment_queue_interface:32
 #.  
 msgid "Add file"
 msgstr "4Dd fIl3"
@@ -1559,7 +1559,7 @@ msgstr "h0w sH0UlD DiSpL4Y3D D473S 83 f0rM4773d?"
 msgid "I don't know my password."
 msgstr "i d0n'7 kN0W My p4sSw0rD."
 
-#: lib/Socialtext/WorkspaceInvitation.pm:88
+#: lib/Socialtext/WorkspaceInvitation.pm:85
 #. (
 msgid "I'm inviting you into the %1 workspace"
 msgstr "i'm iNvI7InG Y0U In70 7H3 %1 W0RkSp4c3"
@@ -1994,7 +1994,7 @@ msgstr "mY W0RkSp4c3s"
 msgid "Name"
 msgstr "n4m3"
 
-#: lib/Socialtext/WeblogPlugin.pm:441
+#: lib/Socialtext/WeblogPlugin.pm:444
 #. (
 msgid "Navigation for: %1"
 msgstr "n4vIg47I0N F0R: %1"
@@ -2339,10 +2339,20 @@ msgstr "pL34s3 ClIcK 0n 7HiS LiNk 70 C0NfIrM Y0Ur 3M4Il 4DdR3Ss:"
 msgid "Please confirm your email address"
 msgstr "pL34s3 C0NfIrM Y0Ur 3M4Il 4DdR3Ss"
 
+#: lib/Socialtext/User.pm:1079
+#.  
+msgid "Please confirm your email address to register with Socialtext"
+msgstr "pL34s3 C0NfIrM Y0Ur 3M4Il 4DdR3Ss 70 R3GiS73r wI7H S0Ci4l73X7"
+
 #: lib/Socialtext/Handler/Authen.pm:203
 #.  
 msgid "Please enter an email address."
 msgstr "pL34s3 3n73R 4n 3M4Il 4DdR3Ss."
+
+#: lib/Socialtext/User.pm:1172
+#.  
+msgid "Please follow these instructions to change your Socialtext password"
+msgstr "pL34s3 F0Ll0w 7H3S3 iNs7rUc7i0nS 70 cH4Ng3 Y0Ur s0cI4L73x7 P4SsW0Rd"
 
 #: share/template/email/email-address-confirmation.txt:5
 #.  
@@ -2449,7 +2459,7 @@ msgstr "r3-7yP3 p4sSw0rD:"
 msgid "Recent Changes"
 msgstr "r3c3n7 Ch4nG3S"
 
-#: lib/Socialtext/EmailNotifyPlugin.pm:146
+#: lib/Socialtext/EmailNotifyPlugin.pm:148
 #. (
 msgid "Recent Changes In %1 Workspace"
 msgstr "r3c3n7 Ch4nG3S In %1 W0RkSp4c3"
@@ -3479,6 +3489,11 @@ msgstr "w47ChLiS7"
 msgid "Watchlist Update for %1"
 msgstr "w47ChLiS7 uPd473 F0R %1"
 
+#: lib/Socialtext/WatchlistPlugin.pm:352
+#. (
+msgid "Watchlist update for %1 Workspace"
+msgstr "w47ChLiS7 uPd473 F0R %1 w0rKsP4C3"
+
 #: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:9
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
@@ -3684,7 +3699,7 @@ msgstr "w0rKsP4C3 n4m3 MuS7 83 837w33N 3 4nD 30 cH4R4C73rS L0Ng, 4nD MuS7 c0n74I
 msgid "Workspace title is a required field."
 msgstr "w0rKsP4C3 7I7L3 iS 4 R3QuIr3d fI3Ld."
 
-#: lib/Socialtext/Workspace.pm:407
+#: lib/Socialtext/WeblogPlugin.pm:434 lib/Socialtext/Workspace.pm:407
 #.  
 msgid "Workspace title is too long after URL encoding"
 msgstr "w0rKsP4C3 7I7L3 iS 700 L0Ng 4F73r uRl 3Nc0dInG"
@@ -3788,6 +3803,16 @@ msgstr "y0u c4n cH00s3 70 s0r7 W38l0g 3N7Ri3s 8Y 7h3 D473 4N 3n7rY Is uPd473d, 0
 #.  
 msgid "You can edit your profile in the workspace afterwards if you'd like, but you don't have to."
 msgstr "y0u c4n 3Di7 Y0Ur pR0FiL3 iN 7h3 W0RkSp4c3 4f73Rw4rDs iF Y0U'D LiK3, 8u7 Y0U D0N'7 H4V3 70."
+
+#: lib/Socialtext/User.pm:1118
+#. (
+msgid "You can now login to the %1 application"
+msgstr "y0u c4n n0w l0gIn 70 7h3 %1 4PpLiC47i0n"
+
+#: lib/Socialtext/User.pm:1103
+#. (
+msgid "You can now login to the %1 workspace"
+msgstr "y0u c4n n0w l0gIn 70 7h3 %1 w0rKsP4C3"
 
 #: share/template/email/openid/workspace-invitation.txt:10
 #.  

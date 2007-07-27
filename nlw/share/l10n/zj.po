@@ -424,7 +424,7 @@ msgstr "あDd あ lいnK 7お 7Hえ あ77あcHmえn7 あ7 7Hえ 7おp おF 7hえ
 msgid "Add a link to the attachment at the top of the page? Images will appear in the page."
 msgstr "あDd あ lいnK 7お 7Hえ あ77あcHmえn7 あ7 7Hえ 7おp おF 7hえ PあGえ? いmあgえs wいlL あpPえあr いN 7hえ PあGえ."
 
-#: share/javascript/attachqueue.js:214 share/template/element/page/attachment_queue_interface:32
+#: share/javascript/attachqueue.js:226 share/template/element/page/attachment_queue_interface:32
 #.  
 msgid "Add file"
 msgstr "あDd fいlえ"
@@ -1559,7 +1559,7 @@ msgstr "hおw sHおうlD DいSpLあYえD Dあ7えS 8え fおrMあ77えd?"
 msgid "I don't know my password."
 msgstr "い dおn'7 kNおW My pあsSwおrD."
 
-#: lib/Socialtext/WorkspaceInvitation.pm:88
+#: lib/Socialtext/WorkspaceInvitation.pm:85
 #. (
 msgid "I'm inviting you into the %1 workspace"
 msgstr "い'm いNvい7いnG Yおう いn7お 7Hえ %1 WおRkSpあcえ"
@@ -1994,7 +1994,7 @@ msgstr "mY WおRkSpあcえs"
 msgid "Name"
 msgstr "nあmえ"
 
-#: lib/Socialtext/WeblogPlugin.pm:441
+#: lib/Socialtext/WeblogPlugin.pm:444
 #. (
 msgid "Navigation for: %1"
 msgstr "nあvいgあ7いおN FおR: %1"
@@ -2339,10 +2339,20 @@ msgstr "pLえあsえ ClいcK おn 7HいS LいNk 7お CおNfいrM Yおうr えM�
 msgid "Please confirm your email address"
 msgstr "pLえあsえ CおNfいrM Yおうr えMあいl あDdRえSs"
 
+#: lib/Socialtext/User.pm:1079
+#.  
+msgid "Please confirm your email address to register with Socialtext"
+msgstr "pLえあsえ CおNfいrM Yおうr えMあいl あDdRえSs 7お RえGいS7えr wい7H SおCいあl7えX7"
+
 #: lib/Socialtext/Handler/Authen.pm:203
 #.  
 msgid "Please enter an email address."
 msgstr "pLえあsえ えn7えR あn えMあいl あDdRえSs."
+
+#: lib/Socialtext/User.pm:1172
+#.  
+msgid "Please follow these instructions to change your Socialtext password"
+msgstr "pLえあsえ FおLlおw 7HえSえ いNs7rうc7いおnS 7お cHあNgえ Yおうr sおcいあL7えx7 PあSsWおRd"
 
 #: share/template/email/email-address-confirmation.txt:5
 #.  
@@ -2449,7 +2459,7 @@ msgstr "rえ-7yPえ pあsSwおrD:"
 msgid "Recent Changes"
 msgstr "rえcえn7 ChあnGえS"
 
-#: lib/Socialtext/EmailNotifyPlugin.pm:146
+#: lib/Socialtext/EmailNotifyPlugin.pm:148
 #. (
 msgid "Recent Changes In %1 Workspace"
 msgstr "rえcえn7 ChあnGえS いn %1 WおRkSpあcえ"
@@ -3479,6 +3489,11 @@ msgstr "wあ7ChLいS7"
 msgid "Watchlist Update for %1"
 msgstr "wあ7ChLいS7 うPdあ7え FおR %1"
 
+#: lib/Socialtext/WatchlistPlugin.pm:352
+#. (
+msgid "Watchlist update for %1 Workspace"
+msgstr "wあ7ChLいS7 うPdあ7え FおR %1 wおrKsPあCえ"
+
 #: share/template/email/email-address-confirmation.html:20 share/template/email/email-address-confirmation.txt:9
 #.  
 msgid "We hope you enjoy using the Socialtext wiki."
@@ -3684,7 +3699,7 @@ msgstr "wおrKsPあCえ nあmえ MうS7 8え 8え7wええN 3 あnD 30 cHあRあC
 msgid "Workspace title is a required field."
 msgstr "wおrKsPあCえ 7い7Lえ いS あ RえQういrえd fいえLd."
 
-#: lib/Socialtext/Workspace.pm:407
+#: lib/Socialtext/WeblogPlugin.pm:434 lib/Socialtext/Workspace.pm:407
 #.  
 msgid "Workspace title is too long after URL encoding"
 msgstr "wおrKsPあCえ 7い7Lえ いS 7おお LおNg あF7えr うRl えNcおdいnG"
@@ -3788,6 +3803,16 @@ msgstr "yおう cあn cHおおsえ 7お sおr7 Wえ8lおg えN7Rいえs 8Y 7hえ
 #.  
 msgid "You can edit your profile in the workspace afterwards if you'd like, but you don't have to."
 msgstr "yおう cあn えDい7 Yおうr pRおFいLえ いN 7hえ WおRkSpあcえ あf7えRwあrDs いF Yおう'D LいKえ, 8う7 Yおう DおN'7 HあVえ 7お."
+
+#: lib/Socialtext/User.pm:1118
+#. (
+msgid "You can now login to the %1 application"
+msgstr "yおう cあn nおw lおgいn 7お 7hえ %1 あPpLいCあ7いおn"
+
+#: lib/Socialtext/User.pm:1103
+#. (
+msgid "You can now login to the %1 workspace"
+msgstr "yおう cあn nおw lおgいn 7お 7hえ %1 wおrKsPあCえ"
 
 #: share/template/email/openid/workspace-invitation.txt:10
 #.  
