@@ -428,10 +428,13 @@ sub box_content_filled {
     my $self = shift;
 
     my $title = $self->page_title;
-    if (Socialtext::Page->_MAX_PAGE_ID_LENGTH < length($title)) {
-        my $message = "Page title is too long; maximum length is " . Socialtext::Page->_MAX_PAGE_ID_LENGTH;
+    if ( defined $title
+         and ( length Socialtext::Page->name_to_id($title) > Socialtext::Page->_MAX_PAGE_ID_LENGTH() )
+       ) {
+        my $message = loc('Workspace title is too long after URL encoding');
         return $message;
     }
+
     my $page = $self->hub->pages->new_from_name($title);
     return $page->to_html;
 }
