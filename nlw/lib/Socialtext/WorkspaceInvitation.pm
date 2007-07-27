@@ -82,9 +82,6 @@ sub _invite_notify {
 
     my $template_dir = $workspace->invitation_template;
 
-#    my $subject = q|I'm inviting you into the "|
-#        . $workspace->title
-#        . '" workspace';
     my $subject = loc("I'm inviting you into the [_1] workspace", $workspace->title);
 
     my $renderer = Socialtext::TT2::Renderer->instance();

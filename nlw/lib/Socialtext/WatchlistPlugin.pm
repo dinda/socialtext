@@ -348,9 +348,7 @@ sub get_notification_vars {
     my $from =
       $self->hub->current_workspace->formatted_email_notification_from_address;
 
-    my $subject = 'Watchlist update for '
-        . $self->hub->current_workspace->title
-        . ' Workspace';
+    my $subject = loc('Watchlist update for [_1] Workspace', $self->hub->current_workspace->title);
 
     my $text_template = 'email/watchlist.txt';
     my $html_template = 'email/watchlist.html';
