@@ -562,6 +562,12 @@ proto.newpage_save = function(page_name, pagename_editfield) {
             pagename_editfield.focus();
         }
     }
+    else if (encodeURIComponent(page_name).length > 255) {
+        alert(loc('Page title is too long after URL encoding'));
+        if (pagename_editfield) {
+            pagename_editfield.focus();
+        }
+    }
     else {
         if (Page.active_page_exists(page_name)) {
             this.newpage_cancel();
