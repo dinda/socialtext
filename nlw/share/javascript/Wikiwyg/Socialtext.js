@@ -698,7 +698,7 @@ proto.saveNewPage = function() {
             return this.newpage_saveClicked();
         }
         else  {
-            if (nlw_name_to_id(new_page_name.value).length > 255) {
+            if (encodeURIComponent(new_page_name.value).length > 255) {
                 alert(loc('Page title is too long after URL encoding'));
                 if (pagename_editfield) {
                     pagename_editfield.focus();
