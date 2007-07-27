@@ -727,7 +727,7 @@ proto.validate_fields = function(widget, values) {
         for (var i = 0; i < required.length; i++) {
             var field = required[i];
             if (! values[field].length) {
-                var label = Wikiwyg.Widgets.fields[field];
+                var label = loc(Wikiwyg.Widgets.fields[field]);
                 throw(loc("'[_1]' is a required field", label));
             }
         }
@@ -739,7 +739,8 @@ proto.validate_fields = function(widget, values) {
         labels = [];
         for (var i = 0; i < require.length; i++) {
             var field = require[i];
-            labels.push(Wikiwyg.Widgets.fields[field]);
+            var label = loc(Wikiwyg.Widgets.fields[field]);
+            labels.push(label);
             if (values[field].length)
                 found++;
         }
@@ -758,7 +759,7 @@ proto.validate_fields = function(widget, values) {
             fieldOk = values[field].match(regexp);
 
         if (!fieldOk) {
-            var label = Wikiwyg.Widgets.fields[field];
+            var label = loc(Wikiwyg.Widgets.fields[field]);
             throw(loc("'[_1]' has an invalid value", label));
         }
     }
