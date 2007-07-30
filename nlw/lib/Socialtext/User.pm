@@ -17,7 +17,7 @@ use Email::Address;
 use Class::AlzaboWrapper;
 use Class::Field 'field';
 use Alzabo::SQLMaker::PostgreSQL qw(COUNT DISTINCT LOWER CURRENT_TIMESTAMP);
-use Socialtext::l10n qw(system_locale);
+use Socialtext::l10n qw(system_locale loc);
 use Socialtext::EmailSender::Factory;
 use base qw( Socialtext::MultiPlugin );
 
@@ -1130,7 +1130,6 @@ sub send_confirmation_completed_email {
         template => 'email/email-address-confirmation-completed.html',
         vars     => \%vars,
     );
-    # XXX: Fix me: get locale from hub
     my $locale = system_locale();
     my $email_sender = Socialtext::EmailSender::Factory->create($locale);
     $email_sender->send(
@@ -1164,8 +1163,7 @@ sub send_password_change_email {
         template => 'email/password-change.html',
         vars     => \%vars,
     );
-    # XXX: Fix me: get locale from hub
-    my $locale = 'en';
+    my $locale = system_locale();
     my $email_sender = Socialtext::EmailSender::Factory->create($locale);
     $email_sender->send(
         to        => $self->name_and_email(),
