@@ -18,10 +18,21 @@ use Socialtext::AppConfig;
 use File::Spec::Functions qw(catdir);
 use Encode qw(encode_utf8 decode_utf8);
 
-use_ok 'Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif';
 my $config = Socialtext::AppConfig->new;
 my $sharedir = $config->code_base;
 my $dicdir = catdir( $sharedir, "l10n", "mecab" );
+
+SKIP: {
+
+# Try to load the mecab stuff, but this may fail if you're not setup for
+# Japanese loving.
+eval { require Socialtext::Search::KinoSearch::Analyzer::Ja::Tokenize };
+if ( $@ or not -e "$dicdir/char.bin" ) {
+    skip "Could not initialize mecab data.", $testcnt;
+}
+
+use_ok("Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif");
+
 my $if = Socialtext::Search::KinoSearch::Analyzer::Ja::mecabif->new(
 	dicdir => $dicdir
 );
@@ -61,4 +72,5 @@ for (@testcase) {
 	   join(', ', map { encode_utf8("'$_'") } @words) .
 	   $however);
     }
+}
 }
