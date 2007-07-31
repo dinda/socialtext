@@ -1,13 +1,14 @@
 [%# @COPYRIGHT@ -%]
 <html>
     <head>
-         <title>[% loc('Invitation Request') %]</title>
+         <title>Invitation Request</title>
      </head>
 
      <body>
-         [% loc('Hello,') %]
+         Hello,
          <p>
-[% loc('[_1] would like to ask you to invite new users into the [_2] workspace:', inviting_user, workspace_title) %]
+[% inviting_user %] would like to ask you to invite new users into the
+[% workspace_title %] workspace:
 </p>
 <p>
 
@@ -22,7 +23,9 @@
 </p>
 [% END %]
 <p>
-[% loc('To invite these users into the workspace, visit the user invite page for the <br />workspace and copy and paste the list above into the invite box. The User <br />Invite page can be found at:') %]
+To invite these users into the workspace, visit the user invite page for the <br />
+workspace and copy and paste the list above into the invite box.  The User <br />
+Invite page can be found at:
 </p>
 
 <p>

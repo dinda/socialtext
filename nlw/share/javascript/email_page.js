@@ -38,7 +38,8 @@ function email_page_validate_add() {
     if (address == '')
         return false
     if (!email_page_check_address(address)) {
-        email_page_error_message(loc('error -> "[_1]" is not a valid email address', address))
+        email_page_error_message('error -> "' + address +
+            '" is not a valid email address')
         return false
     }
     email_page_dest[email_page_dest.length] = new Option(address)
@@ -123,7 +124,7 @@ function email_page_select_all() {
 function email_page_validate() {
     if (email_page_dest.length < 1) {
         email_page_error_message(
-            loc('error -> To send email, you must specify a recipient'))
+            'error -> To send email, you must specify a recipient')
         return false
     }
     email_page_submit_buttons.style.display = 'none'

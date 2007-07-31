@@ -39,9 +39,9 @@ function comment_focus_textarea(textarea) {
 function submit_comment(comment_window) {
     var my_array = document.getElementsByTagName('input')
     var textarea = elem('st-commentui-textarea')
-    toolbar_warning(elem('st-commentui-controls'), loc('Saving...'))
+    toolbar_warning(elem('st-commentui-controls'), 'Saving...')
     if (my_array.length > 3) {
-         textarea.value = loc('\n\nComment:') + ' ' + textarea.value 
+         textarea.value = '\n\nComment: ' + textarea.value 
     }
     for (var i = my_array.length; i >= 0; i--) { 
         if ( (my_array[i]) &&
@@ -58,7 +58,7 @@ function submit_comment(comment_window) {
 
 function cancel_comment() {
     if ((elem('st-commentui-textarea').value == '') ||
-        confirm(loc("If you click 'OK', all comment changes will be lost!"))
+        confirm("If you click 'OK', all comment changes will be lost!")
        ) window.close()
 }
 

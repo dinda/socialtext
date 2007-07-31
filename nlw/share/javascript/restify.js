@@ -433,7 +433,7 @@ stproto.listBacklinks = function(pageName) {
 stproto.listTaggedPages = function(tagName) {
     var wikidiv = document.getElementById('wikipage');
     var wikititle = document.getElementById('wikititle');
-    wikititle.innerHTML = loc("Pages tagged with") + " " + tagName;
+    wikititle.innerHTML = "Pages tagged with " + tagName;
     tagName = tagName.replace(/\s+$/m, '');
     var uri = this.tag_list_uri() + '/'
         + encodeURIComponent(tagName)
@@ -473,7 +473,7 @@ stproto.displayPage = function(wikidiv, uri) {
         response = Ajax.get( uri, null, {'contentType' :'text/html'});
     } catch (e) { 
         if (e.match('404')) {
-            response = loc('page does not exist');
+            response = 'page does not exist';
         } else {
             response = e;
         }

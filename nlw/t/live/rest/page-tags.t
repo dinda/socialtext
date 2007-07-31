@@ -27,7 +27,7 @@ test_http "GET no tags json" {
 
     my $representation = jsonToObj( $test->response->content );
     isa_ok( $representation, 'ARRAY', 'Tags representation' );
-    is_deeply( $representation, [], 'No tags.' );
+    is_deeply( $representation, [], 'No tags at start.' );
 }
 
 test_http "GET no tags text" {

@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Test::Socialtext tests => 12;
-fixtures( 'rdbms_clean', 'help' );
+fixtures( 'rdbms_clean' );
 
 use Socialtext::EmailAlias;
 use Socialtext::File;

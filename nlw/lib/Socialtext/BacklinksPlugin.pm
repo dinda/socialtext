@@ -7,7 +7,6 @@ use base 'Socialtext::Query::Plugin';
 
 use Class::Field qw( const );
 use Socialtext::Pages;
-use Socialtext::l10n qw(loc);
 
 sub class_id { 'backlinks' }
 const class_title          => 'Backlinks';
@@ -70,7 +69,7 @@ sub show_all_backlinks {
     my $page_id = $self->cgi->page_id;
     my $page = $self->hub->pages->new_from_name($page_id);
     $self->screen_wrap(
-        loc('All backlinks for "[_1]"', $page->metadata->Subject),
+        'All backlinks for "' . $page->metadata->Subject . '"',
         $self->present_tense_description_for_page($page)
     );
 }
@@ -87,7 +86,7 @@ sub orphans_list {
     return $self->display_results(
         \%sortdir,
         feeds => $self->_feeds($self->hub->current_workspace),
-        display_title => loc('Orphaned Pages'),
+        display_title => 'Orphaned Pages',
     );
 }
 
@@ -106,7 +105,7 @@ sub _make_result_set {
         $self->push_result($_) for sort { lc $a->title cmp lc $b->title } @{$pages};
     }
 
-    $self->result_set->{title} = loc('Orphaned Pages');
+    $self->result_set->{title} = 'Orphaned Pages';
 
     $self->write_result_set;
 }
@@ -218,13 +217,13 @@ sub all_backlinks_for_page {
 sub past_tense_description_for_page {
     my $self = shift;
     my $page = shift;
-    return $self->html_description($page, loc('The page had these Backlinks:'));
+    return $self->html_description($page, 'The page had these Backlinks:');
 }
 
 sub present_tense_description_for_page {
     my $self = shift;
     my $page = shift;
-    return $self->html_description($page, loc('This page is linked to from:'));
+    return $self->html_description($page, 'This page is linked to from:');
 }
 
 sub html_description {
@@ -233,10 +232,10 @@ sub html_description {
     my $text_for_when_there_are_backlinks = shift;
 
     my $links = $self->hub->backlinks->all_backlinks_for_page($page);
-    return '<p>' . loc('The page had no Backlinks.') . '<p>'
+    return '<p>The page had no Backlinks.<p>'
         unless $links and @$links;
     my @items = map {
-        '<li>'.$self->hub->helpers->page_display_link($_->{page_title}).'</li>'
+        '<li>'.$self->hub->helpers->page_display_link($_->{page_uri}).'</li>'
     } @$links;
     return join "\n",
         "<p>$text_for_when_there_are_backlinks</p>",

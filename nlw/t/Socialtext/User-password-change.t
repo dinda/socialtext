@@ -16,9 +16,10 @@ BEGIN {
 plan tests => 6;
 
 use DateTime::Format::Pg;
+use Socialtext::EmailSender;
 use Socialtext::User;
 
-$Socialtext::EmailSender::Base::SendClass = 'Test';
+Socialtext::EmailSender->TestModeOn();
 
 my $user = Socialtext::User->create(
     username      => 'devnull9@socialtext.net',

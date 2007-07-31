@@ -13,7 +13,6 @@ use Socialtext::Authz::SimpleChecker;
 use Socialtext::Validate qw( validate SCALAR_TYPE );
 use Socialtext::BrowserDetect ();
 use Socialtext::Challenger;
-use Socialtext::l10n qw(loc);
 use Socialtext::WebApp;
 
 sub class_id { 'hub' }
@@ -136,15 +135,15 @@ sub handle_validation_error {
 
     my $msg;
     if ( $error->can('messages') && $error->messages() ) {
-        $msg = loc('There was an error with your request') . ':<br />';
+        $msg = 'There was an error with your request:<br />';
         $msg .= "$_<br />" for $error->messages;
     }
     else {
-        $msg = loc('Malformed query.') . '<br />';
+        $msg = 'Malformed query.<br />';
     }
     my $support_address = Socialtext::AppConfig->support_address();
     $msg .=
-        loc('Please send email to <a href="mailto:[_1]">[_1]</a> if you think it should have worked.', $support_address) ;
+        qq|Please send email to <a href="mailto:$support_address">$support_address</a> if you think it should have worked.|;
     $self->fail_home_with_warning( $msg, $error );
 }
 
@@ -236,11 +235,6 @@ sub preferences_object {
     return $self->{preferences_object} if defined $self->{preferences_object};
     $self->{preferences_object}
         = $self->preferences->new_for_user( $self->current_user->email_address )
-}
-
-sub best_locale {
-    my $self = shift;
-    return Socialtext::l10n::best_locale($self);
 }
 
 sub assert_current_user_is_admin {

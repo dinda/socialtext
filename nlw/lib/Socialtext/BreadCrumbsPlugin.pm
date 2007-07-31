@@ -12,7 +12,6 @@ use Socialtext::AppConfig;
 use Socialtext::Pages;
 use Socialtext::File;
 use Socialtext::Paths;
-use Socialtext::l10n qw(loc);
 
 sub class_id { 'breadcrumbs' }
 const class_title => 'Recently Viewed';
@@ -30,7 +29,7 @@ sub register {
 sub display_as_box {
     my $self = shift;
     my $p = $self->new_preference('display_as_box');
-    $p->query(loc('Display \"[_1]\" side pane box?',$self->class_title) );
+    $p->query('Display "' . $self->class_title . '" side pane box?');
     $p->default(1);
     return $p;
 }
@@ -38,7 +37,7 @@ sub display_as_box {
 sub how_many {
     my $self = shift;
     my $p = $self->new_preference('how_many');
-    $p->query(loc('How many pages to show in side pane box?'));
+    $p->query('How many pages to show in side pane box?');
     $p->type('pulldown');
     my $choices = [
         3 => 3,
@@ -74,9 +73,10 @@ sub breadcrumbs_list {
 
     $self->display_results(
         \%sortdir,
-        display_title => loc('Recently Viewed Pages'),
+        display_title => 'Recently Viewed Pages',
         unplug_uri    => "?action=unplug;breadcrumbs=1",
-        unplug_phrase => loc('Click this button to save recently viewed pages to your computer for offline use.'),
+        unplug_phrase => 'Click this button to save recently viewed pages '
+            . 'to your computer for offline use.',
     );
 }
 

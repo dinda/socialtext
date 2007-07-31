@@ -11,41 +11,24 @@ ST.Watchlist.prototype = {
 
     button_activate: function () {
         if (!this.isBeingWatched) {
-            var text = document.getElementById('st-watchlist-text');
-            if (text) {
-                text.className = 'on';
-            }
             this.image.src = this._image_src('hover');
         }
         return false;
     },
 
     button_default: function () {
-        var text = document.getElementById('st-watchlist-text');
         if (this.isBeingWatched) {
-            if (text) {
-                text.innerHTML = loc("Watching this page");
-                text.className = 'on';
-            }
             this.image.src = this._image_src('on');
         }
         else {
-            if (text) {
-                text.innerHTML = loc("Watch this page");
-                text.className = 'off';
-            }
             this.image.src = this._image_src('off');
         }
         return false;
     },
 
     _image_src: function(type) {
-        var star = '';
-        if (Socialtext.loc_lang != 'en') {
-            star = 'star-';
-        }
         return nlw_make_static_path(
-            '/images/st/pagetools/watch-' + star + type + '.gif'
+            '/images/st/pagetools/watch-' + type + '.gif'
         );
     },
 
@@ -77,10 +60,10 @@ ST.Watchlist.prototype = {
 
     _display_toggle_error: function () {
         if (this.isBeingWatched) {
-            alert(loc('Could not remove page from watchlist'));
+            alert('Could not remove page from watchlist');
         }
         else {
-            alert(loc('Could not add page to watchlist'));
+            alert('Could not add page to watchlist');
         }
     },
 
@@ -93,28 +76,16 @@ ST.Watchlist.prototype = {
     _loadInterface: function (indicator) {
         this.image = $(indicator);
         if (this.image) {
-            if (Socialtext.loc_lang != 'en') {
-                if (this.image.src.match(/watch-star-on/)) {
-                    this.isBeingWatched = true;
-                }
-                else {
-                    this.isBeingWatched = false;
-                }
+            if (this.image.src.match(/watch-on/)) {
+                this.isBeingWatched = true;
             }
             else {
-                if (this.image.src.match(/watch-on/)) {
-                    this.isBeingWatched = true;
-                }
-                else {
-                    this.isBeingWatched = false;
-                }
+                this.isBeingWatched = false;
             }
 
-            Event.observe(this.image.parentNode,  'click', this._toggle_watch_state.bind(this));
-            Event.observe(this.image.parentNode,  'mouseover', this.button_activate.bind(this));
-            Event.observe(this.image.parentNode,  'mouseout', this.button_default.bind(this));
-
-            this.button_default();
+            Event.observe(indicator,  'click', this._toggle_watch_state.bind(this));
+            Event.observe(indicator,  'mouseover', this.button_activate.bind(this));
+            Event.observe(indicator,  'mouseout', this.button_default.bind(this));
         }
     }
 };

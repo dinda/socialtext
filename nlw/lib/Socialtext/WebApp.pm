@@ -23,7 +23,6 @@ use Socialtext::UniqueArray;
 use Socialtext::URI;
 use Socialtext::Validate
   qw( validate validate_with SCALAR ARRAYREF HASHREF OBJECT );
-use Socialtext::l10n qw( loc );
 
 # XXX - this attributes stuff should probably be moved to
 # the WebApp if it's the right way to go.
@@ -206,8 +205,8 @@ sub static_path { Socialtext::Helpers->static_path }
 
 sub username_label {
     return Socialtext::AppConfig->is_default('user_factories')
-        ? loc('Email Address')
-        : loc('Username');
+        ? 'Email Address'
+        : 'Username';
 }
 
 1;

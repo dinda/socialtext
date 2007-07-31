@@ -13,7 +13,6 @@ use Socialtext::File;
 use Socialtext::LogParser;
 use Socialtext::Paths;
 use Socialtext::Helpers;
-use Socialtext::l10n qw(loc);
 
 const class_title      => 'Page Statistics';
 const cgi_class        => 'Socialtext::PageStats::CGI';
@@ -53,10 +52,10 @@ sub page_stats {
     unless ( $page && $page->active ) {
         my $error;
         if ( defined $page_id && length $page_id ) {
-            $error = loc("The page id you specified ([_1]) was invalid.", $page_id);
+            $error = "The page id you specified ($page_id) was invalid.";
         }
         else {
-            $error = loc('This action requires a page to be specified.');
+            $error = 'This action requires a page to be specified.';
         }
         data_validation_error errors => [$error];
     }
@@ -71,7 +70,7 @@ sub page_stats {
         return $self->render_screen(
             page_id      => $self->hub->pages->current->id,
             display_date => $self->_pretty_date($date),
-            error        => loc('No stats for this page yet'),
+            error        => 'No stats for this page yet',
         );
     }
 
@@ -106,7 +105,7 @@ sub page_stats_index {
         return $self->render_screen(
             page_id       => $page->id,
             display_title => $title,
-            error         => loc('No stats dir for this page'),
+            error         => 'No stats dir for this page',
         );
     }
 
@@ -122,7 +121,7 @@ sub page_stats_index {
         return $self->render_screen(
             page_id       => $page->id,
             display_title => $title,
-            error         => loc('No stats for this page'),
+            error         => 'No stats for this page',
         );
     }
 
@@ -189,7 +188,7 @@ sub _get_page_stats {
 
     if ( not -e $stats_file ) {
         # We haven't done any stats on this page
-        return loc("No statistics yet available for [_1]", $page);
+        return "No statistics yet available for $page";
     }
     else {
         my $stats = $self->_read_stats_from_file("$stats_file");

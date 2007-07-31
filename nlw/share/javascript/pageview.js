@@ -83,7 +83,7 @@ ST.Page.prototype = {
                 asynchronous: false,
                 requestHeaders: ['Accept','text/javascript'],
                 onFailure: (function(req, jsonHeader) {
-                    alert(loc('Could not retrieve the latest revision of the page'));
+                    alert('Could not retrieve the latest revision of the page');
                 }).bind(this)
             }
         );
@@ -102,7 +102,7 @@ ST.Page.prototype = {
                 asynchronous: false,
                 requestHeaders: ['Accept','application/json'],
                 onFailure: (function(req, jsonHeader) {
-                    alert(loc('Could not retrieve the latest revision of the page'));
+                    alert('Could not retrieve the latest revision of the page');
                 }).bind(this)
             }
         );
@@ -215,9 +215,7 @@ ST.NavBar.prototype = {
     },
 
     clear_search: function(arg) {
-        var new_search = loc("New search").replace("\s", '\s*');
-        var reg = new RegExp(new_search, 'i');
-        if( $(this.element.searchField).value.match(reg) ) {
+        if( $(this.element.searchField).value.match(/New\s*search/i) ) {
             $(this.element.searchField).value = "";
         }
     },

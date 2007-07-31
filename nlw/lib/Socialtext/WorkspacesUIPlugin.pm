@@ -11,7 +11,6 @@ use Socialtext::Permission qw( ST_EMAIL_IN_PERM );
 use Socialtext::Role;
 use Template::Iterator::AlzaboWrapperCursor;
 use Socialtext::Challenger;
-use Socialtext::l10n qw(loc);
 
 sub class_id { 'workspaces_ui' }
 const cgi_class => 'Socialtext::WorkspacesUI::CGI';
@@ -52,7 +51,7 @@ sub workspaces_listall {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: My Workspaces'),
+        display_title     => 'Workspaces: My Workspaces',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -64,7 +63,7 @@ sub _update_selected_workspaces {
         [ map { Socialtext::Workspace->new( workspace_id => $_ ) } $self->cgi->selected_workspace_id ],
     );
 
-    $self->message(loc("Changes Saved"));
+    $self->message("Changes Saved");
 }
 
 sub workspaces_settings_appearance {
@@ -100,7 +99,7 @@ sub _workspace_settings {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: This Workspace'),
+        display_title     => 'Workspaces: This Workspace',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -139,7 +138,7 @@ sub _update_workspace_settings {
 
     return if $self->input_errors_found;
 
-    $self->message(loc("Changes saved"));
+    $self->message("Changes saved");
 }
 
 sub _process_logo_upload {
@@ -173,7 +172,7 @@ sub workspaces_create {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: Create New Workspace'),
+        display_title     => 'Workspaces: Create New Workspace',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -235,7 +234,7 @@ sub workspaces_created {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: Created New Workspace'),
+        display_title     => 'Workspaces: Created New Workspace',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -264,7 +263,7 @@ sub workspaces_unsubscribe {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: Unsubscribe'),
+        display_title     => 'Workspaces: Unsubscribe',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -301,7 +300,7 @@ sub workspaces_permissions {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Workspaces: Permissions'),
+        display_title     => 'Workspaces: Permissions',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -332,17 +331,16 @@ sub _set_workspace_permissions {
         );
     }
 
-    my $message = loc('The permissions for [_1] have been set to [_2].', $ws->name(), loc($set_name));
+    my $message = 'The permissions for ' . $ws->name() . " have been set to $set_name.";
     if ($self->cgi()->guest_has_email_in()) {
-        $message .= ' ' . loc('Anyone can send email to [_1].', $ws->name());
+        $message .= ' Anyone can send email to ' . $ws->name() . '.';
     } else {
         if ($ws->current_permission_set_name() =~ /public-(?:read|comment)-only/) {
-            $message .= ' ';
-            $message .= loc('Only workspace members can send email to [_1].', $ws->name());
+            $message .= ' Only workspace members';
         } else {
-            $message .= ' ';
-            $message .= loc('Only registered users can send email to [_1].', $ws->name());
+            $message .= ' Only registered users';
         }
+       $message .= ' can send email to ' . $ws->name() . '.';
     }
 
     $self->message( $message );

@@ -8,10 +8,7 @@ use utf8;
 use Test::Socialtext tests => 191;
 fixtures( 'admin_no_pages' );
 
-BEGIN { 
-    unlink "t/tmp/etc/socialtext/socialtext.conf";
-    use_ok("Socialtext::Search::KinoSearch::Factory");
-}
+BEGIN { use_ok("Socialtext::Search::KinoSearch::Factory") }
 
 our $workspace = 'admin';
 our $hub = new_hub('admin');

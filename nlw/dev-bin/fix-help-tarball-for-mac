@@ -2,7 +2,7 @@
 
 ORIG_DIR=`pwd`;
 
-cd share/l10n/help;
+cd share/doc-pages/help;
 tar xfz help.tar.gz;
 rm -f help.tar.gz plugin/help/indexes/*;
 tar cfz help.tar.gz *;

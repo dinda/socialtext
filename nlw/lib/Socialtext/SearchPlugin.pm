@@ -8,7 +8,6 @@ use base 'Socialtext::Query::Plugin';
 use Class::Field qw( const field );
 use Socialtext::Search::AbstractFactory;
 use Socialtext::Pages;
-use Socialtext::l10n qw(loc);
 
 sub class_id { 'search' }
 const class_title => 'Search';
@@ -62,11 +61,12 @@ sub search {
         feeds => $self->_feeds(
             $self->hub->current_workspace, $self->cgi->search_term
         ),
-        title      => loc('Search Results'),
+        title      => 'Search Results',
         unplug_uri => "?action=unplug;search_term="
             . $uri_escaped_search_term,
         unplug_phrase =>
-            loc('Click this button to save the pages from this search to your computer for offline use'),
+            'Click this button to save the pages from this search to your '
+            . 'computer for offline use',
     );
 }
 
@@ -84,14 +84,15 @@ sub _feeds {
     my %feeds = (
         rss => {
             page => {
-                title => loc('[_1] - RSS Search for [_2]', $workspace->title, $query)
-,
+                title => $workspace->title
+                    . " - RSS Search for $query",
                 url => $root . "?search_term=$uri_escaped_query",
             },
         },
         atom => {
             page => {
-                title => loc('[_1] - Atom Search for [_2]', $workspace->title, $query),
+                title => $workspace->title
+                    . " - Atom Search for $query",
                 url => $root . "?search_term=$uri_escaped_query;type=Atom",
             },
         },
@@ -115,11 +116,9 @@ sub search_for_term {
             $self->hub->log->debug("hitkeys @{ [keys %$row ] }");
         }
         $self->result_set->{hits}          = scalar @{ $self->result_set->{rows} };
-        if( $self->title_search ) {
-            $self->result_set->{display_title} = loc("Titles containing \'[_1]\' ([_2])", $search_term, $self->result_set->{hits})
-        } else {
-            $self->result_set->{display_title} = loc("Pages containing \'[_1]\' ([_2])", $search_term, $self->result_set->{hits})
-        }
+        $self->result_set->{display_title} = join ' ',
+            ( $self->title_search ? 'Titles' : 'Pages' ),
+            "containing '$search_term' (" .$self->result_set->{hits}. ")";
         $self->result_set->{predicate} = 'action=search';
         $self->write_result_set;
     };
@@ -253,16 +252,13 @@ cgi search_term => '-html_clean';
 package Socialtext::Search::Wafl;
 
 use base 'Socialtext::Query::Wafl';
-use Socialtext::l10n qw(loc);
 
 sub _set_titles {
     my $self = shift;
     my $arguments = shift;
-    my $title_info;
+    my $title_info = "Search for $arguments";
     if ( $self->target_workspace ne $self->current_workspace_name ) {
-        $title_info = loc('Search for [_1] in workspace [_2]', $arguments, $self->target_workspace);
-    } else {
-        $title_info = loc('Search for [_1]', $arguments);
+        $title_info .= ' in workspace ' . $self->target_workspace;
     }
     $self->wafl_query_title($title_info);
     $self->wafl_query_link($self->_set_query_link($arguments));

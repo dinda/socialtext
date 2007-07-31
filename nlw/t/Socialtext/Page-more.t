@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 34;
+use Test::Socialtext tests => 36;
 fixtures( 'admin_with_extra_pages' );
 
 my $hub = new_hub('admin');
@@ -19,6 +19,7 @@ my $creator = Socialtext::User->new( username => 'devnull1@socialtext.com' );
         );
     my $simple = $pages->new_from_name('simple');
     is $simple->content, "as can be\n", 'basic usage';
+    ok ! $simple->is_default, 'new page is not a default page';
 }
 
 {
@@ -31,6 +32,8 @@ my $creator = Socialtext::User->new( username => 'devnull1@socialtext.com' );
     my $basic = $pages->new_from_name('basic usage');
     is $basic->metadata->Category->[0], 'test', 'category saved';
 }
+
+ok $pages->new_from_name('Quick Start')->is_default, "Quick Start is a default page";
 
 {
     my $sample = $hub->pages->new_from_name('FormattingTest');

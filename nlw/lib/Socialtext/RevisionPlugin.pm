@@ -7,7 +7,6 @@ use base 'Socialtext::Plugin';
 
 use Class::Field qw( const );
 use Socialtext::String;
-use Socialtext::l10n qw( loc );
 
 sub class_id { 'revision' }
 const cgi_class => 'Socialtext::Revision::CGI';
@@ -73,7 +72,7 @@ sub revision_view {
         $page->all,
         human_readable_revision => $revision,
         display_title    => $self->html_escape( $page->title ),
-        display_title_decorator  => loc("Revision [_1]", $revision),
+        display_title_decorator  => "Revision $revision",
         print                   => $output,
     );
 }
@@ -107,7 +106,7 @@ sub revision_compare {
         $page->all,
         print => $differ->framed_comparison,
         display_title    => $self->html_escape( $page->title ),
-        display_title_decorator  => loc("Compare Revisions [_1] and [_2]", $old_revision, $new_revision),
+        display_title_decorator  => "Compare Revisions $old_revision and $new_revision",
     );
 }
 
@@ -130,12 +129,10 @@ use base 'Socialtext::Base';
 
 use Class::Field qw( field );
 use Socialtext::Helpers;
-use Socialtext::l10n qw( loc );
 
 field 'before_page';
 field 'after_page';
 field 'hub';
-
 
 sub framed_comparison {
     my $self = shift;
@@ -149,21 +146,19 @@ sub header {
     my $self = shift;
     my @headings = map {
         my $pretty_revision = $_->metadata->Revision;
-        my $rev_text = loc('Revision [_1]', $pretty_revision);
         my $link            = Socialtext::Helpers->script_link(
-            "<strong>$rev_text</strong></a>",
+            "<strong>Revision $pretty_revision</strong></a>",
             action      => 'revision_view',
             page_id     => $_->id,
             revision_id => $_->revision_id,
         );
         my $tags = join ', ', grep $_ ne 'Recent Changes', $_->html_escaped_categories;
-        my $tags_message = loc('Tags:');
         my $editor = $_->last_edited_by->best_full_name(
             workspace => $self->hub->current_workspace );
         qq{
       <td width="50%" bgcolor="#ffffff">
         <h3 class="st-revision-view-link">$link</h3>
-        <div class="st-revision-tags">$tags_message $tags</div>
+        <div class="st-revision-tags">Tags: $tags</div>
         <div class="st-revision-attribution">by $editor</div>
       </td>\n};
     } ( $self->before_page, $self->after_page );

@@ -119,11 +119,6 @@ sub new_preference {
     $self->hub->preferences->new_preference( scalar(caller), @_ );
 }
 
-sub new_dynamic_preference {
-    my $self = shift;
-    $self->hub->preferences->new_dynamic_preference( scalar(caller), @_ );
-}
-
 sub preference {
     my $self = shift;
     my $preference = shift;
@@ -234,30 +229,16 @@ sub screen_wrap {
     );
 }
 
-sub _create_dummy_current_for_data_validation_error {
-    my $self = shift;
-    my $page_name = 
-      $self->hub->cgi->page_name ||
-      $self->hub->current_workspace->title;
-    my $page_id = substr(Socialtext::Page->name_to_id($page_name), 0, Socialtext::Page->_MAX_PAGE_ID_LENGTH());
-    return $self->hub->pages->new_page($page_id); 
-}
-
 sub template_process {
     my $self = shift;
     my $template = shift;
-
-    my $current = $self->hub->pages->current;
-    if(!defined $self->hub->pages->current) {
-        $current = $self->_create_dummy_current_for_data_validation_error();
-    }
 
     $self->hub->template->process(
         $template,
         self => $self,
         (
-              $current->id
-            ? $current->all
+              $self->hub->pages->current->id
+            ? $self->hub->pages->current->all
             : ()
         ),
         $self->cgi->all,

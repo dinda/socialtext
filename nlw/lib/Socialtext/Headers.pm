@@ -36,9 +36,6 @@ sub add_attachment {
     $self->content_disposition("attachment; filename=\"$args{filename}\"");
     $self->content_type( $args{type} || 'text/html' );
     $self->content_length( $args{len} );
-    if (defined $args{charset} ) {
-        $self->charset( $args{charset} );
-    }
     $self->erase_cache_headers();
 }
 
@@ -55,11 +52,15 @@ sub print {
     );
     for my $header qw(Content-Length Content-disposition Expires Pragma 
                       Cache-control Last-modified Location Status) {
-        my $method = lc($header);
-        $method =~ tr/-/_/;
-        my $value = $self->$method;
-        next unless defined $value;
-        $headers{'-' . $header} = $value;
+        my $field = lc $header;
+        $field =~ tr/-/_/;
+
+        # We check existence rather than definedness here because if someone
+        # explicitly sets a header to undef, they mean for that to be
+        # removed from the set of headers (e.g., as in erase_cache_headers
+        # above).
+        $headers{'-' . $header} = $self->{$field}
+            if exists $self->{$field};
     }
     # XXX rest->header can only be assigned once
     $self->hub->rest->header(%headers);

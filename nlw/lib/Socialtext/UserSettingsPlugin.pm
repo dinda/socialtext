@@ -9,14 +9,13 @@ use Class::Field qw( const field );
 use Email::Address;
 use Email::Valid;
 use Socialtext::AppConfig;
-use Socialtext::EmailSender::Factory;
+use Socialtext::EmailSender;
 use Socialtext::Permission qw( ST_ADMIN_WORKSPACE_PERM );
 use Socialtext::TT2::Renderer;
 use Socialtext::User;
 use Socialtext::WorkspaceInvitation;
 use Template::Iterator::AlzaboWrapperCursor;
 use Socialtext::URI;
-use Socialtext::l10n qw( loc system_locale);
 
 sub class_id {'user_settings'}
 const cgi_class => 'Socialtext::UserSettings::CGI';
@@ -61,7 +60,7 @@ sub users_settings {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Users: My Settings'),
+        display_title     => 'Users: My Settings',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -74,9 +73,9 @@ sub _update_current_user {
     if (   $self->cgi->old_password
         or $self->cgi->new_password
         or $self->cgi->new_password_retype ) {
-        $self->add_error(loc('Old password is incorrect'))
+        $self->add_error('Old password is incorrect')
             unless $user->password_is_correct( $self->cgi->old_password );
-        $self->add_error(loc('New passwords do not match'))
+        $self->add_error('New passwords do not match')
             unless $self->cgi->new_password eq
             $self->cgi->new_password_retype;
 
@@ -100,7 +99,7 @@ sub _update_current_user {
 
     return if $self->input_errors_found;
 
-    $self->message(loc('Changes Saved'));
+    $self->message('Changes Saved');
 }
 
 sub get_admins {
@@ -137,8 +136,8 @@ sub users_listall {
 
     my $display_title =
         $self->hub->checker->check_permission('admin_workspace')
-        ? loc('Users: Manage All Users')
-        : loc('Users: List All Users');
+        ? 'Users: Manage All Users'
+        : 'Users: List All Users';
 
     $self->screen_template('view/settings');
     return $self->render_screen(
@@ -226,10 +225,10 @@ sub _update_users_in_workspace {
         }
     }
     else {
-        $self->add_warning(loc("Can't remove privileges of the last admin"));
+        $self->add_warning("Can't remove privileges of the last admin");
     }
 
-    $self->message(loc('Changes Saved'));
+    $self->message('Changes Saved');
 
     return;
 }
@@ -280,11 +279,10 @@ sub users_invitation {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Users: Invite New Users'),
+        display_title     => 'Users: Invite New Users',
         pref_list         => $self->_get_pref_list,
     );
 }
-
 
 sub users_invite {
     my $self = shift;
@@ -292,16 +290,16 @@ sub users_invite {
         $self->hub->assert_current_user_is_admin;
     }
 
-    my @emails;
-    my @invalid;
     if ( $self->cgi->users_new_ids ) {
         my @lines = $self->_split_email_addresses( $self->cgi->users_new_ids );
 
         unless (@lines) {
-            $self->add_error(loc("No email addresses specified"));
+            $self->add_error("No email addresses specified");
             return;
         }
 
+        my @emails;
+        my @invalid;
         for my $line (@lines) {
             my ( $email, $first_name, $last_name )
               = $self->_parse_email_address($line);
@@ -312,14 +310,10 @@ sub users_invite {
 
             push @emails, $email;
         }
-    }
-    else
-    {
-        push @invalid, loc("No email addresses specified");
-    }
 
-    my $html = $self->_invite_users(\@emails, \@invalid);
-    return $html if $html;
+        my $html = $self->_invite_users(\@emails, \@invalid);
+        return $html if $html;
+    }
 }
 
 sub users_search {
@@ -366,7 +360,7 @@ sub users_search {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Users: Invite New Users'),
+        display_title     => 'Users: Invite New Users',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -427,7 +421,7 @@ sub _invite_users {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => loc('Users: Invite New Users'),
+        display_title     => 'Users: Invite New Users',
         pref_list         => $self->_get_pref_list,
     );
 }
@@ -478,7 +472,9 @@ sub invite_request_to_admin {
     }
 
     my $renderer = Socialtext::TT2::Renderer->instance();
-    my $subject  = loc('Request to invite new users to the [_1] workspace',$self->hub->current_workspace->title);
+    my $subject  = 'Request to invite new users to the '
+        . $self->hub->current_workspace->title
+        . ' workspace';
 
     my $template_dir = $self->hub->current_workspace->invitation_template;
     my $url = $self->hub->current_workspace->uri . "?action=users_invite";
@@ -502,9 +498,7 @@ sub invite_request_to_admin {
         vars     => \%vars,
     );
 
-    my $locale = system_locale();
-    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
-    $email_sender->send(
+    Socialtext::EmailSender->send(
         from      => $self->hub->current_user->name_and_email,
         to        => $admin_email,
         subject   => $subject,

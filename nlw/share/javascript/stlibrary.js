@@ -76,7 +76,7 @@ ST.extend = function(subClass, baseClass) {
 // Pop up a new HTML window
 function query_popup(url, width, height, left, top) {
     if (!width) width = 400;
-    if (!height) height = 287;
+    if (!height) height = 275;
     if (!left) left = 400-width/2;
     if (!top) top = 280-height/2;
     window.open(url, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, titlebar=no, scrollbars=yes, resizable=yes, width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
@@ -99,8 +99,7 @@ function trim(value) {
 function is_reserved_pagename(pagename) {
     if (pagename && pagename.length > 0) {
         var name = trim(pagename.toLowerCase());
-        var untitled = loc('Untitled Page').toLowerCase();
-        return name == untitled;
+        return name == 'untitled page';
     }
     else {
         return false;
@@ -108,7 +107,7 @@ function is_reserved_pagename(pagename) {
 }
 
 function confirm_delete(pageid) {
-    if (confirm(loc('Are you sure you want to delete this page?'))) {
+    if (confirm('Are you sure you want to delete this page?')) {
         location = 'index.cgi?action=delete_page;page_name=' + pageid;
     }
 }

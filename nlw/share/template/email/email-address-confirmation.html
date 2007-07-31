@@ -1,23 +1,23 @@
 [%# @COPYRIGHT@ -%]
-[% PROCESS system_name %]
 <html>
 <head>
- <title>[% loc('Please confirm your email address') %]</title>
+ <title>Please confirm your email address</title>
 </head>
 
 <body>
 
 <p>
-Welcome to [% system_name %].
+Welcome to [% PROCESS system_name %].
 </p>
 
 <p>
-[% loc('You signed up for a new account with our system and we need to confirm your email address.') %]
-[% loc('Please <a href="[_1]">click on this link to confirm your email address and choose a password.</a>', confirmation_uri) %]
+You signed up for a new account with our system and we need to confirm
+your email address.  Please <a href="[% confirmation_uri %]">click on
+this link to confirm your email address and choose a password.</a>
 </p>
 
 <p>
-[% loc('We hope you enjoy using the Socialtext wiki.') %]
+We hope you enjoy using the Socialtext wiki.
 </p>
 
 [% BLOCK system_name -%]

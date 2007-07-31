@@ -22,8 +22,7 @@
 [% BLOCK recent_changes_link %]
 <div>
     <a href="/lite/changes/[% workspace_name %]/[% category | uri |html %]">
-        [% SET escaped_str = category | html %]
-        [% loc("Recent changes in [_1] category", escaped_str) %]
+        Recent changes in [% category | html %] category
     </a>
 </div>
 <hr>

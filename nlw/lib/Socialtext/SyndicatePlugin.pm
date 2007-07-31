@@ -12,7 +12,6 @@ use Socialtext::Search::AbstractFactory;
 use Socialtext::Syndicate::Feed;
 use Socialtext::Watchlist;
 use Socialtext::User;
-use Socialtext::l10n qw (loc);
 
 =head1 NAME
 
@@ -39,7 +38,7 @@ parameters.
 =cut
 
 sub class_id { 'syndicate' }
-const class_title => loc('Syndicate');
+const class_title => 'Syndicate';
 const cgi_class => 'Socialtext::Syndicate::CGI';
 const default_category => 'Recent Changes';
 const default_type => 'RSS20';
@@ -139,7 +138,7 @@ is unset for the user, the default, 10, is used.
 sub syndication_depth {
     my $self = shift;
     my $p = $self->new_preference('syndication_depth');
-    $p->query(loc('How many posts should be displayed in outgoing feeds?'));
+    $p->query('How many posts should be displayed in outgoing feeds?');
     $p->type('pulldown');
     my $choices = [
         5   => '5',
@@ -302,14 +301,14 @@ sub _search_feed_title {
     my $self = shift;
     my $query = shift;
 
-    return loc('[_1]: search for [_2]', $self->hub->current_workspace->title, $query);
+    return $self->hub->current_workspace->title . ": search for $query";
 }
 
 sub _watchlist_feed_title {
     my $self = shift;
     my $user = shift;
 
-    return loc('[_1]: watchlist for [_2]', $self->hub->current_workspace->title, $user->best_full_name);
+    return $self->hub->current_workspace->title . ": watchlist for " . $user->best_full_name;
 }
 
 sub _page_feed_title {
@@ -336,7 +335,7 @@ sub _watchlist_html_link {
 
     return $self->hub->current_workspace->uri
         . Socialtext::AppConfig->script_name
-        . '?$page';
+        . "?$page";
 }
 
 sub _search_html_link {

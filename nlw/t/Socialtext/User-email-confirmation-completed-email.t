@@ -15,11 +15,12 @@ BEGIN {
 
 plan tests => 8;
 
+use Socialtext::EmailSender;
 use Socialtext::Account;
 use Socialtext::User;
 use Socialtext::Workspace;
 
-$Socialtext::EmailSender::Base::SendClass = 'Test';
+Socialtext::EmailSender->TestModeOn();
 
 my $user = Socialtext::User->create(
     username      => 'devnull9@socialtext.net',

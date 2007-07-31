@@ -14,22 +14,17 @@ BEGIN {
 
 plan tests => 41;
 
-use Socialtext::EmailSender::Factory;
 use File::Copy ();
 use File::Slurp ();
 use File::Temp ();
 
-use_ok('Socialtext::EmailSender::Factory');
-
-$Socialtext::EmailSender::Base::SendClass = 'Test';
+use_ok('Socialtext::EmailSender');
+Socialtext::EmailSender->TestModeOn();
 
 {
-
     Email::Send::Test->clear();
 
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
-
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => 'test1@example.com',
        from      => 'test2@example.com',
        subject   => 'test subject',
@@ -66,9 +61,7 @@ $Socialtext::EmailSender::Base::SendClass = 'Test';
 {
     Email::Send::Test->clear();
 
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
-
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => [ 'test1@example.com', 'test2@example.com' ],
        subject   => 'test',
        text_body => 'small body',
@@ -84,9 +77,8 @@ $Socialtext::EmailSender::Base::SendClass = 'Test';
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => 'test1@example.com',
        cc        => 'test2@example.com',
        from      => 'test2@example.com',
@@ -103,9 +95,8 @@ $Socialtext::EmailSender::Base::SendClass = 'Test';
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => [ 'test1@example.com', 'test2@example.com' ],
        from      => 'test2@example.com',
        subject   => 'test',
@@ -120,9 +111,8 @@ $Socialtext::EmailSender::Base::SendClass = 'Test';
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => 'test1@example.com',
        subject   => 'test',
        html_body => '<a href="#">hello</a>',
@@ -144,13 +134,11 @@ TODO:
 
     Email::Send::Test->clear();
     binmode STDOUT, ':utf8';
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
-
 
     my $subject = "utf-8 \x80 @! \x{5000}";
     $subject .= 'x x' x 30;
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => [ 'test1@example.com', 'test2@example.com' ],
        subject   => $subject,
        text_body => 'small body',
@@ -162,9 +150,8 @@ TODO:
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to        => 'test1@example.com',
        subject   => 'test',
        text_body => 'hello',
@@ -214,9 +201,8 @@ File::Copy::copy( 't/attachments/socialtext-logo-30.gif', $tempdir )
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to          => 'test1@example.com',
        subject     => 'test',
        text_body   => 'hello',
@@ -247,9 +233,8 @@ File::Copy::copy( 't/attachments/socialtext-logo-30.gif', $tempdir )
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to          => 'test1@example.com',
        subject     => 'test',
        text_body   => 'hello',
@@ -266,9 +251,8 @@ File::Copy::copy( 't/attachments/socialtext-logo-30.gif', $tempdir )
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to          => 'test1@example.com',
        subject     => 'test',
        text_body   => 'hello',
@@ -297,9 +281,8 @@ File::Copy::copy( 't/attachments/socialtext-logo-30.gif', $tempdir )
 
 {
     Email::Send::Test->clear();
-    my $email_sender = Socialtext::EmailSender::Factory->create('en');
 
-    $email_sender->send(
+    Socialtext::EmailSender->send(
        to          => 'test1@example.com',
        subject     => 'test',
        html_body   => 'has an image <img src="cid:socialtext-logo-30.gif" />',

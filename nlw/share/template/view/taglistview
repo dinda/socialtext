@@ -3,7 +3,7 @@
 <div id="st-page-wiki-title">[% wiki.title %]</div>
 <div>
     <div id="st-list-title">
-        [% loc('All Tags in [_1]', wiki.title) %]
+        All Tags in [% wiki.title %]
     </div>
     <div id="st-actions-bar-spacer-clear">&nbsp;</div>
 </div>
@@ -17,8 +17,8 @@
   [% IF allow_delete %]
      <th></th>
   [% END %]
-     <th>[% loc('Tag') %]</th>
-     <th>[% loc('Pages') %]</th>
+     <th>Tag</th>
+     <th>Pages</th>
     </tr>
    </thead>
    <tbody>

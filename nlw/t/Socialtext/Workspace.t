@@ -1,15 +1,12 @@
 #!perl
 # @COPYRIGHT@
-use Test::Socialtext tests => 96;
+use Test::Socialtext tests => 86;
 
 use strict;
 use warnings;
 
-fixtures( 'rdbms_clean', 'help' );
+fixtures( 'rdbms_clean' );
 
-use mocked qw(Socialtext::l10n system_locale);
-
-use utf8;
 use Socialtext::EmailAlias;
 use Socialtext::File;
 use Socialtext::Paths;
@@ -19,7 +16,7 @@ use Socialtext::Workspace;
 my $has_image_magick = eval { require Image::Magick; 1 };
 
 {
-    is( Socialtext::Workspace->Count(), 1, 'Only help workspace in DBMS yet' );
+    is( Socialtext::Workspace->Count(), 0, 'no workspaces in DBMS yet' );
 }
 
 {
@@ -44,7 +41,7 @@ my $has_image_magick = eval { require Image::Magick; 1 };
         'system user is not in any workspaces' );
     ok( Socialtext::EmailAlias::find_alias( $ws->name ), 'found alias for new workspace' );
 
-    is( Socialtext::Workspace->Count(), 2, 'workspace count is 2' );
+    is( Socialtext::Workspace->Count(), 1, 'workspace count is 1' );
 
     my $hostname = Socialtext::AppConfig->web_hostname;
     like( $ws->uri, qr{\Qhttp://$hostname/short-name/\E}i,
@@ -185,8 +182,8 @@ sub check_errors {
         qr/one of top, bottom, or replace/,
         qr/title is a required field/,
         ) {
-            my $errors = join ', ', $e->messages;           
-            like $errors, $regex, "got error message matching $regex";
+        ok( ( grep { /$regex/ } $e->messages ),
+            "got error message matching $regex" );
     }
 
  TODO:
@@ -304,8 +301,8 @@ sub check_errors {
 
 {
     my $user = Socialtext::User->create(
-        username      => 'devnull11@socialtext.com',
-        email_address => 'devnull11@socialtext.com',
+        username      => 'devnull1@socialtext.com',
+        email_address => 'devnull1@socialtext.com',
         password      => 'd3vnu11l',
     );
     my $ws = Socialtext::Workspace->new( name => 'short-name-2' );
@@ -324,7 +321,7 @@ sub check_errors {
 }
 
 {
-    my $user = Socialtext::User->new( username => 'devnull11@socialtext.com' );
+    my $user = Socialtext::User->new( username => 'devnull1@socialtext.com' );
     my $ws = Socialtext::Workspace->create(
         name               => 'short-name-3',
         title              => 'Longer Title 3',
@@ -450,47 +447,6 @@ CHANGE_WORKSPACE_TITLE: {
           'original front page has expected content after rename to original title' );
 }
 
-TITLE_IS_VALID: {
-    #
-    # Check length boundary conditions.
-    #
-    
-    ok( ! Socialtext::Workspace->TitleIsValid( title => 'a'),
-        'Too-short workspace title fails'
-    );
-
-    ok( ! Socialtext::Workspace->TitleIsValid( title => ('a' x 65) ),
-        'Too-long workspace title fails'
-    );
-
-    ok( Socialtext::Workspace->TitleIsValid( title => 'aa' ),
-        'Workspace title of exactly 2 characters succeeds'
-    );
-    
-    ok( Socialtext::Workspace->TitleIsValid( title => ('a' x 64) ),
-        'Workspace title of exactly 64 characters succeeds'
-    );
-
-    #
-    # Check the title which had the utf8 characters.
-    #
-    ok( ! Socialtext::Workspace->TitleIsValid( title => 'あ'),
-        'Too-short workspace utf8 title fails'
-    );
-
-    ok( ! Socialtext::Workspace->TitleIsValid( title => ('あ' x 29) ),
-        'Too-long workspace utf8 title fails after URL encoding'
-    );
-
-    ok( Socialtext::Workspace->TitleIsValid( title => 'ああ' ),
-        'Workspace title of exactly 2 utf8 characters succeeds'
-    );
-    
-    ok( Socialtext::Workspace->TitleIsValid( title => ('あ' x 28) ),
-        'Workspace title of exactoly 28 utf8 charaters succeeds'
-    );
-}
-
 NAME_IS_VALID: {
 
     # Check an invalid name, then a valid name, to make
@@ -603,12 +559,3 @@ NAME_IS_VALID: {
     }
 }
 
-HELP_WORKSPACE_WITH_WS_MISSING: {
-    system_locale('xx');  # Set locale to xx, but help-xx doesn't exist yet.
-
-    my $ws1 = Socialtext::Workspace->help_workspace();
-    is( $ws1->name, "help", "help_workspace() is help" );
-
-    my $ws2 = Socialtext::Workspace->new( name => "help" );
-    is( $ws2->name, "help", "new(name => help) DTRT" );
-}

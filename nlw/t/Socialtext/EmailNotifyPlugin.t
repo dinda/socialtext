@@ -27,7 +27,7 @@ Readonly my $HUB                  => new_hub($WORKSPACE);
 use_ok( "Socialtext::EmailNotifyPlugin" );
 use_ok( "Socialtext::EmailNotifier" );
 
-$Socialtext::EmailSender::Base::SendClass = 'Test';
+Socialtext::EmailSender->TestModeOn();
 
 create_system_user();
 

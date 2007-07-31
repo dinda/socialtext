@@ -13,11 +13,11 @@ BEGIN {
     }
 }
 
-plan tests => 10;
+plan tests => 12;
 
 use Socialtext::EmailNotifier;
 
-$Socialtext::EmailSender::Base::SendClass = 'Test';
+Socialtext::EmailSender->TestModeOn();
 
 # used when setting mtime on varous files to force notify runs
 my $ten_days_ago = time - (86400 * 10);
@@ -80,20 +80,19 @@ my $hub = new_hub('admin');
     my @parts = $emails[0]->parts;
 
     my $page_uri = $page->uri;
-
     for my $part (@parts) {
         like(
             $part->body, qr/\Q$page_uri\E/i,
             'Recent changes includes URI of page that was just created'
         );
+
+        like(
+            $part->body,
+            qr{admin/emailprefs},
+            'Preferences url action is correct'
+        );
     }
 
-    like(
-        $parts[0]->body,
-        qr{admin/emailprefs},
-        'Preferences url action is correct'
-    );
- 
     like(
         $parts[0]->body,
         qr{\n$page_title_one\n  http},
@@ -107,11 +106,11 @@ my $hub = new_hub('admin');
     );
 
     # XXX shouldn't the user get things in their own timezone
-#    like(
-#        $parts[0]->body,
-#        qr{GMT\)\n\n$page_title_two\n},
-#        'Only one blank line between entries'
-#    );
+    like(
+        $parts[0]->body,
+        qr{GMT\)\n\n$page_title_two\n},
+        'Only one blank line between entries'
+    );
 }
 
 {

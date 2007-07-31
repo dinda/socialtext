@@ -68,7 +68,7 @@ Wikiwyg.Widgets.mapMultipleSameWidgets = function(widget_parse) {
 
 // Shortcut globals.
 Wikiwyg.Toolbar.Socialtext.prototype.setup_widgets = function() {
-    this.setup_widgets_pulldown(loc('Insert...'));
+    this.setup_widgets_pulldown('Insert...');
 }
 
 var widgets_list = Wikiwyg.Widgets.widgets;
@@ -184,37 +184,18 @@ proto.attachTooltip = function(elem) {
         : widget_data[this.currentWidget.id].title['default']
       : widget_data[this.currentWidget.id].title;
 
-    var params = title.match(/\$(\w+)/g);
-    var newtitle = title; 
-    var newtitle_args = "";
-    if ( params != null ){
-        for ( i = 0; i < params.length; i++) {
-            params[i] = params[i].replace(/^\$/, "");
-            var text = this.currentWidget[params[i]];
-            if (text == '') {
-                if (params[i] == 'page_title')
-                    text = Page.page_title;
-                else if (params[i] == 'workspace_id')
-                    text = Page.wiki_title;
-            }
-            if (text != '') {
-                newtitle = newtitle.replace("\$" + params[i], "[_" + ( i + 1 ) + "]");
-                newtitle_args += ", \"" + text + "\"";
-            }
+    var self = this;
+    title = title.replace(/\$(\w+)/g, function() {
+        var text = self.currentWidget[arguments[1]];
+        if (text == '') {
+            if (arguments[1] == 'page_title')
+                text = Page.page_title;
+            else if (arguments[1] == 'workspace_id')
+                text = Page.wiki_title;
         }
-    }
-    if (newtitle_args != "") {
-        newtitle = eval("loc(\"" + newtitle + "\"" + newtitle_args + ")");
-        if ( newtitle == 'undefined' ){
-            newtitle = title;
-        }
-    }else{
-        newtitle = eval("loc(\"" + newtitle + "\")");
-        if ( newtitle == 'undefined' ){
-            newtitle = title;
-        }
-    }
-    elem.setAttribute("title", newtitle);
+        return text;
+    });
+    elem.setAttribute("title", title);
 
     this.attachWidgetHandlers(elem);
 }
@@ -246,7 +227,7 @@ proto.attachWidgetHandlers = function(elem) {
             if ( e.target.getAttribute("mouseup") == 0 ) {
                 if ( Wikiwyg.Widgets.widget_editing > 0 )
                     return;
-                alert(loc("This is not an editable widget. Please edit it in advanced mode."))
+                alert("This is not an editable widget. Please edit it in advanced mode.")
             }
             e.target.setAttribute("mouseup", 1);
         });
@@ -430,7 +411,7 @@ proto.parseWidget = function(widget) {
         return widget_parse;
     }
     else
-        throw(loc('Unexpected Widget >>[_1]<< in parseWidget', widget));
+        throw('Unexpected Widget >>' + widget + '<< in parseWidget');
 }
 
 for (var i = 0; i < widgets_list.length; i++) {
@@ -592,7 +573,16 @@ proto.getWidgetImageText = function(widget_text) {
                 }
             }
         }
-        text = this.getWidgetImageLocalizeText(widget, text);
+
+        var fields = text.match(new RegExp('%\\S+', 'g'));
+        if (fields)
+            for (var i=0; i < fields.length; i++) {
+                var field = fields[i].slice(1);
+                if (widget[field])
+                    text = text.replace(new RegExp('%' + field), widget[field]);
+                else
+                    text = text.replace(new RegExp('%' + field), '');
+            }
     }
     catch (E) {
         // parseWidget can throw an error
@@ -600,34 +590,6 @@ proto.getWidgetImageText = function(widget_text) {
     }
 
     return text;
-}
-
-proto.getWidgetImageLocalizeText = function(widget, text) {
-    var params = text.match(/%(\w+)/g);
-    var newtext = text; 
-    var newtext_args = "";
-    if ( params != null ){
-        for ( i = 0; i < params.length; i++) {
-            params[i] = params[i].replace(/^%/, "");
-            var mytext = widget[params[i]];
-            if (mytext != '') {
-                newtext = newtext.replace("%" + params[i], "[_" + ( i + 1 ) + "]");
-                newtext_args += ", \"" + mytext + "\"";
-            }
-        }
-    }
-    if (newtext_args != "") {
-        newtext = eval("loc(\"" + newtext + "\"" + newtext_args + ")");
-        if ( newtext == 'undefined' ){
-            newtext = text;
-        }
-    }else{
-        newtext = eval("loc(\"" + newtext + "\")");
-        if ( newtext == 'undefined' ){
-            newtext = text;
-        }
-    }
-    return newtext;
 }
 
 proto.getWidgetImageUrl = function(widget_text) {
@@ -727,8 +689,8 @@ proto.validate_fields = function(widget, values) {
         for (var i = 0; i < required.length; i++) {
             var field = required[i];
             if (! values[field].length) {
-                var label = loc(Wikiwyg.Widgets.fields[field]);
-                throw(loc("'[_1]' is a required field", label));
+                var label = Wikiwyg.Widgets.fields[field];
+                throw("'" + label + "' is a required field");
             }
         }
     }
@@ -739,13 +701,12 @@ proto.validate_fields = function(widget, values) {
         labels = [];
         for (var i = 0; i < require.length; i++) {
             var field = require[i];
-            var label = loc(Wikiwyg.Widgets.fields[field]);
-            labels.push(label);
+            labels.push(Wikiwyg.Widgets.fields[field]);
             if (values[field].length)
                 found++;
         }
         if (! found)
-            throw(loc("Requires one of: [_1]", labels.join(', ')));
+            throw("Requires one of: " + labels.join(', '));
     }
 
     for (var field in values) {
@@ -759,8 +720,8 @@ proto.validate_fields = function(widget, values) {
             fieldOk = values[field].match(regexp);
 
         if (!fieldOk) {
-            var label = loc(Wikiwyg.Widgets.fields[field]);
-            throw(loc("'[_1]' has an invalid value", label));
+            var label = Wikiwyg.Widgets.fields[field];
+            throw("'" + label + "' has an invalid value");
         }
     }
 
@@ -775,7 +736,7 @@ proto.validate_fields = function(widget, values) {
 
 proto.require_page_if_workspace = function(values) {
     if (values.workspace_id.length && ! values.page_title.length)
-        throw(loc("Page Title required if Workspace Id specified"));
+        throw("Page Title required if Workspace Id specified");
 }
 
 proto.hookLookaheads = function(dialog) {
@@ -1073,14 +1034,14 @@ Widget.Lightbox.Socialtext.prototype.toggleOptions = function() {
     var panel = document.getElementById('st-widgets-moreoptionspanel');
     var icon = document.getElementById('st-widgets-optionsicon');
     if (panel) {
-        if (link.innerHTML == loc('More options')) {
+        if (link.innerHTML == 'More options') {
             panel.style.display = "block";
-            link.innerHTML = loc('Fewer options');
+            link.innerHTML = 'Fewer options';
             icon.src = nlw_make_static_path('/images/st/hide_more.gif');
         }
         else {
             panel.style.display = "none";
-            link.innerHTML = loc('More options');
+            link.innerHTML = 'More options';
             icon.src = nlw_make_static_path('/images/st/show_more.gif');
         }
     }
