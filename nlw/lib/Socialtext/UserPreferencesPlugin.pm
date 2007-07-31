@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use base 'Socialtext::Plugin';
+use Socialtext::l10n qw( loc loc_lang valid_code );
 
 use Class::Field qw( const field );
 use Socialtext::Exceptions qw( data_validation_error );
@@ -30,7 +31,7 @@ sub preferences_settings {
 
     my $class_id = $self->cgi->preferences_class_id;
     if ( $class_id eq '' ) {
-        my $message = "Preferences Class ID is missing";
+        my $message = loc("Preferences Class ID is missing");
         data_validation_error errors => [$message];
     }
 
@@ -42,7 +43,7 @@ sub preferences_settings {
 
     if ( $self->cgi->Button ) {
         $self->save($object);
-        $self->message('Preferences saved');
+        $self->message(loc('Preferences saved'));
     }
 
     my $prefs = $self->preferences->new_for_user(
@@ -60,9 +61,20 @@ sub preferences_settings {
         settings_table_id => 'settings-table',
         settings_section  => $settings_section,
         hub               => $self->hub,
-        display_title     => 'Preferences: ' . $object->class_title,
+        display_title     => loc('Preferences: [_1]',loc($object->class_title)),
         pref_list         => $self->_get_pref_list,
     );
+}
+
+sub _is_favorites_page_title_valid {
+    my $self = shift;
+    my $name = shift;
+
+    if ( Socialtext::Page->_MAX_PAGE_ID_LENGTH
+         < length Socialtext::Page->name_to_id($name) ) {
+        return 0;
+    }
+    return 1;
 }
 
 # XXX this method may not have test coverage
@@ -78,8 +90,28 @@ sub save {
         if (/^${class_id}__(.*)/) {
             my $pref = $1;
             $pref =~ s/-boolean$//;
+
+            # immediately show the new locale if it is changed
+            if ($pref eq 'locale') {
+                if (valid_code($cgi{$_})) {
+                    loc_lang($cgi{$_});
+                }
+                else {
+                    # Find the old locale to re-save from pkg name
+                    ($cgi{$_} = ref(loc_lang)) =~ s/.+:://;
+                }
+            }
+
             $settings->{$pref} = $cgi{$_}
               unless exists $settings->{$pref};
+
+            if( $class_id eq 'favorites' ) {
+                if(! $self->_is_favorites_page_title_valid($settings->{$pref})) {
+                    my $message = loc("Page title is too long after URL encoding");
+                    $self->add_error($message);
+                    return;
+                }
+            }
         }
     }
     if (keys %$settings) {

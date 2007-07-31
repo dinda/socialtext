@@ -38,6 +38,7 @@ use Socialtext::File;
 use Socialtext::File::Copy::Recursive qw(dircopy);
 use Socialtext::Helpers;
 use Socialtext::Image;
+use Socialtext::l10n qw(loc system_locale);
 use Socialtext::Log qw( st_log );
 use Socialtext::Paths;
 use Socialtext::String;
@@ -51,6 +52,7 @@ use Socialtext::MultiCursor;
 use Socialtext::User;
 use Socialtext::UserWorkspaceRole;
 use Socialtext::WorkspaceBreadcrumb;
+use Socialtext::Page;
 use URI;
 
 field breadcrumbs => '';
@@ -104,21 +106,61 @@ sub create {
     return $self;
 }
 
-# more or less copied from Socialtext::WorkspacesPlugin
+# Load the right help workspace for the current system locale.
+sub help_workspace {
+    my ( $class, %args ) = @_;
+    my $ws;
+    delete $args{name};
+    for my $locale ( system_locale(), "en" ) {
+        my $ws_name = $locale eq 'en' ? "help" : "help-$locale";
+        $ws ||= $class->new( name => $ws_name, %args );
+    }
+    return $ws;
+}
+
 sub _copy_default_pages {
     my $self = shift;
-
     my ( $main, $hub ) = $self->_main_and_hub();
 
-    my $code_base = Socialtext::AppConfig->code_base();
-    my @dirs = (
-        Socialtext::File::catdir( $code_base, 'doc-pages', 'tutorial' ),
-        Socialtext::File::catdir( $code_base, 'doc-pages', 'default' ),
+    # Load up the help workspace, and a corresponding hub.
+    my $help      = Socialtext::Workspace->help_workspace() || return;
+    my $help_hub = Socialtext->new->load_hub(
+        current_workspace => $help,
+        current_user      => $hub->current_user,
     );
-    for my $dir ( @dirs ) {
-        Socialtext::Pages->AddPagesFromDirectory(
-            hub       => $hub,
-            directory => $dir,
+    $help_hub->registry->load;
+
+    # Get all the default pages from the help workspace
+    my @pages = $help_hub->category->get_pages_for_category( "Welcome" );
+    push @pages, $help_hub->category->get_pages_for_category( "Top Page" );
+
+    # Duplicate the pages
+    for my $page (@pages) {
+        my $title = $page->title;
+
+        # Top Page is special.  We need to name the page after the current
+        # workspace, not "Top Page", and we need to add the current workspace
+        # title to the page content (there's some TT2 in the wikitext).
+        if ( $page->id eq 'top_page' ) {
+            $title = $self->title;
+            my $content = $page->content;
+            my $content_formatted = $hub->template->process(
+                \$content,
+                workspace_title => $self->title
+            );
+            $page->content($content_formatted);
+            $page->metadata->Category([]);
+        } else {
+            $page->metadata->delete_category("Top Page");
+            $page->metadata->add_category("Recent Changes");
+        }
+
+        $page->duplicate(
+            $self,        # Destination workspace
+            $title,
+            "keep tags",
+            "keep attachments",
+            $title,      # Ok to overwrite existing pages named $title
         );
     }
 }
@@ -272,14 +314,25 @@ sub _validate_and_clean_data {
     }
 
     my @errors;
-    for my $k ( qw( name title ) ) {
-        $p->{$k} = Socialtext::String::trim( $p->{$k} )
-            if defined $p->{$k};
+    {
+        $p->{name} = Socialtext::String::trim( $p->{name} )
+            if defined $p->{name};
 
-        if ( ( exists $p->{$k} or $is_create )
+        if ( ( exists $p->{name} or $is_create )
              and not
-             ( defined $p->{$k} and length $p->{$k} ) ) {
-            push @errors, "Workspace $k is a required field.";
+             ( defined $p->{name} and length $p->{name} ) ) {
+            push @errors, loc("Workspace name is a required field.");
+        }
+    }
+
+    {
+        $p->{title} = Socialtext::String::trim( $p->{title} )
+            if defined $p->{title};
+
+        if ( ( exists $p->{title} or $is_create )
+             and not
+             ( defined $p->{title} and length $p->{title} ) ) {
+            push @errors, loc("Workspace title is a required field.");
         }
     }
 
@@ -290,33 +343,33 @@ sub _validate_and_clean_data {
                                             errors => \@errors );
 
         if ( Socialtext::EmailAlias::find_alias( $p->{name} ) ) {
-            push @errors, "The workspace name you chose, $p->{name}, is already in use as an email alias.";
+            push @errors, loc("The workspace name you chose, [_1], is already in use as an email alias.", $p->{name});
         }
         
         if ( Socialtext::Workspace->new( name => $p->{name} ) ) {
-            push @errors, "The workspace name you chose, $p->{name}, is already in use by another workspace.";
+            push @errors, loc("The workspace name you chose, [_1], is already in use by another workspace.", $p->{name});
         }
     }
 
-    if ( defined $p->{title}
-         and ( length $p->{title} < 2 or length $p->{title} > 64 )
-       ) {
-        push @errors, 'Workspace title must be between 2 and 64 characters long.';
+    if ( defined $p->{title} ) {
+
+        Socialtext::Workspace->TitleIsValid( title => $p->{title},
+                                            errors => \@errors );
     }
 
     if ( $p->{incoming_email_placement}
          and $p->{incoming_email_placement} !~ /^(?:top|bottom|replace)$/ ) {
-        push @errors, 'Incoming email placement must be one of top, bottom, or replace.';
+        push @errors, loc('Incoming email placement must be one of top, bottom, or replace.');
     }
 
     if ( $p->{skin_name}
          && ! 1 # Socialtext::Skin->new( name => $p->{skin_name} )
        ) {
-        push @errors, "The skin you specified, $p->{skin_name}, does not exist.";
+        push @errors, loc("The skin you specified,[_1], does not exist.", $p->{skin_name});
     }
 
     if ( $is_create and not $p->{account_id} ) {
-        push @errors, "An account must be specified for all new workspaces.";
+        push @errors, loc("An account must be specified for all new workspaces.");
     }
 
     data_validation_error errors => \@errors if @errors;
@@ -328,6 +381,33 @@ sub _validate_and_clean_data {
     if ($is_create) {
         $p->{created_by_user_id} ||= Socialtext::User->SystemUser()->user_id();
     }
+}
+
+
+sub TitleIsValid {
+    my $class = shift;
+
+    my %p = Params::Validate::validate( @_, {
+        title    => SCALAR_TYPE,
+        errors  => ARRAYREF_TYPE( default => [] ),
+    } );
+
+    my $title    = $p{title};
+    my $errors  = $p{errors};
+
+    if ( defined $title
+         and ( length $title < 2 or length $title > 64 )
+       ) {
+        push @{$errors}, loc('Workspace title must be between 2 and 64 characters long.');
+    }
+
+    if ( defined $title
+         and ( length Socialtext::Page->name_to_id($title) > Socialtext::Page->_MAX_PAGE_ID_LENGTH() )
+       ) {
+        push @{$errors}, loc('Workspace title is too long after URL encoding');
+    }
+
+    return @{$errors} > 0 ? 0 : 1;
 }
 
 
@@ -350,14 +430,12 @@ sub NameIsValid {
 
     if ( $name !~ /^[A-Za-z0-9_\-]{3,30}$/ ) {
         push @{$errors},
-            'Workspace name must be between 3 and 30 characters long, and'
-            . ' must contain only upper- or lower-case letters, numbers,'
-            . ' underscores, and dashes.';
+            loc('Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes.');
     }
 
     if ( $ReservedNames{$name} || ($name =~ /^st_/i) ) {
         push @{$errors},
-            "'$name' is a reserved workspace name and cannot be used.";
+            loc("'[_1]' is a reserved workspace name and cannot be used.", $name);
     }
 
     return @{$errors} > 0 ? 0 : 1;
@@ -466,7 +544,7 @@ sub logo_filename {
 
         my $mime_type = MIME::Types->new()->mimeTypeOf( $p{filename} );
         unless ( $mime_type and $ValidTypes{$mime_type} ) {
-            data_validation_error errors => [ "Logo file must be a gif, jpeg, or png file." ];
+            data_validation_error errors => [ loc("Logo file must be a gif, jpeg, or png file.") ];
         }
 
         my $new_file = $self->_new_logo_filename( $ValidTypes{$mime_type} );
@@ -486,7 +564,7 @@ sub logo_filename {
         };
         if ($@) {
             data_validation_error errors =>
-                ['Unable to process logo file. Is it an image?'];
+                [loc('Unable to process logo file. Is it an image?')];
         }
 
         my $old_logo_file = $self->logo_filename();
@@ -759,6 +837,8 @@ sub comment_form_custom_fields {
             workspace_admin    => [ qw( read edit attachments comment delete email_in email_out admin_workspace ) ],
         },
     );
+
+    my @PermissionSetsLocalize = (loc('public'), loc('member-only'), loc('authenticated-user-only'), loc('public-read-only'), loc('public-comment-only'), loc('public-authenticate-to-edit') ,loc('intranet'));
 
     # Impersonators should be able to do everything members can do, plus
     # impersonate.
@@ -1875,6 +1955,27 @@ PARAMS can include:
 
 =back
 
+=head2 Socialtext::Workspace->TitleIsValid(PARAMS)
+
+Validates whether a workspace title is valid according to syntax rules.
+It also checks the title against a list of reserved titles.  The method
+returns 1 if the title is valid, 0 if it is not.
+
+If the title is invalid and an arrayref is passed as errors, a
+description of each violated rule will be stored in the arrayref.
+
+It DOES NOT check to see if a workspace exists.
+
+PARAMS can include:
+
+=over 4
+
+=item * title => $title - required
+
+=item * errors => \@errors - optional, an arrayref where violated constraints will be put
+
+=back
+
 =head2 Socialtext::Workspace->create(PARAMS)
 
 Attempts to create a workspace with the given information and returns
@@ -1939,6 +2040,12 @@ If "skip_default_pages" is true, then the usual tutorial and default
 home page for the workspace will not be created. This option is
 primarily intended for one-time use when importing existing workspaces
 into the DBMS.
+
+=head2 Socialtext::Workspace->help_workspace( ARGS )
+
+Return the help workspace for the current system-wide locale().  This method
+takes the same arguments as new(), sans the name argument, which will be
+ignored.
 
 =head2 $workspace->update(PARAMS)
 

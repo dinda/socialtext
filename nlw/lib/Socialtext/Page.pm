@@ -19,7 +19,8 @@ use Socialtext::Formatter::AbsoluteLinkDictionary;
 use Socialtext::Paths;
 use Socialtext::PageMeta;
 use Socialtext::Search::AbstractFactory;
-use Socialtext::EmailSender;
+use Socialtext::EmailSender::Factory;
+use Socialtext::l10n qw(loc system_locale);
 
 use Carp ();
 use Class::Field qw( field );
@@ -42,7 +43,9 @@ field full_uri =>
 field database_directory => -init =>
     'Socialtext::Paths::page_data_directory( $self->hub->current_workspace->name )';
 
-sub _MAX_PAGE_ID_LENGTH () { 255 }
+sub _MAX_PAGE_ID_LENGTH () {
+    return 255;
+}
 
 =head1 METHODS
 
@@ -658,7 +661,7 @@ sub _comment_attribution {
 
     if (    my $email    = $self->hub->current_user->email_address
         and my $utc_date = $self->metadata->get_date ) {
-        return "\n_contributed by {user: $email} on {date: $utc_date}_\n";
+        return "\n_".loc("contributed by {user: [_1]} on {date: [_2]}", $email, $utc_date)."_\n";
     }
 
     return '';
@@ -677,7 +680,7 @@ sub store {
     # XXX Why are we accessing _MAX_PAGE_ID_LENGTH, which implies to me
     # a very private piece of data.
     if (Socialtext::Page->_MAX_PAGE_ID_LENGTH < length($self->id)) {
-        my $message = "Page title is too long after URL encoding";
+        my $message = loc("Page title is too long after URL encoding");
         Socialtext::Exception::DataValidation->throw( errors => [ $message ] );
     }
 
@@ -727,7 +730,7 @@ sub is_system_page {
 
 sub content_or_default {
     my $self = shift;
-    return $self->content || 'Replace this text with your own.   ';
+    return $self->content || loc('Replace this text with your own.') . '   ';
 }
 
 sub content {
@@ -879,17 +882,6 @@ sub size {
     (stat($self->file_path))[7];
 }
 
-sub is_default {
-    my $self = shift;
-    return 1
-        if -f Socialtext::File::catfile(
-            Socialtext::AppConfig->code_base(),
-            'doc-pages',
-            'tutorial',
-            $self->id . '.wiki'
-        );
-}
-
 sub modified_time {
     my $self = shift;
     return $self->{modified_time} if defined $self->{modified_time};
@@ -934,12 +926,12 @@ sub age_in_english {
     my $self = shift;
     my $age = $self->age_in_seconds;
     my $english =
-    $age < 60 ? $age . ' seconds' :
-    $age < 3600 ? int($age / 60) . ' minutes' :
-    $age < 86400 ? int($age / 3600) . ' hours' :
-    $age < 604800 ? int($age / 86400) . ' days' :
-    $age < 2592000 ? int($age / 604800) . ' weeks' :
-    int($age / 2592000) . ' months';
+    $age < 60 ? loc('[_1] seconds', $age) :
+    $age < 3600 ? loc('[_1] minutes', int($age / 60)) :
+    $age < 86400 ? loc('[_1] hours', int($age / 3600)) :
+    $age < 604800 ? loc('[_1] days', int($age / 86400)) :
+    $age < 2592000 ? loc('[_1] weeks', int($age / 604800)) :
+    loc('[_1] months', int($age / 2592000));
 
     $english =~ s/^(1 .*)s$/$1/;
     return $english;
@@ -1206,7 +1198,10 @@ sub rename {
     );
 
     if ($return) {
-        $self->content("Page renamed to [$new_page_title]");
+        my $localized_str = loc("Page renamed to [_1]", $new_page_title);
+        $localized_str =~ s/^Page\ renamed\ to\ /Page\ renamed\ to\ \[/;
+        $localized_str =~ s/$/\]/;
+        $self->content($localized_str);
         $self->store( user => $self->hub->current_user );
     }
 
@@ -1274,7 +1269,9 @@ sub send_as_email {
         [ map { $_->full_path() } $self->_attachments ]
             if $p{include_attachments};
 
-    Socialtext::EmailSender->send(%email);
+    my $locale = system_locale();
+    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
+    $email_sender->send(%email);
 }
 
 sub is_in_category {

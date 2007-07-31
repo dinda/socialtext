@@ -90,6 +90,12 @@ sub copy_to_workspace {
             page_title_bad => 1,
         );
     }
+    elsif ( Socialtext::Page->_MAX_PAGE_ID_LENGTH
+            < length Socialtext::Page->name_to_id( $self->cgi->new_title ) ) {
+        return $self->copy_to_workspace_popup(
+            page_title_too_long => 1,
+        );
+    }
     elsif ( $self->_duplicate($target_ws) ) {
         return $self->template_process('close_window.html');
     }
@@ -119,7 +125,6 @@ sub mass_copy_to {
     my $log_page = $dest_hub->pages->new_from_name($log_title);
     my $log = $log_page->content;
     for my $page ($self->hub->pages->all) {
-        next if $page->is_default;
         $page->doctor_links_with_prefix($prefix);
         my $old_id = $page->id;
         my $old_name = $page->metadata->Subject;

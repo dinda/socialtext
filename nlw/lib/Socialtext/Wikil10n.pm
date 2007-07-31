@@ -2,6 +2,7 @@ package Socialtext::Wikil10n;
 # @COPYRIGHT@
 use strict;
 use warnings;
+use Encode qw(decode_utf8);
 use Socialtext::Resting;
 use Socialtext::System qw/shell_run/;
 use base 'Exporter';

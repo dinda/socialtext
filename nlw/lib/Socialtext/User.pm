@@ -17,6 +17,8 @@ use Email::Address;
 use Class::AlzaboWrapper;
 use Class::Field 'field';
 use Alzabo::SQLMaker::PostgreSQL qw(COUNT DISTINCT LOWER CURRENT_TIMESTAMP);
+use Socialtext::l10n qw(system_locale loc);
+use Socialtext::EmailSender::Factory;
 use base qw( Socialtext::MultiPlugin );
 
 use Readonly;
@@ -297,14 +299,30 @@ sub to_hash {
   return $hash;
 }
 
+sub _get_full_name {
+    my $full_name;
+    my $first_name = shift;
+    my $last_name = shift;
+
+    if (system_locale() eq 'ja') {
+        $full_name = join ' ', grep { defined and length }
+            $last_name, $first_name;
+    }
+    else {
+        $full_name = join ' ', grep { defined and length }
+        $first_name, $last_name;
+    }
+    return $full_name;
+}
+
+
 {
     Readonly my $spec => { workspace => WORKSPACE_TYPE( default => undef ) };
     sub best_full_name {
         my $self = shift;
         my %p = validate( @_, $spec );
 
-        my $name = join ' ', grep { defined and length }
-          $self->first_name, $self->last_name;
+        my $name = _get_full_name($self->first_name, $self->last_name);
 
         return $name if length $name;
 
@@ -343,8 +361,7 @@ sub name_and_email {
 sub FormattedEmail {
     my ( $class, $first_name, $last_name, $email_address ) = @_;
 
-    my $name = join ' ', grep { defined and length }
-          $first_name, $last_name;
+    my $name = _get_full_name($first_name, $last_name);
 
     # Dave suggested this improvement, but many of our templates anticipate
     # the previous format, so is being temporarily reverted
@@ -361,8 +378,7 @@ sub FormattedEmail {
 sub guess_real_name {
     my $self = shift;
 
-    my $name = join ' ', grep { defined and length }
-      $self->first_name, $self->last_name;
+    my $name = _get_full_name($self->first_name, $self->last_name);
 
     return $name if length $name;
 
@@ -1055,9 +1071,12 @@ sub send_confirmation_email {
         vars     => \%vars,
     );
 
-    Socialtext::EmailSender->send(
+    # XXX if we add locale per workspace, we have to get the locale from hub.
+    my $locale = system_locale();
+    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
+    $email_sender->send(
         to        => $self->name_and_email(),
-        subject   => 'Please confirm your email address to register with Socialtext',
+        subject   => loc('Please confirm your email address to register with Socialtext'),
         text_body => $text_body,
         html_body => $html_body,
     );
@@ -1081,7 +1100,7 @@ sub send_confirmation_completed_email {
             uri   => $ws->uri(),
         );
 
-        $subject = 'You can now login to the ' . $ws->title() . ' workspace';
+        $subject = loc('You can now login to the [_1] workspace', $ws->title());
     }
     else {
         # REVIEW - duplicated form ST::UserSettingsPlugin - where does
@@ -1096,7 +1115,7 @@ sub send_confirmation_completed_email {
             uri   => Socialtext::URI::uri( path => '/nlw/login.html' ),
         );
 
-        $subject = "You can now login to the $app_name application";
+        $subject = loc("You can now login to the [_1] application", $app_name);
     }
 
     $vars{user}      = $self;
@@ -1111,8 +1130,9 @@ sub send_confirmation_completed_email {
         template => 'email/email-address-confirmation-completed.html',
         vars     => \%vars,
     );
-
-    Socialtext::EmailSender->send(
+    my $locale = system_locale();
+    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
+    $email_sender->send(
         to        => $self->name_and_email(),
         subject   => $subject,
         text_body => $text_body,
@@ -1143,10 +1163,11 @@ sub send_password_change_email {
         template => 'email/password-change.html',
         vars     => \%vars,
     );
-
-    Socialtext::EmailSender->send(
+    my $locale = system_locale();
+    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
+    $email_sender->send(
         to        => $self->name_and_email(),
-        subject   => 'Please follow these instructions to change your Socialtext password',
+        subject   => loc('Please follow these instructions to change your Socialtext password'),
         text_body => $text_body,
         html_body => $html_body,
     );

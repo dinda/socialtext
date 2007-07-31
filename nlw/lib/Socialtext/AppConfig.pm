@@ -21,6 +21,8 @@ use YAML ();
 use YAML::Dumper;
 use Socialtext::Build qw( get_build_setting get_prefixed_dir );
 
+my $base_dir = Cwd::getcwd();
+
 # We capture this at load time and then will later check
 # $Current_user->uid to see if the user _when the module was loaded_
 # was root. We do not want to check $> later because under mod_perl
@@ -199,6 +201,19 @@ sub _default_db_user {
              : 'nlw' )
 }
 
+sub _default_locale {
+    return get_build_setting('default-locale') || 'en';
+}
+
+sub _default_workspace {
+    my $locale = _default_locale();
+    if ($locale eq 'en') {
+        return 'help';
+    } else {
+        return lc("help-$locale");
+    }
+}
+
 sub _user_root {
     if ( $ENV{HARNESS_ACTIVE} ) {
         my $dir;
@@ -209,8 +224,11 @@ sub _user_root {
             $dir =~ s{(.+t/tmp).*}{$1};
         }
         else {
-            my $base = File::Basename::dirname(__FILE__);
-            $dir = Cwd::abs_path( "$base/../../t/tmp" );
+            $dir = Cwd::abs_path( "$base_dir/t/tmp" );
+            unless ($dir) {
+                my $base = File::Basename::dirname(__FILE__);
+                $dir = Cwd::abs_path("$base/../../t/tmp");
+            }
         }
 
         die "Cannot find the user root with the HARNESS_ACTIVE env var set\n"
@@ -987,7 +1005,16 @@ Default: 0
 When a user logs into the system and the app does not know what
 workspace they want, this is default workspace they are sent to.
 
-Default: help
+=for code default => _default_workspace()
+
+=for code type => SCALAR_TYPE
+
+=head2 locale
+
+The two letter country code for the locale of your Socialtext install.  This
+usually defaults to English, but that can be changed at install time.
+
+=for code default => _default_locale()
 
 =for code type => SCALAR_TYPE
 

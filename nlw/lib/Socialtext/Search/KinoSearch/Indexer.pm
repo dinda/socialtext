@@ -23,17 +23,15 @@ field 'analyzer';
 field 'hub';
 field 'index';
 field 'indexer';
-field 'language';
 field 'speced' => 0;
 field 'workspace';
 
 sub new {
-    my ( $class, $ws_name, $language, $index, $analyzer ) = @_;
+    my ( $class, $ws_name, $index, $analyzer ) = @_;
     my $self = bless {}, $class;
 
     $self->analyzer($analyzer);
     $self->index($index);
-    $self->language($language);
     $self->workspace($ws_name);
 
     # Create hub

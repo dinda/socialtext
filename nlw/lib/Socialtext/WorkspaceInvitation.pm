@@ -10,6 +10,8 @@ use Socialtext::AppConfig;
 use Socialtext::TT2::Renderer;
 use Socialtext::URI;
 use Socialtext::User;
+use Socialtext::l10n qw(system_locale loc);
+use Socialtext::EmailSender::Factory;
 
 =pod
 
@@ -80,9 +82,7 @@ sub _invite_notify {
 
     my $template_dir = $workspace->invitation_template;
 
-    my $subject = q|I'm inviting you into the "|
-        . $workspace->title
-        . '" workspace';
+    my $subject = loc("I'm inviting you into the [_1] workspace", $workspace->title);
 
     my $renderer = Socialtext::TT2::Renderer->instance();
 
@@ -124,7 +124,9 @@ sub _invite_notify {
         }
     );
 
-    Socialtext::EmailSender->send(
+    my $locale = system_locale();
+    my $email_sender = Socialtext::EmailSender::Factory->create($locale);
+    $email_sender->send(
         from      => $self->{from_user}->name_and_email,
         to        => $user->email_address,
         subject   => $subject,
