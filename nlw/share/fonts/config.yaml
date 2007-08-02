@@ -14,28 +14,28 @@ size: 16
 
 #JIS X 0208 (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 12288
 upper: 12543
 size: 16
 
 # Plartform specifig (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 12800
 upper: 12879
 size: 16
 
 # Plartform specifig (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 12800
 upper: 12879
 size: 16
 
 # Plartform specifig (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 12800
 upper: 12879
 size: 16
@@ -43,14 +43,14 @@ size: 16
 
 # Plartform specifig (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 12928
 upper: 13311
 size: 16
 
 #JIS X 0208 (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 19968
 upper: 40864
 size: 16
@@ -62,7 +62,7 @@ upper: 19967
 
 # JIS X 0208 (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 65280
 upper: 65519
 size: 16
