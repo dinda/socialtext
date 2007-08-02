@@ -7,7 +7,7 @@ default: ascii
 
 #JIS X 0208 (Japanese)
 ---
-font: ipag-mona.ttf
+font: ipagp.ttf
 lower: 8213 
 upper: 9839
 size: 16
