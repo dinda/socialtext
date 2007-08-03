@@ -4274,6 +4274,11 @@ msgstr "mおnおsPあCえ"
 msgid "never in DST"
 msgstr "nえvえr いN Ds7"
 
+#: lib/Socialtext/Query/Wafl.pm:50
+#.  
+msgid "no access to workspace"
+msgstr "nお あcCえSs 7お WおRkSpあcえ"
+
 #: share/template/element/settings/workspaces_permissions_section:28
 #.  
 msgid "only invited users can access the workspace"

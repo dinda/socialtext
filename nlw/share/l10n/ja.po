@@ -4274,6 +4274,11 @@ msgstr "等幅"
 msgid "never in DST"
 msgstr "夏時間がない"
 
+#: lib/Socialtext/Query/Wafl.pm:50
+#.  
+msgid "no access to workspace"
+msgstr "ワークスペースにアクセスできません"
+
 #: share/template/element/settings/workspaces_permissions_section:28
 #.  
 msgid "only invited users can access the workspace"
