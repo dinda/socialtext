@@ -167,13 +167,13 @@ sub _get_page_for_subject {
     my $subject = $self->_clean_subject();
     if (length Socialtext::Page->uri_escape($subject) 
         > Socialtext::Page->_MAX_PAGE_ID_LENGTH() ) {
-        data_validation_error "Page title is too long after URL encoding";
+        data_validation_error loc("Page title is too long after URL encoding");
         return;
     }
 
     my $page = $main->hub()->pages()->new_from_name($subject);
     if (! defined($page) ) {
-        data_validation_error "Page title is too long after URL encoding";
+        data_validation_error loc("Page title is too long after URL encoding");
         return;
     }
     $page->load();
