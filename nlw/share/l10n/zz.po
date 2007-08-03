@@ -2929,6 +2929,11 @@ msgstr "74g: %1"
 msgid "Tags"
 msgstr "74gS"
 
+#: share/template/element/jst/tag/queue:1
+#.  
+msgid "Tags to apply:"
+msgstr "74gS 70 4PpLy:"
+
 #: lib/Socialtext/RevisionPlugin.pm:160
 #.  
 msgid "Tags:"

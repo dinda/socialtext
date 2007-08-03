@@ -2929,6 +2929,11 @@ msgstr "タグ: %1"
 msgid "Tags"
 msgstr "タグ"
 
+#: share/template/element/jst/tag/queue:1
+#.  
+msgid "Tags to apply:"
+msgstr "追加するタグ:"
+
 #: lib/Socialtext/RevisionPlugin.pm:160
 #.  
 msgid "Tags:"
