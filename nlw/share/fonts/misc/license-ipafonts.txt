@@ -1,0 +1,27 @@
+﻿ＩＰＡフォント使用許諾契約
+
+独立行政法人情報処理推進機構のフォントの再配布について
+エプソンアヴァシス株式会社
+
+エプソンアヴァシス株式会社が配布あるいは頒布する、独立行政法人情報処理推進機構の2003年度オープンソフトウェア活用基盤整備事業「共通のオープンプリンティングシステムの開発」の成果物（以下本ソフトウェアという）に添付されている、独立行政法人情報処理推進機構のＩＰＡフォント（以下本フォントという）に関し、下記の条件で再配布を許諾します。（以下本フォントを使用する人を使用者という)
+１． 使用者は、本ソフトウェアに同梱し、かつ本条件を添付する場合に限り、本フォントを再配布できます。
+２． 使用者は、再配布に当たり、本フォントがＩＰＡフォントであることを明示しなければいけません。
+３． 1,2に関しては，本フォントまたはその派生物を改変して再配布する場合にも適用されます。
+４． エプソンアヴァシス株式会社および独立行政法人情報処理推進機構は本フォントおよびその派生物の使用に起因するあらゆる不具合、損害について一切責任を負いません。
+
+IPA Font License 
+
+　Redistribution Obligation about IPA Font of Information Promotion Agency in Japan
+　EPSON AVASYS CORPORATION
+
+Font of Information Promotion Agency in Japan (hereinafter referred to as “IPA Font”), which is included in the output of 2003 Open Software Infrastructure Project “Common Open Printing System Development” sponsored by Information Promotion Agency in Japan (hereinafter referred to as “Software”) distributing or conveying by EPSON AVASYS CORPORATION, must be redistributed only under the terms of this License or a future version of this License released.
+ 
+(“You” means an individual or a legal entity using this font.)
+1. You must include a copy of Software and a copy of this License with every copy of IPA Font you redistribute.
+2. "IPA Font" notice must remain visible when you redistribute "IPA Font".
+3. 1 and 2 apply when you redistribute the modification version of "IPA Font" and/or the 
+   derivatives work of "IPA Font".
+4.  In no event shall EPSON AVASYS CORPORATION and/or Information Promotion Agency in  
+   Japan be liable for any errors and any damages (including, without limitation, indirect, special, 
+   consequential, economic, whatsoever) arising out of any use of IPA Font and/or the derivatives 
+   work of "IPA Font".
