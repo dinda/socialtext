@@ -35,10 +35,11 @@ exit;
 
 sub update_enterprise_features {
     shell_run("svk pull $ENV{HOME}/src/st/appliance/");
+    shell_run("svk pull $ENV{HOME}/src/st/control/");
 }
 
 sub link_enterprise_features {
-#   _call_link_control_panel();
+   _call_link_control_panel();
    _call_link_console();
 }
 
