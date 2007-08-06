@@ -196,7 +196,7 @@ the specified page is watched or not.
 sub st_watch_page {
     my ($self, $watch_on, $page_name, $verify_only) = @_;
     my $expected_watch = $watch_on ? 'on' : 'off';
-    my $watch_re = qr/watch-$expected_watch(?:-list)?\.gif$/;
+    my $watch_re = qr/watch-(?:star-)?$expected_watch(?:-list)?\.gif$/;
     $page_name = '' if $page_name and $page_name =~ /^#/; # ignore comments
     $verify_only = '' if $verify_only and $verify_only =~ /^#/; # ignore comments
 
