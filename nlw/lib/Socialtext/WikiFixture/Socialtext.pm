@@ -216,6 +216,7 @@ sub st_watch_page {
         my $alt;
         eval { $alt = $sel->get_attribute("$xpath/\@alt") };
         last unless $alt;
+        $alt = lc $alt;
         if ($alt eq $short_name) {
             $self->_watch_page_xpath($xpath, $watch_re);
             $found_page++;
