@@ -126,7 +126,7 @@
   <div id="st-weblog-archives">
     <div id="st-weblog-archives-title">[% loc('Weblog Archives') %]</div>
     <ul id="st-weblog-archives-list">
-        <li>Loading...</li>
+        <li>[% loc('Loading...') %]</li>
     </ul>
   </div>
 [% END %]
