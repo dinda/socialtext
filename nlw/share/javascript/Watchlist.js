@@ -93,21 +93,11 @@ ST.Watchlist.prototype = {
     _loadInterface: function (indicator) {
         this.image = $(indicator);
         if (this.image) {
-            if (Socialtext.loc_lang != 'en') {
-                if (this.image.src.match(/watch-star-on/)) {
-                    this.isBeingWatched = true;
-                }
-                else {
-                    this.isBeingWatched = false;
-                }
+            if (this.image.src.match(/watch-(star-)?on/)) {
+                this.isBeingWatched = true;
             }
             else {
-                if (this.image.src.match(/watch-on/)) {
-                    this.isBeingWatched = true;
-                }
-                else {
-                    this.isBeingWatched = false;
-                }
+                this.isBeingWatched = false;
             }
 
             Event.observe(this.image.parentNode,  'click', this._toggle_watch_state.bind(this));
