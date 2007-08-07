@@ -16,7 +16,7 @@
                 </span>
                     <a href="[% feeds.rss.page.url %]"><img border="0" src="[% wiki.static_path %]/images/feed-icon-14x14.png"/></a>
                     [% IF hub.current_workspace.enable_unplugged %]&nbsp;<a title="[% loc('Click this button to save the posts in this weblog to your computer for offline use.') %]" href="?action=unplug;tag=[% category_escaped %]"><img border="0" src="[% wiki.static_path %]/images/unplug-icon.png"/></a>[% END %]
-                    <a title="Print this weblog" id="st-weblog-print" href="JavaScript:window.print()"><img border="0" src="[% wiki.static_path %]/images/[% skin_name %]/weblog/print-blog-80a9f3.gif"/></a>
+                    <a title="[% loc('Print this weblog') %]" id="st-weblog-print" href="JavaScript:window.print()"><img border="0" src="[% wiki.static_path %]/images/[% skin_name %]/weblog/print-blog-80a9f3.gif"/></a>
                 <div id="st-weblog-wikititle">[% loc('in [_1]', wiki.title) %]</div>
             </div>
         </td>
