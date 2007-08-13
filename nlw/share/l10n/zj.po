@@ -714,6 +714,11 @@ msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "あS Wえ cおn7いNうえ 7お dえvえlおp 7Hえ sえあRcH SyS7えm, 7hえ おp7いおnS Yおう WいLl hあvえ あnD 7hえ いn7えRfあcえ Yおう HあVえ 7お MあKえ うSえ おF 7hえm wいlL いmPrおvえ."
 
+#: share/template/element/listview/pages:90
+#.  
+msgid "Attachment"
+msgstr "あ77あcHmえn7"
+
 #: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."

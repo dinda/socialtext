@@ -714,6 +714,11 @@ msgstr "Socialtext カスタマーとして %1 にアクセスします。"
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr "検索システムの開発が進むにつれ、利用できるオプションと使用するインターフェースが改善されていきます。"
 
+#: share/template/element/listview/pages:90
+#.  
+msgid "Attachment"
+msgstr "添付ファイル"
+
 #: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
@@ -3982,7 +3987,7 @@ msgstr "ロゴファイルを処理できません。画像ファイルですか
 #: lib/Socialtext/Widget_resource.pm:28 share/javascript/widget_resource.js:28
 #.  
 msgid "Unformatted Content"
-msgstr ""
+msgstr "レイアウトなしテキスト"
 
 #: share/template/element/settings/select:27
 #.  
@@ -4322,7 +4327,7 @@ msgstr "このワークスペースに Email を送ることができる人を�
 #: lib/Socialtext/Appliance/UsageStats.pm:137 lib/Socialtext/Appliance/UserReport.pm:125 share/javascript/widget_resource.js:76
 #.  
 msgid "Workspace"
-msgstr ""
+msgstr "ワークスペース"
 
 #: share/template/popup/email_page:110
 #.  

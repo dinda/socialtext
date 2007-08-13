@@ -714,6 +714,11 @@ msgstr ""
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
 msgstr ""
 
+#: share/template/element/listview/pages:90
+#.  
+msgid "Attachment"
+msgstr ""
+
 #: lib/Socialtext/AttachmentsUIPlugin.pm:62
 #.  
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
