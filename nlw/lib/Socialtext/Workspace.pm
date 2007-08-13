@@ -141,7 +141,13 @@ sub _copy_default_pages {
         # Top Page is special.  We need to name the page after the current
         # workspace, not "Top Page", and we need to add the current workspace
         # title to the page content (there's some TT2 in the wikitext).
-        if ( $page->id eq 'top_page' ) {
+
+        my $top_page_id = 'top_page';
+        if ( system_locale() eq 'ja' ) {
+            $top_page_id = '%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8';
+        }
+
+        if ( $page->id eq $top_page_id ) {
             $title = $self->title;
             my $content = $page->content;
             my $content_formatted = $hub->template->process(
