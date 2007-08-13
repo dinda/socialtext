@@ -200,7 +200,7 @@ sub current_blog_str {
     my $self = shift;
     $self->current_weblog($self->cgi->category) && $self->update_current_weblog
       if $self->cgi->category;
-    $self->cgi->category || $self->cache->{current_weblog} || loc('recent changes');
+    $self->cgi->category || loc($self->cache->{current_weblog}) || loc('recent changes');
 }
 
 sub current_blog {
@@ -442,7 +442,8 @@ sub box_content_filled {
 
 sub page_title {
     my $self = shift;
-    return loc('Navigation for: [_1]', $self->current_blog);
+
+    return loc('Navigation for: [_1]', $self->current_blog_str);
 }
 
 sub page_edit_path {
