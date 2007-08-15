@@ -34,7 +34,7 @@ msgstr ""
 msgid "%1 days"
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:664
+#: lib/Socialtext/Formatter/WaflPhrase.pm:671
 #. (
 msgid "%1 does not have any headers."
 msgstr ""
@@ -57,6 +57,11 @@ msgstr ""
 #: lib/Socialtext/Handler/Authen.pm:181 lib/Socialtext/Handler/Authen.pm:353
 #. (
 msgid "%1 is not registered as a user. Try a different email address?"
+msgstr ""
+
+#: lib/Socialtext/Formatter/WaflPhrase.pm:543
+#. (
+msgid "%1 link"
 msgstr ""
 
 #: lib/Socialtext/Page.pm:930
@@ -114,7 +119,7 @@ msgstr ""
 msgid "%quant(%1,view)"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:438
+#: lib/Socialtext/Workspace.pm:444
 #. (
 msgid "'%1' is a reserved workspace name and cannot be used."
 msgstr ""
@@ -574,7 +579,7 @@ msgstr ""
 msgid "An Invitation to join %1"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:372
+#: lib/Socialtext/Workspace.pm:378
 #.  
 msgid "An account must be specified for all new workspaces."
 msgstr ""
@@ -599,7 +604,7 @@ msgstr ""
 msgid "An email with instructions on changing your password has been sent to %1."
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:573 lib/Socialtext/WikiwygPlugin.pm:723
+#: lib/Socialtext/WikiwygPlugin.pm:564 lib/Socialtext/WikiwygPlugin.pm:714
 #. (
 msgid "An invalid page ID was given: %1"
 msgstr ""
@@ -712,11 +717,6 @@ msgstr ""
 #: share/template/search_help_field.html:29
 #.  
 msgid "As we continue to develop the search system, the options you will have and the interface you have to make use of them will improve."
-msgstr ""
-
-#: share/template/element/listview/pages:90
-#.  
-msgid "Attachment"
 msgstr ""
 
 #: lib/Socialtext/AttachmentsUIPlugin.pm:62
@@ -1324,7 +1324,7 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:630
+#: lib/Socialtext/WikiwygPlugin.pm:621
 #.  
 msgid "Double-click to edit a page?"
 msgstr ""
@@ -1934,7 +1934,7 @@ msgstr ""
 msgid "Incoming Links"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:362
+#: lib/Socialtext/Workspace.pm:368
 #.  
 msgid "Incoming email placement must be one of top, bottom, or replace."
 msgstr ""
@@ -2209,7 +2209,7 @@ msgstr ""
 msgid "Login + Edit"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:547
+#: lib/Socialtext/Workspace.pm:553
 #.  
 msgid "Logo file must be a gif, jpeg, or png file."
 msgstr ""
@@ -2279,7 +2279,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lib/Socialtext/WeblogPlugin.pm:445
+#: lib/Socialtext/WeblogPlugin.pm:446
 #. (
 msgid "Navigation for: %1"
 msgstr ""
@@ -2379,7 +2379,7 @@ msgstr ""
 msgid "No files available to restore."
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:564 lib/Socialtext/WikiwygPlugin.pm:714
+#: lib/Socialtext/WikiwygPlugin.pm:555 lib/Socialtext/WikiwygPlugin.pm:705
 #.  
 msgid "No page ID given"
 msgstr ""
@@ -3494,7 +3494,7 @@ msgstr ""
 msgid "System shutting down ..."
 msgstr ""
 
-#: lib/Socialtext/Formatter/WaflPhrase.pm:646 share/javascript/Wikiwyg/Jemplate.js:1847
+#: lib/Socialtext/Formatter/WaflPhrase.pm:653 share/javascript/Wikiwyg/Jemplate.js:1847
 #.  
 msgid "Table of Contents"
 msgstr ""
@@ -3699,7 +3699,7 @@ msgstr ""
 msgid "The permissions for %1 have been set to %2."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:368
+#: lib/Socialtext/Workspace.pm:374
 #. (
 msgid "The skin you specified,%1, does not exist."
 msgstr ""
@@ -3719,12 +3719,12 @@ msgstr ""
 msgid "The workspace administrators for this space will receive a notification of your request so that the users can be invited."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:346
+#: lib/Socialtext/Workspace.pm:352
 #. (
 msgid "The workspace name you chose, %1, is already in use as an email alias."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:350
+#: lib/Socialtext/Workspace.pm:356
 #. (
 msgid "The workspace name you chose, %1, is already in use by another workspace."
 msgstr ""
@@ -3979,7 +3979,7 @@ msgstr ""
 msgid "Type new password again"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:567
+#: lib/Socialtext/Workspace.pm:573
 #.  
 msgid "Unable to process logo file. Is it an image?"
 msgstr ""
@@ -4124,7 +4124,7 @@ msgstr ""
 msgid "Users: My Settings"
 msgstr ""
 
-#: lib/Socialtext/WikiwygPlugin.pm:578
+#: lib/Socialtext/WikiwygPlugin.pm:569
 #.  
 msgid "Validation subroutine called outside of validator"
 msgstr ""
@@ -4384,27 +4384,27 @@ msgstr ""
 msgid "Workspace Weblog Sort Order"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:324
+#: lib/Socialtext/Workspace.pm:330
 #.  
 msgid "Workspace name is a required field."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:433
+#: lib/Socialtext/Workspace.pm:439
 #.  
 msgid "Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:335
+#: lib/Socialtext/Workspace.pm:341
 #.  
 msgid "Workspace title is a required field."
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:407
+#: lib/Socialtext/Workspace.pm:413
 #.  
 msgid "Workspace title is too long after URL encoding"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:401
+#: lib/Socialtext/Workspace.pm:407
 #.  
 msgid "Workspace title must be between 2 and 64 characters long."
 msgstr ""
@@ -4744,7 +4744,7 @@ msgstr ""
 msgid "attachments"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "authenticated-user-only"
 msgstr ""
@@ -4759,7 +4759,7 @@ msgstr ""
 msgid "bold words"
 msgstr ""
 
-#: share/template/search_help_field.html:8
+#: lib/Socialtext/Formatter/WaflPhrase.pm:505 share/template/search_help_field.html:8
 #.  
 msgid "category"
 msgstr ""
@@ -4949,7 +4949,7 @@ msgstr ""
 msgid "inter-workspace link: %1"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "intranet"
 msgstr ""
@@ -4984,7 +4984,7 @@ msgstr ""
 msgid "link: %1 (%2 )"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "member-only"
 msgstr ""
@@ -5034,22 +5034,22 @@ msgstr ""
 msgid "permalink"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "public"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "public-authenticate-to-edit"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "public-comment-only"
 msgstr ""
 
-#: lib/Socialtext/Workspace.pm:841
+#: lib/Socialtext/Workspace.pm:847
 #.  
 msgid "public-read-only"
 msgstr ""
@@ -5122,6 +5122,11 @@ msgstr ""
 #: share/template/view/refcard:17
 #.  
 msgid "table"
+msgstr ""
+
+#: lib/Socialtext/Formatter/WaflPhrase.pm:555
+#.  
+msgid "tag"
 msgstr ""
 
 #: lib/Socialtext/Widget_resource.pm:48 share/javascript/widget_resource.js:48
@@ -5197,6 +5202,11 @@ msgstr ""
 #: share/template/email/openid/workspace-invitation-body.html:20 share/template/email/openid/workspace-invitation.txt:7 share/template/email/st/workspace-invitation-body.html:30 share/template/email/st/workspace-invitation.txt:12
 #.  
 msgid "web address:"
+msgstr ""
+
+#: lib/Socialtext/Formatter/WaflPhrase.pm:565
+#.  
+msgid "weblog"
 msgstr ""
 
 #: lib/Socialtext/Widget_resource.pm:51 share/javascript/widget_resource.js:51

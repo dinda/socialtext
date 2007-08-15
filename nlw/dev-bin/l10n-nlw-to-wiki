@@ -13,8 +13,8 @@ use Cwd;
 
 my $LIVE = shift;
 
-link_enterprise_features();
-update_enterprise_features();
+#link_enterprise_features();
+#update_enterprise_features();
 
 my @exclude_rx = (
     qr/tiddlytext/,
