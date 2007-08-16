@@ -724,7 +724,7 @@ msgstr "4S W3 c0n7iNu3 70 d3v3l0p 7H3 s34RcH SyS73m, 7h3 0p7i0nS Y0U WiLl h4v3 4
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr "4774cHm3n7 N07 F0UnD. 7H3 p4g3 N4M3, FiL3 n4m3 0r iD3N7If3r nUm83R In 7H3 lInK M4Y 83 iNc0rR3C7, 0r 7H3 4774cHm3n7 M4Y H4V3 833N D3L373D 0r iS N07 Pr3s3n7 In 7HiS W0RkSp4c3."
 
-#: share/javascript/Wikiwyg/Socialtext.js:1146 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1145 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr "4774cHm3n7s"
@@ -844,7 +844,7 @@ msgstr "c4lL '%1' uSiNg sKyP3. ClIcK 70 3Di7."
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1045 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1044 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr "c4nC3L"
@@ -3079,7 +3079,7 @@ msgstr "s4mPl3 W38l0g"
 msgid "Sat"
 msgstr "s47"
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1063 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1062 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr "s4v3"

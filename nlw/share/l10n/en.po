@@ -724,7 +724,7 @@ msgstr ""
 msgid "Attachment not found. The page name, file name or identifer number in the link may be incorrect, or the attachment may have been deleted or is not present in this workspace."
 msgstr ""
 
-#: share/javascript/Wikiwyg/Socialtext.js:1146 share/template/element/page/attachments:3
+#: share/javascript/Wikiwyg/Socialtext.js:1145 share/template/element/page/attachments:3
 #.  
 msgid "Attachments"
 msgstr ""
@@ -844,7 +844,7 @@ msgstr ""
 msgid "Can't remove privileges of the last admin"
 msgstr ""
 
-#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1045 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
+#: share/console-template/template/popup.html:48 share/javascript/Wikiwyg/Jemplate.js:22 share/javascript/Wikiwyg/Socialtext.js:1044 share/template/comment_popup.html:39 share/template/element/page/edit:8 share/template/element/page/newpage_duplicate:15 share/template/element/page/newpage_save:18 share/template/popup/email_page:90 share/template/standard_buttons:3
 #.  
 msgid "Cancel"
 msgstr ""
@@ -3079,7 +3079,7 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1063 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
+#: share/javascript/Wikiwyg/Jemplate.js:20 share/javascript/Wikiwyg/Socialtext.js:1062 share/template/comment_popup.html:38 share/template/element/page/edit:6 share/template/element/page/newpage_save:19 share/template/element/settings/save:3 share/template/lite/page/edit.html:10 share/template/lite/page/edit.html:15
 #.  
 msgid "Save"
 msgstr ""
