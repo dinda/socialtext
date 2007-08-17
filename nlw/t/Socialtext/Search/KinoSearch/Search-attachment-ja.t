@@ -7,7 +7,7 @@ use warnings;
 use utf8;
 use File::Find;
 
-use Test::Socialtext tests => 62;
+use Test::Socialtext tests => 66;
 fixtures( 'admin_no_pages' );
 
 
@@ -85,6 +85,16 @@ PDF_ATTACHMENT_SEARCH: {
         "添付ファイルのバリエーションテストです。",
     );
     search_ok( "九州", 1, "PDF text search" );
+}
+
+RTF_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'rtf';
+    make_page_ok(
+        "添付ファイルのテスト文書(rtf)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "名古屋", 1, "RTF text search" );
 }
 
 ZIP_ATTACHMENT_SEARCH: {
