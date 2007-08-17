@@ -7,7 +7,7 @@ use warnings;
 use utf8;
 use File::Find;
 
-use Test::Socialtext tests => 19;
+use Test::Socialtext tests => 62;
 fixtures( 'admin_no_pages' );
 
 
@@ -23,6 +23,7 @@ use_ok("Socialtext::Search::KinoSearch::Factory");
 
 our $workspace = 'admin';
 our $hub = new_hub('admin');
+our $target_ext = 'txt';
 
 #----------------------------------------------------------
 # Testcases
@@ -30,18 +31,97 @@ our $hub = new_hub('admin');
 
 PLAIN_TEXT_ATTACHMENT_SEARCH: {
     erase_index_ok();
+    $target_ext =  'txt';
     make_page_ok(
-        "添付ファイルのテスト文書",
-        "添付ファイルのバリエーションテストです。"
+        "添付ファイルのテスト文書(plain text)",
+        "添付ファイルのバリエーションテストです。",
     );
     search_ok( "東京", 1, "Shift_JIS text search" );
     search_ok( "大阪", 1, "EUC text search" );
     search_ok( "神戸", 1, "JIS text search" );
     search_ok( "広島", 1, "UTF8 no BOM text search" );
     search_ok( "松山", 1, "UTF8 with BOM text search" );
+    search_ok( "Japanese", 0, "ascii text search" );
     search_ok( "札幌", 0, "UTF16 text search" );
     search_ok( "document", 0, "ISO-8859-1 text search" );
     search_ok( "仙台", 0, "GB2312 text search" );
+}
+
+WORD_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'doc';
+    make_page_ok(
+        "添付ファイルのテスト文書(word)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "北海道", 1, "Word2003 text search" );
+}
+
+EXCEL_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'xls';
+    make_page_ok(
+        "添付ファイルのテスト文書(excel)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "中国", 1, "Excel2003 text search" );
+}
+
+POWERPOINT_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'ppt';
+    make_page_ok(
+        "添付ファイルのテスト文書(powerpoint)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "四国", 1, "PowerPoint2003 text search" );
+}
+
+PDF_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'pdf';
+    make_page_ok(
+        "添付ファイルのテスト文書(pdf)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "九州", 1, "PDF text search" );
+}
+
+ZIP_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'zip';
+    make_page_ok(
+        "添付ファイルのテスト文書(zip)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "青森", 1, "ZIP text search (plain)" );
+    search_ok( "岩手", 1, "ZIP text search (plain)" );
+    search_ok( "秋田", 1, "ZIP text search (excel)" );
+    search_ok( "山形", 1, "ZIP text search (powerpoint)" );
+}
+
+HTML_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'html';
+    make_page_ok(
+        "添付ファイルのテスト文書(html)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "Chinese", 1, "ascii html text search" );
+    search_ok( "鳥取", 1, "utf8 html text search" );
+    search_ok( "島根", 1, "shift_jis html text search" );
+}
+
+XML_ATTACHMENT_SEARCH: {
+    erase_index_ok();
+    $target_ext =  'xml';
+    make_page_ok(
+        "添付ファイルのテスト文書(xml)",
+        "添付ファイルのバリエーションテストです。",
+    );
+    search_ok( "金沢", 1, "utf8 xml text search" );
+    search_ok( "French", 1, "ascii xml text search" );
+    search_ok( "長野", 1, "shift-jis xml text search" );
 }
 
 #----------------------------------------------------------
@@ -67,10 +147,9 @@ sub make_page_ok {
     find (\&push_filename, $target_dir);
 
     sub push_filename {
-        if ( $_ eq '.' ) {
-            return;
+        if ( $_ =~ /${target_ext}$/ ){
+            push @filename, $_;
         }
-        push @filename, $_;
     }
 
     foreach ( @filename ){
