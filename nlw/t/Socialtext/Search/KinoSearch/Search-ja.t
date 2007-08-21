@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::Socialtext tests => 142;
+use Test::Socialtext tests => 145;
 fixtures( 'admin_no_pages' );
 
 
@@ -324,6 +324,15 @@ SPLITTED_WORD_BY_RETURN: {
     );
     search_ok( "当り前", 3, "Splitted word Search 1" );
     search_ok( "辞書", 3, "Splitted word Search 1" );
+}
+
+ENGLISH: {
+    erase_index_ok();
+    make_page_ok(
+        "英語でかかれた文書です",
+        "This document is not good. Japanese is good.\nThis document is good."
+    );
+    search_ok( "Japanese", 1, "English Word Search 1" );
 }
 
 #----------------------------------------------------------
