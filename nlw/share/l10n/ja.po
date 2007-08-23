@@ -509,7 +509,7 @@ msgstr "管理者への通知"
 msgid "Advanced"
 msgstr "高度編集"
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:195 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr "すべてのファイル"
@@ -2929,10 +2929,15 @@ msgstr "次回から自動ログイン"
 msgid "Remove"
 msgstr "削除"
 
-#: share/template/element/jst/attachment/queue:5
+#: share/template/element/jst/attachment/queue:5 share/template/element/jst/tag/queue:4
 #. (
 msgid "Remove %1 from the queue"
 msgstr "キューから%1を削除"
+
+#: share/template/element/jst/tag/name:14
+#. (
+msgid "Remove %1 tag from page"
+msgstr "ページからタグ %1 を削除"
 
 #: share/template/popup/email_page:134
 #.  
@@ -4058,6 +4063,11 @@ msgstr "ファイルのアップロード"
 #.  
 msgid "Uploaded By"
 msgstr "アップロードしたユーザ"
+
+#: share/template/element/jst/attachment/name:2
+#. (
+msgid "Uploaded by %1"
+msgstr "%1 がアップロード"
 
 #: share/template/view/page/stats:26
 #.  

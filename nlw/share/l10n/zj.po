@@ -509,7 +509,7 @@ msgstr "あDmいnいs7rあ7おr nお7いfいcあ7いおN"
 msgid "Advanced"
 msgstr "あDvあnCえD"
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:195 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr "あLl fいlえs"
@@ -2929,10 +2929,15 @@ msgstr "rえmえm8えR Mえ おN 7hいs cおmPう7えR."
 msgid "Remove"
 msgstr "rえmおvえ"
 
-#: share/template/element/jst/attachment/queue:5
+#: share/template/element/jst/attachment/queue:5 share/template/element/jst/tag/queue:4
 #. (
 msgid "Remove %1 from the queue"
 msgstr "rえmおvえ %1 fRおM 7hえ Qうえうえ"
+
+#: share/template/element/jst/tag/name:14
+#. (
+msgid "Remove %1 tag from page"
+msgstr "rえmおvえ %1 7あg fRおM PあGえ"
 
 #: share/template/popup/email_page:134
 #.  
@@ -4058,6 +4063,11 @@ msgstr "うPlおあD&N8Sp;fいlえs"
 #.  
 msgid "Uploaded By"
 msgstr "うPlおあDえD 8y"
+
+#: share/template/element/jst/attachment/name:2
+#. (
+msgid "Uploaded by %1"
+msgstr "うPlおあDえD 8y %1"
 
 #: share/template/view/page/stats:26
 #.  

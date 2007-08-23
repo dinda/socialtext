@@ -509,7 +509,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: lib/Socialtext/AttachmentsUIPlugin.pm:188 share/template/element/listview/actionbar:12
+#: lib/Socialtext/AttachmentsUIPlugin.pm:195 share/template/element/listview/actionbar:12
 #.  
 msgid "All Files"
 msgstr ""
@@ -2929,9 +2929,14 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: share/template/element/jst/attachment/queue:5
+#: share/template/element/jst/attachment/queue:5 share/template/element/jst/tag/queue:4
 #. (
 msgid "Remove %1 from the queue"
+msgstr ""
+
+#: share/template/element/jst/tag/name:14
+#. (
+msgid "Remove %1 tag from page"
 msgstr ""
 
 #: share/template/popup/email_page:134
@@ -4057,6 +4062,11 @@ msgstr ""
 #: share/template/view/attachmentslist:19
 #.  
 msgid "Uploaded By"
+msgstr ""
+
+#: share/template/element/jst/attachment/name:2
+#. (
+msgid "Uploaded by %1"
 msgstr ""
 
 #: share/template/view/page/stats:26
