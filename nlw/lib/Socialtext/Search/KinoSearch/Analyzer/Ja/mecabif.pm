@@ -301,7 +301,7 @@ sub analyze {
 
 		# Splice them into ASCII sequence and others,
 		# and replace ASCII sequences with stubs.
-		while (/^(.*?)([!-~]+)(.*)$/) {
+		while (/^(.*?)([!-~]+)(.*)$/s) {
 			my ($na, $a, $rest) = ($1, $2, $3);
 			push @all, $na;
 			push @all, (" <<" . scalar(@ascii_token) . ">> ");
