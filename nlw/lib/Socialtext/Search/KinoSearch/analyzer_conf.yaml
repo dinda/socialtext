@@ -18,6 +18,6 @@ en:
     - "Socialtext::Search::KinoSearch::Analyzer::Stem"
 ja:
     - "Socialtext::Search::KinoSearch::Analyzer::Ja::Tokenize"
-    - "Socialtext::Search::KinoSearch::Analyzer::Tokenize"
     - "Socialtext::Search::KinoSearch::Analyzer::LowerCase"
+    - "Socialtext::Search::KinoSearch::Analyzer::Tokenize"
     - "Socialtext::Search::KinoSearch::Analyzer::Stem"
