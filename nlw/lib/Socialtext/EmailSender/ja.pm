@@ -78,7 +78,11 @@ our ($H2Z, %H2Z);
             # This shuts up a "wide character in print" warning from
             # inside Email::Send::Sendmail.
             $subject = $self->_h2z($subject);
-            $subject = Encode::encode( 'MIME-Header-ISO_2022_JP', $subject );
+
+            # It's not known exactly why Encode::encode(
+            # 'MIME-Header-ISO_2022_JP', $subject ) encodes to iso-2022-jp encoding,
+            # not MIME-B encoding. So use Jcode.
+            $subject = Jcode->new($subject,'utf8')->mime_encode;
         }
 
         return $subject;
@@ -152,7 +156,10 @@ our ($H2Z, %H2Z);
         $filename = $self->_uri_unescape($filename);
 
         # If filename is only ascii code, you do not encode fileme to MIME-B.
-        $filename = Encode::encode( 'MIME-Header-ISO_2022_JP', $filename );
+        # It's not known exactly why Encode::encode(
+        # 'MIME-Header-ISO_2022_JP', $subject ) encodes to iso-2022-jp encoding,
+        # not MIME-B encoding. So use Jcode.
+        $filename = Jcode->new($filename,'utf8')->mime_encode;
 
         return $filename;
     }
