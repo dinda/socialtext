@@ -1,0 +1,6 @@
+# Added by installer for initial user
+root:   nec
+webmaster: root
+help: "|/usr/local/bin/cmdwrapper deliver-email --workspace help"
+help-ja: "|/usr/local/bin/cmdwrapper deliver-email --workspace help-ja"
+admin: "|/usr/local/bin/cmdwrapper deliver-email --workspace admin"
