@@ -11,10 +11,8 @@ use Locale::PO;
 use File::Find::Rule;
 use Cwd;
 
-my $LIVE = shift;
-
-#link_enterprise_features();
-#update_enterprise_features();
+update_enterprise_features();
+link_enterprise_features();
 
 my @exclude_rx = (
     qr/tiddlytext/,
@@ -31,11 +29,12 @@ my $en_file = "nlw-en.po";
 shell_run("dev-bin/l10n-widget-to-js");
 call_xgettext( $en_file => @files );
 po_to_wiki($en_file);
+unlink $en_file;
 exit;
 
 sub update_enterprise_features {
-    shell_run("svk pull $ENV{HOME}/src/st/appliance/");
-    shell_run("svk pull $ENV{HOME}/src/st/control/");
+    shell_run("svk up -s $ENV{HOME}/src/st/appliance/");
+    shell_run("svk up -s $ENV{HOME}/src/st/control/");
 }
 
 sub link_enterprise_features {
@@ -45,46 +44,12 @@ sub link_enterprise_features {
 
 sub _call_link_control_panel {
     my $branch_name = _get_branch_name(); 
-    my $control_panel_branch_name = get_control_panel_branch_name($branch_name);
-    if($control_panel_branch_name) {
-        shell_run("dev-bin/link-control-panel $control_panel_branch_name");
-    } else {
-        shell_run("dev-bin/link-control-panel");
-    }
+    shell_run("dev-bin/link-control-panel $branch_name");
 }
 
 sub _call_link_console {
-    my $branch_name = _get_branch_name();
-    my $console_branch_name = get_link_console_branch_name($branch_name);
-    if($console_branch_name) {
-        shell_run("dev-bin/link-console $console_branch_name");
-    } else {
-        shell_run("dev-bin/link-console"); 
-    }
-}
-
-sub get_link_console_branch_name {
-    my $branch_name = shift;
-
-    my $appliance_base = "$ENV{HOME}/src/st/appliance";
-    my $console_branch_dir = $appliance_base . "/branches/". $branch_name;
-
-    unless(-d $console_branch_dir) {
-        $branch_name = undef;
-    }
-    return $branch_name; 
-}
-
-sub get_control_panel_branch_name {
-    my $branch_name = shift;
-
-    my $controlpanel_base = "$ENV{HOME}/src/st/control";
-    my $controlpanel_branch_dir = $controlpanel_base . "/branches/". $branch_name;
-
-    unless(-d $controlpanel_branch_dir) {
-        $branch_name = undef;
-    }
-    return $branch_name; 
+    my $branch_name = _get_branch_name(); 
+    shell_run("dev-bin/link-console $branch_name");
 }
 
 sub _get_branch_name {
@@ -135,7 +100,7 @@ sub get_files {
 
 sub po_to_wiki {
     my $pos = Locale::PO->load_file_asarray(shift);
-    my $r = make_rester($LIVE);
+    my $r = make_rester();
 
     print "Fetching pages tagged l10n...\n";
     my @locale_pages = $r->get_taggedpages('l10n');
@@ -161,11 +126,16 @@ EOT
             $msgid =~ s/^"(.*)"$/$1/;
             next unless $msgid;
             my $msgstr = $existing_pos->{$msgid}{msgstr} || '';
+
+            # Trim off the line number, because it changes frequently
+            # and is very noisy
+            (my $ref = $po->reference || '') =~ s/:\d+(\s?)/$1/g;
+
             $new_page .= "| "
                 . join( ' | ', 
                     $msgid,
                     $msgstr,
-                    $po->reference || '',
+                    $ref,
                     $po->automatic || '' )
                 . " |\n";
         }
