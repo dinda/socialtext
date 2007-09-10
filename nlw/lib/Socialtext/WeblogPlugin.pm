@@ -300,6 +300,7 @@ sub weblog_display {
         weblog_next => $weblog_next,
         enable_weblog_archive_sidebox => Socialtext::AppConfig->enable_weblog_archive_sidebox(),
         caller_action => 'weblog_display',
+        loc_lang => $self->hub->best_locale,
     );
 }
 

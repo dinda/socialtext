@@ -144,11 +144,20 @@
 
 [% BLOCK email_link %]
     <div id="st-weblog-postbyemail">[% loc('or post by email:') %]
-    [% INCLUDE element/ws_link
-        href = "mailto:${email_category_address}",
-        id   = "st-weblog-postbyemail-link",
-        name = "${email_category_address}"
-    %]
+    [% IF loc_lang == 'ja' %]
+        [% escaped_link_name = display_title | html %]
+        [% INCLUDE element/ws_link
+            href = "mailto:${email_category_address}",
+            id   = "st-weblog-postbyemail-link",
+            name = "${escaped_link_name}"
+        %]
+    [% ELSE %]
+        [% INCLUDE element/ws_link
+            href = "mailto:${email_category_address}",
+            id   = "st-weblog-postbyemail-link",
+            name = "${email_category_address}"
+        %]
+    [% END %]
     </div>
 [% END %]
 
