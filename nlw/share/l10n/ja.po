@@ -1702,7 +1702,7 @@ msgstr "Go to:"
 #: lib/Socialtext/Widget_resource.pm share/javascript/widget_resource.js
 #. (
 msgid "Google: %1"
-msgstr ""
+msgstr "Google: %1"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -2582,7 +2582,7 @@ msgstr "URL のエンコード処理を行うと、ページタイトル が長�
 #: lib/Socialtext/WeblogPlugin.pm
 #. (
 msgid "Page title is too long; maximum length is %1"
-msgstr ""
+msgstr "ページタイトルが長すぎます。%1 文字まで使用できます。"
 
 #: lib/Socialtext/EditPlugin.pm
 #.  
