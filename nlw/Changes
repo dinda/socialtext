@@ -364,7 +364,7 @@ The /etc/init.d scripts should now work whether you're running a
 Debian-based distro, like Ubuntu, or a RedHat or SuSe distro.
 
 A reminder: If you're using Socialtext Open on a public site, please add
-it to https://www.socialtext.net/stoss/index.cgi?socialtext_open_sites.
+it to https://www.socialtext.net/open/index.cgi?socialtext_open_sites.
 We'd love to see who's using Socialtext Open.
 
 
@@ -418,7 +418,7 @@ Socialtext Open is a major new release, with a new REST API available,
 albeit in alpha stage.
 
 This also allows you take advantage of the Socialtext Conversion Toolbox
-(https://www.socialtext.net/stoss/index.cgi?socialtext_conversion_toolbox)
+(https://www.socialtext.net/open/index.cgi?socialtext_conversion_toolbox)
 for converting from other wiki packages.
 
     [FIXES]

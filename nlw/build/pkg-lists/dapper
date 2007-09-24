@@ -6,7 +6,7 @@ perl-modules
 perl-doc
 apache-dev
 apache-perl
-postgresql
+postgresql-8.1
 build-essential
 libalgorithm-diff-perl
 libapache-reload-perl
