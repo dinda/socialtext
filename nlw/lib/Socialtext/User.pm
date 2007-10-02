@@ -202,11 +202,15 @@ sub email_address {
 }
 
 sub first_name {
-    $_[0]->homunculus->first_name( @_[ 1 .. $#_ ] );
+    my $firstname = $_[0]->homunculus->first_name( @_[ 1 .. $#_ ] );
+    Encode::_utf8_on($firstname) unless Encode::is_utf8($firstname);
+    return $firstname;
 }
 
 sub last_name {
-    $_[0]->homunculus->last_name( @_[ 1 .. $#_ ] );
+    my $lastname = $_[0]->homunculus->last_name( @_[ 1 .. $#_ ] );
+    Encode::_utf8_on($lastname) unless Encode::is_utf8($lastname);
+    return $lastname;
 }
 
 sub password_is_correct {
