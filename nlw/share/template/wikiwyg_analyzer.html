@@ -19,7 +19,7 @@ function nlw_make_static_path(rest) {
 }
 </script>
 
-<script type="text/javascript" src="[% static_path %]/javascript/combined-source.js"></script>
+<script type="text/javascript" src="[% static_path %]/javascript/combined-source.js.gz"></script>
 <script type="text/javascript" src="[% static_path %]/javascript/Wikiwyg/Dominator.js"></script>
 <script type="text/javascript" src="[% static_path %]/javascript/Wikiwyg/Analyzer.js"></script>
 <style type="text/css">
@@ -70,6 +70,7 @@ textarea {
 <!-- BEGIN body_tag -->
 <body id="nlw_main_body">
     <form>
+    <input type="hidden" id="st-page-editing-pagename" value="Analyzer"/>
 
     <div>
         <select name="page_selector" style="width: 150px">

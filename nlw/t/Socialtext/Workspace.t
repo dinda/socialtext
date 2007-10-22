@@ -1,6 +1,6 @@
 #!perl
 # @COPYRIGHT@
-use Test::Socialtext tests => 92;
+use Test::Socialtext tests => 95;
 
 use strict;
 use warnings;
@@ -81,6 +81,34 @@ my $has_image_magick = eval { require Image::Magick; 1 };
         'got error message saying account is required' );
 }
 
+NO_DASH_IN_NAME:
+{
+    eval {
+        Socialtext::Workspace->create(
+            name       => '-dash-start',
+            title      => 'dash at start',
+            account_id => Socialtext::Account->Socialtext()->account_id,
+        );
+    };
+    my $e = $@;
+    ok( ( grep { /Workspace name may not begin with -/ } $e->messages ),
+        'got error message saying name may not begin with -' );
+}
+
+NO_DASH_IN_TITLE:
+{
+    eval {
+        Socialtext::Workspace->create(
+            name       => 'no-dash-start',
+            title      => '-dash at start',
+            account_id => Socialtext::Account->Socialtext()->account_id,
+        );
+    };
+    my $e = $@;
+    ok( ( grep { /and may not begin with a -/ } $e->messages ),
+        'and may not begin with a -' );
+}
+
 {
     Socialtext::Workspace->create(
         name       => 'short-name-2',
@@ -98,6 +126,7 @@ my $has_image_magick = eval { require Image::Magick; 1 };
     };
     check_errors($@);
 }
+
 
 {
     my $ws = Socialtext::Workspace->new( name => 'short-name' );
@@ -508,6 +537,10 @@ NAME_IS_VALID: {
 
     ok( ! Socialtext::Workspace->NameIsValid( name => 'data' ),
         'Reserved word as workspace name fails'
+    );
+
+    ok( ! Socialtext::Workspace->NameIsValid( name => 'COWLOVE'),
+        'No capitals in workspace name'
     );
 
     # Check basic parameter validation

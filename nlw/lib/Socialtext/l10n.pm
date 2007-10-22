@@ -64,11 +64,67 @@ my $l10n_dir = "$share_dir/l10n";
 
 require Locale::Maketext::Simple;
 Locale::Maketext::Simple->import (
-    # This path allows the unit tests to work, but should be removed
-    # once the build system puts .po files into the right spot
     Path => $l10n_dir,
     Decode => 1,
+    Export => "_loc",  # We have our own loc()
 );
+
+sub loc {
+    my $msg = shift;
+
+    # Bracket Notation variables are either _digits or _*.
+    my $var_rx = qr/_(?:\d+|\*)/;
+
+    # A whitelist of legal Bracket Notation functions we accept.
+    # Locale::Maktext will turn [foo,bar] into $lh->foo("bar"), so technically
+    # just about anything is legal.  Rather than try to match all the
+    # possibilities we'll just have an opt-in whitelist.  Spaces are not
+    # allowed around commas in Bracket Notation.
+    my $legal_funcs = "(?:" . join("|", (
+        qr/quant,$var_rx,.*?/,
+        qr/\*,$var_rx,.*?/,    # alias for quant
+        qr/numf,$var_rx/,
+        qr/\#,$var_rx/,        # alias for numf
+        qr/sprintf,.*?/,
+        qr/tense,$var_rx,.*?/,
+    )) . ")";
+
+    # A legal bracket, or at least the subset we accept, is either a plain
+    # variable or a legal func as defined above.
+    my $bracket_rx = qr/~*\[(?:$var_rx|$legal_funcs)\]/;
+
+    # RT 26769: Automagically quote square braces.  We do this by splitting
+    # the string on the bracket_rx above, which matches legal loc() variables.
+    # The capturing parens in the split include the split-item in the list, so
+    # we end up with a list of alternating items like this: non-bracket,
+    # bracket, non-bracket, ...  Everything that doesn't match the bracket_rx
+    # needs to have its square braces quoted.  Care is taken to not requote
+    # already quoted braces.
+    my $new_msg = "";
+    my @parts = split /($bracket_rx)/, $msg; 
+    for my $part (@parts) {
+        if ( $part =~ /$bracket_rx/ ) {
+            $new_msg .= $part;
+        }
+        else {
+            # Quote square braces, but only if they are already not quoted
+            # away.  The complication here w/ the tildes is to make sure we
+            # have an odd number of tildes, otherwise we have to add an extra
+            # one to ensure we're quoting.
+            $part =~ s/(~*)(\[|\])/ 
+                my $tildes = $1 || "";
+                $tildes .= '~' unless length($tildes) % 2;
+                $tildes . $2;
+            /xeg;
+            $new_msg .= $part;
+        }
+    }
+
+    return _loc( $new_msg, @_ );
+}
+
+# Have to wrap this b/c we renamed the real loc() function to _loc()
+sub loc_lang { return _loc_lang(@_) }
 
 sub valid_code { 
     my $code = shift;

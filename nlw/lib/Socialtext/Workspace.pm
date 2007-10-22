@@ -28,6 +28,7 @@ use File::Copy ();
 use File::Find ();
 use File::Path ();
 use File::Temp ();
+use IPC::Run qw/run/;
 use List::MoreUtils ();
 use MIME::Types;
 use Socialtext;
@@ -347,16 +348,22 @@ sub _validate_and_clean_data {
         if ( Socialtext::EmailAlias::find_alias( $p->{name} ) ) {
             push @errors, loc("The workspace name you chose, [_1], is already in use as an email alias.", $p->{name});
         }
-        
+
         if ( Socialtext::Workspace->new( name => $p->{name} ) ) {
             push @errors, loc("The workspace name you chose, [_1], is already in use by another workspace.", $p->{name});
         }
     }
 
-    if ( defined $p->{title}
-         and ( length $p->{title} < 2 or length $p->{title} > 64 )
-       ) {
-        push @errors, loc('Workspace title must be between 2 and 64 characters long.');
+    if (
+        defined $p->{title}
+        and (  length $p->{title} < 2
+            or length $p->{title} > 64
+            or $p->{title} =~ /^-/ )
+        ) {
+        push @errors,
+            loc(
+            'Workspace title must be between 2 and 64 characters long and may not begin with a -.'
+            );
     }
 
     if ( $p->{incoming_email_placement}
@@ -394,7 +401,7 @@ sub NameIsValid {
     # each call. If the spec is defined outside this scope, then the same
     # arrayref will be used for every call with a defaulted 'errors'
     # parameter, mistakenly preserving the error list between calls.
-    # 
+    #
     my %p = Params::Validate::validate( @_, {
         name    => SCALAR_TYPE,
         errors  => ARRAYREF_TYPE( default => [] ),
@@ -403,9 +410,14 @@ sub NameIsValid {
     my $name    = $p{name};
     my $errors  = $p{errors};
 
-    if ( $name !~ /^[A-Za-z0-9_\-]{3,30}$/ ) {
+    if ( $name !~ /^[a-z0-9_\-]{3,30}$/ ) {
         push @{$errors},
             loc('Workspace name must be between 3 and 30 characters long, and must contain only upper- or lower-case letters, numbers, underscores, and dashes.');
+    }
+
+    if ( $name =~ /^-/ ) {
+        push @{$errors},
+            loc('Workspace name may not begin with -.');
     }
 
     if ( $ReservedNames{$name} || ($name =~ /^st_/i) ) {
@@ -1192,25 +1204,25 @@ sub is_public {
     }
 }
 
+sub has_user {
+    my $self = shift;
+    my $user = shift; # [in] User
+
+    my $uwr_table = Socialtext::Schema->Load()->table('UserWorkspaceRole');
+    return 1 if
+        $uwr_table->row_count(
+            where => [
+                [ $uwr_table->column('workspace_id'), '=', $self->workspace_id ],
+                [ $uwr_table->column('user_id'), '=', $user->user_id ],
+                [ $uwr_table->column('role_id'), '!=', Socialtext::Role->Guest()->role_id() ],
+            ],
+        );
+}
+
 {
     Readonly my $spec => {
         user => USER_TYPE,
     };
-    sub has_user {
-        my $self = shift;
-        my %p = validate( @_, $spec );
-
-        my $uwr_table = Socialtext::Schema->Load()->table('UserWorkspaceRole');
-        return 1 if
-            $uwr_table->row_count(
-                where => [
-                    [ $uwr_table->column('workspace_id'), '=', $self->workspace_id ],
-                    [ $uwr_table->column('user_id'), '=', $p{user}->user_id ],
-                    [ $uwr_table->column('role_id'), '!=', Socialtext::Role->Guest()->role_id() ],
-                ],
-            );
-    }
-
     sub role_for_user {
         my $self = shift;
         my %p = validate( @_, $spec );
@@ -1312,7 +1324,7 @@ sub users_with_roles {
     my $self = shift;
 
     return
-        Socialtext::User->ByWorkspaceIdWithRoles( 
+        Socialtext::User->ByWorkspaceIdWithRoles(
             workspace_id => $self->workspace_id(), @_ );
 }
 
@@ -1326,26 +1338,26 @@ sub users_with_roles {
         my $self = shift;
         my %p = validate( @_, $spec );
         $p{name} ||= $self->name;
+        $p{name} = lc $p{name};
 
         my $tarball_dir
-            = defined $p{dir} ? Cwd::abs_path( $p{dir} ) : File::Temp::tempdir( CLEANUP => 1 );
-
-        my $export_dir = $self->_data_for_export($p{name});
+            = defined $p{dir} ? Cwd::abs_path( $p{dir} ) : $ENV{ST_TMP} || '/tmp';
 
         my $tarball = Socialtext::File::catfile( $tarball_dir,
-            $p{name} . '.' . $EXPORT_VERSION . '.tar.gz' );
+            $p{name} . '.' . $EXPORT_VERSION . '.tar' );
 
-        # Can't use Archive::Tar, it loads everything into memory.
-        local $CWD = $export_dir;
-        system( 'tar', "czf", $tarball, '.' )
-            and die "tarball creation for workspace export failed: $!";
+        $self->_create_export_tarball($tarball, $p{name});
 
-        return $tarball;
+        # pack up the tarball
+        run "gzip --fast --force $tarball";
+
+        return "$tarball.gz";
     }
 }
 
-sub _data_for_export {
+sub _create_export_tarball {
     my $self = shift;
+    my $tarball = shift;
     my $name = shift || $self->name;
 
     my $tmpdir = File::Temp::tempdir( CLEANUP => 1 );
@@ -1353,16 +1365,26 @@ sub _data_for_export {
     $self->_dump_users_to_yaml_file($tmpdir, $name);
     $self->_dump_permissions_to_yaml_file($tmpdir, $name);
     $self->_export_logo_file($tmpdir);
+    local $CWD = $tmpdir;
+    run "tar cf $tarball *";
 
     # Copy all the data for export into a the tempdir.
     local $CWD = Socialtext::AppConfig->data_root_dir();
     for my $dir (qw(plugin user data)) {
-        my $src  = Socialtext::File::catdir( $dir,     $self->name );
-        my $dest = Socialtext::File::catdir( $tmpdir, $dir, $name );
-        dircopy( $src, $dest ) or die "Can't copy $src to $dest: $!\n";
+        if ($name eq $self->name) {
+            # We can append directly to the tarball to save a copy
+            run "tar rf $tarball "
+                . Socialtext::File::catdir( $dir, $self->name );
+        }
+        else {
+            # Copy the workspace data into the tmpdir, then add to the tarball
+            my $src  = Socialtext::File::catdir( $dir,     $self->name );
+            my $dest = Socialtext::File::catdir( $tmpdir, $dir, $name );
+            dircopy( $src, $dest ) or die "Can't copy $src to $dest: $!\n";
+            local $CWD = $tmpdir;
+            run "tar rf $tarball " . Socialtext::File::catdir( $dir, $name );
+        }
     }
-
-    return $tmpdir;
 }
 
 sub _dump_to_yaml_file {
@@ -1406,6 +1428,7 @@ sub _dump_users_to_yaml_file {
 
     my $users_with_roles = $self->users_with_roles;
 
+    my @c = grep { $_ ne 'user_id' } Socialtext::User->minimal_interface;
     my @dump;
     while ( 1 ) {
         my $elem = $users_with_roles->next;
@@ -1413,8 +1436,10 @@ sub _dump_users_to_yaml_file {
         my $role = $elem->[1];
         last unless defined $user;
 
-        my %dump = %{$user->to_hash};
-        delete $dump{'user_id'};
+        my %dump;
+        for my $c (@c) {
+            $dump{$c} = $user->$c();
+        }
         $dump{creator_username} = $user->creator->username;
         $dump{role_name} = $role->name;
 
@@ -2342,7 +2367,7 @@ Assigns the specified role to the given user. The value of is_selected
 defaults to 0. If the user already has a role for this workspace, this
 method changes that role.
 
-=head2 $workspace->has_user( user => $user )
+=head2 $workspace->has_user( $user )
 
 Returns a boolean indicating whether or not the user has an explicitly
 assigned role for this workspace.

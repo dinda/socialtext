@@ -6,10 +6,12 @@ use warnings;
 
 use Encode::Guess qw( ascii iso-8859-1 utf8 );
 use File::chdir;
+use Cwd;
 use Socialtext::File::Copy::Recursive ();
 use Readonly;
 use Socialtext::Validate qw( validate FILE_TYPE BOOLEAN_TYPE SCALAR_TYPE );
 use Socialtext::Workspace;
+use Socialtext::Search::AbstractFactory;
 use YAML ();
 
 # This should stay in sync with $EXPORT_VERSION in ST::Workspace.
@@ -33,7 +35,7 @@ Readonly my $MAX_VERSION => 1;
             "Cannot determine workspace name and version from tarball name: $p{tarball}";
         $version ||= 0;
 
-        my $new_name = $p{name} || $old_name;
+        my $new_name = lc( $p{name} || $old_name );
 
         if ( $version > $MAX_VERSION ) {
             die "Cannot import a tarball with a version greater than $MAX_VERSION\n";
@@ -62,6 +64,7 @@ Readonly my $MAX_VERSION => 1;
 sub import_workspace {
     my $self = shift;
 
+    my $old_cwd = getcwd();
     local $CWD = File::Temp::tempdir( CLEANUP => 1 );
 
     # XXX - I'm afraid to use Archive::Tar here cause it will load all
@@ -90,6 +93,11 @@ sub import_workspace {
             role => Socialtext::Role->new( name => $u->[1] ),
         );
     }
+
+    chdir( $old_cwd );
+    Socialtext::Search::AbstractFactory->GetFactory->create_indexer(
+        $self->{workspace}->name )
+        ->index_workspace( $self->{workspace}->name );
 }
 
 sub _create_workspace {

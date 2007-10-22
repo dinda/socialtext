@@ -1,4 +1,4 @@
-Installing Socialtext Open release 2.15.1.1 on Ubuntu
+Installing Socialtext Open release 2.11.5.2 on Ubuntu
 
 @COPYRIGHT@
 
@@ -11,8 +11,8 @@ See http://www.socialtext.net/open/index.cgi?socialtext_open for updates.
 
 1) Downloading. This step takes a minute or two.
 * Download Socialtext Open
-* tar xvf Socialtext-Open-2.*.tar.gz 
-* cd Socialtext-Open-2.*
+* tar xvf Socialtext-Open-2.9.5.2.tar.gz 
+* cd Socialtext-Open-2.9.5.2 
 
 
 2) Running apt-get. This step takes 15-20 minutes.
@@ -39,6 +39,7 @@ See http://www.socialtext.net/open/index.cgi?socialtext_open for updates.
  (A bunch more unpacking happens)
  (Setting up happens)
  * Ubuntu config asks some more questions as it sets up postgres and apache-perl:
+ * Obsolete major version 7.4   : OK
  * Select modules apache-perl will load: tab over to OK and hit enter
  * Set the FQDN domain name for apache-perl default server  (enter your localhost here -  all in lower case letters please.)
  * Set the email address of the apache-perl administrator:  enter email, tab to ok, hit enter.
@@ -55,13 +56,9 @@ most cases the default settings will work fine)
 ** o conf urllist push http://mirrors.kernel.org/cpan/
 ** o conf commit
  ** quit
- *  sudo cpan -i B/BY/BYRNE/SOAP/SOAP-Lite-0.67.tar.gz Params::Validate YAML::Dumper
-* sudo cpan
-** force install Feed::Find
-** force install Encode::Unicode::Japanese
-** force install Test::Pod
-* quit
-
+ *  sudo cpan -i B/BY/BYRNE/SOAP/SOAP-Lite-0.67.tar.gz YAML::Dumper 
+ *  sudo cpan -i force install Feed::Find Encode::Unicode::Japanese Test::Pod
+  
 4) Configuring and installing   This step takes around 30 minutes.
 
 sudo ./configure --socialtext-open=1 --apache-proxy=0 --hostname=yourhost.com --url=http://yourhost.com   --server-admin=defaultuser@yourhost.com   --support-address=defaultuser@yourhost.com
@@ -77,15 +74,15 @@ Do tests with Postgres RDBMS?   NO
 
 5) Setting up Postgres.  This step takes about 5 minutes.
 
-* With sudo, edit /etc/postgresql/8.1/main/pg_hba.conf
- Add these 2 lines to /etc/postgresql/8.1/main/pg_hba.conf
+* With sudo, edit /etc/postgresql/7.4/main/pg_hba.conf
+ Add these 2 lines to /etc/postgresql/7.4/main/pg_hba.conf
  (BEFORE the local template1 "all" lines)
  
     local   template1   nlw                   trust
     local   NLW            nlw                   trust
  
-* sudo /etc/init.d/postgresql-8.1 stop    
-* sudo /etc/init.d/postgresql-8.1 start
+* sudo /etc/init.d/postgresql-7.4 stop    
+* sudo /etc/init.d/postgresql-7.4 start
 * Create the user
 **  sudo -u postgres createuser nlw
 ** sudo -u postgres createdb -O nlw NLW   
@@ -118,7 +115,7 @@ sudo ./etc/init.d/exim start
 7) Making sure it works. This takes about 2 minutes.
 
   * browse to <server>/help/index.cgi
-  * sudo -u www-data st-admin create-workspace admin
+  * sudo -u www-data /usr/local/bin/st-create-workspace admin
   * sudo -u www-data st-admin create-user --email you@yourserver.com --password password
   * sudo -u www-data st-admin add_member --email you@yoursever.com --workspace admin
   * browse to <server>/nlw/login.html

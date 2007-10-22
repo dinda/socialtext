@@ -1,4 +1,4 @@
-ALL -- How to install Socialtext Open
+INSTALL -- How to install Socialtext Open
 
 @COPYRIGHT@
 
@@ -228,7 +228,7 @@ and are not supported.
 If you have problems installing Socialtext Open, please visit one
 of these online resources.
 
-http://www.socialtext.net/open/
+http://www.socialtext.net/stoss/
     The home wiki workspace for all open source related to Socialtext,
     including the Socialtext Open product you've just downloaded.
 
@@ -247,7 +247,7 @@ you can also contact andy.lester [at] socialtext.com.
 
 We're always looking to improve documentation.  If you've got
 suggestions, problems, frustrations, please make a note of them at
-https://www.socialtext.net/open/index.cgi?install_docs_improvements.
+https://www.socialtext.net/stoss/index.cgi?install_docs_improvements.
 
 
 == Other INSTALL docs you may find useful
@@ -312,3 +312,4 @@ also be helpful.
 # END OF DOCUMENT
 # vi: set ts=8 sts=4 sw=4 expandtab
 # -*- text -*-
+

@@ -54,12 +54,3 @@ If you're doing a make install, and this happens:
 it's because your postgres user doesn't have read permissions to
 the directory you've built Socialtext into.  Make sure that it's
 world-readable.
-
-== I'm having trouble with Japanese fonts ==
-
-You might need to install ipagp.ttf and odokai.ttf, and an openprinting 
-font package, by hand. This will be fixed in a future localization release.
-
-
-
-

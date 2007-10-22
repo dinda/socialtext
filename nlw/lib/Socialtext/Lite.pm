@@ -7,6 +7,8 @@ use Readonly;
 use Socialtext::Formatter::LiteLinkDictionary;
 use Socialtext::String;
 use Socialtext::Permission 'ST_EDIT_PERM';
+use Socialtext::Helpers;
+use Socialtext::l10n qw(loc);
 
 =head1 NAME
 
@@ -195,7 +197,7 @@ sub search {
 
     if ( $search_term ) {
         eval {
-            $search_results = $self->hub->search->get_result_set($search_term);
+            $search_results = $self->hub->search->get_result_set(search_term => $search_term);
         };
         if ($@) {
             $error = $@;
@@ -297,7 +299,7 @@ sub _frame_page {
 
     my $attachments = $self->_get_attachments($page);
 
-    my $edit_link = $self->_edit_link($page) ;
+    my $edit_link = $self->_edit_link($page);
 
     $self->hub->viewer->link_dictionary(
         Socialtext::Formatter::LiteLinkDictionary->new() );
@@ -307,6 +309,7 @@ sub _frame_page {
         page_html        => $page->to_html_or_default,
         title            => $page->title,
         edit_link        => $edit_link,
+        login_logout     => $self->_login_logout($page->uri),
         page_update_info => $self->_page_update_info($page),
         attachments      => $attachments,
         # XXX next two for attachments, because we are using legacy urls
@@ -314,6 +317,18 @@ sub _frame_page {
         page_uri         => $page->uri,
         workspace_name   => $self->hub->current_workspace->name,
     );
+}
+
+sub _login_logout {
+    my $self = shift;
+    my $page_uri = shift;
+    if ($self->hub->current_user->is_guest) {
+        my $uri = $self->hub->current_workspace->uri;
+        $uri =~ s#^(.*://[^/]+)/([^/]+)#$1/lite/page/$2/$page_uri#g;
+        return '<a href="/challenge?' . $uri . '">' . loc('Log&nbsp;in') . '</a>';
+    } else {
+        return '<a href="/nlw/submit/logout">' . loc('Log&nbsp;out') . '</a>';
+    }
 }
 
 sub _process_template {
@@ -328,6 +343,7 @@ sub _process_template {
         search_link     => $self->_search_link,
         brand_stamp     => $self->hub->main->version_tag,
         workspace_title => $self->hub->current_workspace->title,
+        static_path     => Socialtext::Helpers->static_path,
         %vars,
     );
 }
@@ -356,17 +372,16 @@ sub _page_update_info {
 
 sub _edit_link {
     my $self           = shift;
-
+    my $page = shift;
     my $authz = Socialtext::Authz->new;
     unless ( $authz->user_has_permission_for_workspace(
                  user       => $self->hub->current_user,
                  permission => ST_EDIT_PERM,
                  workspace  => $self->hub->current_workspace,
              ) ) {
-        return '';
+        return $self->_login_logout($page->uri);
     }
 
-    my $page           = shift;
     my $workspace_name = $self->hub->current_workspace->name;
     return qq{<a href="/lite/page/$workspace_name/}
         . $page->uri

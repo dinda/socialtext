@@ -11,6 +11,7 @@ use KinoSearch::QueryParser::QueryParser;
 use KinoSearch::Search::BooleanQuery;
 use KinoSearch::Search::TermQuery;
 use KinoSearch::Store::RAMInvIndex;
+use Socialtext::Search::Utils;
 
 sub new {
     my ( $class, %args ) = @_;
@@ -20,13 +21,14 @@ sub new {
 sub parse {
     my ( $self, $query_string ) = @_;
 
-    # Raw text manipulations like this are not 100% safe to do, but should be
-    # okay considering their esoteric nature.
-    $query_string =~ s/=/title:/g;          # Support old style title search
-    $query_string =~ s/category:/tag:/g;    # Support old name for tags.
+    # Fix the raw query string.  Mostly manipulating "field:"-like strings.
+    $query_string = $self->munge_raw_query_string($query_string);
 
     # Preprocess the query to clearly mark wildcards out of the way.
     $self->_replace_wildcards( \$query_string );
+
+    # Make workspace field searches hardened against stemming
+    $self->_harden_workspace( \$query_string );
 
     # Get the default query tree from the query string.
     my $query = KinoSearch::QueryParser::QueryParser->new(
@@ -37,6 +39,47 @@ sub parse {
 
     # Postprocess the query string to expand wildcards
     return $self->_expand_wildcards($query);
+}
+
+# Raw text manipulations like this are not 100% safe to do, but should be okay
+# considering their esoteric nature (i.e. dealing w/ fields).
+sub munge_raw_query_string {
+    my ( $self, $query ) = @_;
+
+    # Establish some field synonyms.
+    $query =~ s/=/title:/g;       # Old style title search
+    $query =~ s/category:/tag:/g; # Old name for tags
+
+    # Find everything that looks like a field, but is not.  I.e. in "cow:foo"
+    # we would find "cow:". 
+    #
+    # XXX: Fields duplicated here and Socialtext/Search/KinoSearch/Indexer.
+    my @fields = qw(key title tag text);
+    my @non_fields;
+    while ( $query =~ /(\w+):/g ) {
+        my $maybe_field = $1;
+        push @non_fields, $maybe_field
+            unless grep { $_ eq $maybe_field } @fields;
+    }
+
+    # If it looks like a field but is not then remove the ":".  This prevents
+    # things being treated as fields when they are not fields.
+    for my $non_field (@non_fields) {
+        $non_field = quotemeta $non_field;
+        $query =~ s/(${non_field}):/$1 /g;
+    }
+
+    return $query;
+}
+
+sub _harden_workspace {
+    my ( $self, $query_string_ref ) = @_;
+
+    # The only way I could find to do this was with a zero-width
+    # positive look-behind assertion.  Not sure how expensive it is...
+    $$query_string_ref =~ 
+        s{(?<=workspace\:)([\w\-]+)}
+         {&Socialtext::Search::Utils::harden($1)}eg;
 }
 
 sub _replace_wildcards {
