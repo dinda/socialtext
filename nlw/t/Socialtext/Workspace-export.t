@@ -56,6 +56,9 @@ my $admin = $hub->current_workspace;
         'check email address for first user in user dump' );
     is( $users_dump->[0]{creator_username}, 'system-user',
         'check creator name for first user in user dump' );
+    if ( $users_dump->[0]{user_id} ) {
+        fail( "user_id should not exist in dump file." );
+    }
 }
 
 {
