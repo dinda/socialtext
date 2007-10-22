@@ -293,6 +293,7 @@ sub to_hash {
   my $hash = {};
   foreach my $attr ( @minimal_interface ) {
       my $value = $self->$attr;
+      $value = "" unless defined $value;
       $hash->{$attr} = "$value";
   }
 
