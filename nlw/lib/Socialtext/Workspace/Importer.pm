@@ -292,8 +292,10 @@ sub _create_user {
         $create{$c} = $info->{$c}
             if exists $info->{$c};
     }
+    
 
-    return Socialtext::User->create(
+    my $user = Socialtext::User->new(username => $info->{username});
+    return $user || Socialtext::User->create(
         %create,
         created_by_user_id => $creator->user_id,
         no_crypt           => 1,
