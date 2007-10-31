@@ -49,10 +49,6 @@ sub password_is_correct {
     return 0;
 }
 
-sub password {
-    return '*no-password*';
-}
-
 1;
 
 __END__
@@ -130,10 +126,6 @@ Returns 0.
 =head2 Socialtext::User::Deleted->password_is_correct()
 
 Returns 0, no matter what is passed in.
-
-=head2 Socialtext::User::Deleted->password()
-
-Returns '*no-password*'.
 
 =head1 AUTHOR
 

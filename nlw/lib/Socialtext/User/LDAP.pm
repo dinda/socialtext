@@ -15,6 +15,7 @@ our $VERSION = '0.01';
 
 field 'user_id';
 field 'username';
+field 'password';
 field 'email_address';
 field 'first_name';
 field 'last_name';
@@ -93,10 +94,6 @@ sub _init_from_result {
     # map { $self->$_( $result->get_value( $yaml->{attr_map}{$_} ) ) }
     #     qw( user_id username password first_name last_name email_address );
     # return $self;
-}
-
-sub password {
-    return '*no-password*';
 }
 
 sub password_is_correct {
