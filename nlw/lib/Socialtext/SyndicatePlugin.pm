@@ -273,7 +273,7 @@ sub _watchlist_get_items {
         user      => $user,
         workspace => $self->hub->current_workspace
     );
-    my @pages = map { $self->hub->pages->new_from_name( $_ ) } $watchlist->pages;
+    my @pages = map { $self->hub->pages->new_page( $_ ) } $watchlist->pages;
     return \@pages;
 }
 
@@ -284,7 +284,7 @@ sub _search_get_items {
         $self->hub->current_workspace->name
     );
 
-    my @pages = map { $self->hub->pages->new_from_name( $_->page_uri ) }
+    my @pages = map { $self->hub->pages->new_page( $_->page_uri ) }
         grep { $_->isa('Socialtext::Search::PageHit') }
         $searcher->search($query);
 
