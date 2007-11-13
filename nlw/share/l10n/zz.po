@@ -1900,6 +1900,11 @@ msgid "Image Already On The Web"
 msgstr "iM4G3 4Lr34Dy 0N 7h3 W38"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
+msgid "Import failed for (%1) ..."
+msgstr "iMp0r7 F4Il3d f0r (%1) ..."
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
 #.  
 msgid "Importing workspaces from tarballs ..."
 msgstr "iMp0r7iNg w0rKsP4C3S Fr0m 74r84LlS ..."
@@ -3021,6 +3026,11 @@ msgstr "r3s70R3 r3vIsI0N %1"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
+msgid "Restore failed - check %1"
+msgstr "r3s70R3 f4iL3D - Ch3cK %1"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
 msgid "Restore in progress - started at %1"
 msgstr "r3s70R3 iN Pr0gR3Ss - s74R73d 47 %1"
 
@@ -3033,6 +3043,16 @@ msgstr "r3s70R3 iN Pr0gR3Ss - s74R73d 47 N3V3R"
 #.  
 msgid "Restore is already running"
 msgstr "r3s70R3 iS 4lR34dY RuNnInG"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#.  
+msgid "Restore latest is already running"
+msgstr "r3s70R3 l473s7 Is 4Lr34Dy rUnNiNg"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
+msgid "Restore of %1 finished."
+msgstr "r3s70R3 0F %1 fInIsH3D."
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -3344,7 +3364,7 @@ msgstr "s0cI4L73x7 H0M3 p4g3"
 msgid "Socialtext Workspace Punctuation Help"
 msgstr "s0cI4L73x7 W0RkSp4c3 PuNc7u47I0N H3Lp"
 
-#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm
+#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm lib/Socialtext/Appliance/UserReport.pm
 #.  
 msgid "Socialtext detailed use report:"
 msgstr "s0cI4L73x7 D374Il3d uS3 r3p0r7:"
@@ -3354,7 +3374,7 @@ msgstr "s0cI4L73x7 D374Il3d uS3 r3p0r7:"
 msgid "Socialtext password help"
 msgstr "s0cI4L73x7 P4SsW0Rd h3lP"
 
-#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm
+#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm lib/Socialtext/Appliance/UserReport.pm
 #.  
 msgid "Socialtext summary use report:"
 msgstr "s0cI4L73x7 SuMm4rY Us3 R3P0R7:"
@@ -4163,6 +4183,11 @@ msgstr "vI3W&N8Sp;cUrR3N7&n8sP;R3ViSi0n"
 #.  
 msgid "Views"
 msgstr "vI3Ws"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#.  
+msgid "Waiting for restore to finish"
+msgstr "w4i7iNg f0r r3s70R3 70 FiNiSh"
 
 #: share/template/element/settings/workspaces_permissions_section
 #.  

@@ -1900,6 +1900,11 @@ msgid "Image Already On The Web"
 msgstr "既に web 上にある画像"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
+msgid "Import failed for (%1) ..."
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
 #.  
 msgid "Importing workspaces from tarballs ..."
 msgstr "ターボールからワークスペースをインポート中 ..."
@@ -3021,6 +3026,11 @@ msgstr "リビジョン %1 に戻す"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
+msgid "Restore failed - check %1"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
 msgid "Restore in progress - started at %1"
 msgstr "復元中 - %1 に開始"
 
@@ -3033,6 +3043,16 @@ msgstr "復元中 - %1 に開始"
 #.  
 msgid "Restore is already running"
 msgstr "すでに復元中"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#.  
+msgid "Restore latest is already running"
+msgstr ""
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#. (
+msgid "Restore of %1 finished."
+msgstr ""
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -3344,7 +3364,7 @@ msgstr "Socialtext ホームページ"
 msgid "Socialtext Workspace Punctuation Help"
 msgstr "Socialtext ワークスペース表記法　ヘルプ"
 
-#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm
+#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm lib/Socialtext/Appliance/UserReport.pm
 #.  
 msgid "Socialtext detailed use report:"
 msgstr "Socialtext 詳細な使用レポート:"
@@ -3354,7 +3374,7 @@ msgstr "Socialtext 詳細な使用レポート:"
 msgid "Socialtext password help"
 msgstr "Socialtext パスワードヘルプ"
 
-#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm
+#: lib/Socialtext/Appliance/UsageStats.pm lib/Socialtext/Appliance/UserReport.pm lib/Socialtext/Appliance/UserReport.pm
 #.  
 msgid "Socialtext summary use report:"
 msgstr "Socialtext 使用レポート要約:"
@@ -4163,6 +4183,11 @@ msgstr "現在のリビジョンを見る"
 #.  
 msgid "Views"
 msgstr "閲覧"
+
+#: lib/Socialtext/Appliance/Model/Backup.pm
+#.  
+msgid "Waiting for restore to finish"
+msgstr ""
 
 #: share/template/element/settings/workspaces_permissions_section
 #.  
