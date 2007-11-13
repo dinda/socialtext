@@ -5119,6 +5119,11 @@ msgstr "rえqういRえD"
 msgid "revision"
 msgstr "rえvいsいおN"
 
+#: share/template/element/settings/workspaces_permissions_section
+#.  
+msgid "roles_and_permission_sets#standard_workspace_types"
+msgstr "rおlえs_あNd_pえrMいSsいおN_Sえ7s#s7あNdあrD_WおRkSpあcえ_7yPえS"
+
 #: lib/Socialtext/Widget_resource.pm share/javascript/widget_resource.js
 #. (
 msgid "search: %1"

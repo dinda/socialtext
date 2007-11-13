@@ -5119,6 +5119,11 @@ msgstr ""
 msgid "revision"
 msgstr ""
 
+#: share/template/element/settings/workspaces_permissions_section
+#.  
+msgid "roles_and_permission_sets#standard_workspace_types"
+msgstr ""
+
 #: lib/Socialtext/Widget_resource.pm share/javascript/widget_resource.js
 #. (
 msgid "search: %1"
