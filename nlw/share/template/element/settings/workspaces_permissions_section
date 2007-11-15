@@ -11,7 +11,12 @@
     [% loc('You can choose the level of privacy for your workspace. For more information on choosing the level of privacy for your workspace, see') %] 
     [% SET WS_SUFFIX="-${loc_lang}" %]
     [% SET WS_SUFFIX="" IF loc_lang == 'en' %]
-    <a href="/help[% WS_SUFFIX %]/index.cgi?[% loc('roles_and_permission_sets#standard_workspace_types') %]">[% loc('Roles and Permission Sets (standard workspace types)') %]</a>.
+    [% IF loc_lang == 'ja' %]
+        <a href="/help[% WS_SUFFIX %]/index.cgi?%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%A8%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A#E6_A8_99_E6_BA_96_E3_83_AF_E3_83_BC_E3_82_AF_E3_82_B9_E3_83_9A_E3_83_BC_E3_82_B9_E3_82_BF_E3_82_A4_E3_83_97">
+    [% ELSE %]
+        <a href="/help[% WS_SUFFIX %]/index.cgi?roles_and_permission_sets#standard_workspace_types">
+    [% END %]
+    [% loc('Roles and Permission Sets (standard workspace types)') %]</a>.
    </td>
   </tr>
   <tr>
