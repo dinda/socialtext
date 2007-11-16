@@ -88,7 +88,6 @@ proto.fromHtml = function(html) {
             html += "<p> </p>"
         }
         html = this.assert_padding_between_block_elements(html);
-        html = this.assert_padding_between_block_elements(html);
     }
     else {
         html = this.replace_p_with_br(html);
