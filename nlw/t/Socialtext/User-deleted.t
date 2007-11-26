@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 9;
+use Test::Socialtext tests => 12;
 fixtures('populated_rdbms');
 
 use Socialtext::User;
@@ -64,4 +64,20 @@ Socialtext::UserId->create(
     is( $no_longer_there, undef,
         "Old user_id is wiped out of the UserId table."
     );
+}
+
+# Deleted LDAP users sometimes don't end up with a username
+# so we should provide a default one, as other parts of the 
+# system ass-u-me that everyone has a username.
+Default_username: {
+    Socialtext::UserId->create(
+        system_unique_id => 42,
+        driver_key       => 'Default',
+        driver_unique_id => "Rubber Bands",
+        driver_username  => '',
+    );
+    my $nemo = Socialtext::User->new( user_id => 42 );
+    ok ($nemo->to_hash, "deleted user can be hashified" );
+    is ($nemo->username, 'deleted-user', "user was found, no error.");
+    is ($nemo->first_name, 'Deleted', "But he's still deleted.");
 }
