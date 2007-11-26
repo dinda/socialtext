@@ -5,6 +5,7 @@ use base 'Exporter';
 
 our @EXPORT_OK = qw( sql_execute sql_selectrow );
 
+use Carp 'carp';
 use DBI;
 use Socialtext::Schema;
 
@@ -14,7 +15,7 @@ sub sql_execute {
     my ( $statement, @bindings ) = @_;
 
     my $sth = _dbh->prepare($statement);
-    $sth->execute(@bindings) || die "zac is lazy: $!"; # FIXME: exception
+    $sth->execute(@bindings) || die; # FIXME: exception
     return $sth;
 }
 

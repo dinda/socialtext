@@ -32,7 +32,6 @@ sub new {
 
     my $filter_key = $yaml->{attr_map}{$key};
     return undef unless $filter_key;
-    return undef unless $val;
 
     # With stock LDAP, the best way to find a record via dn is by making that
     # the base of the search, and restricting the scope to just that object

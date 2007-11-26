@@ -104,9 +104,6 @@ sub SchemaObject {
                                               rdbms => 'PostgreSQL',
                                             );
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'User',
@@ -158,9 +155,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'UserId',
@@ -199,9 +193,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'UserMetadata',
@@ -513,9 +504,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name          => 'Watchlist',
@@ -559,9 +547,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'Account',
@@ -588,9 +573,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'Permission',
@@ -612,9 +594,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'Role',
@@ -667,9 +646,6 @@ sub SchemaObject {
             );
     }
 
-    # The package corresponding to the following table has been alzabnobified.
-    # If you change the schema below, you won't automagically get accessors
-    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'WorkspaceBreadcrumb',

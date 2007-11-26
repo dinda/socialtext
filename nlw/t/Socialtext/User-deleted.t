@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 12;
+use Test::Socialtext tests => 9;
 fixtures('populated_rdbms');
 
 use Socialtext::User;
@@ -25,15 +25,16 @@ use Socialtext::User::Default;
 
 # populate a user that doesn't currently exist, even though it uses a
 # known driver.
-my $user_id = Socialtext::UserId->create(
+Socialtext::UserId->create(
+    system_unique_id => 99,
     driver_key       => 'Default',
-    driver_unique_id => 999999,
+    driver_unique_id => "I met a man who wasn't there",
     driver_username  => "Nemo",
 );
 
 {
     is (Socialtext::User->Count, 10, "New user added only to UserId, simulating adding and deleting from the store.");
-    my $nemo = Socialtext::User->new( user_id => $user_id->system_unique_id );
+    my $nemo = Socialtext::User->new( user_id => 99 );
     ok ($nemo->to_hash, "Nemo can be hashified" );
     is ($nemo->username, 'Nemo', "Nemo was found, no error.");
     is ($nemo->first_name, 'Deleted', "But he's still deleted.");
@@ -63,20 +64,4 @@ my $user_id = Socialtext::UserId->create(
     is( $no_longer_there, undef,
         "Old user_id is wiped out of the UserId table."
     );
-}
-
-# Deleted LDAP users sometimes don't end up with a username
-# so we should provide a default one, as other parts of the 
-# system ass-u-me that everyone has a username.
-Default_username: {
-    Socialtext::UserId->create(
-        system_unique_id => 42,
-        driver_key       => 'Default',
-        driver_unique_id => "Rubber Bands",
-        driver_username  => '',
-    );
-    my $nemo = Socialtext::User->new( user_id => 42 );
-    ok ($nemo->to_hash, "deleted user can be hashified" );
-    is ($nemo->username, 'deleted-user', "user was found, no error.");
-    is ($nemo->first_name, 'Deleted', "But he's still deleted.");
 }

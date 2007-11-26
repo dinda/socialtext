@@ -6,20 +6,17 @@ use warnings;
 
 our $VERSION = '0.01';
 
-use Class::Field 'field';
-use Readonly;
 use Socialtext::Exceptions qw( data_validation_error );
-use Socialtext::MultiCursor;
-use Socialtext::SQL 'sql_execute';
 use Socialtext::Validate qw( validate SCALAR_TYPE );
 
-field 'role_id';
-field 'name';
-field 'used_as_default';
+use Socialtext::Schema;
+use base 'Socialtext::AlzaboWrapper';
+__PACKAGE__->SetAlzaboTable( Socialtext::Schema->Load->table('Role') );
+__PACKAGE__->MakeColumnMethods();
 
-sub table_name { 'Role' }
+use Readonly;
 
-# FIXME: This belongs elsewhere, in fixture creation code, perhaps
+
 Readonly my @RequiredRoles => (
     [ guest => 1 ],
     [ authenticated_user => 1 ],
@@ -42,115 +39,14 @@ sub EnsureRequiredDataIsPresent {
     }
 }
 
-sub new {
-    my ( $class, %p ) = @_;
+sub _new_row {
+    my $class = shift;
+    my %p     = validate( @_, { name => SCALAR_TYPE } );
 
-    return exists $p{name} ? $class->_new_from_name(%p)
-                           : $class->_new_from_role_id(%p);
-}
-
-sub _new_from_name {
-    my ( $class, %p ) = @_;
-
-    return $class->_new_from_where('name=?', $p{name});
-}
-
-sub _new_from_role_id {
-    my ( $class, %p ) = @_;
-
-    return $class->_new_from_where('role_id=?', $p{role_id});
-}
-
-sub _new_from_where {
-    my ( $class, $where_clause, @bindings ) = @_;
-
-    my $sth = sql_execute(
-        'SELECT role_id, name, used_as_default'
-        . ' FROM "Role"'
-        . " WHERE $where_clause",
-        @bindings );
-    my @rows = @{ $sth->fetchall_arrayref };
-    return @rows    ?   bless {
-                            role_id         => $rows[0][0],
-                            name            => $rows[0][1],
-                            used_as_default => $rows[0][2],
-                        }, $class
-                    :   undef;
-}
-
-sub create {
-    my ( $class, %p ) = @_;
-
-    $class->_validate_and_clean_data(\%p);
-
-    sql_execute(
-        'INSERT INTO "Role" (role_id, name, used_as_default)'
-        . ' VALUES (nextval(\'"Role___role_id"\'),?,?)',
-        $p{name}, $p{used_as_default} );
-}
-
-sub delete {
-    my ($self) = @_;
-
-    sql_execute( 'DELETE FROM "Role" WHERE role_id=?',
-        $self->role_id );
-}
-
-# "update" methods: set_role_name
-sub update {
-    my ( $self, %p ) = @_;
-
-    $self->_validate_and_clean_data(\%p);
-    sql_execute( 'UPDATE "Role" SET name=? WHERE role_id=?',
-        $p{name}, $self->role_id );
-
-    $self->name($p{name});
-
-    return $self;
-}
-
-sub display_name {
-    return join ' ', split /_/, $_[0]->name;
-}
-
-sub Guest {
-    shift->new( name => 'guest' );
-}
-
-sub AuthenticatedUser {
-    shift->new( name => 'authenticated_user' );
-}
-
-sub Member {
-    shift->new( name => 'member' );
-}
-
-sub WorkspaceAdmin {
-    shift->new( name => 'workspace_admin' );
-}
-
-sub Impersonator {
-    shift->new( name => 'impersonator' );
-}
-
-sub All {
-    my ( $class, %p ) = @_;
-
-    my $sth = sql_execute(
-        'SELECT role_id'
-        . ' FROM "Role"'
-        . ' ORDER BY name' );
-
-    return Socialtext::MultiCursor->new(
-        iterables => [ $sth->fetchall_arrayref ],
-        apply => sub {
-            my $row = shift;
-            return Socialtext::Role->new( role_id => $row->[0] );
-        }
+    return $class->table->one_row(
+        where => [ $class->table->column('name'), '=', $p{name } ],
     );
 }
-
-# Helper methods
 
 sub _validate_and_clean_data {
     my $self = shift;
@@ -178,6 +74,40 @@ sub _validate_and_clean_data {
     data_validation_error errors => \@errors if @errors;
 }
 
+sub display_name {
+    return join ' ', split /_/, $_[0]->name;
+}
+
+sub Guest {
+    shift->new( name => 'guest' );
+}
+
+sub AuthenticatedUser {
+    shift->new( name => 'authenticated_user' );
+}
+
+sub Member {
+    shift->new( name => 'member' );
+}
+
+sub WorkspaceAdmin {
+    shift->new( name => 'workspace_admin' );
+}
+
+sub Impersonator {
+    shift->new( name => 'impersonator' );
+}
+
+sub All {
+    my $class = shift;
+
+    return
+        $class->cursor
+            ( $class->table->all_rows
+                  ( order_by => $class->table->column('name') )
+            );
+}
+
 1;
 
 __END__
@@ -202,10 +132,6 @@ table. Each object represents a single row from the table.
 =head1 METHODS
 
 =over 4
-
-=item Socialtext::Role->table_name()
-
-Return the name of the table where Role data lives.
 
 =item Socialtext::Role->new(PARAMS)
 

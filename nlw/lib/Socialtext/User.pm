@@ -10,12 +10,9 @@ use Socialtext::Validate qw( validate SCALAR_TYPE BOOLEAN_TYPE ARRAYREF_TYPE WOR
 use Socialtext::AppConfig;
 use Socialtext::MultiCursor;
 use Socialtext::Schema;
-use Socialtext::TT2::Renderer;
-use Socialtext::URI;
 use Socialtext::UserMetadata;
 use Socialtext::UserId;
 use Socialtext::User::Deleted;
-use Socialtext::Workspace;
 use Email::Address;
 use Class::AlzaboWrapper;
 use Class::Field 'field';
@@ -178,6 +175,12 @@ sub update_store {
     return $self->homunculus->update( %p );
 }
 
+sub update_metadata {
+    my $self = shift;
+    my %p = @_;
+    return $self->metadata->update( %p );
+}
+
 sub user_id {
     my $self = shift;
 
@@ -247,14 +250,6 @@ sub is_technical_admin {
 
 sub is_system_created {
     $_[0]->metadata->is_system_created( @_[ 1 .. $#_ ] );
-}
-
-sub set_technical_admin {
-    $_[0]->metadata->set_technical_admin( @_[ 1 .. $#_ ] );
-}
-
-sub set_business_admin {
-    $_[0]->metadata->set_business_admin( @_[ 1 .. $#_ ] );
 }
 
 sub record_login {
@@ -1369,6 +1364,12 @@ Returns true if the user factory supports updates.
 
 Updates the user's information with the new key/val pairs passed in.
 
+=head2 $user->update_metadata(PARAMS)
+
+Updates the user's metadata information with the new key/val pairs
+passed in, but you cannot change is_system_created after the initial
+creation of a user.
+
 =head2 $user->user_id()
 
 =head2 $user->username()
@@ -1430,14 +1431,6 @@ For now, this is defined as any password not matching "*none*".
 
 Given a password, this returns a list of error messages if the
 password is invalid.
-
-=head2 $user->set_technical_admin($value)
-
-Updates the is_technical_admin for the user to $value (0 or 1).
-
-=head2 $user->set_business_admin($value)
-
-Updates the is_business_admin for the user to $value (0 or 1).
 
 =head2 $user->record_login()
 
@@ -1716,6 +1709,5 @@ Socialtext, Inc., <code@socialtext.com>
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2005 Socialtext, Inc., All Rights Reserved.
-
 
 =cut

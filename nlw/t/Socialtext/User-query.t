@@ -59,8 +59,8 @@ use Socialtext::User;
     is_deeply(
         [ map { $_->username } $users->all() ],
         [
-            ( map { ("devnull$_\@urth.org") } 7, 6, 5, 4, 3, 2, 1 ),
             'guest', 'system-user',
+            map { ("devnull$_\@urth.org") } 1 .. 7
         ],
         'All() sorted by creation_datetime',
     );
@@ -124,7 +124,7 @@ use Socialtext::User;
     );
     is_deeply(
         [ map { $_->username } $users->all() ],
-        [ map { ("devnull$_\@urth.org") } 7, 6, 5, 4, 3, 2, 1 ],
+        [ map { ("devnull$_\@urth.org") } 1 .. 7 ],
         'ByAccountId() sorted by creation_datetime',
     );
 
@@ -214,7 +214,7 @@ use Socialtext::User;
             map { [ $_->[0]->username, $_->[1]->name ] }
                 $users_with_roles->all()
         ],
-        [ map { my $u = "devnull$_\@urth.org"; [ $u, $roles{$u} ] } 7, 6, 5, 4, 3, 2, 1 ],
+        [ map { my $u = "devnull$_\@urth.org"; [ $u, $roles{$u} ] } 1 .. 7 ],
         'ByWorkspaceIdWithRoles() sorted by creation_datetime',
     );
 
@@ -284,7 +284,7 @@ use Socialtext::User;
         order_by => 'creation_datetime' );
     is_deeply(
         [ map { $_->username } $users->all() ],
-        [ map { ("devnull$_\@urth.org") } 7, 6, 5, 4, 3, 2, 1 ],
+        [ map { ("devnull$_\@urth.org") } 1 .. 7 ],
         'ByUsername() sorted by creation_datetime',
     );
 

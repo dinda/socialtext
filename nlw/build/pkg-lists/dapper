@@ -44,7 +44,6 @@ libfile-find-rule-perl
 libfile-slurp-perl
 libhtml-fillinform-perl
 libhttp-browserdetect-perl
-libimage-size-perl
 libimager-perl
 liblingua-pt-stemmer-perl
 liblingua-stem-fr-perl
@@ -87,6 +86,5 @@ libxml-libxml-perl
 libxml-parser-perl
 libxml-rss-perl
 libxml-xpath-perl
-libxml2-dev
 perlmagick
 bc
