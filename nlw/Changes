@@ -2,6 +2,52 @@ Change log for Socialtext Open
 
 2.17.X
 
+Release notes, 2.17.2.0  Nov 2007
+
+  [BUGS]
+
+  {rt: 27572} Pluggable auth is not robust against user records moving in the back-end store  This branch closes an edge case where user records are moved in a user store, resulting in a failure to locate them based on a known, previously valid identifier. 
+
+  {rt: 27292} Backups - When using a Directory Server for the User store, adding and deleting users could cause subsequent backups and restores to fail.
+
+  {rt: 27049} formatter: toc does not appear on initial preview
+
+  {rt: 25472} Dashboard: "Your workspaces" displays workspace that user is no longer member of.
+
+  {rt: 26314} Logo: Can't upload a logo at all.  Uploading logo images using an Internet Explorer browser broke some time ago, this fixes it.  Problem had to do with the way IE presented the file name in the POST content.
+
+  {rt: 27506} htmldoc creates many temp files in /var/tmp that don't get cleaned up
+
+  {bug: 310} app error from search RSS.  If a search RSS result set contained pages with UTF-8 page titles, the request would generate an application error.
+
+  [REFACTORING]
+
+  This change adjusts scalar $page->all_revision_ids() to $page->revision_count(). This allows us to later change the implementation of counting how many revisions a page has, as well as limiting the number of direct calls to all_revision_ids (which is primarily used in the code in the scalar context).
+
+Release notes, 2.17.1.0  Nov 2007
+
+  [BUGS]
+
+  {rt: 26851}: Tags with zero pages are not getting removed.
+
+  {rt: 26179}: safari: "Replace this text with your own" does not go away when clicked.
+
+  {rt: 27013}: creating a blog name ending in "Blog" gives "Blog Weblog"
+
+  {rt: 25757}: Widgets: no scrollbars in Preview mode in IE after editing a widget
+
+  {rt: 27006}: Subjects get stripped of Re: but not Fw: on mailed in pages
+
+  {rt: 19983}: Send page by email: munging wikitext
+
+  {bz: 321}:   Footer is not big enough.  2.17.0 introduced a new footer design, but it didn't scale well on really wide browser windows.  There 
+
+  [FEATURES]
+
+  Adding basic auth to Ajax.js so js-test doesn't need to login.
+
+  We were still publishing URLs for feeds in public workspaces with a /noauth prefix. This is no longer necessary. Code has been changed appropriately.
+
 Release notes, 2.17.0.0  Oct 2007
 
   [FEATURES]
