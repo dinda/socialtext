@@ -912,10 +912,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
     // XXX - Had to resort to this because we couldn't figure out how to
     // inspect which button got clicked. Possibly refactor.
     var callback = function(element) {
-        if (Wikiwyg.is_ie) {
-            wikiwyg.toolbarObject.styleSelect.style.display="none"
-        }
-
         var form = element.getElementsByTagName('form')[0];
 
         var onreset = function() {
@@ -939,8 +935,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                     function() {
                         self.insert_widget(widget_string, widget_element);
                         box.release();
-                        if (Wikiwyg.is_ie)
-                            wikiwyg.toolbarObject.styleSelect.style.display = "";
                     }
                 );
             }
@@ -956,8 +950,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                 else {
                     alert(error);
                 }
-                if (Wikiwyg.is_ie)
-                    wikiwyg.toolbarObject.styleSelect.style.display = "";
                 Wikiwyg.Widgets.widget_editing--;
                 return false;
             }
@@ -1105,10 +1097,6 @@ Widget.Lightbox.Socialtext.prototype.hide = function() {
         document.body.scroll="yes"
     }
     this.releaseFocus();
-
-    if (Wikiwyg.is_ie) {
-        wikiwyg.toolbarObject.styleSelect.style.display=""
-    }
 }
 
 eval(WW_ADVANCED_MODE).prototype.setup_widgets = function() {

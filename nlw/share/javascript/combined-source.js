@@ -4447,6 +4447,20 @@ function confirm_delete(pageid) {
         location = 'index.cgi?action=delete_page;page_name=' + pageid;
     }
 }
+
+
+// Widget.Lightbox overrides
+if ( /MSIE 6.0/.test(navigator.userAgent) ) {
+    (function() {
+        var orig_show = Widget.Lightbox.prototype.show;
+        Widget.Lightbox.prototype.show = function() {
+            var html = '<IFRAME class=bgiframe style="DISPLAY: block; Z-INDEX: -1; FILTER: Alpha(Opacity=\'0\'); LEFT: 0px; ; LEFT: expression(((parseInt(this.parentNode.currentStyle.borderLeftWidth)||0)*-1)+\'px\'); WIDTH: 816px; ; WIDTH: expression(this.parentNode.offsetWidth+\'px\'); POSITION: absolute; TOP: 0px; ; TOP: expression(((parseInt(this.parentNode.currentStyle.borderTopWidth)||0)*-1)+\'px\')" tabIndex=-1 src="javascript:false;" frameBorder=0></IFRAME>';
+            this.div.insertBefore( document.createElement(html), this.div.firstChild );
+            orig_show.apply(this, arguments);
+        }
+    })();
+};
+
 // BEGIN Jemplate.js
 /*------------------------------------------------------------------------------
 Jemplate - Template Toolkit for JavaScript
@@ -16957,10 +16971,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
     // XXX - Had to resort to this because we couldn't figure out how to
     // inspect which button got clicked. Possibly refactor.
     var callback = function(element) {
-        if (Wikiwyg.is_ie) {
-            wikiwyg.toolbarObject.styleSelect.style.display="none"
-        }
-
         var form = element.getElementsByTagName('form')[0];
 
         var onreset = function() {
@@ -16984,8 +16994,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                     function() {
                         self.insert_widget(widget_string, widget_element);
                         box.release();
-                        if (Wikiwyg.is_ie)
-                            wikiwyg.toolbarObject.styleSelect.style.display = "";
                     }
                 );
             }
@@ -17001,8 +17009,6 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                 else {
                     alert(error);
                 }
-                if (Wikiwyg.is_ie)
-                    wikiwyg.toolbarObject.styleSelect.style.display = "";
                 Wikiwyg.Widgets.widget_editing--;
                 return false;
             }
@@ -17150,10 +17156,6 @@ Widget.Lightbox.Socialtext.prototype.hide = function() {
         document.body.scroll="yes"
     }
     this.releaseFocus();
-
-    if (Wikiwyg.is_ie) {
-        wikiwyg.toolbarObject.styleSelect.style.display=""
-    }
 }
 
 eval(WW_ADVANCED_MODE).prototype.setup_widgets = function() {

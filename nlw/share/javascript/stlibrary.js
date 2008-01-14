@@ -112,3 +112,17 @@ function confirm_delete(pageid) {
         location = 'index.cgi?action=delete_page;page_name=' + pageid;
     }
 }
+
+
+// Widget.Lightbox overrides
+if ( /MSIE 6.0/.test(navigator.userAgent) ) {
+    (function() {
+        var orig_show = Widget.Lightbox.prototype.show;
+        Widget.Lightbox.prototype.show = function() {
+            var html = '<IFRAME class=bgiframe style="DISPLAY: block; Z-INDEX: -1; FILTER: Alpha(Opacity=\'0\'); LEFT: 0px; ; LEFT: expression(((parseInt(this.parentNode.currentStyle.borderLeftWidth)||0)*-1)+\'px\'); WIDTH: 816px; ; WIDTH: expression(this.parentNode.offsetWidth+\'px\'); POSITION: absolute; TOP: 0px; ; TOP: expression(((parseInt(this.parentNode.currentStyle.borderTopWidth)||0)*-1)+\'px\')" tabIndex=-1 src="javascript:false;" frameBorder=0></IFRAME>';
+            this.div.insertBefore( document.createElement(html), this.div.firstChild );
+            orig_show.apply(this, arguments);
+        }
+    })();
+};
+
