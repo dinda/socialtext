@@ -18,11 +18,9 @@ field 'arguments';
 field 'label';
 field error => '';
 
-sub html_start { '<span class="nlw_phrase">'}
-
-sub html_end {
-    my $self   = shift;
-    my $widget = ''
+sub wikitext {
+    my $self = shift;
+    return ''
         . ( $self->label ? '"' . $self->escape_wafl_dashes($self->label) . '"' : '' ) . '{'
         . $self->method
         . (
@@ -31,6 +29,13 @@ sub html_end {
         : ''
         )
         . '}';
+}
+
+sub html_start { '<span class="nlw_phrase">'}
+
+sub html_end {
+    my $self   = shift;
+    my $widget = $self->wikitext;
     $self->hub->wikiwyg->generate_phrase_widget_image($widget);
     return "<!-- wiki: $widget --></span>";
 }
@@ -196,6 +201,15 @@ use Class::Field qw( const );
 
 const wafl_id => 'image';
 
+sub html_start {
+    my $self = shift;
+    return $self->error ? $self->SUPER::html_start(@_) : '' 
+};
+sub html_end {
+    my $self = shift;
+    return $self->error ? $self->SUPER::html_end(@_) : '' 
+}
+
 sub html {
     my $self = shift;
     my ( $workspace_name, $page_title, $image_name, $page_id, $page_uri )
@@ -232,8 +246,10 @@ sub html {
         if $self->label;
 
     my $alt_text = $self->uri_unescape($image_name);
+    my $widget = $self->wikitext;
+
     return
-        qq{<img alt="$alt_text" src="$link" />};
+        qq{<img alt="$alt_text" src="$link" widget="$widget" />};
 }
 
 ################################################################################

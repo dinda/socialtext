@@ -641,10 +641,20 @@ proto.replace_widget = function(elem) {
     if (! comment.nodeValue.match(/^\s*wiki:/)) return elem;
     var widget = comment.nodeValue.replace(/^\s*wiki:\s*([\s\S]*?)\s*$/, '$1');
     widget = widget.replace(/-=/g, '-');
+    var widget_image;
+    var src;
 
-    var widget_image = Wikiwyg.createElementWithAttrs('img',
+    if (widget.match(/^{image:/)) {
+        var orig = elem.firstChild;
+        if (orig.src) src = orig.src;
+    }
+
+    if (!src)
+        src = this.getWidgetImageUrl(widget);
+
+    widget_image = Wikiwyg.createElementWithAttrs('img',
         {
-            'src': this.getWidgetImageUrl(widget),
+            'src': src,
             'widget': widget
         }
     );
@@ -655,7 +665,6 @@ proto.replace_widget = function(elem) {
 proto.insert_widget = function(widget, widget_element) {
     var html = '<img src="' + this.getWidgetImageUrl(widget) +
         '" widget="' + widget.replace(/"/g,"&quot;") + '" />';
-
     var self = this;
     var docbody = this.get_edit_document().body;
 
@@ -665,7 +674,26 @@ proto.insert_widget = function(widget, widget_element) {
                 if ( widget_element.parentNode ) {
                     var div = self.get_edit_document().createElement("div");
                     div.innerHTML = html;
-                    widget_element.parentNode.replaceChild(div.firstChild, widget_element);
+
+                    var new_widget_element = div.firstChild;
+                    widget_element.parentNode.replaceChild(new_widget_element, widget_element);
+
+                    if (widget.match(/^{image:/)) {
+                        Ajax.post(
+                             location.pathname,
+                            'action=preview' +
+                            ';wiki_text=' + encodeURIComponent(widget) +
+                            ';page_name=' + encodeURIComponent(Page.page_id),
+                            function(widget_html) {
+                                var div = document.createElement("div");
+                                div.innerHTML = widget_html;
+                                var img = div.getElementsByTagName("img")[0];
+                                if (img.src)
+                                    new_widget_element.src = img.src;
+                            }
+                        )
+                    }
+
                 }
                 else {
                     self.insert_html(html);

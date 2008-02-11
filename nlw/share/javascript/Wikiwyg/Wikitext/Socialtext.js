@@ -68,6 +68,12 @@ proto.enableThis = function() {
     this.textarea.style.width = '99%';
     this.setHeightOfEditor();
     this.enable_keybindings();
+    this.textarea.focus();
+
+    if (Wikiwyg.is_gecko) {
+        this.textarea.selectionStart = 0;
+        this.textarea.selectionEnd = 0;
+    }
 }
 
 proto.setHeightOfEditor = function() {
@@ -303,6 +309,10 @@ proto.insert_text_at_cursor = function(text) {
     var before = t.value.substr(0, selection_start);
     var after = t.value.substr(selection_end, t.value.length);
     t.value = before + text + after;
+}
+
+proto.insert_text = function (text) {
+    this.area.value = text + this.area.value;
 }
 
 proto.set_text_and_selection = function(text, start, end) {
@@ -1431,14 +1441,28 @@ proto.format_img = function(elem) {
         var text = Wikiwyg.htmlUnescape(widget).
             replace(/-=/g, '-').
             replace(/==/g, '=');
-        text = this.handle_include(text, elem);
         var prev = elem.previousSibling;
+
+        if (!text.match(/\{\{.*\}\}/)) {
+            if (!elem.top_level_block)
+                elem.requires_trailing_space = true;
+            if (prev &&
+                !(prev.nodeType == 1 && prev.nodeName == 'BR') &&
+                !prev.top_level_block) {
+                prev.requires_trailing_space = true;
+            }
+        }
+
+        text = this.handle_include(text, elem);
+
         if (widget.match(/^\.\w+\n/))
             text = text.replace(/\n*$/, '\n');
+        // Dirty hack for {{{ ... }}} wikitext
         if (Wikiwyg.is_ie) {
             if (!text.match(/\{\{\{.*\}\}/))
                 elem.requires_trailing_space = true;
         }
+
         if (prev && prev.nodeName == 'BR' &&
             prev.previousSibling &&
             prev.previousSibling.is_widget

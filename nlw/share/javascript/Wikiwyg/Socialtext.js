@@ -178,6 +178,7 @@ function setup_wikiwyg() {
             message: "Loading editor..."
         });
         try {
+            Attachments.reset_new_attachments();
             if (Wikiwyg.is_safari) {
                 delete ww.current_wikitext;
             }
@@ -207,6 +208,8 @@ function setup_wikiwyg() {
             window.onresize = function () {
                 ww.resizeEditor();
             }
+
+            ww.is_editing = true;
         } catch(e) {
             alert(e);    // XXX - Useful for debugging
         }
@@ -227,6 +230,7 @@ function setup_wikiwyg() {
 
     // XXX Observe
     save_link.onclick = function() {
+        ww.is_editing = false;
         return ww.saveButtonHandler();
     }
 
@@ -240,6 +244,7 @@ function setup_wikiwyg() {
                 else
                     ww.confirmed = true;
             }
+            Attachments.delete_new_attachments();
             if (Socialtext.new_page) {
                 window.location = '?action=homepage';
             }
@@ -248,7 +253,6 @@ function setup_wikiwyg() {
             $('st-all-footers').style.display = 'block';
             ww.cancelEdit();
             ww.preview_link_reset();
-            window.EditQueue.reset_dialog();
             window.TagQueue.clear_list();
             Element.show('st-pagetools');
             Element.setStyle('st-editing-tools-display', {display: 'block'});
@@ -263,6 +267,8 @@ function setup_wikiwyg() {
             if (location.href.match(/caller_action=weblog_display;?/))
                 location.href = 'index.cgi?action=weblog_redirect;start=' +
                     encodeURIComponent(location.href);
+
+            ww.is_editing = false;
         } catch(e) {}
         return false;
     }
@@ -744,22 +750,7 @@ proto.saveChanges = function() {
 
         var saver = function() {
             var editList = $('st-page-editing-files');
-            for (var i=0; i < window.EditQueue.count(); i++) {
-                var node = window.EditQueue.file(i);
-                editList.appendChild(node.field);
-                var new_input = document.createElement( 'input' );
-                new_input.type = 'text';
-                new_input.name = 'embed';
-                new_input.value = window.EditQueue.is_embed_checked() ? '1' : '0';
-                editList.appendChild(new_input);
-
-                new_input = document.createElement( 'input' );
-                new_input.type = 'text';
-                new_input.name = 'unpack';
-                new_input.value = window.EditQueue.is_unpack_checked() ? '1' : '0';
-                editList.appendChild(new_input);
-
-            }
+            var new_page_name = $('st-newpage-pagename-edit');
 
             for (var i=0; i < window.TagQueue.count(); i++) {
                 var new_input = document.createElement( 'input' );
@@ -769,6 +760,21 @@ proto.saveChanges = function() {
                 editList.appendChild(new_input);
             }
             window.TagQueue.clear_list();
+
+            // Move Images from "Current Page" to the new page
+            if (Socialtext.new_page) {
+                var recent = Attachments.get_new_attachments();
+
+                for (var i=0; i < recent.length; i++) {
+                    var new_input = document.createElement( 'input' );
+                    new_input.type = 'hidden';
+                    new_input.name = 'attachment';
+                    new_input.value = [ recent[i]['id'],
+                                        recent[i]['page-id']
+                                      ].join(':');
+                    editList.appendChild(new_input);
+                }
+            }
 
             $('st-page-editing-pagebody').value = wikitext;
             $('st-page-editing-form').submit();
@@ -810,8 +816,9 @@ proto.confirmLinkFromEdit = function() {
         // or not.
         wikiwyg.confirmed = response;
 
-        if (response)
+        if (response) {
             wikiwyg.disableLinkConfirmations();
+        }
         return response;
     }
     return true;
@@ -834,6 +841,10 @@ proto.enableLinkConfirmations = function() {
             ev.returnValue = msg;
         }
     }
+
+    window.onunload = function(ev) {
+        Attachments.delete_new_attachments();
+    }
  
     var links = document.getElementsByTagName('a');
     for (var i = 0; i < links.length; i++) {
@@ -844,6 +855,7 @@ proto.enableLinkConfirmations = function() {
         if (links[i].id == 'st-edit-mode-tagbutton') continue;
         if (links[i].id == 'st-attachmentsqueue-submitbutton') continue;
         if (links[i].id == 'st-attachmentsqueue-closebutton') continue;
+        if (links[i].id == 'st-attachments-attach-closebutton') continue;
         if (links[i].id == 'st-tagqueue-closebutton') continue;
         if (links[i].id == 'st-tagqueue-submitbutton') continue;
 
@@ -855,6 +867,7 @@ proto.enableLinkConfirmations = function() {
 proto.disableLinkConfirmations = function() {
     this.originalWikitext = null;
     window.onbeforeunload = null;
+    window.onunload = null;
 
     var links = document.getElementsByTagName('a');
     for (var i = 0; i < links.length; i++) {
@@ -1081,6 +1094,23 @@ proto.add_styles = function() {
 Socialtext Wysiwyg subclass.
  =============================================================================*/
 proto = new Subclass(WW_SIMPLE_MODE, 'Wikiwyg.Wysiwyg');
+
+proto.enableThis = function() {
+    Wikiwyg.Wysiwyg.prototype.enableThis.apply(this, arguments);
+
+    if (Wikiwyg.is_gecko)
+        this.get_edit_document().execCommand("enableObjectResizing", false, false);
+
+    var self = this;
+
+    setTimeout(function() {
+        try {
+            if (Wikiwyg.is_gecko) self.get_edit_window().focus();
+            if (Wikiwyg.is_ie) self.get_editable_div().focus();
+        }
+        catch(e) { }
+    }, 1);
+}
 
 proto.fromHtml = function(html) {
     this.show_messages(html);

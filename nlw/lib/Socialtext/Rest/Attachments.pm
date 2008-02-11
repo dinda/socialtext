@@ -60,6 +60,7 @@ sub _entity_hash {
         'content-length' => $attachment->Content_Length,
         date             => $attachment->Date,
         uploader         => $attachment->From,
+        'page-id'        => $attachment->page_id,
     };
 }
 

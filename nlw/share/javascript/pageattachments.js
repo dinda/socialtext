@@ -7,7 +7,7 @@ ST.Attachments = function (args) {
     this._uploaded_list = [];
     $H(args).each(this._applyArgument.bind(this));
 
-    Event.observe(window, 'load', this._loadInterface.bind(this));
+    DOM.Ready.onDOMDone(this._loadInterface.bind(this));
 };
 
 function sort_filesize(a,b) {
@@ -39,6 +39,7 @@ ST.Attachments.prototype = {
     _uploaded_list: [],
     _attachWaiter: '',
     _table_sorter: null,
+    _newAttachments: {},
 
     element: {
         attachmentInterface:   'st-attachments-attachinterface',
@@ -50,13 +51,10 @@ ST.Attachments.prototype = {
         uploadButton:          'st-attachments-uploadbutton',
         manageButton:          'st-attachments-managebutton',
 
+        editUploadButton:      'st-edit-mode-uploadbutton',
+
         attachForm:            'st-attachments-attach-form',
-        attachSubmit:          'st-attachments-attach-submit',
-        attachUnpackCheckbox:  'st-attachments-attach-unpackcheckbox',
-        attachEmbedCheckbox:   'st-attachments-attach-embedcheckbox',
-        attachUnpack:          'st-attachments-attach-unpackfield',
-        attachEmbed:           'st-attachments-attach-embedfield',
-        attachUnpackLabel:     'st-attachments-attach-unpacklabel',
+        attachEditMode:        'st-attachments-attach-editmode',
         attachCloseButton:     'st-attachments-attach-closebutton',
         attachFilename:        'st-attachments-attach-filename',
         attachFileError:       'st-attachments-attach-error',
@@ -77,10 +75,52 @@ ST.Attachments.prototype = {
         manageTable: ''
     },
 
+    delete_new_attachments: function (cb) {
+        if (this.attachments == null) return;
+        // Delete all attachments from _newAttachments
+        try {
+            for (var i=0; i < this.attachments.length; i++) {
+                var file = this.attachments[i];
+                if (this._newAttachments[file.id]) {
+                    this._delete_attachment(file.uri);
+                    this.attachments.splice(i--,1); // i has a new value, so recheck
+                }
+            }
+            this._newAttachments = {};
+            this._refresh_attachment_list();
+        }
+        catch(e) { 
+            alert(String(e));
+        }
+    },
+
+    reset_new_attachments: function () {
+        this._newAttachments = {};
+    },
+
+    get_new_attachments: function () {
+        if (this.attachments == null)
+            return [];
+        return this.attachments.grep((function(file) {
+            return this._newAttachments[file.id];
+        }).bind(this));
+    },
+
     _applyArgument: function (arg) {
         if (typeof this[arg.key] != 'undefined') {
             this[arg.key] = arg.value;
         }
+    },
+
+    _parseFiles: function (node) {
+        var inputs = node.getElementsByTagName('input');
+        var new_files = {};
+        for (var i=0; i<inputs.length; i++) {
+            var file_id = inputs[i].value;
+            this._newAttachments[file_id] = 1;
+            new_files[file_id] = 1;
+        }
+        return new_files;
     },
 
     _attach_status_check: function () {
@@ -89,27 +129,45 @@ ST.Attachments.prototype = {
             function () { doc = $('st-attachments-attach-formtarget').contentWindow.document; },
             function () { doc = $('st-attachments-attach-formtarget').contentDocument; }
         );
+
         if (!doc) return;
-        if (!doc.getElementById('attachment_upload')) return;
+        if (!doc.getElementById('attachments')) return;
         clearInterval(this._attach_waiter);
+
+        var files = this._parseFiles(doc);
+
         $(this.element.attachUploadMessage).style.display = 'none';
         Element.update(this.element.attachUploadMessage, '');
-        $(this.element.attachSubmit).disabled = false;
-        $(this.element.attachUnpackCheckbox).disabled = false;
-        $(this.element.attachEmbedCheckbox).disabled = false;
+        this._is_uploading_file = false;
         $(this.element.attachCloseButton).style.display = 'block';
 
-        Element.update(this.element.attachMessage, loc('Click "Browse" to find the file you want to upload. When you click "Upload another file" your file will be uploaded and added to the list of attachments for this page.'));
-        $(this.element.attachSubmit).value = loc('Upload another file');
         var err = doc.getElementById('error');
         if (err) {
             var msg = err.innerHTML;
             this._show_attach_error(msg);
         }
         else {
+            var self = this;
             this._update_uploaded_list($(this.element.attachFilename).value);
-            this._pullAttachmentList();
-            Page.refresh_page_content(true);
+            this._pullAttachmentList(
+                function() {
+                    if (!wikiwyg.is_editing)
+                        Page.refresh_page_content(true);
+                    else {
+                        try {
+                            for (var i=0; i<self.attachments.length; i++) {
+                                var file = self.attachments[i];
+                                if (files[file.id]) {
+                                    self._insert_widget(file);
+                                }
+                            }
+                        }
+                        catch (e) {
+                            alert(String(e));
+                        }
+                    }
+                }
+            );
         }
 
         doc.location = '/static/html/blank.html';
@@ -120,22 +178,49 @@ ST.Attachments.prototype = {
                 if ($(this.element.attachFilename).value) {
                     throw new Error ("Failed to clear value");
                 }
-            }).bind(this),
-            (function() {
-                var input = document.createElement('input');
-                var old   = $(this.element.attachFilename);
-                input.type = old.type;
-                input.name = old.name;
-                input.size = old.size;
-                old.parentNode.replaceChild(input, old);
-                input.id = this.element.attachFilename;
-                this._hook_filename_field();
             }).bind(this)
         );
         $(this.element.attachFilename).focus();
         setTimeout(this._hide_attach_error.bind(this), 5 * 1000);
     },
 
+    _insert_widget: function (file) {
+        var type = file["content-type"].match(/image/) ? 'image' : 'file';
+
+        var widget_text = type + ': ' + file.name;
+        var widget_string = '{' + widget_text + '}';
+        var mode = wikiwyg.current_mode;
+
+        if (mode.modeDescription == 'Wikitext') {
+            mode.insert_text_at_cursor(widget_string + '\n');
+        }
+        else if (mode.modeDescription == 'Wysiwyg') {
+            if (type == 'file') {
+                Ajax.post(
+                    location.pathname,
+                    'action=wikiwyg_generate_widget_image;' +
+                    'widget=' + encodeURIComponent(widget_text) +
+                    ';widget_string=' + encodeURIComponent(widget_string),
+                    function() {
+                        mode.insert_widget(widget_string);
+                        mode.insert_html('<br>');
+                    }
+                );
+            } else {
+                Ajax.post(
+                     location.pathname,
+                    'action=preview' +
+                    ';wiki_text=' + encodeURIComponent(widget_string) +
+                    ';page_name=' + encodeURIComponent(Page.page_id),
+                    function (widget_html) {
+                        var div = document.createElement(div);
+                        div.innerHTML = widget_html;
+                        mode.insert_html(div.firstChild.innerHTML);
+                    }
+                );
+            }
+        }
+    },
 
     _attach_file_form_submit: function () {
         var filenameField = $(this.element.attachFilename);
@@ -155,40 +240,39 @@ ST.Attachments.prototype = {
         this._update_ui_for_upload(filenameField.value);
         $(this.element.attachCloseButton).style.display = 'none';
 
+        $(this.element.attachForm).submit();
+
         this._attach_waiter = setInterval(this._attach_status_check.bind(this), 3 * 1000);
-        return true;
+
+        if (window.event)
+            window.event.returnValue = false;
+
+        return false;
     },
 
     _update_ui_for_upload: function (filename) {
-        Element.update(this.element.attachUploadMessage, loc('Uploading [_1]...', filename));
-        $(this.element.attachSubmit).disabled = true;
+        Element.update(this.element.attachUploadMessage, 
+                       loc('Uploading [_1]...', filename.match(/[^\\\/]+$/))
+                      );
 
-        var cb = $(this.element.attachUnpackCheckbox);
-        $(this.element.attachUnpack).value = (cb.checked) ? '1' : '0';
-        cb.disabled = true;
-
-        var cb = $(this.element.attachEmbedCheckbox);
-        $(this.element.attachEmbed).value = (cb.checked) ? '1' : '0';
-        cb.disabled = true;
+        this._is_uploading_file = true;
 
         $(this.element.attachUploadMessage).style.display = 'block';
 
         this._hide_attach_error();
     },
 
-    _check_for_zip_file: function () {
-        var filename = $(this.element.attachFilename).value;
-
-        if (filename.match(/\.zip$/, 'i')) {
-            this._enable_unpack();
-        } else {
-            this._disable_unpack();
-        }
-    },
-
     _clear_uploaded_list: function () {
         this._uploaded_list = [];
         this._refresh_uploaded_list();
+    },
+
+    _delete_attachment: function (uri) {
+        var ar = new Ajax.Request( uri, {
+            method: 'post',
+            requestHeaders: ['X-Http-Method','DELETE'],
+            asynchronous: false
+        });
     },
 
     _delete_selected_attachments: function () {
@@ -202,85 +286,30 @@ ST.Attachments.prototype = {
         if (to_delete.length == 0)
             return false;
 
-        var j = 0;
-        var i = 0;
         for (i = 0; i < to_delete.length; i++) {
-//            var attachmentId = to_delete[i].match(/\,(.+)\,/)[1];
-//            var uri = Wikiwyg.is_safari
-//                ? Page.UriPageAttachmentDelete(attachmentId)
-//                : Page.APIUriAttachmentDelete(attachmentId);
-
-            var ar = new Ajax.Request (
-                to_delete[i],
-                {
-                    method: 'post',
-                    requestHeaders: ['X-Http-Method','DELETE'],
-                    onComplete: function(xhr) {
-                        if( Wikiwyg.is_safari) {
-                            j++;
-                            return;
-                        }
-                    }.bind(this)
-                }
-            );
+            this._delete_attachment(to_delete[i]);
         }
 
-        //if ( Wikiwyg.is_safari ) {
-        //    var intervalID = window.setInterval(
-        //        function() {
-        //            if ( j < to_delete.length ) {
-        //                return;
-        //            }
-        //            var ar = new Ajax.Request(
-        //                Page.APIUriPageAttachment(),
-        //                {
-        //                    method: 'get',
-        //                    asynchronous: false,
-        //                    requestHeaders: ['Accept', 'text/javascript']
-        //                }
-        //            );
-        //            this.attachments = JSON.parse(ar.transport.responseText);
-        //            this._refresh_attachment_list();
-        //            clearInterval( intervalID );
-        //        }.bind(this)
-        //        , 5
-        //    );
-        //}
+        this._pullAttachmentList();
+        Page.refresh_page_content(true);
 
-// TODO - Update message setTimeout(function () {Element.update(this.element.manageDeleteMessage, '')}, 2000);
-//        this._pullAttachmentList();
-//        Page.refresh_page_content();
         return false;
     },
 
-    _disable_unpack: function () {
-        var unpackCheckbox = $(this.element.attachUnpackCheckbox);
-        unpackCheckbox.disabled = true;
-        unpackCheckbox.checked = false;
-        unpackCheckbox.style.display = 'none';
-
-        var label = $(this.element.attachUnpackLabel);
-        label.style.color = '#aaa';
-        label.style.display = 'none';
-    },
-
     _display_attach_interface: function () {
+        $(this.element.attachEditMode).value = wikiwyg.is_editing ? '1' : '0';
         field = $(this.element.attachFilename);
         Try.these(function () {
             field.value = '';
         });
 
         $(this.element.attachmentInterface).style.display = 'block';
-        this._disable_scrollbar();
 
-        $(this.element.attachSubmit).value = loc('Upload file');
-        Element.update(this.element.attachMessage, loc('Click "Browse" to find the file you want to upload. When you click "Upload file" your file will be uploaded and added to the list of attachments for this page.'));
+        this._disable_scrollbar();
 
         var overlayElement = $('st-attachments-attach-attachinterface-overlay');
         var element = $('st-attachments-attach-interface');
         this._center_lightbox(overlayElement, element, this.element.attachmentInterface);
-        this._disable_unpack();
-        this._check_for_zip_file();
         field.focus();
         return false;
     },
@@ -293,7 +322,6 @@ ST.Attachments.prototype = {
             contentWrapper: element.parentNode
         };
         Widget.Lightbox.show({'divs':divs});
-
     },
 
     _display_manage_interface: function () {
@@ -320,6 +348,8 @@ ST.Attachments.prototype = {
     },
 
     _enable_scrollbar: function(){
+        if (wikiwyg && wikiwyg.is_editing) return;
+
         this._disable_scrollbar('auto','auto');
     },
 
@@ -327,6 +357,8 @@ ST.Attachments.prototype = {
     // be used to both enable and disable scrollbar. Caller
     // shouldn't give any arguments when calling it.
     _disable_scrollbar: function(height, overflow){
+        if (wikiwyg && wikiwyg.is_editing) return;
+
         if ( !height ) height = '100%';
         if ( !overflow ) overflow = 'hidden';
 
@@ -339,63 +371,49 @@ ST.Attachments.prototype = {
         htm.style.overflow = overflow;
     },
 
-    _enable_unpack: function () {
-        var unpackCheckbox = $(this.element.attachUnpackCheckbox);
-        unpackCheckbox.disabled = false;
-        unpackCheckbox.checked = false;
-        unpackCheckbox.style.display = '';
-
-        var label = $(this.element.attachUnpackLabel);
-        label.style.color = 'black';
-        label.style.display = '';
-    },
-
     _hide_attach_error: function () {
         $(this.element.attachFileError).style.display = 'none';
     },
 
     _hide_attach_file_interface: function () {
-        if (!this._is_uploading_file()) {
+        if (!this._is_uploading_file) {
             $(this.element.attachmentInterface).style.display = 'none';
-            $(this.element.attachSubmit).value = loc('Upload file');
             this._enable_scrollbar();
             this._clear_uploaded_list();
+            if (!wikiwyg.is_editing)
+                location.reload();
         }
         return false;
     },
 
     _hide_manage_file_interface: function () {
-        this._pullAttachmentList();
-        Page.refresh_page_content(true);
-
         $(this.element.manageInterface).style.display = 'none';
         this._enable_scrollbar();
+        if (!wikiwyg.is_editing)
+            location.reload();
         return false;
     },
 
-    _hook_filename_field: function() {
-        if (! $(this.element.attachFilename)) return;
-        Event.observe(this.element.attachFilename,     'blur',   this._check_for_zip_file.bind(this));
-        Event.observe(this.element.attachFilename,     'keyup',  this._check_for_zip_file.bind(this));
-        Event.observe(this.element.attachFilename,     'change', this._check_for_zip_file.bind(this));
-    },
-
-    _is_uploading_file: function() {
-        return $(this.element.attachSubmit).disabled;
-    },
-
-    _pullAttachmentList: function () {
-        var ar = new Ajax.Request(
-            Page.AttachmentListUri(),
-            {
-                method: 'get',
-                requestHeaders: ['Accept', 'application/json'],
-                onComplete: (function (req) {
-                    this.attachments = JSON.parse(req.responseText);
-                    this._refresh_attachment_list();
-                }).bind(this)
-            }
-        );
+    _pullAttachmentList: function (cb) {
+        if (this.attachments == null) {
+            this.attachments = Socialtext.attachments;
+            if (cb) cb();
+        }
+        else {
+            new Ajax.Request(
+                Page.AttachmentListUri(),
+                {
+                    method: 'get',
+                    requestHeaders: ['Accept', 'application/json'],
+                    onComplete: (function (req) {
+                        this.attachments = JSON.parse(req.responseText);
+                        this._refresh_attachment_list();
+                        if (cb) cb();
+                    }).bind(this)
+                }
+            );
+        }
+        this._refresh_attachment_list();
     },
 
     _refresh_attachment_list: function () {
@@ -515,11 +533,18 @@ ST.Attachments.prototype = {
         this.jst.list = new ST.TemplateField(this.element.listTemplate, 'st-attachments-listing');
         this.jst.manageTable = new ST.TemplateField(this.element.manageTableTemplate, this.element.manageTableRows);
 
-       this._disable_unpack();
+        if ($(this.element.attachFilename)) {
+            Event.observe(this.element.attachFilename, 'change', this._attach_file_form_submit.bind(this));
+        }
 
         if ($(this.element.uploadButton)) {
             Event.observe(this.element.uploadButton,       'click',  this._display_attach_interface.bind(this));
         }
+
+        if ($(this.element.editUploadButton)) {
+            Event.observe(this.element.editUploadButton,       'click',  this._display_attach_interface.bind(this));
+        }
+
         if ($(this.element.manageButton)) {
             Event.observe(this.element.manageButton,       'click',  this._display_manage_interface.bind(this));
         }
@@ -535,11 +560,6 @@ ST.Attachments.prototype = {
         if ($(this.element.attachCloseButton)) {
             Event.observe(this.element.attachCloseButton,  'click',  this._hide_attach_file_interface.bind(this));
         }
-        if ($(this.element.attachForm)) {
-            Event.observe(this.element.attachForm,         'submit', this._attach_file_form_submit.bind(this));
-        }
-
-        this._hook_filename_field();
 
         this._pullAttachmentList();
     }

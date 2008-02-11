@@ -132,9 +132,7 @@ sub unpack_archive {
     for my $file (@files) {
         open my $fh, '<', $file or die "Cannot read $file: $!";
 
-        # REVIEW This looks weird: It seems like the list of attachments
-        # is only the last one.
-        @attachments = $self->create(
+        push @attachments, $self->create(
             filename => $file,
             fh       => $fh,
             embed    => $args{embed},
