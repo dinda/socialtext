@@ -561,31 +561,15 @@ body {
     text-decoration: none;
 }
 
-#st-page-boxes-underlay {
-    float: right;
-    margin-top: -10px;
-    margin-right: 10px;
-    background: white;
-    z-index: 198;
-    clear: both;
-    margin-left: 15px;
-}
-
-* html #st-page-boxes-underlay {
-    margin-right: 4px;
-}
-
 #st-page-boxes {
     line-height: 1em;
     background: inherit;
-    position: absolute;
-    right: 23px;
-    z-index: 199;
+    float: right;
     margin-top: 15px;
     margin-left: 20px;
 }
 
-#st-page-boxes, #st-page-boxes-underlay {
+#st-page-boxes {
     width: 225px;
     /* padding-left: 15px; */
     /* Gives the white border effect, cwest dislikes it. */

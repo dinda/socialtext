@@ -31,7 +31,6 @@
 [% END %]
 
 [% BLOCK side_boxes %]
-    <div id="st-page-boxes-underlay"></div>
     <div id="st-page-boxes" style="display: [% IF st_page_accessories == 'show' %]block[% ELSE %]none[% END %]">
         [% INCLUDE side_box_pagetools %]
 
