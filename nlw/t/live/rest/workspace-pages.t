@@ -14,7 +14,7 @@ use Test::HTTP::Syntax;
 use Test::HTTP 'no_plan';
 use Test::More;
 use JSON;
-
+use t::SocialtextTestUtils qw/index_page/;
 
 $JSON::UTF8 = 1;
 
@@ -176,19 +176,3 @@ test_http "GET interworkspace search links via HTML" {
 }
 
 exit;
-
-sub index_page {
-    my $wksp = shift;
-    my $page = shift;
-
-    require Socialtext::Search::AbstractFactory;
-    my $indexer
-        = Socialtext::Search::AbstractFactory->GetFactory->create_indexer(
-        $wksp,
-        config_type => 'live',
-    );
-    if ( !$indexer ) {
-        die "Couldn't create an indexer\n";
-    }
-    $indexer->index_page( $page );
-}
