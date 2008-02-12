@@ -113,8 +113,7 @@ field file =>
 {image} links to attachments.
 
 =cut
-field image =>
-    '/%{workspace}/index.cgi/%{filename}?action=attachments_download;page_name=%{page_uri};id=%{id}';
+field image    => '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/%{size}/%{filename}';
 
 =head1 METHODS
 

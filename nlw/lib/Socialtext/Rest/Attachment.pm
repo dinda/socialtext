@@ -26,7 +26,7 @@ sub GET {
     my $fh;
     eval {
         my $attachment = $self->_get_attachment();
-        my $file = $attachment->full_path;
+        my $file = $attachment->full_path($self->version);
 
         unless ( -e $file ) {
             $self->_invalid_attachment( $rest, 'not found' );

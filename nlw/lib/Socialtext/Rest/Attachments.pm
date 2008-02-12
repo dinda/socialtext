@@ -54,7 +54,7 @@ sub _entity_hash {
         uri  => '/data/workspaces/' . $self->ws . '/attachments/'
             . $attachment->page_id . ':'
             . $attachment->id
-            . '/files/'
+            . '/original/'
             . $attachment->filename,
         'content-type'   => '' . $attachment->mime_type,    # Stringify!
         'content-length' => $attachment->Content_Length,

@@ -288,5 +288,6 @@ cgi 'embed';
 cgi 'editmode';
 cgi 'as_page';
 cgi 'unpack';
+cgi 'size';
 
 1;
