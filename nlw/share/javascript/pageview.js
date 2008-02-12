@@ -5,7 +5,10 @@ if (typeof ST == 'undefined') {
 // ST.Page calls
 ST.Page = function (args) {
     $H(args).each(this._applyArgument.bind(this));
-    Event.observe(window, 'load', this._loadInterface.bind(this));
+    var self = this;
+    jQuery(function() {
+        self._loadInterface();
+    });
 };
 
 ST.Page.prototype = {
@@ -174,8 +177,11 @@ ST.Page.prototype = {
 // ST.Page calls
 ST.NavBar = function (args) {
     $H(args).each(this._applyArgument.bind(this));
-    Event.observe(window, 'load', this._loadInterface.bind(this));
-    Event.observe(window, 'load', this._prepopulateFields.bind(this));
+    var self = this;
+    jQuery(function(e) {
+        self._loadInterface(e);
+        self._prepopulateFields(e);
+    });
 };
 
 ST.NavBar.prototype = {

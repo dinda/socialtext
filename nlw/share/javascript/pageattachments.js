@@ -7,7 +7,11 @@ ST.Attachments = function (args) {
     this._uploaded_list = [];
     $H(args).each(this._applyArgument.bind(this));
 
-    DOM.Ready.onDOMDone(this._loadInterface.bind(this));
+    var self = this;
+    jQuery(function() {
+        self._loadInterface();
+    })
+
 };
 
 function sort_filesize(a,b) {
@@ -151,7 +155,7 @@ ST.Attachments.prototype = {
             this._update_uploaded_list($(this.element.attachFilename).value);
             this._pullAttachmentList(
                 function() {
-                    if (!wikiwyg.is_editing)
+                    if (!(window.wikiwyg && wikiwyg.is_editing))
                         Page.refresh_page_content(true);
                     else {
                         try {
@@ -297,7 +301,9 @@ ST.Attachments.prototype = {
     },
 
     _display_attach_interface: function () {
-        $(this.element.attachEditMode).value = wikiwyg.is_editing ? '1' : '0';
+        $(this.element.attachEditMode).value = (
+            window.wikiwyg && wikiwyg.is_editing
+        ) ? '1' : '0';
         field = $(this.element.attachFilename);
         Try.these(function () {
             field.value = '';
@@ -348,7 +354,7 @@ ST.Attachments.prototype = {
     },
 
     _enable_scrollbar: function(){
-        if (wikiwyg && wikiwyg.is_editing) return;
+        if (window.wikiwyg && wikiwyg.is_editing) return;
 
         this._disable_scrollbar('auto','auto');
     },
@@ -357,7 +363,7 @@ ST.Attachments.prototype = {
     // be used to both enable and disable scrollbar. Caller
     // shouldn't give any arguments when calling it.
     _disable_scrollbar: function(height, overflow){
-        if (wikiwyg && wikiwyg.is_editing) return;
+        if (window.wikiwyg && wikiwyg.is_editing) return;
 
         if ( !height ) height = '100%';
         if ( !overflow ) overflow = 'hidden';
@@ -380,7 +386,7 @@ ST.Attachments.prototype = {
             $(this.element.attachmentInterface).style.display = 'none';
             this._enable_scrollbar();
             this._clear_uploaded_list();
-            if (!wikiwyg.is_editing)
+            if (!(window.wikiwyg && wikiwyg.is_editing))
                 location.reload();
         }
         return false;
@@ -389,7 +395,7 @@ ST.Attachments.prototype = {
     _hide_manage_file_interface: function () {
         $(this.element.manageInterface).style.display = 'none';
         this._enable_scrollbar();
-        if (!wikiwyg.is_editing)
+        if (!(window.wikiwyg && wikiwyg.is_editing))
             location.reload();
         return false;
     },
@@ -530,6 +536,7 @@ ST.Attachments.prototype = {
     },
 
     _loadInterface: function () {
+        var self = this;
         this.jst.list = new ST.TemplateField(this.element.listTemplate, 'st-attachments-listing');
         this.jst.manageTable = new ST.TemplateField(this.element.manageTableTemplate, this.element.manageTableRows);
 
@@ -537,17 +544,18 @@ ST.Attachments.prototype = {
             Event.observe(this.element.attachFilename, 'change', this._attach_file_form_submit.bind(this));
         }
 
-        if ($(this.element.uploadButton)) {
-            Event.observe(this.element.uploadButton,       'click',  this._display_attach_interface.bind(this));
-        }
+        jQuery("#" + this.element.uploadButton).click(function() {
+            self._display_attach_interface();
+        });
 
         if ($(this.element.editUploadButton)) {
             Event.observe(this.element.editUploadButton,       'click',  this._display_attach_interface.bind(this));
         }
 
-        if ($(this.element.manageButton)) {
-            Event.observe(this.element.manageButton,       'click',  this._display_manage_interface.bind(this));
-        }
+        jQuery("#" + this.element.manageButton).click(function() {
+            self._display_manage_interface();
+        });
+
         if ($(this.element.manageCloseButton)) {
             Event.observe(this.element.manageCloseButton,  'click',  this._hide_manage_file_interface.bind(this));
         }

@@ -222,7 +222,8 @@ sub display {
             title                   => $page->title,
             page                    => $self->_get_page_info($page),
             tag_count               => scalar @{ $page->metadata->Category }, # counts recent changes!
-            initialtags             => $self->_getCurrentTags($page),
+            tags                    => $self->_getCurrentTags($page),
+            initialtags             => $self->_getCurrentTagsJSON($page),
             workspacetags           => $self->_get_workspace_tags,
             is_homepage             =>
                 ( not $self->hub->current_workspace->homepage_is_dashboard
@@ -286,7 +287,7 @@ sub content_only {
             $self->hub->helpers->global_template_vars,
             title        => $page->title,
             page         => $self->_get_page_info($page),
-            initialtags  => $self->_getCurrentTags($page),
+            initialtags  => $self->_getCurrentTagsJSON($page),
             workspacetags  => $self->_get_workspace_tags,
         },
     );
@@ -403,19 +404,29 @@ sub _getCurrentTags {
         @{ $page->metadata->Category } );
 
     foreach my $tag (@{$tags{tags}}) {
-        $tag->{page_count} = JSON::Number($tag->{page_count});
+        $tag->{page_count} = $tag->{page_count};
     }
-    $tags{maxCount} = JSON::Number($tags{maxCount});
+    $tags{maxCount} = $tags{maxCount};
+
+    return \%tags;
+}
+
+sub _getCurrentTagsJSON {
+    my $self = shift;
+    my $page = shift;
+    my $tags = $self->_getCurrentTags($page);
 
     my $text = '';
     {
         local $JSON::AUTOCONVERT = 0;
         local $JSON::SingleQuote = 0;
         my $json = JSON->new(autoconv => 0, singlequote => 0);
-        $text = $json->objToJson(\%tags);
+        $text = $json->objToJson($tags);
     }
     return $text;
+
 }
+
 
 # XXX - the filtering being done here should be replaced with a
 # formatter subclass or LinkDictionary that is used just when formatting

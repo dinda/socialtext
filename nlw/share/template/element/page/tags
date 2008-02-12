@@ -1,3 +1,5 @@
+[% USE JSON %]
+
 <div id="st-tags" class="st-page-box st-page-box-first">
     <div id="st-tags-title" class="st-page-box-title">[% loc('Tags') %]</div>
     <form onsubmit="return false;">
@@ -8,6 +10,20 @@
     </form>
     <div id="st-no-tags-placeholder"[% IF tag_count %] style="display: none"[% END %]>[% loc('There are no tags for this page.') %]</div>
     <ul id="st-tags-listing" class="st-page-box-listing">
+    [% FOREACH tags.tags %]
+        <li class="st-tags-tagline st-page-box-listing-entry">
+            <span>
+                <a href="?action=category_display;category=[% name | uri %];tag=/[% name | uri %]"
+                    class="st-tags-tagline-link">[% name %]</a>
+            </span>
+            [% IF checker.check_permission('edit') %]
+            <span class="st-tags-tagdelete">
+                <a href="#" onclick='Tags.deleteTag([% name.json %]); return false;'
+                    title="[% loc('Remove [_1] tag from page', $name) %]" class="st-tags-tagdelete">[x]</a>
+            <span></>
+            [% END %]
+        </li>
+    [% END %]
     </ul>
     <div id="st-tags-deletemessage"></div>
     [% IF checker.check_permission('edit') %]

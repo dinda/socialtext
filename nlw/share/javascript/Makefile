@@ -3,18 +3,19 @@
 
 EXTERNAL_JAVASCRIPT=../../../js-modules
 MINIFY=perl -MJavaScript::Minifier -0777 -e 'print JavaScript::Minifier::minify(input => <>);'
+# MINIFY=cat
 
 DISPLAY_FILE=socialtext-display.js
 DISPLAY_FILE_MINI=socialtext-display-mini.js
 DISPLAY_FILE_GZIP=$(DISPLAY_FILE).gz
 
+DISPLAY_UI_FILE=socialtext-display-ui.js
+DISPLAY_UI_FILE_MINI=socialtext-display-ui-mini.js
+DISPLAY_UI_FILE_GZIP=$(DISPLAY_UI_FILE).gz
+
 OTHER_FILE=socialtext-other.js
 OTHER_FILE_MINI=socialtext-other-mini.js
 OTHER_FILE_GZIP=$(OTHER_FILE).gz
-
-EDIT_FILE=socialtext-edit-wikiwyg.js
-EDIT_FILE_MINI=socialtext-edit-wikiwyg-mini.js
-EDIT_FILE_GZIP=$(EDIT_FILE).gz
 
 COMMENT_FILE=socialtext-comment.js
 COMMENT_FILE_MINI=socialtext-comment-mini.js
@@ -35,7 +36,11 @@ ALL_WIKIWYG_JEMPLATES:=$(shell find jemplate_wikiwyg)
 
 DISPLAY_SOURCE_FILES= \
 		jquery-1.2.1.pack.js \
-		l10ns.js \
+		comment.js \
+		Watchlist.js \
+		bootstrap-ui.js \
+
+DISPLAY_UI_SOURCE_FILES= \
 		main.js \
 		$(EXTERNAL_JAVASCRIPT)/prototype/dist/prototype.js \
 		$(EXTERNAL_JAVASCRIPT)/template.js \
@@ -44,12 +49,11 @@ DISPLAY_SOURCE_FILES= \
 		$(EXTERNAL_JAVASCRIPT)/Widget-Lightbox/lib/Widget/Lightbox.js \
 		$(EXTERNAL_JAVASCRIPT)/Widget-Lightbox/tests/lib/Effect/RoundedCorners.js \
 		$(EXTERNAL_JAVASCRIPT)/Widget-SortableTable/lib/Widget/SortableTable.js \
-		Jemplate.js \
-		$(JEMPLATE_WIKIWYG_MODULE) \
+		l10ns.js \
 		hacks.js \
 		Cookie.js \
-		ArrayUtils.js \
 		stlibrary.js \
+		ArrayUtils.js \
 		JSON-parse.js \
 		pagetags.js \
 		pageattachments.js \
@@ -70,11 +74,9 @@ DISPLAY_SOURCE_FILES= \
 		PageSectionLookahead.js \
 		PageAttachmentLookahead.js \
         	settings.js \
-		startup.js \
-		bootstrap-wikiwyg.js \
-
-EDIT_SOURCE_FILES= \
 		md5.js \
+		Jemplate.js \
+		$(JEMPLATE_WIKIWYG_MODULE) \
 		JemplatePlugin/html_encode.js \
 		$(JEMPLATE_MODULE) \
 		$(WIKIWYG_PATH)/lib/Wikiwyg/Debug.js \
@@ -105,6 +107,7 @@ OTHER_SOURCE_FILES= \
 		jquery-1.2.1.pack.js \
 		l10ns.js \
 		main.js \
+		stlibrary.js \
 		$(EXTERNAL_JAVASCRIPT)/prototype/dist/prototype.js \
 		$(EXTERNAL_JAVASCRIPT)/DOM-Ready/lib/DOM/Ready.js \
 		$(EXTERNAL_JAVASCRIPT)/DOM-Events/lib/DOM/Events.js \
@@ -113,7 +116,7 @@ OTHER_SOURCE_FILES= \
 		Watchlist.js \
 		listview.js \
         	settings.js \
-		startup.js \
+		bootstrap-ui.js 
 
 UNUSED_SOURCE_FILES= \
 		$(EXTERNAL_JAVASCRIPT)/YAML/lib/YAML.js \
@@ -122,7 +125,7 @@ UNUSED_SOURCE_FILES= \
 
 all: \
 	$(DISPLAY_FILE_GZIP) \
-	$(EDIT_FILE_GZIP) \
+	$(DISPLAY_UI_FILE_GZIP) \
 	$(COMMENT_FILE_GZIP) \
 	$(OTHER_FILE_GZIP) \
 	Selection.htc \
@@ -134,21 +137,21 @@ Cyberbit.ttf:
 clean:
 	rm -f \
 		$(DISPLAY_FILE) \
-		$(EDIT_FILE) \
+		$(DISPLAY_UI_FILE) \
 		$(COMMENT_FILE) \
 		$(OTHER_FILE) \
 		$(DISPLAY_FILE_MINI) \
-		$(EDIT_FILE_MINI) \
+		$(DISPLAY_UI_FILE_MINI) \
 		$(COMMENT_FILE_MINI) \
 		$(OTHER_FILE_MINI) \
 		$(DISPLAY_FILE_GZIP) \
-		$(EDIT_FILE_GZIP) \
+		$(DISPLAY_UI_FILE_GZIP) \
 		$(COMMENT_FILE_GZIP) \
 		$(OTHER_FILE_GZIP) \
 
 $(DISPLAY_FILE_MINI): $(DISPLAY_FILE)
 	$(MINIFY) $< > $@
-$(EDIT_FILE_MINI): $(EDIT_FILE)
+$(DISPLAY_UI_FILE_MINI): $(DISPLAY_UI_FILE)
 	$(MINIFY) $< > $@
 $(COMMENT_FILE_MINI): $(COMMENT_FILE)
 	$(MINIFY) $< > $@
@@ -157,7 +160,7 @@ $(OTHER_FILE_MINI): $(OTHER_FILE)
 
 $(DISPLAY_FILE_GZIP): $(DISPLAY_FILE_MINI)
 	gzip -c $< > $@
-$(EDIT_FILE_GZIP): $(EDIT_FILE_MINI)
+$(DISPLAY_UI_FILE_GZIP): $(DISPLAY_UI_FILE_MINI)
 	gzip -c $< > $@
 $(COMMENT_FILE_GZIP): $(COMMENT_FILE_MINI)
 	gzip -c $< > $@
@@ -172,9 +175,9 @@ $(DISPLAY_FILE): $(WIKIWYG_PATH) $(DISPLAY_SOURCE_FILES) Makefile
 	    (echo "// BEGIN $$js"; cat $$js | perl -pe 's/\r//g') >> $@; \
 	done
 
-$(EDIT_FILE): $(WIKIWYG_PATH) $(EDIT_SOURCE_FILES) Makefile
+$(DISPLAY_UI_FILE): $(WIKIWYG_PATH) $(DISPLAY_UI_SOURCE_FILES) Makefile
 	rm -f $@;
-	for js in $(EDIT_SOURCE_FILES); do       \
+	for js in $(DISPLAY_UI_SOURCE_FILES); do       \
 	    (echo "// BEGIN $$js"; cat $$js | perl -pe 's/\r//g') >> $@; \
 	done
 
@@ -211,7 +214,7 @@ Widgets.js: $(WIDGETS_YAML)
 
 split-js:
 	perl \
-	-e 'my $$text = `cat $(DISPLAY_FILE) $(EDIT_FILE) $(COMMENT_FILE) $(OTHER_FILE)`;' \
+	-e 'my $$text = `cat $(DISPLAY_FILE) $(DISPLAY_UI_FILE) $(COMMENT_FILE) $(OTHER_FILE)`;' \
 	-e 'while($$text) {' \
 	-e '    $$text =~ s/\/\/ BEGIN (.*?)\n(.*?)(?=\/\/ BEGIN |\z)//s' \
 	-e '      or die "fubarred";' \

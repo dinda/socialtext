@@ -35,6 +35,8 @@ function nlw_make_static_path(rest) {
 [% DEFAULT attachments = [] %]
 Socialtext.attachments = [% attachments.json %];
 
+Socialtext.page_id = '[% page.id %]';
+
 </script>
 
 [% BLOCK js_page_object %]

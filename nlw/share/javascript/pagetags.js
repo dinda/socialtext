@@ -7,7 +7,10 @@ if (typeof ST == 'undefined') {
 ST.Tags = function (args) {
     $H(args).each(this._applyArgument.bind(this));
 
-    DOM.Ready.onDOMDone(this._loadInterface.bind(this));
+    var self = this;
+    jQuery(function() {
+        self._loadInterface();
+    });
 };
 
 
@@ -347,22 +350,28 @@ ST.Tags.prototype = {
     },
 
     _loadInterface: function () {
+        var self = this;
         this.jst.name = new ST.TemplateField(this.element.tagName, 'st-tags-listing');
         this.jst.suggestion = new ST.TemplateField(this.element.tagSuggestion, this.element.tagSuggestionList);
 
         this.workspaceTags  = JSON.parse($(this.element.workspaceTags).value);
         this.tagCollection = JSON.parse($(this.element.initialTags).value);
 
-        if ($(this.element.addButton)) {
-            Event.observe(this.element.addButton,  'click', this.addTagFromField.bind(this));
-        }
-        if ($(this.element.displayAdd)) {
-            Event.observe(this.element.displayAdd, 'click', this.displayAddTag.bind(this));
-        }
-        if ($(this.element.tagField)) {
-            Event.observe(this.element.tagField, 'keyup', this.findSuggestions.bind(this));
-            Event.observe(this.element.tagField, 'keydown', this.tagFieldKeyHandler.bind(this));
-        }
+        jQuery("#" + this.element.addButton).click(function(e) {
+            self.addTagFromField(e);
+        });
+
+        jQuery("#" + this.element.displayAdd).click(function(e) {
+            self.displayAddTag(e);
+        });
+
+        jQuery("#" + this.element.tagField).bind("keyup", function(e) {
+            self.findSuggestions(e);
+        });
+
+        jQuery("#" + this.element.tagField).bind("keydown", function(e) {
+            self.tagFieldKeyHandler(e);
+        });
 
         this.displayListOfTags(false);
     }

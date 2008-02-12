@@ -52,27 +52,27 @@ ST.Watchlist.prototype = {
     _toggle_watch_state: function () {
         var wiki_id = Socialtext.wiki_id || Page.wiki_id;
         var action = (this.isBeingWatched) ? 'remove_from' : 'add_to';
-        var page_id = this.page_id || Page.page_id;
+        var page_id = this.page_id || Socialtext.page_id;
         var uri = '/' + wiki_id + '/index.cgi' +
                   '?action=' + action + '_watchlist;page=' + page_id;
 
-        var ar = new Ajax.Request (
-            uri,
-            {
-                method: 'get',
-                onComplete: (function (req) {
-                    if (req.responseText == '1' || req.responseText == '0') {
-                        this.isBeingWatched = ! this.isBeingWatched;
-                        this.button_default();
-                    } else {
-                        this._display_toggle_error();
-                    }
-                }).bind(this),
-                onFailure: (function(req, jsonHeader) {
-                    this._display_toggle_error();
-                }).bind(this)
+        var self = this;
+
+        jQuery.ajax({
+            url: uri,
+            type: 'get',
+            success: function(text) {
+                if (text == '1' || text == '0') {
+                    self.isBeingWatched = ! self.isBeingWatched;
+                    self.button_default();
+                } else {
+                    self._display_toggle_error();
+                }
+            },
+            error: function() {
+                self._display_toggle_error();
             }
-        );
+        });
     },
 
     _display_toggle_error: function () {
@@ -91,7 +91,7 @@ ST.Watchlist.prototype = {
     },
 
     _loadInterface: function (indicator) {
-        this.image = $(indicator);
+        this.image = jQuery("#"+indicator)[0];
         if (this.image) {
             if (Socialtext.loc_lang != 'en') {
                 if (this.image.src.match(/watch-star-on/)) {
@@ -110,9 +110,18 @@ ST.Watchlist.prototype = {
                 }
             }
 
-            Event.observe(this.image.parentNode,  'click', this._toggle_watch_state.bind(this));
-            Event.observe(this.image.parentNode,  'mouseover', this.button_activate.bind(this));
-            Event.observe(this.image.parentNode,  'mouseout', this.button_default.bind(this));
+            var self = this;
+            jQuery(this.image.parentNode).bind("click", function(e) {
+                self._toggle_watch_state(e);
+            })
+            .hover(
+                function() {
+                    self.button_activate();
+                },
+                function() {
+                    self.button_default();
+                }
+            );
 
             this.button_default();
         }

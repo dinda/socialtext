@@ -3,32 +3,32 @@ if (typeof ST == 'undefined') {
 }
 
 ST.Comment = function () {
-    Event.observe(window, 'load', function () {
-        var comment_button = $('st-comment-button-link');
+    jQuery(function () {
+        var comment_button = jQuery('#st-comment-button-link').get(0);
         if (comment_button) {
             if (! comment_button.href.match(/#$/)) {
                 return;
             }
 
-            Event.observe('st-comment-button-link', 'click', function () {
+            jQuery('#st-comment-button-link').click(function() {
                 ST.Comment.launchCommentInterface({
-                    page_name: Page.page_id,
+                    page_name: Socialtext.page_id,
                     action: 'display',
-                    height: Page.comment_form_window_height
+                    height: 200
                 });
                 return false;
             });
-            var below_fold_comment_link = $('st-edit-actions-below-fold-comment');
+            var below_fold_comment_link = jQuery('#st-edit-actions-below-fold-comment').get(0);
             if (below_fold_comment_link) {
                 if (! below_fold_comment_link.href.match(/#$/)) {
                     return;
                 }
 
-                Event.observe('st-edit-actions-below-fold-comment', 'click', function () {
+                jQuery('#st-edit-actions-below-fold-comment').bind('click', function () {
                     ST.Comment.launchCommentInterface({
-                        page_name: Page.page_id,
+                        page_name: Socialtext.page_id,
                         action: 'display',
-                        height: Page.comment_form_window_height
+                        height: 200
                     });
                     return false;
                 });

@@ -6,7 +6,8 @@ if (typeof ST == 'undefined') {
 ST.TagQueue = function (args) {
     $H(args).each(this._applyArgument.bind(this));
 
-    Event.observe(window, 'load', this._loadInterface.bind(this));
+    var self = this;
+    jQuery(function() { self._loadInterface(); });
 };
 
 

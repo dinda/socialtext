@@ -83,10 +83,14 @@ function setup_wikiwyg() {
     if (! Wikiwyg.browserIsSupported) return;
 
     Socialtext.wikiwyg_variables.loc = loc;
-    jQuery(
-        Jemplate.process('layout/edit_wikiwyg', Socialtext.wikiwyg_variables)
-    ).insertAfter('#st-display-mode-container');
 
+    (function() {
+        var html = Jemplate.process('layout/edit_wikiwyg', Socialtext.wikiwyg_variables);
+        var el = jQuery(html).get(0);
+        var c = jQuery("#st-display-mode-container").get(0);
+        c.parentNode.insertBefore(el, c.nextSibling);
+    })();
+    
     // The div that holds the page HTML
     var myDiv = $('wikiwyg-page-content');
     if (! myDiv)

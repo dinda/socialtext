@@ -1,3 +1,6 @@
+(function() {
+
+return;
 
 if (Socialtext.box_javascript) {
     createPageObject();
@@ -26,3 +29,4 @@ jQuery(function() {
 
 });
 
+})();
