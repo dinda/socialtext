@@ -988,23 +988,23 @@ body {
     background: url("../../images/st/button-blue/left-middle.gif") left top repeat-y;
 }
 
-#st-edit-button-border-right-middle {
+#st-edit-button-border-right-middle, #st-login-to-edit-button-border-right-middle {
     background: url("../../images/st/button-blue/right-middle.gif") right top repeat-y;
 }
 
-#st-edit-button-border-left-top {
+#st-edit-button-border-left-top, #st-login-to-edit-button-border-left-top {
     background: url("../../images/st/button-blue/left-top.gif") left top no-repeat;
 }
 
-#st-edit-button-border-right-top {
+#st-edit-button-border-right-top, #st-login-to-edit-button-border-right-top {
     background: url("../../images/st/button-blue/right-top.gif") right top no-repeat;
 }
 
-#st-edit-button-border-left-bottom {
+#st-edit-button-border-left-bottom, #st-login-to-edit-button-border-left-bottom {
     background: url("../../images/st/button-blue/left-bottom.gif") left bottom no-repeat;
 }
 
-#st-edit-button-border-right-bottom {
+#st-edit-button-border-right-bottom, #st-login-to-edit-button-border-right-bottom {
     background: url("../../images/st/button-blue/right-bottom.gif") right bottom no-repeat;
 }
 

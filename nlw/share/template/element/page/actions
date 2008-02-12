@@ -4,7 +4,7 @@
     [% IF checker.check_permission('edit') %]
       [% INCLUDE element/colorbutton style='edit', label=loc('Edit'), href="#", tooltip=loc('Click this button to edit the page') %]
     [% ELSIF checker.check_permission('edit_controls') %]
-      [% INCLUDE element/colorbutton style='edit', label=loc('Edit'), href=login_and_edit_path, tooltip=loc('Click this button to edit the page') %]
+      [% INCLUDE element/colorbutton style='login-to-edit', label=loc('Edit'), href=login_and_edit_path, tooltip=loc('Click this button to edit the page') %]
     [% END %]
     [% IF checker.check_permission('comment') %]
       [% SET comment_href = '#' %]
