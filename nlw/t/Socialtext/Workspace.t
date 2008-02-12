@@ -1,7 +1,7 @@
 #!perl
 # @COPYRIGHT@
 use mocked qw(Socialtext::l10n system_locale); # Has to come firstest.
-use Test::Socialtext tests => 106;
+use Test::Socialtext tests => 107;
 
 use strict;
 use warnings;
@@ -19,6 +19,17 @@ my $has_image_magick = eval { require Image::Magick; 1 };
 
 {
     is( Socialtext::Workspace->Count(), 1, 'Only help workspace in DBMS yet' );
+}
+
+ALL_WORKSPACE_IDS_AND_NAMES: {
+    my $info = Socialtext::Workspace->AllWorkspaceIdsAndNames();
+    is_deeply(
+        $info,
+        [
+            [ 1, 'help-en' ],
+        ],
+        "Checking AllWorkspaceIdsAndNames"
+    );
 }
 
 {

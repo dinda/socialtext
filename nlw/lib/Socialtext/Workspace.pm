@@ -1568,6 +1568,11 @@ sub ImportFromTarball {
     Socialtext::Workspace::Importer->new(@_)->import_workspace();
 }
 
+sub AllWorkspaceIdsAndNames {
+    my $sth = sql_execute('SELECT workspace_id, name FROM "Workspace" ORDER BY name');
+    return $sth->fetchall_arrayref() || [];
+}
+
 my %LimitAndSortSpec = (
     limit      => SCALAR_TYPE( default => undef ),
     offset     => SCALAR_TYPE( default => 0 ),
@@ -2560,6 +2565,11 @@ force it to overwrite this workspace by passing "overwrite" as a true
 value.
 
 It never overwrites existing users.
+
+=head2 Socialtext::Workspace->AllWorkspaceIdsAndNames()
+
+Returns an array ref of workspace ID and name pairs.  These pairs are also
+array refs.
 
 =head2 Socialtext::Workspace->All(PARAMS)
 

@@ -198,14 +198,19 @@ sub remove_accounts_admin {
 sub list_workspaces {
     require Socialtext::Workspace;
 
-    my $self = shift;
+    my $self         = shift;
+    my $column       = $self->_determine_workspace_output(shift);
+    my $ws_info_rows = Socialtext::Workspace->AllWorkspaceIdsAndNames();
 
-    my $meth = $self->_determine_workspace_output(shift);
-
-    my $workspaces = Socialtext::Workspace->All();
-
-    while ( my $ws = $workspaces->next() ) {
-        print $ws->$meth(), "\n";
+    for my $ws_info_row (@$ws_info_rows) {
+        my ( $ws_id, $ws_name ) = @$ws_info_row;
+        if ( $column eq 'workspace_id' ) {
+            print $ws_id;
+        }
+        else {
+            print $ws_name;
+        }
+        print "\n";
     }
 
     $self->_success();
