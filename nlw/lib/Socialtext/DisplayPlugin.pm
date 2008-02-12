@@ -204,6 +204,17 @@ sub display {
         $cookies->{'st-page-accessories'}->value
     ) || 'show';
 
+    # Fake out a call to the REST API to get attachments.
+    # XXX - This should probably be more standard.
+    use Socialtext::Rest::Attachments;
+    my $rest_object = Socialtext::Rest::Attachments->new();
+    $rest_object->{params}->{ws} = $self->hub->current_workspace->name;
+    my $all_attachments = [
+        map {
+            $rest_object->_entity_hash($_);
+        } @{$self->hub->attachments->all(page_id => $page->id)}
+    ];
+
     return $renderer->render(
         template => 'view/page/display',
         vars     => {
@@ -220,6 +231,7 @@ sub display {
             is_new                  => $is_new_page,
             start_in_edit_mode      => $start_in_edit_mode,
             new_tags                => \@new_tags,
+            attachments             => $all_attachments,
             watching                => $self->hub->watchlist->page_watched,
             login_and_edit_path => '/challenge?'
                 . $self->uri_escape(

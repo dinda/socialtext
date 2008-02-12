@@ -154,34 +154,6 @@ ST.Page.prototype = {
         }
     },
 
-    orientAccessories: function () {
-        var s_height = $(this.element.accessories).offsetHeight;
-        var s_width = $(this.element.accessories).offsetWidth;
-        Element.setStyle(this.element.underlay, {height: s_height + 'px'});
-        Element.setStyle(this.element.underlay, {width: s_width + 'px'});
-
-        if (document.all) {
-            var c_height = (
-                 $(this.element.accessories).offsetHeight + (
-                       $(this.element.accessories).offsetTop
-                     - $(this.element.content).offsetTop
-                 )
-            );
-            if ($(this.element.content).offsetHeight < c_height) {
-                if (c_height > 0) {
-                    $(this.element.content).style.height = c_height + 'px';
-                }
-            }
-        }
-    },
-
-    installUnderlayOrienter: function () {
-        /* We want to call it for the first time ASAP since it may
-         * change the existing page layout */
-        this.orientAccessories();
-        setInterval(this.orientAccessories.bind(this), 1000);
-    },
-
     _applyArgument: function (arg) {
         if (typeof this[arg.key] != 'undefined') {
             this[arg.key] = arg.value;
@@ -196,7 +168,6 @@ ST.Page.prototype = {
         } else {
             this.hideAccessories();
         }
-        this.installUnderlayOrienter();
     }
 };
 

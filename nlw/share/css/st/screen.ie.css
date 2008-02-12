@@ -18,3 +18,9 @@ body.st-popup {
 #st-refcard {
     behavior: url(/static/javascript/csshover.htc);
 }
+
+#wikiwyg_wikitext_textarea,
+#wysiwyg-editable-div {
+    padding: 5px;
+}
+

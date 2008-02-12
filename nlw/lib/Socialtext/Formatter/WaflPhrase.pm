@@ -18,11 +18,9 @@ field 'arguments';
 field 'label';
 field error => '';
 
-sub html_start { '<span class="nlw_phrase">'}
-
-sub html_end {
-    my $self   = shift;
-    my $widget = ''
+sub wikitext {
+    my $self = shift;
+    return ''
         . ( $self->label ? '"' . $self->escape_wafl_dashes($self->label) . '"' : '' ) . '{'
         . $self->method
         . (
@@ -31,6 +29,13 @@ sub html_end {
         : ''
         )
         . '}';
+}
+
+sub html_start { '<span class="nlw_phrase">'}
+
+sub html_end {
+    my $self   = shift;
+    my $widget = $self->wikitext;
     $self->hub->wikiwyg->generate_phrase_widget_image($widget);
     return "<!-- wiki: $widget --></span>";
 }
@@ -82,8 +87,8 @@ sub existence_error {
 
 sub parse_wafl_reference {
     my $self = shift;
-    $self->arguments =~ $self->wafl_reference_parse or return;
-    my ( $workspace_name, $page_title, $qualifier ) = ( $1, $2, $3 );
+    my ( $workspace_name, $page_title, $qualifier, @other ) =
+        $self->arguments =~ $self->wafl_reference_parse or return;
     $workspace_name ||= $self->current_workspace_name;
     # XXX this just feels wrong. It's necessary for the many ways
     # we might enter the formatter. This is probably the wrong place
@@ -96,7 +101,8 @@ sub parse_wafl_reference {
     # from other workspaces
     return (
         $workspace_name, $title, $qualifier,
-        $page_id,      Socialtext::Pages->id_to_uri($page_id)
+        $page_id,      Socialtext::Pages->id_to_uri($page_id),
+        @other,
     );
 }
 
@@ -195,17 +201,28 @@ use base 'Socialtext::Formatter::WaflPhrase';
 use Class::Field qw( const );
 
 const wafl_id => 'image';
+const wafl_reference_parse => 
+    qr/^\s*(?:([\w\-]+)?\s*\[(.*?)\])?\s*(\S.*?)?\s*(?:size=(.+))?\s*$/;
+
+sub html_start {
+    my $self = shift;
+    return $self->error ? $self->SUPER::html_start(@_) : '' 
+};
+sub html_end {
+    my $self = shift;
+    return $self->error ? $self->SUPER::html_end(@_) : '' 
+}
 
 sub html {
     my $self = shift;
-    my ( $workspace_name, $page_title, $image_name, $page_id, $page_uri )
+    my ($workspace_name, $page_title, $image_name, $page_id, $page_uri, $size)
         = $self->parse_wafl_reference;
 
     return $self->syntax_error unless $image_name;
 
     my $file_id = $self->get_file_id( $workspace_name, $page_id, $image_name )
         or return $self->error;
-    $image_name     = $self->uri_escape($image_name);
+    #$image_name     = $self->uri_escape($image_name);
 
     # We have to save and restore the current workspace so we can set it
     # properly for inter-workspace links.  This is probably a bug in
@@ -220,11 +237,12 @@ sub html {
         filename   => $image_name,
         page_uri   => $page_uri,
         id         => $file_id,
+        size       => $size || "large",
         full_path  => $self->hub->attachments->new_attachment(
             id       => $file_id,
             page_id  => $page_id,
             filename => $image_name,
-            )->full_path,
+        )->full_path($size),
     );
     $self->hub->current_workspace($old_current_workspace);
 
@@ -232,8 +250,10 @@ sub html {
         if $self->label;
 
     my $alt_text = $self->uri_unescape($image_name);
+    my $widget = $self->wikitext;
+
     return
-        qq{<img alt="$alt_text" src="$link" />};
+        qq{<img alt="$alt_text" src="$link" widget="$widget" />};
 }
 
 ################################################################################

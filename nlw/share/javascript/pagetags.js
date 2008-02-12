@@ -7,7 +7,7 @@ if (typeof ST == 'undefined') {
 ST.Tags = function (args) {
     $H(args).each(this._applyArgument.bind(this));
 
-    Event.observe(window, 'load', this._loadInterface.bind(this));
+    DOM.Ready.onDOMDone(this._loadInterface.bind(this));
 };
 
 

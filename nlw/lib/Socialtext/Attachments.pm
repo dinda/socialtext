@@ -132,9 +132,7 @@ sub unpack_archive {
     for my $file (@files) {
         open my $fh, '<', $file or die "Cannot read $file: $!";
 
-        # REVIEW This looks weird: It seems like the list of attachments
-        # is only the last one.
-        @attachments = $self->create(
+        push @attachments, $self->create(
             filename => $file,
             fh       => $fh,
             embed    => $args{embed},
@@ -368,18 +366,78 @@ sub save {
         or die "Couldn't set permissions on $dest : $!";
 }
 
-# XXX - this should be used elsewhere in this package
-sub full_path {
+sub attachdir {
     my $self = shift;
-    return $self->{full_path} if defined $self->{full_path};
+    return $self->{attachdir} if defined $self->{attachdir};
 
     my $attachdir = $self->hub->attachments->plugin_directory;
     my $page_id = $self->page_id;
     my $id = $self->id;
+    $attachdir = "$attachdir/$page_id/$id";
+}
+
+sub size {
+    my ($self, $size) = @_;
+    return 'original' unless $size;
+    return 600 if $size eq 'large';
+    return 300 if $size eq 'medium';
+    return 100 if $size eq 'small';
+    return 'original';
+}
+
+sub image_path {
+    my $self = shift;
+
+    my $size = $self->size(@_);
+
+    my $paths = $self->{image_path};
+
+    my $attachdir = $self->attachdir;
     my $db_filename = $self->db_filename;
 
-    $self->{full_path} = "$attachdir/$page_id/$id/$db_filename";
+    my $original = $paths->{original} ||= 
+        join '/', $self->attachdir, $db_filename;
 
+    return $original if !-f $original or $size eq 'original';
+
+    my $size_dir = join '/', $attachdir, $size;
+    my $path = $paths->{$size} ||= join '/', $size_dir, $db_filename;
+    mkdir $size_dir unless -d $size_dir;
+
+    return $path if -f $path;
+
+    # This can fail in a variety of ways, mostly related to
+    # the file not being what it says it is.
+    eval {
+        open my $fh, $original or die "Can't open $original: $!";
+        Socialtext::Image::resize(
+            filehandle => $fh,
+            max_width  => $size,
+            max_height => 99999,
+            file       => $path,
+        );
+    };
+    # Return original on error
+    if ($@) {
+        warn "Reverting to original: $@"; 
+        return $original;
+    }
+
+    return $path;
+}
+
+sub is_image {
+    my $self = shift;
+    return $self->{is_image} if defined $self->{is_image};
+    return $self->{is_image} = $self->mime_type =~ /image/;
+}
+
+# XXX - this should be used elsewhere in this package
+sub full_path {
+    my $self = shift;
+    return $self->image_path(@_) if $self->is_image;
+    return $self->{full_path} if defined $self->{full_path};
+    $self->{full_path} = join '/', $self->attachdir, $self->db_filename;
     return $self->{full_path};
 }
 

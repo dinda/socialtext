@@ -1,9 +1,8 @@
-<div id='attachment_upload'>
-    Upload Complete: 
-    [% FOREACH file IN files %]
-        [% file.filename %]
+[% IF error %]
+<div id='error'>[% error %]</div>
+[% END %]
+<div id='attachments'>
+    [% FOR file = files.keys %]
+        <input type="hidden" name="[% file %]" value="[% files.$file %]"/>
     [% END %]
-    [% IF error %]
-    <div id='error'>[% error %]</div>
-    [% END %]
-</div>
+</di>

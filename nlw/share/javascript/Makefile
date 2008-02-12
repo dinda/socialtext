@@ -54,7 +54,6 @@ DISPLAY_SOURCE_FILES= \
 		pagetags.js \
 		pageattachments.js \
 		pageview.js \
-		attachqueue.js \
 		StTemplateField.js \
 		tagqueue.js \
 		Watchlist.js \

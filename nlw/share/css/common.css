@@ -128,3 +128,65 @@ html>body #st-page-details {
   margin-bottom:0;
 }
 
+/* Attachments Dialog */
+
+#st-attachments-attach-title {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+#st-attachments-attach-buttons {
+    float: right;
+    margin-top: 20px;
+}
+
+#st-attachments-attach-uploadbutton {
+    float: right;
+    margin-right: 6px;
+    margin-top: 6px;
+    padding-bottom: 0;
+}
+
+#st-attachments-attach-fileprompt {
+    margin: 0.2em 0 0.4em 0;
+    padding-bottom: 0px;
+}
+
+#st-attachments-attach-submit {
+    font-weight: bold;
+}
+
+#st-attachments-attach-uploadmessage {
+    font-weight: bold;
+    margin-bottom: 1em;
+    display: none;
+}
+
+#st-attachments-attach-error {
+    font-weight: bold;
+    color: #f00;
+    margin-bottom: 1em;
+    display: none;
+}
+
+#st-attachments-attach-list {
+    display: none;
+    font-size: 90%;
+    color: #666;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-top: 1px solid #4949BA;
+    border-bottom: 1px solid #4949BA;
+    background-color: #F5F5F5;
+    padding: 3px;
+}
+
+#st-attachments-attach-limit {
+    font-size: 90%;
+    font-style: italic;
+}
+
+.st-attachments-attach-listlabel {
+    color: #4949BA;
+}
+

@@ -104,6 +104,7 @@ ST.AttachmentQueue.prototype = {
         this._center_lightbox(this.element.queueInterface);
         this._refresh_queue_list();
         field.focus();
+        alert("tada");
         return false;
     },
 

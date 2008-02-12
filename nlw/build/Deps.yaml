@@ -119,6 +119,7 @@ Sys::Hostname: 1.11
 Template: 2.14
 Template::Iterator::AlzaboWrapperCursor: 0.01
 Template::Plugin::FillInForm: 0.04
+Template::Plugin::JSON: 0
 Text::Autoformat: 0
 # Text::Balanced 1.99.1 is the first version to not use $&.  Although
 # Text::Balanced is not a first-order dependency, Alzabo uses it, and we

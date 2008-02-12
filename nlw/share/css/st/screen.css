@@ -561,31 +561,15 @@ body {
     text-decoration: none;
 }
 
-#st-page-boxes-underlay {
-    float: right;
-    margin-top: -10px;
-    margin-right: 10px;
-    background: white;
-    z-index: 198;
-    clear: both;
-    margin-left: 15px;
-}
-
-* html #st-page-boxes-underlay {
-    margin-right: 4px;
-}
-
 #st-page-boxes {
     line-height: 1em;
     background: inherit;
-    position: absolute;
-    right: 23px;
-    z-index: 199;
+    float: right;
     margin-top: 15px;
     margin-left: 20px;
 }
 
-#st-page-boxes, #st-page-boxes-underlay {
+#st-page-boxes {
     width: 225px;
     /* padding-left: 15px; */
     /* Gives the white border effect, cwest dislikes it. */
@@ -1004,23 +988,23 @@ body {
     background: url("../../images/st/button-blue/left-middle.gif") left top repeat-y;
 }
 
-#st-edit-button-border-right-middle, #st-login-to-edit-button-border-right-middle {
+#st-edit-button-border-right-middle {
     background: url("../../images/st/button-blue/right-middle.gif") right top repeat-y;
 }
 
-#st-edit-button-border-left-top, #st-login-to-edit-button-border-left-top {
+#st-edit-button-border-left-top {
     background: url("../../images/st/button-blue/left-top.gif") left top no-repeat;
 }
 
-#st-edit-button-border-right-top, #st-login-to-edit-button-border-right-top {
+#st-edit-button-border-right-top {
     background: url("../../images/st/button-blue/right-top.gif") right top no-repeat;
 }
 
-#st-edit-button-border-left-bottom, #st-login-to-edit-button-border-left-bottom {
+#st-edit-button-border-left-bottom {
     background: url("../../images/st/button-blue/left-bottom.gif") left bottom no-repeat;
 }
 
-#st-edit-button-border-right-bottom, #st-login-to-edit-button-border-right-bottom {
+#st-edit-button-border-right-bottom {
     background: url("../../images/st/button-blue/right-bottom.gif") right bottom no-repeat;
 }
 
@@ -1213,75 +1197,6 @@ body {
     border: 0;
     padding: 0;
     margin: 0;
-}
-
-#st-attachments-attach-message {
-    font-size: 90%;
-}
-
-#st-attachments-attach-title {
-    font-weight: bold;
-    font-size: 120%;
-}
-
-#st-attachments-attach-close {
-    float: right;
-    margin-top: 6px;
-}
-
-#st-attachments-attach-uploadbutton {
-    float: right;
-    margin-right: 6px;
-    margin-top: 6px;
-    padding-bottom: 0;
-}
-
-#st-attachments-attach-fileprompt {
-    margin: 0.2em 0 0.4em 0;
-    padding-bottom: 0px;
-}
-
-#st-attachments-attach-submit {
-    font-size: 90%;
-    font-weight: bold;
-}
-
-#st-attachments-attach-filename {
-    font-size: 90%;
-}
-
-#st-attachments-attach-uploadmessage {
-    font-weight: bold;
-    margin-bottom: 1em;
-    display: none;
-}
-
-#st-attachments-attach-error {
-    font-weight: bold;
-    color: #f00;
-    margin-bottom: 1em;
-    display: none;
-}
-
-#st-attachments-attach-list {
-    display: none;
-    color: #666;
-    font-size: 90%;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    border-top: 1px solid #4949BA;
-    border-bottom: 1px solid #4949BA;
-    background-color: #F5F5F5;
-    padding: 3px;
-}
-
-#st-attachments-attach-limit {
-    font-style: italic;
-}
-
-.st-attachments-attach-listlabel {
-    font-size: 90%;
-    color: #4949BA;
 }
 
 /* Queue File Dialog */

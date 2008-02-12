@@ -110,7 +110,7 @@ sub attachments_upload {
     my $self = shift;
 
     my @files = $self->cgi->file;
-    my @embeds = $self->cgi->embed;
+    my @embeds = $self->cgi->embed unless $self->cgi->editmode;
     my @unpacks = $self->cgi->unpack;
 
     my $error = $self->process_attachments_upload(
@@ -119,7 +119,10 @@ sub attachments_upload {
         unpack => \@unpacks,
     );
 
-    return $self->_finish(error => $error, files => \@files);
+    return $self->_finish(
+        error => $error,
+        files => $self->{_attachment_info},
+    );
 }
 
 sub process_attachments_upload {
@@ -172,7 +175,7 @@ sub save_attachment {
     my $filename;
     eval {
         $filename = $file->{filename} . '';
-        $self->hub->attachments->from_file_handle(
+        my @files = $self->hub->attachments->from_file_handle(
             fh     => $file->{handle},
             embed  => $embed ? 1 : 0,
             unpack => $unpack ? 1 : 0,
@@ -181,6 +184,9 @@ sub save_attachment {
             filename => $filename,
             creator  => $self->hub->current_user,
         );
+        for my $file (@files) {
+            $self->{_attachment_info}{$file->filename} = $file->id;
+        }
         $self->log_action("UPLOAD_ATTACHMENT", $filename);
     };
 
@@ -279,7 +285,9 @@ cgi 'filename';
 cgi 'caller_action';
 cgi 'page_name';
 cgi 'embed';
+cgi 'editmode';
 cgi 'as_page';
 cgi 'unpack';
+cgi 'size';
 
 1;

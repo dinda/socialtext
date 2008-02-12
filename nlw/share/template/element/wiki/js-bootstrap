@@ -29,6 +29,12 @@ Socialtext.double_click_to_edit = true;
 function nlw_make_static_path(rest) {
     return "[% wiki.static_path %]" + rest;
 }
+
+[% USE JSON %]
+
+[% DEFAULT attachments = [] %]
+Socialtext.attachments = [% attachments.json %];
+
 </script>
 
 [% BLOCK js_page_object %]

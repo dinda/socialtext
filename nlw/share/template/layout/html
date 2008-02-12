@@ -103,7 +103,7 @@ v.hub.current_workspace.uri = "[% hub.current_workspace.uri %]";
 [% INCLUDE element/page/attachment_manage_interface %]
 [% INCLUDE element/page/newpage_save %]
 [% INCLUDE element/page/newpage_duplicate %]
-[% INCLUDE element/page/attachment_queue_interface %]
+[%# INCLUDE element/page/attachment_queue_interface %]
 [% INCLUDE element/page/tag_queue_interface %]
 [% INCLUDE element/page/raw_wikitext %]
 [% END %]
