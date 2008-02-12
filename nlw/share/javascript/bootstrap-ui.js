@@ -34,7 +34,7 @@ jQuery(function () {
 
         var script = jQuery("<script>").attr({
             type: 'text/javascript',
-            src: nlw_make_static_path("/javascript/socialtext-display-ui.js.gz")
+            src: nlw_make_skin_path("/javascript/socialtext-display-ui.js.gz")
         }).get(0);
         
         document.getElementsByTagName('head')[0].appendChild(script);

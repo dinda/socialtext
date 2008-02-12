@@ -195,12 +195,23 @@ sub display {
     $self->hub->breadcrumbs->drop_crumb($page);
     $self->hub->hit_counter->hit_counter_increment;
 
-     my $cookies = Apache::Cookie->fetch();
-     my $st_page_accessories = (
-         $cookies && $cookies->{'st-page-accessories'} &&
-         $cookies->{'st-page-accessories'}->value
-     ) || 'show';
- 
+    my $cookies = Apache::Cookie->fetch();
+    my $st_page_accessories = (
+        $cookies && $cookies->{'st-page-accessories'} &&
+        $cookies->{'st-page-accessories'}->value
+    ) || 'show';
+
+    # Fake out a call to the REST API to get attachments.
+    # XXX - This should probably be more standard.
+    use Socialtext::Rest::Attachments;
+    my $rest_object = Socialtext::Rest::Attachments->new();
+    $rest_object->{params}->{ws} = $self->hub->current_workspace->name;
+    my $all_attachments = [
+        map {
+            $rest_object->_entity_hash($_);
+        } @{$self->hub->attachments->all(page_id => $page->id)}
+    ];
+
     return $self->template_render(
         template => 'view/page/display',
         vars     => {
