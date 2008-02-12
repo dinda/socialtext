@@ -9,7 +9,6 @@ use Class::Field qw( const );
 use DateTime::Format::Strptime;
 use Socialtext::User;
 use Socialtext::String;
-use Socialtext::TT2::Renderer;
 use Socialtext::BrowserDetect ();
 use Socialtext::l10n qw/loc system_locale/;
 use Socialtext::Locales qw/available_locales/;
@@ -156,8 +155,6 @@ sub display {
 
     $self->log_action("DISPLAY_PAGE");
 
-    my $renderer = Socialtext::TT2::Renderer->instance;
-
     my $is_new_page = $self->hub->pages->page_exists_in_workspace(
         $page->title,
         $self->hub->current_workspace->name,
@@ -198,24 +195,13 @@ sub display {
     $self->hub->breadcrumbs->drop_crumb($page);
     $self->hub->hit_counter->hit_counter_increment;
 
-    my $cookies = Apache::Cookie->fetch();
-    my $st_page_accessories = (
-        $cookies && $cookies->{'st-page-accessories'} &&
-        $cookies->{'st-page-accessories'}->value
-    ) || 'show';
-
-    # Fake out a call to the REST API to get attachments.
-    # XXX - This should probably be more standard.
-    use Socialtext::Rest::Attachments;
-    my $rest_object = Socialtext::Rest::Attachments->new();
-    $rest_object->{params}->{ws} = $self->hub->current_workspace->name;
-    my $all_attachments = [
-        map {
-            $rest_object->_entity_hash($_);
-        } @{$self->hub->attachments->all(page_id => $page->id)}
-    ];
-
-    return $renderer->render(
+     my $cookies = Apache::Cookie->fetch();
+     my $st_page_accessories = (
+         $cookies && $cookies->{'st-page-accessories'} &&
+         $cookies->{'st-page-accessories'}->value
+     ) || 'show';
+ 
+    return $self->template_render(
         template => 'view/page/display',
         vars     => {
             $self->hub->helpers->global_template_vars,
@@ -277,10 +263,8 @@ sub content_only {
     $self->log_action("DISPLAY_PAGE");
     $self->hub->breadcrumbs->drop_crumb($page);
 
-    my $renderer = Socialtext::TT2::Renderer->instance;
-
     $self->hub->hit_counter->hit_counter_increment;
-    return $renderer->render(
+    return $self->template_render(
         template    => 'view/page/content',
         vars        => {
             $self->hub->helpers->global_template_vars,

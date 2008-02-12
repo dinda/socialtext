@@ -51,6 +51,7 @@ sub handler ($$) {
             username_label => $self->username_label,
             redirect_to    => $self->{args}{redirect_to},
             static_path    => Socialtext::Helpers::static_path(),
+            skin_uri       => sub { Socialtext::Skin->skin_uri(shift) },
             st_version     => $Socialtext::VERSION,
             support_address => Socialtext::AppConfig->support_address,
             %$saved_args,

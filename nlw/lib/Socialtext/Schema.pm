@@ -371,7 +371,7 @@ sub SchemaObject {
         $table->make_column
             ( name           => 'skin_name',
               type           => 'VARCHAR',
-              default        => 'st',
+              default        => 's2',
               length         => 30,
             );
         $table->make_column
@@ -485,9 +485,9 @@ sub SchemaObject {
               default         => 't',
             );
         $table->make_column
-            ( name           => 'workspace_template',
-              type           => 'TEXT',
-              default         => '',
+            ( name           => 'uploaded_skin',
+              type           => 'BOOLEAN',
+              default         => 'f',
             );
         $table->make_index
             ( columns  => [ $schema->table( 'Workspace' )->columns( 'name' ) ],

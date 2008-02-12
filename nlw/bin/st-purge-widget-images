@@ -28,7 +28,7 @@ GetOptions(
 
 show_help() if $opts{help};
 
-my $cache_dir = Socialtext::AppConfig->code_base . '/images/widgets';
+my $cache_dir = Socialtext::AppConfig->code_base . '/widgets';
 
 msg("Widget cache: $cache_dir\n");
 

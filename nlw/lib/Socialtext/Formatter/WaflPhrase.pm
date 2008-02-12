@@ -460,8 +460,8 @@ sub html {
     if ($edit_url) {
         my $edit = loc('edit');
         if ($edit eq 'edit') {
-            my $img_path = $self->hub->helpers->images_path;
-            my $icon_url = "$img_path/st/homepage/edit-icon.gif";
+            my $img_path = $self->hub->skin->default_skin_uri;
+            my $icon_url = "$img_path/images/st/homepage/edit-icon.gif";
             $edit = "<img src='$icon_url' border='0'/>";
         }
         else {
