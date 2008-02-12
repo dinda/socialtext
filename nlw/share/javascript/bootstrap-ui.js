@@ -112,14 +112,5 @@ jQuery(function () {
         });
         return false;
     }
-
-
-    /*
-    try {
-        setup_wikiwyg();
-    } catch(e) {
-        alert(loc('setup_wikiwyg error') + ': ' + (e.description || e));
-    }
-    */
 });
 
