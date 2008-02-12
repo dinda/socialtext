@@ -1,3 +1,4 @@
+// Pop up a new HTML window
 function query_popup(url, width, height, left, top) {
     if (!width) width = 400;
     if (!height) height = 287;
@@ -102,6 +103,16 @@ jQuery(function () {
     }).one("focus", function() {
         this.value = "";
     });
+
+    window.confirm_delete = function (pageid) {
+        boot(function() {
+            if (confirm(loc('Are you sure you want to delete this page?'))) {
+                location = 'index.cgi?action=delete_page;page_name=' + pageid;
+            }
+        });
+        return false;
+    }
+
 
     /*
     try {

@@ -72,16 +72,6 @@ ST.extend = function(subClass, baseClass) {
    subClass.superClass = baseClass.prototype;
 }
 
-
-// Pop up a new HTML window
-function query_popup(url, width, height, left, top) {
-    if (!width) width = 400;
-    if (!height) height = 287;
-    if (!left) left = 400-width/2;
-    if (!top) top = 280-height/2;
-    window.open(url, '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, titlebar=no, scrollbars=yes, resizable=yes, width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);
-}
-
 function help_popup(url, width, height, left, top) {
     if (!width) width = 520;
     if (!height) height = 300;
@@ -107,8 +97,3 @@ function is_reserved_pagename(pagename) {
     }
 }
 
-function confirm_delete(pageid) {
-    if (confirm(loc('Are you sure you want to delete this page?'))) {
-        location = 'index.cgi?action=delete_page;page_name=' + pageid;
-    }
-}
