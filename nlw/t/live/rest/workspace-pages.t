@@ -130,11 +130,19 @@ test_http "GET pages search" {
 }
 
 #############
+# Test REST Search
+# Clear the ceqlotron, then index the 2 files we're searching for
+# This is much faster than indexing everything
+#
+
 use Socialtext::Ceqlotron;
+warn "# Cleaning the Ceqlotron queue\n";
+Socialtext::Ceqlotron::clean_queue_directory();
 
 $ENV{NLW_APPCONFIG} = 'ceqlotron_synchronous=1';
-warn "# Running this ceqlotron queue.  This may take a minute or two.\n";
-Socialtext::Ceqlotron::run_current_queue();
+warn "# Indexing pages for IWS Rest test\n";
+index_page('help-en', 'what_s_the_funny_punctuation');
+index_page('admin', 'what_s_the_funny_punctuation');
 #############
 
 test_http "GET interworkspace search" {
@@ -165,4 +173,22 @@ test_http "GET interworkspace search links via HTML" {
     like $body,
         qr{<a href=.\.\./help-en/pages/what_s_the_funny.*?>},
         'Interwiki results are linked relative to the current workspace';
+}
+
+exit;
+
+sub index_page {
+    my $wksp = shift;
+    my $page = shift;
+
+    require Socialtext::Search::AbstractFactory;
+    my $indexer
+        = Socialtext::Search::AbstractFactory->GetFactory->create_indexer(
+        $wksp,
+        config_type => 'live',
+    );
+    if ( !$indexer ) {
+        die "Couldn't create an indexer\n";
+    }
+    $indexer->index_page( $page );
 }
