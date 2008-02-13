@@ -35,7 +35,7 @@ $page->update(
     user             => $user,
 );
 
-my $tarball = $admin->export_to_tarball();
+my $tarball = $admin->export_to_tarball(dir => 't/tmp');
 
 # Deleting the user is important so that we know that both user and
 # workspace data is restored

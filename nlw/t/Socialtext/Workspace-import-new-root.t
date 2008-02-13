@@ -17,7 +17,7 @@ fixtures( 'admin' );
 my $hub = new_hub('admin');
 
 my $admin = $hub->current_workspace();
-my $tarball = $admin->export_to_tarball();
+my $tarball = $admin->export_to_tarball(dir => "t/tmp");
 
 $admin->delete();
 
@@ -59,4 +59,10 @@ Socialtext::Workspace->ImportFromTarball( tarball => $tarball );
     ok( File::Spec->file_name_is_absolute($target),
         'symlink target is an absolute path' );
     ok( -f $target, 'symlink target exists' );
+}
+
+End_block: {
+    Socialtext::AppConfig->set( data_root_dir => $data_root );
+    Socialtext::AppConfig->write;
+    File::Path::rmtree($new_root);
 }

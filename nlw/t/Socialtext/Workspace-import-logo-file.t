@@ -34,7 +34,7 @@ close $fh;
 # resizing it.
 my $md5 = md5_checksum( $admin->logo_filename() );
 
-my $tarball = $admin->export_to_tarball();
+my $tarball = $admin->export_to_tarball(dir => 't/tmp');
 
 # Deleting the user is important so that we know that both user and
 # workspace data is restored
