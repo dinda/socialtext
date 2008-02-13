@@ -1029,7 +1029,7 @@ proto.controlLayout = [
     'h1', 'h2', 'h3', 'h4', 'p', '|',
     'hr', '|',
     'ordered', 'unordered', 'outdent', 'indent', '|',
-    'link', 'www', 'unlink', 'attach', 'image', 'table'
+    'link', 'unlink', 'attach', 'image', 'table'
 ];
 
 proto.controlLabels = {
@@ -1059,7 +1059,6 @@ proto.controlLabels = {
     underline: loc('Underline') + '(Ctrl+u)',
     unlink: loc('Unlink'),
     unordered: loc('Bulleted List'),
-    www: loc('External Link')
 };
 
 proto.resetModeSelector = function() {
@@ -1187,14 +1186,6 @@ proto.do_table = function() {
     var result = this.prompt_for_table_dimensions();
     if (! result) return false;
     this.insert_html(this.make_table_html(result[0], result[1]));
-}
-
-proto.do_www = function() {
-    var selection = this.get_link_selection_text();
-    if (! selection) return;
-    var url = prompt(loc('Enter your destination url here:'), 'http://');
-    if (url == null) return;
-    this.exec_command('createlink', url);
 }
 
 proto.setHeightOf = function (iframe) {
