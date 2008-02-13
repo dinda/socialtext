@@ -89,9 +89,11 @@ sub _generate_base_config {
             '--dev=0',    # Don't create the files in ~/.nlw
             $testing,
         );
-        open(my $fh, ">t/tmp/base-config-generated") or die;
-        print $fh scalar(localtime), "\n";
-        close $fh or die;
+        if (-d ('t/tmp')) {
+            open(my $fh, ">t/tmp/base-config-generated") or die;
+            print $fh scalar(localtime), "\n";
+            close $fh or die;
+        }
     }
 
     local $ENV{ST_TEST_SKIP_DB_DUMP} = 1;
