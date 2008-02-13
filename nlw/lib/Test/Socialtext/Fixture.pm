@@ -258,7 +258,7 @@ sub _generate_workspaces {
     my $account_id = Socialtext::Account->Socialtext()->account_id();
 
     # Why do we _always_ generate the help workspace?
-    # $self->_generate_help_workspace( $creator, "help-en" );
+    $self->_generate_help_workspace( $creator, "help-en" );
 
     print STDERR "# workspaces: " if $self->env->verbose;
     while ( my ( $name, $spec ) = each %{ $self->config->{workspaces} } ) {
