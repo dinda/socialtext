@@ -73,25 +73,31 @@ sub _generate_base_config {
 
     my $env               = $self->env;
 
-    my $testing = $ENV{HARNESS_ACTIVE} ? '--testing' : '';
+    if (!-e 't/tmp/base-config-generated') {
+        my $testing = $ENV{HARNESS_ACTIVE} ? '--testing' : '';
+        my $gen_config = $env->nlw_dir . '/dev-bin/gen-config';
+        my $apache_proxy    = get_build_setting('apache-proxy');
+        my $socialtext_open = get_build_setting('socialtext-open');
 
-    my $gen_config = $env->nlw_dir . '/dev-bin/gen-config';
+        _system_or_die(
+            $gen_config,
+            '--quiet',
+            '--root',           $env->root_dir,
+            '--ports-start-at', $env->ports_start_at,
+            '--apache-proxy=' . $apache_proxy,
+            '--socialtext-open=' . $socialtext_open,
+            '--dev=0',    # Don't create the files in ~/.nlw
+            $testing,
+        );
+        if (-d ('t/tmp')) {
+            open(my $fh, ">t/tmp/base-config-generated") or die;
+            print $fh scalar(localtime), "\n";
+            close $fh or die;
+        }
+    }
+
+    local $ENV{ST_TEST_SKIP_DB_DUMP} = 1;
     my $st_db      = $env->nlw_dir . '/bin/st-db';
-
-    my $apache_proxy    = get_build_setting('apache-proxy');
-    my $socialtext_open = get_build_setting('socialtext-open');
-
-    _system_or_die(
-        $gen_config,
-        '--quiet',
-        '--root',           $env->root_dir,
-        '--ports-start-at', $env->ports_start_at,
-        '--apache-proxy=' . $apache_proxy,
-        '--socialtext-open=' . $socialtext_open,
-        '--dev=0',    # Don't create the files in ~/.nlw
-        $testing,
-    );
-
     _system_or_die( $st_db, '--recreate',      '--quiet' );
     _system_or_die( $st_db, '--required-data', '--quiet' );
 
@@ -251,7 +257,9 @@ sub _generate_workspaces {
     );
     my $account_id = Socialtext::Account->Socialtext()->account_id();
 
+    # Why do we _always_ generate the help workspace?
     $self->_generate_help_workspace( $creator, "help-en" );
+
     print STDERR "# workspaces: " if $self->env->verbose;
     while ( my ( $name, $spec ) = each %{ $self->config->{workspaces} } ) {
         print STDERR "$name... " if $self->env->verbose;

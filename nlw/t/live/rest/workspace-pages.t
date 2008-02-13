@@ -14,7 +14,7 @@ use Test::HTTP::Syntax;
 use Test::HTTP 'no_plan';
 use Test::More;
 use JSON;
-
+use t::SocialtextTestUtils qw/index_page/;
 
 $JSON::UTF8 = 1;
 
@@ -130,11 +130,19 @@ test_http "GET pages search" {
 }
 
 #############
+# Test REST Search
+# Clear the ceqlotron, then index the 2 files we're searching for
+# This is much faster than indexing everything
+#
+
 use Socialtext::Ceqlotron;
+warn "# Cleaning the Ceqlotron queue\n";
+Socialtext::Ceqlotron::clean_queue_directory();
 
 $ENV{NLW_APPCONFIG} = 'ceqlotron_synchronous=1';
-warn "# Running this ceqlotron queue.  This may take a minute or two.\n";
-Socialtext::Ceqlotron::run_current_queue();
+warn "# Indexing pages for IWS Rest test\n";
+index_page('help-en', 'what_s_the_funny_punctuation');
+index_page('admin', 'what_s_the_funny_punctuation');
 #############
 
 test_http "GET interworkspace search" {
@@ -166,3 +174,5 @@ test_http "GET interworkspace search links via HTML" {
         qr{<a href=.\.\./help-en/pages/what_s_the_funny.*?>},
         'Interwiki results are linked relative to the current workspace';
 }
+
+exit;
