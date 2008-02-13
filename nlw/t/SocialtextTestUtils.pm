@@ -1,4 +1,5 @@
 package t::SocialtextTestUtils;
+# @COPYRIGHT@
 use strict;
 use warnings;
 use base 'Exporter';
