@@ -105,8 +105,8 @@ field weblog =>
 {file} links to attachments.
 
 =cut
-field file =>
-    '/%{workspace}/index.cgi/%{filename}?action=attachments_download;page_name=%{page_uri};id=%{id}';
+field file => 
+    '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/%{filename}';
 
 =head2 image
 
@@ -158,7 +158,6 @@ sub format_link {
     my $format_string = $self->$method;
 
     # replace the fields in the format string
-    # REVIEW: Is this the right or best way to do this?
     $format_string =~ s/%{(\w+)}/$p{$1} || ''/ge;
 
     return $format_string;

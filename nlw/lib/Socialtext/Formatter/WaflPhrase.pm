@@ -222,7 +222,7 @@ sub html {
 
     my $file_id = $self->get_file_id( $workspace_name, $page_id, $image_name )
         or return $self->error;
-    #$image_name     = $self->uri_escape($image_name);
+    $image_name     = $self->uri_escape($image_name);
 
     # We have to save and restore the current workspace so we can set it
     # properly for inter-workspace links.  This is probably a bug in
