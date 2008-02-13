@@ -24,7 +24,7 @@ echo "Verifying symlink target: $target"
 if [ ! -d $target ]
 then
     echo
-    echo You need to checkout http://repo.socialtext.net:8889/socialtext-skins/
+    echo You need to checkout https://repo.socialtext.net:8999/svn/socialtext-skins/ 
     echo next to this branch, before running this script.
     exit 1
 fi
