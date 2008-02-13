@@ -36,8 +36,14 @@ sub _regen_combined_js {
     );
     local $CWD = $dir;
 
-    system( 'make', 'all' )
-        and die "Error calling make in $dir: $!";
+    my $semaphore = "$dir/build-in-progress";
+    if ( not -e $semaphore ) {
+        system( 'touch', $semaphore );
+        my $rv = system( 'make', 'all' );
+        my $err = $!;
+        system( 'rm', $semaphore );
+        die "Error calling make in $dir: $err" if $rv;
+    }
 }
 
 1;
