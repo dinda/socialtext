@@ -732,13 +732,6 @@ sub _parse_page_for_headers {
         $page->content($content) if $content;
     }
 
-    my $page_url = $self->hub->viewer->link_dictionary->format_link(
-        link       => 'interwiki',
-        workspace  => $workspace_name,
-        page_uri   => $page_id,
-        url_prefix => $self->url_prefix,
-    );
-
     my $title = loc('Contents');
 
     my $linkref = '';
@@ -769,6 +762,13 @@ sub _parse_page_for_headers {
         }
     }
     else {
+        my $page_url = $self->hub->viewer->link_dictionary->format_link(
+            link       => 'interwiki',
+            workspace  => $workspace_name,
+            page_uri   => $page_id,
+            url_prefix => $self->url_prefix,
+        );
+
         $error = loc(
             "[_1] does not have any headers.",
             "<a href='$page_url'>$page_title</a>",
