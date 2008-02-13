@@ -11,6 +11,7 @@ use Socialtext::AppConfig;
 use Socialtext::File;
 use Socialtext::AlzaboWrapper;
 use Socialtext::Skin;
+use Fcntl ':flock';
 
 sub handler {
     # This ensures that we have a good DBI handle underneath.  The
@@ -36,14 +37,13 @@ sub _regen_combined_js {
     );
     local $CWD = $dir;
 
-    my $semaphore = "$dir/build-in-progress";
-    if ( not -e $semaphore ) {
-        system( 'touch', $semaphore );
-        my $rv = system( 'make', 'all' );
-        my $err = $!;
-        system( 'rm', $semaphore );
-        die "Error calling make in $dir: $err" if $rv;
-    }
+    my $semaphore = "$dir/build-semaphore";
+    open( my $lock, ">>", $semaphore )
+        or die "Could not open $semaphore: $!\n";
+    flock( $lock, LOCK_EX )
+        or die "Could not get lock on $semaphore: $!\n";
+    system( 'make', 'all' ) and die "Error calling make in $dir: $!";
+    close($lock);
 }
 
 1;
