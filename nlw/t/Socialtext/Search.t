@@ -36,7 +36,6 @@ HIT: {
     };
     is( $@, '', "No exceptions thrown." );
     for my $hit (@hits) {
-        warn $hit->workspace_name;
         if ($hit->workspace_name eq 'foobar') {
             fail('No foobar hits for guest user.');
             last HIT;
