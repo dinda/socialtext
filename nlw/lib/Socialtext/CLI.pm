@@ -1565,12 +1565,12 @@ sub customjs {
 
     my ( $hub, $main ) = $self->_require_hub();
 
-    if ($hub->current_workspace()->customjs_name()) {
+    if ($hub->skin->customjs_name()) {
         $self->_success(
             'Custom JS URI for ' .
             $hub->current_workspace()->name .
             ' workspace is ' .
-            $hub->current_workspace()->customjs_name() .
+            $hub->skin->customjs_name() .
             '.'
         );
     }

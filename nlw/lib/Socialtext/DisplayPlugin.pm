@@ -9,7 +9,6 @@ use Class::Field qw( const );
 use DateTime::Format::Strptime;
 use Socialtext::User;
 use Socialtext::String;
-use Socialtext::TT2::Renderer;
 use Socialtext::BrowserDetect ();
 use Socialtext::l10n qw/loc system_locale/;
 use Socialtext::Locales qw/available_locales/;
@@ -156,8 +155,6 @@ sub display {
 
     $self->log_action("DISPLAY_PAGE");
 
-    my $renderer = Socialtext::TT2::Renderer->instance;
-
     my $is_new_page = $self->hub->pages->page_exists_in_workspace(
         $page->title,
         $self->hub->current_workspace->name,
@@ -215,7 +212,7 @@ sub display {
         } @{$self->hub->attachments->all(page_id => $page->id)}
     ];
 
-    return $renderer->render(
+    return $self->template_render(
         template => 'view/page/display',
         vars     => {
             $self->hub->helpers->global_template_vars,
@@ -278,10 +275,8 @@ sub content_only {
     $self->log_action("DISPLAY_PAGE");
     $self->hub->breadcrumbs->drop_crumb($page);
 
-    my $renderer = Socialtext::TT2::Renderer->instance;
-
     $self->hub->hit_counter->hit_counter_increment;
-    return $renderer->render(
+    return $self->template_render(
         template    => 'view/page/content',
         vars        => {
             $self->hub->helpers->global_template_vars,

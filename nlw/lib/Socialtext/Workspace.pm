@@ -3,9 +3,9 @@ package Socialtext::Workspace;
 
 use strict;
 use warnings;
+no warnings 'redefine';
 
 our $VERSION = '0.01';
-
 
 use Socialtext::Exceptions qw( rethrow_exception param_error data_validation_error );
 use Socialtext::Validate qw( validate validate_pos SCALAR_TYPE BOOLEAN_TYPE ARRAYREF_TYPE HANDLE_TYPE
@@ -70,7 +70,8 @@ sub new {
         return $class->help_workspace(%args);
     }
     else {
-        return $class->SUPER::new(%args);
+        my $ws = $class->SUPER::new(%args);
+        return $ws;
     }
 }
 
@@ -234,10 +235,13 @@ sub _update_aliases_file {
 
 sub update {
     my $self = shift;
+    my %args = @_;
+
+    delete $self->{skin_info}{$_} for keys %args;
 
     my $old_title = $self->title();
 
-    $self->SUPER::update(@_);
+    $self->SUPER::update(%args);
 
     if ( $self->title() ne $old_title ) {
         my ( $main, $hub ) = $self->_main_and_hub();
@@ -488,7 +492,7 @@ sub NameIsValid {
         my @new_paths = $self->_data_dir_paths();
 
         for ( my $x = 0; $x < @old_paths; $x++ ) {
-            rename $old_paths[$x] => $new_paths[$x]
+            CORE::rename $old_paths[$x] => $new_paths[$x]
                 or die "Cannot rename $old_paths[$x] => $new_paths[$x]: $!";
         }
 
@@ -539,13 +543,15 @@ sub formatted_email_notification_from_address {
         $self->email_notification_from_address() )->format();
 }
 
-Readonly my $DefaultLogoURI => '/static/images/st/logo/socialtext-logo-152x26.gif';
 sub logo_uri_or_default {
     my $self = shift;
+    my ( $main, $hub ) = $self->_main_and_hub();
 
     return $self->logo_uri if $self->logo_uri;
 
-    return $DefaultLogoURI;
+    return join '/', 
+        $hub->skin->skin_uri('s2'), 
+        qw(images st logo socialtext-logo-152x26.gif);
 }
 
 sub logo_filename {
@@ -663,29 +669,6 @@ sub _logo_path {
     my $self = shift;
 
     return Socialtext::File::catdir( $self->LogoRoot, $self->name );
-}
-
-# This sort of stuff will eventually move to Socialtext::Skin, once
-# that exists.
-sub header_logo_image_uri {
-    my $self = shift;
-
-    my $logo_file = Socialtext::File::catfile(
-        Socialtext::AppConfig->code_base(), 'images',
-        $self->skin_name, 'logo-bar-12.gif' );
-
-    if ( -f $logo_file ) {
-        return join '/',
-            Socialtext::Helpers->static_path,
-            'images',
-            $self->skin_name,
-            'logo-bar-12.gif';
-    }
-
-    return join '/',
-        Socialtext::Helpers->static_path,
-        'images',
-        'logo-bar-12.gif';
 }
 
 sub title_label {

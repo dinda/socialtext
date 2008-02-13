@@ -10,7 +10,7 @@ use File::chdir;
 use Socialtext::AppConfig;
 use Socialtext::File;
 use Socialtext::AlzaboWrapper;
-
+use Socialtext::Skin;
 
 sub handler {
     # This ensures that we have a good DBI handle underneath.  The
@@ -28,12 +28,16 @@ sub handler {
 }
 
 sub _regen_combined_js {
-    my $dir = Socialtext::File::catdir( Socialtext::AppConfig->code_base(),
-                                 'javascript' );
+    my $dir = Socialtext::File::catdir(
+        Socialtext::AppConfig->code_base(),
+        'skin',
+        $Socialtext::Skin::DEFAULT_SKIN_NAME,
+        'javascript'
+    );
     local $CWD = $dir;
 
     system( 'make', 'all' )
-        and die "Cannot call 'make combined-source.js' in $dir: $!";
+        and die "Error calling make in $dir: $!";
 }
 
 1;

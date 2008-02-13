@@ -15,8 +15,6 @@ use Socialtext::l10n qw/loc/;
 sub class_id { 'helpers' }
 
 sub static_path { '/static/' . Socialtext->product_version() }
-sub images_path { shift->static_path . '/images/' }
-
 
 my $supported_format = {
     'en' => '%B %Y',
@@ -158,6 +156,7 @@ sub global_template_vars {
 
     my $search_box = $renderer->render(
         template => \$snippet,
+        skin_path => $self->hub->skin->default_skin_path('template'),
         vars => {
             current_workspace => $self->hub->current_workspace,
             show_search_set   => $show_search_set,
@@ -168,22 +167,20 @@ sub global_template_vars {
     );
 
     return (
-        loc               => \&loc,
-        loc_lang          => $self->hub->display->preferences->locale->value,
-        css               => $self->_get_css_info,
-        additional_css    => $self->_get_additional_css_info,
-        images            => $self->_get_images_info,
-        user              => $self->_get_user_info,
-        wiki              => $self->_get_wiki_info,
-        checker           => $self->hub->checker,
-        current_workspace => $self->hub->current_workspace,
-        home_is_dashboard => $self->hub->current_workspace->homepage_is_dashboard,
-        customjs_uri       => $self->hub->current_workspace->customjs_uri,
-        customjs_name     => $self->hub->current_workspace->customjs_name,
+        loc                => \&loc,
+        loc_lang           => $self->hub->display->preferences->locale->value,
+        css                => $self->_get_css_info,
+        additional_css     => $self->_get_additional_css_info,
+        user               => $self->_get_user_info,
+        wiki               => $self->_get_wiki_info,
+        checker            => $self->hub->checker,
+        current_workspace  => $self->hub->current_workspace,
+        home_is_dashboard  => $self->hub->current_workspace->homepage_is_dashboard,
+        customjs           => $self->hub->skin->customjs,
         app_version        => Socialtext->product_version,
-        skin_name          => $self->hub->current_workspace->skin_name,
+        skin_name          => $self->hub->skin->skin_name,
         search_box_snippet => $search_box,
-        miki_url          => $self->miki_path,
+        miki_url           => $self->miki_path,
     );
 }
 
@@ -224,13 +221,6 @@ sub _get_additional_css_info {
     };
 }
 
-sub _get_images_info {
-    my ($self) = @_;
-    return {
-        path  => $self->hub->helpers->images_path,
-    };
-}
-
 sub _get_user_info {
     my ($self) = @_;
     my $user = $self->hub->current_user;
@@ -243,6 +233,7 @@ sub _get_user_info {
 sub _get_wiki_info {
     my ($self) = @_;
     my $wiki = $self->hub->current_workspace;
+    my $skin = $self->hub->skin->skin_name;
 
     return {
         title         => $wiki->title,
@@ -252,14 +243,23 @@ sub _get_wiki_info {
         has_dashboard => $wiki->homepage_is_dashboard,
         is_public     => $wiki->is_public,
         uri           => $wiki->uri,
-        skin          => $wiki->skin_name,
+        skin          => $skin,
         email_address => $wiki->email_in_address,
         static_path   => $self->static_path,
+        skin_uri      => sub { 
+            $self->hub->skin->skin_uri( shift || $skin )
+        },
         comment_form_window_height => $wiki->comment_form_window_height,
         system_status              => $self->hub->main->status_message(),
         comment_by_email           => $wiki->comment_by_email,
         email_in_address           => $wiki->email_in_address,
     };
+}
+
+sub skin_uri {
+    my $skin = Socialtext::Skin->new();
+    my $skin_name  = shift;
+    return $skin->skin_uri($skin_name);
 }
 
 1;
