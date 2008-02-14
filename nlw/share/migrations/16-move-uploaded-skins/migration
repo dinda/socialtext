@@ -14,6 +14,8 @@ function run_sql () {
     psql -U `st-config echo db_user` -d `st-config echo db_schema_name` -t -c "$1"
 }
 
+rm -rf $CODE_BASE/images/widgets
+
 for dir in $CODE_BASE/css/*; do 
     rmdir $dir 2>/dev/null && continue # Remove empty skins
 
