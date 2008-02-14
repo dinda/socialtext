@@ -234,15 +234,14 @@ sub _attachment_download_link {
     my $self = shift;
     my $attachment = shift;
 
-    my $script        = Socialtext::AppConfig->script_name;
+    my $workspace     = $self->hub->current_workspace->name;
     my $filename_uri  = $self->uri_escape( $attachment->{filename} );
     my $filename_html = $self->html_escape( $attachment->{filename} );
     my $page          = $self->hub->pages->new_page( $attachment->{page_id} );
     my $page_uri      = $page->uri;
-    my $attachment_id = $attachment->{id};
 
-    return qq|<a href="$script/$filename_uri?action=attachments_download;|
-        . qq|page_name=$page_uri;id=$attachment_id">$filename_html</a>|;
+    return qq|<a href="/data/workspaces/$workspace/attachments/$page_uri:|
+         . qq|$attachment->{id}/original/$filename_uri">$filename_html</a>|;
 }
 
 sub attachments_delete {

@@ -106,7 +106,7 @@ field weblog =>
 
 =cut
 field file => 
-    '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/%{filename}';
+    '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/original/%{filename}';
 
 =head2 image
 
