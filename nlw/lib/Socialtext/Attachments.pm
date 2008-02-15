@@ -376,19 +376,20 @@ sub attachdir {
     $attachdir = "$attachdir/$page_id/$id";
 }
 
-sub size {
+sub dimensions {
     my ($self, $size) = @_;
-    return 'original' unless $size;
-    return 600 if $size eq 'large';
-    return 300 if $size eq 'medium';
-    return 100 if $size eq 'small';
-    return 'original';
+    return unless $size;
+    return [600,1200] if $size eq 'large';
+    return [300,600] if $size eq 'medium';
+    return [100,200] if $size eq 'small';
+    return [$1 || 0, $2 || 0] if $size =~ /^(\d+)(?:x(\d+))?$/;
 }
 
 sub image_path {
     my $self = shift;
+    my $size = shift;
 
-    my $size = $self->size(@_);
+    my $dimensions = $self->dimensions($size);
 
     my $paths = $self->{image_path};
 
@@ -398,7 +399,8 @@ sub image_path {
     my $original = $paths->{original} ||= 
         join '/', $self->attachdir, $db_filename;
 
-    return $original if !-f $original or $size eq 'original';
+    # Return original if the we have nothing to resize
+    return $original unless defined $dimensions and -f $original;
 
     my $size_dir = join '/', $attachdir, $size;
     my $path = $paths->{$size} ||= join '/', $size_dir, $db_filename;
@@ -412,8 +414,8 @@ sub image_path {
         open my $fh, $original or die "Can't open $original: $!";
         Socialtext::Image::resize(
             filehandle => $fh,
-            max_width  => $size,
-            max_height => 99999,
+            max_width  => $dimensions->[0] || 99999,
+            max_height => $dimensions->[1] || 99999,
             file       => $path,
         );
     };
