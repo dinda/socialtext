@@ -127,7 +127,7 @@ sub _require_email_in_permission {
     # users in one week, which is obviously a problem over the long
     # term.
     elsif (
-        $self->{workspace}->role_has_permission(
+        $self->{workspace}->permissions->role_can(
             permission => ST_EMAIL_IN_PERM,
             role       => Socialtext::Role->Guest(),
         )

@@ -37,7 +37,7 @@ sub get_resource {
     # which might not be the desired result. In a way it's kind of good,
     # in an information hiding sort of way, but....
     if (
-        $self->workspace->user_has_permission(
+        $self->workspace->permissions->user_can(
             user       => $acting_user,
             permission =>
                 Socialtext::Permission->new( name => 'admin_workspace' ),

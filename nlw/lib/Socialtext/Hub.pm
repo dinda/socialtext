@@ -341,6 +341,7 @@ BEGIN {
             Socialtext::Log
             Socialtext::Pages
             Socialtext::PreferencesPlugin
+            Socialtext::Stax
             Socialtext::Template
 
             Socialtext::SearchPlugin

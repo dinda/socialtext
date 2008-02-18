@@ -1,8 +1,7 @@
 #!perl
 # @COPYRIGHT@
 use mocked qw(Socialtext::l10n system_locale); # Has to come firstest.
-use Test::Socialtext tests => 107;
-
+use Test::Socialtext tests => 110;
 use strict;
 use warnings;
 
@@ -75,6 +74,8 @@ ALL_WORKSPACE_IDS_AND_NAMES: {
     my $page_dir =
         Socialtext::File::catdir( Socialtext::Paths::page_data_directory('short-name'), 'quick_start' );
     ok( -d $page_dir, "$page_dir exists after workspace is created" );
+
+    is $ws->skin_name, 'st', 'default skin is st';
 }
 
 {
@@ -120,6 +121,31 @@ NO_DASH_IN_TITLE:
         'and may not begin with a -' );
 }
 
+Different_name_case: {
+    Socialtext::Workspace->create(
+        name       => 'monkey-rubber',
+        title      => 'Monkey Rubber',
+        account_id => Socialtext::Account->Socialtext()->account_id,
+    );
+
+    ok(Socialtext::Workspace->new( name => 'monkey-rubber' ),
+       'Loaded with same case');
+    ok(Socialtext::Workspace->new( name => 'Monkey-Rubber' ),
+       'Loaded with different case');
+}
+
+Undef_skin_name: {
+    Socialtext::Workspace->create(
+        name       => 'undef-skin',
+        title      => 'Undef Skin',
+        account_id => Socialtext::Account->Socialtext()->account_id,
+        skin_name  => undef,
+    );
+
+    ok(Socialtext::Workspace->new( name => 'undef-skin' ),
+       'undef skin_name worked okay');
+}
+
 {
     Socialtext::Workspace->create(
         name       => 'short-name-2',
@@ -139,7 +165,7 @@ NO_DASH_IN_TITLE:
 }
 
 
-{
+Delete_a_workspace: {
     my $ws = Socialtext::Workspace->new( name => 'short-name' );
     $ws->delete;
 
@@ -216,29 +242,6 @@ EMAIL_NOTIFICATION_FROM_ADDRESS:
     is( $ws->formatted_email_notification_from_address(),
         q{"Title with, a comma" <bob@example.com>},
         'default from address includes workspace title and bob@example.com' );
-}
-
-sub check_errors {
-    my $e = shift;
-    ok( $e,
-        'got an error after giving bad data to Socialtext::Workspace->create'
-    );
-
-    for my $regex (
-        qr/one of top, bottom, or replace/,
-        qr/title is a required field/,
-        ) {
-            my $errors = join ', ', $e->messages;
-            like $errors, $regex, "got error message matching $regex";
-    }
-
- TODO:
-    {
-        local $TODO = 'Skins are not yet checked';
-        my $regex = qr/skin you specified/;
-        ok( ( grep {/$regex/} $e->messages ),
-            "got error message matching $regex" );
-    }
 }
 
 {
@@ -400,7 +403,7 @@ sub check_errors {
     {
         my @uris = ( 'https://example.com/ping3', 'https://example.com/ping3' );
         $ws->set_ping_uris( uris => \@uris );
-        is( $ws->ping_uris, 'https://example.com/ping3',
+        is_deeply( [ $ws->ping_uris ], ['https://example.com/ping3'],
             'set_ping_uris discards duplicates, allows https' );
     }
 
@@ -709,4 +712,30 @@ EXPORT_WITH_MISSING_DIR: {
         qr/Export Directory .+ does not exist./i,
         'Non-existent export directory generates expected error message'
     );
+}
+
+exit;
+
+
+sub check_errors {
+    my $e = shift;
+    ok( $e,
+        'got an error after giving bad data to Socialtext::Workspace->create'
+    );
+
+    for my $regex (
+        qr/one of top, bottom, or replace/,
+        qr/title is a required field/,
+        ) {
+            my $errors = join ', ', $e->messages;
+            like $errors, $regex, "got error message matching $regex";
+    }
+
+ TODO:
+    {
+        local $TODO = 'Skins are not yet checked';
+        my $regex = qr/skin you specified/;
+        ok( ( grep {/$regex/} $e->messages ),
+            "got error message matching $regex" );
+    }
 }

@@ -254,6 +254,9 @@ sub SchemaObject {
             );
     }
 
+    # The package corresponding to the following table has been alzabnobified.
+    # If you change the schema below, you won't automagically get accessors
+    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'UserEmailConfirmation',
@@ -285,6 +288,9 @@ sub SchemaObject {
             );
     }
 
+    # The package corresponding to the following table has been alzabnobified.
+    # If you change the schema below, you won't automagically get accessors
+    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'Workspace',
@@ -496,6 +502,9 @@ sub SchemaObject {
             );
     }
 
+    # The package corresponding to the following table has been alzabnobified.
+    # If you change the schema below, you won't automagically get accessors
+    # for those columns. Please also alter the corresponding package.
     {
         my $table = $schema->make_table
             ( name       => 'WorkspacePingURI',

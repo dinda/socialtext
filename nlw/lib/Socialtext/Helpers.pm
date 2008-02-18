@@ -11,6 +11,7 @@ use Socialtext::Search::Config;
 use Socialtext::Search::Set;
 use Socialtext::TT2::Renderer;
 use Socialtext::l10n qw/loc/;
+use Socialtext::Stax;
 
 sub class_id { 'helpers' }
 
@@ -181,6 +182,7 @@ sub global_template_vars {
         skin_name          => $self->hub->skin->skin_name,
         search_box_snippet => $search_box,
         miki_url           => $self->miki_path,
+        stax_info         => $self->hub->stax->hacks_info,
     );
 }
 
@@ -241,7 +243,7 @@ sub _get_wiki_info {
         logo          => $wiki->logo_uri_or_default,
         name          => $wiki->name,
         has_dashboard => $wiki->homepage_is_dashboard,
-        is_public     => $wiki->is_public,
+        is_public     => $wiki->permissions->is_public,
         uri           => $wiki->uri,
         skin          => $skin,
         email_address => $wiki->email_in_address,

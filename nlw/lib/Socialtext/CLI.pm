@@ -724,7 +724,7 @@ sub set_permissions {
     my $ws       = $self->_require_workspace();
     my $set_name = $self->_require_string('permissions');
 
-    $ws->set_permissions( set_name => $set_name );
+    $ws->permissions->set( set_name => $set_name );
 
     $self->_success( 'The permissions for the '
             . $ws->name()
@@ -738,7 +738,7 @@ sub add_permission {
     my $perm = $self->_require_permission();
     my $role = $self->_require_role();
 
-    $ws->add_permission(
+    $ws->permissions->add(
         permission => $perm,
         role       => $role,
     );
@@ -759,7 +759,7 @@ sub remove_permission {
     my $perm = $self->_require_permission();
     my $role = $self->_require_role();
 
-    $ws->remove_permission(
+    $ws->permissions->remove(
         permission => $perm,
         role       => $role,
     );
@@ -781,8 +781,10 @@ sub show_workspace_config {
     my $msg = 'Config for ' . $ws->name . " workspace\n\n";
 
     my $fmt = '%-32s:  %s';
-    for my $c ( sort grep { $_ ne 'name' } map { $_->name } $ws->columns ) {
-        my $val = $ws->$c();
+    my $wshash = $ws->to_hash;
+    delete $wshash->{name};
+    for my $c ( sort keys %$wshash ) {
+        my $val = $wshash->{$c};
         $val = 'NULL' unless defined $val;
         $val = q{''} if $val eq '';
 
@@ -1015,7 +1017,7 @@ sub show_acls {
 
     my $msg = "ACLs for " . $ws->name . " workspace\n\n";
     $msg .= "  permission set name: "
-        . $ws->current_permission_set_name() . "\n\n";
+        . $ws->permissions->current_set_name() . "\n\n";
 
     my $first_col = '<' x List::Util::max( map { length $_->name } @perms );
 
@@ -1046,7 +1048,7 @@ sub show_acls {
         my @marks;
         for my $role (@roles) {
             push @marks,
-                $ws->role_has_permission( role => $role, permission => $perm )
+                $ws->permissions->role_can( role => $role, permission => $perm )
                 ? 'X'
                 : ' ';
         }
@@ -1084,7 +1086,6 @@ sub show_admins {
     my $msg = "Admins of the " . $ws->name . " workspace\n\n";
     $msg .= "| Email Address | First | Last |\n";
 
-    use Data::Dumper;
     my $user_cursor =  $ws->users_with_roles;
     my $entry;
     while ($entry = $user_cursor->next) {
@@ -1104,7 +1105,6 @@ sub show_impersonators {
     my $msg = "Impersonators in the " . $ws->name . " workspace\n\n";
     $msg .= "| Email Address | First | Last |\n";
 
-    use Data::Dumper;
     my $user_cursor =  $ws->users_with_roles;
     my $entry;
     while ($entry = $user_cursor->next) {

@@ -53,10 +53,6 @@ sub _init {
             push @{ $self->fixtures },
                 Test::Socialtext::Fixture->new( name => $sub_name, env => $self->env );
         }
-
-        if ( $self->config->{clear_alzabo_cache} ) {
-            Socialtext::AlzaboWrapper->ClearCache();
-        }
     }
     else {
         $self->set_config({});
@@ -287,7 +283,7 @@ sub _generate_workspaces {
 	    $perms = $spec->{permission_set_name};
 	}
 
-        $ws->set_permissions( set_name => $perms );
+        $ws->permissions->set( set_name => $perms );
 
         # Add extra users in the roles specified.
         while ( my ( $role, $users ) = each %{ $spec->{extra_users} } ) {
@@ -319,7 +315,7 @@ sub _activate_impersonate_permission {
     my $self = shift;
     my $workspace = shift;
 
-    $workspace->add_permission(
+    $workspace->permissions->add(
         permission => Socialtext::Permission->new( name => 'impersonate' ),
         role => Socialtext::Role->WorkspaceAdmin(),
     );

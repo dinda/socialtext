@@ -36,4 +36,6 @@ sub customjs_name { '' }
 
 sub read_breadcrumbs { }
 
+sub permissions { shift } # hack - just return ourselves
+
 1;

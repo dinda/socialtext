@@ -10,7 +10,6 @@ use Class::Field qw( const );
 use Socialtext::AppConfig;
 use Socialtext::Permission qw( ST_EMAIL_IN_PERM );
 use Socialtext::Role;
-use Template::Iterator::AlzaboWrapperCursor;
 use Socialtext::Challenger;
 use Socialtext::l10n qw(loc);
 use Socialtext::CSS;
@@ -34,7 +33,6 @@ sub register {
     $registry->add(action => 'workspaces_created');
     $registry->add(action => 'workspaces_unsubscribe');
     $registry->add(action => 'workspaces_permissions');
-    $registry->add(action => 'workspaces_html');
 }
 
 sub workspaces_listall {
@@ -50,7 +48,7 @@ sub workspaces_listall {
     my $settings_section = $self->template_process(
         'element/settings/workspaces_listall_section',
         workspaces_with_selected =>
-        Template::Iterator::AlzaboWrapperCursor->new( $self->hub->current_user->workspaces_with_selected ),
+            $self->hub->current_user->workspaces_with_selected,
         $self->status_messages_for_template,
     );
 
@@ -542,7 +540,7 @@ sub workspaces_permissions {
         if $self->cgi()->Button();
 
     my $set_name
-        = $self->hub->current_workspace->current_permission_set_name();
+        = $self->hub->current_workspace->permissions->current_set_name();
     my $settings_section = $self->template_process(
         'element/settings/workspaces_permissions_section',
         workspace                   => $self->hub->current_workspace,
@@ -551,7 +549,7 @@ sub workspaces_permissions {
         fill_in_data                => {
             permission_set_name => $set_name,
             guest_has_email_in  =>
-                $self->hub->current_workspace->role_has_permission(
+                $self->hub->current_workspace->permissions->role_can(
                     role       => Socialtext::Role->Guest(),
                     permission => ST_EMAIL_IN_PERM,
                 ),
@@ -578,19 +576,19 @@ sub _set_workspace_permissions {
     return
         unless $set_name
         and
-        Socialtext::Workspace->PermissionSetNameIsValid($set_name);
+        exists $Socialtext::Workspace::Permissions::PermissionSets{ $set_name };
 
     my $ws = $self->hub()->current_workspace();
-    $ws->set_permissions( set_name => $set_name );
+    $ws->permissions->set( set_name => $set_name );
 
     if ( $self->cgi()->guest_has_email_in() ) {
-        $ws->add_permission(
+        $ws->permissions->add(
             role       => Socialtext::Role->Guest(),
             permission => ST_EMAIL_IN_PERM,
         );
     }
     else {
-        $ws->remove_permission(
+        $ws->permissions->remove(
             role       => Socialtext::Role->Guest(),
             permission => ST_EMAIL_IN_PERM,
         );
@@ -600,7 +598,7 @@ sub _set_workspace_permissions {
     if ($self->cgi()->guest_has_email_in()) {
         $message .= ' ' . loc('Anyone can send email to [_1].', $ws->name());
     } else {
-        if ($ws->current_permission_set_name() =~ /public-(?:read|comment)-only/) {
+        if ($ws->permissions->current_set_name() =~ /public-(?:read|comment)-only/) {
             $message .= ' ';
             $message .= loc('Only workspace members can send email to [_1].', $ws->name());
         } else {
@@ -611,17 +609,6 @@ sub _set_workspace_permissions {
 
     $self->message( $message );
 }
-
-sub workspaces_html {
-    my $self = shift;
-    return $self->template_process(
-        'workspaces_box_filled.html',
-        workspaces =>
-        Template::Iterator::AlzaboWrapperCursor->new(
-            $self->hub->current_user->workspaces( selected_only => 1 ) ),
-    ) || ' ';
-}
-
 
 package Socialtext::WorkspacesUI::CGI;
 

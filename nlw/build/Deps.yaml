@@ -119,7 +119,6 @@ SOAP::Transport::HTTP: 0
 Storable: 2.15
 Sys::Hostname: 1.11
 Template: 2.14
-Template::Iterator::AlzaboWrapperCursor: 0.01
 Template::Plugin::FillInForm: 0.04
 Template::Plugin::JSON: 0
 Text::Autoformat: 0

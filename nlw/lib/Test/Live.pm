@@ -618,7 +618,7 @@ sub do_special_action {
 
             my $workspace
                 = Socialtext::Workspace->new( name => $self->workspace );
-            $workspace->set_permissions( @args );
+            $workspace->permissions->set( @args );
         },
         addPermission => sub {
             $self->_use_class($_)
@@ -627,7 +627,7 @@ sub do_special_action {
 
             my $workspace
                 = Socialtext::Workspace->new( name => $self->workspace );
-            $workspace->add_permission(
+            $workspace->permissions->add(
                 role       => Socialtext::Role->new( name => shift ),
                 permission => Socialtext::Permission->new( name => shift ),
             );
@@ -639,7 +639,7 @@ sub do_special_action {
 
             my $workspace
                 = Socialtext::Workspace->new( name => $self->workspace );
-            $workspace->remove_permission(
+            $workspace->permissions->remove(
                 role       => Socialtext::Role->new( name => shift ),
                 permission => Socialtext::Permission->new( name => shift ),
             );

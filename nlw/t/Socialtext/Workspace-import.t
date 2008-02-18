@@ -10,7 +10,7 @@ fixtures( 'admin' );
 my $hub = new_hub('admin');
 
 my $admin = $hub->current_workspace();
-$admin->set_permissions( set_name => 'public-read-only' );
+$admin->permissions->set( set_name => 'public-read-only' );
 $admin->set_logo_from_uri( uri => 'http://example.com/logo.gif' );
 
 my $user = $hub->current_user;
@@ -68,12 +68,12 @@ Socialtext::Workspace->ImportFromTarball( tarball => $tarball );
 
     ok( Socialtext::EmailAlias::find_alias('admin'), 'email alias exists for admin workspace' );
 
-    ok( $admin->role_has_permission(
+    ok( $admin->permissions->role_can(
             role       => Socialtext::Role->Guest(),
             permission => Socialtext::Permission->new( name => 'read' ) ),
         'guest can read workspace' );
 
-    ok( ! $admin->role_has_permission(
+    ok( ! $admin->permissions->role_can(
             role       => Socialtext::Role->Guest(),
             permission => Socialtext::Permission->new( name => 'edit' ) ),
         'guest cannot edit workspace' );

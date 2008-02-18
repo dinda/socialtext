@@ -37,8 +37,6 @@ sub _entities_for_query {
     my $query = $self->rest->query->param('q');
     my $user  = $self->rest->user();
 
-    # REVIEW: Alzabo Cursors lurk in here. Make sure we get
-    # the whole list.
     # REVIEW: 'all' should only work for some super authenticate user,
     # but which one? business admin seems right
     if ( defined $query and $query eq 'all' and $user->is_business_admin() )
@@ -114,7 +112,7 @@ sub POST {
         $rest->header(
             -status => HTTP_400_Bad_Request,
             -type   => 'text/plain' );
-        # REVIEW: what kind of system logging should we be doing here?
+        warn $@;
         return "$@";
     }
 
@@ -132,7 +130,7 @@ sub _admin_in_workspace_p {
     my $self = shift;
     my %p    = @_;
 
-    return $p{workspace}->user_has_permission(
+    return $p{workspace}->permissions->user_can(
         user       => $p{user},
         permission =>
             Socialtext::Permission->new( name => 'admin_workspace' ), );
@@ -146,10 +144,9 @@ sub _create_workspace {
     my %p    = @_;
 
     my $new_workspace = Socialtext::Workspace->create(
-        name       => $p{name},
-        title      => $p{title},
-        account_id => $p{account_id},
-
+        name                            => $p{name},
+        title                           => $p{title},
+        account_id                      => $p{account_id},
         cascade_css                     => $p{cascade_css},
         customjs_name                   => $p{customjs_name},
         customjs_uri                    => $p{customjs_uri},

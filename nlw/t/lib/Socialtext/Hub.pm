@@ -21,6 +21,7 @@ use unmocked 'Socialtext::TiddlyPlugin';
 use unmocked 'Socialtext::CSS';
 use unmocked 'Socialtext::FetchRSSPlugin';
 use unmocked 'Socialtext::Template';
+use unmocked 'Socialtext::Stax';
 
 sub current_workspace {
     my $self = shift;
@@ -96,6 +97,10 @@ sub fetchrss {
 
 sub template {
     return $_[0]->{template} ||= Socialtext::Template->new(hub => $_[0]);
+}
+
+sub stax {
+    return $_[0]->{stax} ||= Socialtext::Stax->new(hub => $_[0]);
 }
 
 1;
