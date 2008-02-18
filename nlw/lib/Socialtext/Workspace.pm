@@ -100,6 +100,7 @@ Readonly our @COLUMNS => (
     'customjs_uri',
     'customjs_name',
     'cascade_css',
+    'uploaded_skin',
 );
 
 # Hash for quick lookup of columns
