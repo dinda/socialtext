@@ -212,7 +212,7 @@ sub display {
         } @{$self->hub->attachments->all(page_id => $page->id)}
     ];
 
-    return $renderer->render(
+    return $self->template_render(
         template => 'view/page/display',
         vars     => {
             $self->hub->helpers->global_template_vars,
