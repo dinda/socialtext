@@ -265,7 +265,6 @@ sub request {
                     Content_Type => 'form-data',
                     Content => [
                         embed => $post->{embed},
-                        unpack => $post->{unpack},
                         creator  => 'devnull1@socialtext.com',
                         filename => [$post->{file}],
                     ],

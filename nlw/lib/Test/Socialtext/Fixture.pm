@@ -473,10 +473,9 @@ sub _create_extra_attachments {
             open my $fh, '<', $file
                 or die "Cannot read $file: $!";
 
-            $hub->attachments->from_file_handle(
+            $hub->attachments->create(
                 fh     => $fh,
                 embed  => 0,
-                unpack => 0,
                 filename => $file,
                 creator  => Socialtext::User->SystemUser(),
             );
