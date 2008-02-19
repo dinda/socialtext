@@ -75,7 +75,7 @@ ALL_WORKSPACE_IDS_AND_NAMES: {
         Socialtext::File::catdir( Socialtext::Paths::page_data_directory('short-name'), 'quick_start' );
     ok( -d $page_dir, "$page_dir exists after workspace is created" );
 
-    is $ws->skin_name, 'st', 'default skin is st';
+    is $ws->skin_name, 's2', 'default skin is s2';
 }
 
 {
