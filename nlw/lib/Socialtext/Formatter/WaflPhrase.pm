@@ -237,7 +237,7 @@ sub html {
         filename   => $image_name,
         page_uri   => $page_uri,
         id         => $file_id,
-        size       => $size || "large",
+        size       => $size || 'scaled',
         full_path  => $self->hub->attachments->new_attachment(
             id       => $file_id,
             page_id  => $page_id,

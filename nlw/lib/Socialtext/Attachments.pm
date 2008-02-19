@@ -31,6 +31,9 @@ my $encoding_charset_map = {
     'iso-8859-1' => 'ISO-8859-1',
 };
 
+my $MAX_WIDTH  = 800;
+my $MAX_HEIGHT = 600;
+
 sub all {
     my $self = shift;
     my %p = @_;
@@ -378,9 +381,10 @@ sub attachdir {
 sub dimensions {
     my ($self, $size) = @_;
     return unless $size;
-    return [600,1200] if $size eq 'large';
-    return [300,600] if $size eq 'medium';
-    return [100,200] if $size eq 'small';
+    return [0, 0] if $size eq 'scaled';
+    return [100, 0] if $size eq 'small';
+    return [300, 0] if $size eq 'medium';
+    return [600, 0] if $size eq 'large';
     return [$1 || 0, $2 || 0] if $size =~ /^(\d+)(?:x(\d+))?$/;
 }
 
@@ -405,7 +409,7 @@ sub image_path {
     my $path = $paths->{$size} ||= join '/', $size_dir, $db_filename;
     mkdir $size_dir unless -d $size_dir;
 
-    return $path if -f $path;
+    #return $path if -f $path;
 
     # This can fail in a variety of ways, mostly related to
     # the file not being what it says it is.
@@ -413,8 +417,10 @@ sub image_path {
         open my $fh, $original or die "Can't open $original: $!";
         Socialtext::Image::resize(
             filehandle => $fh,
-            max_width  => $dimensions->[0] || 99999,
-            max_height => $dimensions->[1] || 99999,
+            new_width  => $dimensions->[0],
+            new_height => $dimensions->[1],
+            max_height => $MAX_HEIGHT,
+            max_width  => $MAX_WIDTH,
             file       => $path,
         );
     };
