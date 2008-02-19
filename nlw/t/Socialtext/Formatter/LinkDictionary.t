@@ -18,7 +18,7 @@ my %DEFAULTLINKS = (
     special_http => '%{arg1}',
     category => '/%{workspace}/index.cgi?action=category_display;category=%{category}',
     weblog => '/%{workspace}/index.cgi?action=weblog_display;category=%{category}',
-    file => '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/%{filename}',
+    file => '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/original/%{filename}',
     image => '/data/workspaces/%{workspace}/attachments/%{page_uri}:%{id}/%{size}/%{filename}',
 );
 
