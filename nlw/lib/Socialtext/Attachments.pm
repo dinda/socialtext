@@ -71,6 +71,14 @@ sub new_attachment {
     Socialtext::Attachment->new(hub => $self->hub, @_);
 }
 
+sub from_file_handle {
+    my $self = shift;
+    my %args = @_;
+    return delete $args{unpack}
+      ? $self->unpack_archive(%args)
+      : $self->create(%args);
+}
+
 {
     Readonly my $spec => {
         filename     => SCALAR_TYPE,
@@ -79,6 +87,7 @@ sub new_attachment {
         creator      => USER_TYPE,
         embed        => BOOLEAN_TYPE( default => 0 ),
         Content_type => SCALAR_TYPE( default => undef ),
+        unpack   => BOOLEAN_TYPE( default => 0 ),
     };
     sub create {
         my $self = shift;
@@ -93,6 +102,46 @@ sub new_attachment {
             if $args{embed};
         return $attachment;
     }
+}
+
+sub unpack_archive {
+    my $self = shift;
+    my %args = @_;
+
+    my $tmpdir = File::Temp::tempdir( CLEANUP => 1 );
+
+    $args{page_id} ||= $self->hub->pages->current->id;
+
+    # Socialtext::ArchiveExtractor uses the extension to figure out how to unpack the
+    # archive, so that must be preserved here.
+    my $filename = File::Basename::basename( $args{filename} );
+    my $tmparchive = "$tmpdir/$filename";
+
+    open my $tmpfh, '>', $tmparchive
+        or die "Couldn't open $tmparchive for writing: $!";
+    File::Copy::copy($args{fh}, $tmpfh)
+        or die "Cannot save $filename to $tmparchive: $!";
+    close $tmpfh;
+
+    my @files = Socialtext::ArchiveExtractor->extract( archive => $tmparchive );
+    # If Socialtext::ArchiveExtractor couldn't extract anything we'll
+    # attach the archive file itself.
+    @files = $tmparchive unless @files;
+
+    my @attachments;
+    for my $file (@files) {
+        open my $fh, '<', $file or die "Cannot read $file: $!";
+
+        push @attachments, $self->create(
+            filename => $file,
+            fh       => $fh,
+            embed    => $args{embed},
+            creator  => $args{creator},
+            page_id  => $args{page_id},
+        );
+    }
+
+    return @attachments;
 }
 
 sub index_generate {
@@ -316,54 +365,6 @@ sub save {
     chmod(0755, $dest)
         or die "Couldn't set permissions on $dest : $!";
 }
-
-sub extract {
-    my $self = shift;
-
-    my $filename = join '/',
-        $self->hub->attachments->plugin_directory,
-        $self->page_id,
-        $self->id,
-        $self->db_filename;
-
-    my $tmpdir = File::Temp::tempdir( CLEANUP => 1 );
-
-    # Socialtext::ArchiveExtractor uses the extension to figure out how to extract the
-    # archive, so that must be preserved here.
-    my $basename = File::Basename::basename($filename);
-    my $tmparchive = "$tmpdir/$basename";
-
-    open my $tmpfh, '>', $tmparchive
-        or die "Couldn't open $tmparchive for writing: $!";
-    File::Copy::copy($filename, $tmpfh)
-        or die "Cannot save $basename to $tmparchive: $!";
-    close $tmpfh;
-
-    my @files = Socialtext::ArchiveExtractor->extract( archive => $tmparchive );
-    # If Socialtext::ArchiveExtractor couldn't extract anything we'll
-    # attach the archive file itself.
-    @files = $tmparchive unless @files;
-
-    my @attachments;
-    for my $file (@files) {
-        open my $fh, '<', $file or die "Cannot read $file: $!";
-
-        my $attachment = Socialtext::Attachment->new(
-            hub      => $self->hub,
-            filename => $file,
-            fh       => $fh,
-            creator  => $self->hub->current_user,
-            page_id  => $self->page_id,
-        );
-        $attachment->save($fh);
-        my $creator = $self->hub->current_user;
-        $attachment->store(user => $creator);
-        $attachment->inline( $self->page_id, $creator );
-    }
-
-    return @attachments;
-}
-
 
 sub attachdir {
     my $self = shift;
