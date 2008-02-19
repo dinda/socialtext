@@ -29,6 +29,7 @@ my ($attachment) = $hub->attachments()->create(
     creator  => $hub->current_user(),
 );
 $attachment->extract;
+$attachment->delete(user => $hub->current_user);
 
 is_deeply(
     [ sort map { $_->filename } @{ $hub->attachments()->all() } ],
