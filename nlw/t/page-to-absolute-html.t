@@ -45,7 +45,7 @@ EOF
             qr{href="$server_root/data/workspaces/admin/attachments/formatter_test_for_html_page_wafl:[\d-]+\Q/original/html-page-wafl.html},
         ],
         [ "{image socialtext-logo-30.gif}" =>
-            qr{src="$server_root/data/workspaces/admin/attachments/formatter_test_for_html_page_wafl:[\d-]+\Q/large/socialtext-logo-30.gif},
+            qr{src="$server_root/data/workspaces/admin/attachments/formatter_test_for_html_page_wafl:[\d-]+\Q/scaled/socialtext-logo-30.gif},
         ],
         [ "[help]" =>
             qr{href="$server_root\Q/admin/index.cgi?help},
