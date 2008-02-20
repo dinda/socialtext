@@ -288,10 +288,7 @@ EMAIL_NOTIFICATION_FROM_ADDRESS:
     like( $@, qr/cannot set logo_uri/i, 'cannot set logo_uri directly via update()' );
 
     my $file = 't/extra-attachments/FormattingTest/thing.png';
-    open my $fh, '<', $file
-        or die "Cannot read $file";
-    $ws->set_logo_from_filehandle(
-        filehandle => $fh,
+    $ws->set_logo_from_file(
         filename   => $file,
     );
     like( $ws->logo_uri, qr{/logos/logo-test/logo-test-.+\.png$},
@@ -299,8 +296,7 @@ EMAIL_NOTIFICATION_FROM_ADDRESS:
     ok( -f $ws->logo_filename, 'saved logo file exists' );
 
     eval {
-        $ws->set_logo_from_filehandle(
-            filehandle => $fh,
+        $ws->set_logo_from_file(
             filename   => 'foobar.notanimage',
         );
     };
@@ -314,19 +310,16 @@ EMAIL_NOTIFICATION_FROM_ADDRESS:
 
     # test a text file posing as an image
     my $text_file = 't/attachments/foo.txt';
-    open my $text_fh, '<', $text_file
-        or die "Cannot read $text_file";
     eval {
-        $ws->set_logo_from_filehandle(
-            filehandle => $text_fh,
-            filename   => 'foo.png',
+        $ws->set_logo_from_file(
+            filename   => $text_file,
         );
     };
 
     SKIP: {
         skip 'Image::Magick not installed.', 1 unless $has_image_magick;
         like(
-            $@, qr/Unable to process logo file\. Is it an image\?/,
+            $@, qr/\QLogo file must be a gif, jpeg, or png file\E/,
             'cannot set logo with non image file posing as one'
         );
     }
