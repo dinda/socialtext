@@ -55,7 +55,7 @@ for dir in $CODE_BASE/css/*; do
     run_sql "UPDATE \"Workspace\" SET \"uploaded_skin\" = '1' WHERE \"skin_name\" = '$skin'"
 
     cat <<EOT >$CODE_BASE/uploaded-skin/$skin/info.yaml
-cascade_css: true
+cascade_css: 1
 name: $skin
 version: 1.0.0
 abstract: Custom Uploaded Skin - $skin
