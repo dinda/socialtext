@@ -72,8 +72,11 @@ EOT
 done
 
 for type in css images javascript; do
+    rmdir $CODE_BASE/$type/* $CODE_BASE/$type 2>/dev/null
     if [ -d $CODE_BASE/$type ]; then
         tar -czvf $CODE_BASE/old-$type.tgz $CODE_BASE/$type
         rm -rf $CODE_BASE/$type
     fi
 done
+
+echo done
