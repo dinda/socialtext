@@ -1929,12 +1929,9 @@ methods returns that file's absolute path, otherwise it returns false.
 
 =head2 $workspace->set_logo_from_file(PARAMS)
 
-This method expects two parameters, "filehandle" and "filename". The
-handle given should be opened for reading, and should contain the
-image data for the logo.
-
-The filename is used for determining the file's type, which must be a
-GIF, JPEG, or PNG.
+This method expects one parameter, a "filename". The specified file
+should contain the image data, and will be used for determining the 
+file's type, which must be a GIF, JPEG or PNG.
 
 The image is resized to a maximum size of 200px wide by 60px high, and
 saved on the filesystem in a location accessible from the web. The
