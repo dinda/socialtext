@@ -7,7 +7,6 @@ use warnings;
 use File::Basename ();
 use File::Path;
 use File::Spec;
-use Socialtext::AppConfig;
 use Socialtext::File;
 use Socialtext::Workspace;
 
@@ -21,6 +20,7 @@ my $tarball = $admin->export_to_tarball(dir => "t/tmp");
 
 $admin->delete();
 
+require Socialtext::AppConfig;
 my $data_root = Socialtext::AppConfig->data_root_dir();
 File::Path::rmtree($data_root);
 
