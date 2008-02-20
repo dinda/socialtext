@@ -335,7 +335,6 @@ sub parse_widget {
         $self->set_fields($widget, $args, $widgets);
 
         if ($is_multiple) {
-            my $previous_id = $widget->{id};
             $widget->{id} = $self->map_multiple_same_widgets($widget, $widgets);
         }
     }
