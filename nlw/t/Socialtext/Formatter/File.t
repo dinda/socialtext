@@ -44,7 +44,7 @@ like $html_one,
      qr{/data/workspaces/admin/attachments/aa_page_yo:[\d-]+/original/rock%23it\.txt"},
      'url for rock#it.txt is escaped';
 like $html_one,
-     qr{/data/workspaces/admin/attachments/aa_page_yo:[\d-]+/large/sit%23start\.png"},
+     qr{/data/workspaces/admin/attachments/aa_page_yo:[\d-]+/scaled/sit%23start\.png"},
      'url for sit#start.png is escaped';
 exit;
 
