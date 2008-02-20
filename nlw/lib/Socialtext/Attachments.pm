@@ -31,8 +31,8 @@ my $encoding_charset_map = {
     'iso-8859-1' => 'ISO-8859-1',
 };
 
-my $MAX_WIDTH  = 800;
-my $MAX_HEIGHT = 600;
+my $MAX_WIDTH  = 600;
+my $MAX_HEIGHT = 800;
 
 sub all {
     my $self = shift;
