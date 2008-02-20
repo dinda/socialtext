@@ -409,24 +409,25 @@ sub image_path {
     my $path = $paths->{$size} ||= join '/', $size_dir, $db_filename;
     mkdir $size_dir unless -d $size_dir;
 
-    #return $path if -f $path;
+    return $path if -f $path;
 
     # This can fail in a variety of ways, mostly related to
     # the file not being what it says it is.
     eval {
-        open my $fh, $original or die "Can't open $original: $!";
+        File::Copy::copy($original, $path)
+            or die "Could not copy $original to $path: $!\n";
         Socialtext::Image::resize(
-            filehandle => $fh,
             new_width  => $dimensions->[0],
             new_height => $dimensions->[1],
             max_height => $MAX_HEIGHT,
             max_width  => $MAX_WIDTH,
-            file       => $path,
+            filename   => $path,
         );
     };
     # Return original on error
     if ($@) {
         warn "Reverting to original: $@"; 
+        unlink $path;
         return $original;
     }
 

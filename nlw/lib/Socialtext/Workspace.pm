@@ -417,7 +417,7 @@ sub _validate_and_clean_data {
     if ( $p->{logo_uri} and ( $is_create or not $self->{allow_logo_uri_update_HACK} ) ) {
         my $meth = $is_create ? 'create()' : 'update()';
         die 'Cannot set logo_uri via ' . $meth . '.'
-            . ' Use set_logo_from_filehandle() or set_logo_from_uri().';
+            . ' Use set_logo_from_file() or set_logo_from_uri().';
     }
 
     if ( defined $p->{name} and not $is_create and not $self->{allow_rename_HACK} ) {
@@ -663,7 +663,7 @@ sub logo_filename {
         'image/png'  => 'png',
     );
 
-    sub set_logo_from_filehandle {
+    sub set_logo_from_file {
         my $self = shift;
         my %p = @_;
 
@@ -679,12 +679,13 @@ sub logo_filename {
 
         # This can fail in a variety of ways, mostly related to
         # the file not being what it says it is.
+        File::Copy::copy($p{filename}, $new_file)
+            or die "Could not copy $p{filename} to $new_file $!\n";
         eval {
             Socialtext::Image::resize(
-                filehandle => $p{filehandle},
                 max_width  => 200,
                 max_height => 60,
-                file       => $new_file,
+                filename   => $new_file,
             );
         };
         if ($@) {
@@ -1667,7 +1668,7 @@ and then syncing them back to the server.
 The URI to the workspace's logo.
 
 This cannot be set via C<create()> or C<update()>. Use
-C<set_logo_from_filehandle()> or C<set_logo_from_uri()> instead.
+C<set_logo_from_file()> or C<set_logo_from_uri()> instead.
 
 =head2 creation_datetime
 
@@ -1926,7 +1927,7 @@ have its own custom logo.
 If the workspace has a custom logo on the filesystem, then this
 methods returns that file's absolute path, otherwise it returns false.
 
-=head2 $workspace->set_logo_from_filehandle(PARAMS)
+=head2 $workspace->set_logo_from_file(PARAMS)
 
 This method expects two parameters, "filehandle" and "filename". The
 handle given should be opened for reading, and should contain the

@@ -135,10 +135,7 @@ sub _create_workspace {
     $ws->update( %update );
 
     if ( my $logo_filename = $info->{logo_filename} ) {
-        open my $fh, '<', $logo_filename
-            or die "Cannot read $logo_filename: $!";
-        $ws->set_logo_from_filehandle(
-            filehandle => $fh,
+        $ws->set_logo_from_file(
             filename   => $logo_filename,
         );
     }

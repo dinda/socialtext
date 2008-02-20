@@ -935,13 +935,9 @@ sub set_logo_from_file {
     my $ws       = $self->_require_workspace();
     my $filename = $self->_require_string('file');
 
-    open my $fh, '<', $filename
-        or $self->_error("Cannot read $filename: $!");
-
     eval {
-        $ws->set_logo_from_filehandle(
+        $ws->set_logo_from_file(
             filename   => $filename,
-            filehandle => $fh,
         );
     };
 

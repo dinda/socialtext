@@ -401,8 +401,7 @@ sub _process_logo_upload {
     my $self = shift;
     my $logo = shift;
 
-    $self->hub->current_workspace->set_logo_from_filehandle(
-        filehandle => $logo->{handle},
+    $self->hub->current_workspace->set_logo_from_file(
         filename   => $logo->{filename},
     );
 }
