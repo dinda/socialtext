@@ -19,25 +19,20 @@ rm -rf $CODE_BASE/images/widgets
 for dir in $CODE_BASE/css/*; do 
     rmdir $dir 2>/dev/null && continue # Remove empty skins
 
-    # Blow away directories without a screen.css
-    if [ ! -f $dir/screen.css ]; then
-        rm -rf $dir
-        continue
-    fi
-
     # Uninstall skins that weren't installed using dist-upgrade
     # reason (i.e. weren't found on apt.st.net)
     skin=`basename $dir`
-    skin_pkg=`dpkg -S $dir 2>/dev/null | sed 's/:.*$//'`
+    dpkg -S $dir 2>/dev/null
     if [ "$?" = "0" ]; then
+	skin_pkg=`echo -n $skin_pkg | sed 's/:.*$//'`
         echo "$skin was not upgraded during dist-upgrade!! Reverting to s2 skin!"
         run_sql "UPDATE \"Workspace\" SET \"skin_name\" = 's2' WHERE \"skin_name\" = '$skin'"
-        apt-get remove --yes $skin_pkg
+        apt-get remove --yes st-$skin-skin
         continue 
     fi
     
     for type in css images javascript; do
-        [ -d $CODE_BASE/$type/$skin ] || continue
+        [ -d "$CODE_BASE/$type/$skin" ] || continue
 
         ls $CODE_BASE/$type/$skin/* >/dev/null 2>&1 &&
         mkdir -p $CODE_BASE/uploaded-skin/$skin/$type &&
@@ -77,5 +72,8 @@ EOT
 done
 
 for type in css images javascript; do
-    rmdir $CODE_BASE/$type;
+    if [ -d $CODE_BASE/$type ]; then
+        tar -czvf $CODE_BASE/old-$type.tgz $CODE_BASE/$type
+        rm -rf $CODE_BASE/$type
+    fi
 done
