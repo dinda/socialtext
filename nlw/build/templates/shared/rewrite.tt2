@@ -40,11 +40,6 @@
     RewriteRule  (/nlw.*)  https://[% config.nlw_server_hostname %][% colon_port %]$1  [R,L,NE]
 [% END %]
 
-[% IF config.is_dev %]
-    # surface our selenium test runner in the static fs directory
-    RewriteRule    /test-selenium/(.*)           /static/selenium/$1 [PT,L]
-[% END %]
-
     # make sure user agents that don't do gzipped javascript use
     # the uncompressed version - Note SAFARI!!!
     # ALSO notice that this RewriteRule is NOT the last one in the chain
