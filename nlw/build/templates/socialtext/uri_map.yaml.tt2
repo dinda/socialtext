@@ -283,6 +283,9 @@
     '/help/index.cgi':
         '*':                    [Socialtext::Rest::Help, handler]
 -
+    '/:ws/index.cgi/:filename':
+        '*':                    [Socialtext::Rest::App, handler]
+-
     '/:ws/index.cgi':
         '*':                    [Socialtext::Rest::App, handler]
 -
