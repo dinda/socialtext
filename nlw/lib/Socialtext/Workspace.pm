@@ -125,6 +125,13 @@ sub new {
         return $class->help_workspace(%args);
     }
 
+    return $class->_new(%args);
+}
+
+# This is in _new() b/c of now migration 13 works.  Please read that migration
+# before you move this code.
+sub _new {
+    my ( $class, %args ) = @_;
     my $sth;
     if (my $name = $args{name}) {
         $sth = sql_execute(
