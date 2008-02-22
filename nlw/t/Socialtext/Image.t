@@ -31,13 +31,11 @@ RESIZE: {
 
     Socialtext::File::set_contents( $original_file, MIME::Base64::decode_base64($data) );
 
-    open my $fh, '<', $original_file
-        or die "Cannot read $original_file: $!";
+    File::Copy::copy($original_file, $resized_file);
     Socialtext::Image::resize(
-        filehandle => $fh,
         max_width  => 200,
         max_height => 60,
-        file       => $resized_file,
+        filename   => $resized_file,
     );
 
     my ( $width, $height ) = Image::Size::imgsize($resized_file);
