@@ -57,8 +57,8 @@ sub get_image {
 
 sub shrink {
     my ($w,$h,$max_w,$max_h) = @_;
-    my $over_w = $w / $max_w;
-    my $over_h = $h / $max_h;
+    my $over_w = $max_w ? $w / $max_w : 0;
+    my $over_h = $max_h ? $h / $max_h : 0;
     if ($over_w > 1 and $over_w > $over_h) {
         $w /= $over_w;
         $h /= $over_w;
