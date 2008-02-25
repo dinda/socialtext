@@ -10,7 +10,7 @@ $branch = "branches/$branch" if $branch;
 unless ($branch) {
     my $current_branch = qx(current-branch);
     chomp $current_branch;
-    $branch = $current_branch;
+    $branch = "branches/$current_branch";
 }
 
 print "Linking in control panel from $branch...\n\n";
