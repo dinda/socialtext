@@ -17,7 +17,9 @@ else
     FDEFS_PROXY=1
 fi
 
-./dev-bin/set-skin-symlink
+cd $(dirname $0)/..
+
+dev-bin/set-skin-symlink
 target=`readlink share/skin`
 echo "Verifying symlink target: $target"
 if [ ! -d $target ]
