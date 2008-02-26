@@ -17,9 +17,8 @@ else
     FDEFS_PROXY=1
 fi
 
-cd $(dirname $0)/../share
-
-target=`readlink skin`
+./dev-bin/set-skin-symlink
+target=`readlink share/skin`
 echo "Verifying symlink target: $target"
 if [ ! -d $target ]
 then
@@ -28,8 +27,6 @@ then
     echo next to this branch, before running this script.
     exit 1
 fi
-
-cd ..
 
 set -x
 PORT=$(($START_PORT+$UID)) ./configure --dev=1 --apache-proxy=$FDEFS_PROXY --server-admin=support@socialtext.com
