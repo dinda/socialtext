@@ -32,7 +32,7 @@ my $encoding_charset_map = {
 };
 
 my $MAX_WIDTH  = 600;
-my $MAX_HEIGHT = 800;
+my $MAX_HEIGHT = 600;
 
 sub all {
     my $self = shift;
