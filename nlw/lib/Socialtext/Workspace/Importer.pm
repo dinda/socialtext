@@ -13,6 +13,7 @@ use Socialtext::SQL qw(sql_commit sql_execute sql_begin_work sql_rollback );
 use Socialtext::Validate qw( validate FILE_TYPE BOOLEAN_TYPE SCALAR_TYPE );
 use Socialtext::Workspace;
 use Socialtext::Search::AbstractFactory;
+use Socialtext::Log qw(st_log);
 use YAML ();
 
 # This should stay in sync with $EXPORT_VERSION in ST::Workspace.
@@ -87,6 +88,12 @@ sub import_workspace {
     $self->_fixup_page_symlinks();
 
     $self->_set_permissions();
+
+    st_log()
+        ->info( 'IMPORT_WORKSPACE : '
+            . $self->{new_name} . ' ('
+            . $self->{workspace}->workspace_id
+            . ')' );
 
     for my $u (@users) {
         $self->{workspace}->add_user(
