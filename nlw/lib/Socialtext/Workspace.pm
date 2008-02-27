@@ -619,6 +619,13 @@ sub NameIsValid {
 
         Socialtext::EmailAlias::delete_alias($old_name);
         $self->_update_aliases_file();
+
+        st_log()
+            ->info( 'RENAME_WORKSPACE : '
+                . $old_name . ' to '
+                . $p{name} . ' ('
+                . $self->workspace_id
+                . ')' );
     }
 }
 
