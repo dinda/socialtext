@@ -18,6 +18,7 @@ use Socialtext::Search::AbstractFactory;
 use Socialtext::Validate qw( validate SCALAR_TYPE ARRAYREF_TYPE );
 use Socialtext::l10n qw( loc loc_lang system_locale );
 use Socialtext::Locales qw( valid_code );
+use Socialtext::Log qw( st_log );
 use Socialtext::Workspace;
 use Socialtext::User;
 
@@ -1211,6 +1212,9 @@ sub clone_workspace {
 
     $self->_help_as_error("--target required.") unless defined $opts{target};
     $opts{target} = lc $opts{target};
+
+    st_log()
+        ->info( 'CLONE_WORKSPACE : ' . $ws->name . ' to ' . $opts{target} );
 
     my $dir = File::Temp::tempdir( CLEANUP => 1 );
     my $file = $ws->export_to_tarball( dir => $dir, name => $opts{target} );
