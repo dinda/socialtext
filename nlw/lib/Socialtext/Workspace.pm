@@ -202,6 +202,9 @@ EOSQL
         unless $skip_pages;
     $self->_update_aliases_file();
 
+    my $msg = 'CREATE_WORKSPACE : ' . $self->name  . ' (' . $self->workspace_id . ')';
+    st_log()->info($msg);
+
     return $self;
 }
 
