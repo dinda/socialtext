@@ -384,6 +384,12 @@ sub delete {
 
     sql_execute( 'DELETE FROM "Workspace" WHERE workspace_id=?',
         $self->workspace_id );
+
+    st_log()
+        ->info( 'DELETE_WORKSPACE : '
+            . $self->name . ' ('
+            . $self->workspace_id
+            . ')' );
 }
 
 my %ReservedNames = map { $_ => 1 } qw(
