@@ -959,19 +959,16 @@ sub permissions {
             workspace_id => $self->workspace_id,
         );
 
+        my $msg_action;
         if ($uwr) {
-            my $msg = join ' : ', 'CHANGE_USER_ROLE', $self->workspace_id,
-                $p{user}->user_id, $p{role}->role_id;
-            st_log()->info($msg);
+            $msg_action = 'CHANGE_USER_ROLE';
 
             $uwr->role_id($p{role}->role_id);
             $uwr->is_selected($p{is_selected});
             $uwr->update();
         }
         else {
-            my $msg = join ' : ', 'ADD_USER', $self->workspace_id,
-                $p{user}->user_id, $p{role}->role_id;
-            st_log()->info($msg);
+            $msg_action = 'ASSIGN_USER_ROLE';
 
             Socialtext::UserWorkspaceRole->create(
                 user_id      => $p{user}->user_id,
@@ -980,7 +977,25 @@ sub permissions {
                 is_selected  => $p{is_selected},
             );
         }
+        $self->_log_action($msg_action, \%p);
     }
+}
+
+sub _log_action {
+    my $self = shift;
+    my $action = shift;
+    my $p = shift;
+    my $role = $p->{role}{name};
+
+    my $msg = $action .  ' : '
+        . ($role ? ('role: ' . $p->{role}{name} . ', ') : '')
+        . 'user: '
+        . $p->{user}{homunculus}{username}
+        . ', workspace: '
+        . $self->name . ' ('
+        . $self->workspace_id . ')';
+
+    st_log()->info($msg);
 }
 
 sub has_user {
@@ -1023,11 +1038,9 @@ sub has_user {
 
         return unless $uwr;
 
-        my $msg = join ' : ', 'REMOVE_USER', $self->workspace_id,
-            $p{user}->user_id;
-        st_log()->info($msg);
-
         $uwr->delete;
+
+        $self->_log_action('REMOVE_USER_ROLE', \%p);
     }
 }
 
