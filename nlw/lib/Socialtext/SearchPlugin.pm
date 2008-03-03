@@ -11,6 +11,7 @@ use Socialtext::Search::AbstractFactory;
 use Socialtext::Pages;
 use Socialtext::Workspace;
 use Socialtext::l10n qw(loc);
+use Socialtext::Log qw( st_log );
 
 sub class_id { 'search' }
 const class_title => 'Search';
@@ -74,6 +75,12 @@ sub search {
 
     my $uri_escaped_search_term
         = $self->uri_escape( $search_term );
+
+    st_log()
+        ->info( "SEARCH : term: '"
+            . $search_term
+            . "' num_results: "
+            . $self->result_set->{hits} );
 
     $self->display_results(
         \%sortdir,
