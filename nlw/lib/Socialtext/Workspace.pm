@@ -204,9 +204,9 @@ EOSQL
         unless $skip_pages;
     $self->_update_aliases_file();
 
-    my $msg = 'CREATE_WORKSPACE : ' . $self->name  
-              . ' (' . $self->workspace_id . ') '
-              . '[' . $timer->elapsed . 's]';
+    my $msg = 'CREATE,WORKSPACE,workspace:' . $self->name  
+              . '(' . $self->workspace_id . '),'
+              . '[' . $timer->elapsed . ']';
     st_log()->info($msg);
 
     return $self;
@@ -391,10 +391,10 @@ sub delete {
         $self->workspace_id );
 
     st_log()
-        ->info( 'DELETE_WORKSPACE : '
-            . $self->name . ' ('
+        ->info( 'DELETE,WORKSPACE,workpsace:'
+            . $self->name . '('
             . $self->workspace_id
-            . ') [' . $timer->elapsed . 's]' );
+            . '),[' . $timer->elapsed . ']' );
 }
 
 my %ReservedNames = map { $_ => 1 } qw(
@@ -633,11 +633,11 @@ sub NameIsValid {
         $self->_update_aliases_file();
 
         st_log()
-            ->info( 'RENAME_WORKSPACE : '
-                . $old_name . ' to '
-                . $p{name} . ' ('
+            ->info( 'RENAME,WORKSPACE,old_workspace:'
+                . $old_name . '(' . $self->workspace_id . '),'
+                . 'new_workspace:' . $p{name} . '('
                 . $self->workspace_id
-                . ') [' . $timer->elapsed . 's]' );
+                . '),[' . $timer->elapsed . ']' );
     }
 }
 

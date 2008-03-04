@@ -1216,8 +1216,11 @@ sub clone_workspace {
     );
 
     st_log()
-        ->info( 'CLONE_WORKSPACE : ' . $ws->name . ' to ' . $opts{target}
-                . ' [' . $timer->elapsed . 's]');
+        ->info( 'CLONE,WORKSPACE,old_workspace:'
+                . $ws->name . '(' . $ws->workspace_id . '),'
+                . 'new_workspace:' . $opts{target}
+                . '(' . $ws->workspace_id . '),'
+                . '[' . $timer->elapsed . ']');
 
     $self->_success( 'The '
             . $ws->name()

@@ -104,10 +104,10 @@ sub import_workspace {
         ->index_workspace( $self->{workspace}->name );
 
     st_log()
-        ->info( 'IMPORT_WORKSPACE : '
-            . $self->{new_name} . ' ('
+        ->info( 'IMPORT,WORKSPACE,workspace:'
+            . $self->{new_name} . '('
             . $self->{workspace}->workspace_id
-            . ') [' . $timer->elapsed . 's]');
+            . '),[' . $timer->elapsed . ']');
 }
 
 sub _create_workspace {
