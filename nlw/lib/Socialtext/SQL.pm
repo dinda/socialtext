@@ -49,7 +49,7 @@ sub sql_singlevalue {
     $sth->bind_columns(undef, \$value);
     $sth->fetch();
     $sth->finish();
-    $value =~ s/\s+$//;
+    $value =~ s/\s+$// if defined $value;
     return $value;
 }
 
