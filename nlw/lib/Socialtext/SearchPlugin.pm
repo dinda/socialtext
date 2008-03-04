@@ -12,6 +12,7 @@ use Socialtext::Pages;
 use Socialtext::Workspace;
 use Socialtext::l10n qw(loc);
 use Socialtext::Log qw( st_log );
+use Socialtext::Timer;
 
 sub class_id { 'search' }
 const class_title => 'Search';
@@ -49,6 +50,7 @@ sub register {
 
 sub search {
     my $self = shift;
+    my $timer = Socialtext::Timer->new;
     # since we dispatch to the heavyweight search in the presence of
     # 'search_term', and since we want to keep track of the original search
     # term when we use the cached results set, we keep a parallel
@@ -77,10 +79,11 @@ sub search {
         = $self->uri_escape( $search_term );
 
     st_log()
-        ->info( "SEARCH : term: '"
+        ->info( "SEARCH,WORKSPACE,term:'"
             . $search_term
-            . "' num_results: "
-            . $self->result_set->{hits} );
+            . "',num_results:"
+            . $self->result_set->{hits}
+            . ',[' . $timer->elapsed . ']');
 
     $self->display_results(
         \%sortdir,
@@ -102,6 +105,7 @@ sub search {
         unplug_phrase =>
             loc('Click this button to save the pages from this search to your computer for offline use'),
     );
+    
 }
 
 sub _feeds {
