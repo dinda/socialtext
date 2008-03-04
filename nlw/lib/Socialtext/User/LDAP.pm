@@ -293,6 +293,8 @@ C<Socialtext::User-E<gt>FormattedEmail()>.
 
 =back
 
+=back
+
 =head1 AUTHOR
 
 Socialtext, Inc.  C<< <code@socialtext.com> >>
