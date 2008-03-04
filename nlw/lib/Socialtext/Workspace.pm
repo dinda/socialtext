@@ -56,6 +56,7 @@ use Socialtext::UserWorkspaceRole;
 use Socialtext::WorkspaceBreadcrumb;
 use Socialtext::Page;
 use Socialtext::Workspace::Permissions;
+use Socialtext::Timer;
 use URI;
 use YAML;
 
@@ -161,6 +162,7 @@ sub _new_from_hash_ref {
 sub create {
     my $class = shift;
     my %p = @_;
+    my $timer = Socialtext::Timer->new;
 
     my $skip_pages = delete $p{skip_default_pages};
 
@@ -202,7 +204,9 @@ EOSQL
         unless $skip_pages;
     $self->_update_aliases_file();
 
-    my $msg = 'CREATE_WORKSPACE : ' . $self->name  . ' (' . $self->workspace_id . ')';
+    my $msg = 'CREATE_WORKSPACE : ' . $self->name  
+              . ' (' . $self->workspace_id . ') '
+              . '[' . $timer->elapsed . 's]';
     st_log()->info($msg);
 
     return $self;
@@ -375,6 +379,7 @@ sub to_hash {
 
 sub delete {
     my $self = shift;
+    my $timer = Socialtext::Timer->new;
 
     for my $dir ( $self->_data_dir_paths() ) {
         File::Path::rmtree($dir);
@@ -389,7 +394,7 @@ sub delete {
         ->info( 'DELETE_WORKSPACE : '
             . $self->name . ' ('
             . $self->workspace_id
-            . ')' );
+            . ') [' . $timer->elapsed . 's]' );
 }
 
 my %ReservedNames = map { $_ => 1 } qw(
@@ -588,6 +593,7 @@ sub NameIsValid {
     sub rename {
         my $self = shift;
         my %p    = validate( @_, $spec );
+        my $timer = Socialtext::Timer->new;
 
         my $old_name  = $self->name();
         my @old_paths = $self->_data_dir_paths();
@@ -631,7 +637,7 @@ sub NameIsValid {
                 . $old_name . ' to '
                 . $p{name} . ' ('
                 . $self->workspace_id
-                . ')' );
+                . ') [' . $timer->elapsed . 's]' );
     }
 }
 

@@ -14,6 +14,7 @@ use Socialtext::Validate qw( validate FILE_TYPE BOOLEAN_TYPE SCALAR_TYPE );
 use Socialtext::Workspace;
 use Socialtext::Search::AbstractFactory;
 use Socialtext::Log qw(st_log);
+use Socialtext::Timer;
 use YAML ();
 
 # This should stay in sync with $EXPORT_VERSION in ST::Workspace.
@@ -65,6 +66,7 @@ Readonly my $MAX_VERSION => 1;
 # module is loaded.
 sub import_workspace {
     my $self = shift;
+    my $timer = Socialtext::Timer->new;
 
     my $old_cwd = getcwd();
     local $CWD = File::Temp::tempdir( CLEANUP => 1 );
@@ -89,12 +91,6 @@ sub import_workspace {
 
     $self->_set_permissions();
 
-    st_log()
-        ->info( 'IMPORT_WORKSPACE : '
-            . $self->{new_name} . ' ('
-            . $self->{workspace}->workspace_id
-            . ')' );
-
     for my $u (@users) {
         $self->{workspace}->add_user(
             user => $u->[0],
@@ -106,6 +102,12 @@ sub import_workspace {
     Socialtext::Search::AbstractFactory->GetFactory->create_indexer(
         $self->{workspace}->name )
         ->index_workspace( $self->{workspace}->name );
+
+    st_log()
+        ->info( 'IMPORT_WORKSPACE : '
+            . $self->{new_name} . ' ('
+            . $self->{workspace}->workspace_id
+            . ') [' . $timer->elapsed . 's]');
 }
 
 sub _create_workspace {

@@ -21,6 +21,7 @@ use Socialtext::Locales qw( valid_code );
 use Socialtext::Log qw( st_log );
 use Socialtext::Workspace;
 use Socialtext::User;
+use Socialtext::Timer;
 
 my %CommandAliases = (
     '--help' => 'help',
@@ -197,8 +198,6 @@ sub remove_accounts_admin {
 }
 
 sub list_workspaces {
-    require Socialtext::Workspace;
-
     my $self         = shift;
     my $column       = $self->_determine_workspace_output(shift);
     my $ws_info_rows = Socialtext::Workspace->AllWorkspaceIdsAndNames();
@@ -230,8 +229,6 @@ sub _determine_workspace_output {
 sub set_user_names {
     my $self = shift;
     my %opts = $self->_require_set_user_names_params(shift);
-
-    require Socialtext::User;
 
     my $user;
     if ( $opts{username}) {
@@ -282,8 +279,6 @@ sub _require_set_user_names_params {
 sub create_user {
     my $self = shift;
     my %user = $self->_require_create_user_params(shift);
-
-    require Socialtext::User;
 
     if ( $user{username}
         and Socialtext::User->new( username => $user{username} ) ) {
@@ -630,8 +625,6 @@ sub create_workspace {
     my %ws   = $self->_require_create_workspace_params(shift);
 
     require Socialtext::Hostname;
-    require Socialtext::User;
-    require Socialtext::Workspace;
 
     if ( $ws{name} and Socialtext::Workspace->new( name => $ws{name} ) ) {
         $self->_error(
@@ -1195,7 +1188,6 @@ sub import_workspace {
     $self->_help_as_error("--tarball required.")
         unless defined $opts{tarball};
 
-    require Socialtext::Workspace;
     Socialtext::Workspace->ImportFromTarball(
         $opts{name} ? ( name => $opts{name} ) : (),
         tarball   => $opts{tarball},
@@ -1207,24 +1199,25 @@ sub import_workspace {
 
 sub clone_workspace {
     my $self = shift;
+    my $timer = Socialtext::Timer->new;
     my $ws        = $self->_require_workspace();
     my %opts      = $self->_get_options( "target:s", "overwrite" );
 
     $self->_help_as_error("--target required.") unless defined $opts{target};
     $opts{target} = lc $opts{target};
 
-    st_log()
-        ->info( 'CLONE_WORKSPACE : ' . $ws->name . ' to ' . $opts{target} );
-
     my $dir = File::Temp::tempdir( CLEANUP => 1 );
     my $file = $ws->export_to_tarball( dir => $dir, name => $opts{target} );
 
-    require Socialtext::Workspace;
     Socialtext::Workspace->ImportFromTarball(
         name      => $opts{target},
         tarball   => $file,
         overwrite => $opts{overwrite},
     );
+
+    st_log()
+        ->info( 'CLONE_WORKSPACE : ' . $ws->name . ' to ' . $opts{target}
+                . ' [' . $timer->elapsed . 's]');
 
     $self->_success( 'The '
             . $ws->name()
@@ -1727,8 +1720,6 @@ sub version {
 }
 
 sub _require_user {
-    require Socialtext::User;
-
     my $self = shift;
 
     return $self->{user} if exists $self->{user};
@@ -1759,8 +1750,6 @@ sub _require_user {
 }
 
 sub _require_workspace {
-    require Socialtext::Workspace;
-
     my $self = shift;
     my $key  = shift || 'workspace';
 
@@ -1792,7 +1781,6 @@ sub _require_target_workspace {
 sub _require_hub {
     my $self = shift;
 
-    require Socialtext::User;
     my $user = shift || Socialtext::User->SystemUser();
 
     my $ws = $self->_require_workspace();
