@@ -951,6 +951,7 @@ sub permissions {
     sub assign_role_to_user {
         my $self = shift;
         my %p = validate( @_, $spec );
+        my $timer = Socialtext::Timer->new;
 
         if ( $p{user}->is_system_created ) {
             param_error 'Cannot give a role to a system-created user';
@@ -967,14 +968,14 @@ sub permissions {
 
         my $msg_action;
         if ($uwr) {
-            $msg_action = 'CHANGE_USER_ROLE';
+            $msg_action = 'CHANGE,USER_ROLE';
 
             $uwr->role_id($p{role}->role_id);
             $uwr->is_selected($p{is_selected});
             $uwr->update();
         }
         else {
-            $msg_action = 'ASSIGN_USER_ROLE';
+            $msg_action = 'ASSIGN,USER_ROLE';
 
             Socialtext::UserWorkspaceRole->create(
                 user_id      => $p{user}->user_id,
@@ -983,25 +984,15 @@ sub permissions {
                 is_selected  => $p{is_selected},
             );
         }
-        $self->_log_action($msg_action, \%p);
+
+        st_log()->info($msg_action .  ','
+             . 'role:' . $p{role}->name . ','
+             . 'user:' . $p{user}->homunculus->username
+             . '(' . $p{user}->user_id . '),'
+             . 'workspace:' . $self->name . '('
+             . $self->workspace_id . '),'
+             . '[' . $timer->elapsed . ']');
     }
-}
-
-sub _log_action {
-    my $self = shift;
-    my $action = shift;
-    my $p = shift;
-    my $role = $p->{role}{name};
-
-    my $msg = $action .  ' : '
-        . ($role ? ('role: ' . $p->{role}{name} . ', ') : '')
-        . 'user: '
-        . $p->{user}{homunculus}{username}
-        . ', workspace: '
-        . $self->name . ' ('
-        . $self->workspace_id . ')';
-
-    st_log()->info($msg);
 }
 
 sub has_user {
@@ -1036,6 +1027,7 @@ sub has_user {
     sub remove_user {
         my $self = shift;
         my %p = validate( @_, $spec );
+        my $timer = Socialtext::Timer->new;
 
         my $uwr = Socialtext::UserWorkspaceRole->new(
            workspace_id => $self->workspace_id,
@@ -1046,7 +1038,12 @@ sub has_user {
 
         $uwr->delete;
 
-        $self->_log_action('REMOVE_USER_ROLE', \%p);
+        st_log()->info('REMOVE,USER_ROLE,'
+             . 'user:' . $p{user}->homunculus->username
+             . '(' . $p{user}->user_id . '),'
+             . 'workspace:' . $self->name . '('
+             . $self->workspace_id . '),'
+             . '[' . $timer->elapsed . ']');
     }
 }
 
