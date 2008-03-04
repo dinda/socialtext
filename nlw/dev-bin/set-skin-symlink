@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use FindBin;
-use lib 'lib';
+use lib "$FindBin::Bin/../lib";
 use Socialtext::System qw/shell_run/;
 
 # We must look at our path to determine the branch, as the `current` symlink
