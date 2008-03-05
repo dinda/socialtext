@@ -5,10 +5,10 @@ use strict;
 use warnings;
 
 use base 'Socialtext::Rest';
-use JSON;
+use JSON::Syck;
 use Socialtext::HTTP ':codes';
 
-$JSON::UTF8 = 1;
+$JSON::Syck::ImplicitUnicode  = 1;
 
 =head1 NAME
 
@@ -224,7 +224,7 @@ END_OF_TRAILER
 }
 
 # FIXME: Add conversion of 'is_*' slots to JSON::True/JSON::False.
-sub resource_to_json { objToJson($_[1]) }
+sub resource_to_json { JSON::Syck::Dump($_[1]) }
 sub resource_to_text { $_[0]->_resource_to_text($_[1]) }
 sub _resource_to_text { join '', map { "$_->{name}\n" } @{$_[1]} }
 
