@@ -6,13 +6,11 @@ use strict;
 
 use base 'Socialtext::Rest::Collection';
 
-use JSON;
+use JSON::XS;
 use Socialtext::HTTP ':codes';
 use Socialtext::Permission;
 use Socialtext::Workspace;
 use Socialtext::User;
-
-$JSON::UTF8 = 1;
 
 # Anybody can see these, since they are just the list of workspaces the user
 # has 'selected'.
@@ -77,7 +75,7 @@ sub POST {
         return '';
     }
 
-    my $create_request_hash = jsonToObj( $rest->getContent() );
+    my $create_request_hash = decode_json( $rest->getContent() );
 
     unless ( $create_request_hash->{name} and
              $create_request_hash->{title} and

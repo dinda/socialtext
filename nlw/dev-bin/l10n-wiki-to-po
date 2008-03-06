@@ -7,7 +7,6 @@ use lib "$Bin/../lib";
 use Socialtext::Wikil10n qw/load_existing_l10ns make_rester/;
 use Socialtext::System qw/shell_run/;
 use Socialtext::File qw/set_contents/;
-use JSON;
 use Encode;
 use utf8;
 

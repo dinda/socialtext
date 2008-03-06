@@ -12,10 +12,8 @@ use Socialtext::String;
 use Socialtext::BrowserDetect ();
 use Socialtext::l10n qw/loc system_locale/;
 use Socialtext::Locales qw/available_locales/;
-use JSON;
+use JSON::XS;
 use Apache::Cookie;
-
-$JSON::UTF8 = 1;
 
 sub class_id { 'display' }
 const class_title => loc('Screen Layout');
@@ -53,7 +51,7 @@ sub page_info {
 
     my $info = $self->_get_page_info($page);
 
-    return JSON::objToJson($info);
+    return encode_json($info);
 }
 
 sub new_page {
@@ -373,20 +371,7 @@ sub _get_workspace_tags {
     my @workspace_tags = grep !/recent changes/, values %{$self->hub->category->load->all};
 
     my %tags = $self->hub->category->weight_categories(@workspace_tags);
-
-    $tags{maxCount} = JSON::Number( $tags{maxCount} );
-
-    my $text = '';
-    {
-        local $JSON::AUTOCONVERT = 0;
-        local $JSON::SingleQuote = 0;
-        my $json = JSON->new(autoconv => 0, singlequote => 0);
-        foreach my $tag (@{$tags{tags}}) {
-             $tag->{count} = JSON::Number($tag->{count});
-        }
-
-        $text = $json->objToJson(\%tags);
-    }
+    my $text = encode_json(\%tags);
     return $text;
 
 }
@@ -411,13 +396,7 @@ sub _getCurrentTagsJSON {
     my $page = shift;
     my $tags = $self->_getCurrentTags($page);
 
-    my $text = '';
-    {
-        local $JSON::AUTOCONVERT = 0;
-        local $JSON::SingleQuote = 0;
-        my $json = JSON->new(autoconv => 0, singlequote => 0);
-        $text = $json->objToJson($tags);
-    }
+    my $text = encode_json($tags);
     return $text;
 
 }

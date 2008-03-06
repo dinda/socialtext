@@ -5,7 +5,7 @@ use warnings;
 use strict;
 
 use base 'Socialtext::Rest::Collection';
-use JSON;
+use JSON::XS;
 use Socialtext::HTTP ':codes';
 use Socialtext::WorkspaceInvitation;
 
@@ -65,7 +65,7 @@ sub POST {
         return '';
     }
 
-    my $create_request_hash = jsonToObj( $rest->getContent() );
+    my $create_request_hash = decode_json( $rest->getContent() );
 
     unless ( $create_request_hash->{username} and
              $create_request_hash->{rolename} ) {

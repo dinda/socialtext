@@ -9,7 +9,7 @@ use base 'Socialtext::Plugin';
 use Class::Field qw(field const);
 use LWP::UserAgent;
 use Socialtext::Resting;
-use JSON::Syck;
+use JSON::XS;
 use YAML;
 use Template;
 
@@ -73,7 +73,7 @@ sub handle_changes {
     $rester->order("newest");
     $rester->accept('application/json');
     $rester->get_pages();
-    $data->{pages} = JSON::Syck::Load($rester->response->content)
+    $data->{pages} = decode_json($rester->response->content)
 }
 
 sub handle_display {
@@ -96,7 +96,7 @@ sub handle_display {
         return;
     }
 
-    $data->{page} = JSON::Syck::Load($rester->response->content);
+    $data->{page} = decode_json($rester->response->content);
     $data->{title} = $data->{page}{name};
     
     $rester->accept('text/html');
@@ -163,14 +163,14 @@ sub handle_tags {
     my $self = shift;
     $self->rester->accept('application/json');
     $self->rester->get_workspace_tags;
-    $self->stash->{tags} = JSON::Syck::Load( $self->rester->response->content );
+    $self->stash->{tags} = decode_json( $self->rester->response->content );
 }
 
 sub handle_workspaces {
     my $self = shift;
     $self->rester->accept('application/json');
     $self->rester->get_workspaces;
-    $self->stash->{workspaces} = JSON::Syck::Load($self->rester->response->content);
+    $self->stash->{workspaces} = decode_json($self->rester->response->content);
 }
 
 sub init_st_rest {

@@ -13,10 +13,8 @@ use Test::Socialtext::Environment;
 use Test::HTTP::Syntax;
 use Test::HTTP 'no_plan';
 use Test::More;
-use JSON;
+use JSON::XS;
 use t::SocialtextTestUtils qw/index_page/;
-
-$JSON::UTF8 = 1;
 
 $Test::HTTP::BasicUsername = 'devnull1@socialtext.com';
 $Test::HTTP::BasicPassword = 'd3vnu11l';
@@ -81,7 +79,7 @@ test_http "DELETE a page, it goes away" {
 
     << 200
 
-    my $content = eval { jsonToObj($test->response->content) };
+    my $content = eval { decode_json($test->response->content) };
     is( $@, '', 'JSON is well formed.' );
 
     for (@$content) {
@@ -101,7 +99,7 @@ test_http "GET pages list" {
 
     << 200
 
-    my $content = eval { jsonToObj($test->response->content) };
+    my $content = eval { decode_json($test->response->content) };
     is( $@, '', 'JSON is well formed.' );
     # Setting global for use in next test.  Ugly.
     $all_pages_content = $content;
@@ -124,7 +122,7 @@ test_http "GET pages search" {
 
     << 200
 
-    my $content = eval { jsonToObj($test->response->content) };
+    my $content = eval { decode_json($test->response->content) };
     is( $@, '', 'JSON is well formed.' );
     ok( @$content < @$all_pages_content, "Fewer pages in search result than workspace overall." )
 }
@@ -151,7 +149,7 @@ test_http "GET interworkspace search" {
 
     << 200
 
-    my $content = eval { jsonToObj($test->response->content) };
+    my $content = eval { decode_json($test->response->content) };
     is( $@, '', 'JSON is well formed.' );
 
     my %workspaces_seen;
