@@ -20,6 +20,7 @@ update_enterprise_features();
 my @exclude_rx = (
     qr/tiddlytext/,
     qr/socialtext\.js/,
+    qr#javascript/test#,
 );
 my @include_rx = (
     qr/\.(?:pm|js)$/, 
