@@ -55,7 +55,7 @@ sub _entity_hash {
             . $attachment->page_id . ':'
             . $attachment->id
             . '/original/'
-            . $attachment->filename,
+            . $attachment->db_filename,
         'content-type'   => '' . $attachment->mime_type,    # Stringify!
         'content-length' => $attachment->Content_Length,
         date             => $attachment->Date,
