@@ -2,9 +2,30 @@ Change log for Socialtext Open
 
 2.20.X
 
-Release notes, 2.20.0.3  March 2008
+Release notes, 2.20.1.0  March 2008
 
-  To add
+  Fixed sidebar positioning with CSS
+
+  Display images in edit modes and support resizing
+
+  Infrastructure improvements for supporting javascript plugins
+
+  More database refactoring - removing Alzabo framework
+
+  Major refactoring of HTML, JavaScript and CSS skin architecture
+
+  Fixed bug that caused problems with utf8 characters in a page
+
+  Additional logging of workspace/user actions
+
+  Performance improvements to reporting system
+
+  Fixed several wikiwyg usability bugs
+
+  Notify Safari users of missing editing functionality
+
+  Support exporting report data to CSV
+
 
 2.19.X
 
