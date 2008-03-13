@@ -52,7 +52,7 @@ sub GET {
             -type             => $mime_type,
             -pragma           => undef,
             '-cache-control'  => undef,
-            'Content-Disposition' => 'attachment;filename="' . $attachment->filename . '"',
+            'Content-Disposition' => 'filename="' . $attachment->filename . '"',
         );
     };
     # REVIEW: would be nice to be able to toss some kind of exception
