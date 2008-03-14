@@ -391,7 +391,7 @@ sub delete {
         $self->workspace_id );
 
     st_log()
-        ->info( 'DELETE,WORKSPACE,workpsace:'
+        ->info( 'DELETE,WORKSPACE,workspace:'
             . $self->name . '('
             . $self->workspace_id
             . '),[' . $timer->elapsed . ']' );
