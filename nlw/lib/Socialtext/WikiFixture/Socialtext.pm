@@ -273,23 +273,22 @@ sub st_is_watched {
 }
 
 
-=head2 st_rm_Rf( $command_options )
+=head2 st_rm_rf( $command_options )
 
 Runs an command-line rm -Rf command with the supplied options.
 
-Not that this will delete files, directories, and not prompt.  Use at your own risk.
+Note that this will delete files, directories, and not prompt.  Use at your own risk.
 
 =cut
 
 sub st_rm_rf {
     my $self = shift;
-    my $options = shift || undef;
-    if (!defined($options)) {
-        warn "parameter required in call to st_rm_Rf\n";
+    my $options = shift;
+    unless (defined $options) {
+        die "parameter required in call to st_rm_rf\n";
     }
     
-    my $verify = $self->quote_as_regex("");
-    _run_command("rm -Rf $options", $verify);
+    _run_command("rm -Rf $options");
 }
 
 
@@ -456,7 +455,7 @@ sub _run_command {
     my $output = qx($command 2>&1);
 
     if ($verify) {
-        like $output, $verify, $command if $verify;
+        like $output, $verify, $command;
     }
     else {
         warn $output;
