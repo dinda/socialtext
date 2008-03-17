@@ -272,6 +272,25 @@ sub st_is_watched {
     return $self->st_watch_page($watch_on, $page_name, 'verify only');
 }
 
+
+=head2 st_rm_Rf( $command_options )
+
+Runs an command-line rm -Rf command with the supplied options.
+
+Not that this will delete files, directories, and not prompt.  Use at your own risk.
+
+=cut
+
+sub st_rm_rf {
+    my $self = shift;
+    my $options = shift || undef;
+    if (!defined($options)) {
+        warn "parameter required in call to st_rm_Rf\n";
+    }
+    _run_command("rm -Rf $options");
+}
+
+
 =head2 st_admin( $command_options )
 
 Runs st_admin command line script with the supplied options.
