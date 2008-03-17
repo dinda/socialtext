@@ -288,7 +288,7 @@ sub st_rm_rf {
         die "parameter required in call to st_rm_rf\n";
     }
     
-    _run_command("rm -Rf $options");
+    _run_command("rm -Rf $options", 'ignore output');
 }
 
 
@@ -451,8 +451,9 @@ sub _click_user_row {
 
 sub _run_command {
     my $command = shift;
-    my $verify = shift;
+    my $verify = shift || '';
     my $output = qx($command 2>&1);
+    return if $verify eq 'ignore output';
 
     if ($verify) {
         like $output, $verify, $command;
