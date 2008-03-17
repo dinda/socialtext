@@ -287,7 +287,9 @@ sub st_rm_rf {
     if (!defined($options)) {
         warn "parameter required in call to st_rm_Rf\n";
     }
-    _run_command("rm -Rf $options");
+    
+    my $verify = $self->quote_as_regex("");
+    _run_command("rm -Rf $options", $verify);
 }
 
 
