@@ -291,6 +291,15 @@ sub st_rm_rf {
     _run_command("rm -Rf $options", 'ignore output');
 }
 
+=head2 st_qa_setup_reports 
+
+Run the command-line script st_qa_setup_reports that populates reports in order to test the usage growth report
+
+=cut
+
+sub st_qa_setup_reports {
+    _run_command("st-qa-setup-reports",'ignore output');
+}
 
 =head2 st_admin( $command_options )
 
