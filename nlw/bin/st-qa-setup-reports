@@ -25,7 +25,6 @@ $sth->execute();
 my $sth2 = $dbh->prepare("delete from actions_by_user where workspace = '$workspace'");
 $sth2->execute();
 
-die;
 setup_accounts($workspace);
 
 #INSERT Setup info into NLW LOG
