@@ -28,6 +28,7 @@ my @dev_bin_programs = make_prog_list('dev-bin/', qw(
     diffable
     l10n-nlw-to-wiki
     st-qa-setup-reports
+    st-create-account-data
 ));
 
 my @programs = grep {-f} @bin_programs, 
