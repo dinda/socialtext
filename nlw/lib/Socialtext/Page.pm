@@ -16,9 +16,11 @@ use Socialtext::ChangeEvent;
 use Socialtext::Encode;
 use Socialtext::File;
 use Socialtext::Formatter::AbsoluteLinkDictionary;
+use Socialtext::Log qw( st_log );
 use Socialtext::Paths;
 use Socialtext::PageMeta;
 use Socialtext::Search::AbstractFactory;
+use Socialtext::Timer;
 use Socialtext::EmailSender::Factory;
 use Socialtext::l10n qw(loc system_locale);
 
@@ -1472,9 +1474,24 @@ Loads and stores the revision specified by I<$id>.
         my $self = shift;
         my %p = validate( @_, $spec );
         my $id = shift;
+
+        my $timer = Socialtext::Timer->new;
+
+        my $ws     = $self->hub->current_workspace;
+        my $user   = $self->hub->current_user;
+        my $action = ( $self->deleted ) ? 'UNDELETE' : 'ROLLBACK' ;
+
         $self->revision_id( $p{revision_id} );
         $self->load;
         $self->store( user => $p{user} );
+
+        my $msg = "$action,PAGE,"
+                  . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
+                  . 'page:' . $self->id . ','
+                  . 'user:' . $user->username . '(' . $user->user_id . '),'
+                  . '[' . $timer->elapsed . ']';
+
+        st_log()->info($msg);
     }
 }
 
