@@ -54,11 +54,8 @@ for dir in $CODE_BASE/css/*; do
     # Convert all paths in css files
     ls -1 $CODE_BASE/uploaded-skin/$skin/css | while read css; do
         cssfile=$CODE_BASE/uploaded-skin/$skin/css/$css
-        if [ -f "$cssfile" ]; then
-            sed -i "s/\.\.\/\.\.\/images\/st/\.\.\/\.\.\/s2\/images\/st/g" \
-                   "$cssfile"
-            sed -i "s/..\/..\/images\/$skin/..\/images/g" "$cssfile"
-        fi
+        sed -i "s/..\/..\/images\/st/..\/..\/s2\/images\/st/g" "$cssfile"
+        sed -i "s/..\/..\/images\/$skin/..\/images/g" "$cssfile"
     done
 
     run_sql "UPDATE \"Workspace\" SET \"uploaded_skin\" = '1' WHERE \"skin_name\" = '$skin'"
