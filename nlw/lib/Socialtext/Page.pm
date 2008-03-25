@@ -663,6 +663,8 @@ sub add_comment {
     my $self     = shift;
     my $wikitext = shift;
 
+    my $timer = Socialtext::Timer->new;
+
     # Clean it up.
     $wikitext =~ s/\s*\z/\n/;
 
@@ -672,7 +674,17 @@ sub add_comment {
             . $self->_comment_attribution );
 
     $self->metadata->update( user => $self->hub->current_user );
-    $self->store( user => $self->hub->current_user );
+    my $user = $self->hub->current_user;
+
+    $self->store( user => $user );
+
+    my $ws  = $self->hub->current_workspace;
+    my $msg = 'COMMENT,PAGE'
+              . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
+              . 'page:' . $self->id . ','
+              . 'user:' . $user->username . '(' . $user->user_id . '),'
+              . '[' . $timer->elapsed . ']';
+    st_log()->info($msg);
 }
 
 sub _comment_attribution {
@@ -1058,6 +1070,9 @@ sub to_absolute_html {
 sub delete {
     my $self = shift;
     my %p = @_;
+
+    my $timer = Socialtext::Timer->new;
+
     Carp::confess('no user given to Socialtext::Page->delete')
         unless $p{user};
 
@@ -1073,6 +1088,17 @@ sub delete {
     $self->content('');
     $self->metadata->Category([]);
     $self->store( user => $p{user} );
+    
+    my $ws   = $self->hub->current_workspace;
+    my $user = $p{user};
+
+    my $msg = 'DELETE,PAGE,'
+              . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
+              . 'page:' . $self->id . ','
+              . 'user:' . $user->username . '(' . $user->user_id . '),'
+              . '[' . $timer->elapsed . ']';
+
+    st_log()->info($msg);
 }
 
 sub purge {
