@@ -16,6 +16,8 @@ function run_sql () {
 
 rm -rf $CODE_BASE/images/widgets
 
+run_sql "UPDATE \"Workspace\" SET \"skin_name\" = 's2' WHERE \"skin_name\" = 'nlw'"
+
 for dir in $CODE_BASE/css/*; do 
     rmdir $dir 2>/dev/null && continue # Remove empty skins
 
@@ -29,6 +31,13 @@ for dir in $CODE_BASE/css/*; do
         run_sql "UPDATE \"Workspace\" SET \"skin_name\" = 's2' WHERE \"skin_name\" = '$skin'"
         apt-get remove --yes st-$skin-skin
         continue 
+    fi
+
+    dpkg -S "$CODE_BASE/skin/$skin" 2>/dev/null
+    if [ "$?" = "0" ]; then
+        echo "Not migrating the $skin skin to uploaded-skins!"
+        echo "It was installed by apt"
+        continue
     fi
     
     for type in css images javascript; do
