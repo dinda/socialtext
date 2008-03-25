@@ -1,0 +1,196 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use lib "$FindBin::Bin/../../socialtext-reports/lib";
+
+
+use Socialtext::Reports::DB qw/connect_params get_dbh/;
+use Socialtext::Workspace;
+use Socialtext::User;
+use Socialtext::Role;
+use Time::localtime;
+
+my $dbh = get_dbh();
+
+#---Globals
+my $member = Socialtext::Role->Member();
+my $iMonth = 0;  #closure
+#--------
+require Socialtext::Account;
+my $name = 'test_account26';
+my @aWorkspaces = ('subaa','bliaa');
+my ($account, $account_id) = get_account($name);
+my @wsObjects = create_workspaces($account, \@aWorkspaces, $account_id);
+my @users = ('t14@socialtext.com','t15@socialtext.com','t16@socialtext.com','t17@socialtext.com');
+my $userObjs = create_users(\@users, \@wsObjects);
+my $tm = localtime;
+my $stamp = $tm->year . "-" . $tm->mon . "-" . $tm->mday . "-" . $tm->hour . "-" . $tm->min . "-" . $tm->sec;
+my $nlw = "test_nlw" . $stamp . '.log'; 
+
+print_nlw_log(\@wsObjects, $userObjs, $nlw);
+
+my $access = "test_access" . $stamp . '.log';
+print_access_log(\@aWorkspaces, \@users);
+
+import_access_log($access);
+import_nlw_log($nlw);
+
+#---END MAIN ROUTINE SUBROUTINES FOLLOW
+
+sub get_account {
+   my $accountname = shift;
+   my $account; 
+   my $id;
+
+   if ($account = Socialtext::Account->new( name => $name ) ) {
+        print "$name account is allready present. Quitting quietly ...\n";
+    }
+    else {
+        $account = eval { Socialtext::Account->create( name => $name ) };
+
+        if ( my $e = Exception::Class->caught('Socialtext::Exception::DataValidation') ) {
+             my $msg  = "The following errors occurred when creating the new account:\n\n";
+             for my $m ( $e->messages ) {
+                 $msg .= "  * $m\n";
+             }
+             print "ERROR -  $msg\n";
+         }
+         elsif ( $e = $@ ) {
+              die $e;
+         }
+   }
+
+   $id = $account->account_id();
+   print "ID is $id\n";
+   return ($account, $id);
+}
+
+
+sub create_workspaces {
+    my @wsObjs;
+    my ($account, $workspaces, $account_id) = @_;
+    foreach my $workspace (@$workspaces) {
+        print "Looping in $workspace\n";
+        my $ws;
+        eval {
+            $ws = Socialtext::Workspace->new(name => $workspace);
+            if (Socialtext::Workspace->NameIsValid( name => $workspace ) ) {
+                print "Creating Workspace $workspace ...\n";
+                $ws = Socialtext::Workspace->create(name       => $workspace,
+                                                    title      => $workspace,
+                                                    account_id => $account_id);
+                print "Created workspace $workspace \n";
+                push @wsObjs, $ws;
+                print "Ref to workspace is " . ref($ws) . "\n";
+            } else {
+               print "Name $workspace is not valid\n";
+            }
+        };
+
+        if (defined($ws)) { 
+            push @wsObjs, $ws;
+            print "pushing object" . ref($ws) . "\n";
+        }
+    } 
+    return @wsObjs;
+}
+
+
+sub create_users {
+    my ($rausers, $raworkspaces) = @_;
+    my @arrUserObjs;
+
+    foreach my $ws (@$raworkspaces) {
+        foreach my $username (@$rausers) {
+            my $user = Socialtext::User->new(username=> $username);
+            if ($user) {
+                push @arrUserObjs, $user;
+            }
+            else {
+                eval {
+                    $user = Socialtext::User->create(username=> $username,
+                                                     email_address => $username,
+                                                     password=> 'password');
+                     };
+                next if $@;
+                push @arrUserObjs, $user;
+            }
+            unless (  $ws->has_user( $user ) ) {
+                print "\#Adding $username\n";
+                $ws->add_user(user => $user,
+                              role => $member); 
+            }
+        }
+    }
+   return (\@arrUserObjs);
+}
+
+sub print_nlw_log {
+    #Add all users to workspaces
+    my ($raWorkspaces, $rausers, $nlw) = @_;
+
+    #Open The File
+    open NLWFILE, "> $nlw" or die "Can't open $nlw : $!";
+   
+    #Print Create Workspace for Each Workspace
+    foreach my $workspace (@$raWorkspaces) {
+        my $str = create_workspace_nlw_entry($workspace);
+        print NLWFILE $str;
+        foreach my $user (@$rausers) {
+            my $str = create_user_nlw_entry($user, $workspace);
+            print NLWFILE $str;
+        }
+        
+    }
+    #Close The File
+    close NLWFILE;
+}
+
+
+sub print_access_log {
+
+}
+
+sub import_access_log {
+
+}
+
+sub import_nlw_log {
+
+}
+
+sub create_workspace_nlw_entry {
+    my ($ws) = @_;
+    my $str = "Dec 01 13:20:15 tolc nlw[30088]: [2013] CREATE,WORKSPACE,workspace:" . $ws->name . '(' . $ws->workspace_id . '),[0.449366]' . "\n";
+    return $str;
+}
+
+
+sub create_user_nlw_entry {
+   my ($user, $ws) = @_;
+   my $email = $user->email_address;
+   my $user_id = $user->user_id;
+   my @monthArr = ('Dec','Dec','Jan','Jan','Feb','Feb','Mar','Mar');
+   my $month = $monthArr[$iMonth];
+   my $str = $month . " 01 12:00:00 talc nlw[30088]: [2013] ASSIGN,USER_ROLE,role:member,user:$email" .
+             '(' . $user_id . ')' . ",workspace:" . $ws->name .'('.$ws->workspace_id.'),[0.001709]'."\n";
+
+   $iMonth++;
+   if ($iMonth>7) { $iMonth=0; }
+   return $str;
+}
+
+sub create_user_edit_entry {
+
+}
+
+sub create_user_comment_entry {
+
+}
+
+sub create_user_view_entry {
+
+}
+
