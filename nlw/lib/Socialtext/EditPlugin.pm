@@ -7,6 +7,7 @@ use base 'Socialtext::Plugin';
 
 use CGI;
 use Class::Field qw( const );
+use Socialtext::Timer;
 use Socialtext::Pages;
 use Socialtext::Exceptions qw( data_validation_error );
 use Socialtext::l10n qw(loc);
@@ -49,6 +50,9 @@ sub edit_content {
     my $page_name = $self->cgi->page_name;
     my $content   = $self->cgi->page_body;
 
+    my $timer = Socialtext::Timer->new;
+    my $action;
+
     $self->_validate_pagename_length($page_name);
 
     my $page = $self->hub->pages->new_from_name($page_name);
@@ -56,6 +60,8 @@ sub edit_content {
         unless $self->hub->checker->check_permission('edit');
 
     $page->load;
+
+    $action = ( defined $page->revision_count ) ? 'EDIT' : 'CREATE' ;
 
     my $append_mode = $self->cgi->append_mode || '';
 
@@ -117,7 +123,7 @@ sub edit_content {
         );
     }
 
-    $self->log_action("EDIT_PAGE");
+    $self->log_action("$action,PAGE", '[' . $timer->elapsed . ']');
 
     return $self->to_display($page);
 }
