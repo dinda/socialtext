@@ -108,13 +108,17 @@ sub log_action {
     my $self = shift;
     my $action = shift;
     my $extra  = shift;
-    my $workspace = $self->hub->current_workspace->name;
-    my $page_name = $self->hub->pages->current->id;
-    my $user_name = $self->hub->current_user->user_id;
-    my $log_msg = "$action : $workspace : $page_name : $user_name";
-    if ($extra) {
-        $log_msg .= " : $extra";
-    }
+    
+    my $ws   = $self->hub->current_workspace;
+    my $page = $self->hub->pages->current;
+    my $user = $self->hub->current_user;
+
+    my $log_msg = $action . ','
+                  . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
+                  . 'page:' . $page->id . ','
+                  . 'user:' . $user->username . '(' . $user->user_id . '),';
+    $log_msg .= ( defined $extra ) ? $extra : '';
+
     $self->hub->log->info("$log_msg");
 }
 
