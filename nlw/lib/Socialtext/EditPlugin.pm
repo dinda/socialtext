@@ -51,7 +51,6 @@ sub edit_content {
     my $content   = $self->cgi->page_body;
 
     my $timer = Socialtext::Timer->new;
-    my $action;
 
     $self->_validate_pagename_length($page_name);
 
@@ -61,7 +60,7 @@ sub edit_content {
 
     $page->load;
 
-    $action = ( defined $page->revision_count ) ? 'EDIT' : 'CREATE' ;
+    my $action = ( $page->exists && ! $page->deleted ) ? 'EDIT' : 'CREATE' ;
 
     my $append_mode = $self->cgi->append_mode || '';
 
@@ -123,7 +122,11 @@ sub edit_content {
         );
     }
 
-    $self->log_action("$action,PAGE", '[' . $timer->elapsed . ']');
+    my $log_objects = {
+        timer => $timer,
+    };
+
+    $self->log_action("$action,PAGE", $log_objects);
 
     return $self->to_display($page);
 }
@@ -179,7 +182,6 @@ sub save {
         subject          => $subject,
         user             => $self->hub->current_user,
     );
-    $self->log_action("EDIT_PAGE");
     return $self->to_display($page);
 }
 

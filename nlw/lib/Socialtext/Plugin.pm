@@ -105,19 +105,20 @@ sub box {
 }
 
 sub log_action {
-    my $self = shift;
-    my $action = shift;
-    my $extra  = shift;
+    my $self    = shift;
+    my $action  = shift;
+    my $objects = shift;
     
-    my $ws   = $self->hub->current_workspace;
-    my $page = $self->hub->pages->current;
-    my $user = $self->hub->current_user;
+    my $timer = $objects->{timer};
+    my $ws    = $objects->{workspace} || $self->hub->current_workspace;
+    my $page  = $objects->{page}  || $self->hub->pages->current;
+    my $user  = $objects->{user} || $self->hub->current_user;
 
     my $log_msg = $action . ','
                   . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
                   . 'page:' . $page->id . ','
-                  . 'user:' . $user->username . '(' . $user->user_id . '),';
-    $log_msg .= ( defined $extra ) ? $extra : '';
+                  . 'user:' . $user->username . '(' . $user->user_id . '),'
+                  . '[' . $timer->elapsed . ']';
 
     $self->hub->log->info("$log_msg");
 }

@@ -7,7 +7,6 @@ use base 'Socialtext::Plugin';
 
 use Class::Field qw( const );
 use Socialtext::AppConfig;
-use Socialtext::Log qw( st_log );
 use Socialtext::Page;
 use Socialtext::Pages;
 use Socialtext::Timer;
@@ -176,15 +175,13 @@ sub _duplicate {
         $self->cgi->clobber,
     );
 
-    my $user = $self->hub->current_user;
     unless ( $self->cgi->clobber ) {
-        st_log()->info('CREATE,PAGE,'
-            . 'workspace:' . $workspace->name
-            . '(' . $workspace->workspace_id . '),'
-            . 'username:' . $user->username . '(' . $user->user_id . '),'
-            . 'page_id:' . Socialtext::Page->name_to_id($page_title) . ','
-            . '[' . $timer->elapsed . ']'
-        );
+        my $log_objects = {
+            timer     => $timer,
+            workspace => $workspace,
+            page      => $self->hub->pages->new_from_name($page_title),
+        };
+        $self->log_action('CREATE,PAGE', $log_objects );
     }
 
     return $result;

@@ -69,6 +69,7 @@ sub rename_page {
 sub _rename {
     my $self = shift;
 
+    my $timer = Socialtext::Timer->new;
     return 1
         unless $self->hub->authz->user_has_permission_for_workspace(
                    user       => $self->hub->current_user,
@@ -76,12 +77,21 @@ sub _rename {
                    workspace  => $self->hub->current_workspace,
                );
 
-    return $self->hub->pages->current->rename(
+    my $result = $self->hub->pages->current->rename(
         $self->cgi->new_title,
         $self->cgi->keep_categories || '',
         $self->cgi->keep_attachments || '',
         $self->cgi->clobber,
     );
+
+    my $log_objects = {
+        timer => $timer,
+        page  => $self->hub->pages->new_from_name($self->cgi->new_title),
+    };
+
+    $self->log_action('CREATE,PAGE', $log_objects);
+
+    return $result;
 }
 
 sub _page_title_bad {
