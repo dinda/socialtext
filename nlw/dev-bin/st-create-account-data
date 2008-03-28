@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+#
 use strict;
 use warnings;
 use FindBin;
@@ -39,13 +40,10 @@ my $access = "test_access.log";
 #$wsObjects[0]->remove_user(user => $userObjs->[1]);
 print_access_log(\@wsObjects, $userObjs, $access);
 
-my $str = 'psql -U nlw NLW_reports -c "delete from actions_by_user where account_id =' . $account_id . '; "';
-`$str`; 
-$str = 'psql -U nlw NLW_reports -c "delete from nlw_log_actions where account_id =' . $account_id . '; "';
-`$str`;
-#$str = 'psql -U nlw NLW_reports -c "update nlw_log_actions set period_start = ' . "'" .'2007-12-01 13:20:00+00' . "' where account_id = 6 and action = 'CREATE' and object ='WORKSPACE'" . ';"';
-#print $str . "\n";
-`$str`;
+#my $str = 'psql -U nlw NLW_reports -c "delete from actions_by_user where account_id =' . $account_id . '; "';
+#`$str`; 
+#$str = 'psql -U nlw NLW_reports -c "delete from nlw_log_actions where account_id =' . $account_id . '; "';
+#`$str`;
 #----------------------------------------------------------#
 
 
@@ -75,7 +73,7 @@ sub get_account {
    }
 
    $id = $account->account_id();
-   print "ID is $id\n";
+   print "Account ID: $id\n";
    return ($account, $id);
 }
 
