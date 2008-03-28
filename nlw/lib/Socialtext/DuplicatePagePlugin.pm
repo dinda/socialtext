@@ -7,8 +7,10 @@ use base 'Socialtext::Plugin';
 
 use Class::Field qw( const );
 use Socialtext::AppConfig;
+use Socialtext::Log qw( st_log );
 use Socialtext::Page;
 use Socialtext::Pages;
+use Socialtext::Timer;
 use Socialtext::Permission 'ST_EDIT_PERM';
 
 # XXX funkity duplication throughout, trying to remove some
@@ -152,6 +154,7 @@ sub _duplicate {
     my $self = shift;
     my $workspace = shift;
 
+    my $timer = Socialtext::Timer->new;
     return 1
         unless $self->hub->authz->user_has_permission_for_workspace(
                    user       => $self->hub->current_user,
@@ -160,17 +163,31 @@ sub _duplicate {
                );
 
 
-    my $page_exists = $self->hub->pages->page_exists_in_workspace($self->cgi->new_title, $workspace->name);
+    my $page_title = $self->cgi->new_title;
+    my $page_exists = $self->hub->pages->page_exists_in_workspace($page_title, $workspace->name);
 
-    return 0 if ($page_exists && $self->cgi->clobber ne $self->cgi->new_title);
+    return 0 if ($page_exists && $self->cgi->clobber ne $page_title);
 
-    return $self->hub->pages->current->duplicate(
+    my $result = $self->hub->pages->current->duplicate(
         $workspace,
-        $self->cgi->new_title,
+        $page_title,
         $self->cgi->keep_categories || '',
         $self->cgi->keep_attachments || '',
         $self->cgi->clobber,
     );
+
+    my $user = $self->hub->current_user;
+    unless ( $self->cgi->clobber ) {
+        st_log()->info('CREATE,PAGE,'
+            . 'workspace:' . $workspace->name
+            . '(' . $workspace->workspace_id . '),'
+            . 'username:' . $user->username . '(' . $user->user_id . '),'
+            . 'page_id:' . Socialtext::Page->name_to_id($page_title) . ','
+            . '[' . $timer->elapsed . ']'
+        );
+    }
+
+    return $result;
 }
 
 sub _page_title_bad {
