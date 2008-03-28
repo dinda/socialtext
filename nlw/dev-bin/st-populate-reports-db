@@ -4,37 +4,45 @@ use strict;
 use Sys::Hostname;
 my $host = hostname;
 
-#Crete the account data
-my $str;
+#Create the account data
+#--------------------------------------------#
+#my $str;
 my $exec = './st-create-account-data';
 
 unless (is_dev_env($host)) {
    $exec = 'sudo -u www-data ' . $exec;   
 }
-
 my $str = `$exec`;
 $str=~/Account ID: (\d*)\n/;
 my $account_id = $1;
-
 print "ID Is $account_id, host is $host\n";
 
+
 #Wait 6 minutes
-#status_wait(6, "near-real-time logs to catch up");
+#----------------------------------------------#
+status_wait(6, "near-real-time logs to catch up");
+
 
 #Delete data from DB
+#----------------------------------------------#
 my $userid = `whoami`;
 chomp($userid);
 print "User ID is '$userid' \n\n\n\n";
+my $u = '';
 my $db = 'NLW_reports';
 if (is_dev_env($host)) {
     $db.="_".$userid;
+} else {
+    $u = '-U nlw ';
 }
-my $delete_1 = 'psql -U nlw ' . $db . ' -c "delete from actions_by_user where account_id =' . $account_id . '; "';
+my $delete_1 = 'psql ' . $u . $db . ' -c "delete from actions_by_user where account_id =' . $account_id . '; "';
 `$delete_1`;
-my $delete_2 = 'psql -U nlw ' . $db . '-c "delete from nlw_log_actions where account_id =' . $account_id . '; "';
+my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where account_id =' . $account_id . '; "';
 `$delete_2`;
 
+
 #Import Data into DB
+#-----------------------------------------------#
 if (is_dev_env($host)) {
    `st_consume_stub_reports`;
 } else {
@@ -48,7 +56,7 @@ if (is_dev_env($host)) {
 #---------------------------------------------------------------#
 #
 sub status_wait {
-    my ($count, $reason) = shift;
+    my ($count, $reason) = @_;
     print "Waiting $count minutes for $reason\n";
     local $| = 1;
     my $idx; my $jdx;
