@@ -1,0 +1,12 @@
+#!/bin/sh
+
+PSQL=$(perl -MSocialtext::Reports::DB -le ' %p = Socialtext::Reports::DB->connect_params(); print $p{psql};')
+RESULT=$($PSQL -t -c 'SELECT COUNT(*) FROM nlw_log_actions;' | awk '{print $1}');
+
+if [ $RESULT != "0" ]; then
+    echo "There is already $RESULT records in the reports database, skipping."
+    exit 1
+else
+    echo "Importing baseline reporting data."
+    exit 0
+fi

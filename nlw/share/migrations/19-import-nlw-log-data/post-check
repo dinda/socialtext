@@ -1,0 +1,12 @@
+#!/bin/sh
+
+PSQL=$(perl -MSocialtext::Reports::DB -le ' %p = Socialtext::Reports::DB->connect_params(); print $p{psql};')
+RESULT=$($PSQL -t -c 'SELECT COUNT(*) FROM nlw_log_actions;' | awk '{print $1}');
+
+if [ $RESULT != "0" ]; then
+    echo "Imported $RESULT records into the database."
+    exit 0
+else
+    echo "Failed to import reporting data."
+    exit 1
+fi
