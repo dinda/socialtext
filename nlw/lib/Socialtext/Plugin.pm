@@ -104,25 +104,6 @@ sub box {
     return $box;
 }
 
-sub log_action {
-    my $self    = shift;
-    my $action  = shift;
-    my $objects = shift;
-    
-    my $timer = $objects->{timer};
-    my $ws    = $objects->{workspace} || $self->hub->current_workspace;
-    my $page  = $objects->{page}  || $self->hub->pages->current;
-    my $user  = $objects->{user} || $self->hub->current_user;
-
-    my $log_msg = $action . ','
-                  . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
-                  . 'page:' . $page->id . ','
-                  . 'user:' . $user->username . '(' . $user->user_id . '),'
-                  . '[' . $timer->elapsed . ']';
-
-    $self->hub->log->info("$log_msg");
-}
-
 sub new_preference {
     my $self = shift;
     $self->hub->preferences->new_preference( scalar(caller), @_ );

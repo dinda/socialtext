@@ -9,7 +9,6 @@ use Class::Field qw( const );
 use Socialtext::AppConfig;
 use Socialtext::Page;
 use Socialtext::Pages;
-use Socialtext::Timer;
 use Socialtext::Permission 'ST_EDIT_PERM';
 
 # XXX funkity duplication throughout, trying to remove some
@@ -153,7 +152,6 @@ sub _duplicate {
     my $self = shift;
     my $workspace = shift;
 
-    my $timer = Socialtext::Timer->new;
     return 1
         unless $self->hub->authz->user_has_permission_for_workspace(
                    user       => $self->hub->current_user,
@@ -167,24 +165,13 @@ sub _duplicate {
 
     return 0 if ($page_exists && $self->cgi->clobber ne $page_title);
 
-    my $result = $self->hub->pages->current->duplicate(
+    return $self->hub->pages->current->duplicate(
         $workspace,
         $page_title,
         $self->cgi->keep_categories || '',
         $self->cgi->keep_attachments || '',
         $self->cgi->clobber,
     );
-
-    unless ( $self->cgi->clobber ) {
-        my $log_objects = {
-            timer     => $timer,
-            workspace => $workspace,
-            page      => $self->hub->pages->new_from_name($page_title),
-        };
-        $self->log_action('CREATE,PAGE', $log_objects );
-    }
-
-    return $result;
 }
 
 sub _page_title_bad {

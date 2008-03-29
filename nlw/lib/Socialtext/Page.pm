@@ -677,14 +677,6 @@ sub add_comment {
     my $user = $self->hub->current_user;
 
     $self->store( user => $user );
-
-    my $ws  = $self->hub->current_workspace;
-    my $msg = 'COMMENT,PAGE'
-              . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
-              . 'page:' . $self->id . ','
-              . 'user:' . $user->username . '(' . $user->user_id . '),'
-              . '[' . $timer->elapsed . ']';
-    st_log()->info($msg);
 }
 
 sub _comment_attribution {
@@ -1088,17 +1080,6 @@ sub delete {
     $self->content('');
     $self->metadata->Category([]);
     $self->store( user => $p{user} );
-    
-    my $ws   = $self->hub->current_workspace;
-    my $user = $p{user};
-
-    my $msg = 'DELETE,PAGE,'
-              . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
-              . 'page:' . $self->id . ','
-              . 'user:' . $user->username . '(' . $user->user_id . '),'
-              . '[' . $timer->elapsed . ']';
-
-    st_log()->info($msg);
 }
 
 sub purge {
@@ -1501,23 +1482,9 @@ Loads and stores the revision specified by I<$id>.
         my %p = validate( @_, $spec );
         my $id = shift;
 
-        my $timer = Socialtext::Timer->new;
-
-        my $ws     = $self->hub->current_workspace;
-        my $user   = $self->hub->current_user;
-        my $action = ( $self->deleted ) ? 'UNDELETE' : 'ROLLBACK' ;
-
         $self->revision_id( $p{revision_id} );
         $self->load;
         $self->store( user => $p{user} );
-
-        my $msg = "$action,PAGE,"
-                  . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
-                  . 'page:' . $self->id . ','
-                  . 'user:' . $user->username . '(' . $user->user_id . '),'
-                  . '[' . $timer->elapsed . ']';
-
-        st_log()->info($msg);
     }
 }
 
