@@ -170,7 +170,7 @@ sub _log_page_action {
                    . 'workspace:' . $ws->name . '(' . $ws->workspace_id . '),'
                    . 'page:' . $page->id . ','
                    . 'user:' . $user->username . '(' . $user->user_id . '),'
-                   . '[NA]';
+                   . '[NA]'
     );
 }
 
