@@ -4,14 +4,21 @@ use strict;
 use Sys::Hostname;
 my $host = hostname;
 
+#Touch and chmod the logs
+grant_write_permissions_to_local_logs();
+
 #Create the account data
 #--------------------------------------------#
 #my $str;
 my $exec = './st-create-account-data';
+my $strGrowth = './st-qa-setup-reports';
 
 unless (is_dev_env($host)) {
    $exec = 'sudo -u www-data ' . $exec;   
+   $strGrowth ='sudo -u www-data ' . $exec;
 }
+
+my $results = `$strGrowth`;
 my $str = `$exec`;
 $str=~/Account ID: (\d*)\n/;
 my $account_id = $1;
@@ -41,6 +48,17 @@ my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where acco
 `$delete_2`;
 
 
+#Part II of the Workspace Reports
+#-----------------------------------------------#
+my $strGrowth_II = './st-qa-setup-reports-partII';
+unless (is_dev_env($host)) {
+   $strGrowth_II ='sudo -u www-data ' . $exec;
+}
+my $results = `$strGrowth_II`;
+
+
+
+
 #Import Data into DB
 #-----------------------------------------------#
 if (is_dev_env($host)) {
@@ -48,7 +66,7 @@ if (is_dev_env($host)) {
 } else {
    `sudo /usr/bin/st-reports-import-nlw-data test_nlw.log`;
    `sudo /usr/bin/st-reports-consume-access-log test_access.log`;
-   `sudo /usr/bin/st-reports-consume-nlw-low test_nlw.log`;
+   `sudo /usr/bin/st-reports-consume-nlw-log test_nlw.log`;
 }
 
 #---------------------------------------------------------------#
@@ -78,4 +96,13 @@ sub is_dev_env {
     } else {
         return 0;
     }
+}
+
+sub grant_write_permissions_to_local_logs {
+  `sudo chmod 777 ./`;
+  `touch test_access.log`;
+  `touch test_nlw.log`;
+  `sudo chmod 666 test_access.log`;
+  `sudo chmod 666 test_nlw.log`;
+  `sudo rm /var/cache/socialtext/logreader/test*`;
 }
