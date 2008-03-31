@@ -9,7 +9,7 @@ grant_write_permissions_to_local_logs($host);
 #Create the account data
 #--------------------------------------------#
 my $exec = './st-create-account-data';
-my $strGrowth = './st-qa-setup-reports';
+my $strGrowth = './st-qa-growth-report-add-members';
 
 unless (is_dev_env($host)) {
    $exec = 'sudo -u www-data ' . $exec;   
@@ -23,9 +23,13 @@ my $account_id = $1;
 print "ID Is $account_id, host is $host\n";
 
 
-#Wait 7 minutes
+#Process the logs
 #----------------------------------------------#
-#status_wait(7, "near-real-time logs to catch up");
+if (!(is_dev_env($host)) {
+`sudo /usr/bin/st-reports-consume-nlw-log /var/log/nlw.log 2>&1`;
+
+}
+
 
 
 #Delete data from DB
@@ -46,16 +50,14 @@ my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where acco
 `$delete_2`;
 
 
+
 #Part II of the Workspace Reports
 #-----------------------------------------------#
-my $strGrowth_II = './st-qa-setup-reports-partII';
-
+my $populate_db = './st-qa-growth-report-populate-db';
 unless (is_dev_env($host)) {
-   $strGrowth_II ='sudo -u www-data ' . $strGrowth_II;
+   $populate_db ='sudo -u www-data ' . $populate_db;
 }
-$results = `$strGrowth_II`;
-
-
+$results = `$populate_db`;
 
 
 #Import Data into DB

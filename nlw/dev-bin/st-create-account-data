@@ -148,6 +148,7 @@ sub print_nlw_log {
    
     #Print Create Workspace for Each Workspace
     foreach my $workspace (@$raWorkspaces) {
+        print "Creating workspace entry " . $workspace->name . "\n";
         my $str = create_workspace_nlw_entry($workspace);
         print NLWFILE $str;
         foreach my $user (@$rausers) {
@@ -268,7 +269,9 @@ sub Process_Access_Log {
 sub create_workspace_nlw_entry {
     my ($ws) = @_;
     my $str = "Dec 01 13:20:15 talc nlw[30088]: [2013] CREATE,WORKSPACE,workspace:" . $ws->name . '(' . $ws->workspace_id . '),[0.449366]' . "\n";
+    print "Here is the create\n";
     return $str;
+
 }
 
 
