@@ -690,6 +690,10 @@ sub _comment_attribution {
     return '';
 }
 
+sub restored {
+    return ( defined $_[0]->{_restored} ) ? 1 : 0;
+}
+
 sub store {
     my $self = shift;
     my %p = @_;
@@ -706,6 +710,8 @@ sub store {
         my $message = loc("Page title is too long after URL encoding");
         Socialtext::Exception::DataValidation->throw( errors => [ $message ] );
     }
+
+    $self->{_restored} = 1 if $self->deleted;
 
     my $original_categories =
       ref($self)->new(hub => $self->hub, id => $self->id)->metadata->Category;

@@ -155,11 +155,9 @@ sub _log_page_action {
     # Eeew!
     return if $object->hub->rest->{__query}->{clobber};
 
-    # pages that are deleted, then restored will return here, even
-    # though the page is technically created.
     return if ( ($object->hub->action eq 'edit_content'
                  ||  $object->hub->action eq 'rename_page')
-                && $object->revision_count != 1 );
+                && ! $object->restored );
 
     my $action = ($object->hub->action eq 'delete_page') ? 'DELETE' : 'CREATE';
     my $ws     = $object->hub->current_workspace;
