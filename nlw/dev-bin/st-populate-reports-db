@@ -25,9 +25,9 @@ my $account_id = $1;
 print "ID Is $account_id, host is $host\n";
 
 
-#Wait 6 minutes
+#Wait 7 minutes
 #----------------------------------------------#
-status_wait(6, "near-real-time logs to catch up");
+status_wait(7, "near-real-time logs to catch up");
 
 
 #Delete data from DB
@@ -51,8 +51,9 @@ my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where acco
 #Part II of the Workspace Reports
 #-----------------------------------------------#
 my $strGrowth_II = './st-qa-setup-reports-partII';
+
 unless (is_dev_env($host)) {
-   $strGrowth_II ='sudo -u www-data ' . $exec;
+   $strGrowth_II ='sudo -u www-data ' . $strGrowth_II;
 }
 my $results = `$strGrowth_II`;
 
