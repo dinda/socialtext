@@ -25,7 +25,7 @@ print "ID Is $account_id, host is $host\n";
 
 #Process the logs
 #----------------------------------------------#
-if (!(is_dev_env($host)) {
+if (!(is_dev_env($host))) {
 `sudo /usr/bin/st-reports-consume-nlw-log /var/log/nlw.log 2>&1`;
 
 }
