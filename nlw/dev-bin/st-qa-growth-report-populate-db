@@ -16,6 +16,7 @@ my $member = Socialtext::Role->Member();
 
 my $dbh = get_dbh();
 
+
 my $workspace = "growth_report_test";
 my @user_ids = ('devnull1@socialtext.com','t1@socialtext.com','t3@socialtext.com','t4@socialtext.com','t5@socialtext.com','t6@socialtext.com','t7@socialtext.com');
 my $sth = $dbh->prepare("delete from nlw_log_actions where workspace = '$workspace'");
@@ -25,7 +26,7 @@ $sth2->execute();
 
 
 #INSERT Setup info into NLW LOG
-my $insert= "insert into nlw_log_actions VALUES ('2007-12-30 20:10:00+00', 2, 'CREATE', 'WORKSPACE', '$workspace','-',1);";
+my $insert= "insert into nlw_log_actions VALUES ('2007-12-30 20:10:00+00', 2, 'CREATE', 'WORKSPACE', '$workspace','-','-',1);";
 my $sth_insert = $dbh->prepare($insert); $sth_insert->execute();
 
 
@@ -72,7 +73,7 @@ sub process_month {
            print "This should not be possible."; die;
         }
         if ($users->{$key}->{'type'} eq 'new') {
-            my $str = "INSERT INTO NLW_LOG_ACTIONS VALUES ('$date 20:00:00+00',2,'ASSIGN','USER_ROLE','$workspace','$key',1)";
+            my $str = "INSERT INTO NLW_LOG_ACTIONS VALUES ('$date 20:00:00+00',2,'ASSIGN','USER_ROLE','$workspace','$key','-',1)";
             #print "executing $str\n";
             my $sth = $dbh->prepare($str); $sth->execute();
         }
@@ -88,7 +89,6 @@ sub process_month {
             #print "$str\n";
             my $sth = $dbh->prepare($str); $sth->execute();
         }
-
         
         if (defined($users->{$key}->{'behavior'}) && $users->{$key}->{'behavior'} eq 'editor') {
             my @r = $users->{$key}->{'pages'};        
@@ -97,7 +97,6 @@ sub process_month {
                my $sth = $dbh->prepare($str); $sth->execute();
             }
         }
-        
     }
 
 
