@@ -1,11 +1,23 @@
-#!/usr/bin/env perl -w
+#!/usr/local/bin/perl -w
 #@COPYRIGHT@
 use strict;
 use Sys::Hostname;
+use Cwd;
+my $dir = fastgetcwd;
+
+
+if (!($dir=~/dev-bin$/)) {
+  chdir('./dev-bin');
+  print "Changing to dev-bin\n";
+}
+
+
+#Globals
 my $host = hostname;
 
 #Touch and chmod the logs
 grant_write_permissions_to_local_logs($host);
+
 #Create the account data
 #--------------------------------------------#
 my $exec = './st-create-account-data';
@@ -23,16 +35,15 @@ my $account_id = $1;
 print "ID Is $account_id, host is $host\n";
 
 
-#Process the logs
+#Process the logs to catch up the changes
 #----------------------------------------------#
 if (!(is_dev_env($host))) {
-`sudo /usr/bin/st-reports-consume-nlw-log /var/log/nlw.log 2>&1`;
-
+   `sudo /usr/bin/st-reports-consume-nlw-log /var/log/nlw.log 2>&1`;
 }
 
-
-
-#Delete data from DB
+#We just caught up the logs with the new id's
+#But we will insert older, fake id's into the DB
+#So we'll delete these
 #----------------------------------------------#
 my $userid = `whoami`;
 chomp($userid);
@@ -51,16 +62,15 @@ my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where acco
 
 
 
-#Part II of the Workspace Reports
+#Data is deleted, now we can re-add the workspace reports
 #-----------------------------------------------#
 my $populate_db = './st-qa-growth-report-populate-db';
 unless (is_dev_env($host)) {
    $populate_db ='sudo -u www-data ' . $populate_db;
 }
-$results = `$populate_db`;
+system($populate_db);
 
-
-#Import Data into DB
+#... and the account-level reports
 #-----------------------------------------------#
 if (is_dev_env($host)) {
    `./st-consume-stub-reports`;
@@ -74,20 +84,6 @@ if (is_dev_env($host)) {
 # End Main Routine Subroutines Follow                           #
 #---------------------------------------------------------------#
 #
-sub status_wait {
-    my ($count, $reason) = @_;
-    print "Waiting $count minutes for $reason\n";
-    local $| = 1;
-    my $idx; my $jdx;
-    for ($idx=0;$idx<$count;$idx++) {
-        print "Waiting $idx ";
-        for ($jdx=0;$jdx<10;$jdx++) {
-            sleep(10);
-            print ".";
-        }
-        print "\n";
-    }
-}
 
 
 sub is_dev_env {
