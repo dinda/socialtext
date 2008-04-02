@@ -152,11 +152,12 @@ sub _log_page_action {
     my $self   = shift;
     my $object = shift;
 
-    return if $object->hub->rest->query->{clobber};
+    return if $object->hub->rest->query->param('clobber');
 
-    return if ( ($object->hub->action eq 'edit_content'
-                 ||  $object->hub->action eq 'rename_page')
-                && ! $object->restored );
+    if ( $object->hub->action eq 'edit_content' ||
+         $object->hub->action eq 'rename_page' ) {
+         return unless $object->restored || $object->revision_count == 1;
+    }
 
     my $action = ($object->hub->action eq 'delete_page') ? 'DELETE' : 'CREATE';
     my $ws     = $object->hub->current_workspace;
