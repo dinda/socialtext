@@ -103,7 +103,7 @@ sub grant_write_permissions_to_local_logs {
     `sudo chmod 666 test_access.log`;
     `sudo chmod 666 test_nlw.log`;
     if (is_dev_env($host)) {
-        `sudo rm ~/.nlw/cache/logreader/test*`;
+        `sudo rm ~/.nlw/cache/logreader/test* >& /dev/null`;
     } else {
         `sudo rm /var/cache/socialtext/logreader/test*`;
     }    
