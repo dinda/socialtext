@@ -152,8 +152,7 @@ sub _log_page_action {
     my $self   = shift;
     my $object = shift;
 
-    # Eeew!
-    return if $object->hub->rest->{__query}->{clobber};
+    return if $object->hub->rest->query->{clobber};
 
     return if ( ($object->hub->action eq 'edit_content'
                  ||  $object->hub->action eq 'rename_page')
