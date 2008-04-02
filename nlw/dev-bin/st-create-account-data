@@ -5,8 +5,6 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 use lib "$FindBin::Bin/../../socialtext-reports/lib";
-
-
 use Socialtext::Reports::DB qw/connect_params get_dbh/;
 use Socialtext::Workspace;
 use Socialtext::User;
