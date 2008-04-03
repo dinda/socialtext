@@ -15,8 +15,10 @@ if (!($dir=~/dev-bin$/)) {
 #Globals
 my $host = hostname;
 
+
 #Touch and chmod the logs
 grant_write_permissions_to_local_logs($host);
+
 
 #Create the account data
 #--------------------------------------------#
@@ -27,6 +29,7 @@ unless (is_dev_env($host)) {
    $exec = 'sudo -u www-data ' . $exec;   
    $strGrowth ='sudo -u www-data ' . $exec;
 }
+
 
 my $results = `$strGrowth`;
 my $str = `$exec`;
@@ -40,6 +43,7 @@ print "ID Is $account_id, host is $host\n";
 if (!(is_dev_env($host))) {
    `sudo /usr/bin/st-reports-consume-nlw-log /var/log/nlw.log 2>&1`;
 }
+
 
 #We just caught up the logs with the new id's
 #But we will insert older, fake id's into the DB
@@ -103,7 +107,7 @@ sub grant_write_permissions_to_local_logs {
     `chmod 666 test_access.log`;
     `chmod 666 test_nlw.log`;
     if (is_dev_env($host)) {
-        `sudo rm ~/.nlw/cache/logreader/test* >& /dev/null`;
+        `rm ~/.nlw/cache/logreader/test* >& /dev/null`;
     } else {
         `sudo rm /var/cache/socialtext/logreader/test*`;
     }    
