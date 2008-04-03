@@ -139,7 +139,10 @@ sub create_users {
 
 sub print_nlw_log {
     #Add all users to workspaces
+    my @dates = ('Dec 30','Dec 11','Jan 10','Jan 11','Jan 12', 'Jan 13', 'Feb 1');
+    my $date_count = 0;
     my ($raWorkspaces, $rausers, $nlw) = @_;
+    my $page = 'a';
 
     #Open The File
     open NLWFILE, "> $nlw" or die "Can't open $nlw : $!";
@@ -152,9 +155,16 @@ sub print_nlw_log {
         foreach my $user (@$rausers) {
             my $str = create_user_nlw_entry($user, $workspace);
             print NLWFILE $str;
+            if (defined($dates[$date_count])) {
+                $str = create_page_nlw_entry($user, $workspace, $dates[$date_count], $page);
+                print NLWFILE $str;
+                $page++;
+                $date_count++;
+            }
         }
         
     }
+
     #my $str = 'Feb 28 08:41:09 www nlw[7146]: [33] DELETE,WORKSPACE,workspace:b_test_stub_ws(32787),[1.029888]';
     #$str.= "\n". 'Feb 28 08:41:09 www nlw[7146]: [33] DELETE,USER,user:t_stub02@socialtext.com(32787),[1.029888]' . "\n"; 
     #print NLWFILE $str;
@@ -270,6 +280,16 @@ sub create_workspace_nlw_entry {
     print "Here is the create\n";
     return $str;
 
+}
+
+
+sub create_page_nlw_entry {
+    my ($user, $ws, $date, $page) = @_;
+   my $user_id = $user->user_id;
+
+    my $str = "$date 13:57:00 qa2 nlw[7636]: [33] CREATE,PAGE,workspace:" . $ws->name . '(' . $ws->workspace_id . ')' . ',page:'.$page .',user:' . $user->email_address . '(' . $user_id . '),[0.035587]' . "\n"; 
+    $str.="$date 13:57:00 qa2 nlw[7635]: [33] DISPLAY_PAGE,workspace" . $ws->name . '(' . $ws->workspace_id . ')' . ',page:'.$page .',user:' . $user->email_address . '(' . $user_id .  '),[0.035587]' . "\n";
+    return $str;
 }
 
 
