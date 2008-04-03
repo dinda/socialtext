@@ -61,7 +61,6 @@ my $delete_2 = 'psql ' . $u . $db . ' -c "delete from nlw_log_actions where acco
 `$delete_2`;
 
 
-
 #Data is deleted, now we can re-add the workspace reports
 #-----------------------------------------------#
 my $populate_db = './st-qa-growth-report-populate-db';
@@ -69,6 +68,7 @@ unless (is_dev_env($host)) {
    $populate_db ='sudo -u www-data ' . $populate_db;
 }
 system($populate_db);
+
 
 #... and the account-level reports
 #-----------------------------------------------#
@@ -97,11 +97,11 @@ sub is_dev_env {
 
 sub grant_write_permissions_to_local_logs {  
     my $host = shift;
-    `sudo chmod 777 ./`;
+    `chmod 777 ./`;
     `touch test_access.log`;
     `touch test_nlw.log`;
-    `sudo chmod 666 test_access.log`;
-    `sudo chmod 666 test_nlw.log`;
+    `chmod 666 test_access.log`;
+    `chmod 666 test_nlw.log`;
     if (is_dev_env($host)) {
         `sudo rm ~/.nlw/cache/logreader/test* >& /dev/null`;
     } else {
