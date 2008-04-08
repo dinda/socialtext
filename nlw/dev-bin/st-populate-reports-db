@@ -84,6 +84,7 @@ if (is_dev_env($host)) {
    `sudo /usr/bin/st-reports-consume-nlw-log test_nlw.log`;
 }
 
+print "Completed Reports data set-up (If you saw no errors)\n";
 #---------------------------------------------------------------#
 # End Main Routine Subroutines Follow                           #
 #---------------------------------------------------------------#
