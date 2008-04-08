@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MIGDIR=`dirname $0`
+DIFF=`$MIGDIR/check-schema`
+
+if [ -z "$DIFF" ]; then
+    echo "$PGDATABASE schema is correct.  Migration successful."
+    exit 0
+fi
+
+echo "$PGDATABASE schema is not correct!  Migration failed!"
+exit -1
