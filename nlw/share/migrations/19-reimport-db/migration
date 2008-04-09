@@ -70,13 +70,13 @@ sudo -u postgres $MIGDIR/summarize-db $NEWDB > /tmp/$OLDDB-after-$$
 DIFF=`diff /tmp/$OLDDB-before-$$ /tmp/$OLDDB-after-$$`
 
 # Force this to fail for now.
-# if [ -n "$DIFF" ]; then
+if [ -n "$DIFF" ]; then
   echo "Databases Differ!"
 
   # We will exit 0 here because we haven't changed anything, so let's let
   # the post-check fail.
   exit 0
-#fi 
+fi 
 
 # Delete the old database and rename the new one
 su - postgres -c "psql -c \"DROP DATABASE \\\"$OLDDB\\\"\""
