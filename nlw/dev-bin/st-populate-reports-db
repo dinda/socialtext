@@ -3,14 +3,9 @@
 use strict;
 use Sys::Hostname;
 use Cwd;
-my $dir = fastgetcwd;
+use File::Basename;
 
-
-if (!($dir=~/dev-bin$/)) {
-  chdir('./dev-bin');
-  print "Changing to dev-bin\n";
-}
-
+chdir( File::Basename::dirname($0));
 
 #Globals
 my $host = hostname;
@@ -51,7 +46,7 @@ if (!(is_dev_env($host))) {
 #----------------------------------------------#
 my $userid = `whoami`;
 chomp($userid);
-print "User ID is '$userid' \n\n\n\n";
+print "User ID is '$userid' \n\n";
 my $u = '';
 my $db = 'NLW_reports';
 if (is_dev_env($host)) {
