@@ -63,7 +63,6 @@ $IMPORT
 
 rm $TARBALL
 
-st-populate-reports-db
 
 echo "Done updating workspace $WS_NAME."
 exit 0
