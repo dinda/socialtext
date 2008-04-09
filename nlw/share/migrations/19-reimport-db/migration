@@ -1,9 +1,12 @@
 #!/bin/sh
 
 OLDDB=`st-config echo db_schema_name`
-NEWDB="NLW_reimport"
+NEWDB="${OLDDB}_reimport"
 PGUSER=`st-config echo db_user`
 MIGDIR=`dirname $0`
+
+# Grab the counts of records in key tables and store them.
+$MIGDIR/summarize-db $OLDDB $PGUSER > /tmp/$OLDDB-before-$$
 
 # Make a backup
 su - www-data -c 'st-db --dump-data'
@@ -60,7 +63,20 @@ done
 # Import the data into the new database
 su - postgres -c "psql $NEWDB -f /tmp/$OLDDB-dump.sql"
 
-# TODO: Add tests to make sure no critical data will be lost here.
+# Build a summary of the data in the new database. We will compare this
+# to the old database and make sure no key data is gone.
+sudo -u postgres $MIGDIR/summarize-db $NEWDB > /tmp/$OLDDB-after-$$
+
+DIFF=`diff /tmp/$OLDDB-before-$$ /tmp/$OLDDB-after-$$`
+
+# Force this to fail for now.
+# if [ -n "$DIFF" ]; then
+  echo "Databases Differ!"
+
+  # We will exit 0 here because we haven't changed anything, so let's let
+  # the post-check fail.
+  exit 0
+#fi 
 
 # Delete the old database and rename the new one
 su - postgres -c "psql -c \"DROP DATABASE \\\"$OLDDB\\\"\""
