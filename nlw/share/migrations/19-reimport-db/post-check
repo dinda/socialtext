@@ -8,5 +8,6 @@ if [ -z "$DIFF" ]; then
     exit 0
 fi
 
-echo "$PGDATABASE schema is not correct!  Migration failed!"
+echo "ERROR ERROR ERROR: We have detected a problem with your database. To protect your data, we have halted the migration. Please contact Socialtext at support@socialtext.com or via your Priority Support contact immediately."
+
 exit -1
