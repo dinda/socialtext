@@ -104,7 +104,11 @@ sub grant_write_permissions_to_local_logs {
     `chmod 666 test_nlw.log`;
     if (is_dev_env($host)) {
         `rm ~/.nlw/cache/logreader/test* >& /dev/null`;
+        `st-admin give-accounts-admin --email devnull1\@socialtext.com`;
+        `st-admin give-system-admin --email devnull1\@socialtext.com`;
     } else {
         `sudo rm /var/cache/socialtext/logreader/test*`;
+        `sudo st-admin give-accounts-admin --email devnull1\@socialtext.com`;
+        `sudo st-admin give-system-admin --email devnull1\@socialtext.com`;
     }    
 }
