@@ -165,28 +165,8 @@ sub print_nlw_log {
         
     }
 
+    my $add_delete = create_and_delete_thirty_pages($rausers, $raWorkspaces);
 
-    #Add a page and delete it
-    my $month = get_current_month();
-    my $add_delete .= create_page_nlw_entry($rausers->[0], $raWorkspaces->[-0], 'Mar 1','blue');                           
-    
-    $month = 'Mar';
-    $add_delete .= $month .  ' 2 13:03:08 qa2 nlw[21556]: [33] ACTION,CREATE,PAGE,page_name:blue,WORKSPACE:'.
-                               $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . ',PAGE:' 
-                               . $raWorkspaces->[0]->name . ',[drop_workspace_breadcrumb:0.003885,overall:0.021291]' . "\n";
-
-    $add_delete .= $month . ' 2 13:03:23 qa2 nlw[21558]: [33] ACTION,DISPLAY,page_name:blue,WORKSPACE:' .
-                               $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id .
-                               ',PAGE:blue,[drop_workspace_breadcrumb:0.002642,overall:0.243288]' . "\n";
-  
-    $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] DELETE,PAGE,workspace:' . $raWorkspaces->[0]->name . '(' .
-                               $raWorkspaces->[0]->workspace_id . ')' .
-                              ',page:blue,user:'. $rausers->[0]->email_address . 
-                              '(' . $rausers->[0]->user_id . '),[NA]' . "\n";
- 
-    $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] ACTION,DELETE_PAGE,page_name:blue,WORKSPACE:'
-                             . $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . 
-                             'PAGE:blue,[drop_workspace_breadcrumb:0.005555,overall:0.143584]' . "\n";
  
     print NLWFILE $add_delete;
 
@@ -197,6 +177,34 @@ sub print_nlw_log {
     close NLWFILE;
 }
 
+sub create_and_delete_thirty_pages {
+   my ($rausers, $raWorkspaces) = @_;
+    my $idx;
+    my $add_delete = '';
+    for ($idx=1;$idx<31;$idx++) {
+        #Add a page and delete it
+        my $month = 'Mar';
+        my $page = 'blue' . $idx;
+        $add_delete .= create_page_nlw_entry($rausers->[0], $raWorkspaces->[-0], $month.' 1',$page);   
+        $add_delete .= $month .  ' 2 13:03:08 qa2 nlw[21556]: [33] ACTION,EDIT_CONTENT,page_name:'.$page.',WORKSPACE:'.
+                                 $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . ',PAGE:'  
+                                 . $raWorkspaces->[0]->name . ',[drop_workspace_breadcrumb:0.003885,overall:0.021291]' . "\n";
+
+        $add_delete .= $month . ' 2 13:03:23 qa2 nlw[21558]: [33] ACTION,DISPLAY,page_name:'.$page.',WORKSPACE:' .
+                                  $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id .
+                                  ',PAGE:blue,[drop_workspace_breadcrumb:0.002642,overall:0.243288]' . "\n";
+ 
+        $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] DELETE,PAGE,workspace:' . $raWorkspaces->[0]->name . '(' .
+                                   $raWorkspaces->[0]->workspace_id . ')' .
+                                 ',page:blue,user:'. $rausers->[0]->email_address . 
+                                 '(' . $rausers->[0]->user_id . '),[NA]' . "\n";
+  
+         $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] ACTION,DELETE_PAGE,page_name:'.$page.',WORKSPACE:'
+                                  . $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . 
+                                  'PAGE:blue,[drop_workspace_breadcrumb:0.005555,overall:0.143584]' . "\n";
+    }
+    return $add_delete;
+}
 
 sub print_access_log {
     my ($wsObjects, $userObjs, $filename) = @_;
