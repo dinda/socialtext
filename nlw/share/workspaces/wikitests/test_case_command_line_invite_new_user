@@ -1,4 +1,4 @@
-| *Comment* | Test Case: Command Line: Invite New User |  |
+| *Comment* | Test Case: Command Line: INVITE NEW USER |  |
 
 Ticket inspiring this test case: {rt: 13214}.
 
@@ -34,4 +34,4 @@ Ticket inspiring this test case: {rt: 13214}.
 | *Comment* | port is correct |  |
 | *Comment* | http vs https is correct |  |
 
-| *Comment* | Test Case: Invite New User COMPLETED |  |
+| *Comment* | Test Case: Command Line: INVITE NEW USER COMPLETED |  |

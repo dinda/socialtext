@@ -66,11 +66,11 @@ test env properly and are not testing the test-workspace
 * [Test Case: Inter Workspace Search]
 * [Test Case: RSS Icons]
 * [Test Case: Untitled Page]
-* [Test Case: Invite User]
 * [Test Case: Weblog Naming]
 * [Test Case: Page Open Errors]
 * [Test Case: Return to last login]
 * [Test Case: Link Interface]
+* [Test Case: Insert Menu]
 
 uses default wikiemail or `$ENV{WIKIEMAIL}`
 
