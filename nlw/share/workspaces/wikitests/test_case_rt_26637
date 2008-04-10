@@ -1,9 +1,0 @@
-^^ This testcase folded into [Test Case: command line tests]
-
-| *Comment* | Test Case: Command Line Tests |
-
-NOTE: TEST ASSUMES cmdline_workspace EXISTS
-
-| st-admin | clone-workspace --workspace %%workspace%% --target %%workspace%%-%%start_time%% | qr/ The %%workspace%% workspace has been cloned / |
-| open_ok | /%%workspace%%-%%start_time%%/index.cgi |  |
-| location_like | %%workspace%%-%%start_time%%/index.cgi |  |
