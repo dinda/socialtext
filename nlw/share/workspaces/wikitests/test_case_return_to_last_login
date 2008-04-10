@@ -1,4 +1,4 @@
-ï»¿| *Comment* | Wikitests for {link: dev-tasks [Story: Login takes user to last workspace]} |
+﻿| *Comment* | Wikitests for {link: dev-tasks [Story: Login takes user to last workspace]} |
 
 | *Comment* | Test Case: Return to last login |  |
 | *Comment* | Create a test user, workspaces, give that user permissions to workspaces |  |

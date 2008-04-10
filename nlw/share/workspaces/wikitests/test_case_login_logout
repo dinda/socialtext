@@ -88,13 +88,13 @@ Original test definition: [Test: Login/Logout]
 | *Comment* | Test Case: Login/Logout Settings: utf8 password |  |
 | click_and_wait | link=Settings |  |
 | type_ok | old_password | %%password%% |
-| type_ok | new_password | Ã¤ÂÃ¥ÂÃ¥ÂÃ¦Â±Ã©ÂÃ©Â·Ã§Â»Ã§ÂÃ¦ÂÃ¥Â |
-| type_ok | new_password_retype | Ã¤ÂÃ¥ÂÃ¥ÂÃ¦Â±Ã©ÂÃ©Â·Ã§Â»Ã§ÂÃ¦ÂÃ¥Â |
+| type_ok | new_password | äååæ±éé·ç»çæå |
+| type_ok | new_password_retype | äååæ±éé·ç»çæå |
 | click_and_wait | Button |  |
 | text_like | st-settings-save | Changes Saved |
 
 | *Comment* | Test Case: Login/Logout Set a new password |  |
-| type_ok | old_password | Ã¤ÂÃ¥ÂÃ¥ÂÃ¦Â±Ã©ÂÃ©Â·Ã§Â»Ã§ÂÃ¦ÂÃ¥Â |
+| type_ok | old_password | äååæ±éé·ç»çæå |
 | type_ok | new_password | new_password |
 | type_ok | new_password_retype | new_password |
 | click_and_wait | Button |  |

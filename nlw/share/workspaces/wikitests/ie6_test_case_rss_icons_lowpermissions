@@ -18,7 +18,7 @@ DONE: {bz: 310} test deleting pages with Chinese chars in the title
 | click_ok | link=Advanced |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
 | type_ok | wikiwyg_wikitext_textarea | A simple page with a Chinese character title |
-| type_ok | st-newpage-pagename-edit | çææ |
+| type_ok | st-newpage-pagename-edit | 牛愛我 |
 | click_and_wait | st-save-button-link |  |
 
 | *Comment* | Test Case: RSS Icons. Force index since this is testing for indexed pages that have been deleted. |  |

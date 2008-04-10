@@ -52,14 +52,14 @@ wait_for_text_not_present_ok | Adding tag | 30000 |
 
 | text_like | link=special chars @#$ %%start_time%% | special chars @#$ %%start_time%% |
 
-| type_ok | st-tags-field | æä»¥ |
+| type_ok | st-tags-field | 所以 |
 | wait_for_element_present_ok | st-tags-addbutton | 20000 |
 | click_ok | st-tags-addbutton |  |
-| wait_for_text_present_ok | æä»¥ | 30000 |
+| wait_for_text_present_ok | 所以 | 30000 |
 
 | pause | 4000 |
 
-TODO - Get this to work - | text_like | link=æä»¥ | æä»¥ |
+TODO - Get this to work - | text_like | link=所以 | 所以 |
 
 | type_ok | st-tags-field | special chars ,[] %%start_time%% |
 | wait_for_element_present_ok | st-tags-addbutton | 20000 |

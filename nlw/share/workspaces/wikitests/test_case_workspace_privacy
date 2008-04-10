@@ -11,7 +11,6 @@ There should be no attachments at all in a pristine /test-data workspace.
 If you want to write a test for email addresses are hidden, write a separate test.
 
 | *Comment* | Test Case: Workspace Privacy set login to edit |  |
-| *Comment* | Test Case: Workspace Privacy matt added a spurious comment to test version control |  |
 | clickAndWait | link=Settings |  |
 | clickAndWait | link=Workspace Privacy |  |
 | click_ok | //input[@name='permission_set_name' and @value='public-authenticate-to-edit'] |  |

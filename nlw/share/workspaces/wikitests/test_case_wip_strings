@@ -2,9 +2,9 @@
 
 | setSpeed | 100 |  |
 
-| set | test_string | `äººçå£é³è¨èªï¼é½æ¯ä¸æ¨£` |
-| set | test_string_esc | `äººçå£é³è¨èªï¼é½æ¯ä¸æ¨£` |
-| set | test_id | äººçå£é³è¨èªï¼é½æ¯ä¸æ¨£ |
+| set | test_string | `人的口音言語，都是一樣` |
+| set | test_string_esc | `人的口音言語，都是一樣` |
+| set | test_id | 人的口音言語，都是一樣 |
 
 | *Comment* | Test Case: String testing %%test_string%% |  |
 | include | [Test Case: String Use] |

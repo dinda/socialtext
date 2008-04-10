@@ -5,6 +5,6 @@ Test results: [Test Case: Perl Loc with Multibyte character Results]
 | *Command* | *Opt 1* | *Opt 2* |
 | st-admin | set-locale --email %%email%% --locale ja --workspace %%workspace%% |  |
 | clickAndWait | st-home-link |  |
-| verifyText | st-user-welcome | ãããã devnull ãã |
+| verifyText | st-user-welcome | ようこそ devnull さん |
 | st-admin | set-locale --email %%email%% --locale en --workspace %%workspace%% |  |
 | *Comment* | Test case: Perl Loc with Multibyte character COMPLETED |  |
