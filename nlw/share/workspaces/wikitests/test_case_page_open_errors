@@ -6,7 +6,7 @@
 | *Comment* | These open commands should fail gracefully and not cause app errors |  |
 
 | open_ok | %%workspace%%/index.cgi?action=page_stats_index;page_id=canonical_test_data_set |  |
-| text_like | qr/No stats\s+\w+\s+for this page/ |  |
+| text_like | qr/No stats.+for this page/ |  |
 | open_ok | %%workspace%%/index.cgi?action=page_stats_index;page_id=bogus |  |
 | text_like | st-system-status | qr/There was an error with your request.+An invalid page ID was given: bogus.+Please send email to.+if you think it should have worked/ |
 | open_ok | %%workspace%%/index.cgi?action=page_stats_index;page_id= |  |
@@ -15,7 +15,7 @@
 | st_rm_rf | ~/.nlw/root/plugin/test-data/counter/canonical_test_data_set |  |
 | open_ok | %%workspace%%/index.cgi?action=page_stats_index;page_id=canonical_test_data_set |  |
 | text_like | qr/Canonical Test Data Set/ |  |
-| text_like | qr/No stats\s+\w+\s+for this page/ |  |
+| text_like | qr/No stats.+for this page/ |  |
 
 | *Comment* | rt-27334 |  |
 

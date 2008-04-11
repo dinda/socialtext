@@ -73,27 +73,35 @@
 | text_like | st-listview | qr/allpages %%start_time%% 0003.+allpages %%start_time%% 0004/ |
 
 | *Comment* | Test Case: All Pages edited by sort |  |
-| st-admin | create-user --email newuser_%%start_time%%@ken.socialtext.net --password 123456 |  |
-| st-admin | add-member --email newuser_%%start_time%%@ken.socialtext.net --workspace %%workspace%% |  |
+
+create a user that lexically precedes the logged in user by prepending %%email%% with %%start_time%%
+
+| st-admin | create-user --email %%start_time%%.%%email%% --password 123456 |  |
+| st-admin | add-member --email %%start_time%%.%%email%% --workspace %%workspace%% |  |
 | st-logout |  |  |
-| st-login | newuser_%%start_time%%@ken.socialtext.net | 123456 |
+| st-login | %%start_time%%.%%email%% | 123456 |
 
 For some reason, IE 6 blows up when open_ok is used in some places. We avoid it.
 
 | *Comment* | Test Case: All Pages revision by new user |  |
+
 | wait_for_element_visible_ok | st-wiki-subnav-link-all-pages | 15000 |
 | click_and_wait | st-wiki-subnav-link-all-pages |
 | click_and_wait | link=allpages %%start_time%% 0003 |  |
+
 | click_ok | st-edit-button-link |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
-| type_ok | wikiwyg_wikitext_textarea | revision by new user |
+| type_ok | wikiwyg_wikitext_textarea | revision by user %%start_time%%.%%email%% |
 | click_and_wait | st-save-button-link |  |
+
+| *Comment* | Test Case: All Pages verify revision by user %%start_time%%.%%email%% |  |
+
 | click_and_wait | st-home-link |  |
 | click_and_wait | st-wiki-subnav-link-all-pages |  |
 | click_and_wait | link=Last Edited By |  |
-| text_like | st-listview | qr/allpages %%start_time%% 0001.+allpages %%start_time%% 0003/ |
-| click_and_wait | link=Last Edited By |  |
 | text_like | st-listview | qr/allpages %%start_time%% 0003.+allpages %%start_time%% 0001/ |
+| click_and_wait | link=Last Edited By |  |
+| text_like | st-listview | qr/allpages %%start_time%% 0001.+allpages %%start_time%% 0003/ |
 
 | *Comment* | Test Case: All Pages Teardown |  |
 | st-logout |  |  |

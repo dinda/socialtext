@@ -73,13 +73,8 @@ uses default wikiemail or `$ENV{WIKIEMAIL}`
 
 RSS Icon Tests are different for IE 6 and IE 7
 
-IE 6 fails RSS Icons with High Permissions. IE 7 passes
-
-* [Test Case: RSS Icons]
-
-IE 7 fails RSS Icons with Low Permissions. IE 6 passes
-
-* [IE6 Test Case: RSS Icons LowPermissions]
+See [IE 7 Testcases] for IE 7
+See [IE 6 Testcases] for IE 6
 
 ^ TESTCASES BELOW DO NOT WORK IN IE
 

@@ -1,17 +1,22 @@
 IE6 seems to need low permissions to run this test successfully.
 
+Selenium seems to need to run multi-window to run this test successfully, because the test
+uses "location_like" to determine if the RSS feed window opened
+
 First, delete a page that contains a search term so you can test RSS feeds for for deleted pages
 Then, find an instance of each of the RSS icons and click it to see if you get a feed page
 It seems that Selenium cannot analyze the content of feed pages because they are not HTML pages.
-
-DONE: {bz: 310} test deleting pages with Chinese chars in the title
 
 | *Comment* | Test Case: RSS Icons |  |
 | *Comment* | Test Case: RSS Icons NEEDS higher security such as *chrome or *iehta |  |
 | *Comment* | Test Case: RSS Icons create a page with the word "simple" in it |  |
 | st-admin | update-page --email %%email%% --workspace %%workspace%% --page "RSS Icons %%start_time%%" < %%wikitest_client_files%%wikitest.txt | The "RSS Icons %%start_time%%" page has been created |
 
-| *Comment* | Test Case: RSS Icons page with Chinese chars in title can't do from command line |  |
+| *Comment* | Purge the Chinese page if it is already there |  |
+| st-admin | purge-page --workspace %%workspace%% --page %E7%89%9B%E6%84%9B%E6%88%91 |  |
+
+| *Comment* | Test Case: RSS Icons page with Chinese chars in title can't do from command line
+and can't do it in combination with ASCII chars from start_time |  |
 | click_and_wait | st-home-link |  |
 | click_and_wait | st-newpage-link |  |
 | wait_for_element_visible_ok | link=Advanced | 10000 |
