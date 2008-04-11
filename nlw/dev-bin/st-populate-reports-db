@@ -1,16 +1,11 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/perl -w
 #@COPYRIGHT@
 use strict;
 use Sys::Hostname;
 use Cwd;
-my $dir = fastgetcwd;
+use File::Basename;
 
-
-if (!($dir=~/dev-bin$/)) {
-  chdir('./dev-bin');
-  print "Changing to dev-bin\n";
-}
-
+chdir( File::Basename::dirname($0));
 
 #Globals
 my $host = hostname;
@@ -51,7 +46,7 @@ if (!(is_dev_env($host))) {
 #----------------------------------------------#
 my $userid = `whoami`;
 chomp($userid);
-print "User ID is '$userid' \n\n\n\n";
+print "User ID is '$userid' \n\n";
 my $u = '';
 my $db = 'NLW_reports';
 if (is_dev_env($host)) {
@@ -84,6 +79,7 @@ if (is_dev_env($host)) {
    `sudo /usr/bin/st-reports-consume-nlw-log test_nlw.log`;
 }
 
+print "Completed Reports data set-up (If you saw no errors)\n";
 #---------------------------------------------------------------#
 # End Main Routine Subroutines Follow                           #
 #---------------------------------------------------------------#
@@ -108,7 +104,11 @@ sub grant_write_permissions_to_local_logs {
     `chmod 666 test_nlw.log`;
     if (is_dev_env($host)) {
         `rm ~/.nlw/cache/logreader/test* >& /dev/null`;
+        `st-admin give-accounts-admin --email devnull1\@socialtext.com`;
+        `st-admin give-system-admin --email devnull1\@socialtext.com`;
     } else {
         `sudo rm /var/cache/socialtext/logreader/test*`;
+        `sudo st-admin give-accounts-admin --email devnull1\@socialtext.com`;
+        `sudo st-admin give-system-admin --email devnull1\@socialtext.com`;
     }    
 }

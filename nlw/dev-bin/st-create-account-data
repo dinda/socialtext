@@ -153,7 +153,7 @@ sub print_nlw_log {
         my $str = create_workspace_nlw_entry($workspace);
         print NLWFILE $str;
         foreach my $user (@$rausers) {
-            my $str = create_user_nlw_entry($user, $workspace);
+          my $str = create_user_nlw_entry($user, $workspace);
             print NLWFILE $str;
             if (defined($dates[$date_count])) {
                 $str = create_page_nlw_entry($user, $workspace, $dates[$date_count], $page);
@@ -165,13 +165,46 @@ sub print_nlw_log {
         
     }
 
-    #my $str = 'Feb 28 08:41:09 www nlw[7146]: [33] DELETE,WORKSPACE,workspace:b_test_stub_ws(32787),[1.029888]';
+    my $add_delete = create_and_delete_thirty_pages($rausers, $raWorkspaces);
+
+ 
+    print NLWFILE $add_delete;
+
+#my $str = 'Feb 28 08:41:09 www nlw[7146]: [33] DELETE,WORKSPACE,workspace:b_test_stub_ws(32787),[1.029888]';
     #$str.= "\n". 'Feb 28 08:41:09 www nlw[7146]: [33] DELETE,USER,user:t_stub02@socialtext.com(32787),[1.029888]' . "\n"; 
     #print NLWFILE $str;
     #Close The File
     close NLWFILE;
 }
 
+sub create_and_delete_thirty_pages {
+   my ($rausers, $raWorkspaces) = @_;
+    my $idx;
+    my $add_delete = '';
+    for ($idx=1;$idx<31;$idx++) {
+        #Add a page and delete it
+        my $month = 'Mar';
+        my $page = 'blue' . $idx;
+        $add_delete .= create_page_nlw_entry($rausers->[0], $raWorkspaces->[-0], $month.' 1',$page);   
+        $add_delete .= $month .  ' 2 13:03:08 qa2 nlw[21556]: [33] ACTION,EDIT_CONTENT,page_name:'.$page.',WORKSPACE:'.
+                                 $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . ',PAGE:'  
+                                 . $raWorkspaces->[0]->name . ',[drop_workspace_breadcrumb:0.003885,overall:0.021291]' . "\n";
+
+        $add_delete .= $month . ' 2 13:03:23 qa2 nlw[21558]: [33] ACTION,DISPLAY,page_name:'.$page.',WORKSPACE:' .
+                                  $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id .
+                                  ',PAGE:blue,[drop_workspace_breadcrumb:0.002642,overall:0.243288]' . "\n";
+ 
+        $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] DELETE,PAGE,workspace:' . $raWorkspaces->[0]->name . '(' .
+                                   $raWorkspaces->[0]->workspace_id . ')' .
+                                 ',page:blue,user:'. $rausers->[0]->email_address . 
+                                 '(' . $rausers->[0]->user_id . '),[NA]' . "\n";
+  
+         $add_delete .= $month . ' 2 13:07:05 qa2 nlw[21563]: [33] ACTION,DELETE_PAGE,page_name:'.$page.',WORKSPACE:'
+                                  . $raWorkspaces->[0]->workspace_id . ',USER:'.$rausers->[0]->user_id . 
+                                  'PAGE:blue,[drop_workspace_breadcrumb:0.005555,overall:0.143584]' . "\n";
+    }
+    return $add_delete;
+}
 
 sub print_access_log {
     my ($wsObjects, $userObjs, $filename) = @_;
@@ -199,9 +232,9 @@ sub print_access_log {
     Process_Access_Log($wsObjects, '20/Mar/2008', \@arrBelongs, $accessfile);
        
     my $str=<<EOQ;
-127.0.0.1 - - [25/Mar/2008:13:33:33 -0700] "GET /nlw/submit/logout HTTP/1.1" 302 286 "http://qa2.socialtext.net:22015/a_test_stub_ws/`/index.cgi?announcements_and_links" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 3
-127.0.0.1 - - [25/Mar/2008:13:33:35 -0700] "GET /nlw/login.html HTTP/1.1" 200 3145 "http://qa2.socialtext.net:22015/a_test_stub_ws/index.cgi?announcements_and_links" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 1
-127.0.0.1 - - [25/Mar/2008:13:33:42 -0700] "POST /nlw/submit/login HTTP/1.1" 302 277 "http://qa2.socialtext.net:22015/nlw/login.html" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 3
+127.0.0.1 - - [01/Mar/2008:13:33:33 -0700] "GET /nlw/submit/logout HTTP/1.1" 302 286 "http://qa2.socialtext.net:22015/a_test_stub_ws/`/index.cgi?announcements_and_links" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 3
+127.0.0.1 - - [01/Mar/2008:13:33:35 -0700] "GET /nlw/login.html HTTP/1.1" 200 3145 "http://qa2.socialtext.net:22015/a_test_stub_ws/index.cgi?announcements_and_links" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 1
+127.0.0.1 - - [01/Mar/2008:13:33:42 -0700] "POST /nlw/submit/login HTTP/1.1" 302 277 "http://qa2.socialtext.net:22015/nlw/login.html" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 3
 127.0.0.1 - t_stub01\@socialtext.com [25/Mar/2008:13:33:47 -0700] "GET /a_test_stub_ws/index.cgi HTTP/1.1" 200 25055 "http://qa2.socialtext.net:22015/nlw/login.html" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 5
 127.0.0.1 - t_stub01\@socialtext.com [25/Mar/2008:13:34:03 -0700] "GET /a_test_stub_ws/index.cgi?action=display;page_name=Announcements%20and%20Links;js=show_edit_div;caller_action=homepage HTTP/1.1" 200 45563 "http://qa2.socialtext.net:22015/a_test_stub_ws/index.cgi" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25472 2
 127.0.0.1 - t_stub01\@socialtext.com [25/Mar/2008:13:34:07 -0700] "GET /data/workspaces/a_test_stub_ws/pages/announcements_and_links?verbose=1;link_dictionary=s2;iecacheworkaround=13:34:11 HTTP/1.1" 200 2119 "http://qa2.socialtext.net:22015/a_test_stub_ws/index.cgi?action=display;page_name=Announcements%20and%20Links;js=show_edit_div;caller_action=homepage" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 25473 2
@@ -217,14 +250,33 @@ sub print_access_log {
 127.0.0.1 - t_stub01\@socialtext.com [25/Mar/2008:13:35:13 -0700] "GET /a_test_stub_ws/index.cgi?action=display;page_name=Announcements%20and%20Links;js=show_edit_div;caller_action=homepage HTTP/1.1" 200 47455 "-" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12" 26266 4
 EOQ
 
+my $str2 =<<EOQ;
+127.0.0.1 - t_stub01\@socialtext.com [08/Mar/2008:14:54:59 +0000] "GET /a_test_stub_ws/index.cgi?action=page_info;page_name=blue%206 HTTP/1.1" 200 1142 "http://qa2.socialtext.net/test-data/index.cgi?action=display;page_name=Untitled%20Page" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13" 21569 0
+127.0.0.1 - t_stub01\@socialtext.com [08/Mar/2008:14:55:00 +0000] "POST /a_test_stub_ws/index.cgi HTTP/1.1" 302 5 "http://qa2.socialtext.net/test-data/index.cgi?action=display;page_name=Untitled%20Page" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13" 21570 0
+127.0.0.1 - t_stub01\@socialtext.com [08/Mar/2008:14:55:00 +0000] "GET /a_test_stub_ws/index.cgi?blue HTTP/1.1" 200 33410 "http://qa2.socialtext.net/test-data/index.cgi?action=display;page_name=Untitled%20Page" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13" 21569 0
+EOQ
+
+#127.0.0.1 - t_stub01\@socialtext.com [08/Apr/2008:14:55:11 +0000] "GET /a_test_stub_ws/index.cgi?action=delete_page;page_name=blue HTTP/1.1" 302 5 "http://qa2.socialtext.net/test-data/index.cgi?blue" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13" 21570 0
+#127.0.0.1 - t_stub01\@socialtext.com [08/Apr/2008:14:55:11 +0000] "GET /a_test_stub_ws/index.cgi?action=delete_epilogue&page_id=blue HTTP/1.1" 200 6617 "http://qa2.socialtext.net/test-data/index.cgi?blue" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13" 21569 0
+#EOQ
+
       $str=~s/\n$//g;
-#
+      $str2=~s/\n$//g;
+      #my $date = get_current_month(); 
+      #my $fulldate = '01/' . $date . '/';
+      #$str=~s/25\/Mar\//$fulldate/g;
+     
 #
     print $accessfile $str;
+    print $accessfile $str2;
     close $accessfile;
 }
 
-
+sub get_current_month {
+  my $date = gmtime;
+  $date = substr($date,4,3);
+  return $date;
+}
 
 sub Process_Access_Log {
     my ($wsObjects, $date, $arrBelongs, $accessfile) = @_;
@@ -288,7 +340,7 @@ sub create_page_nlw_entry {
    my $user_id = $user->user_id;
 
     my $str = "$date 13:57:00 qa2 nlw[7636]: [33] CREATE,PAGE,workspace:" . $ws->name . '(' . $ws->workspace_id . ')' . ',page:'.$page .',user:' . $user->email_address . '(' . $user_id . '),[0.035587]' . "\n"; 
-    $str.="$date 13:57:00 qa2 nlw[7635]: [33] DISPLAY_PAGE,workspace" . $ws->name . '(' . $ws->workspace_id . ')' . ',page:'.$page .',user:' . $user->email_address . '(' . $user_id .  '),[0.035587]' . "\n";
+    $str.="$date 13:57:00 qa2 nlw[7635]: [33] DISPLAY_PAGE,workspace:" . $ws->name . '(' . $ws->workspace_id . ')' . ',page:'.$page .',user:' . $user->email_address . '(' . $user_id .  '),[0.035587]' . "\n";
     return $str;
 }
 
