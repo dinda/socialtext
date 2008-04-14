@@ -194,7 +194,7 @@ sub _make_http_cookie {
 
     return '' . CGI::Cookie->new(
         -domain => Socialtext::AppConfig->cookie_domain,
-        -name   => 'NLW-user',
+        -name   => Socialtext::HTTP::Cookie->USER_DATA_COOKIE,
         -value  => {
             user_id => $user_id,
             MAC     => Socialtext::HTTP::Cookie->MAC_for_user_id($user_id),

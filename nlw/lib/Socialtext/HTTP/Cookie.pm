@@ -8,6 +8,16 @@ use Digest::SHA1 qw(sha1_base64);
 use Socialtext::AppConfig;
 
 ###############################################################################
+# Allow some constant values to be exported
+use base qw(Exporter);
+our %EXPORT_TAGS = (
+    constants => [qw( USER_DATA_COOKIE )],
+    );
+our @EXPORT_OK = map { @{$_} } values %EXPORT_TAGS;
+
+sub USER_DATA_COOKIE { 'NLW-user' };
+
+###############################################################################
 sub MAC_for_user_id {
     my ($class, $user_id) = @_;
     return sha1_base64( $user_id, Socialtext::AppConfig->MAC_secret );
@@ -33,6 +43,20 @@ of HTTP cookies.
 
 Before C<Socialtext::HTTP::Cookie>, these methods were scattered around the
 code, and some had multiple implementations.
+
+=head1 CONSTANTS
+
+The following constants are available for import either via the C<:constants>
+tag (if you want all of them) or by importing them individually:
+
+=over
+
+=item USER_DATA_COOKIE
+
+The name of the HTTP cookie that contains User Authentication information
+(NLW-user).
+
+=back
 
 =head1 METHODS
 

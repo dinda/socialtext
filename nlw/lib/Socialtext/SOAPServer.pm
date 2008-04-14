@@ -100,10 +100,9 @@ use Socialtext::Role;
 use Socialtext::Workspace;
 use Socialtext::User;
 use Socialtext::Validate qw ( validate SCALAR_TYPE );
-use Socialtext::HTTP::Cookie;
+use Socialtext::HTTP::Cookie qw(USER_DATA_COOKIE);
 
 Readonly my $URN => 'urn:NLWSOAP';
-Readonly my $COOKIE_NAME => 'NLW-User';
 
 =head1 REMOTE METHODS
 
@@ -552,7 +551,7 @@ sub _get_cookie {
     my $mac = Socialtext::HTTP::Cookie->MAC_for_user_id($id);
 
     my $cookie = CGI::Cookie->new(
-        -name => $COOKIE_NAME,
+        -name => USER_DATA_COOKIE,
         -value => {
             user_id => $id,
             MAC => $mac,
@@ -567,7 +566,7 @@ sub _authenticate {
     my $key = shift;
 
     my %cookies = CGI::Cookie->parse($key);
-    my %user_data = $cookies{$COOKIE_NAME}->value;
+    my %user_data = $cookies{USER_DATA_COOKIE()}->value;
     my $mac = Socialtext::HTTP::Cookie->MAC_for_user_id( $user_data{user_id} );
     unless ( $mac eq $user_data{MAC} ) {
         _raise_client_fault(
