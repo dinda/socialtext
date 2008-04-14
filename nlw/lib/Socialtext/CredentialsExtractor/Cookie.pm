@@ -5,8 +5,7 @@ use strict;
 use warnings;
 
 use Apache::Cookie;
-use Digest::SHA1;
-use Socialtext::AppConfig;
+use Socialtext::HTTP::Cookie;
 
 use constant COOKIE_NAME => 'NLW-user';
 
@@ -18,7 +17,7 @@ sub extract_credentials {
 
     return unless keys %user_data;
 
-    my $mac = _MAC_for_user_id( $user_data{user_id} );
+    my $mac = Socialtext::HTTP::Cookie->MAC_for_user_id( $user_data{user_id} );
 
     unless ( $mac eq $user_data{MAC} ) {
         $request->log_reason(
@@ -41,10 +40,6 @@ sub _get_cookie_value {
     return unless $cookie;
 
     return $cookie->value;
-}
-
-sub _MAC_for_user_id {
-    return Digest::SHA1::sha1_base64( $_[0], Socialtext::AppConfig->MAC_secret );
 }
 
 1;
