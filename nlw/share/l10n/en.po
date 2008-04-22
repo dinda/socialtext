@@ -26,12 +26,22 @@ msgstr ""
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
+msgid "%1 Account Growth Report"
+msgstr ""
+
+#: lib/Socialtext/Handler/ControlPanel.pm
+#. (
 msgid "%1 Account Usage Report"
 msgstr ""
 
 #: lib/Socialtext/WeblogPlugin.pm
 #. (
 msgid "%1 Weblog"
+msgstr ""
+
+#: lib/Socialtext/Handler/ControlPanel.pm
+#. (
+msgid "%1 Workspace Growth Report"
 msgstr ""
 
 #: lib/Socialtext/Handler/ControlPanel.pm
@@ -969,6 +979,11 @@ msgstr ""
 msgid "Click this button to preview your page before saving it"
 msgstr ""
 
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Click this button to refresh this spreadsheet"
+msgstr ""
+
 #: lib/Socialtext/BreadCrumbsPlugin.pm
 #.  
 msgid "Click this button to save recently viewed pages to your computer for offline use."
@@ -1119,9 +1134,19 @@ msgstr ""
 msgid "Create Initial Workspace"
 msgstr ""
 
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Create New Spreadsheet"
+msgstr ""
+
 #: lib/Socialtext/WeblogPlugin.pm share/skin/s2/template/element/settings/select
 #.  
 msgid "Create New Weblog"
+msgstr ""
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Create New Wiki Page"
 msgstr ""
 
 #: share/skin/s2/template/element/settings/select
@@ -1152,6 +1177,11 @@ msgstr ""
 #: share/skin/s2/template/element/page/details
 #. (
 msgid "Created by %1 on %2."
+msgstr ""
+
+#: lib/Socialtext/Page.pm
+#.  
+msgid "Creating a New Spreadsheet..."
 msgstr ""
 
 #: lib/Socialtext/Appliance/BackupStore.pm
@@ -1889,7 +1919,7 @@ msgstr ""
 msgid "Include the '%1' RSS feed. Click to edit."
 msgstr ""
 
-#: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
+#: lib/Socialtext/Widget_resource.pm lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js
 #. (
 msgid "Include the page '%1'. Click to edit."
 msgstr ""
@@ -2079,7 +2109,7 @@ msgstr ""
 msgid "Last name:"
 msgstr ""
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js share/skin/s2/template/view/refcard
+#: share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js share/skin/s2/template/view/refcard
 #.  
 msgid "Link text"
 msgstr ""
@@ -2109,7 +2139,7 @@ msgstr ""
 msgid "List All Users"
 msgstr ""
 
-#: share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/layout/html share/skin/s2/template/view/weblog share/skin/s2/template/view/weblog
+#: share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/actions share/skin/s2/template/element/settings/actions share/skin/s2/template/view/listview share/skin/s2/template/view/weblog share/skin/s2/template/view/weblog
 #.  
 msgid "Loading..."
 msgstr ""
@@ -2252,6 +2282,11 @@ msgstr ""
 #: lib/Socialtext/EmailNotifyPlugin.pm
 #.  
 msgid "Never"
+msgstr ""
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "New"
 msgstr ""
 
 #: share/skin/s2/template/view/homepage
@@ -2857,6 +2892,11 @@ msgstr ""
 #: lib/Socialtext/Appliance/ConsoleController.pm
 #. (
 msgid "Redirecting to %1"
+msgstr ""
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Refresh"
 msgstr ""
 
 #: share/console-template/template/backup.html
@@ -3816,7 +3856,7 @@ msgstr ""
 
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #. (
-msgid "To customize your own skin, download the %1, modify the skin files to your liking, and upload them here. Complete documentation on skin customization is available in the %2."
+msgid "To customize your own skin, download the %1, modify the skin files to your liking, and upload them here. Complete documentation on skin customization is available in the %2.<h4>Skin support is not included in basic support. Users who upload skins are responsible for keeping copies of their skin files and for keeping their skins current as the Socialtext application changes.</h4>"
 msgstr ""
 
 #: share/skin/s2/template/email/email-address-confirmation-completed.html share/skin/s2/template/email/email-address-confirmation-completed.txt
@@ -5072,6 +5112,11 @@ msgstr ""
 #: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
 #. (
 msgid "section: %1"
+msgstr ""
+
+#: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
+#. (
+msgid "ss: %1 (%2)"
 msgstr ""
 
 #: lib/Socialtext/Formatter/Phrase.pm lib/Socialtext/Formatter/Phrase.pm

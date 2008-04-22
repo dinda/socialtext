@@ -26,6 +26,11 @@ msgstr "%1 - RsS SえあrCh fおr %2"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
+msgid "%1 Account Growth Report"
+msgstr "%1 あcCおうn7 Grおw7h rえpおr7"
+
+#: lib/Socialtext/Handler/ControlPanel.pm
+#. (
 msgid "%1 Account Usage Report"
 msgstr "%1 あcCおうn7 うsあgえ RえPおR7"
 
@@ -33,6 +38,11 @@ msgstr "%1 あcCおうn7 うsあgえ RえPおR7"
 #. (
 msgid "%1 Weblog"
 msgstr "%1 Wえ8lおg"
+
+#: lib/Socialtext/Handler/ControlPanel.pm
+#. (
+msgid "%1 Workspace Growth Report"
+msgstr "%1 WおRkSpあcえ Grおw7h rえpおr7"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
@@ -969,6 +979,11 @@ msgstr "cLいCk 7HいS 8う77おn 7お MあNあGえ fいlえs あ77あcHえD 7�
 msgid "Click this button to preview your page before saving it"
 msgstr "cLいCk 7HいS 8う77おn 7お PrえvいえW Yおうr pあgえ 8えFおRえ sあvいnG い7"
 
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Click this button to refresh this spreadsheet"
+msgstr "cLいCk 7HいS 8う77おn 7お RえFrえsH 7hいs sPrえあDsHええ7"
+
 #: lib/Socialtext/BreadCrumbsPlugin.pm
 #.  
 msgid "Click this button to save recently viewed pages to your computer for offline use."
@@ -1119,10 +1134,20 @@ msgstr "cRえあ7え あ Wえ8lおg"
 msgid "Create Initial Workspace"
 msgstr "cRえあ7え いnい7いあL WおRkSpあcえ"
 
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Create New Spreadsheet"
+msgstr "cRえあ7え NえW SpRえあdShええ7"
+
 #: lib/Socialtext/WeblogPlugin.pm share/skin/s2/template/element/settings/select
 #.  
 msgid "Create New Weblog"
 msgstr "cRえあ7え NえW Wえ8lおg"
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Create New Wiki Page"
+msgstr "cRえあ7え NえW WいKい pあgえ"
 
 #: share/skin/s2/template/element/settings/select
 #.  
@@ -1153,6 +1178,11 @@ msgstr "cRえあ7え NえW PあGえ"
 #. (
 msgid "Created by %1 on %2."
 msgstr "cRえあ7えd 8Y %1 おN %2."
+
+#: lib/Socialtext/Page.pm
+#.  
+msgid "Creating a New Spreadsheet..."
+msgstr "cRえあ7いnG あ NえW SpRえあdShええ7..."
 
 #: lib/Socialtext/Appliance/BackupStore.pm
 #. (
@@ -1889,7 +1919,7 @@ msgstr "いNcLうDえ 7Hえ '%1' あ7おm fええD. cLいCk 7お えdい7."
 msgid "Include the '%1' RSS feed. Click to edit."
 msgstr "いNcLうDえ 7Hえ '%1' RsS Fええd. ClいcK 7お えDい7."
 
-#: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
+#: lib/Socialtext/Widget_resource.pm lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js
 #. (
 msgid "Include the page '%1'. Click to edit."
 msgstr "いNcLうDえ 7Hえ pあgえ '%1'. ClいcK 7お えDい7."
@@ -2079,7 +2109,7 @@ msgstr "lあs7 MあNうあl 8あcKうP WあS NえVえR"
 msgid "Last name:"
 msgstr "lあs7 NあMえ:"
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js share/skin/s2/template/view/refcard
+#: share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js share/skin/s2/template/view/refcard
 #.  
 msgid "Link text"
 msgstr "lいnK 7えX7"
@@ -2109,7 +2139,7 @@ msgstr "lいnK 7お wえ8LおG '%1'. ClいcK 7お えDい7."
 msgid "List All Users"
 msgstr "lいs7 あlL うsえrS"
 
-#: share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/layout/html share/skin/s2/template/view/weblog share/skin/s2/template/view/weblog
+#: share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/actions share/skin/s2/template/element/settings/actions share/skin/s2/template/view/listview share/skin/s2/template/view/weblog share/skin/s2/template/view/weblog
 #.  
 msgid "Loading..."
 msgstr "lおあDいNg..."
@@ -2253,6 +2283,11 @@ msgstr "nあvいgあ7いおN 7あ8s 7お SえLえC7 dいfFえRえN7 sえc7いお
 #.  
 msgid "Never"
 msgstr "nえvえr"
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "New"
+msgstr "nえw"
 
 #: share/skin/s2/template/view/homepage
 #.  
@@ -2858,6 +2893,11 @@ msgstr "rえcえn7lY Vいえwえd pあgえs"
 #. (
 msgid "Redirecting to %1"
 msgstr "rえdいrえc7いNg 7お %1"
+
+#: share/skin/s2/template/element/page/actions
+#.  
+msgid "Refresh"
+msgstr "rえfRえSh"
 
 #: share/console-template/template/backup.html
 #.  
@@ -3816,8 +3856,8 @@ msgstr "7お ChあnGえ yおうR PあSsWおRd, PlえあSえ fおlLおW 7hいs l�
 
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #. (
-msgid "To customize your own skin, download the %1, modify the skin files to your liking, and upload them here. Complete documentation on skin customization is available in the %2."
-msgstr "7お CうS7おmいzえ Yおうr おWn sKいN, dおwNlおあD 7hえ %1, MおDいFy 7Hえ sKいN FいLえS 7お yおうR LいKいNg, あnD うpLおあd 7HえM HえRえ. CおMpLえ7え dおcうmえn7あ7いおn おN Skいn cうs7おMいZあ7いおn いS あvあいLあ8lえ いn 7Hえ %2."
+msgid "To customize your own skin, download the %1, modify the skin files to your liking, and upload them here. Complete documentation on skin customization is available in the %2.<h4>Skin support is not included in basic support. Users who upload skins are responsible for keeping copies of their skin files and for keeping their skins current as the Socialtext application changes.</h4>"
+msgstr "7お CうS7おmいzえ Yおうr おWn sKいN, dおwNlおあD 7hえ %1, MおDいFy 7Hえ sKいN FいLえS 7お yおうR LいKいNg, あnD うpLおあd 7HえM HえRえ. CおMpLえ7え dおcうmえn7あ7いおn おN Skいn cうs7おMいZあ7いおn いS あvあいLあ8lえ いn 7Hえ %2.<h4>Skいn sうpPおR7 いS Nお7 いnClうdえd いN 8あSいC SうPpおr7. うSえRs wHお うPlおあD SkいnS あrえ RえSpおnSい8lえ FおR KええpいnG CおPいえs おF 7hえいR Skいn fいlえs あNd fおr kええPいNg 7Hえいr sKいNs cうrRえN7 あS 7hえ SおCいあl7えX7 あPpLいCあ7いおn cHあNgえs.</h4>"
 
 #: share/skin/s2/template/email/email-address-confirmation-completed.html share/skin/s2/template/email/email-address-confirmation-completed.txt
 #.  
@@ -5073,6 +5113,11 @@ msgstr "sえc7いおn lいnK"
 #. (
 msgid "section: %1"
 msgstr "sえc7いおn: %1"
+
+#: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
+#. (
+msgid "ss: %1 (%2)"
+msgstr "sS: %1 (%2)"
 
 #: lib/Socialtext/Formatter/Phrase.pm lib/Socialtext/Formatter/Phrase.pm
 #.  
