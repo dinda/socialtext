@@ -153,6 +153,9 @@ sub _log_page_action {
     my $object = shift;
 
     return if $object->hub->rest->query->param('clobber');
+    return if $object->hub->action eq 'submit_comment';
+    return if $object->hub->action eq 'homepage';
+    return if $object->hub->action eq 'attachments_upload';
 
     if ( $object->hub->action eq 'edit_content' ||
          $object->hub->action eq 'rename_page' ) {
