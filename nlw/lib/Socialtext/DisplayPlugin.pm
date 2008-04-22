@@ -66,6 +66,8 @@ sub new_page {
     }
     $uri = $uri . ';caller_action=' . $self->cgi->caller_action
         if $self->cgi->caller_action;
+    $uri = $uri . ';page_type=' . $self->cgi->page_type
+        if $self->cgi->page_type;
     $uri = $uri . ';page_name=' . $page->uri . '#edit';
     $self->redirect($uri);
 }
@@ -158,6 +160,9 @@ sub display {
 
     my @new_tags = ();
     if ($is_new_page) {
+        $page->metadata->Type(
+            $self->cgi->page_type eq 'spreadsheet' && 'spreadsheet' || 'wiki'
+        );
         push @new_tags, $self->_new_tags_to_add();
     }
     else {
@@ -303,6 +308,7 @@ sub _get_page_info {
         content => $self->hub->wikiwyg->html_formatting_hack(
             $page->to_html_or_default
         ),
+        page_type => $page->metadata->Type,
         feeds     => $self->_feeds( $self->hub->current_workspace, $page ),
         revisions => $page->revision_count,
         revision_id => $page->revision_id || undef,
@@ -454,6 +460,7 @@ use Socialtext::CGI qw( cgi );
 
 cgi 'new_category';
 cgi 'caller_action';
+cgi 'page_type';
 cgi 'wiki_text';
 cgi 'js';
 cgi 'attachment_error';

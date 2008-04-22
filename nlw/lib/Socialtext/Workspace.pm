@@ -112,6 +112,8 @@ foreach my $column (@COLUMNS) {
     field $column;
 }
 
+field enable_spreadsheet => 0;
+
 field breadcrumbs => '';
 
 sub table_name { 'Workspace' }
