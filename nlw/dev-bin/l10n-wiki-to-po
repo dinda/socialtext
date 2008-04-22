@@ -9,6 +9,7 @@ use Socialtext::System qw/shell_run/;
 use Socialtext::File qw/set_contents/;
 use Encode;
 use utf8;
+use JSON::XS;
 
 my $r    = make_rester();
 my $l10n = load_localizations();
@@ -115,7 +116,7 @@ sub create_js_l10ns {
         delete $js_hash->{$locale} unless %{ $js_hash->{$locale} };
     }
 
-    my $js_out = "var LocalizedStrings = " . objToJson($js_hash) . ";\n";
+    my $js_out = "var LocalizedStrings = " . encode_json($js_hash) . ";\n";
     $js_out .= <<'EOT';
 
 function loc() {
