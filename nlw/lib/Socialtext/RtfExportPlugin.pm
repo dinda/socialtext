@@ -8,7 +8,6 @@ use Class::Field 'const';
 use Imager;
 use Socialtext::l10n qw(loc);
 use Socialtext::BrowserDetect;
-use Socialtext::HTTP::Cookie qw(USER_DATA_COOKIE);
 
 =head1 NAME
 
@@ -179,6 +178,7 @@ use File::Temp;
 use LWP::UserAgent;
 use RTF::Writer qw(rtfesc);
 use RTF::Writer::TableRowDecl;
+use Socialtext::HTTP::Cookie qw(USER_DATA_COOKIE);
 
 my $InHref = 0;
 my $In_Table = 0;
