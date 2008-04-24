@@ -66,8 +66,12 @@ sub new_page {
     }
     $uri = $uri . ';caller_action=' . $self->cgi->caller_action
         if $self->cgi->caller_action;
-    $uri = $uri . ';page_type=' . $self->cgi->page_type
-        if $self->cgi->page_type;
+
+    if ($self->hub->current_workspace->enable_spreadsheet) {
+        $uri = $uri . ';page_type=' . $self->cgi->page_type
+            if $self->cgi->page_type;
+    }
+
     $uri = $uri . ';page_name=' . $page->uri . '#edit';
     $self->redirect($uri);
 }
