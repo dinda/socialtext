@@ -470,8 +470,12 @@ sub html {
         $edit_icon = $self->edit_icon($edit_url, $incipient_class, $edit);
     }
 
+    my $activity =
+        $self->hub->current_workspace->enable_spreadsheet
+        ? '<span class="st-include-activity">&nbsp;</span>'
+        : '';
     return qq(<div class="wiki-include-page">\n)
-        . qq(<div class="wiki-include-title">$link $edit_icon</div>\n)
+        . qq(<div class="wiki-include-title">$activity$link $edit_icon</div>\n)
         . qq(<div class="wiki-include-content">$html</div></div>);
 }
 

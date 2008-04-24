@@ -417,6 +417,7 @@ BEGIN {
             Socialtext::RtfExportPlugin
             Socialtext::WorkspacesUIPlugin
             Socialtext::ProvisionPlugin
+            Socialtext::PageActivityPlugin
         ) ) {
         eval "use $class ()";
         die $@ if $@;
