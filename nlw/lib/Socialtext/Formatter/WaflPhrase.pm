@@ -470,9 +470,13 @@ sub html {
         $edit_icon = $self->edit_icon($edit_url, $incipient_class, $edit);
     }
 
+    my $class = (Socialtext::Page->new( 
+        id => $page_uri,
+        hub => $self->hub 
+    )->metadata->Type eq 'spreadsheet') ? ' spreadsheet' : '';
     my $activity =
         $self->hub->current_workspace->enable_spreadsheet
-        ? '<span class="st-include-activity">&nbsp;</span>'
+        ? qq{<span class="st-include-activity$class">&nbsp;</span>}
         : '';
     return qq(<div class="wiki-include-page">\n)
         . qq(<div class="wiki-include-title">$activity$link $edit_icon</div>\n)
