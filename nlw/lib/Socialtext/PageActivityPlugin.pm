@@ -13,7 +13,8 @@ use Socialtext::Exceptions;
 use Socialtext::TT2::Renderer;
 use Socialtext::l10n qw(loc system_locale);
 use Socialtext::BrowserDetect;
-use JSON;
+use JSON::XS;
+use Encode;
 
 sub class_id { 'page_activity' }
 const class_title => 'PageActivity';
@@ -26,11 +27,20 @@ sub register {
     $registry->add( action => 'page_activity' );
 }
 
+use XXX;
+use URI::Escape;
 sub page_activity {
     my $self = shift;
+    my $json = JSON::XS->new->utf8;
     if ($self->cgi->activities) {
+        # my $text = uri_unescape( $self->cgi->_get_cgi_param("activities"));
         my $text = $self->cgi->activities;
-        my $activities = JSON::jsonToObj( $text );
+
+        if ( Encode::is_utf8($text) ) {
+            Encode::_utf8_off( $text );
+        }
+
+        my $activities = $json->decode( $text );
         my $res = {};
         for my $a (@$activities) {
             if ($a->{page_activity}) {
@@ -44,13 +54,14 @@ sub page_activity {
                 $self->find_all_by_page_id( $a->{page_id} );
         }
         $res->{"__current_time"} = time;
-        return JSON::objToJson($res);
+        return $json->encode($res);
     }
 
     if ($self->cgi->page_activity) {
         $self->create;
     }
-    return JSON::objToJson($self->find_all_by_page_id);
+
+    return $json->encode($self->find_all_by_page_id)
 }
 
 sub find_all_by_page_id {
@@ -60,8 +71,13 @@ sub find_all_by_page_id {
     my $sth = $dbh->prepare("SELECT page_id, user_id, page_activity, MAX(created_at) FROM activity WHERE page_id = ? AND created_at > ? GROUP BY user_id ORDER BY MAX(created_at) DESC;");
 
     $sth->execute( $page_id, time - 30*60 );
-    my $ref = $sth->fetchall_arrayref;
-    return $ref;
+
+    # Need to encode each single scalar here to UTF8 for being able to be
+    # correctly encode to JSON with JSON::XS.
+    my @all = 
+        map { [ map { Encode::decode_utf8($_) } @$_] }
+        @{$sth->fetchall_arrayref};
+    return \@all;
 }
 
 sub create {
