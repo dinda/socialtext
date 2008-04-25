@@ -1,6 +1,6 @@
 | *Comment* | STARTING Test case: Control Panel Reports |  |
 
-| *Comment* | Test case: Control Panel Reports pre-reqs: |
+| *Comment* | Test case: Control Panel Reports s pre-reqs: |
 | *Comment* | cd into dev-bin directory |
 | *Comment* | run ./st-populate-reports-db to populate the data |
 
@@ -10,7 +10,7 @@
 | st_qa_setup_reports |  |  |
 | set_default | testingwrkspace | growth_report_test | default workspace to test against |
 
-| *Comment* | Test case: Control Panel Reports - Open Control Panel and Navigate |  |
+| *Comment* | Test case: Reports - Open Control Panel and Navigate |  |
 | open_ok | /nlw/control |  |
 | clickAndWait | link=Workspaces |  |
 | type_ok | name | %%testingwrkspace%% |
