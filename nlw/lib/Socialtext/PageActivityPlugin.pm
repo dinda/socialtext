@@ -27,13 +27,10 @@ sub register {
     $registry->add( action => 'page_activity' );
 }
 
-use XXX;
-use URI::Escape;
 sub page_activity {
     my $self = shift;
     my $json = JSON::XS->new->utf8;
     if ($self->cgi->activities) {
-        # my $text = uri_unescape( $self->cgi->_get_cgi_param("activities"));
         my $text = $self->cgi->activities;
 
         if ( Encode::is_utf8($text) ) {
