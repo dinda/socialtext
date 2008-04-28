@@ -354,10 +354,20 @@ msgstr "<a href=\"/%1/?4c7i0n=uS3Rs_iNvI747I0N\">InVi73</4> 07h3r p30Pl3 70 %2."
 msgid "<a href=\"/%1/\">Go to</a> the %2 home page."
 msgstr "<a href=\"/%1/\">G0 70</4> 7h3 %2 h0m3 P4G3."
 
+#: share/skin/s2/template/element/settings/workspaces_settings_skin_section
+#.  
+msgid "<a href=\"/help-en/index.cgi?socialtext_style_customization_guide\">Socialtext Style Customization Guide</a>"
+msgstr "<a href=\"/H3Lp-3N/InD3X.CgI?S0Ci4l73X7_s7yL3_cUs70MiZ47i0n_gUiD3\">s0cI4L73x7 S7Yl3 CuS70mIz47I0N GuId3</4>"
+
 #: share/skin/s2/template/view/homepage
 #.  
 msgid "<a href=\"?action=users_invitation\">Invite your colleagues<b></b></a> to this workspace."
 msgstr "<a href=\"?4c7i0n=uS3Rs_iNvI747I0N\">InVi73 y0uR C0Ll34Gu3s<8></8></4> 70 7HiS W0RkSp4c3."
+
+#: share/skin/s2/template/element/settings/workspaces_settings_skin_section
+#.  
+msgid "<a href=\"http://www.socialtext.net/open/index.cgi?css_kit\">Skin Customization Kit</a>"
+msgstr "<a href=\"h77P://WwW.S0Ci4l73X7.n37/0P3N/InD3X.CgI?CsS_Ki7\">SkIn cUs70MiZ47i0n kI7</4>"
 
 #: lib/Socialtext/FavoritesPlugin.pm
 #.  
@@ -814,6 +824,11 @@ msgstr "80770M 0f p4g3"
 msgid "Brought to you by Socialtext."
 msgstr "8R0UgH7 70 Y0U 8y s0cI4L73x7."
 
+#: share/skin/s2/template/element/settings/workspaces_settings_skin_section
+#.  
+msgid "Browse ..."
+msgstr "8R0Ws3 ..."
+
 #: lib/Socialtext/BugsPlugin.pm
 #.  
 msgid "Bug Dump"
@@ -834,7 +849,7 @@ msgstr "c4lL '%1' uSiNg sKyP3. ClIcK 70 3Di7."
 msgid "Can't remove privileges of the last admin"
 msgstr "c4n'7 r3m0v3 PrIvIl3g3s 0F 7h3 L4S7 4DmIn"
 
-#: share/console-template/template/popup.html share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_duplicate share/skin/s2/template/element/page/newpage_save share/skin/s2/template/standard_buttons
+#: share/console-template/template/popup.html share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_duplicate share/skin/s2/template/element/page/newpage_save share/skin/s2/template/standard_buttons
 #.  
 msgid "Cancel"
 msgstr "c4nC3L"
@@ -1369,7 +1384,7 @@ msgstr "dUpLiC473 p4g3"
 msgid "Earlier entries"
 msgstr "34rLi3r 3N7Ri3s"
 
-#: share/skin/s2/template/element/page/actions share/skin/s2/template/element/page/actions
+#: lib/Socialtext/Lite.pm share/skin/s2/template/element/page/actions share/skin/s2/template/element/page/actions
 #.  
 msgid "Edit"
 msgstr "3Di7"
@@ -1734,7 +1749,7 @@ msgstr "h3lP"
 msgid "Hi,"
 msgstr "hI,"
 
-#: share/skin/s2/template/element/wiki/nav
+#: lib/Socialtext/Lite.pm share/skin/s2/template/element/wiki/nav
 #.  
 msgid "Home"
 msgstr "h0m3"
@@ -2839,7 +2854,7 @@ msgstr "r38007 4pPlI4Nc3?"
 msgid "Reboot Now"
 msgstr "r38007 N0W"
 
-#: lib/Socialtext/WeblogPlugin.pm share/skin/s2/template/element/weblog/actions
+#: lib/Socialtext/Lite.pm lib/Socialtext/WeblogPlugin.pm share/skin/s2/template/element/weblog/actions
 #.  
 msgid "Recent Changes"
 msgstr "r3c3n7 Ch4nG3S"
@@ -3074,7 +3089,7 @@ msgstr "s4mPl3 W38l0g"
 msgid "Sat"
 msgstr "s47"
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_save share/skin/s2/template/element/settings/save share/skin/s2/template/lite/page/edit.html share/skin/s2/template/lite/page/edit.html
+#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_save share/skin/s2/template/element/settings/save share/skin/s2/template/lite/page/edit.html share/skin/s2/template/lite/page/edit.html
 #.  
 msgid "Save"
 msgstr "s4v3"
@@ -3108,6 +3123,11 @@ msgstr "s4v3 Wi7h 4 dIfF3R3N7 n4m3:"
 #.  
 msgid "Screen Layout"
 msgstr "sCr33N L4Y0U7"
+
+#: lib/Socialtext/Lite.pm
+#.  
+msgid "Search"
+msgstr "s34RcH"
 
 #: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
 #. (
@@ -3154,7 +3174,7 @@ msgstr "s34RcH F0R \"%1\""
 msgid "Search for the following terms:"
 msgstr "s34RcH F0R 7h3 F0Ll0wInG 73RmS:"
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/view/refcard
+#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/view/refcard
 #.  
 msgid "Section"
 msgstr "s3c7i0n"
@@ -3323,6 +3343,11 @@ msgstr "s0cI4L73x7 3m4iL"
 #.  
 msgid "Socialtext Home Page"
 msgstr "s0cI4L73x7 H0M3 p4g3"
+
+#: share/skin/s2/template/element/settings/workspaces_settings_features_section
+#.  
+msgid "Socialtext Unplugged"
+msgstr "s0cI4L73x7 UnPlUgG3D"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
