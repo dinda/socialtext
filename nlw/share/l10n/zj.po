@@ -449,6 +449,11 @@ msgstr "あおl うSえR あいM:あいMうSえR PrえsえnCえ"
 msgid "AOL user aimuser presence"
 msgstr "あおl うSえR あいMうSえR PrえsえnCえ"
 
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "Access a Community of Peers"
+msgstr "あCcえsS あ CおMmうnい7Y おf pええRs"
+
 #: lib/Socialtext/Account.pm
 #.  
 msgid "Account name is a required field."
@@ -713,6 +718,11 @@ msgstr "あPpLいCあ7いおn えRrおr おN %1: %2"
 #.  
 msgid "Archive Directory"
 msgstr "あRcHいVえ dいrえc7おRy"
+
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
+msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 7お 7hえ <あ hRえF=\"H77p://wWw.sおcいあL7えx7.Nえ7/えxChあnGえ/\">SおCいあl7えX7 cうs7おMえR えxChあnGえ</あ>.  い7 いs wHえRえ yおう cあn sHあRえ 7いpS あnD 8えS7 pRあC7いcえs wい7H お7HえR SおCいあl7えX7 cうs7おMえRs."
 
 #: share/skin/s2/template/search_help_field.html
 #.  

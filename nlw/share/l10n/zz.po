@@ -449,6 +449,11 @@ msgstr "40l uS3R 4iM:4iMuS3R Pr3s3nC3"
 msgid "AOL user aimuser presence"
 msgstr "40l uS3R 4iMuS3R Pr3s3nC3"
 
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "Access a Community of Peers"
+msgstr "4Cc3sS 4 C0MmUnI7Y 0f p33Rs"
+
 #: lib/Socialtext/Account.pm
 #.  
 msgid "Account name is a required field."
@@ -713,6 +718,11 @@ msgstr "4PpLiC47i0n 3Rr0r 0N %1: %2"
 #.  
 msgid "Archive Directory"
 msgstr "4RcHiV3 dIr3c70Ry"
+
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
+msgstr "4S 4 S0Ci4l73X7 cUs70M3R, y0u h4v3 4cC3Ss 70 7h3 <a href=\"H77p://wWw.s0cI4L73x7.N37/3xCh4nG3/\">S0Ci4l73X7 cUs70M3R 3xCh4nG3</4>.  i7 Is wH3R3 y0u c4n sH4R3 7IpS 4nD 83S7 pR4C7Ic3s wI7H 07H3R S0Ci4l73X7 cUs70M3Rs."
 
 #: share/skin/s2/template/search_help_field.html
 #.  

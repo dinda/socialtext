@@ -449,6 +449,11 @@ msgstr "AOL ユーザ aim:aimuser プレゼンス"
 msgid "AOL user aimuser presence"
 msgstr "AOL ユーザ aimuser プレゼンス"
 
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "Access a Community of Peers"
+msgstr ""
+
 #: lib/Socialtext/Account.pm
 #.  
 msgid "Account name is a required field."
@@ -713,6 +718,11 @@ msgstr "%1 にアプリケーションエラー発生: %2"
 #.  
 msgid "Archive Directory"
 msgstr "アーカイブディレクトリ"
+
+#: lib/Socialtext/AppConfig.pm
+#.  
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
+msgstr ""
 
 #: share/skin/s2/template/search_help_field.html
 #.  
