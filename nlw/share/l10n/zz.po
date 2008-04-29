@@ -9,11 +9,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/Socialtext/WeblogPlugin.pm
-#. (
-msgid "%1"
-msgstr "%1"
-
 #: lib/Socialtext/SearchPlugin.pm
 #. (
 msgid "%1 - Atom Search for %2"
@@ -499,6 +494,11 @@ msgstr "4Dd 74g"
 msgid "Add&nbsp;tag"
 msgstr "4Dd&n8sP;74G"
 
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Add&nbsp;tags&nbsp;..."
+msgstr "4Dd&n8sP;74Gs&n8sP;..."
+
 #: share/skin/s2/template/element/settings/users_listall_section
 #.  
 msgid "Admin"
@@ -959,7 +959,7 @@ msgstr "cLiCk 7HiS 8u770n 70 4dD 4 C0Mm3n7 70 7H3 p4g3"
 msgid "Click this button to add a file to the page"
 msgstr "cLiCk 7HiS 8u770n 70 4dD 4 FiL3 70 7h3 P4G3"
 
-#: share/skin/s2/template/element/page/tags
+#: share/skin/s2/template/element/page/tags share/skin/s2/template/layout/edit_wikiwyg
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr "cLiCk 7HiS 8u770n 70 4dD 4 74G 70 7H3 p4g3"
@@ -1058,6 +1058,11 @@ msgstr "cLiCk 7HiS 8u770n 70 S4V3 y0uR P4G3"
 #.  
 msgid "Click this button to save your tag"
 msgstr "cLiCk 7HiS 8u770n 70 S4V3 y0uR 74G"
+
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Click this button to upload a file to the page"
+msgstr "cLiCk 7HiS 8u770n 70 UpL04d 4 fIl3 70 7H3 p4g3"
 
 #: share/skin/s2/template/view/page/display share/skin/s2/template/view/page/display
 #.  
@@ -4083,6 +4088,11 @@ msgstr "uPl04D FiL3S"
 #.  
 msgid "Upload files"
 msgstr "uPl04D FiL3S"
+
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Upload&nbsp;files&nbsp;..."
+msgstr "uPl04D&N8Sp;fIl3s&n8sP;..."
 
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
