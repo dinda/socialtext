@@ -721,8 +721,8 @@ msgstr "あRcHいVえ dいrえc7おRy"
 
 #: lib/Socialtext/AppConfig.pm
 #.  
-msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
-msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 7お 7hえ <あ hRえF=\"H77p://wWw.sおcいあL7えx7.Nえ7/えxChあnGえ/\">SおCいあl7えX7 cうs7おMえR えxChあnGえ</あ>.  い7 いs wHえRえ yおう cあn sHあRえ 7いpS あnD 8えS7 pRあC7いcえs wい7H お7HえR SおCいあl7えX7 cうs7おMえRs."
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>. It is where you can share tips and best practices with other Socialtext customers."
+msgstr "あS あ SおCいあl7えX7 cうs7おMえR, yおう hあvえ あcCえSs 7お 7hえ <あ hRえF=\"H77p://wWw.sおcいあL7えx7.Nえ7/えxChあnGえ/\">SおCいあl7えX7 cうs7おMえR えxChあnGえ</あ>. い7 いS Whえrえ Yおう CあN Shあrえ 7いPs あNd 8えs7 Prあc7いCえS Wい7h お7hえr sおcいあL7えx7 CうS7おmえrS."
 
 #: share/skin/s2/template/search_help_field.html
 #.  
@@ -1676,8 +1676,8 @@ msgstr "fいlえs 7お うpLおあd:"
 
 #: share/skin/s2/template/element/settings/list_skipped_files
 #.  
-msgid "Files are imported only from ZIP/TGZ css/ and images/ paths.  Files\nwith other paths are not imported."
-msgstr "fいlえs あRえ いMpおr7えD おnLy fRおM ZいP/7gZ CsS/ あNd いMあGえS/ pあ7Hs.  fいlえs\nWい7h お7hえr pあ7Hs あRえ nお7 いMpおr7えD."
+msgid "Files are imported only from ZIP/TGZ css/ and images/ paths. Files with other paths are not imported."
+msgstr "fいlえs あRえ いMpおr7えD おnLy fRおM ZいP/7gZ CsS/ あNd いMあGえS/ pあ7Hs. FいLえS Wい7h お7hえr pあ7Hs あRえ nお7 いMpおr7えD."
 
 #: share/skin/s2/template/lite/changes/changes.html
 #.  

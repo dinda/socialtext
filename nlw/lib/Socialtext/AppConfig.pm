@@ -892,7 +892,7 @@ The did you know title
 
 The did you know text
 
-=for code default => loc('As a Socialtext customer, you have access to the <a href="http://www.socialtext.net/exchange/">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers.')
+=for code default => loc('As a Socialtext customer, you have access to the <a href="http://www.socialtext.net/exchange/">Socialtext Customer Exchange</a>. It is where you can share tips and best practices with other Socialtext customers.')
 
 =for code type => SCALAR_TYPE
 

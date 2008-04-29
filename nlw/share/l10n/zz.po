@@ -721,8 +721,8 @@ msgstr "4RcHiV3 dIr3c70Ry"
 
 #: lib/Socialtext/AppConfig.pm
 #.  
-msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
-msgstr "4S 4 S0Ci4l73X7 cUs70M3R, y0u h4v3 4cC3Ss 70 7h3 <a href=\"H77p://wWw.s0cI4L73x7.N37/3xCh4nG3/\">S0Ci4l73X7 cUs70M3R 3xCh4nG3</4>.  i7 Is wH3R3 y0u c4n sH4R3 7IpS 4nD 83S7 pR4C7Ic3s wI7H 07H3R S0Ci4l73X7 cUs70M3Rs."
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>. It is where you can share tips and best practices with other Socialtext customers."
+msgstr "4S 4 S0Ci4l73X7 cUs70M3R, y0u h4v3 4cC3Ss 70 7h3 <a href=\"H77p://wWw.s0cI4L73x7.N37/3xCh4nG3/\">S0Ci4l73X7 cUs70M3R 3xCh4nG3</4>. I7 iS Wh3r3 Y0U C4N Sh4r3 7iPs 4Nd 83s7 Pr4c7iC3S Wi7h 07h3r s0cI4L73x7 CuS70m3rS."
 
 #: share/skin/s2/template/search_help_field.html
 #.  
@@ -1676,8 +1676,8 @@ msgstr "fIl3s 70 UpL04d:"
 
 #: share/skin/s2/template/element/settings/list_skipped_files
 #.  
-msgid "Files are imported only from ZIP/TGZ css/ and images/ paths.  Files\nwith other paths are not imported."
-msgstr "fIl3s 4R3 iMp0r73D 0nLy fR0M ZiP/7gZ CsS/ 4Nd iM4G3S/ p47Hs.  fIl3s\nWi7h 07h3r p47Hs 4R3 n07 iMp0r73D."
+msgid "Files are imported only from ZIP/TGZ css/ and images/ paths. Files with other paths are not imported."
+msgstr "fIl3s 4R3 iMp0r73D 0nLy fR0M ZiP/7gZ CsS/ 4Nd iM4G3S/ p47Hs. FiL3S Wi7h 07h3r p47Hs 4R3 n07 iMp0r73D."
 
 #: share/skin/s2/template/lite/changes/changes.html
 #.  

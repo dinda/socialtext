@@ -9,11 +9,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/Socialtext/WeblogPlugin.pm
-#. (
-msgid "%1"
-msgstr ""
-
 #: lib/Socialtext/SearchPlugin.pm
 #. (
 msgid "%1 - Atom Search for %2"
@@ -27,12 +22,12 @@ msgstr "%1 - Ricerca RSS per %2"
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "%1 Account Growth Report"
-msgstr ""
+msgstr "Resoconto crescita account %1"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "%1 Account Usage Report"
-msgstr ""
+msgstr "Resoconto utilizzo account %1"
 
 #: lib/Socialtext/WeblogPlugin.pm
 #. (
@@ -42,12 +37,12 @@ msgstr "%1 Weblog"
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "%1 Workspace Growth Report"
-msgstr ""
+msgstr "Resoconto crescita spazio di lavoro %1"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "%1 Workspace Usage Report"
-msgstr ""
+msgstr "Resoconto utilizzo spazio di lavoro %1"
 
 #: share/skin/s2/template/view/category_display
 #. (
@@ -77,7 +72,7 @@ msgstr "%1 è un campo obbligatorio."
 #: lib/Socialtext/WorkspacesUIPlugin.pm
 #. (
 msgid "%1 is not a valid archive filename. Skin files must end with .zip, .tar.gz or .tgz."
-msgstr ""
+msgstr "%1 no è un nome valido per l'archivio. I file contenenti le skin devono finire con .zip, .tar.gz o .tgz"
 
 #: lib/Socialtext/User/Default.pm
 #. (
@@ -367,7 +362,7 @@ msgstr "<a href=\"?action=users_invitation\">Invita i tuoi colleghi<b></b></a> a
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "<a href=\"http://www.socialtext.net/open/index.cgi?css_kit\">Skin Customization Kit</a>"
-msgstr ""
+msgstr "<a href=\"http://www.socialtext.net/open/index.cgi?css_kit\">Skin Customization Kit</a>"
 
 #: lib/Socialtext/FavoritesPlugin.pm
 #.  
@@ -397,7 +392,7 @@ msgstr "<u>Link a pagina</u> di un differente spazio di lavoro"
 #: lib/Socialtext/WorkspacesUIPlugin.pm
 #.  
 msgid "A custom skin file was not uploaded."
-msgstr ""
+msgstr "Non è stato caricato un file con una skin personalizzata."
 
 #: share/skin/s2/template/element/settings/users_invite_search_section
 #.  
@@ -462,12 +457,12 @@ msgstr "Nome Utente è un campo obbligatorio"
 #: lib/Socialtext/Handler/ControlPanel.pm
 #.  
 msgid "Accounts"
-msgstr ""
+msgstr "Utenti"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "Accounts matching \"%1\""
-msgstr ""
+msgstr "Utenti che corrispondono a \"%1\""
 
 #: share/skin/s2/template/popup/email_page
 #.  
@@ -498,6 +493,11 @@ msgstr "Aggiungi tag"
 #.  
 msgid "Add&nbsp;tag"
 msgstr "Aggiungi&nbsp;un&nbsp;tag"
+
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Add&nbsp;tags&nbsp;..."
+msgstr ""
 
 #: share/skin/s2/template/element/settings/users_listall_section
 #.  
@@ -721,8 +721,8 @@ msgstr "Directory Archivio"
 
 #: lib/Socialtext/AppConfig.pm
 #.  
-msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>.  It is where you can share tips and best practices with other Socialtext customers."
-msgstr ""
+msgid "As a Socialtext customer, you have access to the <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a>. It is where you can share tips and best practices with other Socialtext customers."
+msgstr "In qualità di cliente SocialText, hai accesso a <a href=\"http://www.socialtext.net/exchange/\">Socialtext Customer Exchange</a> (in inglese). Lì portai condividere esperienze, suggerimenti e idee con altri clienti SocialText."
 
 #: share/skin/s2/template/search_help_field.html
 #.  
@@ -837,7 +837,7 @@ msgstr "Realizzato da Socialtext."
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Browse ..."
-msgstr ""
+msgstr "Naviga..."
 
 #: lib/Socialtext/BugsPlugin.pm
 #.  
@@ -937,12 +937,12 @@ msgstr "Fai click<a href=\"%1\">qui</a> per andare alla versione più recente de
 #: share/skin/s2/template/element/page/attachment_attach_interface
 #.  
 msgid "Click \"Browse\" and select an image or file to upload."
-msgstr ""
+msgstr "Premi \"Sfoglia\" e seleziona un'immagine o un file da caricare."
 
 #: share/skin/s2/template/element/page/attachment_attach_interface
 #.  
 msgid "Click \"Done\" to close this window."
-msgstr ""
+msgstr "Premi \"Eseguito\" per chiudere questa finestra."
 
 #: share/skin/s2/template/view/edit_contention
 #.  
@@ -959,7 +959,7 @@ msgstr "Fai click su questo pulsante per aggiungere un commento alla pagina"
 msgid "Click this button to add a file to the page"
 msgstr "Fai click su questo pulsante per aggiungere un file alla pagina"
 
-#: share/skin/s2/template/element/page/tags
+#: share/skin/s2/template/element/page/tags share/skin/s2/template/layout/edit_wikiwyg
 #.  
 msgid "Click this button to add a tag to the page"
 msgstr "Fai click su questo pulsante per aggiungere un tag alla pagina"
@@ -1012,7 +1012,7 @@ msgstr "Fai click su questo pulsante per avere un'anteprima della pagina, prima 
 #: share/skin/s2/template/element/page/actions
 #.  
 msgid "Click this button to refresh this spreadsheet"
-msgstr ""
+msgstr "Premi questo bottone per aggiornare questo foglio di calcolo"
 
 #: lib/Socialtext/BreadCrumbsPlugin.pm
 #.  
@@ -1059,6 +1059,11 @@ msgstr "Fai click su questo pulsante per salvare la tua pagina"
 msgid "Click this button to save your tag"
 msgstr "Fai click su questo pulsante per salvare il tuo tag"
 
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Click this button to upload a file to the page"
+msgstr ""
+
 #: share/skin/s2/template/view/page/display share/skin/s2/template/view/page/display
 #.  
 msgid "Click to view previous versions of this page."
@@ -1082,7 +1087,7 @@ msgstr "Commento"
 #: share/skin/s2/template/element/page/footer_end
 #.  
 msgid "Community"
-msgstr ""
+msgstr "Community"
 
 #: share/skin/s2/template/view/page_revision_list
 #.  
@@ -1112,7 +1117,7 @@ msgstr "Contatta il gruppo di supporto Socialtext"
 #: lib/Socialtext/Formatter/WaflPhrase.pm
 #.  
 msgid "Contents"
-msgstr ""
+msgstr "Contenuti"
 
 #: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
 #. (
@@ -1147,7 +1152,7 @@ msgstr ""
 #: lib/Socialtext/WorkspacesUIPlugin.pm
 #. (
 msgid "Could not open %1"
-msgstr ""
+msgstr "Non è stato possibile aprire %1"
 
 #: share/skin/s2/template/element/settings/weblog_create share/skin/s2/template/element/settings/workspaces_create_section
 #.  
@@ -1237,12 +1242,12 @@ msgstr "Impostazioni privacy personalizzate"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Customized Skin Files"
-msgstr ""
+msgstr "File Skin Personalizzate"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Customized Skin."
-msgstr ""
+msgstr "Skin Personalizzata."
 
 #: lib/Socialtext/HomepagePlugin.pm share/skin/s2/template/element/settings/workspaces_settings_appearance_section share/skin/s2/template/element/wiki/subnav-default share/skin/s2/template/element/wiki/subnav-listview share/skin/s2/template/element/wiki/subnav-weblog
 #.  
@@ -1277,7 +1282,7 @@ msgstr "Data:"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Default Skin."
-msgstr ""
+msgstr "Skin standard."
 
 #: share/skin/s2/template/element/page/actions
 #.  
@@ -1622,7 +1627,7 @@ msgstr "Esporta come HTML"
 #: lib/Socialtext/Workspace.pm
 #. (
 msgid "Export directory %1 does not exist.\n"
-msgstr ""
+msgstr "La directory di esportazione %1 non esiste.\n"
 
 #: share/skin/s2/template/element/listview/actions share/skin/s2/template/element/page/actions
 #.  
@@ -1652,7 +1657,7 @@ msgstr "File di backup in fase di recupero dalla condivisione SMB..."
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: share/skin/s2/template/element/page/attachment_manage_interface
 #.  
@@ -1671,7 +1676,7 @@ msgstr "File da caricare:"
 
 #: share/skin/s2/template/element/settings/list_skipped_files
 #.  
-msgid "Files are imported only from ZIP/TGZ css/ and images/ paths.  Files\nwith other paths are not imported."
+msgid "Files are imported only from ZIP/TGZ css/ and images/ paths. Files with other paths are not imported."
 msgstr ""
 
 #: share/skin/s2/template/lite/changes/changes.html
@@ -2052,7 +2057,7 @@ msgstr "E' come se stessi cercando di effettuare una ricerca in un campo dell'in
 #: share/skin/s2/template/element/settings/workspaces_create_section
 #.  
 msgid "It must consist of 3-30 lowercase letters, numbers, underscores or dashes."
-msgstr ""
+msgstr "Deve contenere fra 3 e 30 lettere minuscole, numeri, underscore o trattini"
 
 #: lib/Socialtext/Locales.pm
 #.  
@@ -2122,7 +2127,7 @@ msgstr "Modificato l'ultima volta da %1"
 #: share/skin/s2/template/view/homepage share/skin/s2/template/view/homepage
 #. (
 msgid "Last edited by <span class=\"st-homepage-whatsnew-author\">%1</span> on <span class=\"st-homepage-whatsnew-date\">%2</span>"
-msgstr ""
+msgstr "Modificato l'ultima volta da <span class=\"st-homepage-whatsnew-author\">%1</span> il <span class=\"st-homepage-whatsnew-date\">%2</span>"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -2142,7 +2147,7 @@ msgstr "Cognome:"
 #: share/skin/s2/javascript/widget_resource.js share/skin/s2/javascript/widget_resource.js share/skin/s2/template/view/refcard
 #.  
 msgid "Link text"
-msgstr "Testo link"
+msgstr "Testo del link"
 
 #: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
 #. (
@@ -2252,7 +2257,7 @@ msgstr "Gestisci file"
 #: share/skin/s2/template/element/page/attachment_attach_interface
 #.  
 msgid "Maximum file size: 50MB"
-msgstr ""
+msgstr "Dimensione massima del file: 50MB"
 
 #: share/skin/s2/template/view/refcard
 #.  
@@ -2412,12 +2417,12 @@ msgstr "NOn è stato fornito alcun ID di pagina"
 #: lib/Socialtext/RtfExportPlugin.pm
 #.  
 msgid "No page name given"
-msgstr ""
+msgstr "Non è stato assegnato nessun nome alla pagina"
 
 #: lib/Socialtext/RtfExportPlugin.pm
 #.  
 msgid "No pages selected for export"
-msgstr ""
+msgstr "Non è stata selezionata alcuna pagina da esportare"
 
 #: share/skin/s2/template/authen/forgot_password.html
 #.  
@@ -2677,7 +2682,7 @@ msgstr "Messaggio personale"
 #: share/skin/s2/template/email/email-address-confirmation.html
 #. (
 msgid "Please <a href=\"%1\">click on this link to confirm your email address.</a>"
-msgstr ""
+msgstr "Per favore <a href=\"%1\">clicca su questo link per confermare il tuo indirizzo email.</a>"
 
 #: share/skin/s2/template/email/st/workspace-invitation-body.html
 #. (
@@ -2932,7 +2937,7 @@ msgstr "Redirezione a %1 in corso"
 #: share/skin/s2/template/element/page/actions
 #.  
 msgid "Refresh"
-msgstr ""
+msgstr "Aggiorna"
 
 #: share/console-template/template/backup.html
 #.  
@@ -2967,7 +2972,7 @@ msgstr "Rimuovi il tag %1 dalla pagina"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Remove&nbsp;Existing&nbsp;Files"
-msgstr ""
+msgstr "Rimuovi&nbsp;File&nbsp;Esistenti"
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
@@ -3032,7 +3037,7 @@ msgstr "Ripristina la revisione %1"
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
 msgid "Restore failed - check %1"
-msgstr ""
+msgstr "Ripristino fallito - verificare %1"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -3052,12 +3057,12 @@ msgstr "Il ripristino è già in corso"
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #.  
 msgid "Restore latest is already running"
-msgstr ""
+msgstr "Ripristino dell'ultima versione già in corso"
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
 msgid "Restore of %1 finished."
-msgstr ""
+msgstr "Ripristino di %1 completato."
 
 #: lib/Socialtext/Appliance/Model/Backup.pm
 #. (
@@ -3187,7 +3192,7 @@ msgstr "Cerca utenti da invitare"
 #: lib/Socialtext/SOAPGoogle.pm
 #. (
 msgid "Search for \"%1\""
-msgstr ""
+msgstr "Cerca \"%1\""
 
 #: share/skin/s2/template/lite/search/search.html
 #.  
@@ -3227,7 +3232,7 @@ msgstr "Seleziona tutte le pagine"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Select the ZIP or TGZ file that contains the customized skin files:"
-msgstr ""
+msgstr "Seleziona il file ZIP o TGZ che contiene i file della skin personalizzata"
 
 #: share/console-template/template/setup.html share/console-template/template/setup.html
 #.  
@@ -3297,7 +3302,7 @@ msgstr "Mostra il nome completo di '%1'. Fai click per modificare."
 #: share/console-template/template/shutdown.html
 #.  
 msgid "Shut Down Appliance"
-msgstr "Spegni l'apparecchio"
+msgstr "Spegni l'Appliance"
 
 #: share/console-template/template/shutdown.html
 #.  
@@ -3312,7 +3317,7 @@ msgstr "Spegni"
 #: lib/Socialtext/Appliance/ConsoleController.pm
 #.  
 msgid "Shutdown Appliance?"
-msgstr "Spegnere l'applicazione?"
+msgstr "Spegnere l'Appliance?"
 
 #: share/skin/s2/template/email/openid/workspace-invitation-body.html share/skin/s2/template/email/st/workspace-invitation-body.html share/skin/s2/template/email/st/workspace-invitation.txt
 #.  
@@ -3337,7 +3342,7 @@ msgstr "Dimensione"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Size (bytes)"
-msgstr ""
+msgstr "Dimensione (byte)"
 
 #: lib/Socialtext/Widget_resource.pm share/skin/s2/javascript/widget_resource.js
 #. (
@@ -3347,12 +3352,12 @@ msgstr "Skype: %1"
 #: share/console-template/template/console_wrapper.tmpl share/console-template/template/console_wrapper.tmpl
 #.  
 msgid "Socialtext Appliance"
-msgstr "Apparecchio Socialtext"
+msgstr "Socialtext Appliance"
 
 #: lib/Socialtext/Appliance/Model/Setup.pm
 #.  
 msgid "Socialtext Appliance Test Email"
-msgstr "Email di prova degli apparecchi Socialtext"
+msgstr "Email di prova dell'Appliance Socialtext"
 
 #: share/skin/s2/template/view/refcard
 #.  
@@ -3367,22 +3372,22 @@ msgstr "Homepage Socialtext"
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
 msgid "Socialtext Unplugged"
-msgstr ""
+msgstr "Socialtext Unplugged"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
 msgid "Socialtext Unplugged allows users to read and edit workspace pages while offline. Users can \"unplug\" one or more pages to read and edit. Changes can be synchronized with the workspace."
-msgstr ""
+msgstr "SocialText Unplugged permette agli utenti di leggere e modificare gli Spazi di Lavoro quando sono offline. Gli utenti possono \"scollegare\" una o più pagine da leggere e modificare. Le moficihe poi possono venire sincronizzate con lo Spazio di Lavoro"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
 msgid "Socialtext Unplugged disabled"
-msgstr ""
+msgstr "SocialText Unplugged disabilitato"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
 msgid "Socialtext Unplugged enabled"
-msgstr ""
+msgstr "SocialText Unplugged abilitato"
 
 #: share/skin/s2/template/view/refcard
 #.  
@@ -3392,7 +3397,7 @@ msgstr "Aiuto sulla punteggiatura dello spazio di lavoro Socialtext"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Socialtext enables you to customize the look and feel of your workspace. You can use the default skin supplied by Socialtext or customize your own skin."
-msgstr ""
+msgstr "Socialtext ti permette di personalizzare l'aspetto del tuo spazio di lavoro. Puoi usare la skin standard fornita da socialtext o crearne una personalizzata."
 
 #: share/skin/s2/template/authen/forgot_password.html
 #.  
@@ -3402,7 +3407,7 @@ msgstr "Help password SocialText"
 #: share/skin/s2/template/element/page/footer_end
 #.  
 msgid "Socialtext, the Enterprise Wiki"
-msgstr ""
+msgstr "Socialtext, il wiki per imprese"
 
 #: share/skin/s2/template/lite/page/contention.html share/skin/s2/template/view/edit_contention
 #.  
@@ -3592,7 +3597,7 @@ msgstr "L'account %1 è stato creato."
 #: lib/Socialtext/Handler/ControlPanel.pm
 #.  
 msgid "The %1 user was confirmed."
-msgstr ""
+msgstr "L'utente %1 è stato confermato."
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
@@ -3652,7 +3657,7 @@ msgstr "L'email ti verrà spedita da<strong>%1</strong>. Per essere sicuro di ri
 #: lib/Socialtext/AttachmentsUIPlugin.pm
 #.  
 msgid "The file you are trying to upload does not exist"
-msgstr ""
+msgstr "Il file che stai tentando di caricare non esiste"
 
 #: share/skin/s2/template/element/settings/users_invited_section
 #.  
@@ -3742,7 +3747,7 @@ msgstr "Il testo che hai appena modificato è mostrato sotto. Puoi copiare e inc
 #: lib/Socialtext/WorkspacesUIPlugin.pm
 #.  
 msgid "The uploaded skin does not contain css/screen.css"
-msgstr ""
+msgstr "La skin caricata non contiene css/screen.css"
 
 #: share/skin/s2/template/element/settings/users_invite_search_section share/skin/s2/template/element/settings/users_invite_section
 #.  
@@ -3792,7 +3797,7 @@ msgstr "Si è verificato un errore:"
 #: share/skin/s2/template/element/settings/list_skipped_files
 #.  
 msgid "These files were not imported:"
-msgstr ""
+msgstr "Questi file non sono stati importati:"
 
 #: share/skin/s2/template/element/settings/select
 #.  
@@ -3902,7 +3907,7 @@ msgstr "Per cambiare la tua password, per favore segui questo link:"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #. (
 msgid "To customize your own skin, download the %1, modify the skin files to your liking, and upload them here. Complete documentation on skin customization is available in the %2.<h4>Skin support is not included in basic support. Users who upload skins are responsible for keeping copies of their skin files and for keeping their skins current as the Socialtext application changes.</h4>"
-msgstr ""
+msgstr "Per personalizzare la tua skin, scarica %1, modifica i file contenuti in base alle tue preferenze, e caricali qui. La documentazione completa riguardo la personalizzazione delel skin è disponibile nella %2<h4>Il supporto alle skin non è incluso nel supporto base. Gli utenti che caricano le skin si devono preoccupare di mantenerne una copia locale e di aggiornarle quando i cambiamenti nell'applicazione dovessero richiederlo</h4>"
 
 #: share/skin/s2/template/email/email-address-confirmation-completed.html share/skin/s2/template/email/email-address-confirmation-completed.txt
 #.  
@@ -3982,7 +3987,7 @@ msgstr "Strumenti"
 #: lib/Socialtext/Workspace.pm
 #.  
 msgid "Top Page"
-msgstr ""
+msgstr "Pagina iniziale"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_features_section
 #.  
@@ -4067,7 +4072,7 @@ msgstr "Ora aggiornata dal %1"
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Upload"
-msgstr ""
+msgstr "Carica"
 
 #: share/skin/s2/template/element/settings/workspaces_settings_appearance_section
 #.  
@@ -4084,10 +4089,15 @@ msgstr "Carica file"
 msgid "Upload files"
 msgstr "Carica file"
 
+#: share/skin/s2/template/layout/edit_wikiwyg
+#.  
+msgid "Upload&nbsp;files&nbsp;..."
+msgstr ""
+
 #: share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Uploaded"
-msgstr ""
+msgstr "Caricato"
 
 #: share/skin/s2/template/view/attachmentslist
 #.  
@@ -4097,7 +4107,7 @@ msgstr "Caricato da"
 #: share/skin/s2/template/element/page/attachments
 #.  
 msgid "Uploaded by $uploader"
-msgstr ""
+msgstr "Caricato da $uploader"
 
 #: share/skin/s2/template/element/jst/attachment/name
 #. (
@@ -4407,7 +4417,7 @@ msgstr "Privacy dello spazio di lavoro"
 #: share/skin/s2/template/element/settings/select share/skin/s2/template/element/settings/workspaces_settings_skin_section
 #.  
 msgid "Workspace Skin"
-msgstr ""
+msgstr "Skin dello spazio di lavoro"
 
 #: share/skin/s2/template/element/settings/workspaces_create_section share/skin/s2/template/element/settings/workspaces_listall_section share/skin/s2/template/element/settings/workspaces_settings_appearance_section
 #.  
@@ -4427,7 +4437,7 @@ msgstr "Il nome dello spazio di lavoro è un campo obbligatorio."
 #: lib/Socialtext/Workspace.pm
 #.  
 msgid "Workspace name may not begin with -."
-msgstr ""
+msgstr "Il nome dello spazio di lavoro non deve iniziare con -."
 
 #: lib/Socialtext/Workspace.pm
 #.  
@@ -4447,7 +4457,7 @@ msgstr "Il titolo dello spazio di lavoro è troppo lungo dopo la codifica dell'U
 #: lib/Socialtext/Workspace.pm
 #.  
 msgid "Workspace title must be between 2 and 64 characters long and may not begin with a -."
-msgstr ""
+msgstr "Il nome degli spazi di lavoro deve contenere da 2 a 64 caratteri e non iniziare con -."
 
 #: lib/Socialtext/Handler/ControlPanel.pm share/console-template/template/overview.html share/skin/s2/template/element/settings/select
 #.  
@@ -4602,7 +4612,7 @@ msgstr "Non puoi cambiare il nome di un utente creato dal sistema."
 #: lib/Socialtext/AttachmentsUIPlugin.pm
 #.  
 msgid "You dont have permission to upload attachments"
-msgstr ""
+msgstr "Non sei abilitato a caricare allegati"
 
 #: share/skin/s2/template/email/email-address-confirmation-completed.html share/skin/s2/template/email/email-address-confirmation-completed.txt
 #. (
@@ -4647,7 +4657,7 @@ msgstr "Devi fare login per visualizzare questa pagina."
 #: lib/Socialtext/Handler/ControlPanel.pm
 #. (
 msgid "You must provide a account_id to this URI (%1)."
-msgstr ""
+msgstr "Devi fornire un account_id to this URI (%1)."
 
 #: lib/Socialtext/Handler/ControlPanel.pm
 #.  
