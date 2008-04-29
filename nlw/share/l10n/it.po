@@ -999,6 +999,11 @@ msgstr "Fai click su questo pulsante per modificare la pagina"
 msgid "Click this button to manage files attached to the page"
 msgstr "Fai click su questo pulsante per gestire i file allegati alla pagina"
 
+#: build/templates/socialtext/search/search_config.yaml.tt2
+#.  
+msgid "Click this button to perform your search"
+msgstr ""
+
 #: share/skin/s2/template/element/page/edit
 #.  
 msgid "Click this button to preview your page before saving it"
@@ -2354,6 +2359,11 @@ msgstr "Le nuove password non sono uguali"
 msgid "New passwords must be at least 6 characters long."
 msgstr "La nuova password dev' essere di almeno 6 caratteri."
 
+#: build/templates/socialtext/search/search_config.yaml.tt2 share/skin/s2/javascript/pageview.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-other-mini.js share/skin/s2/javascript/socialtext-other.js
+#.  
+msgid "New search"
+msgstr "Nuova ricerca"
+
 #: share/skin/s2/template/element/settings/users_invite_search_section share/skin/s2/template/element/settings/users_invite_section
 #.  
 msgid "New users will be sent the following invitation email:"
@@ -3134,7 +3144,7 @@ msgstr "Salva con un altro nome:"
 msgid "Screen Layout"
 msgstr "Layouot Screen"
 
-#: lib/Socialtext/Lite.pm
+#: build/templates/socialtext/search/search_config.yaml.tt2 lib/Socialtext/Lite.pm
 #.  
 msgid "Search"
 msgstr ""
