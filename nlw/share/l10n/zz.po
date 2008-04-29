@@ -999,6 +999,11 @@ msgstr "cLiCk 7HiS 8u770n 70 3dI7 7H3 p4g3"
 msgid "Click this button to manage files attached to the page"
 msgstr "cLiCk 7HiS 8u770n 70 M4N4G3 fIl3s 4774cH3D 70 7H3 p4g3"
 
+#: build/templates/socialtext/search/search_config.yaml.tt2
+#.  
+msgid "Click this button to perform your search"
+msgstr "cLiCk 7HiS 8u770n 70 P3Rf0rM Y0Ur s34RcH"
+
 #: share/skin/s2/template/element/page/edit
 #.  
 msgid "Click this button to preview your page before saving it"
@@ -2354,6 +2359,11 @@ msgstr "n3w p4sSw0rDs d0 N07 M47cH"
 msgid "New passwords must be at least 6 characters long."
 msgstr "n3w p4sSw0rDs mUs7 83 47 L34s7 6 Ch4r4c73Rs l0nG."
 
+#: build/templates/socialtext/search/search_config.yaml.tt2 share/skin/s2/javascript/pageview.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-other-mini.js share/skin/s2/javascript/socialtext-other.js
+#.  
+msgid "New search"
+msgstr "n3w s34RcH"
+
 #: share/skin/s2/template/element/settings/users_invite_search_section share/skin/s2/template/element/settings/users_invite_section
 #.  
 msgid "New users will be sent the following invitation email:"
@@ -3134,7 +3144,7 @@ msgstr "s4v3 Wi7h 4 dIfF3R3N7 n4m3:"
 msgid "Screen Layout"
 msgstr "sCr33N L4Y0U7"
 
-#: lib/Socialtext/Lite.pm
+#: build/templates/socialtext/search/search_config.yaml.tt2 lib/Socialtext/Lite.pm
 #.  
 msgid "Search"
 msgstr "s34RcH"
