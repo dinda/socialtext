@@ -6,7 +6,12 @@ PORT=`perl -e 'print $> + 20000'`
 SERVER=http://`hostname`:$PORT
 
 echo Creating wikitests workspace
-$ST_CURRENT/nlw/bin/st-admin create-workspace --title 'Wikitests' --name wikitests
+WIKITESTS=`$ST_CURRENT/nlw/bin/st-admin list-workspaces | grep wikitests` || true
+
+if [ "$WIKITESTS" == "wikitests" ]; then
+    echo WARNING: $WIKITESTS  already exists
+fi
+$ST_CURRENT/nlw/bin/st-admin create-workspace --title 'Wikitests' --name wikitests --empty
 $ST_CURRENT/nlw/bin/st-admin add-workspace-admin  --email devnull1@socialtext.com --workspace wikitests
 
 echo Adding user tester to wikitests workspace
