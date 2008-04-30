@@ -200,6 +200,9 @@
             '*/*':     &default [Socialtext::Rest::Workspace, GET_html]
             'application/json': [Socialtext::Rest::Workspace, GET_json]
             'text/html':        *default
+        'PUT':    
+            '*/*':     &default [Socialtext::Rest::Workspace, bad_type]
+            'application/json': [Socialtext::Rest::Workspace, PUT]
         '*':                    [Socialtext::Rest::Workspace, bad_method]
 -
     '/data/workspaces':
