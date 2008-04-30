@@ -108,13 +108,24 @@ Business admin can't read the workspace's json, so we will add the user as a wor
 | comment | Update the customjs_uri as a workspace admin | |
 | st-admin | remove-accounts-admin --username %%username%% | no longer has |
 | put | /data/workspaces/%%wksp%% | Content-Type=application/json | { "customjs_uri":"/kamma.js" } |
-| code-is | 401 | |
+| code-is | 204 | |
+| get | /data/workspaces/%%wksp%% | application/json |
+| code-is | 200 | |
+| body-like | "customjs_uri":"/kamma.js" |
 
-| comment | Update the customjs_uri as a nobody | |
+| comment | Update the customjs_uri as a member | |
 | st-admin | remove-workspace-admin --username %%username%% --workspace=%%wksp%% | is no longer |
 | put | /data/workspaces/%%wksp%% | Content-Type=application/json | { "customjs_uri":"/eraser.js" } |
+| code-is | 401 | |
+| get | /data/workspaces/%%wksp%% | application/json |
+| code-is | 200 | |
+| body-like | "name":" |
+
+| comment | Update the customjs_uri as a nobody | |
+| st-admin | remove-member --username %%username%% --workspace=%%wksp%% | is no longer |
+| put | /data/workspaces/%%wksp%% | Content-Type=application/json | { "customjs_uri":"/pencil.js" } |
 | code-is | 401 | |
 
 | comment | Fetch the customjs_uri as a nobody | |
 | get | /data/workspaces/%%wksp%% | application/json |
-| code-is | 200 | |
+| code-is | 403 | |

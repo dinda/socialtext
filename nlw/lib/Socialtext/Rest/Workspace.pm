@@ -65,7 +65,8 @@ sub get_resource {
 sub PUT {
     my( $self, $rest ) = @_;
 
-    unless ($self->_user_is_business_admin_p( ) ) {
+    my $is_admin = $self->hub->checker->check_permission('admin_workspace');
+    unless ($is_admin or $self->_user_is_business_admin_p( ) ) {
         $rest->header(
                       -status => HTTP_401_Unauthorized,
                      );
