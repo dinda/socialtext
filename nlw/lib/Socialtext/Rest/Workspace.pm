@@ -75,7 +75,8 @@ sub PUT {
     my $workspace = $self->workspace;
     my $update_request_hash = decode_json( $rest->getContent() );
 
-    if (my $uri = $update_request_hash->{customjs_uri}) {
+    my $uri = $update_request_hash->{customjs_uri};
+    if (defined $uri) {
         $workspace->update(customjs_uri => $uri);
     }
 
