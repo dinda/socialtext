@@ -90,6 +90,8 @@ Business admin can't read the workspace's json, so we will add the user as a wor
 | get | /data/workspaces/%%wksp%% | application/json |
 | code-is | 200 | |
 | body-like | "customjs_uri":"/monkey.js" |
+| get | /%%wksp%%/index.cgi | |
+| body-like | /monkey.js | |
 
 | comment | Update the customjs_uri of a workspace | |
 | put | /data/workspaces/%%wksp%% | Content-Type=application/json | { "customjs_uri":"/buddha.js" } |
@@ -97,6 +99,8 @@ Business admin can't read the workspace's json, so we will add the user as a wor
 | get | /data/workspaces/%%wksp%% | application/json |
 | code-is | 200 | |
 | body-like | "customjs_uri":"/buddha.js" |
+| get | /%%wksp%%/index.cgi | |
+| body-like | /buddha.js | |
 
 | comment | Unset the customjs_uri of a workspace | |
 | put | /data/workspaces/%%wksp%% | Content-Type=application/json | { "customjs_uri":"" } |
@@ -104,6 +108,8 @@ Business admin can't read the workspace's json, so we will add the user as a wor
 | get | /data/workspaces/%%wksp%% | application/json |
 | code-is | 200 | |
 | body-like | "customjs_uri":"" |
+| get | /%%wksp%%/index.cgi | |
+| body-unlike | /monkey.js | |
 
 | comment | Update the customjs_uri as a workspace admin | |
 | st-admin | remove-accounts-admin --username %%username%% | no longer has |
@@ -119,7 +125,8 @@ Business admin can't read the workspace's json, so we will add the user as a wor
 | code-is | 401 | |
 | get | /data/workspaces/%%wksp%% | application/json |
 | code-is | 200 | |
-| body-like | "name":" |
+| body-like | "name":" | |
+| body-unlike | "customjs_uri":" | |
 
 | comment | Update the customjs_uri as a nobody | |
 | st-admin | remove-member --username %%username%% --workspace=%%wksp%% | is no longer |

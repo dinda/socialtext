@@ -155,6 +155,13 @@ Put to the specified URI
 
 sub put { shift->_call_method('put', @_) }
 
+sub body_unlike {
+    my ($self, $expected) = @_;
+    my $body = $self->{http}->response->content;
+    unlike $body, $self->quote_as_regex($expected), 
+        $self->{http}->name() . " checking body-unlike";
+}
+
 sub _call_method {
     my ($self, $method, $uri, $headers, $body) = @_;
     if ($headers) {
