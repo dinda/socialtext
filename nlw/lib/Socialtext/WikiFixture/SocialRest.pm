@@ -145,8 +145,18 @@ Post to the specified URI
 
 =cut
 
-sub post {
-    my ($self, $uri, $headers, $body) = @_;
+sub post { shift->_call_method('post', @_) }
+
+=head2 put( uri, headers, body )
+
+Put to the specified URI
+
+=cut
+
+sub put { shift->_call_method('put', @_) }
+
+sub _call_method {
+    my ($self, $method, $uri, $headers, $body) = @_;
     if ($headers) {
         $headers = [
             map {
@@ -155,7 +165,7 @@ sub post {
             } split m/\s*,\s*/, $headers
         ];
     }
-    $self->{http}->post($self->{browser_url} . $uri, $headers, $body);
+    $self->{http}->$method($self->{browser_url} . $uri, $headers, $body);
 }
 
 sub _get {
