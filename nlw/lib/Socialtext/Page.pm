@@ -399,6 +399,8 @@ sub hash_representation {
         revision_id    => $self->revision_id,
         revision_count => $self->revision_count,
         workspace_name => $self->hub->current_workspace->name,
+
+        type => $self->metadata->Type,
     };
 }
 
