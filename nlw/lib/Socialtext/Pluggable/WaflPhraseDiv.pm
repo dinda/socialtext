@@ -2,6 +2,7 @@ package Socialtext::Pluggable::WaflPhraseDiv;
 use strict;
 use warnings;
 use Class::Field qw( const field);
+use Socialtext::Formatter::WaflPhrase;
 use base 'Socialtext::Formatter::WaflPhraseDiv';
 use Socialtext::Permission 'ST_READ_PERM';
 use Socialtext::l10n qw( loc );
