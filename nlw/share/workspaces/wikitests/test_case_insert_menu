@@ -113,9 +113,9 @@ TODO: Selenium up to 9.2 only recognizes the first prompt for table size. Check 
 | click_ok | link=Username |  |
 | verifyValue | wikiwyg_wikitext_textarea | foo\n---- |
 
-| click_ok | link=Local Date and Time |  |
+| click_ok | link=Local Date & Time |  |
 | verifyValue | wikiwyg_wikitext_textarea | foo\n{date: ----} |
-| click_ok | link=Local Date and Time |  |
+| click_ok | link=Local Date & Time |  |
 | verifyValue | wikiwyg_wikitext_textarea | foo\n---- |
 
 | click_ok | link=AIM |  |
