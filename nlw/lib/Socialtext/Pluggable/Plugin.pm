@@ -3,6 +3,7 @@ package Socialtext::Pluggable::Plugin;
 use strict;
 use warnings;
 
+use Socialtext;
 use Socialtext::TT2::Renderer;
 use Socialtext::AppConfig;
 use Class::Field 'field';
@@ -10,7 +11,7 @@ use Socialtext::URI;
 use Socialtext::Storage;
 use Socialtext::AppConfig;
 
-
+my $prod_ver = Socialtext->product_version;
 my $code_base = Socialtext::AppConfig->code_base;
 
 # Class Methods
@@ -116,6 +117,10 @@ sub template_render {
                         $self->hub->helpers->global_template_vars :
                         ();
 
+    my $name = $self->name;
+    my $plugin_dir = $self->plugin_dir;
+    my $share = "/nlw/plugin/$prod_ver";
+
     warn "NO MAIN!!" unless %template_vars;
     
     my $renderer = Socialtext::TT2::Renderer->instance;
@@ -123,6 +128,17 @@ sub template_render {
         template => $template,
         paths => [ $self->plugin_dir . "/template" ],
         vars     => {
+            share => "$share/$name",
+            share_path => sub { 
+                my $file = "$plugin_dir/share/$_[0]";
+                if (-f $file) {
+                    my $t = (stat $file)[9];
+                    return "/nlw/plugin/$t/$name/$_[0]";
+                }
+                else {
+                    return "$share/$name/$_[0]";
+                }
+            },
             workspaces => [$self->hub->current_user->workspaces->all],
             as_json => sub { JSON::Syck::Dump(@_) },
             %template_vars,
