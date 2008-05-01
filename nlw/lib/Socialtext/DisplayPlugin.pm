@@ -217,6 +217,7 @@ sub display {
         } @{$self->hub->attachments->all(page_id => $page->id)}
     ];
 
+
     return $self->template_render(
         template => 'view/page/display',
         vars     => {
@@ -319,6 +320,7 @@ sub _get_page_info {
         views   => $self->hub->hit_counter->get_page_counter_value($page),
         has_stats   => $self->hub->hit_counter->page_has_stats($page),
         updated => {
+            user_id => $updated_author ? $updated_author->username : undef,
             author => (
                 $updated_author ? $updated_author->best_full_name(
                     workspace => $self->hub->current_workspace
@@ -328,6 +330,7 @@ sub _get_page_info {
             date => $page->datetime_for_user || undef,
         },
         created => {
+            user_id => $created_author ? $created_author->username : undef,
             author => (
                 $created_author ? $created_author->best_full_name(
                     workspace => $self->hub->current_workspace

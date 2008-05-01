@@ -374,6 +374,7 @@ BEGIN {
             Socialtext::PreferencesPlugin
             Socialtext::Stax
             Socialtext::Template
+            Socialtext::Pluggable::Adapter
 
             Socialtext::SearchPlugin
             Socialtext::AttachmentsUIPlugin

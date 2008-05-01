@@ -102,6 +102,7 @@
 [% IF not config.single %]
     # webplugin is supported for 'drop-in' third party apps
     RewriteRule    !^/webplugin             -           [C]
+    RewriteRule    !^/plugin                -           [C]
     RewriteRule    !^/static                -           [C]
     RewriteRule    !^/logos                 -           [C]
     RewriteRule    !^/favicon\.ico          -           [C]
@@ -112,4 +113,3 @@
 [% END %]
 
     Alias /static  [% config.static_dir %]
-

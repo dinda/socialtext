@@ -54,6 +54,8 @@ sub push_result {
     $result->{page_id} = $page->id;
     $result->{From} =
         $page->last_edited_by->best_full_name( workspace => $self->hub->current_workspace );
+    $result->{username} =
+        $page->last_edited_by->username;
 
     push @{$self->result_set->{rows}}, $result;
     return 1;
