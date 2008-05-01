@@ -859,7 +859,7 @@ msgstr "cあlL '%1' うSいNg sKyPえ. ClいcK 7お えDい7."
 msgid "Can't remove privileges of the last admin"
 msgstr "cあn'7 rえmおvえ Prいvいlえgえs おF 7hえ LあS7 あDmいn"
 
-#: share/console-template/template/popup.html share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_duplicate share/skin/s2/template/element/page/newpage_save share/skin/s2/template/standard_buttons
+#: share/console-template/template/popup.html share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_duplicate share/skin/s2/template/element/page/newpage_save share/skin/s2/template/standard_buttons
 #.  
 msgid "Cancel"
 msgstr "cあnCえL"
@@ -1676,8 +1676,8 @@ msgstr "fいlえs 7お うpLおあd:"
 
 #: share/skin/s2/template/element/settings/list_skipped_files
 #.  
-msgid "Files are imported only from ZIP/TGZ css/ and images/ paths. Files with other paths are not imported."
-msgstr "fいlえs あRえ いMpおr7えD おnLy fRおM ZいP/7gZ CsS/ あNd いMあGえS/ pあ7Hs. FいLえS Wい7h お7hえr pあ7Hs あRえ nお7 いMpおr7えD."
+msgid "Files are imported only from ZIP/TGZ javascript/, css/ and images/ paths. Files with other paths are not imported."
+msgstr "fいlえs あRえ いMpおr7えD おnLy fRおM ZいP/7gZ JあVあScRいP7/, cSs/ あnD いmあgえs/ Pあ7hS. fいlえs wい7H お7HえR Pあ7hS あrえ Nお7 いmPおR7えd."
 
 #: share/skin/s2/template/lite/changes/changes.html
 #.  
@@ -3114,7 +3114,7 @@ msgstr "sあmPlえ Wえ8lおg"
 msgid "Sat"
 msgstr "sあ7"
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_save share/skin/s2/template/element/settings/save share/skin/s2/template/lite/page/edit.html share/skin/s2/template/lite/page/edit.html
+#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Socialtext.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/element/page/edit share/skin/s2/template/element/page/newpage_save share/skin/s2/template/element/settings/save share/skin/s2/template/lite/page/edit.html share/skin/s2/template/lite/page/edit.html
 #.  
 msgid "Save"
 msgstr "sあvえ"
@@ -3199,7 +3199,7 @@ msgstr "sえあRcH FおR \"%1\""
 msgid "Search for the following terms:"
 msgstr "sえあRcH FおR 7hえ FおLlおwいnG 7えRmS:"
 
-#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display-mini.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/javascript/socialtext-display.js share/skin/s2/template/view/refcard
+#: share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/Wikiwyg/Jemplate.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui-mini.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/javascript/socialtext-display-ui.js share/skin/s2/template/view/refcard
 #.  
 msgid "Section"
 msgstr "sえc7いおn"
