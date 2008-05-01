@@ -1,4 +1,5 @@
 package Socialtext::Pluggable::WaflPhraseDiv;
+# @COPYRIGHT@
 use strict;
 use warnings;
 use Class::Field qw( const field);

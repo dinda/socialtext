@@ -1,4 +1,5 @@
 package Socialtext::Pluggable::Adapter;
+# @COPYRIGHT@
 use strict;
 use warnings;
 

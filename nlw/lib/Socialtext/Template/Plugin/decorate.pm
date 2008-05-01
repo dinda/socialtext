@@ -1,4 +1,5 @@
 package Socialtext::Template::Plugin::decorate;
+# @COPYRIGHT@
 use Template::Plugin::Filter;
 use base qw( Template::Plugin::Filter );
 
