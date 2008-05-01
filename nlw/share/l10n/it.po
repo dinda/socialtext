@@ -2061,6 +2061,11 @@ msgstr "Deve contenere fra 3 e 30 lettere minuscole, numeri, underscore o tratti
 
 #: lib/Socialtext/Locales.pm
 #.  
+msgid "Italian"
+msgstr "Italiano"
+
+#: lib/Socialtext/Locales.pm
+#.  
 msgid "Japanese"
 msgstr "Giapponese"
 

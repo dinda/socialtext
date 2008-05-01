@@ -2061,6 +2061,11 @@ msgstr "i7 MuS7 c0nSiS7 0F 3-30 l0w3rC4S3 l3773Rs, NuM83rS, uNd3rSc0r3s 0R D4Sh3
 
 #: lib/Socialtext/Locales.pm
 #.  
+msgid "Italian"
+msgstr "i74Li4n"
+
+#: lib/Socialtext/Locales.pm
+#.  
 msgid "Japanese"
 msgstr "j4p4n3s3"
 

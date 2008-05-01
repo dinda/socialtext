@@ -2061,6 +2061,11 @@ msgstr ""
 
 #: lib/Socialtext/Locales.pm
 #.  
+msgid "Italian"
+msgstr ""
+
+#: lib/Socialtext/Locales.pm
+#.  
 msgid "Japanese"
 msgstr "日本語"
 
