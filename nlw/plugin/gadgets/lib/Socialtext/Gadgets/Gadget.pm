@@ -10,6 +10,9 @@ use LWP::UserAgent;
 use Socialtext::Gadgets::Features;
 use Socialtext::URI;
 
+use Socialtext::URI;
+(my $base_uri = Socialtext::URI::uri) =~ s{/$}{};
+
 my $LANG = 'en';
 my $COUNTRY = 'us';
 
@@ -75,8 +78,9 @@ sub install {
     # XXX Probably don't just remove the existing gadget
     $self->storage->purge;
 
-    my @url_parts = $url =~ m{^(\w+://[^/]*)/?(.*)/([^/]+)$};
-    die "Error parsing url: $url" unless @url_parts >= 2;
+    my @url_parts = $url =~ m{^(\w+://[^/]*)?/?(.*)/([^/]+)$};
+    $url_parts[0] ||= $base_uri;
+    $url = join '/', @url_parts;
 
     $self->storage->set('url_parts', \@url_parts);
     $self->storage->set('url', $url);
@@ -234,8 +238,8 @@ sub get_messages {
   #                 } $doc->getElementsByTagName('Locale');
 
   # if we can't find a more exact lang use the '*' lang 
-  my $lang = exists($self->{module}->{messages}->{$LANG}) ? $LANG : '*';
-  return $self->{module}->{messages}->{$lang};
+  my $lang = exists($self->{module}{messages}->{$LANG}) ? $LANG : '*';
+  return $self->{module}{messages}->{$lang};
 }
 
 sub expand_messages {
@@ -288,7 +292,7 @@ sub template_hash {
     my $self = shift;
     my $prefs = $self->user_prefs;
     my $hash =  {
-        has_prefs => grep({ $_->{datatype} ne 'hidden' } @$prefs) ? 1 : 0,
+        has_prefs => grep({ ($_->{datatype}||'') ne 'hidden' } @$prefs) ? 1 : 0,
         inline => $self->inline,
         content => $self->inline ? $self->get_content : '',
         href => $self->href,
@@ -329,22 +333,22 @@ sub get_arg_string {
 
 sub get_href {
   my $self = shift;
-  return $self->{module}->{href} . '?' . $self->get_arg_string;
+  return $self->{module}{href} . '?' . $self->get_arg_string;
 }
 
 sub get_content {
   my $self = shift;
-  return $self->expand_hangman($self->{module}->{content});
+  return $self->expand_hangman($self->{module}{content});
 }
 
 sub get_prefs_def {
    my $self = shift;
-   return $self->{module}->{prefs_def};
+   return $self->{module}{prefs_def};
 }
 
 sub requires {
    my $self = shift;
-   return ref($self->{module}->{requires}) ? @{$self->{module}->{requires}} : ();
+   return ref($self->{module}{requires}) ? @{$self->{module}{requires}} : ();
 }
 
 sub get_user_prefs {
@@ -364,7 +368,7 @@ sub get_user_prefs {
 
 sub get_module_prefs {
     my $self = shift;
-    my $m = $self->{module}->{module_prefs};
+    my $m = $self->{module}{module_prefs};
     my %prefs =  map { $_ => $self->expand_hangman($m->{$_}) } keys %{$m};
     return \%prefs;
 }

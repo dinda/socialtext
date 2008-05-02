@@ -4,7 +4,7 @@
   <div class="widgetWrap">
     <div class='widgetHeader'>
         <h3>
-            <img src="/plugin/gadgets/images/iconContent.png" alt="profile" />
+            <img src="[% share_path("images/iconContent.png") %]" alt="profile" />
             Click a widget link to install it.
         </h3>
     </div>
@@ -15,14 +15,18 @@
             <BR> 
             [% FOREACH gadget IN gadgetsST %]
               
-              <a href="[% current_uri %]?action=add_gadget;url=[% base_uri %]/[% gadget %].xml">[% gadget %]</a> <BR>
+              <a href="[% current_uri %]?action=add_gadget;url=[% share_path("gadgets/${gadget}.xml") %]">
+                [% gadget %]
+              </a> <BR>
 
             [% END %]
             <BR> <BR> 
             <h2>3rd Party</h2>
             <BR> 
             [% FOREACH gadget IN gadgets3rd %]
-              <a href="[% current_uri %]?action=add_gadget;url=[% base_uri %]/3rdparty/[% gadget %].xml">[% gadget %]</a> <BR>
+              <a href="[% current_uri %]?action=add_gadget;url=[% share_path("gadgets/3rdparty/${gadget}.xml") %]>
+                [% gadget %]
+              </a> <BR>
 
             [% END %]
             <BR> 

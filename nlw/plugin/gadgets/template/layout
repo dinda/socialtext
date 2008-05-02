@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>Socialtext - Home</title>
-        <link rel="stylesheet" href="/plugin/gadgets/css/window.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="[% share_path('css/window.css') %]" type="text/css" media="screen" />
 
         [% IF gadgets %]
             <script src="[% wiki.skin_uri('common') %]/javascript/jquery-1.2.1.pack.js"></script>
-            <script src="[% wiki.skin_uri('common') %]/javascript/jquery.ui-1.0.1a/jquery.dimensions.js"></script>
-            <script src="[% wiki.skin_uri('common') %]/javascript/jquery.ui-1.0.1a/ui.mouse.js"></script>
-            <script src="[% wiki.skin_uri('common') %]/javascript/jquery.ui-1.0.1a/ui.draggable.js"></script>
-            <script src="[% wiki.skin_uri('common') %]/javascript/jquery.ui-1.0.1a/ui.draggable.ext.js"></script>
+            <script src="[% share_path('javascript/jquery.ui-1.0.1a/jquery.dimensions.js') %]"></script>
+            <script src="[% share_path('javascript/jquery.ui-1.0.1a/ui.mouse.js') %]"></script>
+            <script src="[% share_path('javascript/jquery.ui-1.0.1a/ui.draggable.js') %]"></script>
+            <script src="[% share_path('javascript/jquery.ui-1.0.1a/ui.draggable.ext.js') %]"></script>
 
             [% FOR feature = features %]
                 [% IF feature.src %]
@@ -20,8 +20,8 @@
                     <!-- ERROR: [% feature.error %] -->
                 [% END %]
             [% END %]
-            <script src="/plugin/gadgets/javascript/gadgets.js"></script>
-            <script src="/plugin/gadgets/javascript/drag-and-drop.js"></script>
+            <script src="[% share_path('javascript/gadgets.js') %]"></script>
+            <script src="[% share_path('javascript/drag-and-drop.js') %]"></script>
         [% END %]
 
         [% INCLUDE "element/wiki/js-bootstrap" %]
@@ -31,7 +31,7 @@
         <div id="mainWrap">
 
             <div id="headerWrap">
-                <div id="logo"><a href="index.cgi"><img src="/plugin/gadgets/images/logo.png" alt="Socialtext" /></a></div>
+                <div id="logo"><a href="index.cgi"><img src="[% share_path('images/logo.png') %]" alt="Socialtext" /></a></div>
             </div><!-- headerWrap END -->
             <div id="mainNav">
                 <ul>

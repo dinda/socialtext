@@ -5,7 +5,7 @@ use warnings;
 use Class::Field qw(field);
 use XML::LibXML;
 
-my $feature_url = "/plugin/gadgets/javascript/shindig";
+my $feature_url = "/nlw/plugin/gadgets/javascript/shindig";
 
 field 'code_base';
 field 'feature_dir', -init => '$self->code_base . "/../plugin/gadgets/share/javascript/shindig"';

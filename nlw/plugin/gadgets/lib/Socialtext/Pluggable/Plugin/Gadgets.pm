@@ -3,12 +3,17 @@ package Socialtext::Pluggable::Plugin::Gadgets;
 use strict;
 use warnings;
 
+use JSON::Syck;
 use Socialtext::Helpers;
 use Socialtext::AppConfig;
 use Socialtext::Gadgets::Container;
 use XML::LibXML;
+use LWP;
+use HTTP::Request;
 
 use base 'Socialtext::Pluggable::Plugin';
+
+my $UNPARSEABLE_CRUFT = "throw 1; < don't be evil' >";
 
 sub name { 'gadgets' }
 
@@ -19,35 +24,12 @@ sub register {
     $class->add_hook('action.test_gadgets' => 'test_gadgets');
     $class->add_hook('action.gadget_gallery' => 'gallery');
 
-    $class->add_rest(
-        '/data/gadget/instance/:id/render' =>
-            ["Socialtext::Rest::Gadget", 'render_instance'],
-    );
-    $class->add_rest(
-        '/data/gadget/instance/:id/prefs' =>
-            ["Socialtext::Rest::Gadget", 'set_prefs'],
-    );
-    $class->add_rest(
-        '/data/gadget/proxy' => {
-            '*' => ['Socialtext::Rest::Proxy', 'proxy'],
-        },
-    );
-    $class->add_rest(
-        '/data/gadget/json_proxy' => {
-            '*' => ['Socialtext::Rest::JsonProxy', 'proxy'],
-        },
-    );
-    $class->add_rest(
-        '/data/gadget/json_feed_proxy' => {
-            '*' => ['Socialtext::Rest::JsonProxy', 'json_feed'],
-        },
-    );
-    $class->add_rest(
-        '/data/gadget/desktop' => {
-            '*' => ['Socialtext::Rest::Desktop', 'desktop'],
-        },
-    );
-
+    $class->add_rest('/data/gadget/instance/:id/render' => 'render_gadget');
+    $class->add_rest('/data/gadget/instance/:id/prefs' => 'set_prefs');
+    $class->add_rest('/data/gadget/proxy' => 'proxy');
+    $class->add_rest('/data/gadget/json_proxy' => 'json_proxy');
+    $class->add_rest('/data/gadget/json_feed_proxy' => 'json_feed_proxy');
+    $class->add_rest('/data/gadget/desktop' => 'desktop');
 }
 
 sub add_gadget {
@@ -88,7 +70,6 @@ sub gallery {
         gadgets3rd => \@gadgets3rd,
         gadgets3rdh => \@gadgets3rdh,
         current_uri => $self->uri,
-        base_uri => $self->make_uri( path => '/plugin/gadgets/gadgets'), 
     );
 
 }
@@ -118,16 +99,16 @@ sub html {
     );
 }
 
-1;
-
-package Socialtext::Rest::Desktop;
-use strict;
-use base 'Socialtext::Rest::Entity';
-use Socialtext::Gadgets::Gadget;
-use Socialtext::TT2::Renderer;
-use Socialtext::Pluggable::Plugin;
-use Socialtext::Gadgets::Container;
-use JSON::Syck;
+sub render_gadget {
+    my ($self,$rest,$args) = @_;
+    my $gadget = Socialtext::Gadgets::Gadget->restore($self, $args->{id});
+    return $self->template_render('gadget_rendered',
+        id => $gadget->id,
+        content => $gadget->content,
+        features => $gadget->features,
+        messages => $gadget->messages,
+    );
+}
 
 # set the position and location of gadgets on the desktop to the passed json
 # payload
@@ -162,55 +143,17 @@ sub desktop {
     
     return '1'; #JSON::Syck::Dump(\%gadgets);
 }
-1;
-
-package Socialtext::Rest::Gadget;
-use strict;
-use base 'Socialtext::Rest::Entity';
-use Socialtext::Gadgets::Gadget;
-use Socialtext::Pluggable::Plugin;
-use Socialtext::TT2::Renderer;
-use JSON::Syck;
-
-my $plugin_dir = Socialtext::Pluggable::Plugin::Gadgets->plugin_dir;
-
-sub template_render {
-    my ($self, $template, %vars) = @_;
-    # XXX: The rest library should have a way fo calling back into the plugin
-    # object so that we don't have to duplicate paths etc!
-    my $renderer = Socialtext::TT2::Renderer->instance;
-    return $renderer->render(
-        template => $template,
-        paths => [  "$plugin_dir/template" ],
-        vars     => {
-            as_json => sub { JSON::Syck::Dump(@_) },
-            %vars
-        },
-    );
-}
-
-sub render_instance {
-    my ($self,$rest) = @_;
-    my $api = Socialtext::Pluggable::Plugin->new();
-    my $gadget = Socialtext::Gadgets::Gadget->restore($api, $self->id);
-    return $self->template_render('gadget_rendered',
-        id => $gadget->id,
-        content => $gadget->content,
-        features => $gadget->features,
-        messages => $gadget->messages,
-    );
-}
 
 sub set_prefs {
-    my ($self,$rest) = @_;
+    my ($self,$rest,$args) = @_;
     my $api = Socialtext::Pluggable::Plugin->new();
-    my $gadget = Socialtext::Gadgets::Gadget->restore($api,$self->id);
+    my $gadget = Socialtext::Gadgets::Gadget->restore($api,$args->{id});
     # XXX Ugly
     my $set;
     my %prefs;
-    for my $key ($self->rest->query->param) {
+    for my $key ($rest->query->param) {
         if ($key =~ /^up_(.*)/) {
-            my $val = $self->rest->query->param($key);
+            my $val = $rest->query->param($key);
             $prefs{$1} = $val;
         }
     }
@@ -220,25 +163,10 @@ sub set_prefs {
     }
 }
 
+sub json_feed_proxy {
+    my ( $self, $rest, $args ) = @_;
 
-1;
-
-package Socialtext::Rest::JsonProxy;
-use strict;
-use base 'Socialtext::Rest::Entity';
-use Socialtext::Gadgets::Gadget;
-use Socialtext::TT2::Renderer;
-use JSON::Syck;
-use LWP;
-use HTTP::Request;
-use URI::Escape;
-
-my $UNPARSEABLE_CRUFT = "throw 1; < don't be evil' >";
-
-sub json_feed {
-    my ( $self, $rest ) = @_;
-
-    my $url = $self->rest->query->{url};
+    my $url = $rest->query->{url};
     $url = $url->[0] if ref $url eq 'ARRAY';
 
     my $content = $rest->getContent();
@@ -281,12 +209,12 @@ sub json_feed {
     return JSON::Syck::Dump(\%response);
 }
 
-sub proxy  {
-    my ( $self, $rest ) = @_;
+sub json_proxy  {
+    my ( $self, $rest, $args ) = @_;
 
     my %args;
     foreach my $key ( qw( authz headers httpMethod postData st url ) ) {
-      $args{$key} = $self->rest->query->{$key};
+      $args{$key} = $rest->query->{$key};
       $args{$key} = $args{$key}->[0] if ref($args{$key}) eq 'ARRAY';
     }
 
@@ -320,18 +248,10 @@ sub proxy  {
     return $UNPARSEABLE_CRUFT . $json;
 }
 
-1;
-
-package Socialtext::Rest::Proxy;
-use strict;
-use base 'Socialtext::Rest::Entity';
-use LWP;
-use HTTP::Request;
-
 sub proxy  {
-    my ( $self, $rest ) = @_;
+    my ( $self, $rest, $args ) = @_;
 
-    my $url = $self->rest->query->{url};
+    my $url = $rest->query->{url};
     $url = $url->[0] if ref $url eq 'ARRAY';
 
     my $agent = LWP::UserAgent->new; 
