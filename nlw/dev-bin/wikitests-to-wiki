@@ -23,8 +23,14 @@ echo Server is $SERVER
 DIR=$ST_CURRENT/nlw/share/workspaces/wikitests
 stu-local-copy -s $SERVER -w wikitests  -u devnull1@socialtext.com -p d3vnu11l --from $DIR
 
+# get rid of superfluous ceq indexing then index
+$ST_CURRENT/nlw/bin/ceq-rm wikitests
 $ST_CURRENT/nlw/bin/st-admin index-workspace --w wikitests --sync
 
+# get rid of superfluous ceq indexing AGAIN
+$ST_CURRENT/nlw/bin/ceq-rm wikitests
+
+# make a tarball so you don't have to run this script after fdefs
 $ST_CURRENT/nlw/bin/st-admin export-workspace --w wikitests --dir $ST_CURRENT/nlw/share/workspaces/wikitests
 
 echo
