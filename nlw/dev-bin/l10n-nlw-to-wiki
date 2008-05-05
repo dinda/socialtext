@@ -46,6 +46,8 @@ po_to_wiki($en_file);
 exit;
 
 sub update_enterprise_features {
+    shell_run("svk up -s $ENV{HOME}/src/st/appliance/");
+    shell_run("svk up -s $ENV{HOME}/src/st/control/");
 }
 
 sub link_enterprise_features {
