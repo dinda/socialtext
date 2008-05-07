@@ -55,7 +55,6 @@ set +e
 dev-bin/link-control-panel
 dev-bin/link-console
 dev-bin/link-reports
-dev-bin/link-people
 set -e
 
 if [ $FDEFS_PROXY = 0 ]; then
