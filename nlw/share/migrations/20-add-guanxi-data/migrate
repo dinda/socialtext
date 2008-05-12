@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MIGDIR=`dirname $0`
+DB_USER=`st-config echo db_user`
+DB_SCHEMA=`st-config echo db_schema_name`
+
+sudo -u postgres psql $DB_SCHEMA -f $MIGDIR/guanxi-schema.sql
+
+# Do this outside of the schema.sql file so we can get the correct DB_USER
+for table in event event_id_seq person tag tag_id_seq person_watched_people__person tag_people__person_tags; do
+    sudo -u postgres psql $DB_SCHEMA -c "ALTER TABLE $table OWNER TO $DB_USER"
+done
