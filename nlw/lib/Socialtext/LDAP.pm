@@ -3,17 +3,18 @@ package Socialtext::LDAP;
 
 use strict;
 use warnings;
+use Socialtext::AppConfig;
 use Socialtext::Log qw(st_log);
 use Socialtext::LDAP::Config;
+use File::Spec;
 
 sub new {
-    my ($class, $driver_id) = @_;
+    my ($class, $conn_name) = @_;
 
-    # get configuration object for this LDAP configuration
-    my $config =
-        $driver_id
-        ? Socialtext::LDAP->config($driver_id)
-        : Socialtext::LDAP->default_config();
+    # get configuration object for this connection
+    my $config = $conn_name
+                    ? Socialtext::LDAP->config($conn_name)
+                    : Socialtext::LDAP->default_config();
     return unless ($config);
 
     # connect to the LDAP server
@@ -21,16 +22,22 @@ sub new {
 }
 
 sub default_config {
-    my $config = Socialtext::LDAP::Config->load();
-    return $config;
+    return Socialtext::LDAP->config('Default');
 }
 
 sub config {
-    my ($class, $driver_id) = @_;
-    my ($config)
-        = grep { $_->id eq $driver_id }
-        Socialtext::LDAP::Config->load();
-    return $config;
+    my ($class, $conn_name) = @_;
+    my $yaml_file = Socialtext::LDAP->config_filename($conn_name);
+    return Socialtext::LDAP::Config->load( $yaml_file );
+}
+
+sub config_filename {
+    my ($class, $conn_name) = @_;
+    my $yaml_file = File::Spec->catfile(
+        Socialtext::AppConfig->config_dir(),
+        'ldap.yaml',
+        );
+    return $yaml_file;
 }
 
 sub connect {
@@ -41,29 +48,21 @@ sub connect {
 }
 
 sub available {
-    my @available = map { $_->id } Socialtext::LDAP::Config->load();
-    return @available;
+    # only a single LDAP configuration available right now
+    # XXX: should really do a config scan instead of being hardcoded
+    return 'Default';
 }
 
 sub authenticate {
-    my ($class, %opts) = @_;
-    my $driver_id = $opts{driver_id};
-    my $user_id   = $opts{user_id};
-    my $password  = $opts{password};
+    my ($class, $dn, $pass) = @_;
 
-    # get the config for this driver
-    my $config =
-        $driver_id
-        ? Socialtext::LDAP->config($driver_id)
-        : Socialtext::LDAP->default_config();
-    return unless $config;
+    my $config = Socialtext::LDAP->default_config();
+    return unless ($config);
 
-    # connect to the LDAP server using this config
-    my $ldap = _get_connection($config);
-    return unless $ldap;
+    my $conn   = _get_connection( $config );
+    return unless ($conn);
 
-    # attempt to authenticate the user against LDAP
-    return $ldap->authenticate($user_id, $password);
+    return $conn->authenticate($dn, $pass);
 }
 
 sub _get_connection {
@@ -107,24 +106,22 @@ Socialtext::LDAP - LDAP connection factory
 
   # connect to default LDAP server
   $ldap = Socialtext::LDAP->new();
+  $ldap = Socialtext::LDAP->new('Default');
 
   # get default LDAP configuration
   $config = Socialtext::LDAP->default_config();
 
   # get configuration for a specific LDAP server
-  $config = Socialtext::LDAP->config($driver_id);
+  $config = Socialtext::LDAP->config('Default');
+
+  # get configuration file name for a specific LDAP server
+  $filename = Socialtext::LDAP->config_filename('Default');
 
   # connect to LDAP server using given configuration
   $ldap = Socialtext::LDAP->connect($config);
 
   # list the known/configured LDAP connections
-  @driver_ids = Socialtext::LDAP->available();
-
-  # authenticate a user against an LDAP server
-  $auth_ok = Socialtext::LDAP->authenticate(
-      user_id  => $user->user_id(),
-      password => $password,
-      );
+  @conns = Socialtext::LDAP->available();
 
 =head1 DESCRIPTION
 
@@ -134,24 +131,36 @@ C<Socialtext::LDAP> implements a factory for LDAP connections.
 
 =over
 
-=item B<Socialtext::LDAP-E<gt>new($driver_id)>
+=item B<Socialtext::LDAP-E<gt>new($conn_name)>
 
-Creates a new LDAP connection, for the LDAP configuration identified by the
-given driver identifier.  If no driver identifier is provided, a default LDAP
-connection will be made.
+Creates a new LDAP connection, for the named LDAP connection.  If no LDAP
+connection name is provided, a default LDAP connection will be made.
+
+B<NOTE:> in the current implementation, there is I<only one> configuration; the
+default configuration; doesn't matter what C<$conn_name> is, you'll always get
+back a connection to the default LDAP server.
 
 =item B<Socialtext::LDAP-E<gt>default_config()>
 
-Retrieves the LDAP configuration for the default LDAP connection (the first
-one found in the LDAP configuration file), returning it back to the caller
-as a C<Socialtext::LDAP::Config> object.
+Retrieves the LDAP configuration for the "Default" LDAP connection, returning
+it back to the caller as a C<Socialtext::LDAP::Config> object.
 
-=item B<Socialtext::LDAP-E<gt>config($driver_id)>
+=item B<Socialtext::LDAP-E<gt>config($conn_name)>
 
-Retrieves the configuration for the LDAP configuration identified by the given
-driver identifier, returning it back to the caller as a
-C<Socialtext::LDAP::Config> object.  If we're unable to locate the specified
-LDAP connection, this method returns empty-handed.
+Retrieves the configuration for a named LDAP connection, returning it back to
+the caller as a C<Socialtext::LDAP::Config> object.
+
+B<NOTE:> in the current implementation, there is I<only one> configuration; the
+default configuration; doesn't matter what C<$conn_name> is, you'll always get
+back the default LDAP configuration file.
+
+=item B<Socialtext::LDAP-E<gt>config_filename($conn_name)>
+
+Returns the name of the YAML configuration file used for the named LDAP connection.
+
+B<NOTE:> in the current implementation, there is I<only one> configuration; the
+default configuration; doesn't matter what C<$conn_name> is, you'll always get
+back the default LDAP configuration file.
 
 =item B<Socialtext::LDAP-E<gt>connect($config)>
 
@@ -160,36 +169,13 @@ C<Socialtext::LDAP::Config> object.
 
 =item B<Socialtext::LDAP-E<gt>available()>
 
-Returns a list of driver identifiers for all of the configured LDAP
-connections.
+Returns a list of known configured LDAP connections.
 
-=item B<Socialtext::LDAP-E<gt>authenticate(%opts)>
+=item B<Socialtext::LDAP-E<gt>authenticate($dn, $pass)>
 
-Attempts to authenticate a user against an LDAP server, using the provided
-options.  Returns true if authentication is successful, false otherwise.
-
-Required options:
-
-=over
-
-=item driver_id
-
-The unique identifier for the LDAP configuration instance that the user
-resides in.  Needed to identify which LDAP server it is that we're trying to
-authenticate the user against.
-
-Unless provided, authentication is performed against the default LDAP
-configuration.
-
-=item user_id
-
-The unique ID for the User we're attempting to authenticate.
-
-=item password
-
-The password to attempt authentication with.
-
-=back
+Attempts to authenticate against the LDAP server using the provided
+distinguishedName and password.  Returns true if authentication is successful,
+returning false otherwise.
 
 =back
 

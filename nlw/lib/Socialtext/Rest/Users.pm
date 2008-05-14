@@ -5,7 +5,7 @@ use warnings;
 use strict;
 
 use Class::Field qw( const field );
-use Socialtext::JSON;
+use JSON::XS;
 use Socialtext::HTTP ':codes';
 use Socialtext::User;
 use Socialtext::Exceptions;

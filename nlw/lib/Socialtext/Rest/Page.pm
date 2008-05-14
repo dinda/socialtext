@@ -7,7 +7,7 @@ use warnings;
 # REVIEW: Can this be made into a Socialtext::Entity?
 use base 'Socialtext::Rest';
 use HTML::WikiConverter;
-use Socialtext::JSON;
+use JSON::XS;
 use Readonly;
 use Socialtext::HTTP ':codes';
 

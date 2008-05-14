@@ -38,13 +38,8 @@ my @skip_paths = qw(
     share/skin/common/javascript/Widget.SortableTable-0.21
     share/skin/common/javascript/Wikiwyg-2007-07-17
     share/skin/common/javascript/YAML-0.11
-    share/workspaces
 );
 my %skip_paths = map { ($_,1) } @skip_paths;
-
-my @skip_matching = (
-    qr#share/skin/common/javascript/SocialCalc#,
-);
 
 my @skip_files = qw(
     share/skin/st/javascript/test/run/bin/render-template
@@ -62,9 +57,6 @@ my $iter =
         descend_filter => sub {
             return if $_ eq '.svn';
             return if $skip_paths{$File::Next::dir};
-            for (@skip_matching) {
-                return if $File::Next::dir =~ $_;
-            }
             return 1;
         },
         sort_files => 1,

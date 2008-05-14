@@ -5,7 +5,7 @@ use warnings;
 use strict;
 
 use base 'Socialtext::Rest::Collection';
-use Socialtext::JSON;
+use JSON::XS;
 use Socialtext::HTTP ':codes';
 use Socialtext::WorkspaceInvitation;
 
@@ -54,20 +54,14 @@ sub get_resource {
     return [];
 }
 
-sub _user_may_subscribe {
-    my $self = shift;
-
-    return $self->rest->user->is_business_admin()
-        || $self->rest->user->is_technical_admin()
-        || $self->hub->checker->check_permission('admin_workspace');
-}
-
 sub POST {
     my $self = shift;
     my $rest = shift;
 
-    unless ( $self->_user_may_subscribe() ) {
-        $rest->header( -status => HTTP_403_Forbidden );
+    unless ($self->_user_is_business_admin_p( ) ) {
+        $rest->header(
+                      -status => HTTP_401_Unauthorized,
+                     );
         return '';
     }
 
@@ -113,7 +107,10 @@ sub POST {
             my $role = Socialtext::Role->new( name => $rolename );
         
             unless( $user && $role ) {
-                die "both username, rolename must be valid\n";
+                $rest->header(
+                              -status => HTTP_400_Bad_Request,
+                              -type  => 'text/plain', );
+                return "both username, rolename must be valid";
             }
         
             $workspace->add_user( user => $user,

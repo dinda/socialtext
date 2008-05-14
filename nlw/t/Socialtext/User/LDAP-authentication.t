@@ -4,14 +4,14 @@ use strict;
 use warnings FATAL => 'all';
 use mocked 'Net::LDAP';
 use mocked 'Socialtext::Log', qw(:tests);
-use Test::Socialtext tests => 18;
+use Test::Socialtext tests => 15;
 
 # FIXTURE:  ldap_*
 #
 # These tests have no specific requirement as to whether we're using an
 # anonymous or authenticated LDAP connection.
 fixtures( 'ldap_anonymous' );
-use_ok 'Socialtext::User::LDAP::Factory';
+use_ok 'Socialtext::User::LDAP';
 
 ###############################################################################
 ### TEST DATA
@@ -40,10 +40,7 @@ ldap_auth_password_missing: {
         search_results => [ $TEST_USERS[0] ],
         );
 
-    my $factory = Socialtext::User::LDAP::Factory->new();
-    isa_ok $factory, 'Socialtext::User::LDAP::Factory';
-
-    my $user = $factory->GetUser(username=>'First Last');
+    my $user = Socialtext::User::LDAP->new(username=>'First Last');
     isa_ok $user, 'Socialtext::User::LDAP';
     ok !$user->password_is_correct(), 'LDAP auth; password missing';
 }
@@ -54,11 +51,7 @@ ldap_auth_password_wrong: {
     Net::LDAP->set_mock_behaviour(
         search_results => [ $TEST_USERS[0] ],
         );
-
-    my $factory = Socialtext::User::LDAP::Factory->new();
-    isa_ok $factory, 'Socialtext::User::LDAP::Factory';
-
-    my $user = $factory->GetUser(username=>'First Last');
+    my $user = Socialtext::User::LDAP->new(username=>'First Last');
     isa_ok $user, 'Socialtext::User::LDAP';
 
     # re-mock for Auth... (it'll re-bind)
@@ -88,10 +81,7 @@ ldap_auth_password_ok: {
         );
     clear_log();
 
-    my $factory = Socialtext::User::LDAP::Factory->new();
-    isa_ok $factory, 'Socialtext::User::LDAP::Factory';
-
-    my $user = $factory->GetUser(username=>'First Last');
+    my $user = Socialtext::User::LDAP->new(username=>'First Last');
     isa_ok $user, 'Socialtext::User::LDAP';
 
     # no need to re-mock for Auth (existing behaviour is ok)

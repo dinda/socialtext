@@ -28,25 +28,15 @@ CHECK_BASE: {
 }
 
 CHECK_SHARED: {
-    my $skin_name = 'cex2';
-    $css->add_path("skin/$skin_name/css");
+    $css->add_path('skin/cex/css');
     $css->add_file('screen.css');
 
     my @files = $css->files();
 
-    # use Data::Dumper;
-    # warn Dumper \@files;
-    {
-        my $css_file = "/skin/$skin_name/css/screen.css";
-        # /skin/s2/css/screen.css
-        my @match_files = grep { m{\Q$css_file\E} } @files;
-        is( scalar @match_files, 1, 'screen.css is in list of CSS files' );
-    }
+    my @match_files = grep { m{\Q/skin/cex/css/screen.css} } @files;
+    is( scalar @match_files, 1, 'screen.css is in list of CSS files' );
 
-    {
-        my $css_file = "/static/$version/skin/$skin_name/css/screen.css";
-        my @uris = $css->uris();
-        my @match_uris = grep { m{\Q$css_file\E} } @uris;
-        is( scalar @match_uris, 1, 'screen.css is in list of CSS uris, with NLW version' );
-    }
+    my @uris = $css->uris();
+    my @match_uris = grep { m{\Q/static/$version/skin/cex/css/screen.css} } @uris;
+    is( scalar @match_uris, 1, 'screen.css is in list of CSS uris, with NLW version' );
 }

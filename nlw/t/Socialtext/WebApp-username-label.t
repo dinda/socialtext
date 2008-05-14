@@ -11,7 +11,6 @@ fixtures( 'admin_no_pages' );
 use Socialtext::WebApp;
 use Socialtext::AppConfig;
 
-Socialtext::AppConfig->set( user_factories => 'Default' );
 is( Socialtext::WebApp->username_label(), 'Email Address',
     'default username label is found' );
 Socialtext::AppConfig->set( user_factories => 'LDAP:Default' );

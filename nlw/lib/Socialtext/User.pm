@@ -38,7 +38,6 @@ my @minimal_interface
     = ( 'user_id', @user_store_interface, @user_metadata_interface );
 my $SystemUsername = 'system-user';
 my $GuestUsername  = 'guest';
-my %SystemGeneratedUsernames = map { lc($_)=>1 } ($SystemUsername, $GuestUsername);
 
 sub minimal_interface {
     my $class = shift;
@@ -52,25 +51,7 @@ sub base_package {
 sub _drivers {
     my $class = shift;
     my $drivers = Socialtext::AppConfig->user_factories();
-    return split /;/, $drivers;
-}
-
-sub _realize {
-    # OVER-RIDDEN; we need an object-based plugin factory, not a class-based
-    # one.
-    my $class  = shift;
-    my $driver = shift;
-    my $method = shift;
-    my ($driver_name, $driver_id) = split /:/, $driver;
-    my $real_class = join '::', $class->base_package, $driver_name, 'Factory';
-    eval "require $real_class";
-    die "Couldn't load $real_class: $@" if $@;
-
-    if ($real_class->can($method)) {
-        return $real_class->new($driver_id);
-    }
-
-    return undef;
+    return split /:/, $drivers;
 }
 
 sub new_homunculus {
@@ -95,30 +76,16 @@ sub new_homunculus {
         my $driver_key = $system_id->driver_key;
         my $driver_unique_id = $system_id->driver_unique_id;
         my $driver_username = $system_id->driver_username;
-        my $driver = $class->_realize($driver_key, 'GetUser');
-        if ($driver) {
-            # if driver doesn't exist any more, we don't have an instance of
-            # it to query.  e.g. customer removed an LDAP data store.
-            $homunculus = $driver->GetUser( username => $driver_username );
-        }
+        my $driver = $class->_realize($driver_key, 'new');
+        $homunculus = $driver->new( username => $driver_username );
         $homunculus ||= Socialtext::User::Deleted->new(
             user_id    => $driver_unique_id,
             username   => $system_id->driver_username,
             driver_key => $driver_key,
         );
     }
-    # system generated users MUST come from the Default user store; we don't
-    # allow for them to live anywhere else.
-    #
-    # this prevents possible conflict with other stores having their own
-    # notion of what the "guest" or "system-user" is (e.g. Active Directory
-    # and its "Guest" user)
-    elsif (($_[0] eq 'username') && (exists $SystemGeneratedUsernames{lc($_[1])})) {
-        my $factory = $class->_realize('Default', 'GetUser');
-        $homunculus = $factory->GetUser(@_);
-    }
     else {
-        $homunculus = $class->_first('GetUser', @_);
+        $homunculus = $class->_first('new', @_);
     }
 
     return $homunculus;
@@ -154,7 +121,7 @@ sub create {
     my $homunculus = $class->_first( 'create', %p ); #%user_p );
 
     my $system_unique_id = Socialtext::UserId->create(
-        driver_key       => $homunculus->driver_key,
+        driver_key       => $homunculus->driver_name,
         driver_unique_id => $homunculus->user_id,
         driver_username  => $homunculus->username,
     )->system_unique_id();
@@ -162,7 +129,7 @@ sub create {
     if ( !exists $p{created_by_user_id} ) {
         if ( $homunculus->username ne $SystemUsername ) {
             my $s_u_homunculus = $class->new_homunculus( username => $SystemUsername );
-            my $driver_key = $s_u_homunculus->driver_key;
+            my $driver_key = $s_u_homunculus->driver_name;
             my $driver_unique_id = $s_u_homunculus->user_id;
             $p{created_by_user_id} = Socialtext::UserId->new(
                 driver_key       => $driver_key,
@@ -206,7 +173,7 @@ sub user_id {
     my $self = shift;
 
     return Socialtext::UserId->new(
-        driver_key       => $self->homunculus->driver_key,
+        driver_key       => $self->homunculus->driver_name,
         driver_unique_id => $self->homunculus->user_id
         )->system_unique_id();
 }

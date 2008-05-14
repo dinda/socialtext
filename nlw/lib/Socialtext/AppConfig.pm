@@ -938,7 +938,7 @@ Default: BasicAuth:Cookie:Guest
 
 =head2 user_factories
 
-The semicolon-separated list of drivers to use for user creation.
+The colon-separated list of drivers to use for user creation.
 
 Default: Default
 

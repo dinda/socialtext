@@ -7,9 +7,9 @@ use lib "$Bin/../lib";
 use Socialtext::Wikil10n qw/load_existing_l10ns make_rester/;
 use Socialtext::System qw/shell_run/;
 use Socialtext::File qw/set_contents/;
-use Socialtext::JSON;
 use Encode;
 use utf8;
+use JSON::XS;
 
 my $r    = make_rester();
 my $l10n = load_localizations();
@@ -30,10 +30,6 @@ sub create_perl_l10ns {
     }
     _create_po_file( $dir, 'zz', $l10n->{en} );
     _create_po_file( $dir, 'zj', $l10n->{en} );
-    eval "require Acme::LOLCAT";
-    unless ($@) {
-        _create_po_file( $dir, 'zl', $l10n->{en} );
-    }
 }
 
 sub _create_po_file {
@@ -70,9 +66,6 @@ EOT
         }
         elsif ( $locale eq 'zj' ) {
             $str = _haxorify_jp($id);
-        }
-        elsif ( $locale eq 'zl' ) {
-            $str = _haxorify_lolcat($id);
         }
         else {
             $str = $l->{msgstr};
@@ -111,10 +104,6 @@ sub _haxorify_jp {
     $result =~ s/qうあn7/quant/gi;
     # kitano to fix a href later
     return $result;
-}
-
-sub _haxorify_lolcat {
-    return Acme::LOLCAT::translate(shift);
 }
 
 sub create_js_l10ns {

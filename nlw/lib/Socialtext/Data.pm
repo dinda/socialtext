@@ -9,7 +9,7 @@ sub Classes {
            qw( Account
                Permission
                Role
-               User::Default::Factory
+               User::Default
                UserId
                UserMetadata
                UserWorkspaceRole

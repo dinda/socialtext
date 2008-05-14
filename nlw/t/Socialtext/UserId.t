@@ -13,7 +13,7 @@ BEGIN {
 fixtures( 'rdbms_clean' );
 
 my $homunculus = FakeHomunculus->new(
-    driver_key  => 'Fake',
+    driver_name => 'Fake',
     user_id     => 1,
     username    => 'faky@faker.com'
 );
@@ -55,7 +55,7 @@ package FakeHomunculus;
 use Class::Field 'field';
 
 BEGIN {
-    field 'driver_key';
+    field 'driver_name';
     field 'user_id';
     field 'username';
 }
@@ -63,7 +63,7 @@ BEGIN {
 sub new {
     my ( $class, %p ) = @_;
     return bless {
-        driver_key  => $p{driver_key},
+        driver_name => $p{driver_name},
         user_id     => $p{user_id},
         username    => $p{username}
     }, $class;

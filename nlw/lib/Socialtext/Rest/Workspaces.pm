@@ -6,7 +6,7 @@ use strict;
 
 use base 'Socialtext::Rest::Collection';
 
-use Socialtext::JSON;
+use JSON::XS;
 use Socialtext::HTTP ':codes';
 use Socialtext::Permission;
 use Socialtext::Workspace;

@@ -15,14 +15,12 @@ use Test::Socialtext::Environment;
 use Socialtext::LDAP::Config;
 
 # XXX: these should be treated as "read-only" fields after instantiation
-field 'name';
 field 'host';
 field 'port';
 field 'base_dn';
 field 'root_dn';
 field 'root_pw';
 field 'requires_auth';
-field 'raw_conf';
 field 'datadir';
 field 'logfile';
 field 'slapd';
@@ -47,7 +45,6 @@ sub new {
     my $port = $config{port} || _autodetect_port();
     my $self = {
         # generic parameters; could be factored to common base class
-        name            => "Bootstrapped, port $port",
         host            => $config{host}            || 'localhost',
         port            => $port,
         base_dn         => $config{base_dn}         || 'dc=example,dc=com',
@@ -55,7 +52,6 @@ sub new {
         root_pw         => $config{root_pw}         || 'its-a-secret',
         requires_auth   => $config{requires_auth}   || 0,
         # openldap specific parameters
-        raw_conf        => $config{raw_conf}        || '',
         datadir         => $config{datadir}         || File::Spec->catdir($env->root_dir(),'ldap',$port),
         logfile         => $config{logfile}         || File::Spec->catfile($env->root_dir(),'log',"ldap-$port.log"),
         slapd           => $config{slapd}           || _autodetect_slapd(),
@@ -271,12 +267,10 @@ sub running {
     return ($pid and kill(0,$pid));
 }
 
-sub ldap_config {
-    my $self = shift;
+sub save_ldap_config {
+    my ($self, $filename) = @_;
     # create ST::LDAP::Config object based on our config
     my $config = Socialtext::LDAP::Config->new(
-        id          => Socialtext::LDAP::Config->generate_driver_id(),
-        name        => $self->name(),
         backend     => 'OpenLDAP',
         host        => $self->host(),
         port        => $self->port(),
@@ -291,8 +285,8 @@ sub ldap_config {
         );
     $self->root_dn() && $config->bind_user( $self->root_dn() );
     $self->root_pw() && $config->bind_password( $self->root_pw() );
-    # return ST::LDAP::Config
-    return $config;
+    # save the config out to the specified file
+    $config->save( $filename );
 }
 
 sub setup {
@@ -332,8 +326,6 @@ rootpw "$self->{root_pw}"
 directory "$self->{datadir}"
 # auth requirements
 $requires_auth
-# raw config additions
-$self->{raw_conf}
 END_SLAPD_CONF
         close $fout;
     }
@@ -442,8 +434,12 @@ Test::Socialtext::Bootstrap::OpenLDAP - Bootstrap OpenLDAP instances
   $openldap->add($ldif_filename);
   $openldap->remove($ldif_filename);
 
-  # get LDAP config object
-  $config = $openldap->ldap_config();
+  # write OpenLDAP configuration to ST::LDAP::Config file
+  $yamlfile = File::Spec->catfile(
+      Socialtext::AppConfig->config_dir(),
+      'ldap.yaml'
+      );
+  $openldap->save_ldap_config($yamlfile);
 
   # query config of the OpenLDAP instance
   #
@@ -456,7 +452,6 @@ Test::Socialtext::Bootstrap::OpenLDAP - Bootstrap OpenLDAP instances
   $root_dn          = $openldap->root_dn();
   $root_pw          = $openldap->root_pw();
   $requires_auth    = $openldap->requires_auth();
-  $raw_conf         = $openldap->raw_conf();
   $datadir          = $openldap->datadir();
   $logfile          = $openldap->logfile();
   $slapd            = $openldap->slapd();
@@ -531,11 +526,6 @@ Specifies the password for the root/admin user for the LDAP directory.
 Specifies whether or not the OpenLDAP server I<requires> that the connection be
 authenticated (if required, anonymous binds will fail).
 
-=item raw_conf
-
-Specifies I<raw> OpenLDAP configuration directives that you want to have
-included in the OpenLDAP configuration file.
-
 =item datadir
 
 Specifies the data directory that is used for all of the files that OpenLDAP
@@ -577,13 +567,14 @@ Checks to see if the OpenLDAP instance is running.  An optional C<$pid> may be
 provided if you wish to check if some other process is running; by default we
 use the PID of our OpenLDAP instance.
 
-=item B<ldap_config()>
+=item B<save_ldap_config($filename)>
 
-Returns the current LDAP configuration back to the caller as a
-C<Socialtext::LDAP::Config> object.
+Saves the current configuration of the OpenLDAP instance as YAML to the given
+filename.  Configuration is saved in a format suitable for use by
+C<Socialtext::LDAP::Config>.
 
-Useful for bootstrapping OpenLDAP, then saving the configuration out to YAML
-so that it can be used by the rest of your testing.
+Useful for bootstrapping OpenLDAP, then creating the YAML file to go along with
+it for the rest of your testing.
 
 =item B<setup()>
 
@@ -636,11 +627,6 @@ Returns the "Root Password" for the OpenLDAP instance.
 Returns a flag stating whether or not the OpenLDAP instance I<requires> that
 all connections be authenticated.  If true, then anonymous binds will be
 refused.
-
-=item B<raw_conf()>
-
-Returns any I<raw> OpenLDAP configuration that you asked to have included into
-the configuration file.
 
 =item B<datadir()>
 
