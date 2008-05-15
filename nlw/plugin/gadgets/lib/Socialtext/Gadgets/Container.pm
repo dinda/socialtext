@@ -1,4 +1,5 @@
 package Socialtext::Gadgets::Container;
+# @COPYRIGHT@
 use strict;
 use warnings;
 
@@ -7,7 +8,6 @@ use Carp qw(croak);
 use Class::Field 'field';
 
 field 'id';
-#field 'gadgets', -init => '$self->get_gadgets';
 field 'features', -init => 'Socialtext::Gadgets::Features->new($self->api,type=>"container")';
 field 'api';
 
@@ -29,9 +29,9 @@ sub new {
 
 sub storage {
     my $self = shift;
-    die "no id" unless defined $self->id;
     return $self->{_storage} if $self->{_storage};
-    $self->{_storage} = $self->api->storage($self->id);
+    my $id = $self->id || die "no id";
+    $self->{_storage} = $self->api->storage("container.$id");
     return $self->{_storage};
 }
 
@@ -46,13 +46,8 @@ sub install_gadget {
         $gadget->{pos}[1]++ if $gadget->{pos}[0] == $col;
     }
 
-    my $gadget;
-    if ($gadget_id) {
-        $gadget = Socialtext::Gadgets::Gadget->install($self->api,$url,$gadget_id);
-    } else {
-        $gadget = Socialtext::Gadgets::Gadget->install($self->api,$url);
-        $gadget_id = $gadget->id;
-    }
+    my $gadget = Socialtext::Gadgets::Gadget->install($self->api,$url,$gadget_id);
+    $gadget_id = $gadget->id;
 
     $self->{_gadgets}{$gadget_id} = $gadget;
 
@@ -62,7 +57,6 @@ sub install_gadget {
     };
 
     $self->storage->set('gadgets', $gadgets);
-    $self->storage->save;
 }
 
 sub get_test_gadgets {
@@ -86,7 +80,7 @@ sub get_test_gadgets {
 
 sub delete_gadget {
     my ($self,$id) = @_;
-    $self->api->storage($id)->remove;
+    $self->api->storage("gadget.$id")->remove;
 }
 
 sub get_gadgets {
@@ -101,7 +95,6 @@ sub get_gadgets {
         my $ginfo = $gadgets->{$id};
         $ginfo->{obj} = $self->{_gadgets}{$id} ||
                          Socialtext::Gadgets::Gadget->restore($self->api,$id);
-        $self->features->load_gadget_features($ginfo->{obj});
     }
     return $gadgets;
 }
@@ -116,7 +109,6 @@ sub test {
     $self->id('test');
     $self->api($api);
     $self->storage->set('gadgets', {});
-    $self->storage->save;
     $self->get_test_gadgets();
     return $self;
 }
@@ -136,11 +128,6 @@ sub template_vars {
         ];
     }
     return \@columns;
-}
-
-sub feature_scripts {
-    my $self = shift;
-    return $self->features->scripts;
 }
 
 return 1;

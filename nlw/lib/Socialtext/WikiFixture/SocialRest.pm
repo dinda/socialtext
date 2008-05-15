@@ -124,6 +124,22 @@ sub get {
     $self->_get($uri, [Accept => $accept]);
 }
 
+=head2 delete ( uri, accept )
+
+DELETE a URI, with the specified accept type.  
+
+accept defaults to 'text/html'.
+
+=cut
+
+sub delete {
+        my ($self, $uri, $accept) = @_;
+            $accept ||= 'text/html';
+
+                $self->_delete($uri, [Accept => $accept]);
+            }
+            
+
 =head2 code_is( code [, expected_message])
 
 Check that the return code is correct.
@@ -179,6 +195,12 @@ sub _get {
     my ($self, $uri, $opts) = @_;
     $self->{http}->get( $self->{browser_url} . $uri, $opts );
 }
+
+sub _delete {      
+        my ($self, $uri, $opts) = @_;
+            $self->{http}->delete( $self->{browser_url} . $uri, $opts );
+}
+
 
 =head1 AUTHOR
 

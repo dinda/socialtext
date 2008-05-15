@@ -1,82 +1,120 @@
 <Module>
-  <ModulePrefs title="RSS Feed">
+  <ModulePrefs title="__UP_title__">
     <Require feature="dynamic-height" />
     <Require feature="setprefs" />
     <Require feature="settitle" />
-      <UserPref name="rss_feed" display_name="RSS URL" default_value="http://www.news1130.com/rss/local.jsp"/>
-      <Require feature="dynamic-height" />
+    <Require feature="dynamic-height" />
+    <Require feature="socialtext" />
   </ModulePrefs>
+ <UserPref name="rss_feed" display_name="RSS Feed" default_value="http://www.socialtext.com/blog/feed"/>
+ <UserPref name="title" default_value="RSS Viewer" datatype="hidden"/>
+ <UserPref name="count" display_name="Items Displayed" datatype="enum" default_value="5">
+     <EnumValue value="5"/>
+     <EnumValue value="10"/>
+     <EnumValue value="15"/>
+     <EnumValue value="20"/>
+     <EnumValue value="25"/>
+ </UserPref>
+ <UserPref name="max_desc" display_name="Maximum description characters" datatype="enum" default_value="250">
+     <EnumValue value="100"/>
+     <EnumValue value="250"/>
+     <EnumValue value="0" display_value="Unlimited"/>
+ </UserPref>
   <Content type="html">
     <![CDATA[
-        <div style="font-size:10pt" id="__MODULE_ID__-content">
-</div>
-    <style>
-      .myContent {
-        font-size: 10px;
-      }
-      .myContent h4 a {
-        font-size: 10px;
-      }
-    </style>
+
+<style>
+
+  #my__MODULE_ID__-content {
+    text-align: left;
+    margin-left: 5px;
+  }
+  .rss_item {
+    padding: 5px;  
+  }
+
+  .rss_title {
+  }
+  a {
+    text-decoration: none;  
+    font-size: 1.2em;
+  }
+  .rss_body {
+    font-size: 1.2em;
+  }
+
+</style>
+<div id="my__MODULE_ID__-content"></div>
 <script>
- function updateRSS(url) {
+    var params = {};
+    var url = '__UP_rss_feed__';
+    var prefs = new gadgets.Prefs();
 
-   var rurl = '/data/gadget/proxy?url='+url;
-   var show_desc = false;
+    if ('__UP_title__')
+        gadgets.window.setTitle('__UP_title__');
 
-   jQuery.ajax({
-          type: "GET",
-          url: rurl,
-          dataType: "xml",
-          error: function (XMLHttpRequest, textStatus, errorThrown) {
-           jQuery('#__MODULE_ID__-content').html('<b>Failed to retrieve RSS data</b>');
-          },
+    var callback = function(feed) {
+        feed = feed.data;
 
-          success: function(xml) {
-             jQuery('#__MODULE_ID__-content').empty(); 
-             var title = jQuery(xml).find('channel').find('title:first');
-             var count = 0;
-             jQuery('item',xml).each(function() { 
-                 if (count < 5) {
-                   var title = jQuery(this).find('title').text();
-                   var link  = jQuery(this).find('link').text();
-                   var desc  = "";
-                   var full_description = desc = jQuery(this).find('description').text();
+        if (feed.Title) {
+            gadgets.window.setTitle(feed.Title);
+            prefs.set('title',feed.Title);
+        }
 
-                   if (show_desc) {
-                       desc = full_description;
-                   } else {
-                       desc = full_description.substr(0,250);
-                       desc = desc + ".."; 
-                   }
+        var content_node = document.getElementById('my__MODULE_ID__-content');
 
-                   jQuery('#__MODULE_ID__-content').append(
-                       jQuery('<div class="myContent">').append(
-                           jQuery('<h4>').append(
-                               jQuery('<a style="text-size: 10px; text-decoration: none">')
-                                   .attr('href',link)
-                                   .append(title || 'huh')
-                           ),
-                           jQuery('<p>').append(desc)
-                       ),
-                       jQuery('<div class="border">')
-                   );
-                 }
-                 count++;
-             });   
-           gadgets.window.adjustHeight(); 
+        for (var i=0; i<feed.Entry.length; i++) {
+            var item = feed.Entry[i];
 
-          }
-        
-        }); 
-  } 
+            var item_div = document.createElement('div');
+            var h4 = document.createElement('h4');
+            var a = document.createElement('a');
+            var border = document.createElement('div');
+            var desc_div = document.createElement('p');
 
-  gadgets.util.registerOnLoadHandler( function () {
-    updateRSS('__UP_rss_feed__');
-  });
+            item_div.className = 'myContent';
+            border.className = 'border';
+            a.href = item.Link
+            a.style['text-size'] = '10px';
+            a.style['text-decoration'] = 'none';
 
+            var summary = item.Summary.replace(/<[^>]+>/g,'');
+            if (__UP_max_desc__ && summary.length > __UP_max_desc__) {
+                var max = summary.indexOf(' ', __UP_max_desc__) + 1;
+                desc_div.innerHTML = summary.substr(0,max);
+
+                if (max < summary.length) {
+                    desc_div.innerHTML += 
+                        '<a href="#" title="' +
+                        summary.substr(max, summary.length - max) +
+                        '">...</a>';
+                }
+            }
+            else {
+                desc_div.innerHTML = summary;
+            }
+
+            item_div.appendChild(h4);
+            h4.appendChild(a);
+            a.appendChild(document.createTextNode(item.Title));
+            item_div.appendChild(desc_div);
+
+            content_node.appendChild(item_div);
+            content_node.appendChild(border);
+        }
+        gadgets.window.adjustHeight();
+    }
+
+    gadgets.util.registerOnLoadHandler( function() {
+        var params = {};
+        params.CONTENT_TYPE = "FEED";
+        params.NUM_ENTRIES = __UP_count__;
+        params.GET_SUMMARIES = true;
+        gadgets.io.makeRequest(url, callback, params);
+    });
 </script>
 
     ]]>
+
   </Content>
 </Module>

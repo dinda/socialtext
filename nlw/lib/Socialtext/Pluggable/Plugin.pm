@@ -8,8 +8,9 @@ use Socialtext::TT2::Renderer;
 use Socialtext::AppConfig;
 use Class::Field 'field';
 use Socialtext::URI;
-use Socialtext::Storage;
+use Socialtext::Storage::PSQL;
 use Socialtext::AppConfig;
+use Socialtext::JSON qw(encode_json);
 
 my $prod_ver = Socialtext->product_version;
 my $code_base = Socialtext::AppConfig->code_base;
@@ -21,6 +22,7 @@ my %rest_hooks;
 my %rests;
 
 field hub => -weak;
+field 'rest';
 field uri => -init => '$self->hub->current_workspace->uri . Socialtext::AppConfig->script_name';
 
 # perldoc Socialtext::URI for arguments
@@ -33,6 +35,62 @@ sub make_uri {
 
 sub code_base {
    return Socialtext::AppConfig->code_base;
+}
+
+sub query {
+    my $self = shift;
+    if ($self->rest) {
+        return $self->rest->query;
+    }
+}
+
+sub getContent {
+    my $self = shift;
+    if ($self->rest) {
+        return $self->rest->getContent;
+    }
+}
+
+sub getContentPrefs {
+    my $self = shift;
+    if ($self->rest) {
+        return $self->rest->getContentPrefs;
+    }
+}
+
+sub username {
+    my $self = shift;
+    if ($self->rest) {
+        return $self->rest->user->username;
+    }
+    else {
+        return $self->hub->current_user->username,
+    }
+}
+
+sub header_out {
+    my $self = shift;
+    if ($self->rest) {
+        return $self->rest->header(@_);
+    }
+    else {
+        die "Not implemented!";
+    }
+}
+
+sub header_in {
+    my $self = shift;
+    if ($self->rest) {
+        if (@_) {
+            return $self->rest->request->header_in(@_);
+        }
+        else {
+            return $self->rest->request->headers_in;
+        }
+    }
+    else {
+        die "Not implemented!";
+    }
 }
 
 sub current_workspace {
@@ -56,7 +114,6 @@ sub add_rest {
 sub add_hook {
     my ($self,$hook,$method) = @_;
     my $class = ref($self) || $self;
-    warn "Adding hook named $hook";
     push @{$hooks{$class}}, {
         method => $method,
         name => $hook,
@@ -97,18 +154,13 @@ sub new {
 sub storage {
     my ($self,$id) = @_;
     die "Id is required for storage\n" unless $id;
-    return Socialtext::Storage->new($id);
+    return Socialtext::Storage::PSQL->new($id);
 }
 
 sub plugin_dir {
     my $self = shift;
     my $name = $self->name || die "Plugins must define a 'name' subroutine";
     return "$code_base/../plugin/$name";
-}
-
-sub username {
-    my $self = shift;
-    return $self->hub->current_user->username,
 }
 
 sub cgi_vars {
@@ -152,7 +204,7 @@ sub template_render {
                 }
             },
             workspaces => [$self->hub->current_user->workspaces->all],
-            as_json => sub { JSON::Syck::Dump(@_) },
+            as_json => sub { encode_json(@_) },
             %template_vars,
             %args,
         },

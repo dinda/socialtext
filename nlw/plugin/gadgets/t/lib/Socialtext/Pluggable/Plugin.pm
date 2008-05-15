@@ -1,4 +1,5 @@
 package Socialtext::Pluggable::Plugin;
+# @COPYRIGHT@
 use strict;
 use warnings;
 
@@ -154,7 +155,7 @@ sub template_render {
     #    template => $template,
     #    paths => [ $self->plugin_dir . "/template" ],
     #    vars     => {
-    #        as_json => sub { JSON::Syck::Dump(@_) },
+    #        as_json => sub { encode_json($_[0]) },
     #        %template_vars,
     #        %args,
     #    },

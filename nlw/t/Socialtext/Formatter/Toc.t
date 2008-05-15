@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 
-use Test::Socialtext tests => 20;
+use Test::Socialtext tests => 23;
 fixtures( 'ALL' );
 
 # Confirm that we can create tables of contents of 
@@ -201,3 +201,29 @@ my $html_public = $page_public->to_html_or_default();
 like $html_public,
     qr{permission_error.*admin \[target one\]},
     'guest user viewing page public does not have access to admin target one';
+
+Bad_recursion_bug_598: {
+    local $SIG{__WARN__} = sub {
+        my $warning = shift;
+        die "Too much recursion!" if $warning =~ m/Deep recursion/;
+        warn $warning;
+    };
+
+    my @bad_wikitexts = (
+        q/^^^ {recent_changes} {toc: }/,
+        q/^^^ {recent_changes} {toc}/,
+        q/^ {toc} I'm OK{tm}/,
+    );
+    for my $text (@bad_wikitexts) {
+        my $recurse_page = Socialtext::Page->new( hub => $public )->create(
+            title => 'recurse',
+            content => "$text\n",
+            creator => $public->current_user,
+        );
+        my $html;
+        eval { 
+            $html = $recurse_page->to_html_or_default();
+        };
+        ok !$@, 'did not recurse forevar';
+    }
+}

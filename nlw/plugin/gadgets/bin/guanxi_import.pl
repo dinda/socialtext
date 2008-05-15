@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-use JSON::Syck qw(Dump Load);
+# @COPYRIGHT@
+use Socialtext::JSON;
 use LWP::Simple;
 use strict;
 use warnings;
@@ -9,7 +10,7 @@ my $people_json = get('http://demo.socialtext.net:6200/people/json');
 
 die "No people.\n" unless $people_json;
 
-my $people = Load($people_json);
+my $people = decode_json($people_json);
 
 use Data::Dumper;
 

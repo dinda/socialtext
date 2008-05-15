@@ -30,9 +30,12 @@ our @LDAP_DATA = (
     },
 );
 our %data = (
+    id   => '0deadbeef0',
+    name => 'Test LDAP Config',
     base => 'ou=Development,dc=example,dc=com',
     host => '127.0.0.1',
     port => 389,
+    follow_referrals => 1,
     attr_map => {
         user_id         => 'dn',
         username        => 'cn',
@@ -148,7 +151,10 @@ bind_failure: {
 # Bind requires authentication, none provided; should fail
 bind_requires_auth: {
     Net::LDAP->set_mock_behaviour(
-        bind_requires_authentication => 1,
+        bind_credentials => {
+            user => 'doesnt',
+            pass => 'matter',
+            },
         );
     clear_log();
 
@@ -187,14 +193,19 @@ bind_anonymous_ok: {
 ###############################################################################
 # Authenticated bind ok
 bind_authenticated_ok: {
+    my $bind_user = 'cn=Manager,dc=example,dc=com';
+    my $bind_pass = 'abc123';
     Net::LDAP->set_mock_behaviour(
-        bind_requires_authentication => 1,
+        bind_credentials => {
+            user => $bind_user,
+            pass => $bind_pass,
+            },
         );
     clear_log();
 
     my $config = Socialtext::LDAP::Config->new(%data);
-    $config->bind_user('cn=Manager,dc=example,dc=com');
-    $config->bind_password('abc123');
+    $config->bind_user($bind_user);
+    $config->bind_password($bind_pass);
 
     my $ldap = Socialtext::LDAP::Base->new($config);
     isa_ok $ldap, 'Socialtext::LDAP::Base';
@@ -232,8 +243,14 @@ authentication_failure: {
 
 ###############################################################################
 # Authentication success
+#
+# NOTE: w/follow_referrals on, authentication does a search first to find the
+# user record and make sure we're speaking to the right LDAP server; make sure
+# that we've got a test user around to return.
 authentication_success: {
-    Net::LDAP->set_mock_behaviour();
+    Net::LDAP->set_mock_behaviour(
+        search_results => [ $LDAP_DATA[0] ],
+        );
     clear_log();
 
     my $ldap = Socialtext::LDAP::Base->new($config);

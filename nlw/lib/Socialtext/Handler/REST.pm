@@ -223,6 +223,9 @@ sub getContentPrefs {
     if ( not $self->{_gcp_hack} and $method =~ /^(POST|PUT)$/i ) {
         my $ct = $self->request->header_in('Content-Type');
         $ct ||= '*/*';
+        # throw away '; charset=' junk (and anything else since our YAML
+        # config doesn't support it anyway):
+        $ct =~ s/;.*$//;
         return ( $ct, '*/*' );
     }
     if (my $type = $self->query->param('accept')) {
@@ -266,10 +269,13 @@ sub _getContent {
     }
     else {
         # REVIEW: this is problematic for very large attachments
-        my $buff;
-        my $content_length = $self->request->header_in('Content-Length');
-        my $result = read( \*STDIN, $buff, $content_length, 0 );
-        die "unable to read buffer $!" if not defined($result);
+        my $buff = $self->query->param('PUTDATA');
+        # if we are using old CGI, there is no PUTDATA, so fall back to read()
+        unless ($buff) {
+            my $content_length = $self->request->header_in('Content-Length');
+            my $result = read( \*STDIN, $buff, $content_length, 0 );
+            die "unable to read buffer $!" if not defined($result);
+        }
         return $buff;
     }
 }

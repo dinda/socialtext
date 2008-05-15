@@ -1,15 +1,17 @@
 package Socialtext::Pluggable::Plugin::Gadgets;
-
+# @COPYRIGHT@
 use strict;
 use warnings;
 
-use JSON::Syck;
+use Encode;
+use Socialtext::JSON;
 use Socialtext::Helpers;
 use Socialtext::AppConfig;
 use Socialtext::Gadgets::Container;
 use XML::LibXML;
 use LWP;
 use HTTP::Request;
+use URI::Escape qw(uri_unescape);
 
 use base 'Socialtext::Pluggable::Plugin';
 
@@ -26,9 +28,9 @@ sub register {
 
     $class->add_rest('/data/gadget/instance/:id/render' => 'render_gadget');
     $class->add_rest('/data/gadget/instance/:id/prefs' => 'set_prefs');
+    $class->add_rest('/data/gadget/instance/:id/js' => 'get_js');
     $class->add_rest('/data/gadget/proxy' => 'proxy');
     $class->add_rest('/data/gadget/json_proxy' => 'json_proxy');
-    $class->add_rest('/data/gadget/json_feed_proxy' => 'json_feed_proxy');
     $class->add_rest('/data/gadget/desktop' => 'desktop');
 }
 
@@ -44,7 +46,10 @@ sub add_gadget {
 
     $container->install_gadget($vars{url});
 
-    $self->redirect('?action=gadgets');
+    $self->redirect(
+        'index.cgi?action=gadgets' .
+        ($vars{debug} ? ';debug=1' : '')
+    );
 }
 
 sub gallery {
@@ -65,11 +70,14 @@ sub gallery {
         { name => "BeTwittered", uri => "http://hosting.gmodules.com/ig/gadgets/file/106092714974714025177/TwitterGadget.xml" },
     );
 
+    my %vars = $self->cgi_vars;
+
     return $self->template_render('gallery',
         gadgetsST => \@gadgets, 
         gadgets3rd => \@gadgets3rd,
         gadgets3rdh => \@gadgets3rdh,
         current_uri => $self->uri,
+        debug => $vars{debug},
     );
 
 }
@@ -80,7 +88,7 @@ sub test_gadgets {
     my $container = Socialtext::Gadgets::Container->test($self);
 
     return $self->template_render('dashboard',
-        features => $container->feature_scripts,
+        debug => 1,
         gadgets => $container->template_vars,
     );
 
@@ -89,23 +97,23 @@ sub test_gadgets {
 sub html {
     my $self = shift;
 
+    my %vars = $self->cgi_vars;
+
     my $container = Socialtext::Gadgets::Container->new($self, $self->username);
 
     return $self->template_render('dashboard',
-        features => $container->feature_scripts,
+        debug => $vars{debug},
         gadgets => $container->template_vars,
-        gallery_uri => $self->make_uri( path=>'/admin/index.cgi') . "?action=gadget_gallery",
-        #gallery_uri => $self->uri . "?action=gadget_gallery",
+        gallery_uri => $self->make_uri( path=>'/admin/index.cgi') . "?action=gadget_gallery" . ($vars{debug} ? ';debug=1' : ''),
     );
 }
 
 sub render_gadget {
-    my ($self,$rest,$args) = @_;
+    my ($self,$args) = @_;
     my $gadget = Socialtext::Gadgets::Gadget->restore($self, $args->{id});
     return $self->template_render('gadget_rendered',
         id => $gadget->id,
         content => $gadget->content,
-        features => $gadget->features,
         messages => $gadget->messages,
     );
 }
@@ -113,14 +121,14 @@ sub render_gadget {
 # set the position and location of gadgets on the desktop to the passed json
 # payload
 sub desktop {
-    my ($self,$rest) = @_;
+    my ($self) = @_;
     my $api = Socialtext::Pluggable::Plugin->new();
-    my $container = Socialtext::Gadgets::Container->new($api,$rest->user->username);
+    my $container = Socialtext::Gadgets::Container->new($api,$self->username);
 
-    my $desktop = $rest->query->{desktop};
+    my $desktop = $self->query->{desktop};
     $desktop = $desktop->[0] if ref $desktop eq 'ARRAY';
 
-    my $delete = $rest->query->{delete};
+    my $delete = $self->query->{delete};
     $delete = $delete->[0] if ref $delete eq 'ARRAY';
 
     if ($delete) {
@@ -128,7 +136,7 @@ sub desktop {
     }
 
     if ($desktop) {
-        my $positions = JSON::Syck::Load($desktop);
+        my $positions = decode_json($desktop);
 
         my %gadgets;
         foreach my $col ( sort keys %$positions ) {
@@ -138,84 +146,43 @@ sub desktop {
             }
         }
         $container->storage->set('gadgets',\%gadgets);
-        $container->storage->save();
     }
     
-    return '1'; #JSON::Syck::Dump(\%gadgets);
+    return '1'; #encode_json(\%gadgets);
+}
+
+sub get_js {
+    my ($self, $args) = @_;
+    my $api = Socialtext::Pluggable::Plugin->new();
+    my $gadget = Socialtext::Gadgets::Gadget->restore($api,$args->{id});
+    $self->header_out(-type => 'application/javascript');
+    return $gadget->javascript;
 }
 
 sub set_prefs {
-    my ($self,$rest,$args) = @_;
+    my ($self,$args) = @_;
     my $api = Socialtext::Pluggable::Plugin->new();
     my $gadget = Socialtext::Gadgets::Gadget->restore($api,$args->{id});
     # XXX Ugly
     my $set;
     my %prefs;
-    for my $key ($rest->query->param) {
+    for my $key ($self->query->param) {
         if ($key =~ /^up_(.*)/) {
-            my $val = $rest->query->param($key);
+            my $val = $self->query->param($key);
             $prefs{$1} = $val;
         }
     }
     if (%prefs) {
         $gadget->storage->set('user_prefs', \%prefs);
-        $gadget->storage->save;
     }
-}
-
-sub json_feed_proxy {
-    my ( $self, $rest, $args ) = @_;
-
-    my $url = $rest->query->{url};
-    $url = $url->[0] if ref $url eq 'ARRAY';
-
-    my $content = $rest->getContent();
-
-    my $agent = LWP::UserAgent->new; 
-    $agent->agent('Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) ' .
-                  'Gecko/20060601 Firefox/2.0.0.2 (Ubu ntu-edgy)');
-    my $request = HTTP::Request->new(GET => $url);
-    $agent->default_headers->push_header(
-        'Accept' => join(',',$rest->getContentPrefs)
-    );
-
-    my $result = $agent->request($request);
-    $rest->header(-type => $result->header('Content-type'));  
-    my $data = $result->decoded_content;
-    # undefined value in here somewhere, status_line? body? XXX TODO:
-   
-    my %response = ( rc => $result->status_line );
-
-   
-    if (my $feed = XML::Feed->parse(\$data) ) {
-        $response{title} = $feed->title();
-        $response{items} = [];
-        foreach my $e ($feed->entries) {
-            my %item;
-            $item{title} = $e->title;
-            $item{summary} = $e->summary->body;
-            $item{link} = $e->link;
-            $item{content} = $e->content->body;
-            $item{author} = $e->author;
-            $item{id} = $e->id;
-            $item{issued} = $e->issued->datetime;
-            push(@{$response{items}},\%item);
-        }
-
-    } else {
-        $response{error} =  XML::Feed->errstr . "\n";
-    }
-
-    return JSON::Syck::Dump(\%response);
 }
 
 sub json_proxy  {
-    my ( $self, $rest, $args ) = @_;
+    my ( $self, $args ) = @_;
 
     my %args;
-    foreach my $key ( qw( authz headers httpMethod postData st url ) ) {
-      $args{$key} = $rest->query->{$key};
-      $args{$key} = $args{$key}->[0] if ref($args{$key}) eq 'ARRAY';
+    foreach my $key ($self->query->param) {
+      $args{$key} = $self->query->param($key);
     }
 
     $args{httpMethod} = 'GET' unless grep { $_ eq $args{httpMethod} } qw( POST GET);
@@ -234,11 +201,45 @@ sub json_proxy  {
     }
 
     my $result = $agent->request($request);
-    $rest->header(-type => $result->header('Content-type'));  
+    my $ctype = $result->header('Content-type');
+    $self->header_out(-type => $ctype) if $ctype;
     my $data = $result->decoded_content;
 
+    if ($args{contentType} eq 'FEED') {
+        my %feed_data;
+        if (my $feed = XML::Feed->parse(\$data) ) {
+            $feed_data{Author} = $feed->author;
+            $feed_data{Description} = $feed->description;
+            # XXX arabic and farsi probably aren't a huge priority right now...
+            $feed_data{LanguageDirection} = 'ltr';
+            $feed_data{Link} = $feed->link;
+            $feed_data{Title} = $feed->title;
+            $feed_data{URL} = $args{url};
+
+            my @entries;
+            foreach my $e ($feed->entries) {
+                push @entries, {
+                    BodyAvailable => 1,
+                    Date => $e->issued->datetime,
+                    ID => $e->id,
+                    LanguageDirection => 'ltr',
+                    Link => $e->link,
+                    Summary => $e->summary->body || $e->content->body,
+                    Title => $e->title,
+                };
+
+                last if $args{numEntries} and @entries >= $args{numEntries};
+            }
+            $feed_data{Entry} = \@entries;
+
+        } else {
+            $feed_data{error} =  XML::Feed->errstr . "\n";
+        }
+        $data = encode_json(\%feed_data);
+    }
+
     # undefined value in here somewhere, status_line? body? XXX TODO:
-    my $json = JSON::Syck::Dump({
+    my $json = encode_json({
         $args{url} => {
             body => $data,
             rc => $result->status_line,
@@ -249,22 +250,30 @@ sub json_proxy  {
 }
 
 sub proxy  {
-    my ( $self, $rest, $args ) = @_;
+    my ( $self, $args ) = @_;
 
-    my $url = $rest->query->{url};
+    my $url = $self->query->{url};
     $url = $url->[0] if ref $url eq 'ARRAY';
 
-    my $agent = LWP::UserAgent->new; 
-    $agent->agent('Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) ' .
+    my $ua = LWP::UserAgent->new; 
+
+    $ua->agent('Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) ' .
                   'Gecko/20060601 Firefox/2.0.0.2 (Ubu ntu-edgy)');
-    my $request = HTTP::Request->new(GET => $url);
-    $agent->default_headers->push_header(
-        'Accept' => join(',',$rest->getContentPrefs)
+    $ua->default_header("Accept-Encoding" => "gzip, deflate");
+    $ua->default_headers->push_header(
+        'Accept' => join(',',$self->getContentPrefs)
     );
 
-    my $result = $agent->request($request);
-    $rest->header(-type => $result->header('Content-type'));  
-    return $result->decoded_content;
+    my $res = $ua->get($url);
+    # XXX 500? 404?
+
+    my $content = $res->decoded_content(default_charset=>"utf-8");
+
+    my $ctype = $res->header('Content-type') || 'text/plain; charset=utf-8';
+    $ctype .= '; charset=utf-8' if Encode::is_utf8($content) and $ctype !~ m{charset=};
+    $self->header_out('Content-type' => $ctype);
+
+    return $content;
 }
 
 1;
