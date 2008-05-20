@@ -22,7 +22,9 @@ Note: Cannot automate attachments, test is slightly reduced
 | click_ok | link=Duplicate Page |  |
 | pause | 1000 |  |
 | open_ok | /%%workspace%%/index.cgi?action=duplicate_popup;page_name=dupe_testpage_%%start_time%% |  |
+| pause | 1000 |  |
 | wait_for_text_present_ok | Duplicate | 30000 |
+| pause | 1000 |  |
 | click_and_wait | Button |  |
 | open_ok | /%%workspace%%/index.cgi?duplicate_of_dupe_testpage_%%start_time%% |  |
 | text_like | st-tags | dupe_tag_%%start_time%% |
