@@ -368,7 +368,9 @@ sub get_prefs_def {
 
 sub get_defaults {
     my $self = shift;
+    use Socialtext::URI;
     return {
+        base_uri => $base_uri,
         username => $self->api->username,
     };
 }

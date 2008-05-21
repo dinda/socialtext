@@ -20,9 +20,9 @@
             <div id="mainNav">
                 <ul>
                     <li class="first"><a class="selected" href="index.cgi">Home</a></li>
-                    <li><a href="[% guanxi_root %]/people/[% user.userid %]">Profile</a></li>
-                    <li><a href="[% guanxi_root %]/people">People</a></li>
-                    <li><a href="[% guanxi_root %]/tags">Tags</a></li>
+                    <li><a href="/data/people/[% user.userid %]">Profile</a></li>
+                    <li><a href="/data/people">People</a></li>
+                    <li><a href="/data/tags">Tags</a></li>
                 </ul>
 
 

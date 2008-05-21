@@ -5,6 +5,7 @@
   <Require feature="tabs" />
   <Require feature="socialtext" />
   </ModulePrefs>
+  <UserPref name="base_uri" datatype="hidden"/>
   <Content type="html">
     <![CDATA[
     <style> 
@@ -37,13 +38,13 @@
 <!-- test tabs -->
 
         <script>
-    var guanxi_base = 'http://demo.socialtext.net:6200';
-    var guanxi = 'http://demo.socialtext.net:6200/people/json';
+    var guanxi_base = '__UP_base_uri__';
+    var guanxi = '__UP_base_uri__/people/json';
     gadgets.io.makeRequest(guanxi,putdata);
 
     function avatar(info) {
     return    "<img style='width: 27x; height: 27px' src='" + info.image + "'>&nbsp&nbsp"
-            + "<a href='" + guanxi_base + "/people/" +info.fullname+"'>"
+        + "<a href='" + guanxi_base + "/data/people/" +info.fullname+"'>"
             + info.fullname + "</a>";
     }
 
