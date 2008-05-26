@@ -330,8 +330,7 @@ authentication_success: {
     my $bind_pass = 'myPassword';
     Net::LDAP->set_mock_behaviour(
         bind_credentials => {
-            user => $bind_user,
-            pass => $bind_pass,
+            $bind_user => $bind_pass,
             },
         search_results => [ { dummy => 'user' } ],
         );

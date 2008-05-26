@@ -65,8 +65,7 @@ ldap_auth_password_wrong: {
     Net::LDAP->set_mock_behaviour(
         search_results => [ $TEST_USERS[0] ],
         bind_credentials => {
-            user => $TEST_USERS[0]->{dn},
-            pass => $TEST_USERS[0]->{authPassword},
+            $TEST_USERS[0]->{dn} => $TEST_USERS[0]->{authPassword},
             },
         );
     clear_log();
@@ -104,8 +103,7 @@ ldap_auth_password_ok: {
     Net::LDAP->set_mock_behaviour(
         search_results => [ $TEST_USERS[0] ],
         bind_credentials => {
-            user => $TEST_USERS[0]->{dn},
-            pass => $TEST_USERS[0]->{authPassword},
+            $TEST_USERS[0]->{dn} => $TEST_USERS[0]->{authPassword},
             },
         );
 
