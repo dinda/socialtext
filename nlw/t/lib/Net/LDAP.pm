@@ -43,7 +43,14 @@ sub new {
                 # auth, requiring authentication
                 my ($self, $user, %opts) = @_;
                 my $pass = $opts{'password'};
-                ($user && ($behaviour{'bind_credentials'}{$user} eq $pass))
+                if ($user) {
+                    # authenticated bind attempt
+                    return ($behaviour{'bind_credentials'}{$user} eq $pass)
+                        ? return Net::LDAP::Message->new(code=>LDAP_SUCCESS)
+                        : return Net::LDAP::Message->new(code=>LDAP_INVALID_CREDENTIALS);
+                }
+                # anonymous bind attempt
+                return $behaviour{'bind_credentials'}{'anonymous'}
                     ? return Net::LDAP::Message->new(code=>LDAP_SUCCESS)
                     : return Net::LDAP::Message->new(code=>LDAP_INVALID_CREDENTIALS);
                 } )
@@ -173,6 +180,9 @@ All bind attempts will fail.
 =item bind_credentials => { 'username' => 'password', 'user2' => 'pass2', ... }
 
 Bind attempts require any one of the specified credentials.
+
+Use a username of "anonymous" to control whether or not anonymous binds
+succeed/fail.  e.g. anonymous=>1
 
 =item search_fail=>1
 
