@@ -2,7 +2,6 @@
 set -e
 
 BASE=$(dirname $0)
-st-db-sync
 $BASE/remove-ws-breadcrumbs
 
 exit 0;
