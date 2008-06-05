@@ -2,6 +2,10 @@ Change log for Socialtext Open
 
 2.20.X
 
+Release notes, 2.20.4.2  June 2008
+
+  Fixed migration bug for upgrades from very old versions.
+
 Release notes, 2.20.3.2  May 2008
 
   Bug: Deep recursion for specifically formatted wikitext
