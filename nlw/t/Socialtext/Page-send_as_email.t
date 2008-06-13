@@ -5,7 +5,6 @@ use warnings;
 use strict;
 
 use Test::Socialtext;
-use Text::Autoformat;
 fixtures( 'admin', 'foobar' );
 
 BEGIN {
@@ -257,17 +256,7 @@ EOF
     my $text = ($emails[0]->parts())[0]->body();
 
     unlike( $text, qr/^.{80,}/m, 'no lines longer than 79 characters' );
-
-    # Text::Autoformat has a bug in the handling of the ignore
-    # parameter present in 1.13 (the latest version at the time of
-    # this writing). I've sent Damian a patch so hopefully he'll apply
-    # it and release 1.14, then this hack can go. - Dave
     
-    SKIP: {
-        skip 'Text::Autoformat < 1.14 has problems', 1
-            if $Text::Autoformat::VERSION lt '1.14.0';
-
-        like( $text, qr/\Q| This | Is | A | Table |\E\n\Q| Do   | Not | F It | Up |/,
-              'the table in the page was not reformatted.' );
-    };
+    like( $text, qr/\Q| This | Is | A | Table |\E\n\Q| Do   | Not | F It | Up |/,
+          'the table in the page was not reformatted.' );
 }
