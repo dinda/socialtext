@@ -5,6 +5,7 @@ use warnings;
 use strict;
 
 use Test::Socialtext;
+use Text::Autoformat;
 fixtures( 'admin', 'foobar' );
 
 BEGIN {
@@ -261,12 +262,12 @@ EOF
     # parameter present in 1.13 (the latest version at the time of
     # this writing). I've sent Damian a patch so hopefully he'll apply
     # it and release 1.14, then this hack can go. - Dave
- TODO:
-    {
-        local $TODO = 'tables are reformatted in outgoing emails - RT 19983'
-            if $Text::Autoformat::VERSION <= 1.13;
+    
+    SKIP: {
+        skip 'Text::Autoformat < 1.14 has problems', 1
+            if $Text::Autoformat::VERSION lt '1.14.0';
 
         like( $text, qr/\Q| This | Is | A | Table |\E\n\Q| Do   | Not | F It | Up |/,
               'the table in the page was not reformatted.' );
-    }
+    };
 }
