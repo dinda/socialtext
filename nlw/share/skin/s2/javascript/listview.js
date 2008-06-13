@@ -18,6 +18,7 @@ ST.ListView.prototype = {
     selectMessage : loc('Select all pages'),
     checkboxes : null,
     element: {
+        exporter:       'st-listtools-export',
         selectToggle:   'st-listview-allpagescb',
         pdfExport:      'st-listview-submit-pdfexport',
         rtfExport:      'st-listview-submit-rtfexport',
@@ -79,6 +80,26 @@ ST.ListView.prototype = {
         }
     },
 
+    _hideSorter: function() {
+        var sorter = $('sort-picker');
+
+        if ( ! sorter ) {
+            return;
+        }
+
+        sorter.style.display = 'none';
+    },
+
+    _showSorter: function() {
+        var sorter = $('sort-picker');
+
+        if ( ! sorter ) {
+            return;
+        }
+
+        sorter.style.display = 'inline';
+    },
+
     _syncCheckAllCb: function() {
         var allToggle = $(this.element.selectToggle);
 
@@ -89,6 +110,10 @@ ST.ListView.prototype = {
     },
 
     _loadInterface: function () {
+        if ($(this.element.exporter)) {
+            Event.observe($(this.element.exporter).parentNode, 'mouseover', this._hideSorter.bind(this));
+            Event.observe($(this.element.exporter).parentNode, 'mouseout', this._showSorter.bind(this));
+        }
         if ($(this.element.selectToggle)) {
             Event.observe(this.element.selectToggle, 'click', this._toggleSelect.bind(this));
         }
