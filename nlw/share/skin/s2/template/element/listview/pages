@@ -85,19 +85,22 @@
             in <a href="/[% workspace_name %]/">[% workspace_title %]</a>
         </span>
         [% END %]
+        [% IF ! summaries %]
+            <span class="[% style %]-row-revisions query-results-row-revisions">
+              <a href="/[% workspace_name %]/[% script_name %]?action=revision_list;page_name=[% page_uri %]">[% revisions %]</a> [% loc('Revisions') %]
+            </span>
+        [% END %]
         </span>
             [% IF summaries %]
-            <div class="[% style %]-row-summary query-results-row-summary">[% summary %]</div>
+            <div class="[% style %]-row-summary query-results-row-summary">[% summary %]
+               <span class="[% style %]-row-revisions query-results-row-revisions">
+                   (<a href="/[% workspace_name %]/[% script_name %]?action=revision_list;page_name=[% page_uri %]">[% revisions %]</a> [% loc('Revisions') %])
+               </span>
+            </div>
             [% END %]
-
         </div>
-        <div class="[% style %]-row-last-edited-by query-results-row-last-edited-by">[% username | decorate('user_avatar') %]</div>
-        <div class="[% style %]-row-date query-results-row-date">
-        [% date %]
-
-        </div>
-        <div class="[% style %]-row-revisions query-results-row-revisions">
-          <a href="/[% workspace_name %]/[% script_name %]?action=revision_list;page_name=[% page_uri %]">[% revisions %]</a>
+        <div class="[% style %]-row-last-edited-by query-results-row-last-edited-by">[% loc('Last updated by:') %] [% username | decorate('user_avatar') %]
+            <span class="[% style %]-row-date query-results-row-date">[% date %]</span>
         </div>
     </div>
 [% END %]
