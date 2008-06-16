@@ -99,15 +99,11 @@ sub display_results {
 
     $self->screen_template('view/listview');
 
-    my $summaries = ( defined $self->cgi->summaries and $self->cgi->summaries ne '' )
-            ? $self->cgi->summaries
-            : 1;
-
     my $result_set = $self->result_set;
     $self->result_set(undef);
     $self->render_screen(
         %$result_set,
-        summaries              => $summaries,
+        summaries              => $self->show_summaries,
         sortby                 => $sortby,
         sortdir                => $sortdir,
         direction              => $direction,
@@ -115,6 +111,12 @@ sub display_results {
         listview_extra_columns => $self->listview_extra_columns,
         @_,
     );
+}
+
+sub show_summaries {
+    my $self = shift;
+
+    return $self->cgi->summaries || 0;
 }
 
 sub sorted_result_set {
