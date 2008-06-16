@@ -82,8 +82,11 @@ ST.ListView.prototype = {
 
     _hideSorter: function() {
         var sorter = $('sort-picker');
-
-        if ( ! sorter ) {
+ 
+        // Stupid IE7 doesn't like this solution, so exit if that's
+        // what we're using. Any of you javascript gurus, please feel free
+        // to make this work a little better.
+        if ( ! sorter || navigator.appVersion.indexOf("MSIE 7.") != -1 ) {
             return;
         }
 
@@ -93,7 +96,8 @@ ST.ListView.prototype = {
     _showSorter: function() {
         var sorter = $('sort-picker');
 
-        if ( ! sorter ) {
+        // See comment in _hideSorter.
+        if ( ! sorter || navigator.appVersion.indexOf("MSIE 7.") != -1 ) {
             return;
         }
 
