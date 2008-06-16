@@ -6,7 +6,7 @@ Automation of [Test: Dashboard]
 
 | setSpeed | 500 |  |
 | *Comment* | Test Case: Dashboard links |  |
-| clickAndWait | st-home-link |  |
+| open_ok | /%%workspace%%/ |  |
 | text_like | st-wiki-title | Dashboard: |
 | clickAndWait | link=Settings |  |
 | text_like | st-settings-select | Settings |
@@ -93,10 +93,11 @@ Automation of [Test: Dashboard]
 | text_like | st-list-title | Changes in Last |
 | text_like | st-recent_changes-content | tc_dashboard1_%%start_time%% |
 | text_like | st-recent_changes-content | tc_dashboard2_%%start_time%% |
-| text_like | st-recent_changes-header-title | Title |
-| text_like | st-recent_changes-header-last-edited-by | Last Edited By |
-| text_like | st-recent_changes-header-date | Date |
-| text_like | st-recent_changes-header-revisions | Revisions |
+
+| text_like | Title |  |
+| text_like | Last Edited By |  |
+| text_like | Date |  |
+| text_like | Revisions |  |
 
 *Observe "Your Watchlist" link | System displays Watchlist*
 
@@ -109,10 +110,10 @@ Automation of [Test: Dashboard]
 | text_like | st-list-title | Pages You're Watching |
 | text_like | st-watchlist-content | tc_dashboard1_%%start_time%% |
 | text_like | st-watchlist-content | tc_dashboard2_%%start_time%% |
-| text_like | st-watchlist-header-title | Title |
-| text_like | st-watchlist-header-last-edited-by | Last Edited By |
-| text_like | st-watchlist-header-date | Date |
-| text_like | st-watchlist-header-revisions | Revisions |
+| text_like | Title |
+| text_like | Last Edited By |
+| text_like | Date |
+| text_like | Revisions |
 
 *Clean out Watchlist so this test can run multiple times and not fill up watchlist*
 
