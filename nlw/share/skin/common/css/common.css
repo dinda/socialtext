@@ -556,6 +556,10 @@ div#st-pagetools ul.level2 {
     width: 90%;
 }
 
+.query-results-titles .query-results-row-title {
+    line-height: 35px;
+}
+
 .query-results-titles img {
     display: block;
     padding-top: 12px;
