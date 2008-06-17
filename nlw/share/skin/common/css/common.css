@@ -560,6 +560,10 @@ div#st-pagetools ul.level2 {
     float: left;
 }
 
+.query-results-row-title .avatar {
+    float: none;
+}
+
 .query-results-row-title a {
     font-weight: bold;
     display: inline;
