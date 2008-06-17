@@ -591,9 +591,9 @@ div#st-pagetools ul.level2 {
 
 .query-results-row-revisions {
     font-style: italic;
-    font-size:90%;
-    white-space:nowrap;
-    color:gray;
+    font-size: 90%;
+    white-space: nowrap;
+    color: gray;
 }
 
 .query-results-row-title .query-results-row-revisions a {
@@ -609,7 +609,6 @@ div#st-pagetools ul.level2 {
 }
  
 .query-results-row {
-    border-collapse: collapse;
     margin: 0.5em 0 0 0;
     padding: 0;
     clear: both;
@@ -649,7 +648,6 @@ div#st-pagetools ul.level2 {
 }
 
 .query-results-header-row {
-    border-collapse: collapse;
     border: 1px #ccc solid;
     background: #f8f8f8;
     padding: 4px 0;
