@@ -690,6 +690,7 @@ div#st-pagetools ul.level2 {
 }
 
 #sort-by-picker {
+    height: 22px;
     display:block;
     float:right;
     padding-right:1em;
