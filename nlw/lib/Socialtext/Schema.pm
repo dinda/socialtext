@@ -119,8 +119,7 @@ sub sync {
 
     eval { $self->createdb };
     my $current_version = $self->current_version;
-    $self->_display("Current schema version is $current_version\n")
-        if $self->{verbose};
+    $self->_display("Current schema version is $current_version\n");
     if ($current_version == 0) {
         $self->_run_sql_file($self->_schema_filename);
         $self->_add_required_data;
@@ -313,7 +312,13 @@ sub _set_schema_version {
     # ideally, this would happen in the same transaction as the SQL patch
     my $schema_field = $self->schema_name . '-schema-version';
     sql_begin_work();
-    sql_execute('DELETE FROM "System" WHERE field = ?', $schema_field);
+    eval {
+        sql_execute('DELETE FROM "System" WHERE field = ?', $schema_field);
+    };
+    if ($@ && $@ =~ /relation "System" does not exist/i) {
+        eval { sql_rollback() };
+        return;
+    }
     sql_execute('INSERT INTO "System" VALUES (?,?)', 
         $schema_field, $new_version);
     sql_commit();
