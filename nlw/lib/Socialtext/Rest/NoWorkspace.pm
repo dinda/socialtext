@@ -9,9 +9,10 @@ use base 'Socialtext::Rest';
 use Socialtext::AppConfig;
 use Socialtext::HTTP ':codes';
 use Socialtext::Log 'st_log';
-use Socialtext::Permission 'ST_READ_PERM';
+use Socialtext::Permission;
 use Socialtext::User;
 use Socialtext::Workspace;
+use Socialtext::Session;
 
 # XXX There may be some issues with session handling
 # here. Not sure if they are new or not new.
@@ -31,7 +32,7 @@ sub handler {
     if ($browsers_last_workspace) {
         my $user_can_access_last_workspace
             = $browsers_last_workspace->permissions->user_can(
-            permission => ST_READ_PERM,
+            permission => Socialtext::Permission::ST_READ_PERM,
             user       => $user
         );
 
@@ -40,7 +41,10 @@ sub handler {
         }
     }
 
-    $destination_ws ||= $user->workspaces->next;
+    unless ($destination_ws) {
+        my @recent = Socialtext::Workspace->read_breadcrumbs($user);
+        $destination_ws = shift @recent;
+    }
 
     $destination_ws ||= Socialtext::Workspace->new(
         name => Socialtext::AppConfig->default_workspace() );

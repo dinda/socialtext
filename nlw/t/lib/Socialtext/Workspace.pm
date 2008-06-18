@@ -4,6 +4,17 @@ use strict;
 use warnings;
 use base 'Socialtext::MockBase';
 
+our @BREADCRUMBS = ();
+
+sub new {
+    my $class = shift;
+    return if @_ == 2 and ! defined $_[1];
+    my $self = { @_ };
+    bless $self, $class;
+    return $self;
+}
+
+
 sub title { $_[0]->{title} || 'mock_workspace_title' }
 sub name { $_[0]->{name} || $_[0]->{title} || 'mock_workspace_name' }
 sub workspace_id { $_[0]->{id} || 'mock_workspace_id' }
@@ -18,7 +29,8 @@ sub logo_uri_or_default { 'logo_uri_or_default' }
 
 sub is_public { $_[0]->{is_public} }
 
-sub uri { $_[0]->{uri} || 'mock_workspace_uri' }
+sub uri { $_[0]->{uri} || 
+            '/workspace_' . ($_[0]->{workspace_id} || $_[0]->{name}) . '/' }
 
 sub cascade_css { $_[0]->{cascade_css} || 1 }
 
@@ -34,8 +46,10 @@ sub customjs_uri { '' }
 
 sub customjs_name { '' }
 
-sub read_breadcrumbs { }
+sub read_breadcrumbs { @BREADCRUMBS }
 
 sub permissions { shift } # hack - just return ourselves
+
+sub user_can { $_[0]->{user_can} || 1 }
 
 1;
