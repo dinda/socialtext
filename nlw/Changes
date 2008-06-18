@@ -2,6 +2,11 @@ Change log for Socialtext Open
 
 2.20.X
 
+Release notes, 2.20.4.4  July 2008
+
+  Fixed bug with Firefox 3 file uploads
+  Added support for Universal Edit Button
+
 Release notes, 2.20.4.3  June 2008
 
   Fixed migration bug for upgrades from very old versions.
