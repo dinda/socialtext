@@ -12,6 +12,8 @@ Release notes, 2.20.6.3  June 2008
 
   Bug: problem with orphaned pages listing (may not have been seen in the wild)
 
+  Bug: firefox 3 file uploads
+
 Release notes, 2.20.5.x  June 2008
 
   Remove dependency on Alzabo (making this the "Alzab-no" release)
