@@ -3,7 +3,7 @@
 
 | setSpeed | 100 |  |
 | *Comment* | Test Case: New Page. Page Already Exists |  |
-| open_ok | /%%workspace%%/index.cgi?action=dashboard |  |
+| open_ok | /%%workspace%%/index.cgi?action=homepage |  |
 | click_and_wait | st-newpage-link |  |
 | wait_for_element_visible_ok | st-newpage-pagename-edit | 10000 |
 | type_ok | st-newpage-pagename-edit | np %%start_time%% |
@@ -19,13 +19,13 @@
 | wait_for_text_present_ok | Incoming Links | 30000 |
 
 | *Comment* | Test Case: New Page. What's New on dashboard |  |
-| open_ok | /%%workspace%%/index.cgi?action=dashboard |  |
+| open_ok | /%%workspace%%/index.cgi?action=homepage |  |
 | click_and_wait | link=np %%start_time%% |  |
-| open_ok | /%%workspace%%/index.cgi?action=dashboard |  |
+| open_ok | /%%workspace%%/index.cgi?action=homepage |  |
 | click_and_wait | link=np %%start_time%% 2 |  |
 
 | *Comment* | Test Case: New Page. Click on Save options, then cancel |  |
-| open_ok | /%%workspace%%/index.cgi?action=dashboard |  |
+| open_ok | /%%workspace%%/index.cgi?action=homepage |  |
 | click_and_wait | st-newpage-link |  |
 | wait_for_element_visible_ok | st-newpage-pagename-edit | 10000 |
 | type_ok | st-newpage-pagename-edit | np %%start_time%% |
@@ -36,16 +36,19 @@
 | click_ok | st-newpage-duplicate-option-append |  |
 | click_ok | st-newpage-duplicate-option-different |  |
 | click_ok | st-newpage-duplicate-cancelbutton |  |
-| click_and_wait | st-cancel-button-link |  |
+| click_ok | st-cancel-button-link |  |
 
- verifyConfirmation | Are you sure you want to Cancel?\n\nYou have unsaved changes.\n\nPress OK to continue, or Cancel to stay in the editor.
+ verifyConfirmation | Are you sure you want to Cancel?\n\nYou have unsaved changes.\n\nPress OK to continue, or Cancel to stay in the editor. | |
 
 | wait_for_text_present_ok | Dashboard: | 30000 |
 
 | *Comment* | Test Case: New Page from Page View |  |
 | click_and_wait | link=np %%start_time%% 2 |  |
 | wait_for_element_visible_ok | st-pagetools-newpage | 20000 |
-| click_ok | st-pagetools-newpage |  |
+
+ click_ok | st-pagetools-newpage | |
+
+| click_ok | link=Create New Wiki Page |  |
 | wait_for_element_visible_ok | st-newpage-pagename-edit | 30000 |
 | type_ok | st-newpage-pagename-edit | np %%start_time%% 3 |
 | click_ok | st-save-button-link |  |
@@ -58,6 +61,6 @@
 | st-admin | purge-page --workspace %%workspace%% --page np_%%start_time%%_2 | page was purged |
 | st-admin | purge-page --workspace %%workspace%% --page np_%%start_time%% | page was purged |
 | st-admin | purge-page --workspace %%workspace%% --page np_%%start_time%%_3 | page was purged |
-| click_and_wait | st-home-link | set up for next included test |
+| open_ok | /%%workspace%%/index.cgi?action=homepage |  |
 
 | *Comment* | Test Case: New Page COMPLETED |  |
