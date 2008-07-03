@@ -349,8 +349,9 @@ sub createdb {
     my $self = shift;
     my %c = $self->connect_params();
     disconnect_dbh();
+    my $owner = $c{user} || 'nlw';
     eval {
-        $self->_db_shell_run("createdb -E UTF8 -O nlw $c{db_name}");
+        $self->_db_shell_run("createdb -E UTF8 -O $owner $c{db_name}");
     };
     my $createdb_err = $@;
     eval {
