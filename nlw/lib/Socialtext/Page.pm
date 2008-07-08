@@ -1188,7 +1188,7 @@ sub _store_preview_text {
     utime $mtime, $mtime, $filename 
         or warn "utime $mtime, $filename failed: $!";
     utime $mtime, $mtime, $dirpath 
-        or warn "utime $mtime, $filename failed: $!";
+        or warn "utime $mtime, $dirpath failed: $!";
 }
 
 sub _to_plain_text {
