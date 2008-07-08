@@ -1179,7 +1179,7 @@ sub _store_preview_text {
         or warn "rename $tmp_file => $filename failed: $!";
     utime $mtime, $mtime, $filename 
         or warn "utime $mtime, $filename failed: $!";
-    utime $mtime, $mtime, $dirname 
+    utime $mtime, $mtime, $dirpath 
         or warn "utime $mtime, $filename failed: $!";
 }
 
