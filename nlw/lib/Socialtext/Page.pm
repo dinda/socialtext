@@ -1187,6 +1187,8 @@ sub _store_preview_text {
         or warn "rename $tmp_file => $filename failed: $!";
     utime $mtime, $mtime, $filename 
         or warn "utime $mtime, $filename failed: $!";
+    utime $mtime, $mtime, $dirname 
+        or warn "utime $mtime, $filename failed: $!";
 }
 
 sub _to_plain_text {
