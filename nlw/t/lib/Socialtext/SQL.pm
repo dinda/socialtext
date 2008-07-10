@@ -4,8 +4,9 @@ use strict;
 use warnings;
 use Test::More;
 use base 'Exporter';
-our @EXPORT_OK = qw/sql_execute sql_ok sql_selectrow sql_singlevalue get_dbh/;
 
+our @EXPORT_OK = qw/sql_execute sql_ok sql_selectrow sql_singlevalue get_dbh
+                    sql_begin_work sql_commit sql_rollback/;
 our @SQL;
 our @RETURN_VALUES;
 
@@ -17,6 +18,9 @@ sub sql_execute {
 }
 
 sub get_dbh { }
+sub sql_begin_work { }
+sub sql_commit { }
+sub sql_rollback { }
 sub sql_selectrow { sql_execute(@_) };
 sub sql_singlevalue { sql_execute(@_) };
 
@@ -29,8 +33,9 @@ sub sql_ok {
     my $sql = shift @SQL;
     $p{name} = $p{name} ? "$p{name} " : '';
     if ($p{sql}) {
-        $sql->{sql} =~ s/\s+/ /sg;
-        $sql->{sql} =~ s/\s*$//;
+        # normalize expected and actual sql
+            $p{sql} =~ s/\s+/ /sg;     $p{sql} =~ s/\s*$//;
+        $sql->{sql} =~ s/\s+/ /sg; $sql->{sql} =~ s/\s*$//;
         if (ref($p{sql})) {
             like $sql->{sql}, $p{sql}, $p{name} . 'SQL matches';
         }
@@ -52,6 +57,11 @@ use base 'Socialtext::MockBase';
 sub fetchall_arrayref {
     my $self = shift;
     return $self->{return} || [];
+}
+
+sub fetchrow_arrayref {
+    my $self = shift;
+    return shift @{ $self->{return} };
 }
 
 1;
