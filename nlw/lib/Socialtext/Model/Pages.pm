@@ -83,7 +83,7 @@ sub _fetch_pages {
     my $more_join = '';
     if ( $p{tag} ) {
         $more_join = 'JOIN page_tag USING (page_id, workspace_id)';
-        $p{where} .= ' AND page_tag.tag = ?';
+        $p{where} .= ' AND LOWER(page_tag.tag) = LOWER(?)';
         push @{ $p{bind} }, $p{tag};
     }
 

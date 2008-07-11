@@ -38,6 +38,7 @@ sub to_result {
         From     => $self->{last_editor_username},
         username => $self->{last_editor_username},
         Date     => $self->{last_edit_time},
+        DateLocal => $self->datetime_for_user,
         Subject  => $self->{name},
         Revision => $self->{revision_count},
         Summary  => $self->{summary},
@@ -48,6 +49,15 @@ sub to_result {
     };
 
     return $result;
+}
+
+sub datetime_for_user {
+    my $self = shift;
+    my $datetime = $self->{last_edit_time};
+    if ($self->{hub}) {
+        $datetime = $self->{hub}->timezone->date_local($datetime);
+    }
+    return $datetime;
 }
 
 sub title          { $_[0]->{name} }

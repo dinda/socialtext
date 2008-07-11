@@ -51,7 +51,7 @@ SELECT page.workspace_id,
     WHERE page.deleted = ?::bool 
       AND page.workspace_id = ? 
       AND last_edit_time > 'now'::timestamptz - ?::interval 
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,9,'88 seconds','foo', 20],
         );
@@ -105,7 +105,7 @@ SELECT page.workspace_id,
     WHERE page.deleted = ?::bool 
       AND page.workspace_id IN (?,?,?)
       AND last_edit_time > ?::timestamptz
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,1,2,3,'2008-01-01 01:01:01','foo', 20],
         );
@@ -159,7 +159,7 @@ SELECT page.workspace_id,
     WHERE page.deleted = ?::bool 
       AND page.workspace_id = ? 
       AND last_edit_time > ?::timestamptz
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,9,'2008-01-01','foo', 20],
         );
@@ -225,7 +225,7 @@ SELECT page.workspace_id,
     WHERE page.deleted = ?::bool 
       AND page.workspace_id = ? 
       AND last_edit_time > 'now'::timestamptz - ?::interval 
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,9,'88 seconds','foo', 20],
         );
@@ -280,7 +280,7 @@ SELECT page.workspace_id,
     WHERE page.deleted = ?::bool 
       AND page.workspace_id = ? 
       AND last_edit_time > 'now'::timestamptz - ?::interval 
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,9,'88 seconds','foo',20],
         );
@@ -385,7 +385,7 @@ SELECT page.workspace_id,
         JOIN page_tag USING (page_id, workspace_id) 
     WHERE page.deleted = ?::bool 
       AND page.workspace_id = ? 
-      AND page_tag.tag = ? ORDER BY page.last_edit_time DESC LIMIT ?
+      AND LOWER(page_tag.tag) = LOWER(?) ORDER BY page.last_edit_time DESC LIMIT ?
 EOT
             args => [0,9,'foo',33],
         );
