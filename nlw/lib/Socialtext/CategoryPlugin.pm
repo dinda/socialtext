@@ -629,13 +629,10 @@ sub _set_query_link {
 sub _get_wafl_data {
     my $self = shift;
     my $hub            = shift;
-    my $category       = shift;
+    my $category       = shift || '';
     my $workspace_name = shift;
 
-    $category = 'recent changes' unless $category;
-
     $hub = $self->hub_for_workspace_name($workspace_name);
-
     $hub->recent_changes->get_recent_changes_in_category(
         count    => 10,
         category => lc($category),
