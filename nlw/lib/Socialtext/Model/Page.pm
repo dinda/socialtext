@@ -44,6 +44,7 @@ sub to_result {
         Type     => $self->{page_type},
         page_id  => $self->{page_id},
         page_uri => $self->uri,
+        revision_count => $self->{revision_count},
     };
 
     return $result;
