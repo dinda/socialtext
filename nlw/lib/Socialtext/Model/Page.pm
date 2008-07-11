@@ -150,4 +150,8 @@ sub database_directory {
 
 }
 
+sub store {
+    die 'Socialtext::Model::Page is currently a READ ONLY object';
+}
+
 1;
