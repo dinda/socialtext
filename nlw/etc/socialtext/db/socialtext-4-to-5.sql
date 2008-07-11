@@ -44,4 +44,8 @@ ALTER TABLE ONLY page_tag
         FOREIGN KEY ( workspace_id, page_id )
         REFERENCES page ( workspace_id, page_id ) ON DELETE CASCADE;
 
+UPDATE "System"
+    SET value = 5
+    WHERE field = 'socialtext-schema-version';
+
 COMMIT;
