@@ -51,8 +51,8 @@ while (my $dir = readdir($dfh)) {
         $workspace_id, $page->{page_id}, $page->{name},
         $last_editor, $page->{last_edit_time}, 
         $first_editor, $page->{create_time},
-        $page->{revision_id}, $page->{revision_count}, $page->{type}, 
-        $page->{deleted}, $page->{summary},
+        $page->{revision_id}, $page->{revision_count}, $page->{revision_num}, 
+        $page->{type}, $page->{deleted}, $page->{summary},
     ];
 
     for my $t (@{ $page->{tags} }) {
@@ -101,7 +101,7 @@ sub read_metadata {
         $summary = $summary->[-1];
     }
 
-    my $orig_page = load_original_revision($page_dir);
+    my ($num_revisions, $orig_page) = load_original_revision($page_dir);
 
     return {
         page_id => $page_dir,
@@ -109,7 +109,8 @@ sub read_metadata {
         last_editor => $pagemeta->{From},
         last_edit_time => $pagemeta->{Date},
         revision_id => $revision_id,
-        revision_count => $pagemeta->{Revision},
+        revision_count => $num_revisions,
+        revision_num => $pagemeta->{Revision},
         type => $pagemeta->{Type} || 'wiki',
         deleted => ($pagemeta->{Control} || '') eq 'Deleted' ? 1 : 0,
         tags => $tags,
@@ -175,7 +176,8 @@ sub load_original_revision {
 
     my $file = "$page_dir/$orig_rev.txt";
     die "$file does not exist!" unless -e $file;
-    return fetch_metadata($file);
+    my $orig_metadata = fetch_metadata($file);
+    return (scalar(@ids), $orig_metadata);
 }
 
 sub fetch_metadata {

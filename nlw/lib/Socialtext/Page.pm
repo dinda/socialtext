@@ -752,11 +752,12 @@ sub update_db_metadata {
         $wksp_id, $hash->{page_id},
     );
     sql_execute(
-        'INSERT INTO page VALUES (?,?,?,?,?::timestamptz,?,?::timestamptz,?,?,?,?::bool,?)',
+        'INSERT INTO page VALUES (?,?,?,?,?::timestamptz,?,?::timestamptz,?,?,?,?,?::bool,?)',
         $wksp_id, $hash->{page_id}, $hash->{name},
         $self->last_edited_by->user_id, $hash->{last_edit_time},
         $creator_id, $create_time,
-        $hash->{revision_id}, $hash->{revision_count}, $hash->{type},
+        $hash->{revision_id}, $self->metadata->Revision,
+        $hash->{revision_count}, $hash->{type},
         $self->deleted ? '1' : '0',
         $self->metadata->Summary,
     );

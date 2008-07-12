@@ -40,7 +40,7 @@ sub to_result {
         Date     => $self->{last_edit_time},
         DateLocal => $self->datetime_for_user,
         Subject  => $self->{name},
-        Revision => $self->{revision_count},
+        Revision => $self->{current_revision_num},
         Summary  => $self->{summary},
         Type     => $self->{page_type},
         page_id  => $self->{page_id},

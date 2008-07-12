@@ -218,6 +218,7 @@ CREATE TABLE page (
     creator_id bigint NOT NULL,
     create_time timestamptz NOT NULL,
     current_revision_id text NOT NULL,
+    current_revision_num integer NOT NULL,
     revision_count integer NOT NULL,
     page_type text NOT NULL,
     deleted boolean NOT NULL,
