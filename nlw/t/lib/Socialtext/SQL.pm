@@ -32,21 +32,29 @@ sub sql_ok {
 
     my $sql = shift @SQL;
     $p{name} = $p{name} ? "$p{name} " : '';
-    if ($p{sql}) {
-        # normalize expected and actual sql
-            $p{sql} =~ s/\s+/ /sg;     $p{sql} =~ s/\s*$//;
-        $sql->{sql} =~ s/\s+/ /sg; $sql->{sql} =~ s/\s*$//;
+    my $expected_sql = $p{sql};
+    if ($expected_sql) {
+        my $observed_sql = _normalize_sql($sql->{sql});
         if (ref($p{sql})) {
-            like $sql->{sql}, $p{sql}, $p{name} . 'SQL matches';
+            like $observed_sql, $expected_sql, 
+                 $p{name} . 'SQL matches';
         }
         else {
-            is $sql->{sql}, $p{sql}, $p{name} . 'SQL matches exactly';
+            is $observed_sql, _normalize_sql($expected_sql), 
+               $p{name} . 'SQL matches exactly';
         }
     }
 
     if ($p{args}) {
         is_deeply $sql->{args}, $p{args}, $p{name} . 'SQL args match';
     }
+}
+
+sub _normalize_sql {
+    my $sql = shift;
+    $sql =~ s/\s+/ /sg;
+    $sql =~ s/\s*$//;
+    return $sql;
 }
 
 package mock_sth;
