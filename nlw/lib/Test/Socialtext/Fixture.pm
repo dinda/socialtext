@@ -252,6 +252,7 @@ sub _generate_workspaces {
             account_id         => $account_id,
             created_by_user_id => $creator->user_id(),
             account_id         => Socialtext::Account->Socialtext()->account_id,
+            ($spec->{no_pages} ? (skip_default_pages => 1) : ())
         );
 
         my $perms = $PermsForName{ $ws->name } || 'member-only';
@@ -351,6 +352,7 @@ sub _create_ordered_pages {
     my $self = shift;
     my $ws = shift;
 
+    print STDERR "_create_ordered_pages " if $self->env->verbose;
     $self->_unlink_existing_pages($ws);
 
     my $workspace_name = $ws->name;
@@ -382,6 +384,7 @@ sub _create_extra_pages {
     my $self = shift;
     my $ws = shift;
 
+    print STDERR "_create_extra_pages " if $self->env->verbose;
     my $hub = $self->env->hub_for_workspace($ws);
 
     for my $file ( grep { -f && ! /(?:\.sw.|~)$/ } glob "t/extra-pages/*" ) {
