@@ -143,8 +143,11 @@ sub _default_code_base {
 
 sub _user_checkout_dir {
     return Cwd::abs_path(
-        File::Spec->catdir(
-            $ENV{ST_SRC_BASE}, 'current', 'nlw',
+        $ENV{ST_SRC_BASE}
+        ? File::Spec->catdir( $ENV{ST_SRC_BASE}, 'current', 'nlw' )
+        : File::Spec->catdir(
+            File::Basename::dirname( $INC{'Socialtext/AppConfig.pm'} ),
+            File::Spec->updir, File::Spec->updir
         )
     );
 }
