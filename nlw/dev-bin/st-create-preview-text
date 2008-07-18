@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+# @COPYRIGHT@
+use strict;
+use warnings;
+use Socialtext::Workspace;
+use Socialtext::Hub;
+use Socialtext::CLI;
+
+die "Must be run as root!\n" if $<;
+Socialtext::CLI->_drop_privs();
+
+my $workspaces = Socialtext::Workspace->All;
+while ( my $wksp = $workspaces->next ) {
+    print "Storing preview text for workspace " . $wksp->name . "\n";
+    my $hub = Socialtext::Hub->new(current_workspace => $wksp);
+    my @pages = $hub->pages->all;
+    for my $p (@pages) {
+        if ($p->metadata->{Summary}) {
+            warn $p->id . " already has a summary...\n";
+            next;
+        }
+        warn "Storing preview text for " . $p->id . "\n";
+        eval {
+            $p->_store_preview_text($p->preview_text);
+        };
+        warn "Error storing preview text: $@" if $@;
+    }
+}
+
+
+
