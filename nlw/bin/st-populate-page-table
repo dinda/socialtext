@@ -24,8 +24,6 @@ usage() unless $workspace_name;
 my $workspace = Socialtext::Workspace->new(name => $workspace_name);
 usage() unless $workspace;
 
-my %email_to_id;
-
 # Start a transaction, and delete everything for this workspace
 sql_begin_work();
 sql_execute(
@@ -197,27 +195,30 @@ sub fetch_metadata {
     return parse_headers($content);
 }
 
+my %userid_cache;
 sub editor_to_id {
     my $editor = shift;
-    unless ( $email_to_id{ $editor } ) {
-        # there are some 'email addresses' in the system that aren't email
-        # addresses at all, be sure to check for that and return a reasonable
-        # default, the System User.
-        return 1 unless Email::Valid->address( $editor );
+    unless ( $userid_cache{ $editor } ) {
+        # Load or create a new user with the given username.
+        my $user = Socialtext::User->new(username => $editor);
 
-        # Load or create a new user with the given email address.
-        my $user = Socialtext::User->new(email_address => $editor);
         unless ($user) {
-            warn "Creating user account for '$editor'\n";
+            my $email = $editor;
+            unless (Email::Valid->address( $email )) {
+                $email = "$editor\@example.com";
+            }
+
+            warn "Creating user account for '$editor','$email'\n";
             $user = Socialtext::User->create(
-                email_address => $editor,
+                email_address => $email,
                 username => $editor,
             );
-            return 1 unless $user; # default to system user in worst case
+            $user ||= Socialtext::User->SystemUser();
         }
-        $email_to_id{ $editor } = $user->user_id;
+
+        $userid_cache{ $editor } = $user->user_id;
     }
-    return $email_to_id{ $editor };
+    return $userid_cache{ $editor };
 }
 
 sub usage {
