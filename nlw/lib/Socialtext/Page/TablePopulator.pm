@@ -169,7 +169,7 @@ INSERT INTO $table VALUES ($vals);
 EOT
     for my $row (@$rows) {
         $sth->execute(@$row) || 
-            die "Error during execute - (INSERT INTO $table) - bindings=("
+            warn "Error during execute - (INSERT INTO $table) - bindings=("
                 . join(', ', @$row) . ') - '
                 . $sth->errstr;
     }
