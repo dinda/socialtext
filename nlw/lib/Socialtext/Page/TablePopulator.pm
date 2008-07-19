@@ -207,29 +207,33 @@ sub fetch_metadata {
 {
     my %userid_cache;
 
+    # This code inspired by Socialtext::Page::last_edited_by
     sub editor_to_id {
-        my $editor = shift;
-        unless ( $userid_cache{ $editor } ) {
-            # Load or create a new user with the given username.
-            my $user = Socialtext::User->new(username => $editor);
+        my $email_address = shift;
+        unless ( $userid_cache{ $email_address } ) {
+            # We have some very bogus data on our system, so this is a really
+            # horrible hack to fix it.
+            unless ( Email::Valid->address($email_address) ) {
+                my ($name) = $email_address =~ /([\w-]+)/;
+                $name = 'unknown' unless defined $name;
+                $email_address = $name . '@example.com';
+            }
 
+            # Load or create a new user with the given email.
+            # Email addresses are always written to disk, even for ldap users.
+            my $user = Socialtext::User->new(email_address => $email_address);
             unless ($user) {
-                my $email = $editor;
-                unless (Email::Valid->address( $email )) {
-                    $email = "$editor\@example.com";
-                }
-
-                warn "Creating user account for '$editor','$email'\n";
+                warn "Creating user account for '$email_address'\n";
                 $user = Socialtext::User->create(
-                    email_address => $email,
-                    username => $editor,
+                    email_address => $email_address,
+                    username      => $email_address,
                 );
                 $user ||= Socialtext::User->SystemUser();
             }
 
-            $userid_cache{ $editor } = $user->user_id;
+            $userid_cache{ $email_address } = $user->user_id;
         }
-        return $userid_cache{ $editor };
+        return $userid_cache{ $email_address };
     }
 }
 
