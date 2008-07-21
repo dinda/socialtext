@@ -82,7 +82,7 @@ sub populate {
         add_to_db('page_tag', \@page_tags);
     };
     if ($@) {
-        warn "Error populating $workspace_name: $@";
+        warn "Error during populate of $workspace_name: $@";
         sql_rollback();
     }
     else {
@@ -106,6 +106,9 @@ sub read_metadata {
     $tags = [$tags] unless ref($tags);
 
     my $subject = $pagemeta->{Subject} || '';
+    if (ref($subject)) { # Handle bad duplicate headers
+	$subject = shift @$subject;
+    }
     my $summary = $pagemeta->{Summary} || '';
     unless ($summary) {
         my $p = Socialtext::Page->new( 
@@ -123,6 +126,9 @@ sub read_metadata {
     }
 
     my ($num_revisions, $orig_page) = load_original_revision($page_dir);
+    # This is special case for any extremely bad data on the system
+    $orig_page->{From} ||= $pagemeta->{From};
+    $orig_page->{Date} ||= $pagemeta->{Date};
 
     return {
         page_id => $page_dir,
@@ -177,11 +183,16 @@ sub add_to_db {
     my $sth = $dbh->prepare(<<EOT);
 INSERT INTO $table VALUES ($vals);
 EOT
-    for my $row (@$rows) {
-        $sth->execute(@$row) || 
-            warn "Error during execute - (INSERT INTO $table) - bindings=("
-                . join(', ', @$row) . ') - '
-                . $sth->errstr;
+    my $row;
+    eval {
+        for $row (@$rows) {
+            $sth->execute(@$row);
+        }
+    };
+    if ($@) {
+        die "Error during execute - (INSERT INTO $table) - bindings=("
+            . join(', ', @$row) . ') - '
+            . $sth->errstr;
     }
 }
 
@@ -219,7 +230,7 @@ sub fetch_metadata {
 
     # This code inspired by Socialtext::Page::last_edited_by
     sub editor_to_id {
-        my $email_address = shift;
+        my $email_address = shift || '';
         unless ( $userid_cache{ $email_address } ) {
             # We have some very bogus data on our system, so this is a really
             # horrible hack to fix it.
