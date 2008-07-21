@@ -547,11 +547,6 @@ ALTER TABLE ONLY "WorkspaceRolePermission"
             FOREIGN KEY (workspace_id)
             REFERENCES "Workspace"(workspace_id) ON DELETE CASCADE;
 
-ALTER TABLE ONLY page
-    ADD CONSTRAINT page_last_editor_id_fk
-            FOREIGN KEY (last_editor_id)
-            REFERENCES "User"(user_id) ON DELETE CASCADE;
-
 ALTER TABLE ONLY page_tag
     ADD CONSTRAINT page_tag_workspace_id_page_id_fkey
             FOREIGN KEY (workspace_id, page_id)
