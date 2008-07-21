@@ -17,6 +17,30 @@ END
 $$
     LANGUAGE plpgsql;
 
+CREATE FUNCTION execute_if_table_exists(table_name text, sql text) RETURNS boolean
+    AS $$
+BEGIN
+    IF (SELECT relname FROM pg_class WHERE relname = table_name GROUP BY relname) IS NOT NULL THEN
+        EXECUTE sql;
+        RETURN(TRUE);
+    END IF;
+    RETURN(FALSE);
+END
+$$
+    LANGUAGE plpgsql;
+
+CREATE FUNCTION execute_unless_table_exists(table_name text, sql text) RETURNS boolean
+    AS $$
+BEGIN
+    IF (SELECT relname FROM pg_class WHERE relname = table_name GROUP BY relname) IS NULL THEN
+        EXECUTE sql;
+        RETURN(TRUE);
+    END IF;
+    RETURN(FALSE);
+END
+$$
+    LANGUAGE plpgsql;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -522,6 +546,11 @@ ALTER TABLE ONLY "WorkspaceRolePermission"
     ADD CONSTRAINT fk_d9034c52d2999d62d24bd2cfa30ac457
             FOREIGN KEY (workspace_id)
             REFERENCES "Workspace"(workspace_id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY page
+    ADD CONSTRAINT page_last_editor_id_fk
+            FOREIGN KEY (last_editor_id)
+            REFERENCES "User"(user_id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY page_tag
     ADD CONSTRAINT page_tag_workspace_id_page_id_fkey
