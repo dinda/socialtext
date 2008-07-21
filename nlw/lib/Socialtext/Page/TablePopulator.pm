@@ -50,6 +50,9 @@ sub populate {
         my @pages;
         my @page_tags;
         while (my $dir = readdir($dfh)) {
+            next unless -d $dir;
+            next if $dir =~ m/^\./;
+
             eval {
                 my $page = $self->read_metadata($dir);
                 my $workspace_id = $workspace->workspace_id;
