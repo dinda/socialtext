@@ -536,7 +536,12 @@ ALTER TABLE ONLY page
 ALTER TABLE ONLY page
     ADD CONSTRAINT page_last_editor_id_fk
     FOREIGN KEY (last_editor_id)
-    REFERENCES "User" (user_id) ON DELETE CASCADE;
+    REFERENCES "UserId" (system_unique_id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY page
+    ADD CONSTRAINT page_creator_id_fk
+    FOREIGN KEY (creator_id)
+    REFERENCES "UserId" (system_unique_id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY person
     ADD CONSTRAINT person_assistant_id_fk
