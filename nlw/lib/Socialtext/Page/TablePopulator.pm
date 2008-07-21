@@ -10,7 +10,8 @@ use Socialtext::Hub;
 use Socialtext::User;
 use Socialtext::AppConfig;
 use Fatal qw/opendir closedir chdir open/;
-use Socialtext::SQL qw/sql_execute sql_begin_work sql_commit get_dbh/;
+use Socialtext::SQL qw/sql_execute sql_begin_work sql_commit get_dbh 
+                       sql_rollback/;
 
 sub new {
     my $class = shift;
@@ -34,51 +35,56 @@ sub populate {
 
     # Start a transaction, and delete everything for this workspace
     sql_begin_work();
-    sql_execute(
-        'DELETE FROM page WHERE workspace_id = ?',
-        $workspace->workspace_id,
-    );
+    eval {
+        sql_execute(
+            'DELETE FROM page WHERE workspace_id = ?',
+            $workspace->workspace_id,
+        );
 
-    my $workspace_dir = Socialtext::Paths::page_data_directory($workspace_name);
-    my $hub = $self->{hub}
-        = Socialtext::Hub->new( current_workspace => $workspace );
-    chdir $workspace_dir;
-    opendir(my $dfh, $workspace_dir);
-    my @pages;
-    my @page_tags;
-    while (my $dir = readdir($dfh)) {
-        next unless -d $dir;
-        next if $dir =~ m/^\./;
+        my $workspace_dir
+            = Socialtext::Paths::page_data_directory($workspace_name);
+        my $hub = $self->{hub}
+            = Socialtext::Hub->new( current_workspace => $workspace );
+        chdir $workspace_dir;
+        opendir(my $dfh, $workspace_dir);
+        my @pages;
+        my @page_tags;
+        while (my $dir = readdir($dfh)) {
+            eval {
+                my $page = $self->read_metadata($dir);
+                my $workspace_id = $workspace->workspace_id;
 
-        eval {
-            my $page = $self->read_metadata($dir);
-            my $workspace_id = $workspace->workspace_id;
+                my $last_editor = editor_to_id($page->{last_editor});
+                my $first_editor = editor_to_id($page->{creator_name});
 
-            my $last_editor = editor_to_id($page->{last_editor});
-            my $first_editor = editor_to_id($page->{creator_name});
+                push @pages, [
+                    $workspace_id,        $page->{page_id}, $page->{name},
+                    $last_editor,         $page->{last_edit_time},
+                    $first_editor,        $page->{create_time},
+                    $page->{revision_id}, $page->{revision_count},
+                    $page->{revision_num},
+                    $page->{type}, $page->{deleted}, $page->{summary},
+                ];
 
-            push @pages, [
-                $workspace_id,        $page->{page_id}, $page->{name},
-                $last_editor,         $page->{last_edit_time},
-                $first_editor,        $page->{create_time},
-                $page->{revision_id}, $page->{revision_count},
-                $page->{revision_num},
-                $page->{type}, $page->{deleted}, $page->{summary},
-            ];
+                for my $t (@{ $page->{tags} }) {
+                    push @page_tags, [ $workspace_id, $page->{page_id}, $t ];
+                }
+            };
+            warn "Error populating $workspace_name: $@" if $@;
+        }
+        closedir($dfh);
 
-            for my $t (@{ $page->{tags} }) {
-                push @page_tags, [ $workspace_id, $page->{page_id}, $t ];
-            }
-        };
-        warn "Error populating $workspace_name: $@" if $@;
+        # Now add all those pages and tags to the database
+        add_to_db('page', \@pages);
+        add_to_db('page_tag', \@page_tags);
+    };
+    if ($@) {
+        warn "Error populating $workspace_name: $@";
+        sql_rollback();
     }
-    closedir($dfh);
-
-    # Now add all those pages and tags to the database
-    add_to_db('page', \@pages);
-    add_to_db('page_tag', \@page_tags);
-
-    sql_commit();
+    else {
+        sql_commit();
+    }
 }
 
 sub read_metadata {
