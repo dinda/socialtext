@@ -1509,12 +1509,19 @@ sub _read_page_file {
     my $revision_id = $self->assert_revision_id;
     return $self->_read_empty unless $revision_id;
     my $filename = $self->current_revision_file;
+    return read_and_decode_file($filename, $return_content);
+}
+
+sub read_and_decode_file {
+    my $filename       = shift;
+    my $return_content = shift;
     die "No such file $filename" unless -f $filename;
     die "File path contains '..', which is not allowed."
         if $filename =~ /\.\./;
 
     my $buffer;
-    open(my $fh, $filename) or die "Can't open $filename: $!";
+    open(my $fh, '<:raw', $filename)
+        or die "Can't open $filename: $!";
     {
         local $/ = "\n\n";
         $buffer = <$fh>;
