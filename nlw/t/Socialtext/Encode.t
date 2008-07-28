@@ -43,7 +43,6 @@ symlink "123.txt", "$bad_utf8_dir/index.txt";
     unlike $output, qr/\x92\n/, 'non-UTF-8 filtered';
     like $warnings[0], qr/bad_utf8\/123\.txt: doesn't seem to be valid utf-8/,
         'emitted warnings - to help track down bad data';
-        'emitted warnings - to help track down bad data';
     like $warnings[1], qr/Treating as/, 'Guessing an encoding.';
 }
 
