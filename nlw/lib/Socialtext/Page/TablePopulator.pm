@@ -56,6 +56,12 @@ sub populate {
             # Ignore really old pages that have invalid page_ids
             next unless Socialtext::Encode::is_valid_utf8($dir);
 
+            eval { fix_relative_page_link($dir) };
+            if ($@) {
+                warn "Error fixing relative link: $@";
+                next;
+            }
+
             eval {
                 my $page = $self->read_metadata($dir);
                 my $workspace_id = $workspace->workspace_id;
@@ -248,6 +254,27 @@ sub fetch_metadata {
             $userid_cache{ $email_address } = $user->user_id;
         }
         return $userid_cache{ $email_address };
+    }
+}
+
+sub fix_relative_page_link {
+    my $dir = shift;
+
+    # Check the index.txt page link for a relative link.  Rewrite
+    # them to be absolute links.
+    my $page_link_name = "$dir/index.txt";
+    my $page_link      = readlink($page_link_name)
+        or die "Couldn't readlink $page_link_name: $!";
+    unless ($page_link =~ m#^/#) {
+        my $tmp_link = "$page_link_name.tmp";
+        my $abs_page = abs_path("$dir/$page_link");
+        die "Could not find symlinked page ($abs_page)"
+            unless -f $abs_page;
+        symlink($abs_page, $tmp_link)
+            or die "Could not symlink $abs_page, $tmp_link: $!";
+        rename $tmp_link => $page_link_name
+            or die "Could not rename $tmp_link, $page_link_name: $!";
+        warn "\nFixed relative symlink $page_link_name\n";
     }
 }
 
