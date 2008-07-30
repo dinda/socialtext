@@ -89,7 +89,6 @@ sub import_workspace {
         $self->_set_permissions();
         $self->_populate_db_metadata();
 
-        warn "Adding workspace users";
         for my $u (@users) {
             $self->{workspace}->add_user(
                 user => $u->[0],
@@ -98,11 +97,9 @@ sub import_workspace {
         }
 
         chdir( $old_cwd );
-        warn "Starting workspace indexer";
         Socialtext::Search::AbstractFactory->GetFactory->create_indexer(
             $self->{workspace}->name )
             ->index_workspace( $self->{workspace}->name );
-        warn "Done workspace indexer";
 
         st_log()
             ->info( 'IMPORT,WORKSPACE,workspace:'
