@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use Test::More tests => 6;
-
+use File::Basename qw/dirname/;
 BEGIN {
     use_ok 'Socialtext::Schema';
 }
@@ -14,15 +14,15 @@ Sunny_day: {
 }
 
 Update_scripts: {
-    local $ENV{ST_SCHEMA_DIR} = 'etc/socialtext/db';
+    local $ENV{ST_SCHEMA_DIR} = dirname( __FILE__ ) . "/Schema/test_data";
     my $s = Socialtext::Schema->new;
     All: {
         my @scripts = $s->_update_scripts;
-        is scalar(@scripts), 5;
+        is scalar(@scripts), 4;
     }
     From: {
         my @scripts = $s->_update_scripts( from => 3 );
-        is scalar(@scripts), 3;
+        is scalar(@scripts), 2;
     }
     To: {
         my @scripts = $s->_update_scripts( to => 3 );
