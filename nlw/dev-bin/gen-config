@@ -226,6 +226,7 @@ sub main {
             File::Spec->catdir( _get_template_root(), $src_file ) );
 
         my $dest_is_live = 0;
+        my $fresh_install = 1;
         if (!-e $live_dest_file) {
             $dest_is_live = 1;
             if ($src_ver > 1) {
@@ -256,7 +257,7 @@ sub main {
         # workspaces at the same time. The cronjob that processes rampup
         # events will use this list to know when it's finished.
 
-        unless ($dest_is_live) {
+        unless ($dest_is_live or $fresh_install) {
             my $indexing_collateral_dir
                 = Socialtext::Paths::storage_directory('indexing');
             Socialtext::File::ensure_directory($indexing_collateral_dir);
@@ -267,6 +268,7 @@ sub main {
             shell_run( "st-admin list-workspaces > $list_of_workspaces" )
                 and warn "Something's messed up, man.\n";
             unless ($is_dev_install) {
+                my $type = ( $fresh_install ) ? 'rampup' : 'live';
                 # write out the following block to /etc/cron.d/st-process-rampup-index
                 open CRON, '>/etc/cron.d/st-process-rampup-index';
                 print CRON <<EOT;
@@ -275,7 +277,7 @@ sub main {
 # there.  Also ignore nonzero exit codes.  They don't indicate any particular
 # problem.  With this setup, root should get emailed IFF st-p-r-i hits one of
 # the die clauses; that is, either a rename() or link() call fails.
-*/1 * * * * root /usr/bin/st-process-rampup-index > /dev/null || true
+*/1 * * * * root /usr/bin/st-process-index --type $type > /dev/null || true
 EOT
                 close CRON;
             }
