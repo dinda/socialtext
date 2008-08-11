@@ -13,6 +13,7 @@ use Socialtext::AppConfig;
 use Socialtext::File;
 use Socialtext::Paths;
 use Socialtext::Log 'st_log';
+use Socialtext::Workspace;
 
 my $LOCKFILE = '/tmp/st-process-rampup-index.lock';
 my $INDEXING_COLLATERAL_DIR = Socialtext::Paths::storage_directory( 'indexing' );
@@ -31,9 +32,11 @@ if ( $rampup_config ) {
         if ( -s $WORKSPACES_LIST_FILE ) {
             # for i in range(5):
             my @workspaces_batch = split /\n/, `head -5 $WORKSPACES_LIST_FILE`;
-            for my $workspace (@workspaces_batch) {
-                print "Indexing $workspace\n";
-                index_workspace($workspace);
+            for my $ws_name (@workspaces_batch) {
+                my $ws = Socialtext::Workspace->new( name => $ws_name );
+                next unless $ws;
+                print "Indexing $ws_name\n";
+                index_workspace($ws_name);
                 (system "tail -n+2 $WORKSPACES_LIST_FILE "
                     . "> $WORKSPACES_LIST_FILE.tmp") == 0
                     or die "tail exited nonzero: $?";
