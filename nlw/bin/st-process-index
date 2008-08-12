@@ -94,7 +94,7 @@ sub convert_rampup_to_live {
 
 sub delete_cron {
     print "done.\n", "Removing our cron entry from /etc/cron.d...";
-    unlink "/etc/cron.d/st-process-rampup-index"
+    unlink "/etc/cron.d/st-process-index"
         or die "unlink cron file: $!";
     print "done.\n";
 }
