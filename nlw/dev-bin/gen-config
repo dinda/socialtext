@@ -226,9 +226,10 @@ sub main {
             File::Spec->catdir( _get_template_root(), $src_file ) );
 
         my $dest_is_live = 0;
-        my $fresh_install = 1;
+        my $fresh_install = 0;
         if (!-e $live_dest_file) {
             $dest_is_live = 1;
+            $fresh_install = 1;
             if ($src_ver > 1) {
                 # "You know what that makes you? Larry?"
                 # "Lollygaggers, sir."
@@ -253,11 +254,11 @@ sub main {
 
         my $dest_file = ( $dest_is_live ) ? $live_dest_file : $rampup_dest_file;
 
-        # if we're writing a rampup.yaml file, we need to create a list of all
-        # workspaces at the same time. The cronjob that processes rampup
+        # if we're re-indexing a  we need to create a list of all
+        # workspaces at the same time. The cronjob that processes
         # events will use this list to know when it's finished.
 
-        unless ($dest_is_live or $fresh_install) {
+        if ( $fresh_install or ! $dest_is_live ) {
             my $indexing_collateral_dir
                 = Socialtext::Paths::storage_directory('indexing');
             Socialtext::File::ensure_directory($indexing_collateral_dir);
