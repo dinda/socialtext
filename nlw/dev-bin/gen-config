@@ -264,14 +264,14 @@ sub main {
             Socialtext::File::ensure_directory($indexing_collateral_dir);
             my $list_of_workspaces = Socialtext::File::catfile(
                 $indexing_collateral_dir,
-                'workspaces-to-be-rampup-indexed'
+                'workspaces-to-be-indexed'
             );
             shell_run( "st-admin list-workspaces > $list_of_workspaces" )
                 and warn "Something's messed up, man.\n";
             unless ($is_dev_install) {
-                my $type = ( $fresh_install ) ? 'rampup' : 'live';
+                my $type = ( $fresh_install ) ? 'live' : 'rampup';
                 # write out the following block to /etc/cron.d/st-process-rampup-index
-                open CRON, '>/etc/cron.d/st-process-rampup-index';
+                open CRON, '>/etc/cron.d/st-process-index';
                 print CRON <<EOT;
 # Every minute, check to see if the rampup process is finished.  Flip the
 # switch if it is.  Silence stdout but not stderr, as important errors go

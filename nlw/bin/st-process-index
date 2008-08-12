@@ -23,7 +23,7 @@ my $MAX_QUEUED_EVENTS = 125;
 my $LOCKFILE = '/tmp/st-process-index.lock';
 my $INDEXING_COLLATERAL_DIR = Socialtext::Paths::storage_directory( 'indexing' );
 my $WORKSPACES_LIST_FILE = Socialtext::File::catfile( $INDEXING_COLLATERAL_DIR, 
-        'workspaces-to-be-rampup-indexed' );
+        'workspaces-to-be-indexed' );
 
 if ( ! -f $WORKSPACES_LIST_FILE ) {
     print "Workspace list file does not exist, ensuring cron job "
