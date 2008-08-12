@@ -101,7 +101,7 @@ sub delete_cron {
 
 sub few_enough_events {
     my $ceq_dir = Socialtext::AppConfig->change_event_queue_dir;
-    my $regex = ( $TYPE eq 'rampup' ) ? /Rampup/ : /.*/ ;
+    my $regex = ( $TYPE eq 'rampup' ) ? qr/Rampup/ : qr/.*/ ;
 
     opendir DH, $ceq_dir;
     my $found_no_rampup = $MAX_QUEUED_EVENTS;
