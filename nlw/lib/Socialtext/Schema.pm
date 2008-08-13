@@ -366,7 +366,7 @@ sub createdb {
         $self->_db_shell_run("createdb -E UTF8 -O $owner $c{db_name}");
     };
     my $createdb_err = $@;
-    eval { $self->_createlang };
+    $self->_createlang;
     die $createdb_err if $createdb_err;
 }
 
@@ -382,7 +382,7 @@ sub _createlang {
                   . " > /dev/null");
     };
     if ($@) {
-        $self->_db_shell_run("createlang -U $c{user} plpgsql $c{db_name}");
+        $self->_db_shell_run("createlang plpgsql $c{db_name}");
     }
 }
 
