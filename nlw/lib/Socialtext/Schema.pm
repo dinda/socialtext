@@ -367,7 +367,8 @@ sub createdb {
     my %c = $self->connect_params();
     disconnect_dbh();
     eval {
-        $self->_db_shell_run("createdb -E UTF8 -O $c{user} $c{db_name}");
+        my $sudo = $> ? '' : 'sudo -u postgres';
+        $self->_db_shell_run("$sudo createdb -E UTF8 -O $c{user} $c{db_name}");
     };
     my $createdb_err = $@;
     $self->_createlang;
