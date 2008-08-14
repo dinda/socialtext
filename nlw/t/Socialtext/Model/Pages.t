@@ -31,9 +31,9 @@ SELECT page.workspace_id,
     FROM page 
         JOIN "Workspace" USING (workspace_id) 
         JOIN "UserId" editor_id  ON (page.last_editor_id = editor_id.system_unique_id)
-        JOIN "User"   editor     ON (editor_id.driver_unique_id = editor.user_id)
         JOIN "UserId" creator_id ON (page.creator_id     = creator_id.system_unique_id)
-        JOIN "User"   creator    ON (creator_id.driver_unique_id = creator.user_id)
+        LEFT JOIN "User" editor  ON (editor_id.driver_unique_id = editor.user_id)
+        LEFT JOIN "User" creator ON (creator_id.driver_unique_id = creator.user_id)
 EOSQL
 
 By_seconds_limit: {
