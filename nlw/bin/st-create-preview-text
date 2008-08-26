@@ -11,11 +11,18 @@ use Socialtext::Encode;
 use Socialtext::Page::TablePopulator;
 use Fatal qw/opendir closedir chdir open/;
 use Cwd qw/abs_path/;
+use Getopt::Long;
 
 $| = 1; # turn on autoflush
 
 die "Must be run as root!\n" if $< and !$ENV{ST_DEV};
 Socialtext::CLI->_drop_privs();
+
+my $FORCE = 0;
+GetOptions(
+    'f|force' => \$FORCE,
+    'h|help'  => \&usage,
+) or usage();
 
 if ( @ARGV ) {
     for my $ws_name ( @ARGV ) {
@@ -32,6 +39,17 @@ else {
     }
 }
 exit;
+
+sub usage {
+    warn <<EOT;
+Usage: $0 [--force] <workspaces>
+
+Generate preview text for the specified workspaces.
+
+The preview text is stored in the page 'Summary' header.
+EOT
+    exit -1;
+}
 
 sub process_workspace {
     my $wksp = shift;
@@ -51,20 +69,8 @@ sub process_workspace {
 
 	my $char = '?';
         eval {
-            # Ignore non-UTF-8 warnings
-	    local $SIG{__WARN__} = sub { 
-                my $warning = shift;
-                if ($warning =~ m/\Qdoesn't seem to be valid utf-8\E/ or
-                    $warning =~ m/\QTreating as iso-8859-1\E/) {
-                    $char = '!';  
-                }
-                else {
-                    $char = '';
-                    warn "\n\n$warning\n";
-                }
-            };
 	    my $page = $hub->pages->new_page($dir);
-	    if ($page->metadata->{Summary}) {
+	    if ($page->metadata->{Summary} and !$FORCE) {
 		$char = '.';
 	    }
 	    else {
@@ -80,6 +86,4 @@ sub process_workspace {
     closedir($dfh);
     print "\n";
 }
-
-
 
