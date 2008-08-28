@@ -15,6 +15,12 @@ use Module::Pluggable search_path => ['Socialtext::Pluggable::Plugin'],
                       search_dirs => \@libs;
 use Socialtext::Pluggable::WaflPhrase;
 
+BEGIN {
+    # This is still needed for dev-env -- Do Not Delete!
+    our $code_base = Socialtext::AppConfig->code_base;
+    push @INC, glob("$code_base/plugin/*/lib");
+}
+
 sub AUTOLOAD {
     my ($self,$rest_handler,$args) = @_;
     my $type = ref($self)
