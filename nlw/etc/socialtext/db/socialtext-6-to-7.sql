@@ -89,6 +89,9 @@ ALTER TABLE tag_people__person_tags
 
 ALTER TABLE tag RENAME TO person_tag;
 
+CREATE UNIQUE INDEX person_tag__name
+        ON person_tag (name);
+
 ALTER TABLE ONLY tag_people__person_tags
     ADD CONSTRAINT tag_people_fk
             FOREIGN KEY (tag_id)
