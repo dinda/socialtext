@@ -69,6 +69,21 @@ CREATE INDEX ix_event_tag
 	    ON event (tag_name, at)
             WHERE (event_class = 'page' OR event_class = 'person');
 
+ALTER TABLE ONLY event
+    ADD CONSTRAINT event_actor_id_fk
+            FOREIGN KEY (actor_id)
+            REFERENCES "UserId"(system_unique_id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY event
+    ADD CONSTRAINT event_page_fk
+            FOREIGN KEY (page_workspace_id, page_id)
+            REFERENCES page(workspace_id, page_id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY event
+    ADD CONSTRAINT event_person_id_fk
+            FOREIGN KEY (person_id)
+            REFERENCES "UserId"(system_unique_id) ON DELETE CASCADE;
+
 ALTER TABLE tag_people__person_tags 
     DROP CONSTRAINT tag_people_fk;
 
