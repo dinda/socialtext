@@ -32,6 +32,7 @@ ALL_JEMPLATE_PLUGINS:=$(shell find JemplatePlugin -name \*.js)
 
 S3_SOURCE_FILES= \
 		timestamp.js \
+		Debug.js \
 		$(COMMON_JAVASCRIPT)/jquery-1.2.6.js \
 		jquery-patch.js \
 		jquery-plugin.js \

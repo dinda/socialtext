@@ -38,6 +38,7 @@ ALL_JEMPLATE_PLUGINS:=$(shell find $(S3_JAVASCRIPT)/JemplatePlugin -name \*.js)
 JQUERY=$(COMMON_JAVASCRIPT)/jquery-1.2.6.js \
        $(COMMON_JAVASCRIPT)/jquery-noConflict.js
 
+
 DISPLAY_SOURCE_FILES= \
 		timestamp.js \
 		$(S3_JAVASCRIPT)/Debug.js \
@@ -141,6 +142,9 @@ all: \
 
 Cyberbit.ttf:
 	cp /var/$@ $@
+
+realclean: clean
+	make -C ../../wikiwyg/javascript clean
 
 clean:
 	rm -f \
