@@ -39,6 +39,7 @@ JQUERY=$(COMMON_JAVASCRIPT)/jquery-1.2.6.js \
        $(COMMON_JAVASCRIPT)/jquery-noConflict.js
 
 DISPLAY_SOURCE_FILES= \
+		Debug.js \
 		timestamp.js \
 		$(JQUERY) \
 		$(S3_JAVASCRIPT)/jquery-patch.js \
@@ -86,7 +87,6 @@ DISPLAY_UI_SOURCE_FILES= \
 		$(EDITOR_FILE) \
 		$(S3_JAVASCRIPT)/lookahead.js \
 		$(COMMON_JAVASCRIPT)/YAML-0.11/lib/YAML.js \
-		Debug.js \
 		ui-last-source.js \
 
 COMMENT_SOURCE_FILES= \
