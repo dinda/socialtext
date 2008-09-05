@@ -39,8 +39,8 @@ JQUERY=$(COMMON_JAVASCRIPT)/jquery-1.2.6.js \
        $(COMMON_JAVASCRIPT)/jquery-noConflict.js
 
 DISPLAY_SOURCE_FILES= \
-		Debug.js \
 		timestamp.js \
+		$(S3_JAVASCRIPT)/Debug.js \
 		$(JQUERY) \
 		$(S3_JAVASCRIPT)/jquery-patch.js \
 		$(S3_JAVASCRIPT)/jquery-plugin.js \
