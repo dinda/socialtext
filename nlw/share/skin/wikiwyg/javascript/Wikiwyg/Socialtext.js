@@ -1548,8 +1548,10 @@ proto.get_editable_div = function () {
         this._editable_div.onactivate = function () {
             self.__range = undefined;
         };
-        doc.body.appendChild(this._editable_div);
-        setTimeout(function () { self._editable_div.focus() }, 500);
+        setTimeout(function() {
+            doc.body.appendChild(self._editable_div);
+            setTimeout(function () { self._editable_div.focus() }, 500);
+        }, 500);
     }
     return this._editable_div;
 }
