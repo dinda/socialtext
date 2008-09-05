@@ -1213,7 +1213,6 @@ body#contentPage div#controls div#controlsRight,
 body#dashBoard div#controls div#controlsRight,
 body#settingsPage div#controls div#controlsRight {
     max-width: 500px;
-    overflow: hidden;
 }
 
 body div#mainWrap {
