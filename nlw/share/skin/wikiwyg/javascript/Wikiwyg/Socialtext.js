@@ -1117,8 +1117,16 @@ proto._do_link = function(widget_element) {
                 if (!self.add_web_link()) return false;
             }
 
-            jQuery.hideLightbox();
-            Wikiwyg.Widgets.widget_editing = 0;
+            var close = function() {
+                jQuery.hideLightbox();
+                Wikiwyg.Widgets.widget_editing = 0;
+            }
+
+            if (jQuery.browser.msie)
+                setTimeout(close, 50);
+            else
+                close();
+
             return false;
         });
     jQuery.showLightbox({
