@@ -505,9 +505,14 @@ proto.pullTitleFromServer = function (field, id, data) {
     });
     if (!(field in wikiwyg_widgets_title_lookup))
         wikiwyg_widgets_title_lookup[field] = {};
-    wikiwyg_widgets_title_lookup[field][id] = details.title;
 
-    return details.title;
+    if (details) {
+        wikiwyg_widgets_title_lookup[field][id] = details.title;
+        return details.title;
+    }
+    else {
+        return null;
+    }
 }
 
 proto.setTitleAndId = function (widget) {

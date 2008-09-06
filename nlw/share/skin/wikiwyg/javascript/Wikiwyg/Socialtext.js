@@ -1133,6 +1133,9 @@ proto._do_link = function(widget_element) {
 
             return false;
         });
+
+    jQuery('#add-a-link-error').hide();
+
     jQuery.showLightbox({
         content: '#st-widget-link-dialog',
         close: '#st-widget-link-cancelbutton'
@@ -1157,8 +1160,8 @@ proto.load_add_a_link_focus_handlers = function(radio_id) {
 
 proto.set_add_a_link_error = function(msg) {
     jQuery("#add-a-link-error")
-        .show()
         .html('<span>' + msg + '</span>')
+        .show()
 }
 
 proto.create_link_wafl = function(label, workspace, pagename, section) {

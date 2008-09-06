@@ -1261,3 +1261,15 @@ ul li a.previewButton:hover {
         background-position: top left;
 }
 
+
+.widget_edit_error_msg {
+    background-color:#FFD5D5;
+    border-bottom:1px solid #BA4949;
+    border-top:1px solid #BA4949;
+    color:#DD3333;
+    display:none;
+    font-size:90%;
+    margin-bottom:1em;
+    margin-top:1em;
+    padding:3px;
+}
