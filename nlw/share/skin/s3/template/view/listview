@@ -27,7 +27,7 @@
     <form id="st-listview-form" method="get" action="index.cgi">
     <input id="st-listview-action" name="action" value="" type="hidden">
     <input id="st-listview-filename" name="filename" value="" type="hidden">
-    <table class="dataTable">
+    <table class="dataTable pagelist">
       <tr>
         <th width="1%"><input type="checkbox" id="st-listview-selectall"/></th>
         <th class="toggle"><div class="toggle">

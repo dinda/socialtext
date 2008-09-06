@@ -20,16 +20,32 @@ div#st-display-mode-container #tabs {
     display: none;
 }
 
-#listPage table.dataTable th {
+#listPage table.pagelist th {
     display: none;
 }
 
-#listPage table.dataTable td {
+#listPage table.pagelist td {
+    font-size: 90%;
+}
+
+#listPage table.attachmentlist th {
+    display: none;
+}
+
+#listPage table.attachmentlist input {
+    display: none;
+}
+
+#listPage table.attachmentlist td {
     font-size: 90%;
 }
 
 #listPage table.dataTable td a {
     text-decoration: none;
+}
+
+#listPage input {
+     display: none;
 }
 
 /* Page View */
