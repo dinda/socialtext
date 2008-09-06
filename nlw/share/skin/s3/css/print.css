@@ -11,6 +11,27 @@ body {
     display: none;
 }
 
+/* List View */
+div#st-display-mode-container #tabs {
+    display: none;
+}
+
+.st-listview-selectpage-checkbox {
+    display: none;
+}
+
+#listPage table.dataTable th {
+    display: none;
+}
+
+#listPage table.dataTable td {
+    font-size: 90%;
+}
+
+#listPage table.dataTable td a {
+    text-decoration: none;
+}
+
 /* Page View */
 
 .st-content {
