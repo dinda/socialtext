@@ -515,7 +515,19 @@ body#listView #controlsRight ul li {
     background: #BFE2FF;
 }
 
-ul.buttonRight li a, #controlsRight li a {
+div.controlsInline ul li a {
+    float: left;
+    color: #333;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+div.controlsInline ul li a.watch {
+    background: url(../images/watchIcon.png) no-repeat center left;
+    padding: 0 10px 0 28px;
+}
+
+ul.buttonRight li a, #controlsRight li a, .controlsInline li a {
     display: block;
     text-decoration: none;
 }
