@@ -657,7 +657,6 @@ body#contentPage #controlsRight ul.level2 {
  * XXX: Hack around the fact that we don't have buttons for these elements yet
  */
 a#st-mode-wysiwyg-button,
-a#st-preview-button-link,
 a#st-mode-wikitext-button,
 a#st-edit-tips {
     top: 0 !important;
@@ -1247,3 +1246,18 @@ body#settingsPage div#controls div#controlsRight {
 body div#mainWrap {
     min-width: 865px;
 }
+
+
+ul li a.previewButton {
+        display: block;
+        width: 89px;
+        height: 22px;
+        background: url(../images/previewButton.png) no-repeat;
+        background-position: top right;
+        text-indent: -9999px;
+}
+
+ul li a.previewButton:hover {
+        background-position: top left;
+}
+

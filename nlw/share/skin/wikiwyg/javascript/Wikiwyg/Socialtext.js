@@ -471,6 +471,8 @@ proto.preview_link_action = function() {
         .click(this.button_disabled_func());
     this.enable_edit_more = function() {
         jQuery(preview)
+            .removeClass('previewButton')
+            .addClass('editButton')
             .unbind('click')
             .click( function () {
                 if (jQuery("#contentRight").is(":visible")) 
@@ -497,6 +499,8 @@ proto.preview_link_reset = function() {
 
     var self = this;
     jQuery(preview)
+        .removeClass('editButton')
+        .addClass('previewButton')
         .unbind('click')
         .click( function() {
             return self.preview_link_action();
