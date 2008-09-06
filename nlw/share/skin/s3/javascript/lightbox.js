@@ -77,6 +77,7 @@
                         $('#lightbox').height()) / 2)) + 'px'
             });
 
+        opts._originalOverflow = $('body').css('overflow') || 'visible';
         $('body').css('overflow', 'hidden');
         $('html,body').attr('scrollTop', pageScroll.top);
 
@@ -106,7 +107,7 @@
                 $(opts.content).hide().appendTo('body');
             $('#overlay').fadeOut();
             $('#lightbox').html('').hide();
-            $('body').css('overflow', 'visible');
+            $('body').css('overflow', opts._originalOverflow);
         }
     };
 })(jQuery);
