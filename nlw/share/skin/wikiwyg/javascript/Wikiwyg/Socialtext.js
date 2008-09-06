@@ -1564,10 +1564,19 @@ proto.get_editable_div = function () {
         this._editable_div.onactivate = function () {
             self.__range = undefined;
         };
-        setTimeout(function() {
-            doc.body.appendChild(self._editable_div);
-            setTimeout(function () { self._editable_div.focus() }, 500);
-        }, 500);
+        var tryAppendDiv = function(tries) {
+            setTimeout(function() {
+                if (doc.body) {
+                    doc.body.appendChild(self._editable_div);
+                    setTimeout(function () { self._editable_div.focus() }, 500);
+                }
+                else if (tries > 0) {
+                    // Retry for up to 10 times
+                    tryAppendDiv(tries - 1);
+                }
+            }, 500);
+        };
+        tryAppendDiv(10);
     }
     return this._editable_div;
 }
