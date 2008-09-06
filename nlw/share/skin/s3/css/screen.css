@@ -3,6 +3,14 @@
 
 /* overloads */
 
+.hidebox {
+    display: none;
+}
+
+.showbox {
+    display: block;
+}
+
 #st-wikinav-profile {
     float: none !important;
 }
@@ -1179,3 +1187,4 @@ ul li a.previewButton {
 ul li a.previewButton:hover {
         background-position: top left;
 }
+

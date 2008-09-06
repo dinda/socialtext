@@ -101,7 +101,7 @@
     <div id="contentLeft">
       <div id="st-page-content">[% page.content %]</div>
     </div>
-    <div id="contentRight" style="display:[% IF st_page_accessories == 'show'%]block[% ELSE %]none[% END %]">
+    <div id="contentRight" class="[% IF st_page_accessories == 'show'%]showbox[% ELSE %]hidebox[% END %]">
       <div class="widget">
         <div class="widgetHeader">
         <h4>[% loc('Tags') %]</h4>
