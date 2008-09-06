@@ -235,6 +235,14 @@ ul.normal ul ul {
     margin-bottom: 4px;
 }
 
+/* Additional People Profiles styles */
+ul li a.followPersonButton {
+    line-height: 16px;
+    height: 22px;
+    background: url(../images/followIcon.png) no-repeat top left;
+    padding-left: 25px;
+}
+
 /* Wafl Boxes */
 
 #st-page-content .wafl_container td {
