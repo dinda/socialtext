@@ -30,7 +30,16 @@
 
 .lightbox .label {
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 1.1em;
+}
+
+.lightbox #st-widgets-moreoptionspanel .label {
+    font-size: 1em;
+}
+
+
+.lightbox .st-widgets-optionstable tr, .lightbox .st-widgets-optionstable td {
+    vertical-align: middle;
 }
 
 
