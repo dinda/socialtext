@@ -239,7 +239,8 @@ function setup_wikiwyg() {
         jQuery('#st-save-button-link').click(function() {
             ww.is_editing = false;
             jQuery('body').css('overflow', ww._originalOverflow);
-            return ww.saveButtonHandler();
+            ww.saveButtonHandler();
+            return false;
         });
     }
 
@@ -283,7 +284,8 @@ function setup_wikiwyg() {
     jQuery('#st-preview-button-link')
         .unbind('click')
         .click(function () {
-            return ww.preview_link_action();
+            ww.preview_link_action();
+            return false;
         });
 
     if (window.wikiwyg_nlw_debug) {
@@ -319,6 +321,7 @@ function setup_wikiwyg() {
             content:'#st-tagqueue-interface',
             close:'#st-tagqueue-close'
         });
+        return false;
     });
 
     jQuery('#st-tagqueue-field')
@@ -385,7 +388,8 @@ function setup_wikiwyg() {
 Wikiwyg.setup_newpage = function() {
     if (Socialtext.new_page) {
         jQuery('#st-save-button-link').click(function () {
-            return wikiwyg.saveNewPage();
+            wikiwyg.saveNewPage();
+            return false;
         });
 
         jQuery('#st-newpage-duplicate-okbutton').click(function () {
@@ -506,7 +510,8 @@ proto.preview_link_reset = function() {
         .addClass('previewButton')
         .unbind('click')
         .click( function() {
-            return self.preview_link_action();
+            self.preview_link_action();
+            return false;
         });
 }
 
