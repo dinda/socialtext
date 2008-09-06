@@ -1233,7 +1233,7 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
             );
     }, 500);
 
-    jQuery('#st-widgets-moreoptions').toggle(
+    jQuery('#st-widgets-moreoptions').unbind('click').toggle(
         function () {
             jQuery('#st-widgets-moreoptions')
                 .html(loc('Fewer options'))
