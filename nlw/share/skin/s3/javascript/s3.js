@@ -44,6 +44,11 @@ $(function() {
             hidden = !hidden;
             this.innerHTML = hidden ? 'show' : 'hide';
             Cookie.set('st-page-accessories', hidden ? 'hide' : 'show');
+
+            // Because the content area's height might have changed, repaint
+            // the Edit/Comment buttons at the bottom for IE.
+            Page._repaintBottomButtons();
+
             return false;
         });
 
