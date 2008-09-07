@@ -85,7 +85,7 @@ Attachments = {
                                 .attr('alt', loc('Delete this attachment'))
                                 .attr('title', loc('Delete this attachment'))
                                 .bind('click', function () {
-                                    this.delAttachment(this.name, true);
+                                    Attachments.delAttachment(this.name, true);
                                     return false;
                                 })
                         )
