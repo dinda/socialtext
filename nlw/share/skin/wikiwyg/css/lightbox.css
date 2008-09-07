@@ -6,19 +6,15 @@
     display: none;
     margin: 10px;
     padding: 10px;
-    border: thin solid #000055;
-    background: white;
 }
 
 #lightbox {
-    border: 2px outset #555555;
+    background: white;
     position: absolute;
-    background: #CCD8FF;
     display: none;
     z-index: 2001;
     padding: 0;
     margin: auto;
-    border: 1px outset #555;
     font-size: 11px;
     font-family: Helvetica, Arial, sans-serif;
 }
