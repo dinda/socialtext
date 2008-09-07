@@ -1204,7 +1204,7 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
     var template = 'widget_' + widget + '_edit.html';
     var html = Jemplate.process(template, this.currentWidget);
 
-    jQuery('<div>')
+    jQuery('<div />')
         .attr('id', 'widget-' + widget)
             .attr('class', 'lightbox')
             .html(html)

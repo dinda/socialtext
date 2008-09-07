@@ -335,18 +335,18 @@ function setup_wikiwyg() {
 
     var add_tag = function() {
         var tag = jQuery('#st-tagqueue-field').val();
-        jQuery('<input type="hidden" name="add_tag">')
+        jQuery('<input type="hidden" name="add_tag" />')
             .attr('id', 'st-tagqueue-'+tag)
             .attr('value', tag)
             .appendTo('#st-page-editing-files');
 
         jQuery('#st-tagqueue-list').show()
-        jQuery('<span class="st-tagqueue-taglist-name">')
+        jQuery('<span class="st-tagqueue-taglist-name" />')
             .attr('id', 'st-taglist-' + tag)
             .append(
                 jQuery('.st-tagqueue-taglist-name').size() ? ', ' : '',
                 tag,
-                jQuery('<a class="st-tagqueue-taglist-delete">')
+                jQuery('<a class="st-tagqueue-taglist-delete" />')
                     .attr('title', loc("Remove _[0] from the queue", tag))
                     .attr('href', '#')
                     .click(function () {
@@ -651,7 +651,7 @@ proto.newpage_save = function(page_name, pagename_editfield) {
 
 proto.saveContent = function() {
     jQuery('#st-editing-tools-edit ul').hide()
-    jQuery('<div id="saving-message">')
+    jQuery('<div id="saving-message" />')
         .html(loc('Saving...'))
         .css('color', 'red')
         .appendTo('#st-editing-tools-edit');
@@ -772,7 +772,7 @@ proto.saveChanges = function() {
                 var files = Attachments.get_new_attachments();
 
                 jQuery.each(files, function () {
-                    jQuery('<input type="hidden" name="attachment">')
+                    jQuery('<input type="hidden" name="attachment" />')
                         .val(this['id'] + ':' + this['page-id'])
                         .appendTo('#st-page-editing-files');
                 });
@@ -957,7 +957,7 @@ proto.get_edit_height = function() {
 
 proto.enableStarted = function() {
     jQuery('#st-editing-tools-edit ul').hide()
-    jQuery('<div id="loading-message">')
+    jQuery('<div id="loading-message" />')
         .html(loc('Loading...'))
         .appendTo('#st-editing-tools-edit');
     this.wikiwyg.disable_button(this.classname);
@@ -1118,7 +1118,7 @@ proto._do_link = function(widget_element) {
         })
         .submit(function() {
             if (jQuery.browser.msie)
-                jQuery("<input type='text'>").appendTo('body').focus().remove();
+                jQuery("<input type='text' />").appendTo('body').focus().remove();
 
             if (jQuery('#add-wiki-link').is(':checked')) {
                 if (!self.add_wiki_link(widget_element, dummy_widget)) return false;
