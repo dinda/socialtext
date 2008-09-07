@@ -114,8 +114,10 @@ $(function() {
                 return false;
             }
 
+            var basename = filename.match(/[^\\\/]+$/);
+
             $('#st-attachments-attach-uploadmessage').html(
-                loc('Uploading [_1]...', filename.match(/[^\\\/]+$/))
+                loc('Uploading [_1]...', basename)
             );
 
             $('#st-attachments-attach-formtarget')
@@ -133,14 +135,16 @@ $(function() {
                     Attachments.refreshAttachments(function (list) {
                         // Add the freshly-uploaded file to the
                         // newAttachmentList queue.
-                        var file;
+
                         for (var i=0; i< list.length; i++) {
                             var item = list[i];
-                            if (filename == item.name) {
-                                file = item; 
+
+                            // Compare basename, because FF2 would use the
+                            // full pathname but item.name is basename-only.
+                            if (basename == item.name) {
+                                Attachments.addNewAttachment(item);
                             }
                         }
-                        Attachments.addNewAttachment(file);
 
                         $('#st-attachments-attach-list')
                             .show()
