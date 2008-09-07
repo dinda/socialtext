@@ -1150,6 +1150,12 @@ proto._do_link = function(widget_element) {
         close: '#st-widget-link-cancelbutton'
     })
 
+    // Set the unload handle explicitly so when user clicks the overlay gray
+    // area to close lightbox, widget_editing will still be set to false.
+    jQuery('#lightbox').unload(function(){
+        Wikiwyg.Widgets.widget_editing = 0;
+    });
+
     this.load_add_a_link_focus_handlers("add-wiki-link");
     this.load_add_a_link_focus_handlers("add-web-link");
     this.load_add_a_link_focus_handlers("add-section-link");
