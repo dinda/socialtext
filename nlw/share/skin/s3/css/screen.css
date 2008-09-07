@@ -1184,3 +1184,44 @@ body div#controls div#st-editing-tools-edit ul li {
     padding-left: 10px;
 }
 
+
+div#contentColumns div#contentLeft div.wiki h1,
+div#contentColumns div#contentLeft div.wiki h2,
+div#contentColumns div#contentLeft div.wiki h3,
+div#contentColumns div#contentLeft div.wiki h4,
+div#contentColumns div#contentLeft div.wiki h5,
+div#contentColumns div#contentLeft div.wiki h6 {
+    font-style:normal;
+    font-weight:bold;
+    margin-bottom:8px;
+    margin-top:0.1em;
+    color: black;
+}
+
+div#contentColumns div#contentLeft div.wiki h1 {
+    font-size: 175%;
+}
+
+div#contentColumns div#contentLeft div.wiki h2 {
+    font-size: 145%;
+}
+
+div#contentColumns div#contentLeft div.wiki h3 {
+    font-size: 125%;
+}
+
+div#contentColumns div#contentLeft div.wiki h4 {
+    font-size: 110%;
+}
+
+div#contentColumns div#contentLeft div.wiki h5 {
+    font-size: 100%;
+}
+
+div#contentColumns div#contentLeft div.wiki h6 {
+    font-size: 100%;
+    font-style: italic;
+    font-weight: normal;
+}
+
+
