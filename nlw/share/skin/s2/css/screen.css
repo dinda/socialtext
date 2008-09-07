@@ -2926,3 +2926,12 @@ div.footerEndBottom div
     color: red;
 }
 
+body .lightbox {
+    border: thin solid #000055;
+    background: white;
+}
+
+body #lightbox {
+    background: #CCD8FF;
+    border: 1px outset #555;
+}
