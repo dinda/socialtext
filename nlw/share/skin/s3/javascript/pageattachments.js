@@ -120,7 +120,6 @@ Attachments = {
             async: false
         });
         if (refresh) {
-            this.delAttachment(url);
             this.refreshAttachments();
         }
     }
