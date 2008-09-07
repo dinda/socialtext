@@ -848,23 +848,6 @@ proto.enableLinkConfirmations = function() {
         Attachments.delete_new_attachments();
     }
  
-    var links = document.getElementsByTagName('a');
-    for (var i = 0; i < links.length; i++) {
-        if (links[i].id == 'st-cancel-button-link') continue;
-        if (links[i].onclick) continue;
-        if (links[i].id == 'st-preview-button-link') continue;
-        if (links[i].id == 'st-edit-tips') continue;
-        if (links[i].id == 'st-save-button-link') continue;
-        if (links[i].id == 'st-edit-mode-uploadbutton') continue;
-        if (links[i].id == 'st-edit-mode-tagbutton') continue;
-        if (links[i].id == 'st-attachmentsqueue-submitbutton') continue;
-        if (links[i].id == 'st-attachmentsqueue-closebutton') continue;
-        if (links[i].id == 'st-attachments-attach-closebutton') continue;
-        if (links[i].id == 'st-tagqueue-closebutton') continue;
-        if (links[i].id == 'st-tagqueue-submitbutton') continue;
-
-        links[i].onclick = this.confirmLinkFromEdit;
-    }
     return false;
 }
 
