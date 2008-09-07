@@ -199,11 +199,13 @@ $(function() {
                 var ge = new GuiEdit({
                     id: 'contentLeft',
                     oncomplete: function () {
-                        Page.refreshPageContent()
+                        Page.refreshPageContent();
+                        Page._repaintBottomButtons();
                     }
                 });
                 ge.show();
             });
+            Page._repaintBottomButtons();
             return false;
         });
 
