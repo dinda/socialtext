@@ -65,8 +65,9 @@
                         $('#lightbox').height()) / 4)) + 'px'
             });
 
-        opts._originalOverflow = $('body').css('overflow') || 'visible';
-        $('body').css('overflow', 'hidden');
+        opts._originalHTMLOverflow = $('html').css('overflow') || 'visible';
+        opts._originalBodyOverflow = $('body').css('overflow') || 'visible';
+        $('html,body').css('overflow', 'hidden');
         $('html,body').attr('scrollTop', pageScroll.top);
 
         if (opts.close)
@@ -95,7 +96,8 @@
                 $(opts.content).hide().appendTo('body');
             $('#overlay').fadeOut();
             $('#lightbox').html('').hide();
-            $('body').css('overflow', opts._originalOverflow);
+            $('html').css('overflow', opts._originalHTMLOverflow);
+            $('body').css('overflow', opts._originalBodyOverflow);
         }
     };
 })(jQuery);
