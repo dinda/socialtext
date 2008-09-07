@@ -51,3 +51,9 @@ div#st-pagetools ul ul li {
 html body .lightbox .buttons {
     margin-top: 35px;
 }
+
+html body .lightbox input {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+

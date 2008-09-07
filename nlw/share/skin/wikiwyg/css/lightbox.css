@@ -153,3 +153,7 @@
     margin-top: 10%;
 }
 
+.lightbox form {
+    margin: 0px;
+    padding: 0px;
+}
