@@ -2351,17 +2351,6 @@ menu on the page bar.
     z-index: 32767;
 }
 
-.st-lightbox-content {
-    background-color: #fff;
-    color: #000;
-    border: 4px solid #ccc;
-    padding: 0.5em;
-    width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10%;
-}
-
 /* System Status, Red with icon */
 
 #st-system-status-alert {
@@ -2448,19 +2437,6 @@ span.st-widget-cancelbutton {
     padding: 0 0 0 7px;
 }
 
-#st-widgets-standardoptionspanel {
-    padding: 4px;
-    margin: 0;
-}
-
-#st-widgets-moreoptionspanel {
-    display: none;
-    background-color: #F0F0F0;
-    padding: 2px 4px 4px 4px;
-    margin: 6px 0 4px 0;
-    border: 1px solid #B0CCFF;
-}
-
 td.st-widget-dialog-widgetlabel {
     padding-top: 10px;
     font-size: 0.8em;
@@ -2495,11 +2471,6 @@ p.st-widget-dialog-choiceradio {
     padding: 0;
 }
 
-#st-widgets-moreoptions {
-    padding-left: 8px;
-    font-size: 0.8em;
-}
-
 span.st-widget-dialog-title {
     padding-left: 0;
     font-weight: bold;
@@ -2516,16 +2487,6 @@ p.st-widget-description {
     font-family: monospace;
 }
 
-table.st-widgets-optionstable {
-    border-collapse: separate;
-    border-spacing: 0px 6px;
-}
-
-table.st-widgets-moreoptionstable {
-    border-collapse: separate;
-    border-spacing: 0px 6px;
-}
-
 td.st-widget-dialog-editlabel {
     padding-right: 0.5em;
     font-size: 0.8em;
@@ -2536,7 +2497,6 @@ td.st-widget-dialog-editlabel {
 
 td.st-widget-dialog-editfield {
     padding: 0;
-    font-size: 0.8em;
 }
 
 .widget_edit_error_msg {

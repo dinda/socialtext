@@ -135,18 +135,6 @@ ul.normal ul ul {
     background-color: #FFFFDD !important;
 }
 
-#st-widgets-moreoptionspanel {
-    display: none;
-    background-color: #F0F0F0;
-    padding: 2px 4px 4px 4px;
-    margin: 6px 0 4px 0;
-    border: 1px solid #B0CCFF;
-}
-
-#st-widgets-moreoptions {
-    padding-left: 8px;
-}
-
 /* Additional Settings styles */
 #settingsPage td {
     padding: 4px;

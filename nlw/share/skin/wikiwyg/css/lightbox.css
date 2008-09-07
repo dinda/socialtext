@@ -11,13 +11,21 @@
 }
 
 #lightbox {
-    border:2px outset #555555;
-    background: #CCD8FF !important;
+    border: 2px outset #555555;
+    position: absolute;
+    background: #CCD8FF;
+    display: none;
+    z-index: 2001;
+    padding: 0;
+    margin: auto;
+    border: 1px outset #555;
+    font-size: 11px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .lightbox td, .lightbox th {
     vertical-align: top;
-    padding: 5px 5px;
+    padding: 0;
 }
 
 .lightbox th {
@@ -37,6 +45,9 @@
     font-size: 1em;
 }
 
+.lightbox table {
+    border-spacing: 0px;
+}
 
 .lightbox .st-widgets-optionstable tr, .lightbox .st-widgets-optionstable td {
     vertical-align: middle;
@@ -121,3 +132,28 @@
     font-size:90%;
     padding:4px;
 }
+
+#st-widgets-moreoptionspanel {
+    display: none;
+    background-color: #F0F0F0;
+    padding: 2px 4px 4px 4px;
+    margin: 6px 0 4px 0;
+    border: 1px solid #B0CCFF;
+}
+
+#st-widgets-moreoptions {
+    padding-left: 8px;
+}
+
+
+.st-lightbox-content {
+    background-color: #fff;
+    color: #000;
+    border: 4px solid #ccc;
+    padding: 0.5em;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
