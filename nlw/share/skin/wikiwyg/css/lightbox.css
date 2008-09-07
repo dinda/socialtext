@@ -1,7 +1,7 @@
 /* Lightbox */
 
 .lightbox {
-    line-height: 1.5em;
+    line-height: 1.2em;
     text-align: left;
     display: none;
     margin: 10px;
@@ -15,7 +15,7 @@
     z-index: 2001;
     padding: 0;
     margin: auto;
-    font-size: 11px;
+    font-size: 12px;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .lightbox .label {
-    font-weight: 600;
+    font-weight: bold;
     font-size: 1.1em;
 }
 
