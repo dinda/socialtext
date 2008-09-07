@@ -1176,3 +1176,11 @@ ul li a.previewButton:hover {
         background-position: top left;
 }
 
+body div#controls div#st-editing-tools-edit ul li a {
+    margin-left: 0px;
+}
+
+body div#controls div#st-editing-tools-edit ul li {
+    padding-left: 10px;
+}
+
