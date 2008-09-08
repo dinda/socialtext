@@ -54,11 +54,13 @@ Page = {
         $('#st-page-content').html(html);
 
         // For MSIE, force browser reflow of the bottom buttons to avoid {bz: 966}.
-        this._repaintBottomButtons();
+        Page._repaintBottomButtons();
 
         // Repaint after each image finishes loading since the height
         // would've been changed.
-        $('#st-page-content img').load(this._repaintBottomButtons);
+        $('#st-page-content img').load(function(){
+            Page._repaintBottomButtons();
+        });
     },
 
     refreshPageContent: function (force_update) {
