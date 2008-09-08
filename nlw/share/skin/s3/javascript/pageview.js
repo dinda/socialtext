@@ -139,6 +139,7 @@ Page = {
                                 .attr('alt', loc('Delete this tag'))
                                 .attr('title', loc('Delete this tag'))
                                 .bind('click', function () {
+                                    $(this).children('img').attr('src', '/static/skin/common/images/ajax-loader.gif');
                                     Page.delTag(this.name);
                                     return false;
                                 })
