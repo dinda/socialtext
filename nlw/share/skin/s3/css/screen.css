@@ -1505,3 +1505,14 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .widget .widgetContent ul li {
     border-bottom:1px #e8e8e8 solid;
 }
+
+/* People list classes
+-------------------------------------------------------------- */
+
+td.peoplelist-picture-td {       
+        width: 70px;     
+}    
+     
+td.peoplelist-desc-td {      
+        width: 100%;
+}
