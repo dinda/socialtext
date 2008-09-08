@@ -1185,66 +1185,16 @@ body div#controls div#st-editing-tools-edit ul li {
 }
 
 
-div#contentColumns div#contentLeft div.wiki h1,
-div#contentColumns div#contentLeft div.wiki h2,
-div#contentColumns div#contentLeft div.wiki h3,
-div#contentColumns div#contentLeft div.wiki h4,
-div#contentColumns div#contentLeft div.wiki h5,
-div#contentColumns div#contentLeft div.wiki h6 {
-    font-style:normal;
-    font-weight:bold;
-    margin-bottom:8px;
-    margin-top:0.1em;
-    color: black;
-}
 
-div#contentColumns div#contentLeft div.wiki h1 {
-    font-size: 175%;
-}
-
-div#contentColumns div#contentLeft div.wiki h2 {
-    font-size: 145%;
-}
-
-div#contentColumns div#contentLeft div.wiki h3 {
-    font-size: 125%;
-}
-
-div#contentColumns div#contentLeft div.wiki h4 {
-    font-size: 110%;
-}
-
-div#contentColumns div#contentLeft div.wiki h5 {
-    font-size: 100%;
-}
-
-div#contentColumns div#contentLeft div.wiki h6 {
-    font-size: 100%;
-    font-style: italic;
-    font-weight: normal;
-}
-
-td.peoplelist-picture-td {
-    width: 70px;
-}
-
-td.peoplelist-desc-td {
-    width: 100%;
-}
-
-/* --------------------------------------------------------------
-
-typography.css
-* Sets up some sensible default typography.
-
--------------------------------------------------------------- */
+/* Wiki Content Styles
+--------------------------------------------------------------
 
 /* Default font settings.
 The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .wiki {
     font-size: 100%;
     color: #222;
-    line-height:1.25;
+    line-height:1 ! important;
 }
 
 /* Headings
@@ -1272,18 +1222,18 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .wiki h3 {
     font-size: 1.5em;
     line-height: 1;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 .wiki h4 {
     font-size: 1.2em;
     line-height: 1.25;
-    margin-bottom: 1.25em;
+    margin-bottom: 0.5em;
     height: 1.25em;
 }
 .wiki h5 {
     font-size: 1em;
     font-weight: bold;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 }
 .wiki h6 {
     font-size: 1em;
@@ -1304,7 +1254,8 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 -------------------------------------------------------------- */
 
 .wiki p {
-    margin: 0 0 1.5em;
+    margin-bottom: 1.5em ! important;
+    margin-top: 0 ! important;
     font-size: 100%;
 }
 .wiki p img {
@@ -1475,6 +1426,12 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 /* Socialtext classes
 -------------------------------------------------------------- */
 
+.wiki {
+    padding-top:1em;
+}
+#st-page-titletext {
+    font-weight:bold;
+}
 .wiki a.incipient {
     border-bottom:1px #fc6500 dotted;
     color:#fc6500;
@@ -1541,4 +1498,10 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 }
 .wiki .wiki-include-content {
     margin-left:2em;
+}
+.widget .widgetContent ul {
+    margin:10px 9px 0 9px ! important;
+}
+.widget .widgetContent ul li {
+    border-bottom:1px #e8e8e8 solid;
 }
