@@ -195,6 +195,11 @@ $(function() {
 
     $("#st-comment-button-link, #bottomButtons .commentButton")
         .click(function () {
+            if ($('div.commentWrapper').length) {
+                Page._currentGuiEdit.scrollTo();
+                return;
+            }
+
             get_lightbox(function () {
                 var ge = new GuiEdit({
                     id: 'contentLeft',
@@ -203,6 +208,7 @@ $(function() {
                         Page._repaintBottomButtons();
                     }
                 });
+                Page._currentGuiEdit = ge;
                 ge.show();
             });
             Page._repaintBottomButtons();
