@@ -5,9 +5,13 @@
   [% INCLUDE element/listview_tabs %]
   <div id="controls">
     <div id="st-editing-tools-edit">
-
     </div><!-- controlsLeft END -->
     <div id="controlsRight">
+        [% IF hub.current_workspace.enable_unplugged %]
+            [% IF unplug_uri %]
+                <a style="float: left; margin-top: 12px" title="[% unplug_phrase %]" href="[% unplug_uri %]"><img border="0" src="[% wiki.skin_uri('s2') %]/images/unplug-icon.png"/></a>
+            [% END %]
+        [% END %]
       <ul class="level1">
         <li class="submenu">
           <a class="export" href="#" id="st-listtools-export">[% loc('Export') %]</a>
