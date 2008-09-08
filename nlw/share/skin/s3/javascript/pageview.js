@@ -112,8 +112,7 @@ Page = {
                             cache: false,
                             success: function (text) {
                                 $('#wikiwyg_wikitext_textarea').val(text);
-                 
-                                     alert( data.html );}
+                            }
                         });
                     }
                 }
