@@ -113,7 +113,9 @@ sub _all_workspaces {
 
     # always include the current workspace, in case the user isn't
     # a member
-    push @workspaces, $current_workspace;
+    if (length $current_workspace) {
+        push @workspaces, $current_workspace;
+    }
 
     my %uniq = ();
     foreach my $w ( @workspaces ) {
