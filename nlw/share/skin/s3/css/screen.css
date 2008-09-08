@@ -1224,4 +1224,10 @@ div#contentColumns div#contentLeft div.wiki h6 {
     font-weight: normal;
 }
 
+td.peoplelist-picture-td {
+    width: 70px;
+}
 
+td.peoplelist-desc-td {
+    width: 100%;
+}
