@@ -90,7 +90,10 @@ GuiEdit.prototype.show = function () {
 
     jQuery('textarea', this.container).val('');
     this.area = jQuery('textarea', this.container).get(0);
-    this.area.addBehavior(nlw_make_s3_path('/javascript/Selection.htc'));
+
+    if (this.area.addBehavior) {
+        this.area.addBehavior(nlw_make_s3_path('/javascript/Selection.htc'));
+    }
 
     this.scrollTo(function () {
         jQuery('.comment', this.container).fadeIn();
