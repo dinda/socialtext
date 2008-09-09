@@ -140,6 +140,7 @@ sub category_display {
 
     $self->screen_template('view/category_display');
     return $self->render_screen(
+        summaries              => $self->show_summaries,
         display_title          => loc("Tag: [_1]", $category),
         predicate              => 'action=category_display;category=' . $uri_escaped_category,
         rows                   => $rows,
@@ -586,6 +587,7 @@ cgi 'category';
 cgi 'page_id' => '-clean_path';
 cgi 'sortby';
 cgi 'direction';
+cgi 'summaries';
 
 ######################################################################
 package Socialtext::Category::Wafl;
