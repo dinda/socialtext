@@ -1514,3 +1514,16 @@ td.peoplelist-picture-td {
 td.peoplelist-desc-td {      
         width: 100%;
 }
+
+.form-users_invite a.saveButton {
+	display: block;
+	width: 59px;
+	height: 22px;
+	background: url(../images/inviteButton.png) no-repeat;
+	background-position: top right;
+	text-indent: -9999px;
+}
+
+.form-users_invite a.saveButton:hover {
+	background-position: top left;
+}
