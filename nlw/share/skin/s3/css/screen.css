@@ -24,6 +24,24 @@ div#controls div#controlsRight ul li a.watch.on {
        background: url(../images/watchingIcon.png) no-repeat center left;
 }
 
+td.listview-watchlist a.watch.on {
+       background: url(../images/watchingIcon.png) no-repeat center left;
+}
+
+td.listview-watchlist a.watch:hover {
+    color: #33A8FF;
+}
+
+td.listview-watchlist a.watch {
+    background: url(../images/watchIcon.png) no-repeat center left;
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 10px 0 28px;
+    margin: 5px;
+}
+
+
 /* Hacks to get around there not being an avatar on the araucaria version */
 body#dashBoard div#controls div#frame {
     float: left;
