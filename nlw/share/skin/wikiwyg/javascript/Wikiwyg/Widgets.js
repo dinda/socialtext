@@ -476,14 +476,14 @@ var wikiwyg_widgets_title_lookup = {
 };
 
 proto.lookupTitle = function(field, id) {
-    var title = this.titleInLoopup(field, id);
+    var title = this.titleInLookup(field, id);
     if (!title) {
         title = this.pullTitleFromServer(field, id);
     }
     return title;
 }
 
-proto.titleInLoopup = function (field, id) {
+proto.titleInLookup = function (field, id) {
     if (field in wikiwyg_widgets_title_lookup)
         if (id in wikiwyg_widgets_title_lookup[field])
             return wikiwyg_widgets_title_lookup[field][id];
