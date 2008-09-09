@@ -23,6 +23,7 @@ var GuiEdit = function(args) {
     this.workspace = args.workspace || Socialtext.wiki_id;
     this.page_id = args.page_id || Socialtext.page_id;
     this.oncomplete = args.oncomplete;
+    this.onclose = args.onclose;
     this.id = args.id;
     if (!this.id)
         throw new Error ('GuiEdit requires an id!');
@@ -100,6 +101,10 @@ GuiEdit.prototype.close = function () {
     jQuery('.comment', this.container).fadeOut(function () {
         jQuery('.commentWrapper', this.container).remove();
     });
+
+    if (this.onclose) {
+        this.onclose.call(this);
+    }
 }
 
 GuiEdit.prototype.scrollTo = function (callback) {

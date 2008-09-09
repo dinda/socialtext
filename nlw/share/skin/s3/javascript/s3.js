@@ -205,6 +205,8 @@ $(function() {
                     id: 'contentLeft',
                     oncomplete: function () {
                         Page.refreshPageContent();
+                    },
+                    onclose: function () {
                         Page._repaintBottomButtons();
                     }
                 });
