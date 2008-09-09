@@ -1254,10 +1254,12 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
         .unbind('click')
         .click(function() {
             var error = null;
+            jQuery('#lightbox .buttons input').attr('disabled', 'disabled');
             try {
                 var widget_string = self['handle_widget_' + widget](form);
                 clearInterval(intervalId);
                 self.insert_widget(widget_string, widget_element, function () {
+                    jQuery('#lightbox .buttons input').attr('disabled', '');
                     jQuery.hideLightbox();
                 });
             }
@@ -1267,6 +1269,7 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
                     .show()
                     .html('<span>'+error+'</span>');
                 Wikiwyg.Widgets.widget_editing--;
+                jQuery('#lightbox .buttons input').attr('disabled', '');
                 return false;
             }
             Wikiwyg.Widgets.widget_editing--;
