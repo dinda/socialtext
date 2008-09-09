@@ -141,9 +141,9 @@ Page = {
                     var tag = tags[i];
                     $('#st-tags-listing').append(
                         $('<li />').append(
-                            $('<a />')
-                                .html(tag.name)
-                                .attr('href', tag_url + tag.name),
+                            $('<a></a>')
+                                .text(tag.name)
+                                .attr('href', tag_url + encodeURIComponent(tag.name)),
 
                             ' ',
                             $('<a href="#" />')
