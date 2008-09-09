@@ -889,6 +889,34 @@ proto.contentIsModified = function() {
     return (current_wikitext != this.originalWikitext);
 }
 
+proto.diffContent = function () {
+    if (this.originalWikitext == null) {
+        jQuery.showLightbox('There is no originalWikitext');
+    }
+    else if (this.contentIsModified()) {
+        var current_wikitext = this.get_current_wikitext().replace(/\r/g, '');
+        jQuery.ajax({
+            type: 'POST',
+            url: location.pathname,
+            data: {
+                action: 'wikiwyg_diff',
+                text1: this.originalWikitext,
+                text2: current_wikitext
+            },
+            success: function (data) {
+                jQuery.showLightbox({
+                    html: '<pre style="font-family:Courier">'+data+'</pre>',
+                    width: '95%'
+                });
+            }
+        });
+    }
+    else {
+        jQuery.showLightbox("Content is not modified");
+    }
+    return void(0);
+}
+
 proto.get_current_wikitext = function() {
     if (this.current_mode.classname.match(/Wikitext/))
         return this.current_mode.toWikitext();
