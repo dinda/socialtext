@@ -372,7 +372,17 @@ $(function() {
         }
     }; }
 
+    // Watch handler for single-page view
     $('#st-watchlist-indicator').click(makeWatchHandler(Socialtext.page_id));
+
+    // Watch handler for watchlist view
+    $('td.listview-watchlist a[id^=st-watchlist-indicator-]').each(function(){
+        $(this).click(
+            makeWatchHandler(
+                $(this).attr('id').replace(/^st-watchlist-indicator-/, '')
+            )
+        );
+    });
 
     if (Socialtext.new_page ||
         Socialtext.start_in_edit_mode ||
