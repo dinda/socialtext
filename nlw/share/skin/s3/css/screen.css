@@ -888,6 +888,15 @@ td.person a {
 .revision-chunk-before {
     padding-bottom: 10px;
     padding-right: 10px;
+    overflow: hidden;
+    width: 50%;
+}
+
+.revision-chunk-after {
+    padding-bottom: 10px;
+    padding-right: 10px;
+    overflow: hidden;
+    width: 50%;
 }
 
 #st-revision-tags {
