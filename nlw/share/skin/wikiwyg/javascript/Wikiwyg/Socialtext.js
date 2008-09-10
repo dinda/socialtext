@@ -346,7 +346,7 @@ function setup_wikiwyg() {
                 jQuery('.st-tagqueue-taglist-name').size() ? ', ' : '',
                 tag,
                 jQuery('<a class="st-tagqueue-taglist-delete" />')
-                    .attr('title', loc("Remove _[0] from the queue", tag))
+                    .attr('title', loc("Remove [_1] from the queue", tag))
                     .attr('href', '#')
                     .click(function () {
                         jQuery('#st-taglist-'+tag).remove();
