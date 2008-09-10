@@ -1233,10 +1233,11 @@ body div#controls div#st-editing-tools-edit ul li {
 
 /* Default font settings.
 The font-size percentage is of 16px. (0.75 * 16px = 12px) */
-.wiki {
+.wiki,
+#st-revision-display {
     font-size: 100%;
     color: #222;
-    line-height:1 ! important;
+    line-height:1.2 ! important;
 }
 
 /* Headings
@@ -1400,7 +1401,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 }
 .wiki th,
 .wiki td {
-    padding: 4px 10px 4px 5px;
+    padding: 4px 10px 4px 5px;  
 }
 .wiki tr.even td {
     background: #E5ECF9;
