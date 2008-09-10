@@ -215,7 +215,9 @@ sub set_default_account {
 
 sub enable_plugin {
     my $self = shift;
+
     my $plugin  = $self->_require_plugin;
+    $self->{account} ||= $self->_require_account;
 
     my $enabler = sub {
         my $account = shift;
@@ -237,7 +239,9 @@ sub enable_plugin {
 
 sub disable_plugin {
     my $self = shift;
+    
     my $plugin  = $self->_require_plugin;
+    $self->{account} ||= $self->_require_account;
 
     my $disabler = sub {
         my $account = shift;
@@ -256,7 +260,6 @@ sub _account_plugin_action {
     my $callback = shift;
 
     my @messages;
-    $self->{account} ||= $self->_require_account;
     if ($self->{account}) {
         push @messages, $callback->( $self->{account} );
     }
