@@ -36,11 +36,11 @@ push_onload_function = function (fcn) { jQuery(fcn) }
 $(function() {
     $('#st-page-boxes-toggle-link')
         .bind('click', function() {
-            var hidden = $('#contentRight').hasClass('hidebox');
+            var hidden = $('#contentColumns').hasClass('hidebox');
             if (hidden)
-                $('#contentRight').removeClass("hidebox").addClass("showbox");
+                $('#contentColumns').removeClass("hidebox").addClass("showbox");
             else
-                $('#contentRight').removeClass("showbox").addClass("hidebox");
+                $('#contentColumns').removeClass("showbox").addClass("hidebox");
             hidden = !hidden;
             this.innerHTML = hidden ? 'show' : 'hide';
             Cookie.set('st-page-accessories', hidden ? 'hide' : 'show');

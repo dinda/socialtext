@@ -3,11 +3,15 @@
 
 /* overloads */
 
-.hidebox {
+div#contentColumns.hidebox #contentLeft {
+    width: 100%;
+}
+
+div#contentColumns.hidebox #contentRight {
     display: none;
 }
 
-.showbox {
+div#contentColumns.showbox #contentRight {
     display: block;
 }
 
