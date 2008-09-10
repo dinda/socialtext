@@ -1,5 +1,5 @@
 [%# vim: set et sts=2 sw=2: %]
-<form id="st-email-lightbox">
+<form id="st-email-lightbox-form">
   <input type="hidden" name="email_page_from" value="[% user_id %]" />
   <input type="hidden" name="action" value="email_page" />
   <input type="hidden" name="json" value="1" />
@@ -60,7 +60,7 @@
   </table>
 
   <div class="buttons">
-    <input type="submit" value="[% loc('Send') %]" />
+    <input id="email_send" type="submit" value="[% loc('Send') %]" />
     <input id="email_cancel" type="button" value="[% loc('Cancel') %]" />
   </div>
 </form>

@@ -151,6 +151,11 @@ ul.normal ul ul {
 
 #st-email-lightbox th {
     padding-right: 10px;
+    vertical-align: middle;
+}
+
+#st-email-lightbox input {
+    margin-left: 0px;
 }
 
 #st-email-lightbox .email_input {
@@ -1567,6 +1572,3 @@ td.peoplelist-desc-td {
 	background-position: top left;
 }
 
-#st-email-lightbox th {
-    vertical-align: middle;
-}
