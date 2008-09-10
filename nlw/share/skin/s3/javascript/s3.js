@@ -265,6 +265,7 @@ $(function() {
             var move = new ST.Move;
             move.copyLightbox();
         });
+        return false;
     });
 
 
@@ -316,6 +317,7 @@ $(function() {
                 Socialtext.render_spreadsheet_editor();
             });
             $.ajaxSettings.cache = false;
+            return false;
         });
 
     $('#st-listview-submit-pdfexport').click(function() {
@@ -327,6 +329,7 @@ $(function() {
             $('#st-listview-filename').val(Socialtext.wiki_id + '.pdf');
             $('#st-listview-form').submit();
         }
+        return false;
     });
 
     $('#st-listview-submit-rtfexport').click(function() {
@@ -338,10 +341,12 @@ $(function() {
             $('#st-listview-filename').val(Socialtext.wiki_id + '.rtf');
             $('#st-listview-form').submit();
         }
+        return false;
     });
 
     $('#st-listview-selectall').click(function () {
         $('input[type=checkbox]').attr('checked', this.checked);
+        return false;
     });
 
     function makeWatchHandler (pageId) { return function(){
