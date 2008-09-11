@@ -7,6 +7,10 @@ div#contentColumns.hidebox #contentLeft {
     width: 97%;
 }
 
+div#contentColumns #contentRight {
+    background-color: #FFFFFF;
+}
+
 div#contentColumns.hidebox #contentRight {
     display: none;
 }
