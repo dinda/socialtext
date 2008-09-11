@@ -178,7 +178,7 @@ sub _gen_sort_closure {
             }
         }
     }
-    else { # We're sorting on anything else - most likely a string
+    else { # anything else, most likely a string
         if ( $direction eq 'asc' ) {
             return sub {
                 lc( $a->{$sortby} ) cmp lc( $b->{$sortby} )
