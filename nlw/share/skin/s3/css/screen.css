@@ -1244,11 +1244,16 @@ body div#controls div#st-editing-tools-edit ul li {
 
 /* Default font settings.
 The font-size percentage is of 16px. (0.75 * 16px = 12px) */
-.wiki,
-#st-revision-display {
-    font-size: 100%;
+.wiki {
     color: #222;
-    line-height:1.2 ! important;
+    font-size:110% ! important;
+    line-height: 1.2 ! important;
+}
+.wiki p,
+.wiki li,
+.wiki td,
+#st-revision-display {
+    font-size:12px ! important;
 }
 
 /* Headings
@@ -1265,16 +1270,16 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 }
 
 .wiki h1 {
-    font-size: 3em;
+    font-size: 2em;
     line-height: 1;
     margin-bottom: 0.5em;
 }
 .wiki h2 {
-    font-size: 2em;
+    font-size: 1.7em;
     margin-bottom: 0.75em;
 }
 .wiki h3 {
-    font-size: 1.5em;
+    font-size: 1.4em;
     line-height: 1;
     margin-bottom: 0.5em;
 }
@@ -1308,9 +1313,8 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 -------------------------------------------------------------- */
 
 .wiki p {
-    margin-bottom: 1.5em ! important;
+    margin-bottom: 1em ! important;
     margin-top: 0 ! important;
-    font-size: 100%;
 }
 .wiki p img {
     float: left;
@@ -1324,7 +1328,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 }
 
 .wiki blockquote {
-    margin: 1.5em;
+    margin: 1em 1.5em;
     color: #666;
     font-style: italic;
 }
@@ -1404,7 +1408,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 
 .wiki table {
     margin-bottom: 1.4em;
-    width: 100%;
+    width: auto;
 }
 .wiki th {
     font-weight: bold;
@@ -1412,7 +1416,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 }
 .wiki th,
 .wiki td {
-    padding: 4px 10px 4px 5px;  
+    padding: 4px 10px 4px 5px; 
 }
 .wiki tr.even td {
     background: #E5ECF9;
@@ -1483,17 +1487,21 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .wiki {
     padding-top:1em;
 }
-#st-page-titletext {
-    font-weight:bold;
+div#contentContainer h2.tableTitle {
+    font-size:2em;
+    font-weight:normal;
+    letter-spacing:1px;
 }
 .wiki a.incipient {
-    border-bottom:1px #fc6500 dotted;
-    color:#fc6500;
+    border-bottom:1px #d82500 dashed;
+    border-bottom:1px #25a800 dashed;
+    color:#d82500;
+    color:#25a800;
 }
 .wiki a.incipient:hover {
-    color:#fc6500;
+    color:#d82500;
     text-decoration:none;
-    border-bottom:1px #fc6500 solid;
+    border-bottom:1px #d82500 solid;
 }
 .wiki .wafl_box,
 .wiki .fetchrss_box {
