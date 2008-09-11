@@ -900,32 +900,39 @@ td.person a {
     padding-bottom: 12px;
 }
 
+#revision-compare-table {
+    border-collapse:collapse;
+}
+
 .st-revision-compare-old {
-    background-color: #ccc;
+    background-color: #ff6666;
     text-decoration: line-through;
 }
 
 .st-revision-compare-new {
-    background-color: yellow;
+    background-color: #66ff66;
 }
 
 .revision-compare-table-header div {
     padding-bottom: 10px
 }
 
+.revision-chunk-before,
+.revision-chunk-after {
+    padding:3px 10px;
+    overflow:hidden;
+    width:50%;
+    border-top:1px #ccc solid;
+}
+
 .revision-chunk-before {
-    padding-bottom: 10px;
-    padding-right: 10px;
-    overflow: hidden;
-    width: 50%;
+    padding-right:20px;
 }
 
 .revision-chunk-after {
-    padding-bottom: 10px;
-    padding-right: 10px;
-    overflow: hidden;
-    width: 50%;
+    padding-left:20px;
 }
+
 
 #st-revision-tags {
     padding-top: 20px;
@@ -1284,6 +1291,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .wiki td,
 #st-revision-display {
     font-size:12px ! important;
+    line-height:15px;
 }
 
 /* Headings
