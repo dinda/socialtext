@@ -1136,6 +1136,36 @@ div#mainNav .emptynotice {
 }
 
 
+div#workspaceNav ul.level2 {
+    position: absolute;
+    width: 17em;
+    display: none;
+    border: 1px solid #313a3d;
+    top: -2.5em; 
+    left: -8em;
+    background: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+div#workspaceNav li.submenu:hover ul.level2 {
+    display:block; 
+}
+div#workspaceNav li.submenu:hover {
+    display: block; z-index: 4000;
+}
+
+div#workspaceNav ul.level2 li {
+    display: block;
+    z-index: 4000;
+}
+
+div#workspaceNav ul.level2 li a {
+    background: none;
+    line-height: 1;
+}
+
 html body div#st-page-editing-toolbar-container {
         height: 50px;
 }
