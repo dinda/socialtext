@@ -5,6 +5,7 @@ use warnings;
 
 use base 'Socialtext::Plugin';
 
+use Socialtext::User;
 use Class::Field qw( const field );
 use Storable ();
 
@@ -147,6 +148,34 @@ sub _gen_sort_closure {
                 $b->{revision_count} <=> $a->{revision_count}
                     or lc( $a->{Subject} ) cmp lc( $b->{Subject} );
                 }
+        }
+    }
+    elsif ( $sortby eq 'username' ) { 
+        # we want to sort by whatever the system knows these users as, which
+        # may not be the same as the From header.
+        if ( $direction eq 'asc' ) {
+            return sub {
+                Socialtext::User->new( 
+                    email_address => $a->{From} 
+                )->best_full_name 
+                <=> 
+                Socialtext::User->new(
+                    email_address => $b->{From}
+                )->best_full_name
+                or lc( $a->{Subject} ) cmp lc( $b->{Subject} );
+            }
+        }
+        else {
+            return sub {
+                Socialtext::User->new( 
+                    email_address => $b->{From} 
+                )->best_full_name 
+                <=> 
+                Socialtext::User->new(
+                    email_address => $a->{From}
+                )->best_full_name
+                or lc( $b->{Subject} ) cmp lc( $a->{Subject} );
+            }
         }
     }
     else { # We're sorting on anything else - most likely a string
