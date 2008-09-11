@@ -166,11 +166,15 @@ ul.normal ul ul {
 }
 
 #st-email-lightbox .email_input {
-    width: 170px;
+    width: 250px;
 }
 
 #st-email-lightbox .email_input_button {
     width: 120px;
+}
+
+#st-email-lightbox .email_input_textarea {
+    width: 640px;
 }
 
 #wikiwyg_wikitext_textarea {
