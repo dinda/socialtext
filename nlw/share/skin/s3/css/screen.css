@@ -1330,7 +1330,7 @@ The font-size percentage is of 16px. (0.75 * 16px = 12px) */
 .wiki span.nlw_phrase img {
     float: none;
     margin: 0px;
-    vertical-align: baseline;
+    vertical-align: middle;
 }
 
 .wiki blockquote {
