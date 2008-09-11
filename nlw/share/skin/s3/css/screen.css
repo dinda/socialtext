@@ -4,7 +4,7 @@
 /* overloads */
 
 div#contentColumns.hidebox #contentLeft {
-    width: 100%;
+    width: 97%;
 }
 
 div#contentColumns.hidebox #contentRight {
@@ -125,6 +125,9 @@ div.wiki li {
     padding: 3px 0px;
 }
 
+div.wiki td, div.wiki th {
+    vertical-align: top;
+}
 /* Done overloads */
 
 #globalNav form {
