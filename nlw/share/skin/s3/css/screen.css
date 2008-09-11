@@ -1636,3 +1636,9 @@ td.peoplelist-desc-td {
 	background-position: top left;
 }
 
+/* Profile overrides
+-------------------------------------------------------------- */
+
+.widgetTan {
+    background-color:#fff ! important;
+}
