@@ -1598,6 +1598,30 @@ proto.get_editable_div = function () {
         this._editable_div.onactivate = function () {
             self.__range = undefined;
         };
+
+        if ( jQuery.browser.msie ) {
+            var win = self.get_edit_window();
+            self._ieSelectionBookmark = null;
+
+            doc.attachEvent("onbeforedeactivate", function() {
+                var range = doc.selection.createRange();
+                self._ieSelectionBookmark = range.getBookmark();
+            });
+
+            doc.attachEvent("onactivate", function() {
+                 if (! self._ieSelectionBookmark) {
+                     return;
+                 }
+
+                 try {
+                     var range = doc.body.createTextRange();
+                     range.moveToBookmark(self._ieSelectionBookmark);
+                     range.collapse();
+                     range.select();
+                 } catch (e) {};
+            });
+        } 
+
         var tryAppendDiv = function(tries) {
             setTimeout(function() {
                 if (doc.body) {
