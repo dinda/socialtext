@@ -257,7 +257,7 @@ function setup_wikiwyg() {
             if (Socialtext.new_page) {
                 window.location = '?action=homepage';
             }
-            else if (Socialtext.S3 && jQuery.browser.msie && jQuery.browser.version > 6) {
+            else if (Socialtext.S3 && jQuery.browser.msie) {
                 // Cheap-and-cheerful-but-not-fun workaround for {bz: 1261}.
                 // XXX TODO XXX - Implement a proper fix!
                 window.location.reload();
