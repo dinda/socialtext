@@ -257,6 +257,12 @@ function setup_wikiwyg() {
             if (Socialtext.new_page) {
                 window.location = '?action=homepage';
             }
+            else if (Socialtext.S3 && jQuery.browser.msie && jQuery.browser.version > 6) {
+                // Cheap-and-cheerful-but-not-fun workaround for {bz: 1261}.
+                // XXX TODO XXX - Implement a proper fix!
+                window.location.reload();
+            }
+
             jQuery("#st-edit-mode-container").hide();
             jQuery("#st-display-mode-container, #st-all-footers").show();
 
@@ -265,7 +271,10 @@ function setup_wikiwyg() {
             jQuery("#st-pagetools, #st-editing-tools-display").show();
             jQuery("#st-editing-tools-edit").hide();
             jQuery("#st-page-maincontent").css('margin-right', '0px');
-            jQuery(Page.element.content).css("height", "100%");
+
+            if (Page.element && Page.element.content) {
+                jQuery(Page.element.content).css("height", "100%");
+            }
 
             // XXX WTF? ENOFUNCTION
             //do_post_cancel_tidying();
