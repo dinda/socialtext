@@ -1296,7 +1296,7 @@ body div#mainWrap {
 
 ul li a.previewButton {
         display: block;
-        width: 89px;
+        width: 98px;
         height: 22px;
         background: url(../images/previewButton.png) no-repeat;
         background-position: top right;
@@ -1684,7 +1684,7 @@ td.peoplelist-desc-td {
 
 .form-users_invite a.saveButton {
 	display: block;
-	width: 59px;
+	width: 56px;
 	height: 22px;
 	background: url(../images/inviteButton.png) no-repeat;
 	background-position: top right;
