@@ -394,8 +394,13 @@ sub skin_name {
         $self->{skin_name} = $value;
         return $value;
     }
-    my $skin = $self->{skin_name} || $self->account->skin_name;
-    return $skin;
+    return $self->{skin_name};
+}
+
+sub display_skin {
+    my $self = shift;
+
+    return $self->skin_name || $self->account->skin_name;
 }
 
 # turn a workspace into a hash suitable for JSON and such things.

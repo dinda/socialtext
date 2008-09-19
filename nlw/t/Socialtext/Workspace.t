@@ -82,14 +82,14 @@ ALL_WORKSPACE_IDS_AND_NAMES: {
     Workspace_skin_should_override_account_skin: {
         $ws->update(skin_name => 'reds3');
         $ws = Socialtext::Workspace->new(name => $ws->name);
-        is( $ws->skin_name, 'reds3', 'workspace skin is reds3' );
+        is( $ws->display_skin, 'reds3', 'workspace display skin is reds3' );
 
         $ws->account->update(skin_name => 's3');
         $ws = Socialtext::Workspace->new(name => $ws->name);
-        is $ws->skin_name, 'reds3', 'workspace skin is still reds3';
+        is $ws->display_skin, 'reds3', 'workspace display skin is still reds3';
         $ws->update(skin_name => '');
         $ws = Socialtext::Workspace->new(name => $ws->name);
-        is $ws->skin_name, 's3', 'workspace uses account skin';
+        is $ws->display_name, 's3', 'workspace displays account skin';
     }
 }
 

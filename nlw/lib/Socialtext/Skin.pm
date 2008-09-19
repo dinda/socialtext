@@ -201,7 +201,7 @@ sub skin_name {
     }
     return $skin_name || $self->workspace->uploaded_skin
             ? "uploaded-skin/$workspace_name"
-            : $self->workspace->skin_name;
+            : $self->workspace->display_skin;
 }
 
 sub cascade_css {
