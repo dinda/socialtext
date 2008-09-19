@@ -17,11 +17,19 @@ use Socialtext::l10n qw(loc);
 use Socialtext::SystemSettings qw( get_system_setting );
 use YAML qw/DumpFile LoadFile/;
 
-field 'account_id';
-field 'name';
-field 'skin_name';
-field 'is_system_created';
-field 'email_addresses_are_hidden';
+Readonly our @COLUMNS => (
+    'account_id',
+    'name',
+    'skin_name',
+    'is_system_created',
+    'email_addresses_are_hidden'
+);
+
+my %COLUMNS = map { $_ => 1 } @COLUMNS;
+
+foreach my $column ( @COLUMNS ) {
+    field $column;
+}
 
 sub table_name { 'Account' }
 
@@ -76,8 +84,10 @@ sub reset_skin {
 sub workspaces {
     my $self = shift;
 
-    return
-        Socialtext::Workspace->ByAccountId( account_id => $self->account_id, @_ );
+    return Socialtext::Workspace->ByAccountId( 
+        account_id => $self->account_id, 
+        @_ 
+    );
 }
 
 sub workspace_count {
@@ -86,6 +96,14 @@ sub workspace_count {
     my $sql = 'select count(*) from "Workspace" where account_id = ?';
     my $count = sql_singlevalue($sql, $self->account_id);
     return $count;
+}
+
+sub to_hash {
+    my $self = shift;
+    my $hash = {
+        map { $_ => $self->$_ } @COLUMNS
+    };
+    return $hash;
 }
 
 sub is_plugin_enabled {
