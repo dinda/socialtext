@@ -17,7 +17,7 @@ use Socialtext::l10n qw(loc);
 use Socialtext::SystemSettings qw( get_system_setting );
 use YAML qw/DumpFile LoadFile/;
 
-Readonly our @COLUMNS => (
+Readonly our @ACCT_COLS => (
     'account_id',
     'name',
     'skin_name',
@@ -25,9 +25,9 @@ Readonly our @COLUMNS => (
     'email_addresses_are_hidden'
 );
 
-my %COLUMNS = map { $_ => 1 } @COLUMNS;
+my %ACCT_COLS = map { $_ => 1 } @ACCT_COLS;
 
-foreach my $column ( @COLUMNS ) {
+foreach my $column ( @ACCT_COLS ) {
     field $column;
 }
 
@@ -101,7 +101,7 @@ sub workspace_count {
 sub to_hash {
     my $self = shift;
     my $hash = {
-        map { $_ => $self->$_ } @COLUMNS
+        map { $_ => $self->$_ } @ACCT_COLS
     };
     return $hash;
 }
