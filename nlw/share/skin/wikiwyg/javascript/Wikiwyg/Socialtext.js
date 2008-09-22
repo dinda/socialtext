@@ -1644,8 +1644,11 @@ proto.get_editable_div = function () {
             self._ieSelectionBookmark = null;
 
             doc.attachEvent("onbeforedeactivate", function() {
-                var range = doc.selection.createRange();
-                self._ieSelectionBookmark = range.getBookmark();
+                self._ieSelectionBookmark = null;
+                try {
+                    var range = doc.selection.createRange();
+                    self._ieSelectionBookmark = range.getBookmark();
+                } catch (e) {};
             });
 
             doc.attachEvent("onactivate", function() {
