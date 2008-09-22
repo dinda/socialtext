@@ -81,7 +81,7 @@
         }
 
         if (opts.close)
-            $(opts.close).click(function () { $.hideLightbox() })
+            $(opts.close).click(function () { $.hideLightbox(); return false })
 
         $('#overlay')
             .css({
