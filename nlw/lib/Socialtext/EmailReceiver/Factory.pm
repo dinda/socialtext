@@ -1,5 +1,6 @@
 # @COPYRIGHT@
 package Socialtext::EmailReceiver::Factory;
+use strict;
 use Readonly;
 use Socialtext::l10n qw(system_locale);
 use Socialtext::EmailReceiver::en;
