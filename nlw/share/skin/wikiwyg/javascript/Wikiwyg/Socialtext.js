@@ -1541,6 +1541,8 @@ if (Wikiwyg.is_ie) {
             attr = " wiki_page=\"" + page_name + "\"";
         }
         var html = "<a href=\"" + href + "\"" + attr + ">" + text + "</a>";
+
+        this.get_editable_div().focus(); // Need this before .insert_html
         this.insert_html(html);
     }
 }
@@ -1594,6 +1596,8 @@ proto.make_table_html = function(rows, columns) {
 proto.do_table = function() {
     var result = this.prompt_for_table_dimensions();
     if (! result) return false;
+
+    this.get_editable_div().focus(); // Need this before .insert_html
     this.insert_html(this.make_table_html(result[0], result[1]));
 }
 
