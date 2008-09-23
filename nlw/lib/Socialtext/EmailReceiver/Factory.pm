@@ -39,7 +39,7 @@ sub _create_email {
     elsif( $string )
     { 
         my @param =('string', $string, 'workspace', $workspace);
-        $spec = $spec_with_stirng;
+        my $spec = $spec_with_stirng;
         my %p = validate(@param, $spec);
         $email = Email::MIME->new( $p{string}, $p{workspace}  );
     }
