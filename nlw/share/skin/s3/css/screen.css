@@ -1592,13 +1592,15 @@ div#contentContainer h2.tableTitle {
     font-weight:normal;
     letter-spacing:1px;
 }
-.wiki a.incipient {
+.wiki a.incipient,
+.wiki .wafl_existence_error {
     border-bottom:1px #d82500 dashed;
     border-bottom:1px #25a800 dashed;
     color:#d82500;
     color:#25a800;
 }
-.wiki a.incipient:hover {
+.wiki a.incipient:hover,
+.wiki .wafl_existence_error:hover {
     color:#d82500;
     text-decoration:none;
     border-bottom:1px #d82500 solid;
