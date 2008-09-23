@@ -54,7 +54,7 @@ sub uri_escape {
     return URI::Escape::uri_escape_utf8(shift);
 }
 
-=head uri_unescape( $uri )
+=head2 uri_unescape( $uri )
 
 Returns an unescaped version of I<$uri>
 
