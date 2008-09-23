@@ -54,7 +54,7 @@ authenticate_by_cn: {
     ok $user->password_is_correct('foobar'), '... authen ok with password';
     ok !$user->password_is_correct('BADPASS'), '... authen fails with junk';
 
-    $user = Socialtext::User->new( username => 'Jim Smith (Marketing)' );
+    $user = Socialtext::User->new( username => 'Smith, Jim (Marketing)' );
     ok $user;
     isa_ok $user,'Socialtext::User', 'found user';
     is $user->driver_name(), 'LDAP', '... in LDAP store';

@@ -39,9 +39,9 @@ mail: jim.smith@example.com
 userPassword: 123abc
 ou: people
 
-dn: cn=Jim Smith (Marketing),dc=example,dc=com
+dn: cn=Smith\, Jim (Marketing),dc=example,dc=com
 objectClass: inetOrgperson
-cn: Jim Smith (Marketing)
+cn: Smith, Jim (Marketing)
 gn: Jim
 sn: Smith
 mail: jim.q.smith@example.com
