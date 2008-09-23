@@ -7,7 +7,7 @@ use Socialtext::AppConfig;
 use Socialtext::LDAP::Config;
 use Socialtext::User;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 18;
+use Test::Socialtext tests => 23;
 
 ###############################################################################
 # FIXTURE: db
@@ -52,6 +52,13 @@ authenticate_by_cn: {
     isa_ok $user,'Socialtext::User', 'found user';
     is $user->driver_name(), 'LDAP', '... in LDAP store';
     ok $user->password_is_correct('foobar'), '... authen ok with password';
+    ok !$user->password_is_correct('BADPASS'), '... authen fails with junk';
+
+    $user = Socialtext::User->new( username => 'Jim Smith (Marketing)' );
+    ok $user;
+    isa_ok $user,'Socialtext::User', 'found user';
+    is $user->driver_name(), 'LDAP', '... in LDAP store';
+    ok $user->password_is_correct('987qwe'), '... authen ok with password';
     ok !$user->password_is_correct('BADPASS'), '... authen fails with junk';
 }
 
