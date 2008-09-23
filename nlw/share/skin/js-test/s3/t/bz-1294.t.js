@@ -20,9 +20,14 @@ t.runAsync([
 
     function() {
         t.open_iframe(
-            "/admin/index.cgi?bz_1294#edit",
-            t.nextStep(5000)
+            "/admin/index.cgi?bz_1294",
+            t.nextStep()
         );
+    },
+
+    function() { 
+         t.$('#st-edit-button-link').click();
+         t.callNextStep(5000);
     },
             
     function() { 
