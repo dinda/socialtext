@@ -344,6 +344,12 @@ proto._get_selector_element = function(selector) {
     return $result.get(0);
 }
 
+proto.checkRichTextSupport = function () {
+    if (jQuery.browser.safari) {
+        this.skipAll("This test requires Rich Text editing, which is not supported for your browser.");
+    }
+}
+
 })(jQuery);
 
 // XXX Local patch to make diagnostic output render correctly

@@ -4,9 +4,7 @@ var t = new Test.Visual();
 
 t.plan(1);
 
-if (jQuery.browser.safari) {
-    t.skipAll("{bz: 1318} affects Rich Text editing, which is unavaiable for safari.");
-}
+t.checkRichTextSupport();
 
 t.runAsync([
     function() {
