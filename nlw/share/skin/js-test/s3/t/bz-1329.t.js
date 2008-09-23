@@ -19,6 +19,8 @@ t.runAsync([
 
                 var buttonsWithTitles = t.$('div.comment div.toolbar img.comment_button[title]');
                 t.is(buttons.length, buttonsWithTitles.length, 'All comment buttons have titles');
+
+                t.endAsync();
             }, 2500);
         }, 2500);
     }
