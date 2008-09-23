@@ -1639,6 +1639,7 @@ proto.get_editable_div = function () {
         this._editable_div.style.width = '100%';
         this._editable_div.style.height = '100%';
         this._editable_div.id = 'wysiwyg-editable-div';
+        this._editable_div.className = 'wiki';
 
         var self = this;
         this._editable_div.onbeforedeactivate = function () {
