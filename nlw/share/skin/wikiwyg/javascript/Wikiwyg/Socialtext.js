@@ -542,8 +542,13 @@ proto.preview_link_action = function() {
                         .css({ 'margin-right': '240px'});
                 self.switchMode(current.classname);
                 self.preview_link_reset();
-                self.resizeEditor();
-                self.hideScrollbars();
+
+                // This timeout is for IE so the iframe is ready - {bz: 1358}.
+                setTimeout(function() {
+                    self.resizeEditor();
+                    self.hideScrollbars();
+                }, 50);
+
                 return false;
             });
     }
