@@ -3,6 +3,10 @@
 
 /* overloads */
 
+body#blog div#controls div#controlsRight, div#st-editing-tools-edit {
+    width: auto !important;
+}
+
 div#contentColumns.hidebox #contentLeft {
     width: 97%;
 }
