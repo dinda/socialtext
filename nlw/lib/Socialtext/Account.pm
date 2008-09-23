@@ -643,6 +643,11 @@ as a hash, suitable for serializing.
 
 Returns a count of workspaces for this account.
 
+=item $account->to_hash()
+
+Returns a hashref containing all the fields of this account.  Useful
+for serialization.
+
 =item $account->reset_skin($skin)
 
 Change the skin for the account and its workspaces.
