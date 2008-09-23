@@ -41,12 +41,30 @@ proto.runAsync = function(steps) {
     this.beginAsync(this.nextStep()); 
 }
 
-proto.nextStep = function() {
-    return this.asyncSteps[this.asyncStep++];
+proto.nextStep = function(delay) {
+    var step = this.asyncSteps[this.asyncStep++];
+
+    if (delay) {
+        var self = this;
+        return function() {
+            setTimeout(step, delay);
+        }
+    }
+    else {
+        return step;
+    }
 }
 
-proto.callNextStep = function() {
-    this.call_callback(this.nextStep());
+proto.callNextStep = function(delay) {
+    if (delay) {
+        var self = this;
+        setTimeout(function(){
+            self.callNextStep();
+        }, delay);
+    }
+    else {
+        this.call_callback(this.nextStep());
+    }
 }
 
 proto.is_no_harness = function() {
