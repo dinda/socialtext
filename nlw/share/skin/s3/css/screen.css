@@ -1679,10 +1679,10 @@ div#contentContainer h2.tableTitle {
     margin-top:.25em ! important;
 }
 .wiki .wiki-include-page {
-    margin-left: 0;
-    margin-bottom:1em;
+    margin:0 0 1em 0;
     padding:1em 0 1em 0;
-    border-left: 5px #C3D9FF solid;
+    background: #fff url(../images/includeTile.png) repeat-y scroll top left;
+    border:none;
 }
 .wiki .wiki-include-title {
     font-size:150%;
