@@ -27,9 +27,28 @@ t.runAsync([
 
     function() { 
          t.$('#st-edit-button-link').click();
-         t.callNextStep(5000);
+         t.poll(
+            function() {
+                return (t.$('#st-mode-wysiwyg-button').is(':visible'));
+            },
+            function() {
+                t.callNextStep();
+            }
+        );
     },
             
+    function() { 
+        var richtextMode = function() {
+            return (t.$('#st-mode-wysiwyg-button').css('font-weight') == 'bold');
+        };
+        if (richtextMode()) {
+             t.callNextStep(0);
+             return;
+        }
+        t.$('#st-mode-wysiwyg-button').click();
+        t.poll(richtextMode, function() {t.callNextStep();});
+    },
+
     function() { 
         var editArea = $(
             t.$('#st-page-editing-wysiwyg').get(0)
