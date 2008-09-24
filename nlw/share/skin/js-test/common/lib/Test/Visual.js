@@ -199,6 +199,31 @@ proto.open_iframe = function(url, callback, options) {
     });
 }
 
+proto.poll = function(test, callback, interval, maximum) {
+    if (! (test && callback)) {
+        throw("usage: jQuery.poll(test_func, callback [, interval_ms, maximum_ms])");
+    }
+    if (! interval) interval = 250;
+    if (! maximum) maximum = 30000;
+
+    setTimeout(
+        function() {
+            if (id) {
+                clearInterval(id);
+                throw("jQuery.poll failed");
+            }
+        }, maximum
+    );
+
+    var id = setInterval(function() {
+        if (test()) {
+            clearInterval(id);
+            id = 0;
+            callback();
+        }
+    }, interval);
+};
+
 proto.setup_one_widget = function(params, callback) {
     var url = typeof(params) == 'string' ? params : params.url;
     if (typeof(params) == 'string') params = {};
@@ -212,10 +237,12 @@ proto.setup_one_widget = function(params, callback) {
                 self.call_callback(callback, [widget]);
                 return;
             }
-            self.$.poll(
+
+            self.poll(
                 function() { return Boolean(widget.win.gadgets.loaded) },
                 function() { self.call_callback(callback, [widget])}
             );
+
         });
     }
     this.open_iframe("/?action=clear_widgets", setup_widget);
