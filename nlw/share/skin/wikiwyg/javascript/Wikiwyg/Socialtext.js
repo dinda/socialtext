@@ -1658,7 +1658,6 @@ proto.get_editable_div = function () {
         this._editable_div.contentEditable = true;
         this._editable_div.style.overflow = 'auto';
         this._editable_div.style.border = 'none'
-        this._editable_div.style.position = 'absolute';
         this._editable_div.style.width = '100%';
         this._editable_div.style.height = '100%';
         this._editable_div.id = 'wysiwyg-editable-div';
