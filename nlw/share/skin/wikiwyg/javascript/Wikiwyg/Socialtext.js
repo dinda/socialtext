@@ -1387,7 +1387,7 @@ proto.enableThis = function() {
 
 proto.set_clear_handler = function () {
     var self = this;
-    var editor = Wikiwyg.is_ie ? self.get_editable_div() : self.get_edit_iframe();
+    var editor = Wikiwyg.is_ie ? self.get_editable_div() : self.get_edit_window();
 
     var clean = function() {
         self.clear_inner_html();
