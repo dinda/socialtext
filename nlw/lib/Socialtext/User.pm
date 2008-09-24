@@ -1488,8 +1488,11 @@ sub avatar_is_visible {
     my $self = shift;
 
     if ( $self->can_use_plugin('people') ) {
-        require Socialtext::People::Profile;
-        my $profile = Socialtext::People::Profile->GetProfile($self);
+        my $profile;
+        eval {
+            require Socialtext::People::Profile;
+            $profile = Socialtext::People::Profile->GetProfile($self);
+        };
 
         return ( $profile && ! $profile->is_hidden );
     }
@@ -1508,8 +1511,11 @@ sub profile_is_visible_to {
     my $viewer = shift;
 
     if ( $self->can_use_plugin_with( 'people', $viewer ) ) {
-        require Socialtext::People::Profile;
-        my $profile = Socialtext::People::Profile->GetProfile($self);
+        my $profile;
+        eval {
+            require Socialtext::People::Profile;
+            $profile = Socialtext::People::Profile->GetProfile($self);
+        };
 
         return ( $profile && ! $profile->is_hidden );
     }
