@@ -61,7 +61,7 @@ sub handler {
          if (Exception::Class->caught('Socialtext::WebApp::Exception::NotFound') or $e =~ /current_workspace/ ) {
             $rest->header(
                 -status   => HTTP_302_Found,
-                -Location => '/',
+                -Location => '/?action=workspace_list',
             );
              return ''; # XXX real content here!
          }
