@@ -2504,6 +2504,7 @@ Socialtext::CLI - Provides the implementation for the st-admin CLI script
   export-account --account [--force] 
   import-account --directory [--overwrite] [--name] [--noindex]
   set-account-config --account <key> <value>
+  show-account-config --account
   reset-account-skin --account <account> <skin>
 
   PLUGINS
@@ -2959,6 +2960,11 @@ Given a valid account configuration key, this sets the value of the
 key for the specified account. Use "-null-" as the value to set the
 value to NULL in the DBMS. You can pass multiple key value pairs on
 the command line.
+
+=head2 show-account-config --account
+
+Given a valid account, this shows all key/value pair combinations for
+that account.
 
 =head2 reset-config-skin --account <skin>
 
