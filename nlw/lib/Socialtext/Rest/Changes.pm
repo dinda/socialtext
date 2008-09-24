@@ -58,6 +58,10 @@ sub _entities_for_query {
     return @changes;
 }
 
+sub element_list_item {
+   return "<li><a href='$_[1]->{uri}'>$_[1]->{Subject}</a></li>\n";
+}
+
 sub _entity_hash { $_[1] }
 
 1;
