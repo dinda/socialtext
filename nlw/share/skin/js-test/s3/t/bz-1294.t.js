@@ -28,12 +28,8 @@ t.runAsync([
     function() { 
          t.$('#st-edit-button-link').click();
          t.poll(
-            function() {
-                return (t.$('#st-mode-wysiwyg-button').is(':visible'));
-            },
-            function() {
-                t.callNextStep();
-            }
+            function() { return (t.win.wikiwyg && t.win.wikiwyg.is_editing) },
+            function() { t.callNextStep() }
         );
     },
             
