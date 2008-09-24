@@ -110,8 +110,18 @@ function setup_wikiwyg() {
 
     if ( Wikiwyg.is_safari ) firstMode = WW_ADVANCED_MODE;
 
-    var clearRx = 
-        new RegExp("^" + loc("Replace this text with your own.") + "\\s*$");
+    var clearRichText = new RegExp(
+        ( "^"
+        + "\\s*(</?(span|br|div)\\b[^>]*>)*\\s*"
+        + loc("Replace this text with your own.")
+        + "\\s*(</?(span|br|div)\\b[^>]*>)*\\s*"
+        + "$"
+        ), "i"
+    );
+
+    var clearWikiText = new RegExp(
+        "^" + loc("Replace this text with your own.") + "\\s*$"
+    );
 
     // Wikiwyg configuration
     var myConfig = {
@@ -122,17 +132,13 @@ function setup_wikiwyg() {
             imagesLocation: nlw_make_s2_path('/images/wikiwyg_icons/')
         },
         wysiwyg: {
-            clearRegex: (
-                Wikiwyg.is_ie ?
-                    /^\s*Replace this text with your own.\s*<BR>\s*$/i :
-                    /^<div class="?wiki"?>\s*Replace this text with your own.\s*<br><\/div>\s*$/i
-            ),
+            clearRegex: clearRichText,
             iframeId: 'st-page-editing-wysiwyg',
             editHeightMinimum: 200,
             editHeightAdjustment: 1.3
         },
         wikitext: {
-            clearRegex: clearRx,
+            clearRegex: clearWikiText,
             textareaId: 'st-page-editing-pagebody-decoy'
         },
         preview: {
