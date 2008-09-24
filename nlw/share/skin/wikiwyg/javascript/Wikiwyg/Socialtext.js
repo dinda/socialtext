@@ -1378,7 +1378,22 @@ proto.enableThis = function() {
         try {
             if (Wikiwyg.is_gecko) self.get_edit_window().focus();
             if (Wikiwyg.is_ie) { 
-                jQuery(self.get_editable_div()).focus().css({ overflow: 'visible' });
+                jQuery(self.get_editable_div()).focus();
+                if (jQuery.browser.version <= 6) {
+                    /* We take advantage of IE6's overflow:visible bug
+                     * to make the DIV always agree with the dimensions
+                     * of the inner content.  More details here:
+                     *     http://www.quirksmode.org/css/overflow.html
+                     * Note that this must not be applied to IE7+, because
+                     * overflow:visible is implemented correctly there, and
+                     * setting it could trigger a White Screen of Death
+                     * as described in {bz: 1366}.
+                     */
+                    jQuery(self.get_editable_div()).css(
+                        'overflow', 'visible'
+                    );
+                }
+                self.set_clear_handler();
             }
         }
         catch(e) { }
