@@ -117,6 +117,38 @@ div#bottomButtons div#pageAttribution {
     padding: 5px;
 }
 
+body#workSpace div#controls div#st-editing-tools-edit h1,
+body#blog div#controls div#st-editing-tools-edit h1,
+div#contentContainer h2.tableTitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 2px;
+}
+
+div#contentContainer h2.tableTitle {
+    width: 90%;
+}
+
+div#controls div#st-editing-tools-edit {
+    max-width: 80%;
+    display: block;
+}
+
+body#blog div#controls div#controlsRight {
+    max-width: 20%;
+}
+
+div#controls div#st-editing-tools-edit {
+    max-width: 80%;
+}
+
+
+div.goTo {
+    white-space: nowrap;
+}
+
+
 div.widget ul.widgetButton li a.addTagButton {
     width: 87px;
 }
