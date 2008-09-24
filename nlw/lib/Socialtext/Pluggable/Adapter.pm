@@ -21,7 +21,6 @@ my %ONCE_TYPES = (
     action   => 1,
     wafl     => 1,
     template => 1,
-    root     => 1,  # "root" is special, its not a regular action
 );
 
 BEGIN {
@@ -190,12 +189,23 @@ sub hook {
             next unless $enabled;
                          
             eval {
-                push @output, $plugin->$method(@args);
+                $plugin->declined(undef);
+                my $results = $plugin->$method(@args);
+                unless ($plugin->declined) {
+                    push @output, $results;
+                }
             };
             if ($@) {
                 (my $err = $@) =~ s/\n.+//sm;
                 return $err;
             }
+
+            # XXX: special handling for "root" plugins; run them all until one
+            # of them does some processing.
+            if ($name eq 'root') {
+                last unless $plugin->declined;
+            }
+
             last if $hook->{once};
         }
     }
