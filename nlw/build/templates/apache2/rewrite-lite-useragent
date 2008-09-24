@@ -8,6 +8,7 @@ RewriteCond     %{HTTP_USER_AGENT}  .*Palm.*            [OR]
 RewriteCond     %{HTTP_USER_AGENT}  .*SymbianOS.*       [OR]
 RewriteCond     %{HTTP_USER_AGENT}  .*Windows\sCE.*     [OR]
 RewriteCond     %{HTTP_USER_AGENT}  hiptop.* 
+RewriteCond     %{REQUEST_URI}      !^/(lite|data)
 RewriteCond     %{REQUEST_URI}      !^/(index.cgi|challenge)
 RewriteRule     ^/([^/]+)/?$        /lite/page/$1/%{QUERY_STRING}       [R,L]                        
 
