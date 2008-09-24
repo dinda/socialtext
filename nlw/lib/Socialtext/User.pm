@@ -2058,6 +2058,16 @@ the user in UserConfirmationEmail.
 
 Create and return an Socialtext::User::EmailConfirmation object for the user.
 
+=head2 $user->avatar_is_visible()
+
+Return whether the user's avatar should be displayed when viewing information
+about this user. 
+
+=head2 $user->profile_is_visible_to()
+
+Return whether a link to the user's profile should be displayed when viewing
+information about this user. 
+
 =head1 AUTHOR
 
 Socialtext, Inc., <code@socialtext.com>
