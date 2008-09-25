@@ -6,6 +6,7 @@ use Socialtext::SQL qw/sql_execute/;
 use Socialtext::JSON qw/decode_json/;
 use Socialtext::User;
 use Socialtext::Pluggable::Adapter;
+use Socialtext::Timer;
 
 sub new {
     my $class = shift;
@@ -210,6 +211,7 @@ ORDER BY at DESC
 $limit $offset
 EOSQL
     my @user_id = ($viewer->user_id) x 3;
+    Socialtext::Timer->Continue('get_events');
     my $sth = sql_execute($sql, @user_id, @args);
     my $result = [];
     while (my $row = $sth->fetchrow_hashref) {
@@ -241,6 +243,7 @@ EOSQL
 
         push @$result, $row;
     }
+    Socialtext::Timer->Pause('get_events');
 
     return @$result if wantarray;
     return $result;
