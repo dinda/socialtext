@@ -197,7 +197,6 @@ CREATE TABLE "WorkspaceRolePermission" (
 );
 
 CREATE SEQUENCE "Workspace___workspace_id"
-    START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -452,6 +451,12 @@ CREATE UNIQUE INDEX "UserId___driver_key___driver_key___driver_unique_id"
 CREATE UNIQUE INDEX "UserMetadata___user_id"
 	    ON "UserMetadata" (user_id);
 
+CREATE INDEX "UserMetadata_primary_account_id"
+	    ON "UserMetadata" (primary_account_id);
+
+CREATE INDEX "UserWorkspaceRole_workspace_id"
+	    ON "UserWorkspaceRole" (workspace_id);
+
 CREATE UNIQUE INDEX "User___lower___email_address"
 	    ON "User" (lower((email_address)::text));
 
@@ -460,6 +465,9 @@ CREATE UNIQUE INDEX "User___lower___username"
 
 CREATE UNIQUE INDEX "Workspace___lower___name"
 	    ON "Workspace" (lower((name)::text));
+
+CREATE INDEX "Workspace_account_id"
+	    ON "Workspace" (account_id);
 
 CREATE INDEX ix_event_actor_time
 	    ON event (actor_id, "at");
@@ -666,4 +674,4 @@ ALTER TABLE ONLY "Workspace"
             REFERENCES "Account"(account_id) ON DELETE CASCADE;
 
 DELETE FROM "System" WHERE field = 'socialtext-schema-version';
-INSERT INTO "System" VALUES ('socialtext-schema-version', '13');
+INSERT INTO "System" VALUES ('socialtext-schema-version', '14');

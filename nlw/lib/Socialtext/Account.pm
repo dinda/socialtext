@@ -239,11 +239,22 @@ sub user_count {
     }
 
     Socialtext::Timer->Continue('acct_user_count');
-    my $sth = sql_execute(<<EOT, @bind);
-SELECT COUNT(DISTINCT(system_unique_id))
-    FROM user_account
-    WHERE primary_account_id = ? $where
+
+    my $sth;
+    if ($primary_only) {
+        $sth = sql_execute(<<EOT, $self->account_id);
+            SELECT COUNT(DISTINCT(user_id))
+                FROM "UserMetadata"
+                WHERE primary_account_id = ?
 EOT
+    }
+    else {
+        $sth = sql_execute(<<EOT, $self->account_id);
+            SELECT COUNT(DISTINCT(user_id))
+                FROM account_user
+                WHERE account_id = ?
+EOT
+    }
 
     my $count = $sth->fetchall_arrayref->[0][0];
     Socialtext::Timer->Pause('acct_user_count');
