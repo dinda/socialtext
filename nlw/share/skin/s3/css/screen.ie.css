@@ -136,6 +136,13 @@ div#mainNav ul ul.level2.withimage {
     -margin-left: -20px;
 }
 
+* html div.widget div.widgetHeader h4 span {
+    /* Make the spaces above widget titles draggable for IE6: {bz: 1323} */
+    -padding-top: 9px !important;
+    -padding-bottom: 9px !important;
+}
+
+
 /* IE6-specific parts of {bz: 1338} */
 
 body#workSpace div#controls div#st-editing-tools-edit h1,
