@@ -2,15 +2,15 @@
 
 | *Comment* | test-workspace is %%workspace%% |
 | location_like | /%%workspace%%/index.cgi |
-| st-admin | create-user --email devnull2@socialtext.com --password %%password |
-| st-admin | add-member --email devnull2@socialtext.com --workspace test-data |
+| st-admin | create-user --email devconv1@socialtext.com --password %%password%% --account Socialtext |
+| st-admin | add-member --email devconv1@socialtext.com --workspace test-data |
 
 | open_ok | /%%workspace%%/index.cgi?action=new_page |  |
 | wait_for_element_present_ok | st-newpage-pagename-edit |  |
 | wait_for_element_present_ok | wikiwyg_wikitext_textarea |  |
 | type_ok | st-newpage-pagename-edit | created_page_%%start_time%% |
-| wait_for_element_visible_ok | link=Advanced | 10000 |
-| click_ok | link=Advanced |  |
+| wait_for_element_visible_ok | link=Wiki Text | 10000 |
+| click_ok | link=Wiki Text |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
 | type_ok | wikiwyg_wikitext_textarea | I have created a page called created_page. woot. |
 | click_ok | st-save-button-link |  |
@@ -29,11 +29,11 @@
 | type_ok | st-commentui-textarea | see, I commented |
 | click_and_wait | st-commentui-savelink |  |
 
-| *comment* | Test Case: Create Conversations Login as devnull2 |  |
+| *comment* | Test Case: Create Conversations Login as devconv1 |  |
 | open_ok | /%%workspace%%/index.cgi?jabberwocky |  |
 | st-logout |  |  |
 | open_ok | /%%workspace%%/index.cgi |  |
-| type_ok | username | devnull2@socialtext.com |
+| type_ok | username | devconv1@socialtext.com |
 | type_ok | password | %%password%% |
 | click_and_wait | //input[@value='Log in'] |  |
 
@@ -41,8 +41,8 @@
 | wait_for_element_present_ok | st-edit-button-link |  |
 | click_ok | st-edit-button-link |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
-| wait_for_element_visible_ok | link=Advanced | 10000 |
-| click_ok | link=Advanced |  |
+| wait_for_element_visible_ok | link=Wiki Text | 10000 |
+| click_ok | link=Wiki Text |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
 | type_ok | wikiwyg_wikitext_textarea | Don't forget to foo the bar |
 | clickAndWait | st-save-button-link |  |
