@@ -146,6 +146,8 @@ EOSQL
                     best_full_name => "Steve Foo",
                     uri => '/data/people/1234',
                     hidden => 1,
+                    avatar_is_visible => 1,
+                    profile_is_visible => 1
                 },
                 page => {
                     id => $event{page_id},
