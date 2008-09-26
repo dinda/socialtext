@@ -41,17 +41,19 @@ sub _best_full_name {
 }
 
 sub _extract_person {
-    my ($self, $row, $prefix) = @_;
+    my ($self, $row, $prefix, $viewer) = @_;
     my $id = delete $row->{"${prefix}_id"};
     return unless $id;
 
     # this real-name calculation may benefit from caching at some point
     my $real_name;
     my $user = Socialtext::User->new(user_id => $id);
+    my $avatar_is_visible = $user->avatar_is_visible || 0;
     if ($user) {
         $real_name = $user->guess_real_name();
     }
 
+    my $profile_is_visible = $user->profile_is_visible_to($viewer) || 0;
     my $hidden = 1;
     my $adapter = Socialtext::Pluggable::Adapter->new;
     if ($adapter->plugin_exists('people')) {
@@ -60,11 +62,14 @@ sub _extract_person {
         $hidden = $profile->is_hidden if $profile;
     }
 
+
     $row->{$prefix} = {
         id => $id,
         best_full_name => $real_name,
         uri => "/data/people/$id",
         hidden => $hidden,
+        avatar_is_visible => $avatar_is_visible,
+        profile_is_visible => $profile_is_visible,
     };
 }
 
@@ -228,8 +233,8 @@ EOSQL
         @limit_and_offset);
     my $result = [];
     while (my $row = $sth->fetchrow_hashref) {
-        $self->_extract_person($row, 'actor');
-        $self->_extract_person($row, 'person');
+        $self->_extract_person($row, 'actor', $viewer);
+        $self->_extract_person($row, 'person', $viewer);
 
         my $page = {
             id => delete $row->{page_id} || undef,
