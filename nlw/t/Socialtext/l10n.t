@@ -15,13 +15,13 @@ set_system_locale('en');
 my $hub = new_hub('admin');
 
 Default_to_english: {
-    is loc('Welcome, [_1].', 'user'), 'Welcome, user.';
+    is loc('Welcome'), 'Welcome';
 }
 
 Test_locale: {
     my $result = loc_lang('zz');
     isa_ok($result, 'Socialtext::l10n::I18N::zz', 'found locale.');
-    is loc('Welcome, [_1].', 'user'), 'w3lC0M3, user.';
+    is loc('Welcome'), 'w3lC0M3';
 }
 
 System_locale: {
