@@ -508,6 +508,20 @@ CREATE UNIQUE INDEX search_set_workspaces___search_set_id___search_set_id___work
 CREATE UNIQUE INDEX search_sets___owner_user_id___owner_user_id___name
 	    ON search_sets (owner_user_id, lower((name)::text));
 
+CREATE INDEX storage_class_key_ix
+	    ON "storage" ("class", "key");
+
+CREATE INDEX storage_key_ix
+	    ON "storage" ("key");
+
+CREATE INDEX storage_key_value_type_ix
+	    ON "storage" ("key", value)
+	    WHERE (("key")::text = 'type');
+
+CREATE INDEX storage_key_value_viewer_ix
+	    ON "storage" ("key", value)
+	    WHERE (("key")::text = 'viewer');
+
 CREATE TRIGGER person_ins
     AFTER INSERT ON "UserId"
     FOR EACH ROW
@@ -674,4 +688,4 @@ ALTER TABLE ONLY "Workspace"
             REFERENCES "Account"(account_id) ON DELETE CASCADE;
 
 DELETE FROM "System" WHERE field = 'socialtext-schema-version';
-INSERT INTO "System" VALUES ('socialtext-schema-version', '14');
+INSERT INTO "System" VALUES ('socialtext-schema-version', '15');
