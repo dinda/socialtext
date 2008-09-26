@@ -1,8 +1,10 @@
 #!/usr/bin/perl
+# @COPYRIGHT@
 use warnings;
 use strict;
 
-use lib 'lib';
+use FindBin;
+use lib "$FindBin::Bin/../lib";
 use Socialtext::SQL qw/get_dbh/;
 use List::Util qw(shuffle);
 
