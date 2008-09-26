@@ -188,8 +188,10 @@ function setup_wikiwyg() {
                 jQuery("#st-editing-tools-edit .buttonRight a").hide();
             }
 
-            jQuery("#st-editing-tools-edit, #wikiwyg_toolbar").show();
-            jQuery("#st-edit-mode-container").show();
+            setTimeout(function (){
+                jQuery("#st-editing-tools-edit, #wikiwyg_toolbar").show();
+                jQuery("#st-edit-mode-container").show();
+            }, 500);
 
             if (jQuery("#contentRight").is(":visible"))
                 jQuery("#st-page-maincontent").css("margin-right", "240px");
