@@ -499,6 +499,18 @@ CREATE INDEX ix_person_assistant_id
 CREATE INDEX ix_person_supervisor_id
 	    ON person (supervisor_id);
 
+CREATE INDEX page_tag__page_ix
+	    ON page_tag (workspace_id, page_id);
+
+CREATE INDEX page_tag__tag_ix
+	    ON page_tag (tag);
+
+CREATE INDEX page_tag__workspace_ix
+	    ON page_tag (workspace_id);
+
+CREATE INDEX page_tag__workspace_tag_ix
+	    ON page_tag (workspace_id, tag);
+
 CREATE UNIQUE INDEX person_tag__name
 	    ON person_tag (name);
 
