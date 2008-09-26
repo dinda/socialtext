@@ -439,6 +439,14 @@ GuiEdit.prototype.do_createtable = function() {
         this.finish
     var start = this.selection_start + markup_start.length
     var end = this.selection_end + markup_start.length + this.sel.length
+
+    if (jQuery.browser.msie) {
+        var offset = this.start.match(/\r/g);
+        offset = offset ? offset.length : 0;
+        start -= offset;
+        end -= offset;
+    }
+
     this.setTextandSelection(text, start, end)
     t.scrollTop = scroll_top
 }
