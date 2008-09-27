@@ -216,6 +216,7 @@ sub hook {
 
             last if $hook->{once};
         }
+        push @output, $args[0] if (0 == scalar(@output));
     }
     return join("\n", @output);
 }
