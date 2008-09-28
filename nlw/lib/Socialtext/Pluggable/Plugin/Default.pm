@@ -15,7 +15,10 @@ sub register {
     $class->add_hook('template.user_name.content'   => 'user_name');
     $class->add_hook('template.user_image.content'  => 'user_image');
     $class->add_hook('wafl.user'                    => 'user_name');
+    $class->add_hook('template.home_href.content'   => 'home_href');
 }
+
+sub home_href { '?action=homepage' }
 
 sub root {
     my ($self, $rest) = @_;
