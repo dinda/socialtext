@@ -15,6 +15,7 @@ use Socialtext::String;
 use Socialtext::Validate qw( validate SCALAR_TYPE );
 use Socialtext::l10n qw(loc);
 use Socialtext::SystemSettings qw( get_system_setting );
+use Socialtext::Skin;
 use Socialtext::Timer;
 use YAML qw/DumpFile LoadFile/;
 
