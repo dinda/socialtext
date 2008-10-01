@@ -81,7 +81,7 @@ sub display_results {
     my $self = shift;
     my $sortdir = shift;
 
-    my $sortby = $self->cgi->sortby || 'Date';
+    my $sortby = $self->sortby || $self->cgi->sortby || 'Date';
     my $direction = $self->cgi->direction || $sortdir->{ $sortby };
 
     $self->screen_template('view/listview');
@@ -112,9 +112,7 @@ sub sorted_result_set {
     my $limit = shift;
 
     my $sortby = $self->sortby || $self->cgi->sortby || 'Date';
-
     my $direction = $self->cgi->direction || $sortdir_map->{$sortby};
-
     my $sortsub
         = $self->_gen_sort_closure( $sortdir_map, $sortby, $direction );
 

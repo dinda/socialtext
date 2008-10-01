@@ -88,13 +88,15 @@ sub recent_changes {
     }
 
     my $type = $self->cgi->changes;
-    my %sortdir = %{$self->sortdir};
+    my $sortby = $self->cgi->sortby || 'Subject';
+    $self->sortby( $sortby );
+    my $sortdir = $self->sortdir;
 
     # if we call sorted_result_set with an unset result_set the
     # cached version will be magically read
     Socialtext::Timer->Start('get_result_set');
     if ($self->cgi->sortby) {
-        $self->result_set( $self->sorted_result_set( \%sortdir ) );
+        $self->result_set( $self->sorted_result_set( $sortdir ) );
     }
     else {
         $self->new_changes(
@@ -102,8 +104,7 @@ sub recent_changes {
         );
 
         if ($type eq 'all') {
-            $sortdir{Date} = 1;
-            $self->result_set( $self->sorted_result_set( \%sortdir ) );
+            $self->result_set( $self->sorted_result_set( $sortdir ) );
             $self->result_set->{predicate} = "action=changes;changes=all";
         }
         $self->write_result_set;
@@ -111,7 +112,7 @@ sub recent_changes {
     Socialtext::Timer->Stop('get_result_set');
 
     $self->display_results(
-        \%sortdir,
+        $sortdir,
         miki_url      => $self->hub->helpers->miki_path('recent_changes_query'),
         feeds         => $self->_feeds( $self->hub->current_workspace ),
         unplug_uri    => "?action=unplug",
