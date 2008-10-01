@@ -88,27 +88,17 @@ sub recent_changes {
     }
 
     my $type = $self->cgi->changes;
-    my $sortby = $self->cgi->sortby || 'Subject';
-    $self->sortby( $sortby );
     my $sortdir = $self->sortdir;
 
-    # if we call sorted_result_set with an unset result_set the
-    # cached version will be magically read
     Socialtext::Timer->Start('get_result_set');
-    if ($self->cgi->sortby) {
-        $self->result_set( $self->sorted_result_set( $sortdir ) );
-    }
-    else {
-        $self->new_changes(
-            type => $type,
-        );
 
-        if ($type eq 'all') {
-            $self->result_set( $self->sorted_result_set( $sortdir ) );
-            $self->result_set->{predicate} = "action=changes;changes=all";
-        }
-        $self->write_result_set;
+    $self->dont_use_cached_result_set();
+    #$self->default_result_set();
+    $self->result_set( $self->sorted_result_set( $sortdir ) );
+    if ($type eq 'all') {
+        $self->result_set->{predicate} = "action=changes;changes=all";
     }
+
     Socialtext::Timer->Stop('get_result_set');
 
     $self->display_results(
@@ -221,7 +211,7 @@ sub new_result_set {
 
 sub default_result_set {
     my $self = shift;
-    $self->new_changes;
+    $self->new_changes( type => $self->cgi->changes || '' );
     return $self->result_set;
 }
 

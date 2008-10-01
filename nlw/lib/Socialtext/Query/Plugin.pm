@@ -54,7 +54,7 @@ sub read_result_set {
     my $self = shift;
     my $result_set_path = $self->get_result_set_path;
     return $self->default_result_set
-      unless -f $result_set_path;
+        unless -f $result_set_path;
 
     my $result_set = eval {
         Storable::lock_retrieve($result_set_path)
@@ -71,6 +71,12 @@ sub write_result_set {
         $self->result_set,
         $self->get_result_set_path,
     );
+}
+
+sub dont_use_cached_result_set {
+    my $self = shift;
+    my $result_set_path = $self->get_result_set_path;
+    unlink $result_set_path;
 }
 
 # XXX when we send a result set to the template
@@ -153,25 +159,25 @@ sub _gen_sort_closure {
         # may not be the same as the From header.
         if ( $direction eq 'asc' ) {
             return sub {
-                Socialtext::User->new( 
+                lc( Socialtext::User->new( 
                     username => $a->{username} 
-                )->best_full_name 
+                )->guess_sortable_name )
                 cmp 
-                Socialtext::User->new(
+                lc( Socialtext::User->new(
                     username => $b->{username}
-                )->best_full_name
+                )->guess_sortable_name )
                 or lc( $a->{Subject} ) cmp lc( $b->{Subject} );
             }
         }
         else {
             return sub {
-                Socialtext::User->new( 
+                lc( Socialtext::User->new( 
                     username => $b->{username} 
-                )->best_full_name 
+                )->guess_sortable_name )
                 cmp 
-                Socialtext::User->new(
+                lc( Socialtext::User->new(
                     username => $a->{username}
-                )->best_full_name
+                )->guess_sortable_name )
                 or lc( $b->{Subject} ) cmp lc( $a->{Subject} );
             }
         }
