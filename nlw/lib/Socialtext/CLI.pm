@@ -1169,7 +1169,7 @@ sub set_workspace_config {
     my %unsettable = map { $_ => 1 } qw( name creation_datetime );
     my %update;
     while ( my ( $key, $value ) = splice @{ $self->{argv} }, 0, 2 ) {
-        next if $key =~ /_id$/;
+        next if $key =~ /_id$/ and $key ne 'account_id';
 
         if ( $unsettable{$key} ) {
             $self->_error("Cannot change $key after workspace creation.");
