@@ -421,12 +421,14 @@ $(function() {
                 var crWidth = $('#contentRight').width();
                 var clWidth = cl.width();
 
-                $('#mainWrap').width( clWidth() + crWidth + 50 );
+                $('#mainWrap').width( clWidth + crWidth + 50 );
 
                 cl.css('width', clWidth + 'px');
                 cl.css('max-width', clWidth + 'px');
 
-                $('#contentRight').width( crWidth );
+                $('#contentRight').css('width', crWidth + 'px');
+                $('#contentRight').css('max-width', crWidth + 'px');
+
                 Page._repaintBottomButtons();
             }
         };
