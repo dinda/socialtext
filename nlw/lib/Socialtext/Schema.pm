@@ -223,7 +223,7 @@ sub escalate_privs {
     my $self = shift;
     my %c = $self->connect_params();
     my $sudo = _sudo('postgres');
-    my $schems = $self->schema_name;
+    my $schema = $self->schema_name;
     $self->_db_shell_run("$sudo psql -U postgres $schema -c 'ALTER ROLE $c{user} SUPERUSER'");
 }
 
