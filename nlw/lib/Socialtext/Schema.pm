@@ -222,7 +222,8 @@ Escalates our DB privileges to "superuser" status.
 sub escalate_privs {
     my $self = shift;
     my %c = $self->connect_params();
-    $self->_db_shell_run("psql -U postgres -c 'ALTER ROLE $c{user} SUPERUSER'");
+    my $sudo = _sudo('postgres');
+    $self->_db_shell_run("$sudo psql -U postgres -c 'ALTER ROLE $c{user} SUPERUSER'");
 }
 
 =head2 revoke_privs()
@@ -235,7 +236,8 @@ via a call to C<escalate_privs()>.
 sub revoke_privs {
     my $self = shift;
     my %c = $self->connect_params();
-    $self->_db_shell_run("psql -U postgres -c 'ALTER ROLE $c{user} NOSUPERUSER'");
+    my $sudo = _sudo('postgres');
+    $self->_db_shell_run("$sudo psql -U postgres -c 'ALTER ROLE $c{user} NOSUPERUSER'");
 }
 
 =head2 version()
