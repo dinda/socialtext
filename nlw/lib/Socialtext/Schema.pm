@@ -223,8 +223,7 @@ sub escalate_privs {
     my $self = shift;
     my %c = $self->connect_params();
     my $sudo = _sudo('postgres');
-    my $schema = $self->schema_name;
-    $self->_db_shell_run("$sudo psql -U postgres $schema -c 'ALTER ROLE $c{user} SUPERUSER'");
+    $self->_db_shell_run("$sudo psql -U postgres $c{db_name} -c 'ALTER ROLE $c{user} SUPERUSER'");
 }
 
 =head2 revoke_privs()
@@ -238,8 +237,7 @@ sub revoke_privs {
     my $self = shift;
     my %c = $self->connect_params();
     my $sudo = _sudo('postgres');
-    my $schema = $self->schema_name;
-    $self->_db_shell_run("$sudo psql -U postgres $schema -c 'ALTER ROLE $c{user} NOSUPERUSER'");
+    $self->_db_shell_run("$sudo psql -U postgres $c{db_name} -c 'ALTER ROLE $c{user} NOSUPERUSER'");
 }
 
 =head2 version()
