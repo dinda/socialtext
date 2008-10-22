@@ -34,19 +34,6 @@ sub Store {
     return $key_cache->set($val, $user);
 }
 
-sub MaybeStore {
-    my ($class, $key, $val, $user) = @_;
-    return unless $Enabled;
-    return unless $ValidKeys{$key};
-    my $key_cache = Socialtext::Cache->cache("homunculus:$key");
-    if (!$key_cache->get($val)) {
-        $stats{store}++;
-        $key_cache->set($val, $user);
-        return 1;
-    }
-    return;
-}
-
 sub Clear {
     my $cache;
     foreach my $key (keys %ValidKeys) {
