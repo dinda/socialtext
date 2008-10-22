@@ -11,9 +11,10 @@ our %stats = (
 );
 
 my %ValidKeys = (
-    user_id => 1,
-    email_address => 1,
-    username => 1,
+    user_id          => 1,
+    email_address    => 1,
+    username         => 1,
+    driver_unique_id => 1,
 );
 
 sub Fetch {
