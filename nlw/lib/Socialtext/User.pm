@@ -405,8 +405,8 @@ sub shared_accounts {
         $self->metadata->delete();
         $self->homunculus->delete(force => 1);
 
-        # flush the user cache; we've removed a user
-        Socialtext::User::Cache->Clear();
+        # remove the user from the cache
+        Socialtext::User::Cache->Remove($self->homunculus);
     }
 }
 
