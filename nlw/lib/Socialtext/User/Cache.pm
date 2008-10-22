@@ -5,6 +5,10 @@ use warnings;
 use Socialtext::Cache;
 
 our $Enabled = 0;
+our %stats = (
+    fetch => 0,
+    store => 0,
+);
 
 my %ValidKeys = (
     user_id => 1,
@@ -16,6 +20,7 @@ sub Fetch {
     my ($class, $key, $val) = @_;
     return unless $Enabled;
     return unless $ValidKeys{$key};
+    $stats{fetch}++;
     my $key_cache = Socialtext::Cache->cache("homunculus:$key");
     return $key_cache->get($val);
 }
@@ -24,6 +29,7 @@ sub Store {
     my ($class, $key, $val, $user) = @_;
     return unless $Enabled;
     return unless $ValidKeys{$key};
+    $stats{store}++;
     my $key_cache = Socialtext::Cache->cache("homunculus:$key");
     return $key_cache->set($val, $user);
 }
@@ -34,6 +40,7 @@ sub MaybeStore {
     return unless $ValidKeys{$key};
     my $key_cache = Socialtext::Cache->cache("homunculus:$key");
     if (!$key_cache->get($val)) {
+        $stats{store}++;
         $key_cache->set($val, $user);
         return 1;
     }
@@ -46,6 +53,10 @@ sub Clear {
         $cache = Socialtext::Cache->cache("homunculus:$key");
         $cache->clear();
     }
+}
+
+sub ClearStats {
+    map { $stats{$_} = 0 } keys %stats;
 }
 
 1;
