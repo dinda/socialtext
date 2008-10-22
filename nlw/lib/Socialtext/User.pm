@@ -156,12 +156,6 @@ sub new {
     $user->homunculus($homunculus);
     $user->metadata(Socialtext::UserMetadata->create_if_necessary($user));
 
-    # proactively cache the homunculus, but only if it's not already
-    # cached
-    Socialtext::User::Cache->MaybeStore(
-        'user_id', $user->user_id => $homunculus
-    );
-
     Socialtext::Timer->Pause('user_new');
 
     return $user;
