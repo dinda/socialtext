@@ -27,7 +27,7 @@ sub Fetch {
 }
 
 sub Store {
-    my ($class, $key, $val, $user) = @_;
+    my ($class, $key, $val, $homunculus) = @_;
     return unless $Enabled;
     return unless $ValidKeys{$key};
 
@@ -36,7 +36,7 @@ sub Store {
     $stats{store}++;
     foreach my $key (keys %ValidKeys) {
         my $cache = Socialtext::Cache->cache("homunculus:$key");
-        $cache->set($user->$key, $user);
+        $cache->set($homunculus->$key, $homunculus);
     }
 }
 
