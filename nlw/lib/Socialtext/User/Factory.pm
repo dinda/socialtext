@@ -190,8 +190,6 @@ sub NewUserRecord {
         sql_format_timestamptz($proto_user->{cached_at});
 
     sql_insert('users' => \%insert_args);
-
-    Socialtext::User::Cache->Clear();
 }
 
 sub UpdateUserRecord {
