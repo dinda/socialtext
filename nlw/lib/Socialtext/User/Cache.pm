@@ -30,9 +30,14 @@ sub Store {
     my ($class, $key, $val, $user) = @_;
     return unless $Enabled;
     return unless $ValidKeys{$key};
+
+    # proactively cache the homunculus against all valid keys, so he can be
+    # found quickly/easily again in the future
     $stats{store}++;
-    my $key_cache = Socialtext::Cache->cache("homunculus:$key");
-    return $key_cache->set($val, $user);
+    foreach my $key (keys %ValidKeys) {
+        my $cache = Socialtext::Cache->cache("homunculus:$key");
+        $cache->set($user->$key, $user);
+    }
 }
 
 sub Clear {
