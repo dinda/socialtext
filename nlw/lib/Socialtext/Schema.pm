@@ -10,6 +10,10 @@ use Socialtext::SQL qw/sql_singlevalue sql_execute sql_begin_work
                        sql_commit sql_rollback disconnect_dbh/;
 use Socialtext::SystemSettings qw/get_system_setting set_system_setting/;
 
+# Ignore PG environment variables that may be hanging around.
+delete $ENV{PGUSER};
+delete $ENV{PGDATABASE};
+
 =head1 NAME
 
 Socialtext::Schema - management of the database Schema
@@ -315,7 +319,6 @@ sub dump {
     my @parms = (
         'pg_dump',
         '-C',
-        '-D',
         '-U' => $c{user},
         '-f' => $file,
     );
