@@ -252,9 +252,9 @@ EOSQL
      ORDER BY users ASC, a.name DESC, a.account_id DESC
 EOSQL
     my %account_order;
-    my $order = 0; # lower order accounts: worst choices
+    my $order = 0; # higher number: better choice
     while (my $row = $account_order_sth->fetchrow_arrayref) {
-        $account_order{$row->[0]} = $order--;
+        $account_order{$row->[0]} = $order++;
     }
 
     my $dbh = get_dbh();
