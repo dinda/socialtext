@@ -1101,9 +1101,20 @@ div#mainNav ul.level2 li a {
     padding: 0px 0px 0px 3px;
 }
 
-div#mainNav ul.level2 li.dropaction a {
+div#mainNav ul.level2 li.dropaction a,
+div#mainNav ul.level2 li.notinstallednotice a
+{
     font-weight: bold;
+    line-height: 20px;
     font-size: 10px;
+}
+
+div#mainNav ul.level2 li.notinstallednotice a
+{
+    line-height: 1;
+    padding: 0px;
+    display: inline;
+    float: none;
 }
 
 div#mainNav li {
@@ -1162,7 +1173,7 @@ div#mainNav ul.level1>li {
     background: url(../images/mainNavDivider.png) no-repeat center right;
 }
 
-div#mainNav .emptynotice {
+div#mainNav .emptynotice, div#mainNav .notinstallednotice {
     line-height: 13px !important;
     padding-left: 10px;
     border-bottom: none !important;
@@ -1171,6 +1182,9 @@ div#mainNav .emptynotice {
     padding-bottom: 5px !important;
 }
 
+div#mainNav .product-name {
+    font-weight: bold;
+}
 /* alterations to main nav bar to account for new workspace nav bar
 ------------------------------------------------------------ */
 div#header {
