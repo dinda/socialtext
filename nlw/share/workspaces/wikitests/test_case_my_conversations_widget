@@ -11,8 +11,8 @@
 | wait_for_element_present_ok | st-newpage-pagename-edit |  |
 | wait_for_element_present_ok | wikiwyg_wikitext_textarea |  |
 | type_ok | st-newpage-pagename-edit | created_page_%%start_time%% |
-| wait_for_element_visible_ok | link=Advanced | 10000 |
-| click_ok | link=Advanced |  |
+| wait_for_element_visible_ok | link=Wiki Text | 10000 |
+| click_ok | link=Wiki Text |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
 | type_ok | wikiwyg_wikitext_textarea | I have created a page called created_page. woot. |
 | click_ok | st-save-button-link |  |
@@ -43,8 +43,8 @@
 | wait_for_element_present_ok | st-edit-button-link |  |
 | click_ok | st-edit-button-link |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
-| wait_for_element_visible_ok | link=Advanced | 10000 |
-| click_ok | link=Advanced |  |
+| wait_for_element_visible_ok | link=Wiki Text | 10000 |
+| click_ok | link=Wiki Text |  |
 | wait_for_element_visible_ok | wikiwyg_wikitext_textarea | 10000 |
 | type_ok | wikiwyg_wikitext_textarea | Don't forget to foo the bar |
 | clickAndWait | st-save-button-link |  |
@@ -60,7 +60,6 @@
 | click_and_wait | st-commentui-savelink |  |
 | st-login |  |  |
 
-| st-catchup-logs |  |  |
 | open_ok | /?dashboard | 60000 |
 | st-empty-container |  |  |
 | st-add-widget | widgets/share/widgets/recent_conversations.xml | my_conversations |
