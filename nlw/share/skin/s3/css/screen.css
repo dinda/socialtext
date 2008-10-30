@@ -2018,3 +2018,7 @@ div.pagination-container .paging-forward {
     text-align: left;
     float: left;
 }
+
+#statistics-attribution {
+    white-space: nowrap;
+}
