@@ -176,7 +176,7 @@ checkpoint_segments = [% config.pg_checkpoint_segments %] # in logfile segments,
 # - Planner Cost Constants -
 
 effective_cache_size = [% config.pg_effective_cache_size %] # typically 8KB each
-random_page_cost = 4			# units are one sequential page fetch 
+random_page_cost = [% config.pg_random_page_cost %]
 					# cost
 #cpu_tuple_cost = 0.01			# (same)
 #cpu_index_tuple_cost = 0.001		# (same)
