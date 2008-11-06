@@ -310,11 +310,14 @@ $(function() {
         }
         else {
             $.getScript(editor_uri);
-            var lnk = $('link[rel=stylesheet][media=screen]');
-            lnk.clone()
-                .attr('href', nlw_make_s3_path('/css/wikiwyg.css'))
-                .attr('media', 'wikiwyg')
-                .appendTo('head');
+
+            if (!$.browser.msie) {
+                var lnk = $('link[rel=stylesheet][media=screen]');
+                lnk.clone()
+                    .attr('href', nlw_make_s3_path('/css/wikiwyg.css'))
+                    .attr('media', 'wikiwyg')
+                    .appendTo('head');
+            }
         }
         $.ajaxSettings.cache = false;
         return false;
