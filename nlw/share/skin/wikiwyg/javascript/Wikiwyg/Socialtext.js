@@ -1041,6 +1041,19 @@ proto.editMode = function() {
     this.current_mode.enableThis();
 }
 
+proto.get_inner_html = function( cb ) {
+    if ( cb ) {
+        this.get_inner_html_async( cb );
+        return;
+    }
+
+    var result = '';
+    try {
+        result = this.get_editable_div().innerHTML;
+    } catch (e) {};
+    return result;
+}
+
 /*==============================================================================
 Mode class generic overrides.
  =============================================================================*/
