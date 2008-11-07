@@ -187,10 +187,10 @@ $(function() {
         });
 
 
-    var _gz = '.gz';
+    var _gz = '';
 
-    if (jQuery.browser.safari) {
-        _gz = '';
+    if (Socialtext.accept_encoding && Socialtext.accept_encoding.match(/\bgzip\b/)) {
+        _gz = '.gz';
     }
 
     var editor_uri = nlw_make_s3_path('/javascript/socialtext-editor.js' + _gz)
