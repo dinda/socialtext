@@ -14,7 +14,7 @@ use t::Socialtext::CLITestUtils qw/expect_failure expect_success/;
 
 use Cwd;
 
-plan tests => 379;
+plan tests => 385;
 
 our $NEW_WORKSPACE = 'new-ws-' . $<;
 our $NEW_WORKSPACE2 = 'new-ws2-'. $<;
@@ -2033,6 +2033,18 @@ SHOW_MEMBERS: {
         qr/^(?!.*smtest1).*smtest2\@socialtext.net \| Test2 \| User \|.*smtest3\@socialtext.net \| Test3 \| User/s,
         'Show members has correct list'
     );
+
+    expect_success(
+        sub {
+            $output = Socialtext::CLI->new(
+                argv => [
+                    qw( --account Unknown )
+                ]
+            )->show_members();
+        },
+        qr/^.*csvtest2\@example.com \| Jane \| Smith \|\n.*devnull5.*smtest1/s,
+        'Show members has correct list'
+    );
 }
 
 SHOW_ADMINS: {
@@ -2225,6 +2237,21 @@ EXPORT_ACCOUNTS: {
         'importing a valid account',
     );
 }
+
+LIST_ACCOUNTS {
+    expect_success(
+        sub { Socialtext::CLI->new()->list_accounts(); },
+        (join '', map { "$_\n" } qw( FooBar Fred jebus pluggy Socialtext Unknown )),
+        'list-accounts by name'
+    );
+
+    expect_success(
+        sub { Socialtext::CLI->new( argv => ['--ids'] )->list_accounts(); },
+        qr/\A(?:\d+\n){6}\z/,
+        'list-accounts by id'
+    );
+}
+
 
 exit;
 
