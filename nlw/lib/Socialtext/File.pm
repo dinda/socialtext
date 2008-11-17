@@ -407,7 +407,7 @@ sub newest_directory_file {
     return '' unless scalar( @files );
 
     # return the newest file based on mtime
-    return reduce { ( (stat $a)[9] <=> (stat $b)[9] ) ? $a : $b } @files;
+    return reduce { ( $a cmp $b ) ? $a : $b } @files;
 }
 
 =head1 SEE ALSO
