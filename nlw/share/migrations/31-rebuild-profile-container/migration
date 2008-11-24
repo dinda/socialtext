@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Socialtext::Storage;
+my $profile = Socialtext::Storage->Search(type => 'profile');
+$profile->purge if $profile;
