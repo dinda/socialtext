@@ -2585,6 +2585,7 @@ Socialtext::CLI - Provides the implementation for the st-admin CLI script
 
   create-account --name
   list-accounts [--ids]
+  show-members --account
   give-accounts-admin [--username or --email]
   remove-accounts-admin [--username or --email]
   give-system-admin [--username or --email]
