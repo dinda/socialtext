@@ -11,6 +11,7 @@ use Socialtext::Account;
 use Socialtext::CLI;
 use Socialtext::SQL qw/sql_execute/;
 use t::Socialtext::CLITestUtils qw/expect_failure expect_success/;
+use Sys::Hostname;
 
 use Cwd;
 
@@ -2252,15 +2253,17 @@ EXPORT_ACCOUNTS: {
 }
 
 LIST_ACCOUNTS {
+    my @accounts = sort {lc($a) cmp lc($b)} 
+        qw( FooBar Fred jebus pluggy Socialtext Unknown ), hostname();
     expect_success(
         sub { Socialtext::CLI->new()->list_accounts(); },
-        (join '', map { "$_\n" } qw( FooBar Fred jebus pluggy Socialtext Unknown )),
+        (join '', map { "$_\n" } @accounts),
         'list-accounts by name'
     );
 
     expect_success(
         sub { Socialtext::CLI->new( argv => ['--ids'] )->list_accounts(); },
-        qr/\A(?:\d+\n){6}\z/,
+        qr/\A(?:\d+\n){7}\z/,
         'list-accounts by id'
     );
 }
