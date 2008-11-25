@@ -925,12 +925,10 @@ sub create_workspace {
         );
     }
 
-    my $account_name = delete $ws{account} || Socialtext::Hostname::domain();
-
-    # Special case hack for ST production systems
-    $account_name = 'Socialtext' if $account_name =~ /socialtext/;
-
-    my $account = $self->_load_account($account_name);
+    my $account = Socialtext::Account->Default();
+    if (my $name = delete $ws{account}) {
+        $account = $self->_load_account($name);
+    }
     $ws{account_id} = $account->account_id();
 
     my $ws = eval {
