@@ -2066,3 +2066,65 @@ body div#globalNav div input.searchText {
     max-width: 64px !important;
 }
 
+/* start fixes from Reed on 08-11-26 (Nov 26th, 2008) */
+/* show rounded bottom of right of mainNav */
+div#mainNav div#workSpaceLink {
+	height: 34px;
+}
+/* keeps globalNav from jumping down in FF2 */
+div#header div#logo {
+	width: 0px;
+	height: 0px;
+}
+/* shows border just under upper right in pages like settings in FF */
+div#controls div#controlsRight {
+	min-width: 6px;
+}
+/* next two requested by John Bauer - to match s2 styling */
+.wiki h4 {
+	font-weight: bold;
+}
+.wiki h6 {
+    font-style: italic;
+    font-weight: normal;
+}
+/* start wiki toc contraction - would be more effective if extra <br/>s were removed - again requested by John Bauer */
+.wiki .wafl_box, .wiki .wafl_titlebox {
+	margin-bottom: 0px;
+	
+}
+.wiki .wafl_items {
+	padding-bottom: 0px;
+}
+*:first-child+html .wiki ul, *:first-child+html .wiki ol {
+	margin-top: 0px !important,
+	margin-bottom: 0px !important;
+}
+* html .wiki ul, * html .wiki ol {
+	margin-top: 0px !important,
+	margin-bottom: 0px !important;
+}
+/* end wiki toc contraction */
+
+/* start weblog fix brings items in blog top up a little - John Bauer requested */
+body#blog div#mainWrap div#st-display-mode-container div#controls div#st-editing-tools-edit ul#quickLinks {
+	padding-top: 7px;
+	margin-top: 0px;
+}
+*:first-child+html body#blog div#controls div#st-editing-tools-edit ul#quickLinks li.noBorder {
+	margin-top: -7px;
+}
+* html body#blog div#controls div#st-editing-tools-edit ul#quickLinks li.noBorder {
+	margin-top: -7px;
+}
+/* end weblog fix */
+/* fix some buttons with too large hotspots in ie6 start */
+
+* html a.editButton, * html ul li a.commentButton, * html a.saveButton, 
+* html ul li a.previewButton, * html a.cancelButton, * html ul li a.compareButton, * html ul li a.addContentButton {
+	line-height: 22px;
+}
+/* fix some buttons with too large hotspots in ie6 end */
+
+/* end fixes from Reed on 08-11-26 (nov 26th, 2008) */
+
