@@ -86,6 +86,13 @@ proto.setup_widgets_menu = function(title) {
     }
 
     var self = this;
+    if (jQuery.browser.msie) {
+        jQuery("#st-editing-insert-menu > li > ul a").mouseover(function(){
+            if (self.wikiwyg.current_mode.get_editable_div) {
+                self._currentModeHadFocus = wikiwyg.current_mode._hasFocus;
+            }
+        });
+    }
     jQuery("#st-editing-insert-menu > li > ul a").click(
         function(e) {
             var action = jQuery(this).attr("do");
@@ -97,8 +104,9 @@ proto.setup_widgets_menu = function(title) {
                 if (jQuery.browser.msie &&
                     self.wikiwyg.current_mode.get_editable_div
                 ) {
-                    jQuery( self.wikiwyg.current_mode.get_editable_div() )
-                        .focus();
+                    if (!self._currentModeHadFocus) {
+                        self.wikiwyg.current_mode.set_focus();
+                    }
                 }
 
                 self.wikiwyg.current_mode[action]
@@ -1332,8 +1340,8 @@ proto.getWidgetInput = function(widget_element, selection, new_widget) {
         .click(function () {
             clearInterval(intervalId);
             jQuery.hideLightbox();
-            if (wikiwyg.current_mode.classname.match(/Wysiwyg/)) {
-                wikiwyg.current_mode.get_edit_window().focus();
+            if (wikiwyg.current_mode.set_focus) {
+                wikiwyg.current_mode.set_focus();
             }
         });
 
