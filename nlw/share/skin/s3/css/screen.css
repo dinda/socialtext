@@ -2125,3 +2125,11 @@ body div#globalNav div input.searchText {
 .row-col-label.two {
     padding-bottom: 5px;
 }
+
+/* fix some buttons with too large hotspots in ie6 start */
+
+* html a.editButton, * html ul li a.commentButton, * html a.saveButton, 
+* html ul li a.previewButton, * html a.cancelButton, * html ul li a.compareButton, * html ul li a.addContentButton {
+	line-height: 22px;
+}
+/* fix some buttons with too large hotspots in ie6 end */
