@@ -1751,6 +1751,11 @@ proto.make_table_html = function(rows, columns) {
     return '<table style="border-collapse: collapse;" class="formatter_table">' + innards + '</table>';
 }
 
+proto.closeTableDialog = function() {
+    var doc = this.get_edit_document();
+    jQuery(doc).unbind("keypress");
+    jQuery.hideLightbox();
+}
 
 proto.do_new_table = function() {
     var self = this;
@@ -1773,7 +1778,7 @@ proto.do_new_table = function() {
             return $error.text('Columns is too big. 35 maximum.');
         self.get_editable_div().focus(); // Need this before .insert_html
         self.insert_html(self.make_table_html(rows, cols));
-        jQuery.hideLightbox();
+        self.closeTableDialog();
     }
     var setup = function() {
         jQuery('.table-create input[name=columns]').focus();
@@ -1786,7 +1791,7 @@ proto.do_new_table = function() {
         jQuery('.table-create input[name=cancel]')
             .unbind("click")
             .bind("click", function() {
-                jQuery.hideLightbox();
+                self.closeTableDialog();
             });
     }
     jQuery.showLightbox({
@@ -1883,7 +1888,7 @@ proto._do_table_lightbox = function($cell) {
             }
             else {
                 $cell.parents("table").remove();
-                jQuery.hideLightbox();
+                self.closeTableDialog();
             }
         }
         else if ( $(this).is(".column") ) {
@@ -1898,7 +1903,7 @@ proto._do_table_lightbox = function($cell) {
             }
             else {
                 $cell.parents("table").remove();
-                jQuery.hideLightbox();
+                self.closeTableDialog();
             }
             col = $new_cell.prevAll("td").length + 1;
         }
@@ -2010,12 +2015,12 @@ proto._do_table_lightbox = function($cell) {
     });
 
     jQuery("input[name=save]").unbind("click").bind("click", function() {
-        jQuery.hideLightbox();
+        self.closeTableDialog();
     });
 
     jQuery("input[name=cancel]").unbind("click").bind("click", function() {
         var $table = $cell.parents("table").html(self.table_html);
-        jQuery.hideLightbox();
+        self.closeTableDialog();
     });
 }
 
