@@ -1950,6 +1950,7 @@ proto._do_table_lightbox = function($cell) {
         }
 
         self.get_edit_window().focus();
+        self._do_table_lightbox($cell);
         return false;
     });
 
