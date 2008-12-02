@@ -169,7 +169,14 @@ function setup_wikiwyg() {
 
     // XXX start_nlw_wikiwyg goes in the object because display_edit.js
     // wants it there.
+    ww.starting_edit = false;
     ww.start_nlw_wikiwyg = function() {
+        if (ww.starting_edit) {
+            return;
+        }
+
+        ww.starting_edit = true;
+
         try {
             if (Wikiwyg.is_safari) {
                 delete ww.current_wikitext;
@@ -246,9 +253,13 @@ function setup_wikiwyg() {
             }
 
             jQuery(window).trigger("resize");
+
+            ww.starting_edit = false;
         } catch(e) {
+            ww.starting_edit = false;
             throw(e);
-        }
+        };
+
         return false;
     }
 
