@@ -5,10 +5,8 @@ use strict;
 use warnings;
 use File::Slurp qw(write_file);
 use mocked 'Socialtext::Log', qw(:tests);
-use Socialtext::LDAP::Config;
-use Socialtext::AppConfig;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 10;
+use Test::Socialtext tests => 8;
 
 ###############################################################################
 # FIXTURE: db
@@ -28,26 +26,16 @@ isa_ok $rhs, 'Test::Socialtext::Bootstrap::OpenLDAP', 'referral RHS';
 # generate some LDIF data that'll put the LDAP servers in an infinite referral
 # loop, and add that data to the directories
 generate_ldif('t/tmp/recurse-lhs.ldif', $rhs->host(), $rhs->port());
-ok $lhs->add('t/tmp/recurse-lhs.ldif'), 'added recursing LDIF to LHS';
+ok $lhs->add_ldif('t/tmp/recurse-lhs.ldif'), 'added recursing LDIF to LHS';
 
 generate_ldif('t/tmp/recurse-rhs.ldif', $lhs->host(), $lhs->port());
-ok $rhs->add('t/tmp/recurse-rhs.ldif'), 'added recursing LDIF to RHS';
+ok $rhs->add_ldif('t/tmp/recurse-rhs.ldif'), 'added recursing LDIF to RHS';
 
 ###############################################################################
-# save LDAP config for the referral *source*; only need one of them to trigger
-# the referral loop
-my $ldap_config = $lhs->ldap_config();
-my $rc = Socialtext::LDAP::Config->save($ldap_config);
-ok $rc, 'saved LDAP config to YAML';
-
-###############################################################################
-# set user_factories to use LDAP first, Default second
-my $ldap_id   = $ldap_config->id();
-my $factories = "LDAP:$ldap_id;Default";
-my $appconfig = Socialtext::AppConfig->new();
-$appconfig->set( 'user_factories' => $factories );
-$appconfig->write();
-is $appconfig->user_factories(), $factories, 'user_factories set to LDAP, then Default';
+# remove the LDAP config for the referral *target*; we only need one of these
+# to be present in the config in order to trigger the referral loop.
+$rhs->remove_from_user_factories();
+$rhs->remove_from_ldap_config();
 
 ###############################################################################
 # TEST: Authenticate, with looping LDAP referrals; should fail

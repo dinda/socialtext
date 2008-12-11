@@ -7,8 +7,14 @@ use mocked 'Socialtext::Log', qw(:tests);
 use Socialtext::LDAP;
 use Socialtext::User::LDAP::Factory;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 33;
+use Test::Socialtext tests => 32;
 use Test::Deep;
+
+###############################################################################
+# Fixtures: db
+#
+# Need the database running, but don't care what's in it.
+fixtures( 'db' );
 
 ###############################################################################
 ### BOOTSTRAP OPENLDAP; none of these tests modify any of the data in the
@@ -16,11 +22,9 @@ use Test::Deep;
 ###############################################################################
 my $openldap = Test::Socialtext::Bootstrap::OpenLDAP->new();
 isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
-my $rc = Socialtext::LDAP::Config->save($openldap->ldap_config());
-ok $rc, 'saved LDAP config to YAML';
 
-ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-ok $openldap->add('t/test-data/ldap/people.ldif'), 'added data; people';
+ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added data; people';
 
 my $factory = Socialtext::User::LDAP::Factory->new();
 isa_ok $factory, 'Socialtext::User::LDAP::Factory';

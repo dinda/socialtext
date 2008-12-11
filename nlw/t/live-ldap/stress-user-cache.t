@@ -4,8 +4,7 @@
 use strict;
 use warnings;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 335;
-use Socialtext::AppConfig;
+use Test::Socialtext tests => 333;
 use Socialtext::LDAP;
 use Socialtext::LDAP::Base;
 use Socialtext::User;
@@ -55,21 +54,9 @@ bootstrap_openldap: {
     $openldap = Test::Socialtext::Bootstrap::OpenLDAP->new();
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
-    # save out the LDAP config
-    my $config = $openldap->ldap_config();
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config';
-
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added LDAP data; base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), 'added LDAP data; people';
-
-    # add the LDAP directory to our "user_factories"
-    my $appconfig = Socialtext::AppConfig->new();
-    my $factories = 'LDAP;Default';
-    $appconfig->set( 'user_factories' => $factories );
-    $appconfig->write();
-    is $appconfig->user_factories(), $factories, 'added LDAP as a user factory';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added LDAP data; base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added LDAP data; people';
 }
 
 ###############################################################################

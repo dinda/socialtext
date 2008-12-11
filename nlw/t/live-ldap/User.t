@@ -3,12 +3,12 @@
 
 use strict;
 use warnings;
-use Socialtext::AppConfig;
 use Socialtext::LDAP;
 use Socialtext::User;
 use Socialtext::User::Default::Factory;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 39;
+use Test::Warn;
+use Test::Socialtext tests => 35;
 
 fixtures( 'db' );
 
@@ -39,20 +39,13 @@ sub bootstrap_tests {
         $config->filter($filter);
         is $config->filter, $filter, '... set filter';
     }
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
+    ok $openldap->add_to_ldap_config(), 'saved custom LDAP config to YAML';
 
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-    ok $openldap->add("t/test-data/ldap/$populate.ldif"), 'added data; people';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+    ok $openldap->add_ldif("t/test-data/ldap/$populate.ldif"), 'added data; people';
 
-    # set ordering of "user_factories"; LDAP first, Pg second
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set';
-
-    return [$openldap, $config, $appconfig];
+    return [$openldap, $config];
 }
 
 ###############################################################################

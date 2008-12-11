@@ -4,10 +4,29 @@ use strict;
 use warnings;
 
 use Class::Field qw(field);
+use Readonly;
 use Socialtext::SQL qw(sql_parse_timestamptz);
-use Socialtext::User::Factory;
+use Socialtext::Validate qw(validate SCALAR_TYPE);
+use Socialtext::l10n qw(loc);
 
-map { field $_ } @Socialtext::User::Factory::all_fields;
+# All fields/attributes that a "Socialtext::User::*" has.
+Readonly our @fields => qw(
+    user_id
+    username
+    email_address
+    first_name
+    last_name
+    password
+);
+Readonly our @other_fields => qw(
+    driver_key
+    driver_unique_id
+    cached_at
+);
+Readonly our @all_fields => (@fields, @other_fields);
+
+# set up our fields
+map { field $_ } @all_fields;
 
 sub new {
     my $class = shift;
@@ -45,7 +64,7 @@ sub driver_id {
 sub to_hash {
     my $self = shift;
     my $hash = {};
-    foreach my $name (@Socialtext::User::Factory::fields) {
+    foreach my $name (@fields) {
         my $value = $self->{$name};
         $hash->{$name} = "$value";  # to_string on some objects
     }
@@ -55,6 +74,7 @@ sub to_hash {
 # Removes all traces of the user from the users table
 sub delete {
     my $self = shift;
+    require Socialtext::User::Factory;  # avoid circular "use" dependency
     return Socialtext::User::Factory->DeleteUserRecord(
         @_, 
         user_id => $self->user_id
@@ -64,9 +84,24 @@ sub delete {
 # Expires the user, so that any cached data is no longer considered fresh.
 sub expire {
     my $self = shift;
+    require Socialtext::User::Factory;  # avoid circular "use" dependency
     return Socialtext::User::Factory->ExpireUserRecord(
         user_id => $self->user_id
     );
+}
+
+# Validates passwords, to make sure that they are of required length.
+{
+    Readonly my $spec => { password => SCALAR_TYPE };
+    sub ValidatePassword {
+        my $class = shift;
+        my %p = validate( @_, $spec );
+
+        return ( loc("Passwords must be at least 6 characters long.") )
+            unless length $p{password} >= 6;
+
+        return;
+    }
 }
 
 1;
@@ -161,6 +196,11 @@ If you pass C<< force => 1 >> this will force the deletion though.
 =item B<expire()>
 
 Expires this user in the database.  May be a no-op for some homunculus types.
+
+=item B<Socialtext::User::Base-E<gt>ValidatePassword(password=E<gt>$password)>
+
+Validates the given password, returning a list of error messages if the
+password is invalid.
 
 =back
 

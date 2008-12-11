@@ -34,6 +34,7 @@ field 'slapd';
 field 'schemadir';
 field 'moduledir';
 field 'conffile';
+field 'ldap_config', -init => '$self->_ldap_config';
 
 my %ports = (
     ldap    => 389,
@@ -73,6 +74,8 @@ sub new {
     # start OpenLDAP
     $self->setup() or return;
     $self->start() or return;
+    $self->add_to_ldap_config() or return;
+    $self->add_to_user_factories() or return;
 
     # return newly created object
     return $self;
@@ -202,6 +205,14 @@ sub _autodetect_module_dir {
 
 sub DESTROY {
     my $self = shift;
+
+    # remove ourselves from the LDAP config
+    #
+    # wrapped in an eval in case it fails/dies (which could happen if the test
+    # environment was purged since we were started)
+    eval { $self->remove_from_user_factories() };
+    eval { $self->remove_from_ldap_config() };
+
     # shut down and cleanup after ourselves
     $self->stop();
     $self->teardown();
@@ -294,7 +305,7 @@ sub running {
     return ($pid and kill(0,$pid));
 }
 
-sub ldap_config {
+sub _ldap_config {
     my $self = shift;
     # create ST::LDAP::Config object based on our config
     my $config = Socialtext::LDAP::Config->new(
@@ -316,6 +327,92 @@ sub ldap_config {
     $self->root_pw() && $config->bind_password( $self->root_pw() );
     # return ST::LDAP::Config
     return $config;
+}
+
+sub add_to_ldap_config {
+    my $self = shift;
+    verbose( "# adding LDAP instance to ldap.yaml" );
+
+    # load the existing LDAP config, and strip our config out of it
+    # (so we don't add ourselves again as a duplicate)
+    my @ldap_config =
+        grep { $_->id() ne $self->ldap_config->id }
+        Socialtext::LDAP::Config->load();
+
+    # save the LDAP configs
+    my $rc = Socialtext::LDAP::Config->save(@ldap_config, $self->ldap_config());
+    unless ($rc) {
+        warn "# unable to save ldap.yaml; $!\n";
+    }
+    return $rc;
+}
+
+sub remove_from_ldap_config {
+    my $self = shift;
+    verbose( "# removing LDAP instance from ldap.yaml" );
+
+    # load the existing LDAP config, and strip our config out of it
+    my @ldap_config =
+        grep { $_->id() ne $self->ldap_config->id }
+        Socialtext::LDAP::Config->load();
+
+    # save the remaining LDAP configs back out
+    my $rc = Socialtext::LDAP::Config->save(@ldap_config);
+    unless ($rc) {
+        warn "# unable to save ldap.yaml; $!\n";
+    }
+    return $rc;
+}
+
+sub add_to_user_factories {
+    my $self = shift;
+    verbose( "# adding LDAP instance to user_factories" );
+
+    # get the list of existing User Factories, stripping us out of it (so we
+    # don't add ourselves again as a duplicate)
+    my $me_as_factory = $self->_user_factory();
+    my @factories =
+        grep { $_ ne $me_as_factory }
+        split /;\s*/, Socialtext::AppConfig->user_factories();
+
+    # prefix ourselves to the list of User Factories
+    my $user_factories = join ';', $me_as_factory, @factories;
+    Socialtext::AppConfig->set('user_factories' => $user_factories);
+    Socialtext::AppConfig->write();
+
+    my $got_set_ok = Socialtext::AppConfig->user_factories() eq $user_factories;
+    unless ($got_set_ok) {
+        warn "# unable to add LDAP instance to user_factories\n";
+    }
+    return $got_set_ok;
+}
+
+sub remove_from_user_factories {
+    my $self = shift;
+    verbose( "# removing LDAP instance from user_factories" );
+
+    # get the list of existing User Factories, stripping us out of it
+    my $me_as_factory = $self->_user_factory();
+    my @factories =
+        grep { $_ ne $me_as_factory }
+        split /;\s*/, Socialtext::AppConfig->user_factories();
+
+    # save the remaining User Factories back out
+    my $user_factories = join ';', @factories;
+    Socialtext::AppConfig->set('user_factories' => $user_factories);
+    Socialtext::AppConfig->write();
+
+    my $got_set_ok = Socialtext::AppConfig->user_factories() eq $user_factories;
+    unless ($got_set_ok) {
+        warn "# unable to remove LDAP instance from user_factories\n";
+    }
+    return $got_set_ok;
+}
+
+sub _user_factory {
+    my $self = shift;
+    my $id   = $self->ldap_config->id();
+    return "LDAP:$id";
 }
 
 sub setup {
@@ -378,40 +475,18 @@ sub teardown {
     }
 }
 
-sub add {
+sub add_ldif {
     my ($self, $ldif_filename) = @_;
-    my $cb = sub {
-        my ($ldap, $entry) = @_;
-        my $mesg = $ldap->add( $entry );
-        if ($mesg->code()) {
-            warn "# error adding from LDIF:\n"
-               . "#\t" . $mesg->code() . ': ' . $mesg->error() . "\n";
-            $entry->dump(*STDERR);
-            return;
-        }
-        return 1;
-    };
-    return $self->_ldif_update( $ldif_filename, $cb );
+    return $self->_ldif_update( \&_cb_add_entry, $ldif_filename );
 }
 
-sub remove {
+sub remove_ldif {
     my ($self, $ldif_filename) = @_;
-    my $cb = sub {
-        my ($ldap, $entry) = @_;
-        my $mesg = $ldap->delete( $entry->dn() );
-        if ($mesg->code()) {
-            warn "# error removing from LDIF:\n"
-               . "#\t" . $mesg->code() . ': ' . $mesg->error() . "\n";
-            $entry->dump(*STDERR);
-            return;
-        }
-        return 1;
-    };
-    return $self->_ldif_update( $ldif_filename, $cb );
+    return $self->_ldif_update( \&_cb_remove_entry, $ldif_filename );
 }
 
 sub _ldif_update {
-    my ($self, $filename, $callback) = @_;
+    my ($self, $callback, $filename) = @_;
 
     # Open up the LDIF file
     my $ldif = Net::LDAP::LDIF->new( $filename, 'r', onerror => undef );
@@ -420,6 +495,41 @@ sub _ldif_update {
         return;
     }
 
+    # Grab all of the entries out of LDIF
+    my @entries;
+    while (not $ldif->eof()) {
+        push @entries, $ldif->read_entry();
+    }
+    $ldif->done();
+
+    # Feed the data to the LDAP server
+    return $self->_update( $callback, \@entries );
+}
+
+sub add {
+    my ($self, $dn, %attrs) = @_;
+
+    my $entry = Net::LDAP::Entry->new();
+    $entry->changetype('add');
+    $entry->dn($dn);
+    $entry->add(%attrs);
+
+    return $self->_update( \&_cb_add_entry, [$entry] );
+}
+
+sub remove {
+    my ($self, $dn) = @_;
+
+    my $entry = Net::LDAP::Entry->new();
+    $entry->changetype('delete');
+    $entry->dn($dn);
+
+    return $self->_update( \&_cb_remove_entry, [$entry] );
+}
+
+sub _update {
+    my ($self, $callback, $values_aref) = @_;
+
     # Connect to the LDAP server
     my $ldap = Net::LDAP->new( $self->host(), port => $self->port() );
     unless ($ldap) {
@@ -427,6 +537,7 @@ sub _ldif_update {
         return;
     }
 
+    # Bind to the LDAP connection
     my $mesg = $ldap->bind( $self->root_dn(), password => $self->root_pw() );
     if ($mesg->code()) {
         warn "# unable to bind to LDAP server\n";
@@ -434,13 +545,34 @@ sub _ldif_update {
         return;
     }
 
-    # Feed the data to the LDAP server
-    while (not $ldif->eof()) {
-        my $entry = $ldif->read_entry();
-        return unless $callback->( $ldap, $entry );
+    # Do the update, firing all the values through to the CB
+    foreach my $val (@{$values_aref}) {
+        return unless $callback->($ldap, $val);
     }
-    $ldif->done();
+    return 1;
+}
 
+sub _cb_add_entry {
+    my ($net_ldap, $entry) = @_;
+    my $mesg = $net_ldap->add($entry);
+    if ($mesg->code()) {
+        warn "# error adding to LDAP:\n"
+           . "#\t" . $mesg->code() . ': ' . $mesg->error() . "\n";
+       $entry->dump(*STDERR);
+       return;
+    }
+    return 1;
+}
+
+sub _cb_remove_entry {
+    my ($net_ldap, $entry) = @_;
+    my $mesg = $net_ldap->delete($entry->dn());
+    if ($mesg->code()) {
+        warn "# error removing from LDAP:\n"
+           . "#\t" . $mesg->code() . ': ' . $mesg->error() . "\n";
+        $entry->dump(*STDERR);
+        return;
+    }
     return 1;
 }
 
@@ -464,12 +596,20 @@ Socialtext::Bootstrap::OpenLDAP - Bootstrap OpenLDAP instances
   $openldap->stop();
   $openldap->start();
 
-  # manipulate contents of LDAP directory
-  $openldap->add($ldif_filename);
-  $openldap->remove($ldif_filename);
+  # manipulate contents of LDAP directory, from LDIF file
+  $openldap->add_ldif($ldif_filename);
+  $openldap->remove_ldif($ldif_filename);
+
+  # manipulate contents of LDAP directory, directly
+  $openldap->add($dn, %ldap_attrs);
+  $openldap->remove($dn);
 
   # get LDAP config object
   $config = $openldap->ldap_config();
+
+  # modify and re-save the LDAP configuration
+  $openldap->ldap_config->bind_user( undef );
+  $openldap->add_to_ldap_config();
 
   # query config of the OpenLDAP instance
   #
@@ -596,6 +736,9 @@ it.
 
 Stops the OpenLDAP instance.
 
+This is called automatically during object cleanup; when the bootstrap object
+goes out of scope OpenLDAP will be shut down automatically.
+
 =item B<running($pid)>
 
 Checks to see if the OpenLDAP instance is running.  An optional C<$pid> may be
@@ -610,6 +753,43 @@ C<Socialtext::LDAP::Config> object.
 Useful for bootstrapping OpenLDAP, then saving the configuration out to YAML
 so that it can be used by the rest of your testing.
 
+=item B<add_to_ldap_config()>
+
+Adds configuration for B<this> LDAP instance to the LDAP configuration file.
+
+This is called automatically by C<new()>, so you only need to call this if
+you've gone in and changed the LDAP configuration or if you have explicitly
+removed the LDAP configuration and want to add it back in.
+
+Care is already taken to ensure that you don't get duplicate instances of the
+LDAP configuration in the YAML file; don't worry about having to remove the
+config before adding it again.
+
+=item B<remove_from_ldap_config()>
+
+Removes the configuration for B<this> LDAP instance from the LDAP
+configuration file.
+
+This is called automatically during object cleanup; when the bootstrap object
+goes out of scope it'll de-register itself from the LDAP configuration.
+
+=item B<add_to_user_factories()>
+
+Adds B<this> LDAP instance to the list of known C<user_factories> in the
+Socialtext configuration file, by prefixing it to the list of existing
+C<user_factories>.
+
+This is called automatically by C<new()>, so you only need to call this if you
+have explicitly removed it from the C<user_factories> yourself.
+
+=item B<remove_from_user_factories()>
+
+Removes B<this> LDAP instance from the list of known C<user_factories> in the
+Socialtext configuration file.
+
+This is called automatically during object cleanup; when the bootstrap object
+goes out of scope it'll de-register itself from the list of C<user_factories>.
+
 =item B<setup()>
 
 Sets up the data directory and configuration file required by OpenLDAP.  Called
@@ -622,16 +802,28 @@ Cleans up after ourselves, removing the data directory entirely when we're done.
 Called automatically by C<DESTROY()>; its B<not> necessary for you to ever call
 this method.
 
-=item B<add($ldif_filename)>
+=item B<add_ldif($ldif_filename)>
 
 Adds items to the OpenLDAP instance from the LDIF in the specified file.
 Returns true if we're able to add all of the LDIF entries successfully, false
 on error.
 
-=item B<remove($ldif_filename)>
+=item B<remove_ldif($ldif_filename)>
 
 Removes items from the OpenLDAP instance based on their entries in the given
 LDIF file.  Returns true if we're able to remove all of the LDIF entries
+successfully, false on error.
+
+=item B<add($dn, %attrs)>
+
+Adds an entry to the OpenLDAP instance, using the given C<$dn> and LDAP
+C<%attrs>.  Returns true if we're able to add the entry to LDAP successfully,
+false on error.
+
+=item B<remove($dn)>
+
+Removes the LDAP entry pointed to by the given C<$dn> from the OpenLDAP
+instance.  Returns true if we're able to remove the entry from LDAP
 successfully, false on error.
 
 =item B<host()>

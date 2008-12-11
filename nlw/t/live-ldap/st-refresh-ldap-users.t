@@ -19,22 +19,9 @@ fixtures( 'db' );
 # Sets up OpenLDAP, adds some test data, and adds the OpenLDAP server to our
 # list of user factories.
 sub set_up_openldap {
-    # bootstrap OpenLDAP, populate with data.
     my $openldap = Test::Socialtext::Bootstrap::OpenLDAP->new();
-    $openldap->add('t/test-data/ldap/base_dn.ldif');
-    $openldap->add('t/test-data/ldap/people.ldif');
-
-    # save the LDAP config
-    my $config  = $openldap->ldap_config();
-    Socialtext::LDAP::Config->save($config);
-
-    # add LDAP to our list of user factories
-    my $ldap_id   = $config->id();
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories', "LDAP:$ldap_id;Default" );
-    $appconfig->write();
-
-    # done
+    $openldap->add_ldif('t/test-data/ldap/base_dn.ldif');
+    $openldap->add_ldif('t/test-data/ldap/people.ldif');
     return $openldap;
 }
 
@@ -241,7 +228,7 @@ ENDLDIF
         $t = timeit(1, sub {
             my $ldif_file = 'eraseme.ldif';
             write_file( $ldif_file, @ldif );
-            $openldap->add( $ldif_file );
+            $openldap->add_ldif( $ldif_file );
             unlink $ldif_file;
         } );
         diag "... " . timestr($t);

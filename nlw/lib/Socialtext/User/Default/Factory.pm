@@ -3,38 +3,17 @@ package Socialtext::User::Default::Factory;
 use strict;
 use warnings;
 
-# allow for the system level account usernames to be exported; ST::User will
-# use them to short-circuit user lookups into here where applicable.
-use base qw(Socialtext::User::Factory Exporter);
-our @EXPORT_OK;
-BEGIN {
-    @EXPORT_OK = qw(
-        $SystemUsername
-        $GuestUsername
-    );
-}
+use base qw(Socialtext::User::Factory);
 
 use Class::Field qw(field const);
-use Socialtext::Exceptions qw( data_validation_error );
-
 use Digest::SHA1 ();
-use Email::Valid;
 use Socialtext::User::Cache;
 use Socialtext::Data;
-use Socialtext::String;
 use Socialtext::SQL qw(sql_execute sql_singlevalue);
 use Socialtext::User;
 use Socialtext::UserMetadata;
-use Socialtext::User::Factory;
-use Socialtext::User::Default;
 use Socialtext::MultiCursor;
-use Socialtext::l10n qw(loc);
-
-our $SystemUsername = 'system-user';
-our $SystemEmailAddress = 'system-user@socialtext.net';
-
-our $GuestUsername  = 'guest';
-our $GuestEmailAddress = 'guest@socialtext.net';
+use Socialtext::User::Default::Users qw(:system-user :guest-user);
 
 const 'driver_name' => 'Default';
 const 'driver_key'  => 'Default';
@@ -96,26 +75,6 @@ sub new {
     bless $self, $class;
 }
 
-{
-    # optimized for hash-lookup; it'll be done on every user instantiation, so
-    # make it fast.
-    my %RequiredDefaultUsers = (
-        username => {
-            $SystemUsername => 1,
-            $GuestUsername  => 1,
-        },
-        email_address => {
-            $SystemEmailAddress => 1,
-            $GuestEmailAddress  => 1,
-        },
-    );
-
-    sub IsDefaultUser {
-        my ( $class, $key, $val ) = @_;
-        return $RequiredDefaultUsers{$key}{lc($val)};
-    }
-}
-
 sub Count {
     my $self = shift;
     return sql_singlevalue(
@@ -132,7 +91,7 @@ sub GetUser {
 sub create {
     my ( $self, %p ) = @_;
 
-    $self->_validate_and_clean_data(undef, \%p);
+    $self->ValidateAndCleanData(undef, \%p);
 
     $p{first_name}       ||= '';
     $p{last_name}        ||= '';
@@ -151,7 +110,7 @@ sub create {
 sub update {
     my ( $self, $user, %p ) = @_;
 
-    $self->_validate_and_clean_data($user, \%p);
+    $self->ValidateAndCleanData($user, \%p);
 
     $p{cached_at} = DateTime::Infinite::Future->new();
     delete $p{driver_key}; # can't update, sorry
@@ -216,102 +175,6 @@ sub Search {
     )->all;
 }
 
-# Helper methods
-
-sub _validate_and_clean_data {
-    my $self = shift;
-    my $user = shift;
-    my $p = shift;
-    my $metadata;
-
-    my $is_create = defined $user ? 0 : 1;
-
-    if ($is_create) {
-        $p->{user_id} ||= $self->NewUserId();
-    }
-    else {
-        $metadata = Socialtext::UserMetadata->new(
-            user_id => $user->user_id
-        );
-    }
-
-    my @errors;
-    for my $k (qw(username email_address)) {
-        $p->{$k} = Socialtext::String::trim( lc $p->{$k} )
-            if defined $p->{$k};
-
-        if (defined $p->{$k}
-            and (  $is_create
-                or $p->{$k} ne $user->$k())
-            and Socialtext::User->new_homunculus($k => $p->{$k}))
-        {
-            push @errors, loc("The [_1] you provided ([_2]) is already in use.", Socialtext::Data::humanize_column_name($k), $p->{$k});
-        }
-
-        if ((exists $p->{$k} or $is_create)
-            and not(defined $p->{$k} and length $p->{$k}))
-        {
-            push @errors,
-                    loc('[_1] is a required field.', 
-                        ucfirst Socialtext::Data::humanize_column_name($k));
-
-        }
-    }
-
-    if (defined $p->{email_address}
-        and length $p->{email_address}
-        and !Email::Valid->address($p->{email_address}))
-    {
-        push @errors,
-            loc(
-            "[_1] is not a valid email address.",
-            $p->{email_address}
-            );
-    }
-
-    if (defined $p->{password} && length $p->{password} < 6) {
-        push @errors, Socialtext::User::Default->ValidatePassword(
-            password => $p->{password});
-    }
-
-    if (delete $p->{require_password}
-        and $is_create
-        and not defined $p->{password})
-    {
-        push @errors, loc('A password is required to create a new user.');
-    }
-
-    if (!$is_create and $metadata and $metadata->is_system_created) {
-        push @errors,
-            loc("You cannot change the name of a system-created user.")
-            if $p->{username};
-
-        push @errors,
-            loc("You cannot change the email address of a system-created user.")
-            if $p->{email_address};
-    }
-
-    data_validation_error errors => \@errors if @errors;
-
-    if ($is_create
-        and not(defined $p->{password} and length $p->{password}))
-    {
-        $p->{password} = '*none*';
-        $p->{no_crypt} = 1;
-    }
-
-    # we don't care about different salt per-user - we crypt to
-    # obscure passwords from ST admins, not for real protection (in
-    # which case we would not use crypt)
-    $p->{password} = Socialtext::User::Default->_crypt( $p->{password}, 'salty' )
-        if exists $p->{password} && ! delete $p->{no_crypt};
-
-    if ( $is_create and $p->{username} ne $SystemUsername ) {
-        # this will not exist when we are making the system user!
-        $p->{created_by_user_id} ||= Socialtext::User->SystemUser()->user_id;
-    }
-}
-
 1;
 
 __END__
@@ -365,23 +228,6 @@ Returns undef since only one Default factory can be configured per system.
 
 Inserts required users into the DBMS if they are not present.  See
 L<Socialtext::Data> fo rmore details on required data.
-
-=item B<< Socialtext::User::Default::Factory->IsDefaultUser($key, $val) >>
-
-Checks to see if the user defined by the given C<%args> is one of the users
-that B<must> reside in the Default data store (the system-level user records).
-This method returns true if the user must reside in the Default store,
-returning false otherwise.
-
-Lookups can be performed by I<one> of:
-
-=over
-
-=item * username => $username
-
-=item * email_address => $email_address
-
-=back
 
 =item B<< Socialtext::User::Default::Factory->Count() >>
 

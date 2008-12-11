@@ -3,11 +3,11 @@
 
 use strict;
 use warnings;
-use Socialtext::AppConfig;
 use Socialtext::User;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 33;
+use Test::Socialtext tests => 25;
 
+###############################################################################
 # FIXTURE: db
 #
 # Need to have Pg running, but it doesn't have to contain any data.
@@ -36,19 +36,8 @@ search_no_results: {
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), 'added data; people';
-
-    # save LDAP config to YAML
-    my $config = $openldap->ldap_config();
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
-
-    # add our OpenLDAP instance to our "user_factories"
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added data; people';
 
     # search for a user that DOESN'T exist in either the DB or in LDAP
     my @users = Socialtext::User->Search('this-user-does-not-exist');
@@ -63,19 +52,8 @@ search_single_result_from_db: {
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), 'added data; people';
-
-    # save LDAP config to YAML
-    my $config = $openldap->ldap_config();
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
-
-    # add our OpenLDAP instance to our "user_factories"
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added data; people';
 
     # search for a user that only exists in our DB store
     my @users = Socialtext::User->Search('mike');
@@ -94,19 +72,8 @@ search_single_result_from_ldap: {
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), 'added data; people';
-
-    # save LDAP config to YAML
-    my $config = $openldap->ldap_config();
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
-
-    # add our OpenLDAP instance to our "user_factories"
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added data; people';
 
     # search for a user that only exists in our LDAP store
     my @users = Socialtext::User->Search('bubba');
@@ -125,19 +92,8 @@ search_multiple_results: {
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
     # populate OpenLDAP with users
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), 'added data; people';
-
-    # save LDAP config to YAML
-    my $config = $openldap->ldap_config();
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
-
-    # add our OpenLDAP instance to our "user_factories"
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), 'added data; base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), 'added data; people';
 
     # search for users across both the DB and LDAP stores
     my @users = Socialtext::User->Search('example.com');

@@ -17,7 +17,7 @@ use Socialtext::UserMetadata;
 use Socialtext::User::Deleted;
 use Socialtext::User::EmailConfirmation;
 use Socialtext::User::Factory;
-use Socialtext::User::Default::Factory qw($SystemUsername $GuestUsername);
+use Socialtext::User::Default::Users qw(:system-user :guest-user);
 use Socialtext::Workspace;
 use Email::Address;
 use Class::Field 'field';
@@ -103,11 +103,13 @@ sub new_homunculus {
             );
         return undef unless $driver_key;
 
+        # if driver doesn't exist any more, we don't have an instance of it to
+        # query.  e.g. customer removed an LDAP data store.
         my $driver = eval {$class->_realize($driver_key, 'GetUser')};
         if ($driver) {
-            # if driver doesn't exist any more, we don't have an instance of
-            # it to query.  e.g. customer removed an LDAP data store.
-            $homunculus = $driver->GetUser(username => $driver_username);
+            # look the user up by *user_id*; *ALL* factories must support this
+            # lookup.
+            $homunculus = $driver->GetUser( $key, $val );
         }
 
         $homunculus ||= Socialtext::User::Deleted->new(
@@ -123,7 +125,7 @@ sub new_homunculus {
     # this prevents possible conflict with other stores having their own
     # notion of what the "guest" or "system-user" is (e.g. Active Directory
     # and its "Guest" user)
-    elsif (Socialtext::User::Default::Factory->IsDefaultUser($key => $val)) {
+    elsif (Socialtext::User::Default::Users->IsDefaultUser($key => $val)) {
         my $factory = $class->_realize('Default', 'GetUser');
         $homunculus = $factory->GetUser($key => $val);
     }

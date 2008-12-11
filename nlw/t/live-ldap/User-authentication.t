@@ -3,11 +3,9 @@
 
 use strict;
 use warnings;
-use Socialtext::AppConfig;
-use Socialtext::LDAP::Config;
 use Socialtext::User;
 use Test::Socialtext::Bootstrap::OpenLDAP;
-use Test::Socialtext tests => 23;
+use Test::Socialtext tests => 21;
 
 ###############################################################################
 # FIXTURE: db
@@ -23,21 +21,12 @@ sub setup {
     isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP', 'bootstrapped OpenLDAP';
 
     # populate OpenLDAP
-    ok $openldap->add('t/test-data/ldap/base_dn.ldif'), '... added data: base_dn';
-    ok $openldap->add('t/test-data/ldap/people.ldif'), '... added data: people';
+    ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), '... added data: base_dn';
+    ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), '... added data: people';
 
     # get LDAP config, make sure its set to "username => cn", and save to YAML
-    my $config  = $openldap->ldap_config();
-    my $attrmap = $config->attr_map();
-    $attrmap->{username} = $name_attr;
-    my $rc = Socialtext::LDAP::Config->save($config);
-    ok $rc, 'saved LDAP config to YAML';
-
-    # set our user_factories to use the LDAP server
-    my $appconfig = Socialtext::AppConfig->new();
-    $appconfig->set( 'user_factories' => 'LDAP;Default' );
-    $appconfig->write();
-    is $appconfig->user_factories(), 'LDAP;Default', 'user_factories set to LDAP;Default';
+    $openldap->ldap_config->attr_map->{username} = $name_attr;
+    ok $openldap->add_to_ldap_config(), 'saved custom LDAP config to YAML';
 
     return $openldap;
 }

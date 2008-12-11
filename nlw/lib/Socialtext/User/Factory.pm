@@ -7,28 +7,16 @@ use Class::Field qw(field);
 use Socialtext::SQL qw(:exec :time);
 use Socialtext::SQL::Builder qw(:all);
 use Socialtext::User::Cache;
+use Socialtext::Exceptions qw( data_validation_error );
+use Socialtext::UserMetadata;
+use Socialtext::String;
+use Socialtext::User::Base;
+use Socialtext::User::Default;
+use Socialtext::User::Default::Users qw(:system-user :guest-user);
+use Socialtext::l10n qw(loc);
+use Email::Valid;
 use Readonly;
 use Time::HiRes ();
-
-# All fields/attributes that a "Socialtext::User::Base" has.
-# These fields are used to export the user.
-Readonly our @fields => qw(
-    user_id
-    username
-    email_address
-    first_name
-    last_name
-    password
-);
-
-# additional fields, not exported
-Readonly our @other_fields => qw(
-    driver_key
-    driver_unique_id
-    cached_at
-);
-
-Readonly our @all_fields => (@fields, @other_fields);
 
 field 'driver_name';
 field 'driver_id';
@@ -53,7 +41,7 @@ sub NewHomunculus {
     my $p = shift;
 
     # create a copy of the parameters for our new User homunculus object
-    my %user = map { $_ => $p->{$_} } @all_fields;
+    my %user = map { $_ => $p->{$_} } @Socialtext::User::Base::all_fields;
 
     die "homunculi need to have a user_id, driver_key and driver_unique_id"
         unless ($user{user_id} && $user{driver_key} && $user{driver_unique_id});
@@ -181,7 +169,7 @@ sub NewUserRecord {
         unless (ref($proto_user->{cached_at}) && 
                 $proto_user->{cached_at}->isa('DateTime'));
 
-    my %insert_args = map { $_ => $proto_user->{$_} } @all_fields;
+    my %insert_args = map { $_ => $proto_user->{$_} } @Socialtext::User::Base::all_fields;
 
     $insert_args{driver_username} = $proto_user->{driver_username};
     delete $insert_args{username};
@@ -208,7 +196,7 @@ sub UpdateUserRecord {
 
     my %update_args = map { $_ => $proto_user->{$_} } 
                       grep { exists $proto_user->{$_} }
-                      @all_fields;
+                      @Socialtext::User::Base::all_fields;
 
     if ($proto_user->{driver_username}) {
         $update_args{driver_username} = $proto_user->{driver_username};
@@ -253,6 +241,146 @@ sub ExpireUserRecord {
             WHERE user_id = ?
         }, $p{user_id});
     Socialtext::User::Cache->Remove( user_id => $p{user_id} );
+}
+
+# Validates User data, and cleans it up where appropriate.  If the data isn't
+# valid, this method throws a Socialtext::Exception::DataValidation exception.
+{
+    Readonly my @required_fields   => qw(username email_address);
+    Readonly my @lowercased_fields => qw(username email_address);
+    sub ValidateAndCleanData {
+        my $self = shift;
+        my $user = shift;
+        my $p = shift;
+        my $metadata;
+        my @errors;
+
+        # are we validating for the "creation of a new user", or for "updating
+        # an existing user" ?
+        my $is_create = defined $user ? 0 : 1;
+
+        # if we're creating a new User, make sure that he's got a "user_id"
+        if ($is_create) {
+            $p->{user_id} ||= $self->NewUserId();
+        }
+
+        # if we're updating an existing User, make sure that we've got a copy
+        # of their metadata; we'll need it later.
+        if (not $is_create) {
+            $metadata = Socialtext::UserMetadata->new(
+                user_id => $user->user_id
+            );
+        }
+
+        # Lower-case any fields that require it
+        map { $p->{$_} = lc($p->{$_}) }
+            grep { defined $p->{$_} }
+            @lowercased_fields;
+
+        # Check for required fields, and make sure that they're not in use by
+        # another User record right now.
+        foreach my $field_name (@required_fields) {
+            # trim the field, removing leading/trailing spaces
+            if (defined $p->{$field_name}) {
+                $p->{$field_name}
+                    = Socialtext::String::trim($p->{$field_name});
+            }
+
+            # make sure we have a value for this; its a *required* field
+            if (exists $p->{$field_name} or $is_create) {
+                unless (defined $p->{$field_name} and length($p->{$field_name})) {
+                    push @errors,
+                        loc('[_1] is a required field.',
+                            ucfirst Socialtext::Data::humanize_column_name($field_name)
+                        );
+                }
+            }
+
+            # make sure that we've got a unique value, and its not in use by
+            # any other User records
+            if (defined $p->{$field_name}) {
+                my $field_value = $p->{$field_name};
+
+                # if we're creating a new User, *or* we're changing the value
+                # in an existing User
+                if ($is_create or ($field_value ne $user->$field_name())) {
+
+                    # make sure there isn't an existing User with that value
+                    if (Socialtext::User->new_homunculus($field_name => $field_value)) {
+                        push @errors,
+                            loc("The [_1] you provided ([_2]) is already in use.",
+                                Socialtext::Data::humanize_column_name($field_name),
+                                $field_value
+                            );
+                    }
+                }
+            }
+        }
+
+        # make sure that the e-mail address is valid
+        if (defined $p->{email_address}
+            and length $p->{email_address}
+            and !Email::Valid->address($p->{email_address}))
+        {
+            push @errors,
+                loc("[_1] is not a valid email address.",
+                    $p->{email_address}
+                );
+        }
+
+        # make sure that the password is valid
+        if (defined $p->{password}) {
+            my $password_error = Socialtext::User::Default->ValidatePassword(
+                    password => $p->{password}
+                );
+            push @errors, $password_error if $password_error;
+        }
+
+        # if we're creating a new User, password could be required
+        if (delete $p->{require_password}
+            and $is_create
+            and not defined $p->{password})
+        {
+            push @errors, loc('A password is required to create a new user.');
+        }
+
+        # there are certain things you just can't change on a system-created
+        # User.
+        if (!$is_create and $metadata and $metadata->is_system_created) {
+            push @errors,
+                loc("You cannot change the name of a system-created user.")
+                if $p->{username};
+
+            push @errors,
+                loc("You cannot change the email address of a system-created user.")
+                if $p->{email_address};
+        }
+
+        # if we found any errors, throw an exception.
+        data_validation_error errors => \@errors if @errors;
+
+        # if we're creating a new User and we weren't given a password, assign
+        # a placeholder.
+        if ($is_create
+            and not(defined $p->{password} and length $p->{password}))
+        {
+            $p->{password} = '*none*';
+            $p->{no_crypt} = 1;
+        }
+
+        # we don't care about different salt per-user - we crypt to
+        # obscure passwords from ST admins, not for real protection (in
+        # which case we would not use crypt)
+        $p->{password} = Socialtext::User::Default->_crypt( $p->{password}, 'salty' )
+            if exists $p->{password} && ! delete $p->{no_crypt};
+
+        # unless we were told which User was creating this user, default it to
+        # the system user.
+        if ( $is_create and $p->{username} ne $SystemUsername ) {
+            # this will not exist when we are making the system user!
+            $p->{created_by_user_id} ||= Socialtext::User->SystemUser()->user_id;
+        }
+    }
 }
 
 1;
@@ -319,7 +447,14 @@ Returns a new unique identifier for use in creating new users.
 
 =item B<ResolveId(\%params)>
 
-Uses "driver_key" and "driver_unique_id" in the params argument to obtain the user_id corresponding to those values.
+Attempts to resolve the C<user_id> for the User represented by the given
+C<\%params>.
+
+Resolution is limited to B<just> the C<driver_key> specified in the params;
+we're I<not> doing cross-driver resolution.
+
+Default implementation here attempts resolution by looking for a matching
+C<driver_unique_id>.
 
 =item B<Now()>
 
@@ -384,6 +519,21 @@ Expires the specified user.
 
 The `cached_at` field of the specified user is set to '-infinity' in the
 database.
+
+=item B<ValidateAndCleanData($user, \%p)>
+
+Validates and cleans the given hashref of data, which I<may> be an update for
+the provided C<$user> object.
+
+If a C<Socialtext::User> object is provided for C<$user>, this method
+validates the data as if we were performing an B<update> to the information in
+that User object.
+
+If no value is provided for C<$user>, this method validates the data as if we
+were creating a B<new> User object.
+
+On success, this method returns.  On validation error, it throws a
+C<Socialtext::Exception::DataValidation> exception.
 
 =back
 

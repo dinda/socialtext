@@ -11,7 +11,7 @@ use Test::Socialtext;
 BEGIN {
     require Socialtext::People::Profile;
     plan skip_all => 'People is not linked in' if ($@);
-    plan tests => 36;
+    plan tests => 34;
 }
 
 fixtures( 'db', 'destructive' );
@@ -35,20 +35,8 @@ my $openldap = Test::Socialtext::Bootstrap::OpenLDAP->new();
 isa_ok $openldap, 'Test::Socialtext::Bootstrap::OpenLDAP';
 
 # ... populate OpenLDAP
-ok $openldap->add('t/test-data/ldap/base_dn.ldif'), '.. added data: base_dn';
-ok $openldap->add('t/test-data/ldap/people.ldif'), '... added data: people';
-
-# ... save LDAP config, and set up user_factories to use this LDAP server
-my $openldap_cfg = $openldap->ldap_config();
-my $rc = Socialtext::LDAP::Config->save($openldap_cfg);
-ok $rc, 'saved LDAP config to YAML';
-
-my $openldap_id = $openldap_cfg->id();
-my $user_factories = "LDAP:$openldap_id;Default";
-my $appconfig = Socialtext::AppConfig->new();
-$appconfig->set( 'user_factories' => $user_factories );
-$appconfig->write();
-is $appconfig->user_factories(), $user_factories, 'added LDAP user factory';
+ok $openldap->add_ldif('t/test-data/ldap/base_dn.ldif'), '.. added data: base_dn';
+ok $openldap->add_ldif('t/test-data/ldap/people.ldif'), '... added data: people';
 
 ###############################################################################
 MASS_ADD_USERS: {

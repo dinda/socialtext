@@ -10,6 +10,7 @@ use Class::Field qw(field const);
 use Socialtext::LDAP;
 use Socialtext::User::LDAP;
 use Socialtext::Log qw(st_log);
+use Socialtext::SQL qw(sql_selectrow);
 use Net::LDAP::Util qw(escape_filter_value);
 use Socialtext::SQL qw(sql_execute sql_singlevalue);
 use Readonly;
@@ -124,8 +125,33 @@ sub lookup {
 
     # SANITY CHECK: lookup term is acceptable
     return unless ($valid_get_user_terms{$key});
-    # We can't check the LDAP server for user_id's, though
-    return if $key eq 'user_id';
+
+    # SANITY CHECK: given a value to lookup
+    return unless ((defined $val) && ($val ne ''));
+
+    # EDGE CASE: lookup by user_id
+    #
+    # The 'user_id' is internal to ST and isn't stored/held in the LDAP
+    # server, so we handle this as a special case; grab the data we've got on
+    # this user out of the DB and recursively look the user up by each of the
+    # possible unique identifiers.
+    if ($key eq 'user_id') {
+        return if ($val =~ /\D/);   # id *must* be numeric
+
+        my ($unique_id, $username, $email) =
+            sql_selectrow(
+                q{SELECT driver_unique_id, driver_username, email_address
+                   FROM users
+                  WHERE driver_key=? AND user_id=?
+                },
+                $self->driver_key, $val,
+            );
+
+        my $user = $self->lookup( driver_unique_id => $unique_id )
+                || $self->lookup( username => $username )
+                || $self->lookup( email_address => $email );
+        return $user;
+    }
 
     # search LDAP directory for our record
     my $mesg = $self->_find_user($key => $val);
@@ -197,6 +223,32 @@ sub _check_cache {
 sub cache_ttl {
     my $self = shift;
     return DateTime::Duration->new( seconds => $self->ldap_config->ttl );
+}
+
+sub ResolveId {
+    my $class = shift;
+    my $p = shift;
+
+    # in LDAP, any of these fields *could* be considered a unique identifier
+    # for the User.  They all have to be unique in LDAP, but they're all also
+    # subject to change; a user _could_ have their DN or e-mail changed.
+    my @possible_ldap_identifiers
+        = qw(driver_unique_id driver_username email_address);
+
+    # some of the fields are also case IN-sensitive
+    my %case_insensitive_identifier
+        = map { $_ => 1 } qw(driver_username email_address);
+
+    foreach my $field (@possible_ldap_identifiers) {
+        my $sql = $case_insensitive_identifier{$field}
+            ?  qq{SELECT user_id FROM users WHERE driver_key=? AND LOWER($field) = LOWER(?)}
+            :  qq{SELECT user_id FROM users WHERE driver_key=? AND $field = ?};
+        my $user_id = sql_singlevalue( $sql, $p->{driver_key}, $p->{$field} );
+        return $user_id if $user_id;
+    }
+
+    # nope, couldn't find the user.
+    return;
 }
 
 sub _vivify {
@@ -388,6 +440,31 @@ user attributes.
 Returns a C<DateTime::Duration> object representing the TTL for this Factory's
 LDAP data.
 
+=item B<ResolveId(\%params)>
+
+Attempts to resolve the C<user_id> for the User represented by the given
+C<\%params>.
+
+For LDAP Users, we do an extended lookup to see if we can find the User by any
+one (or more) of:
+
+=over
+
+=item * driver_unique_id (their dn)
+
+=item * driver_username
+
+=item * email_address
+
+=back
+
+If any one of these match and can be found, we can be confident that we've
+found a matching User (we're still limiting ourselves to B<just> Users from
+this LDAP factory instance, so we're not doing cross-factory resolution).
+
+If the LDAP administrator re-uses somebodies username or e-mail address for a
+completely different User we'll mismatch, but that's the risk we take.
+
 =item B<GetUser($key, $val)>
 
 Searches for the specified user in the LDAP data store and returns a new
@@ -420,15 +497,13 @@ User lookups can be performed by I<one> of:
 
 =back
 
-user_id lookups will only search the long-term cache.
-
 =item B<lookup($key, $val)>
 
 Looks up a user in the LDAP data store and returns a hash-ref of data on that
 user.
 
 Lookups can be performed using the same criteria as listed for C<GetUser()>
-above with the exception that 'user_id' lookups are not available.
+above.
 
 The long-term cache is B<not> consulted when using this method.
 
