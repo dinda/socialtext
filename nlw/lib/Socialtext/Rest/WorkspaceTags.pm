@@ -32,7 +32,7 @@ sub collection_name { "Tags for " . $_[0]->workspace->title . "\n" }
 sub _entities_for_query {
     my $self = shift;
 
-    return $self->hub->category->all_visible_categories();
+    return $self->hub->category->all();
 }
 
 sub add_text_element {

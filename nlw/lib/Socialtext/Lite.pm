@@ -300,8 +300,7 @@ sub _pages_for_category {
 sub _all_categories {
     my $self = shift;
 
-    my $categories = [ grep !/^recent changes$/,
-        sort $self->hub->category->all_categories ];
+    my $categories = [ $self->hub->category->all ];
     my $title = 'Categories';
 
     return $self->_process_template(
