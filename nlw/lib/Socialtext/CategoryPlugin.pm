@@ -15,7 +15,7 @@ use Socialtext::Validate qw( validate SCALAR_TYPE USER_TYPE );
 use URI::Escape ();
 use Socialtext::l10n qw(loc);
 use Socialtext::Timer;
-use Socialtext::SQL qw/sql_execute/;
+use Socialtext::SQL qw/:exec/;
 use Socialtext::Model::Pages;
 
 sub class_id {'category'}
@@ -327,14 +327,26 @@ sub get_pages_for_category {
     $sort_style ||= 'update';
 
     # Load from the database, and then map into old-school page objects
-    my $model_pages = Socialtext::Model::Pages->By_tag(
-        hub          => $self->hub,
-        workspace_id => $self->hub->current_workspace->workspace_id,
-        tag          => $tag,
-        order_by     =>
-            ($sort_style eq 'update' ? 'last_edit_time' : 'create_time'),
-        ($limit ? (limit => $limit) : ()),
-    );
+    my $model_pages = [];
+    if (lc($tag) eq 'recent changes') {
+        $model_pages = Socialtext::Model::Pages->All_active(
+            hub          => $self->hub,
+            workspace_id => $self->hub->current_workspace->workspace_id,
+            order_by     =>
+                ($sort_style eq 'update' ? 'last_edit_time' : 'create_time'),
+            ($limit ? (limit => $limit) : ()),
+        );
+    }
+    else {
+        $model_pages = Socialtext::Model::Pages->By_tag(
+            hub          => $self->hub,
+            workspace_id => $self->hub->current_workspace->workspace_id,
+            tag          => $tag,
+            order_by     =>
+                ($sort_style eq 'update' ? 'last_edit_time' : 'create_time'),
+            ($limit ? (limit => $limit) : ()),
+        );
+    }
     return map { $self->hub->pages->new_page($_->id) } @$model_pages;
 }
 

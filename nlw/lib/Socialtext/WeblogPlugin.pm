@@ -7,7 +7,6 @@ use base 'Socialtext::Plugin';
 
 use Class::Field qw( const field );
 use Socialtext::Pages;
-use Socialtext::MLDBMAccess;
 use URI;
 use URI::QueryParam;
 use Socialtext::l10n qw( loc );
@@ -175,14 +174,13 @@ sub create_weblog {
         $weblog_category = loc( "[_1] Weblog", $weblog_category );
     }
 
-    $self->hub->category->load;
-    my $all_categories = $self->hub->category->all;
+    my @all_categories = $self->hub->category->all;
 
     # If the weblog category is already in use OR
     # there is a similar enough category that the
     # first post title will have the same id as an
     # existing weblog, tell the user to try again.
-    for ( keys %$all_categories ) {
+    for ( @all_categories ) {
         if ( /^\Q$weblog_category\E/i
             || ($self->_first_post_title_id($_))[1] eq
             ($self->_first_post_title_id($weblog_category))[1] ) {
@@ -234,9 +232,9 @@ sub _feeds {
 
 sub first_blog {
     my $self = shift;
-    $self->hub->category->load;
     my $weblog_category_suffix = $self->_get_weblog_category_suffix();
-    my ($first_blog) = grep /$weblog_category_suffix/io, sort values %{$self->hub->category->all};
+    my ($first_blog) = grep { /$weblog_category_suffix/io }
+                            $self->hub->category->all;
     $first_blog ||= 'recent changes';
     return $first_blog;
 }
@@ -245,7 +243,7 @@ sub current_blog_str {
     my $self = shift;
     $self->current_weblog($self->cgi->category) && $self->update_current_weblog
       if $self->cgi->category;
-    $self->cgi->category || loc($self->cache->{current_weblog}) || loc('recent changes');
+    $self->cgi->category || loc($self->cache->{current_weblog}) || loc('Recent Changes');
 }
 
 sub current_blog {
@@ -284,15 +282,13 @@ sub weblog_display {
 
     my $weblog_category_suffix = $self->_get_weblog_category_suffix();
 
-    $self->hub->category->load;
-    my $categories = $self->hub->category->all;
-    $categories->{'recent changes'} = loc('Recent Changes');
+    my @categories = $self->hub->category->all;
     my @blogs = map {
 	{
-	    display => $categories->{$_},
-	    escape_html => $self->html_escape($categories->{$_}),
+	    display => (lc($_) eq 'recent changes' ? loc('Recent Changes') : $_),
+	    escape_html => $self->html_escape($_),
 	}
-    } 'recent changes', sort (grep {/$weblog_category_suffix/o} keys %$categories);
+    } 'recent changes', (grep {/$weblog_category_suffix/o} @categories);
 
     my @entries = $self->get_entries( weblog_id => $weblog_id,
         start => $weblog_start_entry, limit => $weblog_limit );
@@ -335,15 +331,16 @@ sub weblog_display {
 
     $self->update_current_weblog;
     $self->screen_template('view/weblog');
+    my $is_RC = (lc($weblog_id) eq 'recent changes');
     return $self->render_screen(
         box_content_filled => $self->box_content_filled,
         archive => $archive,
-        display_title => loc($weblog_id),
+        display_title => ($is_RC ? loc('Recent Changes') : loc($weblog_id)),
         sections => \@sections,
         feeds => $self->_feeds($self->hub->current_workspace),
-        category => $weblog_id,
+        category => ($is_RC ? loc('Recent Changes') : $weblog_id),
         category_escaped => $self->uri_escape($weblog_id),
-        is_real_category => ($weblog_id =~ /^recent changes$/i ? 0 : 1),
+        is_real_category => ($is_RC ? 0 : 1),
         email_category_address => $self->hub->category->email_address($weblog_id),
         blogs => \@blogs,
         weblog_previous => $weblog_previous,
