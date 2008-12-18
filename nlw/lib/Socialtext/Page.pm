@@ -30,7 +30,7 @@ use Socialtext::WikiText::Parser;
 use Socialtext::WikiText::Emitter::SearchSnippets;
 use Socialtext::String;
 use Socialtext::Events;
-use Socialtext::SQL qw/sql_execute sql_begin_work sql_commit sql_singlevalue/;
+use Socialtext::SQL qw/:exec :txn get_dbh/;
 
 use Carp ();
 use Class::Field qw( field const );
@@ -748,12 +748,6 @@ sub store {
         $metadata->Control('Deleted');
     }
     $self->write_file($self->headers, $body);
-
-    $self->hub->category->save(@{$self->metadata->Category});
-    $self->hub->category->index->update(
-        $self->id, $self->metadata->Date,
-        $original_categories, $self->metadata->Category,
-    );
     $self->_perform_store_actions();
 }
 
@@ -846,12 +840,12 @@ INSSQL
     }
     sql_execute($insert_or_update, @args);
 
+    my $dbh = get_dbh();
+    $dbh->do("COPY page_tag FROM stdin");
     for my $tag (@{ $self->metadata->Category }) {
-        sql_execute(
-            'INSERT INTO page_tag VALUES (?,?,?)',
-            $wksp_id, $pg_id, $tag,
-        );
+        $dbh->pg_putline("$wksp_id\t$pg_id\t$tag\n");
     }
+    $dbh->pg_endcopy();
     sql_commit();
 }
 
