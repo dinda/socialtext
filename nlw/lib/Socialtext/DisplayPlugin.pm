@@ -237,14 +237,8 @@ sub _render_display {
 
     my @recent_changes;
     if ($include_recent_changes) {
-        my $depth = $self->preferences->changes_depth->value;
-
-        @recent_changes =
-            map { $self->_get_minimal_page_info($_) } @{
-            $self->hub->category->get_pages_by_seconds_limit(
-                'recent changes', $depth * 1440, $self->preferences->sidebox_changes_depth->value,
-            )
-        };
+        my $pages = $self->hub->recent_changes->by_seconds_limit();
+        @recent_changes = map { $self->_get_minimal_page_info($_) } @$pages;
     }
 
     my $include_breadcrumbs = $self->preferences->include_breadcrumbs->value;
@@ -449,12 +443,9 @@ sub _time_only {
 sub _get_workspace_tags {
     my $self = shift;
 
-    my @workspace_tags = grep !/recent changes/, values %{$self->hub->category->load->all};
-
-    my %tags = $self->hub->category->weight_categories(@workspace_tags);
+    my %tags = $self->hub->category->weight_categories();
     my $text = encode_json(\%tags);
     return $text;
-
 }
 
 sub _getCurrentTags {
@@ -521,14 +512,6 @@ sub qualify_links {
     $html =~ s/$overqualification/$workspace/g;
 
     return $html;
-}
-
-sub _current_categories {
-    my $self = shift;
-    my $hash = $self->hub->category->load->all;
-    return
-        map { $hash->{$_} }
-        ( grep { lc($_) ne 'recent changes' } sort keys %$hash );
 }
 
 package Socialtext::Display::CGI;
