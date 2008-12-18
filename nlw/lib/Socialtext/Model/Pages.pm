@@ -56,7 +56,7 @@ sub All_active {
     my $limit        = $p{count} || $p{limit};
     my $workspace_id = $p{workspace_id};
     my $no_tags      = $p{do_not_need_tags};
-    my $order_by     = $p{order_by} || 'last_edit_time';
+    my $order_by     = $p{order_by};
 
     Socialtext::Timer->Continue('All_active');
     my $pages = $class->_fetch_pages(
@@ -64,7 +64,7 @@ sub All_active {
         limit        => $limit,
         workspace_id => $workspace_id,
         do_not_need_tags => $no_tags,
-        order_by     => "page.$order_by",
+        ($order_by ? (order_by => "page.$order_by") : ()),
     );
     Socialtext::Timer->Pause('All_active');
     return $pages;
