@@ -715,8 +715,10 @@ div#bootstrap-loader {
 }
 #wikiwyg_toolbar {
     display: none;
+    /*
     margin-left: 25px;
     margin-bottom: -3px;
+    */
 }
 .wikiwyg_button {
     border: 1px solid #F3F3F3;
@@ -732,17 +734,18 @@ div#bootstrap-loader {
 .wikiwyg_button:active {
     border: 1px inset;
 }
+
 #st-page-editing-uploadbutton {
     font-size: 9pt;
     margin-top: 4px;
     font-weight: bold;
     z-index: 1500;
-    float:right;
+    float: left;
 }
 #st-page-editing-tagbutton {
     z-index: 1500;
     margin-top: 4px;
-    float: right;
+    float: left;
     padding: 0 20px 0 8px;
     font-size: 9pt;
     font-weight: bold;
@@ -2153,3 +2156,26 @@ body div#globalNav div input.searchText {
 	line-height: 22px;
 }
 /* fix some buttons with too large hotspots in ie6 end */
+
+/* Capitalize all guess_real_name fields in People: {bz: 1784} */
+.realName {
+    text-transform: capitalize;
+}
+
+#wikiwyg_toolbar {
+    float: left;
+}
+
+.other_buttons, 
+.table_buttons {
+    float: left;
+}
+.table_buttons.disabled {
+    opacity: 0.3;
+    filter: alpha(opacity = 30);
+}
+
+.st-page-editing-group {
+    float: left;
+}
+
