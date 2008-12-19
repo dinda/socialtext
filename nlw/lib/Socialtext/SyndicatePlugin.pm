@@ -93,7 +93,8 @@ sub syndicate {
 
     my $count = $self->cgi->count || $self->preference('syndication_depth');
     my $category = $self->cgi->category;
-    $category = '' if $category and $category eq $self->default_category;
+    $category = ''
+        if $category and lc($category) eq lc($self->default_category);
     if ( my $search = $self->cgi->search_term ) {
         return $self->_syndicate_search( $type, $search );
     }
