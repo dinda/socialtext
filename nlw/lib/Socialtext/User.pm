@@ -395,38 +395,6 @@ sub shared_accounts {
     return grep { $mine{$_->account_id} } $user->accounts;
 }
 
-{
-    # REVIEW - maybe this is overkill and can be handled through good
-    # documentation saying "you probably don't want to delete users,
-    # we mean it."
-    Readonly my $spec => { force => BOOLEAN_TYPE( default => 0 ) };
-    sub delete {
-        my $self = shift;
-        my %p = validate( @_, $spec );
-
-        Socialtext::Exception->throw( error => 'You cannot delete a user.' )
-            unless $p{force};
-
-        # Reassign all workspaces created by this user to the system-user
-        sql_execute( <<EOT,
-UPDATE "Workspace" 
-    SET created_by_user_id = ? 
-  WHERE created_by_user_id = ?
-EOT
-            Socialtext::User->SystemUser->user_id, $self->user_id
-        );
-
-        # There are two parts of the user that need to be deleted and cleaned
-        # up: the "details" and the "metadata".  Order is important, to ensure
-        # that referential integrity is preserved.
-        $self->metadata->delete();
-        $self->homunculus->delete(force => 1);
-
-        # remove the user from the cache
-        Socialtext::User::Cache->Remove($self->homunculus);
-    }
-}
-
 sub to_hash {
     my $self = shift;
     my $hash = {};
@@ -1793,19 +1761,6 @@ workspace.
 =head2 $user->is_deactivated()
 
 Returns the corresponding attribute for the user.
-
-=head2 $user->delete()
-
-B<DANGER:> In almost all cases, users should B<not> be deleted as there are
-foreign keys for far too many other tables, and even if a user is no longer
-active they are still likely needed when looking up page authors, history, or
-other information.
-
-If you pass C<< force => 1 >> this will force the deletion through.
-
-As an alternative to deletion, you can block a user from logging in by
-setting their password to some string and passing C<< no_crypt => 1 >>
-to C<update()>
 
 =head2 $user->accounts()
 
