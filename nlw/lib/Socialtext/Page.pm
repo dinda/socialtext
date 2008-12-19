@@ -1186,13 +1186,6 @@ sub purge {
     my $attachment_path = join '/', $self->hub->attachments->plugin_directory, $self->id;
     File::Path::rmtree($attachment_path)
       if -e $attachment_path;
-
-    $self->hub->category->save();
-    $self->hub->category->index->update(
-        $self->id, $self->metadata->Date,
-        $self->metadata->Category, [],
-    );
-
     File::Path::rmtree($page_path);
 
     my $hash    = $self->hash_representation;
