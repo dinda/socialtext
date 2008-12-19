@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN { $ENV{NLW_LIVE_DANGEROUSLY} = 1 }
 
-use Test::Socialtext tests => 1;
+use Test::Socialtext tests => 4;
 fixtures( 'admin' );
 use Socialtext::Pages;
 use DateTime;

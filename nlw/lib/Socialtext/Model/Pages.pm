@@ -41,7 +41,7 @@ sub By_seconds_limit {
         limit        => $limit,
         tag          => $tag,
         bind         => \@bind,
-        order_by     => 'page.last_edit_time',
+        order_by     => 'page.last_edit_time DESC',
         workspace_id => $workspace_id,
         do_not_need_tags => $no_tags,
     );
@@ -57,6 +57,7 @@ sub All_active {
     my $workspace_id = $p{workspace_id};
     my $no_tags      = $p{do_not_need_tags};
     my $order_by     = $p{order_by};
+    $limit = 500 unless defined $limit;
 
     Socialtext::Timer->Continue('All_active');
     my $pages = $class->_fetch_pages(
@@ -77,7 +78,7 @@ sub By_tag {
     my $workspace_id = $p{workspace_id};
     my $limit        = $p{count} || $p{limit};
     my $tag          = $p{tag};
-    my $order_by     = $p{order_by} || 'last_edit_time';
+    my $order_by     = $p{order_by} || 'last_edit_time DESC';
     my $no_tags      = $p{do_not_need_tags};
 
     Socialtext::Timer->Continue('By_category');
@@ -168,7 +169,7 @@ sub _fetch_pages {
 
     my $order_by = '';
     if ( $p{order_by} ) {
-        $order_by = "ORDER BY $p{order_by} DESC";
+        $order_by = "ORDER BY $p{order_by}";
     }
 
     my $limit = '';

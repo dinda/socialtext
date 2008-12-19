@@ -325,6 +325,8 @@ sub get_pages_for_category {
     my ( $tag, $limit, $sort_style ) = @_;
     $tag = lc($tag);
     $sort_style ||= 'update';
+    my $order_by = $sort_style eq 'update' ? 'last_edit_time' : 'create_time';
+    $order_by .= ' ASC';
 
     # Load from the database, and then map into old-school page objects
     my $model_pages = [];
@@ -332,8 +334,7 @@ sub get_pages_for_category {
         $model_pages = Socialtext::Model::Pages->All_active(
             hub          => $self->hub,
             workspace_id => $self->hub->current_workspace->workspace_id,
-            order_by     =>
-                ($sort_style eq 'update' ? 'last_edit_time' : 'create_time'),
+            order_by     => $order_by,
             ($limit ? (limit => $limit) : ()),
         );
     }
@@ -342,8 +343,7 @@ sub get_pages_for_category {
             hub          => $self->hub,
             workspace_id => $self->hub->current_workspace->workspace_id,
             tag          => $tag,
-            order_by     =>
-                ($sort_style eq 'update' ? 'last_edit_time' : 'create_time'),
+            order_by     => $order_by,
             ($limit ? (limit => $limit) : ()),
         );
     }
