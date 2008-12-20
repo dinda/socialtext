@@ -34,7 +34,7 @@ Get_with_limit: {
     my @ids = map {$_->id} @pages;
     my @numbers = map {$_ =~ /_(\d+)$/; $1} @ids;
 
-    is join(',', @numbers), join(',', 1 .. 10), 'pages returned in sequence';
+    is join(',', @numbers), join(',', reverse 11 .. 20), 'pages returned in sequence';
     is scalar(@numbers), 10, 'got 10 pages';
 }
 
@@ -43,7 +43,7 @@ Get: {
     my @ids = map {$_->id} @pages;
     my @numbers = map {$_ =~ /_(\d+)$/; $1} @ids;
 
-    is join(',', @numbers), join(',', grep { !($_ % 2) } 1 .. 20),
+    is join(',', @numbers), join(',', grep { !($_ % 2) } reverse 1 .. 20),
         'pages returned in sequence';
     is scalar(@numbers), 10, 'got 10 pages';
 }

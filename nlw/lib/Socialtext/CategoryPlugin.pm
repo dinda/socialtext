@@ -325,8 +325,9 @@ sub get_pages_for_category {
     my ( $tag, $limit, $sort_style ) = @_;
     $tag = lc($tag);
     $sort_style ||= 'update';
-    my $order_by = $sort_style eq 'update' ? 'last_edit_time' : 'create_time';
-    $order_by .= ' ASC';
+    my $order_by = $sort_style eq 'update' 
+                        ? 'last_edit_time DESC' 
+                        : 'create_time DESC';
 
     # Load from the database, and then map into old-school page objects
     my $model_pages = [];
