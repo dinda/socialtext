@@ -636,6 +636,7 @@ sub add_tags {
 Removes the given tag string from the Categories on the page.
 
 =cut
+
 sub delete_tag {
     my $self = shift;
     my $tag = shift;
