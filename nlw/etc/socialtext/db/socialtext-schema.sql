@@ -682,9 +682,9 @@ ALTER TABLE ONLY page
             REFERENCES users(user_id) ON DELETE RESTRICT;
 
 ALTER TABLE ONLY page_tag
-    ADD CONSTRAINT page_tag_workspace_id_page_id_fkey
-            FOREIGN KEY (workspace_id, page_id)
-            REFERENCES page(workspace_id, page_id) ON DELETE CASCADE;
+    ADD CONSTRAINT page_tag_workspace_id_fkey
+            FOREIGN KEY (workspace_id)
+            REFERENCES "Workspace"(workspace_id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY page
     ADD CONSTRAINT page_workspace_id_fk
@@ -777,4 +777,4 @@ ALTER TABLE ONLY workspace_plugin
             REFERENCES "Workspace"(workspace_id) ON DELETE CASCADE;
 
 DELETE FROM "System" WHERE field = 'socialtext-schema-version';
-INSERT INTO "System" VALUES ('socialtext-schema-version', '25');
+INSERT INTO "System" VALUES ('socialtext-schema-version', '26');
