@@ -39,12 +39,13 @@ sub add_text_element {
     my ( $self, $tag ) = @_;
 
     chomp $tag;
-    $self->hub->category->save($tag);
+    $self->hub->category->add_workspace_tag($tag);
 
     return $self->_uri_for_tag($tag);
 }
 
 1;
+
 =head1 AUTHOR
 
 Socialtext, Inc. C<< <code@socialtext.com> >>

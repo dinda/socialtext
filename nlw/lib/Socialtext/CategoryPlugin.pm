@@ -110,6 +110,7 @@ sub all {
     my $dbh = sql_execute(<<EOT, 
 SELECT tag FROM page_tag
     WHERE workspace_id = ?
+    GROUP BY tag
     ORDER BY tag
 EOT
         $self->hub->current_workspace->workspace_id,
@@ -118,6 +119,19 @@ EOT
     my $tags = $dbh->fetchall_arrayref;
     return map { $_->[0] } @$tags;
 }
+
+sub add_workspace_tag {
+    my $self = shift;
+    my $tag  = shift;
+
+    sql_execute(<<EOT,
+INSERT INTO page_tag VALUES (?, ?, ?)
+EOT
+        $self->hub->current_workspace->workspace_id, '', $tag,
+    );
+
+}
+
 
 sub exists {
     my $self = shift;
@@ -312,12 +326,13 @@ sub page_count {
     my $result = sql_singlevalue(<<EOT,
 SELECT count(tag) FROM page_tag
     WHERE workspace_id = ?
+      AND page_id != ''
       AND LOWER(tag) = LOWER(?)
 EOT
         $self->hub->current_workspace->workspace_id,
         $tag,
     );
-    return $result;
+    return 0+$result;
 }
 
 sub get_pages_for_category {
@@ -366,21 +381,31 @@ sub get_pages_numeric_range {
 
 {
     Readonly my $spec => {
-        category => SCALAR_TYPE,
-        user     => USER_TYPE,
+        tag  => SCALAR_TYPE,
+        user => USER_TYPE,
     };
 
     sub delete {
         my $self = shift;
         my %p    = validate( @_, $spec );
 
-        for my $page ( $self->get_pages_for_category($p{category}) ) {
+        # Delete the tag on each page
+        for my $page ( $self->get_pages_for_category($p{tag}) ) {
             $page->metadata->Category(
-                [ grep { $_ ne $p{category} } @{ $page->metadata->Category }
+                [ grep { $_ ne $p{tag} } @{ $page->metadata->Category }
                 ]
             );
             $page->store( user => $p{user} );
         }
+
+        # Delete any workspace tags
+        sql_execute( <<EOT,
+DELETE FROM page_tag 
+    WHERE workspace_id = ?
+      AND tag = ?
+EOT
+            $self->hub->current_workspace->workspace_id, $p{tag},
+        );
     }
 }
 
@@ -400,6 +425,7 @@ sub weight_categories {
     my $dbh = sql_execute(<<EOT, 
 SELECT tag AS name, count(tag) AS page_count FROM page_tag
     WHERE workspace_id = ?
+      AND page_id != ''
       $tag_in
     GROUP BY tag
     ORDER BY count(tag) DESC, tag
@@ -412,6 +438,7 @@ EOT
     my $max = 0;
     for (map { $_->{page_count} } @{ $data{tags} }) { 
         $max = $_ if $_ > $max;
+        $_ += 0; # cast to number
     }
     $data{maxCount} = $max;
     return %data;
