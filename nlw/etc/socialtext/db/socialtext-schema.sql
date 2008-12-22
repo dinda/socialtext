@@ -233,7 +233,7 @@ CREATE TABLE page (
 
 CREATE TABLE page_tag (
     workspace_id bigint NOT NULL,
-    page_id text NOT NULL,
+    page_id text,
     tag text NOT NULL
 );
 
@@ -683,9 +683,9 @@ ALTER TABLE ONLY page
             REFERENCES users(user_id) ON DELETE RESTRICT;
 
 ALTER TABLE ONLY page_tag
-    ADD CONSTRAINT page_tag_workspace_id_fkey
+    ADD CONSTRAINT page_tag_workspace_id_page_id_fkey
             FOREIGN KEY (workspace_id)
-            REFERENCES "Workspace"(workspace_id) ON DELETE CASCADE;
+            REFERENCES "Workspace"(workspace_id, page_id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY page
     ADD CONSTRAINT page_workspace_id_fk

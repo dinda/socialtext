@@ -1,11 +1,7 @@
 BEGIN;
 
--- To accommodate workspace tags, we must permit page_id to be blank
-ALTER TABLE page_tag DROP CONSTRAINT page_tag_workspace_id_page_id_fkey;
-ALTER TABLE ONLY page_tag
-    ADD CONSTRAINT page_tag_workspace_id_fkey
-            FOREIGN KEY (workspace_id)
-            REFERENCES "Workspace" (workspace_id) ON DELETE CASCADE;
+-- To accommodate workspace tags, we must permit page_id to be NULL
+ALTER TABLE page_tag ALTER COLUMN page_id DROP NOT NULL;
 
 -- Make some profile fields user editable
 ALTER TABLE profile_field
