@@ -21,7 +21,6 @@ use Socialtext::Model::Pages;
 sub class_id {'category'}
 const class_title => 'Category Managment';
 const cgi_class   => 'Socialtext::Category::CGI';
-field 'categories';
 
 sub Decode_category_email {
     my $class = shift;
@@ -99,10 +98,6 @@ sub category_delete_from_page {
     $page->metadata->update(user => $self->hub->current_user);
     $page->store( user => $self->hub->current_user );
 }
-
-sub all_visible_categories { all(@_) }
-
-sub all_categories { all(@_) }
 
 sub all {
     my $self = shift;
