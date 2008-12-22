@@ -917,10 +917,10 @@ sub delete_tag {
     my $self = shift;
 
     my ( $hub, $main ) = $self->_require_hub();
-    my @categories = $self->_require_tags($hub)
+    my @tags = $self->_require_tags($hub)
         or return;
 
-    for my $cat (@categories) {
+    for my $cat (@tags) {
         $hub->category->delete(
             tag  => $cat,
             user => $hub->current_user(),
@@ -929,7 +929,7 @@ sub delete_tag {
 
     my $msg = 'The following tags were deleted from the ';
     $msg .= $hub->current_workspace()->name() . " workspace:\n";
-    $msg .= "  * $_\n" for @categories;
+    $msg .= "  * $_\n" for @tags;
 
     $self->_success($msg);
 }
@@ -943,11 +943,11 @@ sub search_tags {
     my $self = shift;
 
     my ( $hub, $main ) = $self->_require_hub();
-    my @categories = $self->_require_tags($hub)
+    my @tags = $self->_require_tags($hub)
         or return;
 
     my $msg = "Matched the following tags:\n";
-    $msg .= "  * $_\n" for @categories;
+    $msg .= "  * $_\n" for @tags;
 
     $self->_success($msg);
 }
@@ -2763,8 +2763,8 @@ Socialtext::CLI - Provides the implementation for the st-admin CLI script
   mass-copy-pages --workspace --target [--prefix]
   purge-page --workspace --page
   purge-attachment --workspace --page --attachment
-  search-categories --workspace --search
-  delete-category --workspace [--category or --search]
+  search-tags --workspace --search
+  delete-tag --workspace [--tag or --search]
   add-users-from --workspace --target
   customjs --workspace
   set-customjs --workspace [--uri or --name]
@@ -3010,14 +3010,14 @@ the command line.
 Prints all of the specified workspace's configuration values to
 standard output.
 
-=head2 search-categories --workspace --search
+=head2 search-tags --workspace --search
 
-Lists all categories matching the specified string.
+Lists all tags matching the specified string.
 
-=head2 delete-category --workspace [--category or --search]
+=head2 delete-tag --workspace [--tag or --search]
 
-Deletes the specified categories from the given workspace. You can
-specify a single category by name with C<--category> or all categories
+Deletes the specified tags from the given workspace. You can
+specify a single tag by name with C<--tag> or all tags
 matching a string with C<--search>.
 
 =head2 create-workspace --name --title --account [--empty] [--clone-pages-from]
