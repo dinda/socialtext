@@ -120,9 +120,9 @@ sub add_workspace_tag {
     my $tag  = shift;
 
     sql_execute(<<EOT,
-INSERT INTO page_tag VALUES (?, ?, ?)
+INSERT INTO page_tag VALUES (?, NULL, ?)
 EOT
-        $self->hub->current_workspace->workspace_id, '', $tag,
+        $self->hub->current_workspace->workspace_id, $tag,
     );
 
 }
@@ -421,12 +421,12 @@ sub weight_categories {
     my $tag_args = join(',', map { '?' } @tags);
     my $tag_in = @tags ? "AND LOWER(tag) IN ($tag_args)" : '';
     my $dbh = sql_execute(<<EOT, 
-SELECT tag AS name, count(tag) AS page_count FROM page_tag
+SELECT tag AS name, count(page_id) AS page_count 
+    FROM page_tag
     WHERE workspace_id = ?
-      AND page_id != ''
       $tag_in
     GROUP BY tag
-    ORDER BY count(tag) DESC, tag
+    ORDER BY count(page_id) DESC, tag
 EOT
         $self->hub->current_workspace->workspace_id, @tags,
     );
