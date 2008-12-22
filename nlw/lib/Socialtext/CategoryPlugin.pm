@@ -414,6 +414,7 @@ sub match_categories {
 sub weight_categories {
     my $self = shift;
     my @tags = map {lc($_) } @_;
+    return unless @tags;
 
     my $tag_args = join(',', map { '?' } @tags);
     my $tag_in = @tags ? "AND LOWER(tag) IN ($tag_args)" : '';
