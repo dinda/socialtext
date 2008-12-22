@@ -57,6 +57,7 @@ sub _entity_hash {
     if (ref($tag) eq 'HASH') {
         $tag->{value} ||= lc $tag->{name};
         $tag->{uri} = $self->_uri_for_tag($tag->{name});
+        $tag->{page_count} += 0;
         return $tag;
     }
 
