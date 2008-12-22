@@ -31,6 +31,7 @@ use Socialtext::WikiText::Emitter::SearchSnippets;
 use Socialtext::String;
 use Socialtext::Events;
 use Socialtext::SQL qw/:exec :txn get_dbh/;
+use Socialtext::SQL::Builder qw/sql_insert_many/;
 
 use Carp ();
 use Class::Field qw( field const );
@@ -841,12 +842,11 @@ INSSQL
     }
     sql_execute($insert_or_update, @args);
 
-    my $dbh = get_dbh();
-    $dbh->do("COPY page_tag FROM stdin");
-    for my $tag (@{ $self->metadata->Category }) {
-        $dbh->pg_putline("$wksp_id\t$pg_id\t$tag\n");
-    }
-    $dbh->pg_endcopy();
+    sql_insert_many( 
+        page_tag => [qw/workspace_id page_id tag/],
+        [ map { ($wksp_id, $pg_id, $_) } @{ $self->metadata->Category } ],
+    );
+
     sql_commit();
 }
 
