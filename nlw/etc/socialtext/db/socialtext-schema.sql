@@ -259,6 +259,7 @@ CREATE TABLE profile_field (
     field_class text NOT NULL,
     account_id bigint NOT NULL,
     title text NOT NULL,
+    is_user_editable boolean DEFAULT true NOT NULL,
     CONSTRAINT profile_field_class_check
             CHECK (field_class IN ('attribute', 'contact', 'relationship'))
 );

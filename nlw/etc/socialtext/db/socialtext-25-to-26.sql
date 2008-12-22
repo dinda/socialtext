@@ -7,6 +7,10 @@ ALTER TABLE ONLY page_tag
             FOREIGN KEY (workspace_id)
             REFERENCES "Workspace" (workspace_id) ON DELETE CASCADE;
 
+-- Make some profile fields user editable
+ALTER TABLE profile_field
+    ADD COLUMN is_user_editable boolean DEFAULT true NOT NULL;
+
 -- Update schema version
 UPDATE "System"
    SET value = '26'
