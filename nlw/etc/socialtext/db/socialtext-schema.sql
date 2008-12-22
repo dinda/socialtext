@@ -685,7 +685,7 @@ ALTER TABLE ONLY page
 ALTER TABLE ONLY page_tag
     ADD CONSTRAINT page_tag_workspace_id_page_id_fkey
             FOREIGN KEY (workspace_id)
-            REFERENCES "Workspace"(workspace_id, page_id) ON DELETE CASCADE;
+            REFERENCES page(workspace_id, page_id) ON DELETE CASCADE;
 
 ALTER TABLE ONLY page
     ADD CONSTRAINT page_workspace_id_fk
