@@ -319,9 +319,8 @@ sub page_count {
     my $tag  = shift;
 
     my $result = sql_singlevalue(<<EOT,
-SELECT count(tag) FROM page_tag
+SELECT count(page_id) FROM page_tag
     WHERE workspace_id = ?
-      AND page_id != ''
       AND LOWER(tag) = LOWER(?)
 EOT
         $self->hub->current_workspace->workspace_id,

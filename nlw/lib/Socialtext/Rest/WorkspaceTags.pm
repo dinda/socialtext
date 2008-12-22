@@ -1,10 +1,10 @@
 package Socialtext::Rest::WorkspaceTags;
 # @COPYRIGHT@
-
 use strict;
 use warnings;
 
 use Socialtext::String;
+use Socialtext::SQL qw/sql_execute/;
 
 use base 'Socialtext::Rest::Tags';
 
@@ -32,7 +32,16 @@ sub collection_name { "Tags for " . $_[0]->workspace->title . "\n" }
 sub _entities_for_query {
     my $self = shift;
 
-    return $self->hub->category->all();
+    my $sth = sql_execute( <<EOT,
+SELECT tag AS name,
+       count(page_id) AS page_count
+    FROM page_tag
+    WHERE workspace_id = ?
+    GROUP BY tag
+EOT
+        $self->hub->current_workspace->workspace_id,
+    );
+    return @{ $sth->fetchall_arrayref({}) };
 }
 
 sub add_text_element {
