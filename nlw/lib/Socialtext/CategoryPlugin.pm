@@ -418,7 +418,6 @@ sub weight_categories {
         maxCount => 0,
         tags => [],
     );
-    return %data unless @tags;
 
     my $tag_args = join(',', map { '?' } @tags);
     my $tag_in = @tags ? "AND LOWER(tag) IN ($tag_args)" : '';

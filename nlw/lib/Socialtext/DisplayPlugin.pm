@@ -452,15 +452,18 @@ sub _getCurrentTags {
     my $self = shift;
     my $page = shift;
 
-    my %tags = $self->hub->category->weight_categories(
-        @{ $page->metadata->Category } );
+    my $page_tags = $page->metadata->Category;
+    my %weighted_tags;
+    if (@$page_tags) {
+        %weighted_tags = $self->hub->category->weight_categories(@$page_tags);
+    }
 
-    foreach my $tag (@{$tags{tags}}) {
+    foreach my $tag (@{$weighted_tags{tags}}) {
         $tag->{page_count} = $tag->{page_count};
     }
-    $tags{maxCount} = $tags{maxCount};
+    $weighted_tags{maxCount} = $weighted_tags{maxCount};
 
-    return \%tags;
+    return \%weighted_tags;
 }
 
 sub _getCurrentTagsJSON {
