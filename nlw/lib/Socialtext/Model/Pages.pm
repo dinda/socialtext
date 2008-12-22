@@ -124,7 +124,10 @@ sub By_id {
         bind             => $bind,
         do_not_need_tags => $do_not_need_tags,
     );
-    die "No page found for ($workspace_id, $page_id)" unless @$pages;
+    unless (@$pages) {
+        my $pg_ids = join(',', (ref($page_id) ? @$page_id : ($page_id)));
+        die "No page(s) found for ($workspace_id, $pg_ids)"
+    }
     Socialtext::Timer->Pause('By_id');
     return @$pages == 1 ? $pages->[0] : $pages;
 }
