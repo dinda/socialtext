@@ -2,7 +2,7 @@ package Socialtext::SQL::Builder;
 # @COPYRIGHT@
 use strict;
 use base 'Exporter';
-use Socialtext::SQL qw(:exec);
+use Socialtext::SQL qw(:exec get_dbh);
 use Carp qw/croak cluck/;
 
 our @EXPORT = ();
@@ -147,8 +147,9 @@ sub sql_insert_many {
     my $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
     local $Socialtext::SQL::Level = $Socialtext::SQL::Level + 1;
     my $sth;
+    my $dbh = get_dbh();
     eval { 
-        $sth->prepare($sql);
+        my $sth = $dbh->prepare($sql);
         for (@$rows) {
             $sth->execute(@$_);
         }

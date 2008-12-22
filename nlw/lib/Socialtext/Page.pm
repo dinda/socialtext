@@ -842,10 +842,13 @@ INSSQL
     }
     sql_execute($insert_or_update, @args);
 
-    sql_insert_many( 
-        page_tag => [qw/workspace_id page_id tag/],
-        [ map { ($wksp_id, $pg_id, $_) } @{ $self->metadata->Category } ],
-    );
+    my $tags = $self->metadata->Category;
+    if (@$tags) {
+        sql_insert_many( 
+            page_tag => [qw/workspace_id page_id tag/],
+            [ map { [$wksp_id, $pg_id, $_] } @$tags ],
+        );
+    }
 
     sql_commit();
 }
