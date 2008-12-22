@@ -414,7 +414,11 @@ sub match_categories {
 sub weight_categories {
     my $self = shift;
     my @tags = map {lc($_) } @_;
-    return unless @tags;
+    my %data = (
+        maxCount => 0,
+        tags => [],
+    );
+    return %data unless @tags;
 
     my $tag_args = join(',', map { '?' } @tags);
     my $tag_in = @tags ? "AND LOWER(tag) IN ($tag_args)" : '';
@@ -429,7 +433,6 @@ EOT
         $self->hub->current_workspace->workspace_id, @tags,
     );
 
-    my %data;
     $data{tags} = $dbh->fetchall_arrayref({});
     my $max = 0;
     for (map { $_->{page_count} } @{ $data{tags} }) { 
