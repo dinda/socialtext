@@ -32,6 +32,7 @@ sub register {
     $registry->add(action => 'workspaces_created');
     $registry->add(action => 'workspaces_unsubscribe');
     $registry->add(action => 'workspaces_permissions');
+    $registry->add(action => 'workspaces_webhooks');
 }
 
 sub workspaces_listall {
@@ -618,6 +619,46 @@ sub _set_workspace_permissions {
     $self->message( $message );
 }
 
+sub workspaces_webhooks {
+    my $self = shift;
+
+    $self->hub()->assert_current_user_is_admin();
+
+    $self->_set_workspace_webhooks()
+        if $self->cgi()->Button();
+
+    my $settings_section = $self->template_process(
+        'element/settings/workspaces_webhooks_section',
+        workspace => $self->hub->current_workspace,
+        webhooks  => [
+        ],
+        $self->status_messages_for_template,
+    );
+
+    $self->screen_template('view/settings');
+
+    return $self->render_screen(
+        settings_table_id => 'settings-table',
+        settings_section  => $settings_section,
+        hub               => $self->hub,
+        display_title     => loc('Workspaces: Permissions'),
+        pref_list         => $self->_get_pref_list,
+    );
+}
+
+sub _set_workspace_webhooks {
+    my $self = shift;
+
+    my $hook_action = $self->cgi->webhook_action || '';
+    my $hook_page   = $self->cgi->webhook_page || '';
+
+    warn "_set_webhook: '$hook_action', '$hook_page'\n";
+    return unless $hook_action;
+
+    my $message = loc('Webhook added for action: [_1]', $hook_action);
+    $self->message( $message );
+}
+
 package Socialtext::WorkspacesUI::CGI;
 
 use base 'Socialtext::CGI';
@@ -648,5 +689,7 @@ cgi 'enable_unplugged';
 cgi 'uploaded_skin';
 cgi 'skin_reset';
 cgi skin_file => '-upload';
+cgi 'webhook_action';
+cgi 'webhook_page';
 
 1;
