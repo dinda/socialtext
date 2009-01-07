@@ -1,0 +1,42 @@
+[%# vim: set et sts=2 sw=2: %]
+[%# @COPYRIGHT@ -%]
+<form method="post" action="[% script_name %]" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="action" value="workspaces_webhooks" />
+  <input type="hidden" name="preferences_class_id" value="[% preferences_class_id %]" />
+  <dl class="form">
+    <dt><label>[% loc('Workspace WebHooks') %]</label></dt>
+    <dd>
+      [% loc('[_1] are an easy way to integrate Socialtext with other applications.  When certain events happen, the Socialtext server can make a HTTP Request to a remote website.  This allows "real time" integration with other platforms.', '<a href="http://webhooks.pbwiki.com">WebHooks</a>') %]
+    </dd>
+
+    <dd>
+      [% loc('These hooks will operate on this workspace only.') %]
+    </dd>
+
+    <br />
+    [% loc('Action is: ') %]
+    <select name="webhook_action" />
+      <option value="">[% loc('Choose an action') %]</option>
+      <option value="comment">[% loc('Page is commented') %]</option>
+      <option value="delete">[% loc('Page is deleted') %]</option>
+      <option value="edit_save">[% loc('Page is edited') %]</option>
+      <option value="tag_add">[% loc('Page is tagged') %]</option>
+      <option value="tag_delete">[% loc('Page is un-tagged') %]</option>
+    </select>
+
+    <br />
+    <label>And page is (optional):</label>
+    <input type="text" name="webhook_page"></input>
+
+    <br />
+    <input type="submit" value="[% loc('Add Webhook') %]" name="Button"/>
+  </dl>
+</form>
+
+<hr />
+
+[% IF webhooks.size > 0 %]
+  <dd>[% loc('Some webhooks') %]</dd>
+[% ELSE %]
+  <dd>[% loc('No WebHooks are currently configured for this workspace.') %]</dd>
+[% END %]
