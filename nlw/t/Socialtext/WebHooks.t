@@ -4,8 +4,9 @@ use warnings;
 use Test::Socialtext tests => 44;
 use Socialtext::SQL qw/sql_execute/;
 use Socialtext::Workspace;
+use Socialtext::Events::Recorder;
 
-fixtures 'admin_no_pages';
+fixtures 'admin';
 
 BEGIN {
     use_ok 'Socialtext::WebHooks';
@@ -55,4 +56,24 @@ Add_webhooks: {
 
     $hooks = Socialtext::WebHooks->All($wksp);
     is scalar(@$hooks), scalar(@valid_actions), 'half the webhooks were deleted';
+}
+
+Trigger_a_webhook: {
+    Socialtext::WebHooks->Clear($wksp);
+    Socialtext::WebHooks->Add(
+        action => 'comment',
+        workspace => $wksp,
+        url => $hook_url,
+    );
+
+    my $erec = Socialtext::Events::Recorder->new;
+    $erec->record_event( {
+            event_class => 'page',
+            action => 'comment',
+            actor => 1,
+            person => 1,
+            page => 'admin_wiki',
+            workspace => $wksp->workspace_id,
+        },
+    );
 }
