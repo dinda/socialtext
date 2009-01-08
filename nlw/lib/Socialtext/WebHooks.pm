@@ -21,8 +21,9 @@ EOT
 sub All {
     my $class = shift;
     my $workspace = shift or croak "Workspace is mandatory!";
+    $workspace = $workspace->workspace_id if ref $workspace;
 
-    my $sth = sql_execute(<<EOT, $workspace->workspace_id);
+    my $sth = sql_execute(<<EOT, $workspace);
 SELECT * FROM webhook
     WHERE workspace_id = ?
     ORDER BY id
