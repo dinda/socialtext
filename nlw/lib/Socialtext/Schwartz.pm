@@ -4,7 +4,7 @@ use warnings;
 use Socialtext::Schema;
 use TheSchwartz;
 use base 'Exporter';
-our @EXPORT_OK = qw/work_asynchronously list_jobs/;
+our @EXPORT_OK = qw/work_asynchronously list_jobs clear_jobs/;
 
 our $Schwartz;
 sub _schwartz {
@@ -24,7 +24,7 @@ sub _schwartz {
 }
 
 sub work_asynchronously {
-    my $job_class = shift;
+    my $job_class = "Socialtext::Job::" . (shift || die 'Need class name');
     my %args = @_;
 
     my $client = _schwartz();
@@ -35,6 +35,13 @@ sub list_jobs {
     my %args = @_;
     my $client = _schwartz();
     return $client->list_jobs( \%args );
+}
+
+sub clear_jobs {
+    my @jobs = list_jobs(@_);
+    for my $j (@jobs) {
+        $j->completed;
+    }
 }
 
 1;
