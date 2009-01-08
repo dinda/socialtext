@@ -1,5 +1,14 @@
 [%# vim: set et sts=2 sw=2: %]
 [%# @COPYRIGHT@ -%]
+
+<div class="message">[% message %]</div>
+[% FOREACH warning = warnings %]
+  <div class="error-message">[% loc('warning:') %] [% warning %]</div>
+[% END %]
+[% FOREACH error = errors %]
+  <div class="error-message">[% loc('error:') %] [% error %]</div>
+[% END %]
+
 <form method="post" action="[% script_name %]" enctype="application/x-www-form-urlencoded">
   <input type="hidden" name="action" value="workspaces_webhooks" />
   <input type="hidden" name="preferences_class_id" value="[% preferences_class_id %]" />
@@ -27,6 +36,10 @@
     <br />
     <label>And page is (optional):</label>
     <input type="text" name="webhook_page"></input>
+
+    <br />
+    <label>Hook URL:</label>
+    <input type="text" name="webhook_url"></input>
 
     <br />
     <input type="submit" value="[% loc('Add Webhook') %]" name="Button"/>

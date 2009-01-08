@@ -5,7 +5,8 @@ CREATE TABLE webhook (
     id bigint NOT NULL,
     workspace_id bigint,
     action text,
-    page_id text
+    page_id text,
+    url text
 );
 
 CREATE SEQUENCE "webhook___webhook_id"
@@ -27,7 +28,7 @@ ALTER TABLE ONLY webhook
 
 ALTER TABLE ONLY webhook
     ADD CONSTRAINT webhook_ukey
-        UNIQUE (workspace_id, action, page_id);
+        UNIQUE (workspace_id, action, page_id, url);
 
 -- No FK contstraint on page_id - it's not necessary that the page exists
 

@@ -1,8 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-BEGIN {$ENV{ST_LIVE_DANGEROUSLY} = 1 }
-use Test::Socialtext qw/no_plan/;
+use Test::Socialtext tests => 43;
 use Socialtext::SQL qw/sql_execute/;
 use Socialtext::Workspace;
 
@@ -13,6 +12,7 @@ BEGIN {
 }
 
 my $wksp = Socialtext::Workspace->new(name => 'admin');
+my $hook_url = 'http://test-url';
 
 No_webhooks: {
     Socialtext::WebHooks->Clear($wksp);
@@ -25,11 +25,13 @@ Add_webhooks: {
         Socialtext::WebHooks->Add(
             action => $action,
             workspace => $wksp,
+            url => $hook_url,
         );
         Socialtext::WebHooks->Add(
             action => $action,
             workspace => $wksp,
             page_id => "Admin Wiki",
+            url => $hook_url,
         );
     }
 
@@ -41,25 +43,12 @@ Add_webhooks: {
         is $h->{action}, $action;
         is $h->{workspace_id}, $wksp->workspace_id;
         is $h->{page_id}, undef;
+        is $h->{url}, $hook_url;
 
         $h = shift @$hooks;
         is $h->{action}, $action;
         is $h->{workspace_id}, $wksp->workspace_id;
         is $h->{page_id}, 'admin_wiki', 'page_id is normalized';
+        is $h->{url}, $hook_url;
     }
 }
-
-Duplicate_webhook: {
-    Socialtext::WebHooks->Clear($wksp);
-    Socialtext::WebHooks->Add(
-        action => 'edit_save',
-        workspace => $wksp,
-    );
-    eval { 
-        Socialtext::WebHooks->Add(
-            action => 'edit_save',
-            workspace => $wksp,
-        );
-    };
-    ok $@, 'could not add duplicate webhook';
- }

@@ -356,7 +356,8 @@ CREATE TABLE webhook (
     id bigint NOT NULL,
     workspace_id bigint,
     "action" text,
-    page_id text
+    page_id text,
+    url text
 );
 
 CREATE SEQUENCE webhook___webhook_id
@@ -480,7 +481,7 @@ ALTER TABLE ONLY users
 
 ALTER TABLE ONLY webhook
     ADD CONSTRAINT webhook_ukey
-            UNIQUE (workspace_id, "action", page_id);
+            UNIQUE (workspace_id, "action", page_id, url);
 
 ALTER TABLE ONLY workspace_plugin
     ADD CONSTRAINT workspace_plugin_pkey

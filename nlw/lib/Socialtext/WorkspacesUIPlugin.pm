@@ -13,6 +13,7 @@ use Socialtext::Role;
 use Socialtext::Challenger;
 use Socialtext::l10n qw(loc);
 use Socialtext::File::Copy::Recursive qw(dircopy);
+use Socialtext::WebHooks;
 use YAML qw(LoadFile);
 
 sub class_id { 'workspaces_ui' }
@@ -650,13 +651,24 @@ sub _set_workspace_webhooks {
     my $self = shift;
 
     my $hook_action = $self->cgi->webhook_action || '';
-    my $hook_page   = $self->cgi->webhook_page || '';
+    my $hook_page   = $self->cgi->webhook_page || undef;
 
-    warn "_set_webhook: '$hook_action', '$hook_page'\n";
     return unless $hook_action;
 
-    my $message = loc('Webhook added for action: [_1]', $hook_action);
-    $self->message( $message );
+    eval {
+        Socialtext::WebHooks->Add(
+            action => $hook_action,
+            page_id => $hook_page,
+            workspace => $self->hub->current_workspace,
+        );
+    };
+    if ($@) {
+        $self->add_error( $@ );
+    }
+    else {
+        my $message = loc('Webhook added for action: [_1]', $hook_action);
+        $self->message( $message );
+    }
 }
 
 package Socialtext::WorkspacesUI::CGI;
@@ -691,5 +703,6 @@ cgi 'skin_reset';
 cgi skin_file => '-upload';
 cgi 'webhook_action';
 cgi 'webhook_page';
+cgi 'webhook_url';
 
 1;
