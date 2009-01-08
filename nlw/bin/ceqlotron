@@ -7,6 +7,7 @@ use FindBin;
 use lib "$FindBin::Bin/../lib";
 
 use Socialtext::Ceqlotron;
+use Socialtext::Schwartz qw/client/;
 
 use Getopt::Long;
 use Socialtext::Log 'st_log';
@@ -118,11 +119,20 @@ sub main_loop {
             $HaveEverGottenTheLock = 1;
 
             fork_some_children();
+            run_schwartz_jobs();
             Socialtext::Ceqlotron::release_lock();
         }
         last LOOP if $ExitPlease || $OnlyOnce;
         sleep Socialtext::AppConfig->ceqlotron_period;
     }
+}
+
+# Ideally this would also fork into several background processes, but it
+# doesn't do that yet.
+sub run_schwartz_jobs {
+    my $client = client();
+    $client->can_do('Socialtext::Job::WebHook');
+    $client->work_until_done;
 }
 
 # Idea due to cdent.  At some point, a more elegant way to do this would be to
