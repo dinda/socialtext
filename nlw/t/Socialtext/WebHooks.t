@@ -12,7 +12,7 @@ fixtures 'admin';
 
 BEGIN {
     use_ok 'Socialtext::WebHooks';
-    use_ok 'Socialtext::Schwartz', qw/list_jobs clear_jobs work/;
+    use_ok 'Socialtext::Schwartz', qw/list_jobs clear_jobs client/;
 }
 
 my $wksp     = Socialtext::Workspace->new(name => 'admin');
@@ -89,7 +89,9 @@ Trigger_a_webhook: {
 
     # Process the jobs
     $LWP::UserAgent::RESULTS{$hook_url} = 200;
-    work(1);
+    my $client = client();
+    $client->can_do('Socialtext::Job::WebHook');
+    $client->work_once;
 
     @jobs = list_jobs( 
         funcname => 'WebHook',

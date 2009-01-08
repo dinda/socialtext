@@ -10,6 +10,7 @@ BEGIN {
 }
 
 Queue_job: {
+    clear_jobs();
     my @jobs = list_jobs( 
         funcname => 'Test',
     );
@@ -18,7 +19,7 @@ Queue_job: {
     work_asynchronously( 'Test', test => 1 );
 
     @jobs = list_jobs( 
-        funcname => 'Socialtext::Job::Test',
+        funcname => 'Test',
     );
     is scalar(@jobs), 1, 'found a job';
     my $j = shift @jobs;
