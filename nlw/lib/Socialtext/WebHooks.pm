@@ -6,6 +6,7 @@ use Socialtext::SQL qw/sql_execute sql_singlevalue/;
 use Socialtext::SQL::Builder qw/sql_nextval/;
 use Carp qw/croak/;
 use Socialtext::Page;
+use Socialtext::l10n qw/loc/;
 
 sub Clear {
     my $class = shift;
@@ -37,7 +38,8 @@ sub Add {
     my %opts = @_;
     croak 'action is not defined!' unless $opts{action};
     croak "invalid action ($opts{action})" unless $Valid_action{$opts{action}};
-    croak loc('URL must be HTTP or HTTPS') unless $opts{url} =~ m#^https?://#;
+    croak "No URL defined - it is mandatory!" unless $opts{url};
+    croak 'URL must be HTTP or HTTPS' unless $opts{url} =~ m#^https?://#;
 
     my $workspace_id = $opts{workspace} ? $opts{workspace}->workspace_id 
                                         : undef;
@@ -54,6 +56,14 @@ sub Add {
         $page_id,
         $opts{url},
     );
+}
+
+sub Delete {
+    my $class = shift;
+    my $id    = shift;
+
+    # ignore errors
+    eval { sql_execute('DELETE FROM webhook WHERE id = ?', $id) };
 }
 
 1;

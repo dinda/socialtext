@@ -49,7 +49,17 @@
 <hr />
 
 [% IF webhooks.size > 0 %]
-  <dd>[% loc('Some webhooks') %]</dd>
+  <dd>[% loc('Current WebHooks') %]</dd>
+  [% FOREACH h IN webhooks %]
+    <li>Action = [% h.action %]
+    [% IF h.page_id %]
+      and page ID = '[% h.page_id %]'
+    [% END %]
+    : [% h.url %]
+    (<a href="?action=workspaces_webhooks&webhook_delete_id=[% h.id %]">delete</a>)
+    </li>
+  [% END %]
+  </ul>
 [% ELSE %]
   <dd>[% loc('No WebHooks are currently configured for this workspace.') %]</dd>
 [% END %]

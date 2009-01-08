@@ -628,11 +628,16 @@ sub workspaces_webhooks {
     $self->_set_workspace_webhooks()
         if $self->cgi()->Button();
 
+    if (my $id = $self->cgi->webhook_delete_id) {
+        eval { Socialtext::WebHooks->Delete($id) };
+        warn $@;
+        $self->message("Deleted webhook.");
+    }
+
     my $settings_section = $self->template_process(
         'element/settings/workspaces_webhooks_section',
         workspace => $self->hub->current_workspace,
-        webhooks  => [
-        ],
+        webhooks  => Socialtext::WebHooks->All( $self->hub->current_workspace ),
         $self->status_messages_for_template,
     );
 
@@ -651,15 +656,25 @@ sub _set_workspace_webhooks {
     my $self = shift;
 
     my $hook_action = $self->cgi->webhook_action || '';
-    my $hook_page   = $self->cgi->webhook_page || undef;
-
+    my $hook_page   = $self->cgi->webhook_page   || undef;
+    my $hook_url    = $self->cgi->webhook_url    || undef;
     return unless $hook_action;
+
+    unless ($hook_url) {
+        $self->add_error(loc('Hook URL is mandatory.'));
+        return;
+    }
+    unless ($hook_url =~ m#^https?://#) {
+        $self->add_error(loc('Hook URL must be HTTP or HTTPS'));
+        return;
+    }
 
     eval {
         Socialtext::WebHooks->Add(
             action => $hook_action,
             page_id => $hook_page,
             workspace => $self->hub->current_workspace,
+            url => $hook_url,
         );
     };
     if ($@) {
@@ -704,5 +719,6 @@ cgi skin_file => '-upload';
 cgi 'webhook_action';
 cgi 'webhook_page';
 cgi 'webhook_url';
+cgi 'webhook_delete_id';
 
 1;

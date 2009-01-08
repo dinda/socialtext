@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use Test::Socialtext tests => 43;
+use Test::Socialtext tests => 44;
 use Socialtext::SQL qw/sql_execute/;
 use Socialtext::Workspace;
 
@@ -44,6 +44,7 @@ Add_webhooks: {
         is $h->{workspace_id}, $wksp->workspace_id;
         is $h->{page_id}, undef;
         is $h->{url}, $hook_url;
+        Socialtext::WebHooks->Delete($h->{id});
 
         $h = shift @$hooks;
         is $h->{action}, $action;
@@ -51,4 +52,7 @@ Add_webhooks: {
         is $h->{page_id}, 'admin_wiki', 'page_id is normalized';
         is $h->{url}, $hook_url;
     }
+
+    $hooks = Socialtext::WebHooks->All($wksp);
+    is scalar(@$hooks), scalar(@valid_actions), 'half the webhooks were deleted';
 }
