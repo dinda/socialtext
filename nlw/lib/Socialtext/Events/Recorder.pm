@@ -139,6 +139,7 @@ sub _process_webhooks {
 
     my $hooks = Socialtext::WebHooks->All( $p->{workspace} );
     for my $h (@$hooks) {
+        next unless $p->{action} eq $h->{action};
         if ($h->{page_id}) {
             if ($h->{page_id} eq $p->{page}) {
                 $work_it->($h);
