@@ -2,9 +2,11 @@ package Socialtext::Schwartz;
 use strict;
 use warnings;
 use Socialtext::Schema;
+use Socialtext::SQL qw/sql_execute/;
 use TheSchwartz;
 use base 'Exporter';
-our @EXPORT_OK = qw/work_asynchronously list_jobs clear_jobs/;
+our @EXPORT_OK = qw/work_asynchronously list_jobs clear_jobs work/;
+use Socialtext::Job::WebHook;
 
 our $Schwartz;
 sub _schwartz {
@@ -33,14 +35,26 @@ sub work_asynchronously {
 
 sub list_jobs {
     my %args = @_;
+    $args{funcname} = "Socialtext::Job::$args{funcname}";
     my $client = _schwartz();
     return $client->list_jobs( \%args );
 }
 
 sub clear_jobs {
-    my @jobs = list_jobs(@_);
-    for my $j (@jobs) {
-        $j->completed;
+    sql_execute('DELETE FROM job');
+}
+
+sub work {
+    my $once = shift;
+
+    my $client = _schwartz();
+    $client->can_do( 'Socialtext::Job::WebHook' );
+
+    if ($once) {
+        $client->work_once;
+    }
+    else {
+        $client->work;
     }
 }
 

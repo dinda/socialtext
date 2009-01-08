@@ -24,6 +24,6 @@ Queue_job: {
     my $j = shift @jobs;
     is $j->funcname, 'Socialtext::Job::Test', 'funcname is correct';
 
-    clear_jobs( funcname => 'Test' );
+    clear_jobs();
     is scalar(@jobs), 0, 'cleared the jobs';
 }

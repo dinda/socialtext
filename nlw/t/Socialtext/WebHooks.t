@@ -1,19 +1,22 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use Test::Socialtext tests => 44;
+use mocked 'LWP::UserAgent';
+use Test::Socialtext tests => 49;
 use Socialtext::SQL qw/sql_execute/;
 use Socialtext::Workspace;
 use Socialtext::Events::Recorder;
+use Socialtext::JSON qw/decode_json/;
 
 fixtures 'admin';
 
 BEGIN {
     use_ok 'Socialtext::WebHooks';
+    use_ok 'Socialtext::Schwartz', qw/list_jobs clear_jobs work/;
 }
 
-my $wksp = Socialtext::Workspace->new(name => 'admin');
-my $hook_url = 'http://test-url';
+my $wksp     = Socialtext::Workspace->new(name => 'admin');
+my $hook_url = 'http://topaz.socialtext.net/~lukec/webhook.cgi';
 
 No_webhooks: {
     Socialtext::WebHooks->Clear($wksp);
@@ -54,12 +57,14 @@ Add_webhooks: {
         is $h->{url}, $hook_url;
     }
 
-    $hooks = Socialtext::WebHooks->All($wksp);
+    $hooks = Socialtext::WebHooks->All($wksp->workspace_id);
     is scalar(@$hooks), scalar(@valid_actions), 'half the webhooks were deleted';
 }
 
 Trigger_a_webhook: {
     Socialtext::WebHooks->Clear($wksp);
+    clear_jobs();
+
     Socialtext::WebHooks->Add(
         action => 'comment',
         workspace => $wksp,
@@ -67,13 +72,33 @@ Trigger_a_webhook: {
     );
 
     my $erec = Socialtext::Events::Recorder->new;
-    $erec->record_event( {
-            event_class => 'page',
-            action => 'comment',
-            actor => 1,
-            person => 1,
-            page => 'admin_wiki',
-            workspace => $wksp->workspace_id,
-        },
+    my $event = {
+        event_class => 'page',
+        action => 'comment',
+        actor => 1,
+        person => 1,
+        page => 'admin_wiki',
+        workspace => $wksp->workspace_id,
+    };
+    $erec->record_event( $event );
+
+    my @jobs = list_jobs( 
+        funcname => 'WebHook',
     );
+    is scalar(@jobs), 1, 'found a webhook job';
+
+    # Process the jobs
+    $LWP::UserAgent::RESULTS{$hook_url} = 200;
+    work(1);
+
+    @jobs = list_jobs( 
+        funcname => 'WebHook',
+    );
+    is scalar(@jobs), 0, 'webhook jobs were processed';
+
+    my $args = shift @{ $LWP::UserAgent::POST_ARGS{ $hook_url } };
+    my $json = $args->{payload};
+    ok $json, 'has json payload';
+    my $hook_arg = decode_json($json);
+    is_deeply $hook_arg, $event, 'hook arg matches match';
 }

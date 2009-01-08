@@ -4,6 +4,8 @@ use warnings;
 use strict;
 use Socialtext::SQL qw/sql_execute/;
 use Socialtext::JSON qw/encode_json decode_json/;
+use Socialtext::WebHooks;
+use Socialtext::Schwartz qw/work_asynchronously/;
 
 sub new {
     my $class = shift;
@@ -119,7 +121,33 @@ sub record_event {
     my $sql = "INSERT INTO event ( $fields ) VALUES ( $placeholders )";
     sql_execute($sql, @values);
 
+    $self->_process_webhooks($p);
+
     return; # don't leak the $sth returned from sql_execute
+}
+
+sub _process_webhooks {
+    my $self = shift;
+    my $p = shift;
+
+    my $work_it = sub {
+        work_asynchronously( 'WebHook',
+            event => $p,
+            hook => shift,
+        );
+    };
+
+    my $hooks = Socialtext::WebHooks->All( $p->{workspace} );
+    for my $h (@$hooks) {
+        if ($h->{page_id}) {
+            if ($h->{page_id} eq $p->{page}) {
+                $work_it->($h);
+            }
+        }
+        else {
+            $work_it->($h);
+        }
+    }
 }
 
 sub _translate_ref_to_id {
