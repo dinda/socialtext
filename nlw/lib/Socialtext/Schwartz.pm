@@ -7,6 +7,7 @@ use TheSchwartz;
 use base 'Exporter';
 our @EXPORT_OK = qw/work_asynchronously list_jobs clear_jobs client/;
 use Socialtext::Job::WebHook;
+use Socialtext::Job::SignalNotification;
 
 our $Schwartz;
 sub client {
@@ -20,6 +21,7 @@ sub client {
                 user => $params{user},
             },
         ],
+        verbose => 1,
     );
     return $Schwartz = $client;
 }

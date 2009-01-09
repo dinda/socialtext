@@ -129,6 +129,7 @@ sub record_event {
 sub _process_webhooks {
     my $self = shift;
     my $p = shift;
+    return unless $p->{workspace};
 
     my $work_it = sub {
         work_asynchronously( 'WebHook',

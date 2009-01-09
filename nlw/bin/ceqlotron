@@ -132,6 +132,7 @@ sub main_loop {
 sub run_schwartz_jobs {
     my $client = client();
     $client->can_do('Socialtext::Job::WebHook');
+    $client->can_do('Socialtext::Job::SignalNotification');
     $client->work_until_done;
 }
 
