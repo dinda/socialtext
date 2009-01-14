@@ -1,0 +1,71 @@
+# 
+# Feature(POS) to Internal State mapping
+# 
+# NOTE:
+#   -  This file is handeled as a perl library.
+#   -  The charset of this file should be the same as that of dictionary. 
+#
+
+sub init_rewrite {};
+
+sub unigram_rewrite {
+
+    # 読み,発音をとりのぞいて, 品詞1,2,活用形,活用型,原形,よみ を使う
+    my @F = @{shift @_}[0..5];
+    # 原形の同一視ルール
+    if ($F[4] =~ /^(言う|いう|云う)$/) {
+	$F[4] = "言う";
+    } elsif ($F[4] =~ /^(来る|くる)$/) {
+	$F[4] = "来る";
+    } elsif ($F[4] =~ /^(行く|行う|する)$/) {
+	$F[4] = "行く";
+    }
+    return \@F;
+}
+
+sub left_rewrite {
+
+    # 読み,発音をとりのぞいて, 品詞1,2,活用形,活用型,原形のみを使う
+    my @F = @{shift @_}[0..4];
+
+    if ($F[0] =~ /^(助詞|助動詞)/) {
+
+	# 語彙化なのでそのまま    
+
+    } elsif ($F[0] =~ /^動詞/) {
+
+	if ($F[4] =~ /^(言う|いう|云う)$/) {
+	    $F[4] = "言う";
+	} elsif ($F[4] =~ /^(来る|くる)$/) {
+	    $F[4] = "来る";
+	} elsif ($F[4] =~ /^(行く|行う|する)$/) {
+	    $F[4] = $1;
+	} else {
+	    $F[4] = "*";
+	}
+
+    } elsif ($F[0] =~ /^形容詞/) {
+
+	if ($F[4] =~ /(ない|づらい|にくい|ぽい|っぽい|たらしい|ったらしい|くさい)$/) {
+	    $F[4] = $1; # 語尾でまとめる
+	} elsif ($F[4] =~ /(欲しい|ほしい)$/) {
+	    $F[4] = "欲しい";
+	} elsif ($F[4] =~ /(がたい|難い)$/) {
+	    $F[4] = "難い";
+	} else {
+	    $F[4] = "*";
+	}
+
+    } else {
+	$F[4] = "*"; # 語彙部分を * に変更
+    }
+
+    return \@F;
+}
+
+sub right_rewrite {
+    return left_rewrite(shift @_);
+}
+
+# don't erase this line
+1;

@@ -1,0 +1,30 @@
+;
+; Configuration file of IPADIC
+;
+; $Id: dicrc,v 1.4 2005/12/24 19:58:42 taku-ku Exp $;
+;
+dictionary-charset = utf-8
+
+bos-feature = BOS/EOS,*,*,*,*,*,*
+cost-factor = 800
+eval-size = 4
+unk-eval-size = 2
+
+; yomi
+node-format-yomi = %pS%f[7]
+unk-format-yomi = %M
+eos-format-yomi  = \n
+
+; simple
+node-format-simple = %m\t%F-[0,1,2,3]\n
+eos-format-simple  = EOS\n
+
+; juman
+node-format-juman = %m\t%f[5]\t%f[4]\t%F-[0,1,2,3]\n
+unk-format-juman  = %m\t%m\t%m\t%F-[0,1,2,3]\t\t\n
+eos-format-juman  = EOS\n
+
+; juman (include spaces)
+node-format-juman2 = %M\t%(f[5])\t%f[4]\t%F-[0,1,2,3]\n
+unk-format-juman2  = %M\t(%m)\t%m\t%F-[0,1,2,3]\t\t\n
+eos-format-juman2  = EOS\n
