@@ -91,6 +91,10 @@
                 <iframe frameborder="0" id="st-page-editing-wysiwyg" src="[% wiki.skin_uri() %]/html/wikiwyg.html"></iframe>
                 <div id="st-page-preview"></div>
                 <div id="wikiwyg-page-content"></div>
+                <div class="st-summary">
+                    <label for="st-summary-input">[% loc('Summary (optional)') %]:</label> <input id="st-summary-edit" type="text" />
+                    <input id="st-minor-edit-checkbox" type="checkbox"/><label for="st-minor-edit-checkbox">[% loc('This is a minor edit') %]</label>
+                </div>
                 <br style="clear: both; height: 1px" />
             </div>
         </div>
