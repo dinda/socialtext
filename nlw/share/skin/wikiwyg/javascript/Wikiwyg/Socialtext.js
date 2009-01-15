@@ -871,6 +871,13 @@ proto.saveNewPage = function() {
 
 proto.saveChanges = function() {
     this.disableLinkConfirmations();
+
+    // Because the form sits above the edit area(s), putting the edit summary
+    // field there would look weird. Therefore we copy the value into the
+    // hidden parameter before submitting the form.
+    jQuery('#st-page-editing-summary')
+        .val(jQuery('#st-summary-input').val());
+
     var submit_changes = function(wikitext) {
         /*
         if ( Wikiwyg.is_safari ) {
@@ -1117,9 +1124,7 @@ proto.get_offset_top = function (e) {
 }
 
 proto.get_summary = function () {
-    var $summary = jQuery('.st-summary');
-    console.log($summary);
-    return $summary;
+    return jQuery('.st-summary');
 }
 
 // XXX - Hardcoded until we can get height of Save/Preview/Cancel buttons

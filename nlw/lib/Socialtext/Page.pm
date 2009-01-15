@@ -259,6 +259,7 @@ various places where this has been done in the past.
         subject          => SCALAR_TYPE,
         user             => USER_TYPE,
         date             => { can  => [qw(strftime)], default => undef },
+        edit_summary     => { type => SCALAR_TYPE,    default => '' },
     };
     sub update {
         my $self = shift;
@@ -277,6 +278,7 @@ various places where this has been done in the past.
         $metadata->Revision($revision);
         $metadata->Received(undef);
         $metadata->MessageID('');
+        $metadata->RevisionSummary(Socialtext::String::trim($args{edit_summary}));
         $metadata->loaded(1);
         foreach (@{$args{categories}}) {
             $metadata->add_category($_);
@@ -1894,7 +1896,8 @@ sub is_bad_page_title {
     return 0;
 }
 
-sub summary { $_[0]->metadata->{Summary} }
+sub summary { $_[0]->metadata->Summary }
+sub edit_summary { $_[0]->metadata->RevisionSummary }
 
 # This is called by Socialtext::Query::Plugin::push_result
 sub to_result {
