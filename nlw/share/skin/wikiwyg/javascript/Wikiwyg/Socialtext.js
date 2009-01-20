@@ -1134,7 +1134,7 @@ proto.get_edit_height = function() {
                       this.get_offset_top(this.div) -
                       this.wikiwyg.toolbarObject.div.offsetHeight -
                       this.footer_offset -
-                      this.get_summary().height();
+                      this.get_summary().outerHeight();
 
     if (edit_height < 100) edit_height = 100;
     return edit_height;

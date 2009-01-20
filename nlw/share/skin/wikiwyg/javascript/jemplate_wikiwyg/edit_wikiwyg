@@ -87,13 +87,13 @@
                     <input id="st-page-editing-append" type="hidden" name="append_mode" value="" />
                     <textarea id="st-page-editing-pagebody-decoy" wrap="virtual" name="page_body_decoy"></textarea>
                     <div style="display: none" id="st-page-editing-files"></div>
-                    <input id="st-page-edititing-summary" type="hidden" name="edit_summary" />
+                    <input id="st-page-editing-summary" type="hidden" name="edit_summary" />
                 </form>
                 <iframe frameborder="0" id="st-page-editing-wysiwyg" src="[% wiki.skin_uri() %]/html/wikiwyg.html"></iframe>
                 <div id="st-page-preview"></div>
                 <div id="wikiwyg-page-content"></div>
-                <div class="st-summary">
-                    <label for="st-summary-input">[% loc('Summary (optional)') %]:</label> <input id="st-summary-input" type="text" />
+                <div class="st-summary" style="padding-top: 4px">
+                    <label for="st-summary-input">[% loc('Summary (optional)') %]:</label> <input id="st-summary-input" type="text" style="width: 300px"/>
                 </div>
                 <br style="clear: both; height: 1px" />
             </div>

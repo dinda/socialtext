@@ -74,6 +74,8 @@ sub edit_content {
 
     my $metadata = $page->metadata;
 
+    st_log->info("CREATE,EDIT_SUMMARY,edit_summary")
+        if $self->cgi->edit_summary;
     $metadata->loaded(1);
     $metadata->update( user => $self->hub->current_user );
     $metadata->Subject($page_name);
@@ -176,6 +178,8 @@ sub save {
         Socialtext::Exception::DataValidation->throw(
             errors => [loc('A page must have a body to be saved.')] );
     }
+    st_log->info("CREATE,EDIT_SUMMARY,edit_summary")
+        if $self->cgi->edit_summary;
 
     my @categories =
       sort keys %{+{map {($_, 1)} split /[\n\r]+/, $self->cgi->header}};
