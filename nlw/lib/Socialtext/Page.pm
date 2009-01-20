@@ -259,7 +259,7 @@ various places where this has been done in the past.
         subject          => SCALAR_TYPE,
         user             => USER_TYPE,
         date             => { can  => [qw(strftime)], default => undef },
-        edit_summary     => { type => SCALAR_TYPE,    default => '' },
+        edit_summary     => { type => SCALAR,    default => '' },
     };
     sub update {
         my $self = shift;

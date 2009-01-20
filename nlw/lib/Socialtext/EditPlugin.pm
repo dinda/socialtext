@@ -12,6 +12,7 @@ use Socialtext::Exceptions qw( data_validation_error );
 use Socialtext::l10n qw(loc);
 use Socialtext::Events;
 use Socialtext::String;
+use Socialtext::Log qw( st_log );
 
 sub class_id { 'edit' }
 const class_title => 'Editing Page';
